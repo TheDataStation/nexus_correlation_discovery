@@ -1,0 +1,8 @@
+.DS_Store
+data
+indices*
+.ipynb_checkpoints
+shape_chicago_blocks
+venv
+*.ipynb
+.vscode
