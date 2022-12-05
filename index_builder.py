@@ -1,68 +1,94 @@
 import pandas as pd
 import io_utils
 from config import DATA_PATH, INDEX_PATH
-from coordinate import S_GRANU, parse_coordinate
-from mydatetime import T_GRANU, Datetime
+import coordinate
+import mydatetime 
 from collections import defaultdict
 import time
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor
+import geopandas as gpd
+
+shape_file_path = "shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp"
 
 def read_data(tbl_id, t_attr, s_attr):
-    if t_attr:
-        df = io_utils.read_columns(DATA_PATH + tbl_id, [t_attr])
-        df[t_attr] = pd.to_datetime(df[t_attr], infer_datetime_format=True, utc=True, errors='coerce')
-        time_list = df[t_attr].tolist()
-        time_list = [Datetime(x) for x in time_list]
-    
-    if s_attr:
-        df = io_utils.read_columns(DATA_PATH + tbl_id, [s_attr])
-        tmp_list = df[s_attr].tolist() 
-        with ThreadPoolExecutor() as tpe:
-            spatial_list = list(tqdm(tpe.map(parse_coordinate, iter(tmp_list)), total=len(df)))
-
-        print(spatial_list[0:10])
-   
     if t_attr and s_attr:
-        spatio_temporal_list = list(zip(spatial_list, time_list))
-        return spatio_temporal_list
-    elif t_attr:
-        return time_list
-    else:
-        return spatial_list
-
-def aggregate(data, s_granu: S_GRANU, t_granu: T_GRANU):
-    hash_index = defaultdict(list)
-    for i, x in enumerate(data):
-        if t_granu and s_granu:
-            x = (tuple(x[0].transform(s_granu)), tuple(x[1].transform(t_granu)))
-        elif t_granu:
-            x = tuple(x.transform(t_granu))
+        df = io_utils.read_columns(DATA_PATH + tbl_id, [t_attr, s_attr])
+        df[t_attr] = pd.to_datetime(df[t_attr], infer_datetime_format=True, utc=True, errors='coerce').apply(mydatetime.parse_datetime)
+        df[s_attr] = df[s_attr].apply(coordinate.parse_coordinate)
+        gdf = gpd.GeoDataFrame(df[t_attr], geometry=df[s_attr]).dropna(how='all')
+        gdf.set_crs(epsg=4326, inplace=True)
+        if len(gdf):
+            df = coordinate.resolve_resolution_hierarchy(gdf, s_attr, shape_file_path)
+            if df is None:
+                return None
+            return df[[t_attr, s_attr]]
         else:
-            x = tuple(x.transform(s_granu))
+            return None
         
-        hash_index[x].append(i)   
+    elif t_attr:
+        df = io_utils.read_columns(DATA_PATH + tbl_id, [t_attr])
+        df[t_attr] = pd.to_datetime(df[t_attr], infer_datetime_format=True, utc=True, errors='coerce').apply(mydatetime.parse_datetime).dropna()
+        if len(df[t_attr]):
+            return df[[t_attr]]
+        else:
+            return None
+    else:
+        df = io_utils.read_columns(DATA_PATH + tbl_id, [s_attr])
+        df[s_attr] = df[s_attr].apply(coordinate.parse_coordinate)
+        gdf = gpd.GeoDataFrame(geometry=df[s_attr]).dropna()
+        gdf.set_crs(epsg=4326, inplace=True)
+        if len(gdf):
+            df = coordinate.resolve_resolution_hierarchy(gdf, s_attr, shape_file_path)
+            if df is None:
+                return None
+            return df[[s_attr]]
+        else:
+            return None
+
+def aggregate(data, t_attr: str, t_granu: mydatetime.T_GRANU, s_attr: str, s_granu: coordinate.S_GRANU):
+    hash_index = defaultdict(list)
+    if t_attr and s_attr:
+        for idx, row in data.iterrows():
+            key = (tuple(row[t_attr].transform(t_granu)), tuple(row[s_attr].transform(s_granu)))
+            hash_index[key].append(idx)
+    elif t_attr:
+        for idx, row in data.iterrows():
+            key = tuple(row[t_attr].transform(t_granu))
+            hash_index[key].append(idx)
+    elif s_attr:
+        for idx, row in data.iterrows():
+            key = tuple(row[s_attr].transform(s_granu))
+            hash_index[key].append(idx)
     return hash_index
 
-def build_index_for_tbl(tbl_id, t_attr, s_attr):
+def build_index_for_tbl(tbl_id, t_attr, s_attr, index_path):
     print("loading data for " + tbl_id)
     data = read_data(tbl_id, t_attr, s_attr)
+    if data is None:
+        return
     print("build index for " + tbl_id)
     full_index = {}
     if t_attr and s_attr:
-        for s_granu in S_GRANU:
-            for t_granu in T_GRANU:
-                index = aggregate(data, s_granu, t_granu)
-                full_index[(s_granu, t_granu)] = index
+        for t_granu in mydatetime.T_GRANU:
+            for s_granu in coordinate.S_GRANU:
+                index = aggregate(data, t_attr, t_granu, s_attr, s_granu)
+                full_index[(t_granu, s_granu)] = index
+                if t_granu not in full_index:
+                    index = aggregate(data, t_attr, t_granu, None, None)
+                    full_index[t_granu] = index
+                if s_granu not in full_index:
+                    index = aggregate(data, None, None, s_attr, s_granu)
+                    full_index[s_granu] = index                
     elif t_attr:
-        for t_granu in T_GRANU:
-            index = aggregate(data, None, t_granu)
+        for t_granu in mydatetime.T_GRANU:
+            index = aggregate(data, t_attr, t_granu, None, None)
             full_index[t_granu] = index
     else:
-        for s_granu in S_GRANU:
-            index = aggregate(data, s_granu, None)
+        for s_granu in coordinate.S_GRANU:
+            index = aggregate(data, None, None, s_attr, s_granu)
             full_index[s_granu] = index
-    io_utils.persist_to_pickle(INDEX_PATH + 'index_{}.pkl'.format(tbl_id[:-4]), full_index)
+    io_utils.persist_to_pickle(index_path + 'index_{}.pkl'.format(tbl_id[:-4]), full_index)
 
 
 
