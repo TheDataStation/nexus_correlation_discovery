@@ -2,7 +2,7 @@ import json
 import pandas as pd
 import pickle
 
-def dump_json(obj, path: str):
+def dump_json(path: str, obj):
     with open(path, 'w') as f:
         json.dump(obj, f)
 

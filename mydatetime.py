@@ -22,9 +22,20 @@ class Datetime:
     
     def transform(self, granu: T_GRANU):
         return self.full_resolution[granu-1:]
+    
+
 
 def parse_datetime(dt: Timestamp):
     return Datetime(dt)
 
 def transform(dt: Datetime, granu: T_GRANU):
     return dt.full_resolution[granu-1:]
+
+def dt_to_str(dt):
+    resolution = dt[::-1] 
+    res = ""
+    for i, token in enumerate(resolution):
+        res += str(token) 
+        if i+1 != len(resolution):
+            res += str('-')
+    return res

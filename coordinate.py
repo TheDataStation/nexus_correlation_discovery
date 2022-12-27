@@ -43,6 +43,7 @@ class Coordinate:
     def transform(self, granu: S_GRANU):
         return self.full_resolution[granu-1:]
 
+
 def transform(crd: Coordinate, granu: S_GRANU):
     return crd.full_resolution[granu-1:]
 
@@ -75,3 +76,8 @@ def resolve_resolution_hierarchy(points, s_attr, shape_path: str):
         return df
     else:
         return None
+
+def pt_to_str(pt):
+        resolution = pt[::-1] 
+        return str(resolution)
+

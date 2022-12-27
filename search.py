@@ -5,8 +5,13 @@ from config import INDEX_PATH
 import io_utils
 import time
 
-def search(tbl_id: str, t_granu: T_GRANU, s_granu: S_GRANU):
-    primary_path = os.path.join(INDEX_PATH, "index_{}.pkl".format(tbl_id)) 
+def search(tbl_id: str, t_attr: str=None, s_attr: str=None, t_granu: T_GRANU=None, s_granu: S_GRANU=None):
+    if t_attr and s_attr:
+        primary_path = os.path.join(INDEX_PATH, "index_{} {} {}.pkl".format(tbl_id, t_attr, s_attr)) 
+    elif t_attr:
+        primary_path = os.path.join(INDEX_PATH, "index_{} {}.pkl".format(tbl_id, t_attr)) 
+    else:
+        primary_path = os.path.join(INDEX_PATH, "index_{} {}.pkl".format(tbl_id, s_attr)) 
     pri_idx = io_utils.load_pickle(primary_path)
     if t_granu and s_granu:
         resolution = (t_granu, s_granu)
@@ -14,7 +19,6 @@ def search(tbl_id: str, t_granu: T_GRANU, s_granu: S_GRANU):
         resolution = t_granu
     else:
         resolution = s_granu
-    print(resolution)
     pri_keys = pri_idx[resolution].keys()
     result = []
     
@@ -25,12 +29,14 @@ def search(tbl_id: str, t_granu: T_GRANU, s_granu: S_GRANU):
         idx = io_utils.load_pickle(f)
         if resolution in idx:
             count = len(pri_keys & idx[resolution].keys())
-            result.append((filename[6:-4], count))
+            if count != 0:
+                tokens = filename[6:-4].split()
+                result.append((tokens + [count]))
             
-    result = sorted(result, key = lambda x: x[1], reverse=True)
-    for x in result[:5]:
-        print(x)
+    result = sorted(result, key = lambda x: x[-1], reverse=True)
+    return result
 
-start = time.time()
-search('ijzp-q8t2', T_GRANU.DAY, S_GRANU.BLOCK)
-print(time.time() - start)
+# start = time.time()
+# res = search('ijzp-q8t2', 'date', 'location', T_GRANU.DAY, S_GRANU.BLOCK)
+# print(res)
+# print(time.time() - start)

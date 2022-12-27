@@ -23,23 +23,31 @@ def test_index_builder_time():
     for obj in meta_data:
         domain, tbl_id, tbl_name, t_attrs, s_attrs = obj['domain'], obj['tbl_id'], obj['tbl_name'], obj['t_attrs'], obj['s_attrs']
         if len(t_attrs) and len(s_attrs):
-            index_builder.build_index_for_tbl(tbl_id + '.csv', t_attrs[0], s_attrs[0], INDEX_PATH)
+            for t_attr in t_attrs:
+                for s_attr in s_attrs:
+                    index_builder.build_index_for_tbl(tbl_id + '.csv', t_attr, s_attr, INDEX_PATH)
         elif len(t_attrs):
-            index_builder.build_index_for_tbl(tbl_id + '.csv', t_attrs[0], None, INDEX_PATH)
+            for t_attr in t_attrs:
+                index_builder.build_index_for_tbl(tbl_id + '.csv', t_attr, None, INDEX_PATH)
         elif len(s_attrs):
-            index_builder.build_index_for_tbl(tbl_id + '.csv', None, s_attrs[0], INDEX_PATH)
+            for s_attr in s_attrs:
+                index_builder.build_index_for_tbl(tbl_id + '.csv', None, s_attr, INDEX_PATH)    
 
-def test_temporal_storage():
+def test_storage():
     tbl_cnt = 0
     row_cnt = 0
     meta_data = io_utils.load_json(META_PATH)
     for obj in meta_data:
-        domain, tbl_id, tbl_name, t_attrs = obj['domain'], obj['tbl_id'], obj['tbl_name'], obj['t_attrs'] 
-        if len(t_attrs):
+        domain, tbl_id, tbl_name, t_attrs, s_attrs = obj['domain'], obj['tbl_id'], obj['tbl_name'], obj['t_attrs'], obj['s_attrs']
+        if len(t_attrs) and len(s_attrs):
+            df = io_utils.read_columns(DATA_PATH + tbl_id + '.csv', [t_attrs[0], s_attrs[0]])
+        elif len(t_attrs):
             df = io_utils.read_columns(DATA_PATH + tbl_id + '.csv', [t_attrs[0]])
-            tbl_cnt += 1
-            row_cnt += len(df)
-            # df.to_csv('data/chicago_temporal_attributes/{}.csv'.format(tbl_id))
+        elif len(s_attrs):
+            df = io_utils.read_columns(DATA_PATH + tbl_id + '.csv', [s_attrs[0]])
+        tbl_cnt += 1
+        row_cnt += len(df)
+        df.to_csv('data/chicago_1k_attributes/{}.csv'.format(tbl_id))
     print(tbl_cnt, row_cnt)
 
 

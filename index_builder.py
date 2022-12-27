@@ -46,49 +46,94 @@ def read_data(tbl_id, t_attr, s_attr):
         else:
             return None
 
-def aggregate(data, t_attr: str, t_granu: mydatetime.T_GRANU, s_attr: str, s_granu: coordinate.S_GRANU):
-    hash_index = defaultdict(list)
+def aggregate_in_one(data, t_attr, s_attr):
+    full_index = {}
+    t_index = {}
+    s_index = {}
     if t_attr and s_attr:
         for idx, row in data.iterrows():
-            key = (tuple(row[t_attr].transform(t_granu)), tuple(row[s_attr].transform(s_granu)))
-            hash_index[key].append(idx)
+            for t_granu in mydatetime.T_GRANU:
+                for s_granu in coordinate.S_GRANU: 
+                    if (t_granu, s_granu) not in full_index:
+                        hash_index_all = defaultdict(list)
+                        full_index[(t_granu, s_granu)] = hash_index_all
+                    else:
+                        hash_index_all = full_index[(t_granu, s_granu)]
+                    key = (tuple(row[t_attr].transform(t_granu)), tuple(row[s_attr].transform(s_granu)))
+                    hash_index_all[key].append(idx)
+                    if t_granu not in t_index:
+                        hash_index_t = defaultdict(list)
+                        t_index[t_granu] = hash_index_t
+                    else:
+                        hash_index_t = t_index[t_granu]
+                    key = tuple(row[t_attr].transform(t_granu))
+                    hash_index_t[key].append(idx)
+                    if s_granu not in s_index:
+                        hash_index_s = defaultdict(list)
+                        s_index[s_granu] = hash_index_s
+                    else:
+                        hash_index_s = s_index[s_granu]
+                    key = tuple(row[s_attr].transform(s_granu))
+                    hash_index_s[key].append(idx)
+        return (full_index, t_index, s_index)
     elif t_attr:
         for idx, row in data.iterrows():
-            key = tuple(row[t_attr].transform(t_granu))
-            hash_index[key].append(idx)
+            for t_granu in mydatetime.T_GRANU:
+                if t_granu not in full_index:
+                    hash_index_t = defaultdict(list)
+                    full_index[t_granu] = hash_index_t
+                else:
+                    hash_index_t = full_index[t_granu]
+                key = tuple(row[t_attr].transform(t_granu))
+                hash_index_t[key].append(idx)
+            
+        return (full_index)
     elif s_attr:
         for idx, row in data.iterrows():
-            key = tuple(row[s_attr].transform(s_granu))
-            hash_index[key].append(idx)
-    return hash_index
+            for s_granu in coordinate.S_GRANU:
+                if s_granu not in full_index:
+                    hash_index_s = defaultdict(list)
+                    full_index[s_granu] = hash_index_s
+                else:
+                    hash_index_s = full_index[s_granu]
+                key = tuple(row[s_attr].transform(s_granu))
+                hash_index_s[key].append(idx)
+            
+        return (full_index)
+
 
 def build_index_for_tbl(tbl_id, t_attr, s_attr, index_path):
-    print("loading data for " + tbl_id)
+    log = open('log.txt', 'w', buffering=1)
+    print("loading data for {}".format(tbl_id))
+    log.write("loading data for {}\n".format(tbl_id))
+    start = time.time()
     data = read_data(tbl_id, t_attr, s_attr)
+    print("loading data finished {} s".format(time.time() - start))
+    log.write("loading data finished {} s\n".format(time.time() - start))
     if data is None:
         return
-    print("build index for " + tbl_id)
-    full_index = {}
+    print("build index for {}".format(tbl_id))
+    log.write("build index for {}\n".format(tbl_id))
+    start = time.time()
+    full_index = aggregate_in_one(data, t_attr, s_attr)
+    print("building index finished {} s".format(time.time() - start))
+    log.write("building index finished {} s\n".format(time.time() - start))
+
+    print("begin dumping")
+    log.write("begin dumping\n")
+    start = time.time()
     if t_attr and s_attr:
-        for t_granu in mydatetime.T_GRANU:
-            for s_granu in coordinate.S_GRANU:
-                index = aggregate(data, t_attr, t_granu, s_attr, s_granu)
-                full_index[(t_granu, s_granu)] = index
-                if t_granu not in full_index:
-                    index = aggregate(data, t_attr, t_granu, None, None)
-                    full_index[t_granu] = index
-                if s_granu not in full_index:
-                    index = aggregate(data, None, None, s_attr, s_granu)
-                    full_index[s_granu] = index                
+        io_utils.persist_to_pickle(index_path + 'index_{} {} {}.pkl'.format(tbl_id[:-4], t_attr, s_attr), full_index[0])
+        io_utils.persist_to_pickle(index_path + 'index_{} {}.pkl'.format(tbl_id[:-4], t_attr), full_index[1])
+        io_utils.persist_to_pickle(index_path + 'index_{} {}.pkl'.format(tbl_id[:-4], s_attr), full_index[2])
     elif t_attr:
-        for t_granu in mydatetime.T_GRANU:
-            index = aggregate(data, t_attr, t_granu, None, None)
-            full_index[t_granu] = index
+        io_utils.persist_to_pickle(index_path + 'index_{} {}.pkl'.format(tbl_id[:-4], t_attr), full_index)
     else:
-        for s_granu in coordinate.S_GRANU:
-            index = aggregate(data, None, None, s_attr, s_granu)
-            full_index[s_granu] = index
-    io_utils.persist_to_pickle(index_path + 'index_{}.pkl'.format(tbl_id[:-4]), full_index)
+        io_utils.persist_to_pickle(index_path + 'index_{} {}.pkl'.format(tbl_id[:-4], s_attr), full_index)
+    
+    
+    print("finished dumping {} s".format(time.time() - start))
+    log.write("finished dumping {} s\n".format(time.time() - start))
 
 
 
