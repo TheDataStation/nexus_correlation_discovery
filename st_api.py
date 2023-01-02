@@ -60,17 +60,19 @@ class API:
 
     def get_overlap_between_two_tables(self, tbl1: str, t_attr1: str, s_attr1: str, tbl2: str, t_attr2: str, s_attr2: str, t_granu: T_GRANU, s_granu: S_GRANU):
         if t_granu and s_granu:
-            resolution = (t_granu, s_granu)
+            resolution = str([t_granu, s_granu])
         elif t_granu:
-            resolution = t_granu
+            resolution = str(int(t_granu))
         else:
-            resolution = s_granu
+            resolution = str(int(s_granu))
 
+        print(resolution)
         tbl1_idx_path = self.get_idx_path(tbl1, t_attr1, s_attr1)
-        tbl1_idx = io_utils.load_pickle(tbl1_idx_path)[resolution]
+        tbl1_idx = io_utils.load_json(tbl1_idx_path)[resolution]
         tbl2_idx_path = self.get_idx_path(tbl2, t_attr2, s_attr2)
-        tbl2_idx = io_utils.load_pickle(tbl2_idx_path)[resolution]
+        tbl2_idx = io_utils.load_json(tbl2_idx_path)[resolution]
         overlap_units = tbl1_idx.keys() & tbl2_idx.keys()
+        
         rows = []
         for unit in overlap_units:
             if t_granu and s_granu:
@@ -97,11 +99,11 @@ class API:
     
     def get_idx_path(self, tbl_id, t_attr, s_attr):
         if t_attr and s_attr:
-            primary_path = os.path.join(INDEX_PATH, "index_{} {} {}.pkl".format(tbl_id, t_attr, s_attr)) 
+            primary_path = os.path.join(INDEX_PATH, "index_{} {} {}.json".format(tbl_id, t_attr, s_attr)) 
         elif t_attr:
-            primary_path = os.path.join(INDEX_PATH, "index_{} {}.pkl".format(tbl_id, t_attr)) 
+            primary_path = os.path.join(INDEX_PATH, "index_{} {}.json".format(tbl_id, t_attr)) 
         else:
-            primary_path = os.path.join(INDEX_PATH, "index_{} {}.pkl".format(tbl_id, s_attr)) 
+            primary_path = os.path.join(INDEX_PATH, "index_{} {}.json".format(tbl_id, s_attr)) 
 
         return primary_path
 
@@ -144,38 +146,67 @@ class API:
 
     def agg_join(self, tbl1: str, t_attr1: str, s_attr1: str, tbl2: str, t_attr2: str, s_attr2: str, t_granu: T_GRANU, s_granu: S_GRANU):
         if t_granu and s_granu:
-            resolution = (t_granu, s_granu)
+            resolution = str([t_granu, s_granu])
         elif t_granu:
-            resolution = t_granu
+            resolution = str(int(t_granu))
         else:
-            resolution = s_granu
+            resolution = str(int(s_granu))
 
         tbl1_idx_path = self.get_idx_path(tbl1, t_attr1, s_attr1)
-        tbl1_idx = io_utils.load_pickle(tbl1_idx_path)[resolution]
+        tbl1_idx = io_utils.load_json(tbl1_idx_path)[resolution]
         tbl2_idx_path = self.get_idx_path(tbl2, t_attr2, s_attr2)
-        tbl2_idx = io_utils.load_pickle(tbl2_idx_path)[resolution]
+        tbl2_idx = io_utils.load_json(tbl2_idx_path)[resolution]
        
         overlap_units = tbl1_idx.keys() & tbl2_idx.keys()
         rows = []
         for unit in overlap_units:
             if t_granu and s_granu:
-                row = [unit[0], unit[1], len(tbl1_idx[unit]), len(tbl2_idx[unit])]
+                row = [unit, len(tbl1_idx[unit]), len(tbl2_idx[unit])]
             else:
                 row = [unit, len(tbl1_idx[unit]), len(tbl2_idx[unit])]
             rows.append(row)
         if t_granu and s_granu:
-            df =  pd.DataFrame(rows, columns=['Time', 'Location', 'Count tbl1', 'Count tbl2'])
-            df['Time'] = df['Time'].apply(dt_to_str)
-            df['Location'] = df['Location'].apply(pt_to_str)
+            df =  pd.DataFrame(rows, columns=['Time and Location', 'Count tbl1', 'Count tbl2'])
+            # df['Time'] = df['Time'].apply(dt_to_str)
+            # df['Location'] = df['Location'].apply(pt_to_str)
             return df
         elif t_granu:
             df = pd.DataFrame(rows, columns=['Time', 'Count tbl1', 'Count tbl2'])
-            df['Time'] = df['Time'].apply(dt_to_str)
+            # df['Time'] = df['Time'].apply(dt_to_str)
             return df
         else:
             df = pd.DataFrame(rows, columns=['Location', 'Count tbl1', 'Count tbl2'])
-            df['Location'] = df['Location'].apply(pt_to_str)
+            # df['Location'] = df['Location'].apply(pt_to_str)
             return df
+    
+    def calculate_corr(self, tbl1, t_attr1, s_attr1, tbl2, t_attr2, s_attr2, t_granu, s_granu):
+        merged = self.agg_join(tbl1, t_attr1, s_attr1, tbl2, t_attr2, s_attr2, t_granu, s_granu)
+        corr_matrix = merged.corr(method ='pearson', numeric_only=True)
+        return corr_matrix.iloc[1, 0]
+    
+    def find_all_corr(self):
+        meta_data = io_utils.load_json(META_PATH)
+       
+        data = []
+        for obj in meta_data:
+            domain, tbl_id, tbl_name, t_attrs, s_attrs = obj['domain'], obj['tbl_id'], obj['tbl_name'], obj['t_attrs'], obj['s_attrs']
+            if len(t_attrs) and len(s_attrs):
+                for t_attr in t_attrs:
+                    for s_attr in s_attrs:
+                        aligned_tbls = search(tbl_id, t_attr, s_attr, T_GRANU.MONTH, S_GRANU.TRACT)
+                        for tbl in aligned_tbls:
+                            tbl_id2, t_attr2, s_attr2, overlap = tbl[0], tbl[1], tbl[2], tbl[3]
+                            if overlap >= 50:
+                                print(tbl_id, t_attr, s_attr, tbl_id2, t_attr2, s_attr2)
+                                corr = self.calculate_corr(tbl_id, t_attr, s_attr, tbl_id2, t_attr2, s_attr2, T_GRANU.MONTH, S_GRANU.TRACT)
+                                if corr > 0.5:
+                                    tbl_name, tbl_name2 = self.tbl_lookup[tbl_id][0], self.tbl_lookup[tbl_id2][0]
+                                    print(tbl_id, tbl_name, t_attr, s_attr, tbl_id2, tbl_name2, t_attr2, s_attr2, corr)
+                                    data.append([tbl_id, tbl_name, t_attr, s_attr, tbl_id2, tbl_name2, t_attr2, s_attr2, corr])
+                                   
+        df = pd.DataFrame(data, columns = ["tbl_id1", "tbl_name1", "t_attr1", "s_attr1", "tbl_id2", "tbl_name2", "t_attr2", "s_attr2", "corr"])
+        df.to_csv('corr.csv')
+
 
 
 

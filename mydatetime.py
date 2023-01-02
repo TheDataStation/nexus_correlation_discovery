@@ -12,7 +12,7 @@ class T_GRANU(IntEnum):
 class Datetime:
     def __init__(self, dt: Timestamp) -> None:
         self.dt = dt
-        self.minute = dt.min
+        self.minute = dt.minute
         self.hour = dt.hour
         self.day = dt.day
         self.month = dt.month
@@ -22,6 +22,10 @@ class Datetime:
     
     def transform(self, granu: T_GRANU):
         return self.full_resolution[granu-1:]
+    
+    def transform_to_key(self, granu: T_GRANU):
+        repr = self.full_resolution[granu-1:]
+        return str(repr)
     
 
 

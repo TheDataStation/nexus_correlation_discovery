@@ -13,25 +13,13 @@ def test_read_data():
 
 def test_index_builder_for_single_tbl():
     start = time.time()
-    tbl_id = 'ijzp-q8t2'
-    t_attr, s_attr = "date", "location"
-    index_builder.build_index_for_tbl(tbl_id + '.csv', t_attr, s_attr)
+    tbl_id = 'zuxi-7xem'
+    t_attr, s_attr = 'creation_date', "location"
+    index_builder.build_index_for_tbl(tbl_id + '.csv', t_attr, s_attr, 'test/')
     print(time.time() - start)
 
 def test_index_builder_time():
-    meta_data = io_utils.load_json(META_PATH)
-    for obj in meta_data:
-        domain, tbl_id, tbl_name, t_attrs, s_attrs = obj['domain'], obj['tbl_id'], obj['tbl_name'], obj['t_attrs'], obj['s_attrs']
-        if len(t_attrs) and len(s_attrs):
-            for t_attr in t_attrs:
-                for s_attr in s_attrs:
-                    index_builder.build_index_for_tbl(tbl_id + '.csv', t_attr, s_attr, INDEX_PATH)
-        elif len(t_attrs):
-            for t_attr in t_attrs:
-                index_builder.build_index_for_tbl(tbl_id + '.csv', t_attr, None, INDEX_PATH)
-        elif len(s_attrs):
-            for s_attr in s_attrs:
-                index_builder.build_index_for_tbl(tbl_id + '.csv', None, s_attr, INDEX_PATH)    
+    index_builder.build_indices_for_all_tables()
 
 def test_storage():
     tbl_cnt = 0
