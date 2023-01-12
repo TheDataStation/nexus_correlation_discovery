@@ -6,3 +6,4 @@ shape_chicago_blocks
 venv
 *.ipynb
 .vscode
+*.csv
