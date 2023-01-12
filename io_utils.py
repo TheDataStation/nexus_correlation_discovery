@@ -2,17 +2,19 @@ import json
 import pandas as pd
 import pickle
 
+
 def dump_json(path: str, obj):
-    with open(path, 'w') as f:
+    with open(path, "w") as f:
         json.dump(obj, f)
 
 
 def load_json(path: str):
-    with open(path, 'r') as f:
+    with open(path, "r") as f:
         return json.load(f)
 
+
 def load_pickle(path: str):
-    idx_file = open(path, 'rb')
+    idx_file = open(path, "rb")
     object = pickle.load(idx_file)
     return object
 
@@ -27,11 +29,12 @@ def read_columns(path, fields):
 
 
 def read_csv(path, t_attrs=None, s_attrs=None):
-    df = pd.read_csv(path)
+    df = pd.read_csv(path, engine="python", on_bad_lines="skip")
     if t_attrs:
         for t_attr in t_attrs:
             df[t_attr] = pd.to_datetime(
-                df[t_attr], infer_datetime_format=True, utc=True, errors='coerce')
+                df[t_attr], infer_datetime_format=True, utc=True, errors="coerce"
+            )
     return df
 
 
