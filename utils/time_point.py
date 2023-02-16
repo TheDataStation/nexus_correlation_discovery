@@ -1,5 +1,7 @@
 from pandas import Timestamp
 from enum import Enum
+import pandas as pd
+import numpy as np
 
 
 class T_GRANU(Enum):
@@ -38,6 +40,8 @@ class Datetime:
 
 
 def parse_datetime(dt: Timestamp):
+    if pd.isnull(dt):
+        return None
     return Datetime(dt)
 
 

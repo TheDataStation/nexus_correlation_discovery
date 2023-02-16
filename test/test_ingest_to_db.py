@@ -1,6 +1,6 @@
-import io_utils
+import utils.io_utils as io_utils
 from config import DATA_PATH, META_PATH
-from index_builder_db import DBIngestor
+from data_ingestion.index_builder_db import DBIngestor
 from sqlalchemy import create_engine
 from tqdm import tqdm
 import time
@@ -12,20 +12,9 @@ ingestor = DBIngestor(conn_string)
 
 def test_ingest_tbl_e2e():
     # tbl_id = "ijzp-q8t2"
-    tbl_id = "r5kz-chrr"
-    # t_attrs = ["updated_on", "date"]
-    t_attrs = [
-        "payment_date",
-        "license_approved_for_issuance",
-        "license_status_change_date",
-        "date_issued",
-        "expiration_date",
-        "license_start_date",
-        "application_requirements_complete",
-        "application_created_date",
-    ]
+    tbl_id = "w4qj-h7bg"
+    t_attrs = ["open_for_enrollment_date", "closed_for_enrollment_date"]
     s_attrs = ["location"]
-    # s_attrs = ["location"]
 
     ingestor.ingest_tbl(tbl_id, t_attrs, s_attrs)
 
@@ -38,6 +27,10 @@ def test_ingest_all_tables():
         tbl_id, t_attrs, s_attrs = obj["tbl_id"], obj["t_attrs"], obj["s_attrs"]
         print(tbl_id)
         ingestor.ingest_tbl(tbl_id, t_attrs, s_attrs)
+    io_utils.dump_json(
+        "/Users/yuegong/Documents/spatio_temporal_alignment/data/" + "tbl_attrs.json",
+        ingestor.tbls,
+    )
     return time.time() - start_time
 
 

@@ -1,11 +1,12 @@
-import io_utils
-from config import META_PATH, DATA_PATH, INDEX_PATH
+import utils.io_utils as io_utils
+from config import META_PATH, DATA_PATH
 import pandas as pd
-from coordinate import S_GRANU, pt_to_str
-from time_point import T_GRANU, dt_to_str
-from archived.search import search
+from utils.coordinate import S_GRANU
+from utils.time_point import T_GRANU
 import pandas as pd
-from search_db import DBSearch
+from data_search.search_db import DBSearch
+from typing import List
+import numpy as np
 
 
 class API:
@@ -13,6 +14,7 @@ class API:
         self.meta_data = io_utils.load_json(META_PATH)
         self.load_meta_data()
         self.db_search = DBSearch(conn_str)
+        self.data = []
 
     def load_meta_data(self):
         self.tbl_lookup = {}
@@ -57,27 +59,8 @@ class API:
         df = pd.DataFrame(tbls, columns=["Table Id", "Table Name", "Time", "Location"])
         return df
 
-    def search_tbl(
-        self, tbl_id: str, t_attr: str, s_attr: str, t_granu: T_GRANU, s_granu: S_GRANU
-    ):
-        rows = []
-        result = search(tbl_id, t_attr, s_attr, t_granu, s_granu)
-        for tbl in result:
-            tbl_id = tbl[0]
-            rows.append([tbl_id, self.tbl_lookup[tbl_id][0]] + tbl[1:])
-
-        if t_attr and s_attr:
-            df = pd.DataFrame(
-                rows, columns=["Table Id", "Table Name", "Time", "Location", "Overlap"]
-            )
-        elif t_attr:
-            df = pd.DataFrame(
-                rows, columns=["Table Id", "Table Name", "Time", "Overlap"]
-            )
-        else:
-            df = pd.DataFrame(
-                rows, columns=["Table Id", "Table Name", "Location", "Overlap"]
-            )
+    def search_tbl(self, tbl_id: str, attrs: List[str], granu_list):
+        df = self.db_search.search(tbl_id, attrs, granu_list)
         return df
 
     def preview_tbl(self, tbl_id: str):
@@ -91,13 +74,96 @@ class API:
         corr_matrix = merged.corr(method="pearson", numeric_only=True)
         return corr_matrix.iloc[1, 0]
 
+    def find_all_corr_for_a_tbl(self, tbl1, t_attrs, s_attrs, granu_list):
+        st_schema = []
+
+        # for t in t_attrs:
+        #     st_schema.append(([t], [T_GRANU.MONTH]))
+        # for s in s_attrs:
+        #     st_schema.append(([s], [S_GRANU.TRACT]))
+        for t in t_attrs:
+            for s in s_attrs:
+                st_schema.append(([t, s], [T_GRANU.MONTH, S_GRANU.TRACT]))
+
+        tbl1_agg_cols = self.get_numerical_columns(tbl1)
+        for st1, granu_list in st_schema:
+            print(st1, granu_list)
+            aligned_tbls = self.db_search.search(tbl1, st1, granu_list)
+
+            for tbl in aligned_tbls.itertuples():
+                print(tbl)
+                tbl2, st2, overlap = (
+                    tbl[1],
+                    tbl[3],
+                    tbl[4],
+                )
+
+                print(overlap)
+
+                if overlap >= 50:
+                    print(tbl1, st1, tbl1, st2)
+                    # calculate agg count
+                    merged = self.db_search.aggregate_join_two_tables(
+                        tbl1, st1, tbl2, st2, granu_list
+                    )
+                    corr_matrix = merged.corr(method="pearson", numeric_only=True)
+                    corr = corr_matrix.iloc[1, 0]
+                    if corr > 0.6:
+                        self.append_result(tbl1, tbl2, st1, st2, None, None, corr)
+
+                    # calculate agg avg
+                    tbl2_agg_cols = self.get_numerical_columns(tbl2)
+                    for agg_col1 in tbl1_agg_cols:
+                        for agg_col2 in tbl2_agg_cols:
+                            merged = self.db_search.aggregate_join_two_tables_avg(
+                                tbl1, st1, agg_col1, tbl2, st2, agg_col2, granu_list
+                            )
+                            corr_matrix = merged.corr(
+                                method="pearson", numeric_only=True
+                            )
+                            corr = corr_matrix.iloc[1, 0]
+                            if corr > 0.6:
+                                self.append_result(
+                                    tbl1, tbl2, st1, st2, agg_col1, agg_col2, corr
+                                )
+
+    def get_numerical_columns(self, tbl_id):
+        df = io_utils.read_csv(DATA_PATH + tbl_id + ".csv")
+        return list(df.select_dtypes(include=[np.number]).columns.values)
+
+    def append_result(self, tbl1, tbl2, st1, st2, agg_attr1, agg_attr2, corr):
+        tbl_name1, tbl_name2 = (self.tbl_lookup[tbl1][0], self.tbl_lookup[tbl2][0])
+        print(
+            tbl1,
+            tbl_name1,
+            st1,
+            agg_attr1,
+            tbl2,
+            tbl_name2,
+            st2,
+            agg_attr2,
+            corr,
+        )
+        self.data.append(
+            [
+                tbl1,
+                tbl_name1,
+                st1,
+                agg_attr1,
+                tbl2,
+                tbl_name2,
+                st2,
+                agg_attr2,
+                round(corr, 2),
+            ]
+        )
+
     def find_all_corr(self):
         meta_data = io_utils.load_json(META_PATH)
 
         data = []
         for obj in meta_data:
-            domain, tbl_id, tbl_name, t_attrs, s_attrs = (
-                obj["domain"],
+            tbl_id, tbl_name, t_attrs, s_attrs = (
                 obj["tbl_id"],
                 obj["tbl_name"],
                 obj["t_attrs"],
@@ -106,8 +172,8 @@ class API:
             if len(t_attrs) and len(s_attrs):
                 for t_attr in t_attrs:
                     for s_attr in s_attrs:
-                        aligned_tbls = search(
-                            tbl_id, t_attr, s_attr, T_GRANU.MONTH, S_GRANU.TRACT
+                        aligned_tbls = self.db_search.search(
+                            tbl_id, [t_attr, s_attr], [T_GRANU.MONTH, S_GRANU.TRACT]
                         )
                         for tbl in aligned_tbls:
                             tbl_id2, t_attr2, s_attr2, overlap = (

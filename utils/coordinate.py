@@ -110,6 +110,7 @@ def resolve_spatial_hierarchy(points):
     """
     shapes = gpd.read_file(SHAPE_PATH).to_crs(epsg=4326)
     df = gpd.sjoin(points, shapes, predicate="within")
+
     if len(df):
         df_resolved = df.apply(
             lambda row: Coordinate(

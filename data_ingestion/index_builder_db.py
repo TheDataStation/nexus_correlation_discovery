@@ -1,5 +1,5 @@
 import pandas as pd
-from config import DATA_PATH
+from config import DATA_PATH, META_PATH
 import utils.coordinate as coordinate
 from utils.time_point import set_temporal_granu, parse_datetime, T_GRANU
 import geopandas as gpd
@@ -13,7 +13,7 @@ import psycopg2
 
 
 """
-DBIngestor ingests dataframes to a database (current implementation use postgres)
+DBIngestor ingests dataframes to a database (current implementation uses postgres)
 Here are the procedure to ingest a spatial-temporal table
 1. Read the table as a dataframe
 2. Expand the dataframe by resolving different resolutions for temporal and spatial attributes
@@ -26,36 +26,61 @@ class DBIngestor:
     def __init__(self, conn_string: str) -> None:
         db = create_engine(conn_string)
         self.conn = db.connect()
-
         conn_copg2 = psycopg2.connect(conn_string)
         conn_copg2.autocommit = True
         self.cur = conn_copg2.cursor()
+        self.load_tbl_lookup()
+        # successfully ingested table information
+        self.tbls = []
+
+    def load_tbl_lookup(self):
+        self.meta_data = io_utils.load_json(META_PATH)
+        self.tbl_lookup = {}
+        for obj in self.meta_data:
+            tbl_id, tbl_name = (
+                obj["tbl_id"],
+                obj["tbl_name"],
+            )
+            self.tbl_lookup[tbl_id] = tbl_name
+        return self.tbl_lookup
 
     def ingest_tbl(self, tbl_id, t_attrs, s_attrs):
         df = io_utils.read_csv(DATA_PATH + tbl_id + ".csv")
         # expand dataframe
-        self.expand_df(df, t_attrs, s_attrs)
+        df, t_attrs_success, s_attrs_success = self.expand_df(df, t_attrs, s_attrs)
+        # if dataframe is None, return
+        if df is None:
+            return
+        self.tbls.append(
+            {
+                "tbl_id": tbl_id,
+                "tbl_name": self.tbl_lookup[tbl_id],
+                "t_attrs": t_attrs_success,
+                "s_attrs": s_attrs_success,
+            }
+        )
         # ingest dataframe to database
         self.ingest_df_to_db(df, tbl_id)
         # create hash indices
-        self.create_indices_on_tbl(tbl_id, t_attrs, s_attrs)
+        self.create_indices_on_tbl(tbl_id, t_attrs_success, s_attrs_success)
 
     def expand_df(self, df, t_attrs, s_attrs):
-        attrs_to_project = []
+        t_attrs_success = []
+        s_attrs_success = []
         for t_attr in t_attrs:
-            attrs_to_project.append(t_attr)
             # parse datetime column to datetime class
             df[t_attr] = pd.to_datetime(
                 df[t_attr], infer_datetime_format=True, utc=True, errors="coerce"
             ).dropna()
             df_dts = df[t_attr].apply(parse_datetime).dropna()
-            for t_granu in T_GRANU:
-                new_attr = "{}_{}".format(t_attr, t_granu.name)
-                attrs_to_project.append(new_attr)
-                df[new_attr] = df_dts.apply(set_temporal_granu, args=(t_granu.value,))
-
+            if len(df_dts):
+                for t_granu in T_GRANU:
+                    new_attr = "{}_{}".format(t_attr, t_granu.name)
+                    df[new_attr] = df_dts.apply(
+                        set_temporal_granu, args=(t_granu.value,)
+                    )
+                t_attrs_success.append(t_attr)
         for s_attr in s_attrs:
-            attrs_to_project.append(s_attr)
             # parse (long, lat) pairs to point
             df_points = df[s_attr].apply(coordinate.parse_coordinate)
 
@@ -67,19 +92,21 @@ class DBIngestor:
             )
 
             df_resolved = resolve_spatial_hierarchy(gdf)
+
             # df_resolved can be none meaning there is no point falling into the shape file
             if df_resolved is None:
                 continue
             for s_granu in S_GRANU:
                 new_attr = "{}_{}".format(s_attr, s_granu.name)
-                attrs_to_project.append(new_attr)
                 df[new_attr] = df_resolved.apply(
                     set_spatial_granu, args=(s_granu.value,)
                 )
+            s_attrs_success.append(s_attr)
 
         # numeric_columns = list(df.select_dtypes(include=[np.number]).columns.values)
         # final_proj_list = list(set(attrs_to_project) | set(numeric_columns))
-        return df
+
+        return df, t_attrs_success, s_attrs_success
 
     def ingest_df_to_db(self, df, tbl_id):
         # drop old tables before ingesting the new dataframe

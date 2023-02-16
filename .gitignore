@@ -7,3 +7,5 @@ venv
 *.ipynb
 .vscode
 *.csv
+notebook/
+result/
