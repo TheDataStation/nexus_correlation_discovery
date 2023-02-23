@@ -87,17 +87,17 @@ class DBSearch:
                         [
                             tbl2,
                             self.tbl_names[tbl2],
-                            [unit.attr_name for unit in units2],
+                            units2,
                             overlap,
                         ]
                     )
+        return result
+        # df = pd.DataFrame(
+        #     data=result, columns=["tbl_id", "tbl_name", "attrs", "overlap"]
+        # )
 
-        df = pd.DataFrame(
-            data=result, columns=["tbl_id", "tbl_name", "attrs", "overlap"]
-        )
-
-        df = df.sort_values(by="overlap", ascending=False)
-        return df
+        # df = df.sort_values(by="overlap", ascending=False)
+        # return df
 
     def get_intersection(self, tbl1, units1, tbl2, units2):
         col_names1 = self.get_col_names_with_granu(units1)
@@ -125,15 +125,14 @@ class DBSearch:
                 continue
             ts_schemas = self.tbl_schemas[tbl_id2]
             if len(attrs) == 2:
-                ts_schemas = ts_schemas[2]
+                ts_schemas = ts_schemas["ts"]
             elif granu_list[0] in T_GRANU:
-                ts_schemas = ts_schemas[0]
-
+                ts_schemas = ts_schemas["t"]
             else:
-                ts_schemas = ts_schemas[1]
+                ts_schemas = ts_schemas["s"]
 
             for ts_schema in ts_schemas:
-                print(tbl_id, attrs, tbl_id2, ts_schema, granu_list)
+                # print(tbl_id, attrs, tbl_id2, ts_schema, granu_list)
                 overlap = self.get_intersection_between_two_ts_schema(
                     tbl_id, attrs, tbl_id2, ts_schema, granu_list
                 )
@@ -162,7 +161,7 @@ class DBSearch:
     def get_intersection_between_two_ts_schema(
         self, tbl1: str, attrs1: List[str], tbl2: str, attrs2: List[str], granu_list
     ):
-        print(attrs1, attrs2, granu_list)
+        # print(attrs1, attrs2, granu_list)
         col_names1, col_names2 = self.get_col_names(attrs1, attrs2, granu_list)
 
         query = sql.SQL(
@@ -343,7 +342,11 @@ class DBSearch:
             fields1=sql.SQL(",").join([sql.Identifier(col) for col in col_names1]),
             agg_stmts1=sql.SQL(",").join(
                 [
-                    sql.SQL(var.agg_func.name + "({}) as {}").format(
+                    sql.SQL(var.agg_func.name + "(*) as {}").format(
+                        sql.Identifier(var.var_name),
+                    )
+                    if var.attr_name == "*"
+                    else sql.SQL(var.agg_func.name + "({}) as {}").format(
                         sql.Identifier(var.attr_name),
                         sql.Identifier(var.var_name),
                     )
@@ -378,7 +381,7 @@ class DBSearch:
             ),
         )
 
-        print(self.cur.mogrify(query))
+        # print(self.cur.mogrify(query))
 
         self.cur.execute(query)
 

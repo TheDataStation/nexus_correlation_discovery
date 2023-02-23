@@ -37,21 +37,7 @@ def test_find_corr_for_all_tbl():
     start = time.time()
 
     corr_search.find_all_corr_for_all_tbls()
-    df = pd.DataFrame(
-        corr_search.data,
-        columns=[
-            "tbl_id1",
-            "tbl_name1",
-            "align_attrs1",
-            "agg_attr1",
-            "tbl_id2",
-            "tbl_name2",
-            "align_attrs2",
-            "agg_attr2",
-            "corr",
-        ],
-    )
-    df.to_csv("corr_all.csv")
+
     print("total time:", time.time() - start)
 
 
