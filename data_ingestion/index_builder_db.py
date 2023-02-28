@@ -31,7 +31,7 @@ class DBIngestor:
         self.cur = conn_copg2.cursor()
         self.load_tbl_lookup()
         # successfully ingested table information
-        self.tbls = []
+        self.tbls = {}
 
     def load_tbl_lookup(self):
         self.meta_data = io_utils.load_json(META_PATH)
@@ -51,14 +51,12 @@ class DBIngestor:
         # if dataframe is None, return
         if df is None:
             return
-        self.tbls.append(
-            {
-                "tbl_id": tbl_id,
-                "tbl_name": self.tbl_lookup[tbl_id],
-                "t_attrs": t_attrs_success,
-                "s_attrs": s_attrs_success,
-            }
-        )
+        self.tbls[tbl_id] = {
+            "name": self.tbl_lookup[tbl_id],
+            "t_attrs": t_attrs_success,
+            "s_attrs": s_attrs_success,
+        }
+
         # ingest dataframe to database
         self.ingest_df_to_db(df, tbl_id)
         # create hash indices
@@ -121,7 +119,7 @@ class DBIngestor:
 
     def create_index_on_unary_attr(self, tbl_id, attrs, resolutions):
         sql_str = """
-            CREATE INDEX {idx_name} on {tbl} USING HASH ({field});;
+            CREATE INDEX {idx_name} on {tbl} ({field});
         """
         for attr in attrs:
             for granu in resolutions:
@@ -131,7 +129,7 @@ class DBIngestor:
                     sql.SQL(sql_str).format(
                         idx_name=sql.Identifier("{}_{}_idx".format(tbl_id, attr_name)),
                         tbl=sql.Identifier(tbl_id),
-                        field=sql.Identifier(attr),
+                        field=sql.Identifier(attr_name),
                     )
                 )
 

@@ -5,15 +5,16 @@ from utils.time_point import T_GRANU
 import pandas as pd
 from data_search.search_corr import CorrSearch
 from data_search.search_db import DBSearch
+from utils.io_utils import dump_json
 
 db_search = DBSearch("postgresql://yuegong@localhost/st_tables")
-corr_search = CorrSearch(db_search)
 
 
 def test_find_corr_for_a_single_tbl():
     start = time.time()
     tbl1 = "yhhz-zm2v"
     granu_list = [T_GRANU.MONTH, S_GRANU.TRACT]
+    corr_search = CorrSearch(db_search)
     corr_search.find_all_corr_for_a_tbl(tbl1, granu_list)
     df = pd.DataFrame(
         corr_search.data,
@@ -34,11 +35,23 @@ def test_find_corr_for_a_single_tbl():
 
 
 def test_find_corr_for_all_tbl():
-    start = time.time()
+    granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
 
-    corr_search.find_all_corr_for_all_tbls()
+    for granu_list in granu_lists:
+        corr_search = CorrSearch(db_search)
+        start = time.time()
+        corr_search.find_all_corr_for_all_tbls(granu_list)
 
-    print("total time:", time.time() - start)
+        total_time = time.time() - start
+        print("total time:", total_time)
+        corr_search.perf_profile["total_time"] = total_time
+        print(corr_search.perf_profile)
+        dump_json(
+            "result/run_time/perf_time_{}_{}_no_idx.json".format(
+                granu_list[0], granu_list[1]
+            ),
+            corr_search.perf_profile,
+        )
 
 
 test_find_corr_for_all_tbl()

@@ -24,12 +24,11 @@ class DBSearch:
         self.tbl_lookup = {}
         tbl_attr_data = io_utils.load_json(ATTR_PATH)
 
-        for obj in tbl_attr_data:
-            tbl_id, tbl_name, t_attrs, s_attrs = (
-                obj["tbl_id"],
-                obj["tbl_name"],
-                obj["t_attrs"],
-                obj["s_attrs"],
+        for tbl_id, info in tbl_attr_data.items():
+            tbl_name, t_attrs, s_attrs = (
+                info["name"],
+                info["t_attrs"],
+                info["s_attrs"],
             )
 
             self.tbl_names[tbl_id] = tbl_name
