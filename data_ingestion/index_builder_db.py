@@ -59,8 +59,48 @@ class DBIngestor:
 
         # ingest dataframe to database
         self.ingest_df_to_db(df, tbl_id)
-        # create hash indices
-        self.create_indices_on_tbl(tbl_id, t_attrs_success, s_attrs_success)
+
+        # ingest indices table
+        self.create_idx_tbls(df, tbl_id, t_attrs_success, s_attrs_success)
+        # # create hash indices
+        # self.create_indices_on_tbl(tbl_id, t_attrs_success, s_attrs_success)
+
+    def create_idx_tbls(self, df, tbl_id, t_attrs_success, s_attrs_success):
+        # maintain the mapping between index tbl name to df
+        idx_name_to_df = {}
+        for t_attr in t_attrs_success:
+            for t_granu in T_GRANU:
+                t_attr_granu = "{}_{}".format(t_attr, t_granu.value)
+                df_idx = df[t_attr_granu].dropna().drop_duplicates()
+                idx_name_to_df[
+                    "{}_{}_{}".format(tbl_id, t_attr, t_granu.value)
+                ] = df_idx
+
+        for s_attr in s_attrs_success:
+            for s_granu in S_GRANU:
+                s_attr_granu = "{}_{}".format(s_attr, s_granu.value)
+                df_idx = df[s_attr_granu].dropna().drop_duplicates()
+                idx_name_to_df[
+                    "{}_{}_{}".format(tbl_id, s_attr, s_granu.value)
+                ] = df_idx
+
+        for t_attr in t_attrs_success:
+            for s_attr in s_attrs_success:
+                for t_granu in T_GRANU:
+                    for s_granu in S_GRANU:
+                        t_attr_granu = "{}_{}".format(t_attr, t_granu.value)
+                        s_attr_granu = "{}_{}".format(s_attr, s_granu.value)
+                        df_idx = (
+                            df[[t_attr_granu, s_attr_granu]].dropna().drop_duplicates()
+                        )
+                        idx_name_to_df[
+                            "{}_{}_{}_{}_{}".format(
+                                tbl_id, t_attr, t_granu.value, s_attr, s_granu.value
+                            )
+                        ] = df_idx
+
+        for idx_name, df in idx_name_to_df.items():
+            self.ingest_df_to_db(df, idx_name)
 
     def expand_df(self, df, t_attrs, s_attrs):
         t_attrs_success = []
@@ -73,7 +113,7 @@ class DBIngestor:
             df_dts = df[t_attr].apply(parse_datetime).dropna()
             if len(df_dts):
                 for t_granu in T_GRANU:
-                    new_attr = "{}_{}".format(t_attr, t_granu.name)
+                    new_attr = "{}_{}".format(t_attr, t_granu.value)
                     df[new_attr] = df_dts.apply(
                         set_temporal_granu, args=(t_granu.value,)
                     )
@@ -95,7 +135,7 @@ class DBIngestor:
             if df_resolved is None:
                 continue
             for s_granu in S_GRANU:
-                new_attr = "{}_{}".format(s_attr, s_granu.name)
+                new_attr = "{}_{}".format(s_attr, s_granu.value)
                 df[new_attr] = df_resolved.apply(
                     set_spatial_granu, args=(s_granu.value,)
                 )
@@ -106,11 +146,11 @@ class DBIngestor:
 
         return df, t_attrs_success, s_attrs_success
 
-    def ingest_df_to_db(self, df, tbl_id):
+    def ingest_df_to_db(self, df, tbl_name):
         # drop old tables before ingesting the new dataframe
         sql_str = """DROP TABLE IF EXISTS {tbl}"""
-        self.cur.execute(sql.SQL(sql_str).format(tbl=sql.Identifier(tbl_id)))
-        df.to_sql(tbl_id, con=self.conn, if_exists="replace", index=False)
+        self.cur.execute(sql.SQL(sql_str).format(tbl=sql.Identifier(tbl_name)))
+        df.to_sql(tbl_name, con=self.conn, if_exists="replace", index=False)
 
     def create_indices_on_tbl(self, tbl_id, t_attrs, s_attrs):
         self.create_index_on_unary_attr(tbl_id, t_attrs, T_GRANU)

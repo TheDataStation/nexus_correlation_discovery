@@ -21,3 +21,9 @@ class Unit:
     def __init__(self, attr_name: str, granu) -> None:
         self.attr_name = attr_name
         self.granu = granu
+
+    def to_int_name(self):
+        return "{}_{}".format(self.attr_name, self.granu.value)
+
+    def to_readable_name(self):
+        return "{}_{}".format(self.attr_name, self.granu.name)

@@ -1,4 +1,4 @@
-from config import META_PATH, ATTR_PATH
+from config import ATTR_PATH
 import utils.io_utils as io_utils
 import pandas as pd
 from typing import List
@@ -19,12 +19,13 @@ class DBSearch:
         conn.autocommit = True
         self.cur = conn.cursor()
         self.load_meta_data()
+        self.tbl_list = list(self.tbl_attrs.keys())
 
     def load_meta_data(self):
         self.tbl_lookup = {}
-        tbl_attr_data = io_utils.load_json(ATTR_PATH)
+        self.tbl_attrs = io_utils.load_json(ATTR_PATH)
 
-        for tbl_id, info in tbl_attr_data.items():
+        for tbl_id, info in self.tbl_attrs.items():
             tbl_name, t_attrs, s_attrs = (
                 info["name"],
                 info["t_attrs"],
@@ -50,7 +51,6 @@ class DBSearch:
             }
 
     def find_augmentable_tables(self, tbl: str, units: List[Unit], threshold):
-        tbl_list = self.get_table_list()
         t_granu, s_granu = None, None
         for unit in units:
             if unit.granu in T_GRANU:
@@ -59,7 +59,7 @@ class DBSearch:
                 s_granu = unit.granu
 
         result = []
-        for tbl2 in tbl_list:
+        for tbl2 in self.tbl_list:
             if tbl2 == tbl:
                 # skip self
                 continue
@@ -80,7 +80,7 @@ class DBSearch:
                 ]
 
             for units2 in units2_list:
-                overlap = self.get_intersection(tbl, units, tbl2, units2)
+                overlap = self.get_intersection(tbl, units, tbl2, units2, threshold)
                 if overlap > threshold:
                     result.append(
                         [
@@ -98,7 +98,25 @@ class DBSearch:
         # df = df.sort_values(by="overlap", ascending=False)
         # return df
 
-    def get_intersection(self, tbl1, units1, tbl2, units2):
+    def get_intersection(self, tbl1, units1, tbl2, units2, threshold):
+        col_names1 = self.get_col_names_with_granu(units1)
+        col_names2 = self.get_col_names_with_granu(units2)
+        query = sql.SQL(
+            "select {fields1} from {tbl1_idx} INTERSECT SELECT {fields2} from {tbl2_idx}"
+        ).format(
+            fields1=sql.SQL(",").join([sql.Identifier(col) for col in col_names1]),
+            tbl1_idx=sql.Identifier(tbl1 + "_" + "_".join(col_names1)),
+            fields2=sql.SQL(",").join([sql.Identifier(col) for col in col_names2]),
+            tbl2_idx=sql.Identifier(tbl2 + "_" + "_".join(col_names2)),
+        )
+        # print(self.cur.mogrify(query))
+        self.cur.execute(query)
+        df = pd.DataFrame(
+            self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description]
+        ).dropna()
+        return len(df)
+
+    def _get_intersection(self, tbl1, units1, tbl2, units2, threhold):
         col_names1 = self.get_col_names_with_granu(units1)
         col_names2 = self.get_col_names_with_granu(units2)
         query = sql.SQL(
@@ -117,9 +135,8 @@ class DBSearch:
         return len(df)
 
     def search(self, tbl_id: str, attrs: List[str], granu_list):
-        tbl_list = self.get_table_list()
         result = []
-        for tbl_id2 in tbl_list:
+        for tbl_id2 in self.tbl_list:
             if tbl_id2 == tbl_id:
                 continue
             ts_schemas = self.tbl_schemas[tbl_id2]
@@ -147,15 +164,16 @@ class DBSearch:
         df = df.sort_values(by="overlap", ascending=False)
         return df
 
-    def get_table_list(self):
-        select_tbl = """
-            SELECT table_name  FROM information_schema.tables WHERE table_schema='public'
-            AND table_type='BASE TABLE';
-        """
+    # def get_table_list(self):
+    #     tbl_list = self.tbl_list
+    # select_tbl = """
+    #     SELECT table_name  FROM information_schema.tables WHERE table_schema='public'
+    #     AND table_type='BASE TABLE';
+    # """
 
-        self.cur.execute(select_tbl)
-        tbl_list = [r[0] for r in self.cur.fetchall()]
-        return tbl_list
+    # self.cur.execute(select_tbl)
+    # tbl_list = [r[0] for r in self.cur.fetchall()]
+    # return tbl_list
 
     def get_intersection_between_two_ts_schema(
         self, tbl1: str, attrs1: List[str], tbl2: str, attrs2: List[str], granu_list
@@ -194,10 +212,7 @@ class DBSearch:
         return col_names1, col_names2
 
     def get_col_names_with_granu(self, units: List[Unit]):
-        group_by_names = []
-        for unit in units:
-            group_by_names.append(self.get_col_name(unit.attr_name, unit.granu))
-        return group_by_names
+        return [unit.to_int_name() for unit in units]
 
     def transform(self, tbl: str, units: List[Unit], vars: List[Variable]):
         sql_str = """

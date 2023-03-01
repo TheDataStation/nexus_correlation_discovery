@@ -47,7 +47,7 @@ def test_find_corr_for_all_tbl():
         corr_search.perf_profile["total_time"] = total_time
         print(corr_search.perf_profile)
         dump_json(
-            "result/run_time/perf_time_{}_{}_no_idx.json".format(
+            "result/run_time/perf_time_{}_{}_idx_join_2.json".format(
                 granu_list[0], granu_list[1]
             ),
             corr_search.perf_profile,
