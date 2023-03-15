@@ -35,7 +35,7 @@ def test_find_corr_for_a_single_tbl():
 
 
 def test_find_corr_for_all_tbl():
-    granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
+    granu_lists = [[T_GRANU.MONTH, S_GRANU.TRACT]]
 
     for granu_list in granu_lists:
         corr_search = CorrSearch(db_search)
@@ -47,7 +47,7 @@ def test_find_corr_for_all_tbl():
         corr_search.perf_profile["total_time"] = total_time
         print(corr_search.perf_profile)
         dump_json(
-            "result/run_time/perf_time_{}_{}_idx_join_2.json".format(
+            "result/run_time/perf_time_{}_{}_single_idx_join.json".format(
                 granu_list[0], granu_list[1]
             ),
             corr_search.perf_profile,

@@ -93,78 +93,80 @@ class CorrSearch:
 
         start = time.time()
         # find aligned tbls whose overlap score > 4
-        aligned_tbls = self.db_search.find_augmentable_tables(tbl1, units1, 4)
+        aligned_tbls = self.db_search.find_augmentable_tables(
+            tbl1, units1, 4, mode="agg_idx"
+        )
         time_used = time.time() - start
         self.perf_profile["num_joins"]["total"] += len(aligned_tbls)
         self.perf_profile["num_joins"][flag] += len(aligned_tbls)
         self.perf_profile["time_find_joins"]["total"] += time_used
         self.perf_profile["time_find_joins"][flag] += time_used
 
-        # for tbl_info in aligned_tbls:
-        #     tbl2, units2 = (
-        #         tbl_info[0],
-        #         tbl_info[2],
-        #     )
-        #     attrs2 = [unit.attr_name for unit in units2]
+        for tbl_info in aligned_tbls:
+            tbl2, units2 = (
+                tbl_info[0],
+                tbl_info[2],
+            )
+            attrs2 = [unit.attr_name for unit in units2]
 
-        #     if (tbl1, tuple(attrs1), tbl2, tuple(attrs2)) in self.visited:
-        #         continue
-        #     else:
-        #         self.visited.add((tbl1, tuple(attrs1), tbl2, tuple(attrs2)))
-        #         self.visited.add((tbl2, tuple(attrs2), tbl1, tuple(attrs1)))
+            if (tbl1, tuple(attrs1), tbl2, tuple(attrs2)) in self.visited:
+                continue
+            else:
+                self.visited.add((tbl1, tuple(attrs1), tbl2, tuple(attrs2)))
+                self.visited.add((tbl2, tuple(attrs2), tbl1, tuple(attrs1)))
 
-        #     # calculate agg avg
-        #     tbl1_agg_cols = self.tbl_attrs[tbl1]["num_columns"]
-        #     tbl2_agg_cols = self.tbl_attrs[tbl2]["num_columns"]
+            # calculate agg avg
+            tbl1_agg_cols = self.tbl_attrs[tbl1]["num_columns"]
+            tbl2_agg_cols = self.tbl_attrs[tbl2]["num_columns"]
 
-        #     vars1 = []
-        #     vars2 = []
-        #     for agg_col in tbl1_agg_cols:
-        #         vars1.append(
-        #             Variable(agg_col, AggFunc.AVG, "avg_{}_t1".format(agg_col))
-        #         )
-        #     vars1.append(Variable("*", AggFunc.COUNT, "count1"))
-        #     for agg_col in tbl2_agg_cols:
-        #         vars2.append(
-        #             Variable(agg_col, AggFunc.AVG, "avg_{}_t2".format(agg_col))
-        #         )
-        #     vars2.append(Variable("*", AggFunc.COUNT, "count2"))
+            vars1 = []
+            vars2 = []
+            for agg_col in tbl1_agg_cols:
+                vars1.append(
+                    Variable(agg_col, AggFunc.AVG, "avg_{}_t1".format(agg_col))
+                )
+            vars1.append(Variable("*", AggFunc.COUNT, "count1"))
+            for agg_col in tbl2_agg_cols:
+                vars2.append(
+                    Variable(agg_col, AggFunc.AVG, "avg_{}_t2".format(agg_col))
+                )
+            vars2.append(Variable("*", AggFunc.COUNT, "count2"))
 
-        #     # begin joining tables
-        #     start = time.time()
-        #     merged = None
-        #     try:
-        #         merged = self.db_search.aggregate_join_two_tables2(
-        #             tbl1, units1, vars1, tbl2, units2, vars2
-        #         )
-        #     except:
-        #         traceback.print_exc()
-        #     time_used = time.time() - start
-        #     self.perf_profile["time_join"]["total"] += time_used
-        #     self.perf_profile["time_join"][flag] += time_used
+            # begin joining tables
+            start = time.time()
+            merged = None
+            try:
+                merged = self.db_search.aggregate_join_two_tables2(
+                    tbl1, units1, vars1, tbl2, units2, vars2
+                )
+            except:
+                traceback.print_exc()
+            time_used = time.time() - start
+            self.perf_profile["time_join"]["total"] += time_used
+            self.perf_profile["time_join"][flag] += time_used
 
-        #     if merged is None:
-        #         continue
+            if merged is None:
+                continue
 
-        #     # begin calculating correlation
-        #     start = time.time()
-        #     try:
-        #         for var1 in vars1:
-        #             for var2 in vars2:
-        #                 agg_col1, agg_col2 = var1.var_name, var2.var_name
-        #                 df = merged[[agg_col1, agg_col2]].astype(float)
-        #                 corr_matrix = df.corr(method="pearson", numeric_only=True)
-        #                 corr = corr_matrix.iloc[1, 0]
-        #                 if corr > threshold:
-        #                     print(tbl1, attrs1, tbl2, attrs2, corr)
-        #                     self.append_result(
-        #                         tbl1, tbl2, attrs1, attrs2, agg_col1, agg_col2, corr
-        #                     )
-        #     except:
-        #         traceback.print_exc()
-        #     time_used = time.time() - start
-        #     self.perf_profile["time_correlation"]["total"] += time_used
-        #     self.perf_profile["time_correlation"][flag] += time_used
+            # begin calculating correlation
+            start = time.time()
+            try:
+                for var1 in vars1:
+                    for var2 in vars2:
+                        agg_col1, agg_col2 = var1.var_name, var2.var_name
+                        df = merged[[agg_col1, agg_col2]].astype(float)
+                        corr_matrix = df.corr(method="pearson", numeric_only=True)
+                        corr = corr_matrix.iloc[1, 0]
+                        if corr > threshold:
+                            print(tbl1, attrs1, tbl2, attrs2, corr)
+                            self.append_result(
+                                tbl1, tbl2, attrs1, attrs2, agg_col1, agg_col2, corr
+                            )
+            except:
+                traceback.print_exc()
+            time_used = time.time() - start
+            self.perf_profile["time_correlation"]["total"] += time_used
+            self.perf_profile["time_correlation"][flag] += time_used
 
     def append_result(self, tbl1, tbl2, st1, st2, agg_attr1, agg_attr2, corr):
         tbl_name1, tbl_name2 = (

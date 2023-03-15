@@ -25,7 +25,6 @@ def test_ingest_all_tables():
 
     for obj in tqdm(meta_data):
         tbl_id, t_attrs, s_attrs = obj["tbl_id"], obj["t_attrs"], obj["s_attrs"]
-        print(tbl_id)
         ingestor.ingest_tbl(tbl_id, t_attrs, s_attrs)
     io_utils.dump_json(
         "/Users/yuegong/Documents/spatio_temporal_alignment/data/" + "tbl_attrs.json",

@@ -1,4 +1,6 @@
 from enum import Enum
+from utils.time_point import T_GRANU
+from utils.coordinate import S_GRANU
 
 
 class AggFunc(Enum):
@@ -27,3 +29,15 @@ class Unit:
 
     def to_readable_name(self):
         return "{}_{}".format(self.attr_name, self.granu.name)
+
+    def get_type(self):
+        if self.granu in T_GRANU:
+            return "t_attr"
+        elif self.granu in S_GRANU:
+            return "s_attr"
+
+    def get_val(self):
+        if self.granu in T_GRANU:
+            return "t_val"
+        elif self.granu in S_GRANU:
+            return "s_val"

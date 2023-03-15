@@ -5,12 +5,14 @@ from utils.time_point import set_temporal_granu, parse_datetime, T_GRANU
 import geopandas as gpd
 from psycopg2 import sql
 import pandas as pd
-import numpy as np
+from collections import defaultdict
 import utils.io_utils as io_utils
 from sqlalchemy import create_engine
 from utils.coordinate import resolve_spatial_hierarchy, set_spatial_granu, S_GRANU
 import psycopg2
-
+from data_search.data_model import Unit, Variable, AggFunc
+from data_ingestion.profile_num_cols import get_numerical_columns
+from data_search.search_db import DBSearch
 
 """
 DBIngestor ingests dataframes to a database (current implementation uses postgres)
@@ -29,9 +31,11 @@ class DBIngestor:
         conn_copg2 = psycopg2.connect(conn_string)
         conn_copg2.autocommit = True
         self.cur = conn_copg2.cursor()
+        self.db_search = DBSearch(conn_string)
         self.load_tbl_lookup()
         # successfully ingested table information
         self.tbls = {}
+        # self.clean_aggregated_idx_tbls()
 
     def load_tbl_lookup(self):
         self.meta_data = io_utils.load_json(META_PATH)
@@ -60,10 +64,86 @@ class DBIngestor:
         # ingest dataframe to database
         self.ingest_df_to_db(df, tbl_id)
 
+        # create agg tbl
+        self.create_agg_tbl(df, tbl_id, t_attrs_success, s_attrs_success, t_attrs)
+        # create aggregated index tables
+        # self.create_aggregated_idx_tbls(df, tbl_id, t_attrs_success, s_attrs_success)
         # ingest indices table
-        self.create_idx_tbls(df, tbl_id, t_attrs_success, s_attrs_success)
+        # self.create_idx_tbls(df, tbl_id, t_attrs_success, s_attrs_success)
         # # create hash indices
         # self.create_indices_on_tbl(tbl_id, t_attrs_success, s_attrs_success)
+
+    def clean_aggregated_idx_tbls(self):
+        # delete aggregated indices that are already in the database
+        for t_granu in T_GRANU:
+            self.del_tbl("time_{}".format(t_granu.value))
+        for s_granu in S_GRANU:
+            self.del_tbl("space_{}".format(s_granu.value))
+
+        for t_granu in T_GRANU:
+            for s_granu in S_GRANU:
+                self.del_tbl("time_space_{}_{}".format(t_granu.value, s_granu.value))
+
+    def create_aggregated_idx_tbls(self, df, tbl_id, t_attrs_success, s_attrs_success):
+        # instead of creating idx tables for different resolutions for each table,
+        # we create an index table for each resolution where we host info about all tables
+        idx_name_to_df_data = defaultdict(list)
+
+        for t_attr in t_attrs_success:
+            for t_granu in T_GRANU:
+                t_attr_granu = "{}_{}".format(t_attr, t_granu.value)
+                t_attr_values = (
+                    df[t_attr_granu].dropna().drop_duplicates().values.tolist()
+                )
+                idx_name_to_df_data["time_{}".format(t_granu.value)].extend(
+                    [[tbl_id, t_attr, v] for v in t_attr_values]
+                )
+
+        for s_attr in s_attrs_success:
+            for s_granu in S_GRANU:
+                s_attr_granu = "{}_{}".format(s_attr, s_granu.value)
+                s_attr_values = (
+                    df[s_attr_granu].dropna().drop_duplicates().values.tolist()
+                )
+                idx_name_to_df_data["space_{}".format(s_granu.value)].extend(
+                    [[tbl_id, s_attr, v] for v in s_attr_values]
+                )
+
+        for t_attr in t_attrs_success:
+            for s_attr in s_attrs_success:
+                for t_granu in T_GRANU:
+                    for s_granu in S_GRANU:
+                        t_attr_granu = "{}_{}".format(t_attr, t_granu.value)
+                        s_attr_granu = "{}_{}".format(s_attr, s_granu.value)
+                        ts_values = (
+                            df[[t_attr_granu, s_attr_granu]]
+                            .dropna()
+                            .drop_duplicates()
+                            .values.tolist()
+                        )
+                        idx_name_to_df_data[
+                            "time_space_{}_{}".format(t_granu.value, s_granu.value)
+                        ].extend(
+                            [[tbl_id, t_attr, s_attr, v[0], v[1]] for v in ts_values]
+                        )
+                        # idx_name_to_df[
+                        #     "time_space_{}_{}".format(t_granu.value, s_granu.value)
+                        # ] = pd.DataFrame(
+                        #     [[tbl_id, t_attr, s_attr, v[0], v[1]] for v in ts_values],
+                        #     columns=["tbl_id", "t_attr", "s_attr", "t_val", "s_val"],
+                        # )
+
+        for idx_name, df_data in idx_name_to_df_data.items():
+            if idx_name.startswith("time_space"):
+                df = pd.DataFrame(
+                    df_data, columns=["tbl_id", "t_attr", "s_attr", "t_val", "s_val"]
+                )
+            elif idx_name.startswith("time"):
+                df = pd.DataFrame(df_data, columns=["tbl_id", "t_attr", "t_val"])
+            elif idx_name.startswith("space"):
+                df = pd.DataFrame(df_data, columns=["tbl_id", "s_attr", "s_val"])
+
+            self.ingest_df_to_db(df, idx_name, mode="append")
 
     def create_idx_tbls(self, df, tbl_id, t_attrs_success, s_attrs_success):
         # maintain the mapping between index tbl name to df
@@ -72,6 +152,7 @@ class DBIngestor:
             for t_granu in T_GRANU:
                 t_attr_granu = "{}_{}".format(t_attr, t_granu.value)
                 df_idx = df[t_attr_granu].dropna().drop_duplicates()
+                self.del_tbl("{}_{}_{}".format(tbl_id, t_attr, t_granu.name))
                 idx_name_to_df[
                     "{}_{}_{}".format(tbl_id, t_attr, t_granu.value)
                 ] = df_idx
@@ -80,6 +161,7 @@ class DBIngestor:
             for s_granu in S_GRANU:
                 s_attr_granu = "{}_{}".format(s_attr, s_granu.value)
                 df_idx = df[s_attr_granu].dropna().drop_duplicates()
+                self.del_tbl("{}_{}_{}".format(tbl_id, s_attr, s_granu.name))
                 idx_name_to_df[
                     "{}_{}_{}".format(tbl_id, s_attr, s_granu.value)
                 ] = df_idx
@@ -90,6 +172,11 @@ class DBIngestor:
                     for s_granu in S_GRANU:
                         t_attr_granu = "{}_{}".format(t_attr, t_granu.value)
                         s_attr_granu = "{}_{}".format(s_attr, s_granu.value)
+                        self.del_tbl(
+                            "{}_{}_{}_{}_{}".format(
+                                tbl_id, t_attr, t_granu.name, s_attr, s_granu.name
+                            )
+                        )
                         df_idx = (
                             df[[t_attr_granu, s_attr_granu]].dropna().drop_duplicates()
                         )
@@ -98,6 +185,50 @@ class DBIngestor:
                                 tbl_id, t_attr, t_granu.value, s_attr, s_granu.value
                             )
                         ] = df_idx
+
+        for idx_name, df in idx_name_to_df.items():
+            self.ingest_df_to_db(df, idx_name)
+
+    def get_agg_df(self, tbl_id, num_columns, units):
+        # create variables, only consider avg and count now
+        vars = [
+            Variable(attr, AggFunc.AVG, "{}_{}".format(attr, "avg"))
+            for attr in num_columns
+        ]
+        vars.append(Variable("*", AggFunc.COUNT, "count"))
+        df_agg = self.db_search.transform(tbl_id, units, vars)
+        return df_agg
+
+    def create_agg_tbl(self, df, tbl_id, t_attrs_success, s_attrs_success, t_attrs):
+        idx_name_to_df = {}
+        num_columns = get_numerical_columns(tbl_id, t_attrs)
+        for t_attr in t_attrs_success:
+            for t_granu in T_GRANU:
+                units = [Unit(t_attr, t_granu)]
+                df_agg = self.get_agg_df(tbl_id, num_columns, units)
+                idx_name_to_df[
+                    "{}_{}_{}".format(tbl_id, t_attr, t_granu.value)
+                ] = df_agg
+
+        for s_attr in s_attrs_success:
+            for s_granu in S_GRANU:
+                units = [Unit(s_attr, s_granu)]
+                df_agg = self.get_agg_df(tbl_id, num_columns, units)
+                idx_name_to_df[
+                    "{}_{}_{}".format(tbl_id, s_attr, s_granu.value)
+                ] = df_agg
+
+        for t_attr in t_attrs_success:
+            for s_attr in s_attrs_success:
+                for t_granu in T_GRANU:
+                    for s_granu in S_GRANU:
+                        units = [Unit(t_attr, t_granu), Unit(s_attr, s_granu)]
+                        df_agg = self.get_agg_df(tbl_id, num_columns, units)
+                        idx_name_to_df[
+                            "{}_{}_{}_{}_{}".format(
+                                tbl_id, t_attr, t_granu.value, s_attr, s_granu.value
+                            )
+                        ] = df_agg
 
         for idx_name, df in idx_name_to_df.items():
             self.ingest_df_to_db(df, idx_name)
@@ -146,11 +277,17 @@ class DBIngestor:
 
         return df, t_attrs_success, s_attrs_success
 
-    def ingest_df_to_db(self, df, tbl_name):
-        # drop old tables before ingesting the new dataframe
+    def del_tbl(self, tbl_name):
         sql_str = """DROP TABLE IF EXISTS {tbl}"""
         self.cur.execute(sql.SQL(sql_str).format(tbl=sql.Identifier(tbl_name)))
-        df.to_sql(tbl_name, con=self.conn, if_exists="replace", index=False)
+
+    def ingest_df_to_db(self, df, tbl_name, mode="replace"):
+        if mode == "replace":
+            # drop old tables before ingesting the new dataframe
+            self.del_tbl(tbl_name)
+            df.to_sql(tbl_name, con=self.conn, if_exists="replace", index=False)
+        elif mode == "append":
+            df.to_sql(tbl_name, con=self.conn, if_exists="append", index=False)
 
     def create_indices_on_tbl(self, tbl_id, t_attrs, s_attrs):
         self.create_index_on_unary_attr(tbl_id, t_attrs, T_GRANU)

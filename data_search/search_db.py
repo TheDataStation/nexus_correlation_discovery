@@ -5,7 +5,6 @@ from typing import List
 from psycopg2 import sql
 import itertools
 import psycopg2
-from collections import defaultdict
 from utils.coordinate import S_GRANU
 from utils.time_point import T_GRANU
 from data_search.data_model import Unit, Variable
@@ -50,7 +49,16 @@ class DBSearch:
                 "ts": ts_schemas_ts,
             }
 
-    def find_augmentable_tables(self, tbl: str, units: List[Unit], threshold):
+    def find_augmentable_tables(self, tbl: str, units: List[Unit], threshold, mode):
+        if mode == "agg_idx":
+            return self.find_augmentable_tables_agg_idx(tbl, units, threshold)
+        elif mode == "multi_idx":
+            return self.find_augmentable_tables_multi_idx(tbl, units, threshold)
+
+    def find_augmentable_tables_agg_idx(self, tbl: str, units: List[Unit], threshold):
+        return self.get_intersection_agg_idx(tbl, units, threshold)
+
+    def find_augmentable_tables_multi_idx(self, tbl: str, units: List[Unit], threshold):
         t_granu, s_granu = None, None
         for unit in units:
             if unit.granu in T_GRANU:
@@ -80,8 +88,10 @@ class DBSearch:
                 ]
 
             for units2 in units2_list:
-                overlap = self.get_intersection(tbl, units, tbl2, units2, threshold)
-                if overlap > threshold:
+                overlap = self.get_intersection_multi_idx(
+                    tbl, units, tbl2, units2, threshold
+                )
+                if overlap == threshold:
                     result.append(
                         [
                             tbl2,
@@ -91,18 +101,74 @@ class DBSearch:
                         ]
                     )
         return result
-        # df = pd.DataFrame(
-        #     data=result, columns=["tbl_id", "tbl_name", "attrs", "overlap"]
-        # )
 
-        # df = df.sort_values(by="overlap", ascending=False)
-        # return df
+    def get_intersection_agg_idx(self, tbl, units, threshold):
+        # query aggregated index tables to find joinable tables
+        if len(units) == 1:
+            if units[0].granu in T_GRANU:
+                idx_tbl = "time_{}".format(units[0].granu.value)
+            elif units[0].granu in S_GRANU:
+                idx_tbl = "space_{}".format(units[0].granu.value)
+        else:
+            idx_tbl = "time_space_" + "_".join(
+                [str(unit.granu.value) for unit in units]
+            )
+        query = sql.SQL(
+            "select tbl_id, {attrs}, count(*) from {idx_tbl} \
+                            where tbl_id != %s and ({values}) in \
+                            (select {values} from {idx_tbl} where tbl_id = %s and {filter_stmts}) \
+                            group by tbl_id, {attrs} \
+                            having count(*) >= %s"
+        ).format(
+            attrs=sql.SQL(",").join(
+                [sql.Identifier(unit.get_type()) for unit in units]
+            ),
+            values=sql.SQL(",").join(
+                [sql.Identifier(unit.get_val()) for unit in units]
+            ),
+            idx_tbl=sql.Identifier(idx_tbl),
+            filter_stmts1=sql.SQL(" AND").join(
+                [
+                    sql.SQL("{} != %s").format(sql.Identifier(unit.get_type()))
+                    for unit in units
+                ]
+            ),
+            filter_stmts=sql.SQL(" AND").join(
+                [
+                    sql.SQL("{} = %s").format(sql.Identifier(unit.get_type()))
+                    for unit in units
+                ]
+            ),
+        )
+        # print(self.cur.mogrify(query))
+        self.cur.execute(
+            query,
+            [tbl] + [tbl] + [unit.attr_name for unit in units] + [threshold],
+        )
+        query_res = self.cur.fetchall()
+        result = []
+        for row in query_res:
+            tbl2_id = row[0]
+            tbl2_name = self.tbl_names[tbl2_id]
+            units2 = [Unit(attr, units[i].granu) for i, attr in enumerate(row[1:-1])]
+            overlap = int(row[-1])
+            result.append([tbl2_id, tbl2_name, units2, overlap])
+        return result
 
-    def get_intersection(self, tbl1, units1, tbl2, units2, threshold):
+    def get_intersection_multi_idx(self, tbl1, units1, tbl2, units2, threshold):
+        # query index table of each table to find joinable tables
         col_names1 = self.get_col_names_with_granu(units1)
         col_names2 = self.get_col_names_with_granu(units2)
+        # query = sql.SQL(
+        #     "select {fields1} from {tbl1_idx} INTERSECT SELECT {fields2} from {tbl2_idx} LIMIT %s"
+        # ).format(
+        #     fields1=sql.SQL(",").join([sql.Identifier(col) for col in col_names1]),
+        #     tbl1_idx=sql.Identifier(tbl1 + "_" + "_".join(col_names1)),
+        #     fields2=sql.SQL(",").join([sql.Identifier(col) for col in col_names2]),
+        #     tbl2_idx=sql.Identifier(tbl2 + "_" + "_".join(col_names2)),
+        # )
         query = sql.SQL(
-            "select {fields1} from {tbl1_idx} INTERSECT SELECT {fields2} from {tbl2_idx}"
+            "select {fields1} from {tbl1_idx} where ({fields1}) in (select {fields2} from {tbl2_idx}) LIMIT %s"
         ).format(
             fields1=sql.SQL(",").join([sql.Identifier(col) for col in col_names1]),
             tbl1_idx=sql.Identifier(tbl1 + "_" + "_".join(col_names1)),
@@ -110,11 +176,9 @@ class DBSearch:
             tbl2_idx=sql.Identifier(tbl2 + "_" + "_".join(col_names2)),
         )
         # print(self.cur.mogrify(query))
-        self.cur.execute(query)
-        df = pd.DataFrame(
-            self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description]
-        ).dropna()
-        return len(df)
+        self.cur.execute(query, [threshold])
+        query_res = self.cur.fetchall()
+        return len(query_res)
 
     def _get_intersection(self, tbl1, units1, tbl2, units2, threhold):
         col_names1 = self.get_col_names_with_granu(units1)
@@ -128,68 +192,6 @@ class DBSearch:
             tbl2=sql.Identifier(tbl2),
         )
         # print(self.cur.mogrify(query))
-        self.cur.execute(query)
-        df = pd.DataFrame(
-            self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description]
-        ).dropna()
-        return len(df)
-
-    def search(self, tbl_id: str, attrs: List[str], granu_list):
-        result = []
-        for tbl_id2 in self.tbl_list:
-            if tbl_id2 == tbl_id:
-                continue
-            ts_schemas = self.tbl_schemas[tbl_id2]
-            if len(attrs) == 2:
-                ts_schemas = ts_schemas["ts"]
-            elif granu_list[0] in T_GRANU:
-                ts_schemas = ts_schemas["t"]
-            else:
-                ts_schemas = ts_schemas["s"]
-
-            for ts_schema in ts_schemas:
-                # print(tbl_id, attrs, tbl_id2, ts_schema, granu_list)
-                overlap = self.get_intersection_between_two_ts_schema(
-                    tbl_id, attrs, tbl_id2, ts_schema, granu_list
-                )
-                if overlap > 0:
-                    result.append(
-                        [tbl_id2, self.tbl_names[tbl_id2], ts_schema, overlap]
-                    )
-
-        df = pd.DataFrame(
-            data=result, columns=["tbl_id", "tbl_name", "attrs", "overlap"]
-        )
-
-        df = df.sort_values(by="overlap", ascending=False)
-        return df
-
-    # def get_table_list(self):
-    #     tbl_list = self.tbl_list
-    # select_tbl = """
-    #     SELECT table_name  FROM information_schema.tables WHERE table_schema='public'
-    #     AND table_type='BASE TABLE';
-    # """
-
-    # self.cur.execute(select_tbl)
-    # tbl_list = [r[0] for r in self.cur.fetchall()]
-    # return tbl_list
-
-    def get_intersection_between_two_ts_schema(
-        self, tbl1: str, attrs1: List[str], tbl2: str, attrs2: List[str], granu_list
-    ):
-        # print(attrs1, attrs2, granu_list)
-        col_names1, col_names2 = self.get_col_names(attrs1, attrs2, granu_list)
-
-        query = sql.SQL(
-            "select {fields1} from {tbl1} INTERSECT SELECT {fields2} from {tbl2}"
-        ).format(
-            fields1=sql.SQL(",").join([sql.Identifier(col) for col in col_names1]),
-            tbl1=sql.Identifier(tbl1),
-            fields2=sql.SQL(",").join([sql.Identifier(col) for col in col_names2]),
-            tbl2=sql.Identifier(tbl2),
-        )
-        # print(cur.mogrify(query))
         self.cur.execute(query)
         df = pd.DataFrame(
             self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description]
@@ -224,7 +226,11 @@ class DBSearch:
             fields=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
             agg_stmts=sql.SQL(",").join(
                 [
-                    sql.SQL(var.agg_func.name + "({}) as {}").format(
+                    sql.SQL(var.agg_func.name + "(*) as {}").format(
+                        sql.Identifier(var.var_name),
+                    )
+                    if var.attr_name == "*"
+                    else sql.SQL(var.agg_func.name + "({}) as {}").format(
                         sql.Identifier(var.attr_name),
                         sql.Identifier(var.var_name),
                     )
@@ -240,98 +246,7 @@ class DBSearch:
         )
         return df
 
-    def aggregate_join_two_tables_avg(
-        self,
-        tbl1: str,
-        attrs1: List[str],
-        agg_attr1: str,
-        tbl2: str,
-        attrs2: List[str],
-        agg_attr2: str,
-        granu_list,
-    ):
-        col_names1, col_names2 = self.get_col_names(attrs1, attrs2, granu_list)
-        agg_join_sql = """
-        SELECT {a1_fields1}, a1.agg1, a2.agg2 FROM
-        (SELECT {fields1}, AVG({agg_attr1}) as agg1 FROM {tbl1} GROUP BY {fields1}) a1
-        FULL OUTER JOIN
-        (SELECT {fields2}, AVG({agg_attr2}) as agg2 FROM {tbl2} GROUP BY {fields2}) a2
-        ON 
-        concat_ws(', ', {a1_fields1}) = concat_ws(', ', {a2_fields2})
-        """
-
-        query = sql.SQL(agg_join_sql).format(
-            fields1=sql.SQL(",").join([sql.Identifier(col) for col in col_names1]),
-            a1_fields1=sql.SQL(",").join(
-                [sql.Identifier("a1", col) for col in col_names1]
-            ),
-            tbl1=sql.Identifier(tbl1),
-            agg_attr1=sql.Identifier(agg_attr1),
-            fields2=sql.SQL(",").join([sql.Identifier(col) for col in col_names2]),
-            a2_fields2=sql.SQL(",").join(
-                [sql.Identifier("a2", col) for col in col_names2]
-            ),
-            tbl2=sql.Identifier(tbl2),
-            agg_attr2=sql.Identifier(agg_attr2),
-        )
-
-        self.cur.execute(query)
-
-        df = pd.DataFrame(
-            self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description]
-        ).dropna(subset=col_names1)
-
-        df[["agg1", "agg2"]] = df[["agg1", "agg2"]].astype(float)
-        return df.fillna(0)
-
-    def aggregate_join_two_tables_avg_inner(
-        self,
-        tbl1: str,
-        attrs1: List[str],
-        agg_attr1: str,
-        tbl2: str,
-        attrs2: List[str],
-        agg_attr2: str,
-        granu_list,
-    ):
-        col_names1, col_names2 = self.get_col_names(attrs1, attrs2, granu_list)
-        agg_join_sql = """
-        SELECT {a1_fields1}, a1.agg1, a2.agg2 FROM
-        (SELECT {fields1}, AVG({agg_attr1}) as agg1 FROM {tbl1} GROUP BY {fields1}) a1
-        JOIN
-        (SELECT {fields2}, AVG({agg_attr2}) as agg2 FROM {tbl2} GROUP BY {fields2}) a2
-        ON 
-        concat_ws(', ', {a1_fields1}) = concat_ws(', ', {a2_fields2})
-        """
-
-        query = sql.SQL(agg_join_sql).format(
-            fields1=sql.SQL(",").join([sql.Identifier(col) for col in col_names1]),
-            a1_fields1=sql.SQL(",").join(
-                [sql.Identifier("a1", col) for col in col_names1]
-            ),
-            tbl1=sql.Identifier(tbl1),
-            agg_attr1=sql.Identifier(agg_attr1),
-            fields2=sql.SQL(",").join([sql.Identifier(col) for col in col_names2]),
-            a2_fields2=sql.SQL(",").join(
-                [sql.Identifier("a2", col) for col in col_names2]
-            ),
-            tbl2=sql.Identifier(tbl2),
-            agg_attr2=sql.Identifier(agg_attr2),
-        )
-
-        self.cur.execute(query)
-
-        df = pd.DataFrame(
-            self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description]
-        ).dropna(subset=col_names1)
-
-        df[["agg1", "agg2"]] = df[["agg1", "agg2"]].astype(float)
-        return df
-
-    def agg_join_with_filter():
-        pass
-
-    def aggregate_join_two_tables2(
+    def aggregate_join_two_tables(
         self,
         tbl1: str,
         units1: List[Unit],
@@ -403,74 +318,6 @@ class DBSearch:
             self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description]
         ).dropna(subset=col_names1)
         return df
-
-    def aggregate_join_two_tables_inner(
-        self, tbl1: str, attrs1: List[str], tbl2: str, attrs2: List[str], granu_list
-    ):
-        col_names1, col_names2 = self.get_col_names(attrs1, attrs2, granu_list)
-        agg_join_sql = """
-        SELECT {a1_fields1}, a1.cnt1, a2.cnt2 FROM
-        (SELECT {fields1}, COUNT(*) as cnt1 FROM {tbl1} GROUP BY {fields1}) a1
-        JOIN
-        (SELECT {fields2}, COUNT(*) as cnt2 FROM {tbl2} GROUP BY {fields2}) a2
-        ON 
-        concat_ws(', ', {a1_fields1}) = concat_ws(', ', {a2_fields2})
-        """
-        query = sql.SQL(agg_join_sql).format(
-            fields1=sql.SQL(",").join([sql.Identifier(col) for col in col_names1]),
-            a1_fields1=sql.SQL(",").join(
-                [sql.Identifier("a1", col) for col in col_names1]
-            ),
-            tbl1=sql.Identifier(tbl1),
-            fields2=sql.SQL(",").join([sql.Identifier(col) for col in col_names2]),
-            a2_fields2=sql.SQL(",").join(
-                [sql.Identifier("a2", col) for col in col_names2]
-            ),
-            tbl2=sql.Identifier(tbl2),
-        )
-        try:
-            self.cur.execute(query)
-        except psycopg2.ProgrammingError as e:
-            return None
-
-        df = pd.DataFrame(
-            self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description]
-        ).dropna(subset=col_names1)
-
-        return df
-
-    def aggregate_join_two_tables(
-        self, tbl1: str, attrs1: List[str], tbl2: str, attrs2: List[str], granu_list
-    ):
-        col_names1, col_names2 = self.get_col_names(attrs1, attrs2, granu_list)
-        agg_join_sql = """
-        SELECT {a1_fields1}, a1.cnt1, a2.cnt2 FROM
-        (SELECT {fields1}, COUNT(*) as cnt1 FROM {tbl1} GROUP BY {fields1}) a1
-        FULL OUTER JOIN
-        (SELECT {fields2}, COUNT(*) as cnt2 FROM {tbl2} GROUP BY {fields2}) a2
-        ON 
-        concat_ws(', ', {a1_fields1}) = concat_ws(', ', {a2_fields2})
-        """
-        query = sql.SQL(agg_join_sql).format(
-            fields1=sql.SQL(",").join([sql.Identifier(col) for col in col_names1]),
-            a1_fields1=sql.SQL(",").join(
-                [sql.Identifier("a1", col) for col in col_names1]
-            ),
-            tbl1=sql.Identifier(tbl1),
-            fields2=sql.SQL(",").join([sql.Identifier(col) for col in col_names2]),
-            a2_fields2=sql.SQL(",").join(
-                [sql.Identifier("a2", col) for col in col_names2]
-            ),
-            tbl2=sql.Identifier(tbl2),
-        )
-
-        self.cur.execute(query)
-
-        df = pd.DataFrame(
-            self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description]
-        ).dropna(subset=col_names1)
-
-        return df.fillna(0)
 
     def format_result(self, df, attr_len):
         # translate rows
