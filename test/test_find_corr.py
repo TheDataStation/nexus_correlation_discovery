@@ -35,12 +35,12 @@ def test_find_corr_for_a_single_tbl():
 
 
 def test_find_corr_for_all_tbl():
-    granu_lists = [[T_GRANU.MONTH, S_GRANU.TRACT]]
+    granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
 
     for granu_list in granu_lists:
         corr_search = CorrSearch(db_search)
         start = time.time()
-        corr_search.find_all_corr_for_all_tbls(granu_list)
+        corr_search.find_all_corr_for_all_tbls(granu_list, threshold=0.6)
 
         total_time = time.time() - start
         print("total time:", total_time)

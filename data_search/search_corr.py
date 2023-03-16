@@ -9,10 +9,12 @@ from tqdm import tqdm
 import traceback
 import time
 import pandas as pd
+from data_search.search_db import DBSearch
+import os
 
 
 class CorrSearch:
-    def __init__(self, dbSearch) -> None:
+    def __init__(self, dbSearch: DBSearch) -> None:
         # database search client
         self.db_search = dbSearch
         self.data = []
@@ -32,10 +34,10 @@ class CorrSearch:
         tbl_attrs = utils.io_utils.load_json(ATTR_PATH)
         return tbl_attrs
 
-    def find_all_corr_for_all_tbls(self, granu_list):
+    def find_all_corr_for_all_tbls(self, granu_list, threshold):
         for tbl in tqdm(self.tbl_attrs.keys()):
             print(tbl)
-            self.find_all_corr_for_a_tbl(tbl, granu_list, threshold=0.6)
+            self.find_all_corr_for_a_tbl(tbl, granu_list, threshold)
 
             start = time.time()
             df = pd.DataFrame(
@@ -52,11 +54,16 @@ class CorrSearch:
                     "corr",
                 ],
             )
-            df.to_csv(
-                "/Users/yuegong/Documents/spatio_temporal_alignment/result/corr_day_block/corr_{}.csv".format(
-                    tbl
-                )
+            dir_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/corr_{}_{}/".format(
+                granu_list[0], granu_list[1]
             )
+
+            if not os.path.exists(dir_path):
+                # create the directory if it does not exist
+                os.makedirs(dir_path)
+
+            df.to_csv("{}/corr_{}.csv".format(dir_path, tbl))
+            # after a table is done, clear the data
             self.data.clear()
             time_used = time.time() - start
             self.perf_profile["time_dump_csv"]["total"] += time_used
@@ -70,14 +77,13 @@ class CorrSearch:
         print(t_attrs, s_attrs)
         for t in t_attrs:
             st_schema.append([Unit(t, granu_list[0])])
-            # st_schema.append(([t], [granu_list[0]]))
+
         for s in s_attrs:
             st_schema.append([Unit(s, granu_list[1])])
-            # st_schema.append(([s], [granu_list[1]]))
+
         for t in t_attrs:
             for s in s_attrs:
                 st_schema.append([Unit(t, granu_list[0]), Unit(s, granu_list[1])])
-                # st_schema.append(([t, s], granu_list))
 
         for units in st_schema:
             self.find_all_corr_for_a_tbl_schema(tbl, units, threshold)
@@ -136,7 +142,7 @@ class CorrSearch:
             start = time.time()
             merged = None
             try:
-                merged = self.db_search.aggregate_join_two_tables2(
+                merged = self.db_search.aggregate_join_two_tables(
                     tbl1, units1, vars1, tbl2, units2, vars2
                 )
             except:
@@ -148,25 +154,74 @@ class CorrSearch:
             if merged is None:
                 continue
 
+            # column names in postgres are at most 63-character long
+            names1 = [var.var_name[:63] for var in vars1]
+            names2 = [var.var_name[:63] for var in vars2]
+
             # begin calculating correlation
             start = time.time()
-            try:
-                for var1 in vars1:
-                    for var2 in vars2:
-                        agg_col1, agg_col2 = var1.var_name, var2.var_name
-                        df = merged[[agg_col1, agg_col2]].astype(float)
-                        corr_matrix = df.corr(method="pearson", numeric_only=True)
-                        corr = corr_matrix.iloc[1, 0]
-                        if corr > threshold:
-                            print(tbl1, attrs1, tbl2, attrs2, corr)
-                            self.append_result(
-                                tbl1, tbl2, attrs1, attrs2, agg_col1, agg_col2, corr
-                            )
-            except:
-                traceback.print_exc()
+            corr_mat = self.get_corr_matrix(
+                merged[names1].astype(float), merged[names2].astype(float)
+            )
+            rows, cols = np.where(corr_mat > threshold)
+            index_pairs = [
+                (corr_mat.index[row], corr_mat.columns[col])
+                for row, col in zip(rows, cols)
+            ]
+            for ix_pair in index_pairs:
+                row, col = ix_pair[0], ix_pair[1]
+                corr_val = corr_mat.loc[row][col]
+                print(tbl1, attrs1, tbl2, attrs2, corr_val)
+                self.append_result(tbl1, tbl2, attrs1, attrs2, row, col, corr_val)
+
             time_used = time.time() - start
             self.perf_profile["time_correlation"]["total"] += time_used
             self.perf_profile["time_correlation"][flag] += time_used
+
+    def get_corr_naive(
+        self, merged: pd.DataFrame, tbl1, attrs1, vars1, tbl2, attrs2, vars2, threshold
+    ):
+        try:
+            for var1 in vars1:
+                for var2 in vars2:
+                    agg_col1, agg_col2 = var1.var_name, var2.var_name
+                    df = merged[[agg_col1, agg_col2]].astype(float)
+                    corr_matrix = df.corr(method="pearson", numeric_only=True)
+                    corr = corr_matrix.iloc[1, 0]
+                    if corr > threshold:
+                        print(tbl1, attrs1, tbl2, attrs2, corr)
+                        self.append_result(
+                            tbl1, tbl2, attrs1, attrs2, agg_col1, agg_col2, corr
+                        )
+        except:
+            traceback.print_exc()
+
+    def get_corr_matrix(self, df1: pd.DataFrame, df2: pd.DataFrame):
+        names1, names2 = df1.columns, df2.columns
+        mat1, mat2 = df1.fillna(0).to_numpy(), df2.fillna(0).to_numpy()
+
+        # Subtract column means
+        res1, res2 = mat1 - np.mean(mat1, axis=0), mat2 - np.mean(mat2, axis=0)
+
+        # Sum squares across columns
+        sums1 = (res1**2).sum(axis=0)
+        sums2 = (res2**2).sum(axis=0)
+
+        # Compute correlations
+        res_products = np.dot(res1.T, res2)
+        sum_products = np.sqrt(np.dot(sums1[:, None], sums2[None]))
+
+        # Account for cases when stardard deviation is 0
+        sum_zeros = sum_products == 0
+        sum_products[sum_zeros] = 1
+
+        corrs = res_products / sum_products
+
+        corrs[sum_zeros] = 0
+
+        # Store correlations in DataFrames
+        corrs = pd.DataFrame(corrs, index=names1, columns=names2)
+        return corrs
 
     def append_result(self, tbl1, tbl2, st1, st2, agg_attr1, agg_attr2, corr):
         tbl_name1, tbl_name2 = (

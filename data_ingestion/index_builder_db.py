@@ -11,8 +11,8 @@ from sqlalchemy import create_engine
 from utils.coordinate import resolve_spatial_hierarchy, set_spatial_granu, S_GRANU
 import psycopg2
 from data_search.data_model import Unit, Variable, AggFunc
-from data_ingestion.profile_num_cols import get_numerical_columns
 from data_search.search_db import DBSearch
+import numpy as np
 
 """
 DBIngestor ingests dataframes to a database (current implementation uses postgres)
@@ -48,8 +48,36 @@ class DBIngestor:
             self.tbl_lookup[tbl_id] = tbl_name
         return self.tbl_lookup
 
+    def is_num_column_valid(self, col_name):
+        stop_words = [
+            "id",
+            "longitude",
+            "latitude",
+            "ward",
+            "date",
+            "zipcode",
+            "district",
+            "coordinate",
+        ]
+        for stop_word in stop_words:
+            if stop_word in col_name:
+                return False
+        return True
+
+    def get_numerical_columns(self, df, t_attrs):
+        numerical_columns = list(df.select_dtypes(include=[np.number]).columns.values)
+        valid_num_columns = []
+        # exclude columns that contain stop words and timestamp columns
+        for col in numerical_columns:
+            if self.is_num_column_valid(col) and col not in t_attrs:
+                valid_num_columns.append(col)
+        return valid_num_columns
+
     def ingest_tbl(self, tbl_id, t_attrs, s_attrs):
         df = io_utils.read_csv(DATA_PATH + tbl_id + ".csv")
+
+        # get numerical columns
+        numerical_columns = self.get_numerical_columns(df, t_attrs)
         # expand dataframe
         df, t_attrs_success, s_attrs_success = self.expand_df(df, t_attrs, s_attrs)
         # if dataframe is None, return
@@ -59,13 +87,14 @@ class DBIngestor:
             "name": self.tbl_lookup[tbl_id],
             "t_attrs": t_attrs_success,
             "s_attrs": s_attrs_success,
+            "num_columns": numerical_columns,
         }
 
         # ingest dataframe to database
-        self.ingest_df_to_db(df, tbl_id)
+        # self.ingest_df_to_db(df, tbl_id)
 
         # create agg tbl
-        self.create_agg_tbl(df, tbl_id, t_attrs_success, s_attrs_success, t_attrs)
+        # self.create_agg_tbl(df, tbl_id, t_attrs_success, s_attrs_success, t_attrs)
         # create aggregated index tables
         # self.create_aggregated_idx_tbls(df, tbl_id, t_attrs_success, s_attrs_success)
         # ingest indices table
