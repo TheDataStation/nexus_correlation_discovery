@@ -159,14 +159,7 @@ class DBSearch:
         # query index table of each table to find joinable tables
         col_names1 = self.get_col_names_with_granu(units1)
         col_names2 = self.get_col_names_with_granu(units2)
-        # query = sql.SQL(
-        #     "select {fields1} from {tbl1_idx} INTERSECT SELECT {fields2} from {tbl2_idx} LIMIT %s"
-        # ).format(
-        #     fields1=sql.SQL(",").join([sql.Identifier(col) for col in col_names1]),
-        #     tbl1_idx=sql.Identifier(tbl1 + "_" + "_".join(col_names1)),
-        #     fields2=sql.SQL(",").join([sql.Identifier(col) for col in col_names2]),
-        #     tbl2_idx=sql.Identifier(tbl2 + "_" + "_".join(col_names2)),
-        # )
+
         query = sql.SQL(
             "select {fields1} from {tbl1_idx} where ({fields1}) in (select {fields2} from {tbl2_idx}) LIMIT %s"
         ).format(
@@ -175,12 +168,12 @@ class DBSearch:
             fields2=sql.SQL(",").join([sql.Identifier(col) for col in col_names2]),
             tbl2_idx=sql.Identifier(tbl2 + "_" + "_".join(col_names2)),
         )
-        # print(self.cur.mogrify(query))
         self.cur.execute(query, [threshold])
         query_res = self.cur.fetchall()
-        return len(query_res)
+        return query_res
+        # print(self.cur.mogrify(query))
 
-    def _get_intersection(self, tbl1, units1, tbl2, units2, threhold):
+    def __get_intersection(self, tbl1, units1, tbl2, units2, threhold):
         col_names1 = self.get_col_names_with_granu(units1)
         col_names2 = self.get_col_names_with_granu(units2)
         query = sql.SQL(
@@ -246,6 +239,227 @@ class DBSearch:
         )
         return df
 
+    def align_two_two_tables(
+        self,
+        tbl1: str,
+        units1: List[Unit],
+        vars1: List[Variable],
+        tbl2: str,
+        units2: List[Unit],
+        vars2: List[Variable],
+    ):
+        # calculate intersecting units and store them in a temp table
+        # self.get_intersection_multi_idx(tbl1, units1, tbl2, units2)
+
+        col_names1 = self.get_col_names_with_granu(units1)
+        col_names2 = self.get_col_names_with_granu(units2)
+
+        # agg_sql = """
+        # SELECT {fields}, {agg_stmts} FROM {tbl}
+        #     WHERE ({fields}) IN (select * FROM intersected_values)
+        #     GROUP BY {fields}
+        #     ORDER BY {fields}
+        # """
+
+        agg_join_sql = """
+        WITH intersected as (select {fields1} from {tbl1_idx} intersect (select {fields2} from {tbl2_idx}))
+        SELECT {a1_fields1}, {agg_vars} FROM
+            (SELECT {fields}, {agg_stmts1} FROM {tbl1}
+            JOIN intersected ON {join_cond1}
+            GROUP BY {fields} ORDER BY {fields}) a1
+            JOIN
+            (SELECT {fields}, {agg_stmts2} FROM {tbl2}
+            JOIN intersected ON {join_cond2}
+            GROUP BY {fields} ORDER BY {fields}) a2
+            ON {join_cond}
+        """
+
+        query = sql.SQL(agg_join_sql).format(
+            fields=sql.SQL(",").join(
+                [sql.Identifier("intersected", col) for col in col_names1]
+            ),
+            fields1=sql.SQL(",").join([sql.Identifier(col) for col in col_names1]),
+            agg_stmts1=sql.SQL(",").join(
+                [
+                    sql.SQL(var.agg_func.name + "(*) as {}").format(
+                        sql.Identifier(var.var_name),
+                    )
+                    if var.attr_name == "*"
+                    else sql.SQL(var.agg_func.name + "({}) as {}").format(
+                        sql.Identifier(var.attr_name),
+                        sql.Identifier(var.var_name),
+                    )
+                    for var in vars1
+                ]
+            ),
+            tbl1=sql.Identifier(tbl1),
+            tbl1_idx=sql.Identifier(tbl1 + "_" + "_".join(col_names1)),
+            a1_fields1=sql.SQL(",").join(
+                [sql.Identifier("a1", col) for col in col_names1]
+            ),
+            fields2=sql.SQL(",").join([sql.Identifier(col) for col in col_names2]),
+            agg_stmts2=sql.SQL(",").join(
+                [
+                    sql.SQL(var.agg_func.name + "(*) as {}").format(
+                        sql.Identifier(var.var_name),
+                    )
+                    if var.attr_name == "*"
+                    else sql.SQL(var.agg_func.name + "({}) as {}").format(
+                        sql.Identifier(var.attr_name),
+                        sql.Identifier(var.var_name),
+                    )
+                    for var in vars2
+                ]
+            ),
+            tbl2=sql.Identifier(tbl2),
+            tbl2_idx=sql.Identifier(tbl2 + "_" + "_".join(col_names2)),
+            agg_vars=sql.SQL(",").join(
+                [sql.Identifier("a1", var.var_name) for var in vars1]
+                + [sql.Identifier("a2", var.var_name) for var in vars2]
+            ),
+            join_cond1=sql.SQL(" AND ").join(
+                [
+                    sql.SQL("{} = {}").format(
+                        sql.Identifier(tbl1, col_names1[i]),
+                        sql.Identifier("intersected", col_names1[i]),
+                    )
+                    for i in range(len(col_names1))
+                ]
+            ),
+            join_cond2=sql.SQL(" AND ").join(
+                [
+                    sql.SQL("{} = {}").format(
+                        sql.Identifier(tbl2, col_names2[i]),
+                        sql.Identifier("intersected", col_names1[i]),
+                    )
+                    for i in range(len(col_names1))
+                ]
+            ),
+            join_cond=sql.SQL(" AND ").join(
+                [
+                    sql.SQL("{} = {}").format(
+                        sql.Identifier("a1", col_names1[i]),
+                        sql.Identifier("a2", col_names1[i]),
+                    )
+                    for i in range(len(col_names1))
+                ]
+            ),
+        )
+
+        self.cur.execute(query)
+        # print(self.cur.mogrify(query))
+        df = pd.DataFrame(
+            self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description]
+        )
+        return df
+
+    def create_tmp_agg_tbl(
+        self,
+        tbl: str,
+        units: List[Unit],
+        vars: List[Variable],
+    ):
+        sql_str = """
+        CREATE TEMPORARY TABLE {tmp_tbl} AS
+        SELECT {fields}, {agg_stmts} FROM {tbl} GROUP BY {fields}
+        """
+
+        col_names = self.get_col_names_with_granu(units)
+        query = sql.SQL(sql_str).format(
+            tmp_tbl=sql.Identifier(
+                "_{}_{}".format(tbl, "_".join([col for col in col_names]))
+            ),
+            fields=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
+            agg_stmts=sql.SQL(",").join(
+                [
+                    sql.SQL(var.agg_func.name + "(*) as {}").format(
+                        sql.Identifier(var.var_name),
+                    )
+                    if var.attr_name == "*"
+                    else sql.SQL(var.agg_func.name + "({}) as {}").format(
+                        sql.Identifier(var.attr_name),
+                        sql.Identifier(var.var_name),
+                    )
+                    for var in vars
+                ]
+            ),
+            tbl=sql.Identifier(tbl),
+        )
+
+        self.cur.execute(query)
+
+        analyze_sql = "ANALYZE {tmp_tbl};"
+        query = sql.SQL(analyze_sql).format(
+            tmp_tbl=sql.Identifier(
+                "_{}_{}".format(tbl, "_".join([col for col in col_names]))
+            )
+        )
+        self.cur.execute(query)
+
+    def aggregate_join_two_tables_using_tmp(
+        self,
+        tbl1: str,
+        units1: List[Unit],
+        vars1: List[Variable],
+        tbl2: str,
+        units2: List[Unit],
+        vars2: List[Variable],
+    ):
+        col_names1 = self.get_col_names_with_granu(units1)
+        col_names2 = self.get_col_names_with_granu(units2)
+
+        agg_join_sql = """
+        SELECT {a1_fields1}, {agg_vars} FROM
+        {tmp_tbl1} a1 JOIN {tmp_tbl2} a2
+        ON {join_cond}
+        """
+
+        query = sql.SQL(agg_join_sql).format(
+            a1_fields1=sql.SQL(",").join(
+                [sql.Identifier("a1", col) for col in col_names1]
+            ),
+            agg_vars=sql.SQL(",").join(
+                [
+                    sql.SQL("{} AS {}").format(
+                        sql.Identifier("a1", var.var_name[:-3]),
+                        sql.Identifier(var.var_name),
+                    )
+                    for var in vars1
+                ]
+                + [
+                    sql.SQL("{} AS {}").format(
+                        sql.Identifier("a2", var.var_name[:-3]),
+                        sql.Identifier(var.var_name),
+                    )
+                    for var in vars2
+                ]
+            ),
+            tmp_tbl1=sql.Identifier(
+                "_{}_{}".format(tbl1, "_".join([col for col in col_names1]))
+            ),
+            tmp_tbl2=sql.Identifier(
+                "_{}_{}".format(tbl2, "_".join([col for col in col_names2]))
+            ),
+            join_cond=sql.SQL(" AND ").join(
+                [
+                    sql.SQL("{} = {}").format(
+                        sql.Identifier("a1", col_names1[i]),
+                        sql.Identifier("a2", col_names2[i]),
+                    )
+                    for i in range(len(col_names1))
+                ]
+            ),
+        )
+
+        self.cur.execute(query)
+
+        df = pd.DataFrame(
+            self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description]
+        ).dropna(
+            subset=col_names1
+        )  # drop empty keys
+        return df
+
     def aggregate_join_two_tables(
         self,
         tbl1: str,
@@ -263,8 +477,7 @@ class DBSearch:
         (SELECT {fields1}, {agg_stmts1} FROM {tbl1} GROUP BY {fields1}) a1
         JOIN
         (SELECT {fields2}, {agg_stmts2} FROM {tbl2} GROUP BY {fields2}) a2
-        ON 
-        concat_ws(', ', {a1_fields1}) = concat_ws(', ', {a2_fields2})
+        ON {join_cond}
         """
 
         query = sql.SQL(agg_join_sql).format(
@@ -308,6 +521,15 @@ class DBSearch:
                 [sql.Identifier("a1", var.var_name) for var in vars1]
                 + [sql.Identifier("a2", var.var_name) for var in vars2]
             ),
+            join_cond=sql.SQL(" AND ").join(
+                [
+                    sql.SQL("{} = {}").format(
+                        sql.Identifier("a1", col_names1[i]),
+                        sql.Identifier("a2", col_names2[i]),
+                    )
+                    for i in range(len(col_names1))
+                ]
+            ),
         )
 
         # print(self.cur.mogrify(query))
@@ -316,7 +538,9 @@ class DBSearch:
 
         df = pd.DataFrame(
             self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description]
-        ).dropna(subset=col_names1)
+        ).dropna(
+            subset=col_names1
+        )  # drop empty keys
         return df
 
     def format_result(self, df, attr_len):

@@ -1,7 +1,7 @@
 from utils.coordinate import S_GRANU
 from utils.time_point import T_GRANU
 import utils.io_utils
-from config import DATA_PATH, ATTR_PATH
+from config import ATTR_PATH
 import numpy as np
 import pandas as pd
 from data_search.data_model import Unit, Variable, AggFunc
@@ -14,19 +14,22 @@ import os
 
 
 class CorrSearch:
-    def __init__(self, dbSearch: DBSearch) -> None:
+    def __init__(self, dbSearch: DBSearch, join_method, corr_method) -> None:
         # database search client
         self.db_search = dbSearch
         self.data = []
         # {tbl_id -> {tbl_name, t_attrs, s_attrs}}
         self.tbl_attrs = self.load_meta_data()
         self.visited = set()
+        self.join_method = join_method
+        self.corr_method = corr_method
         self.perf_profile = {
             "num_joins": {"total": 0, "temporal": 0, "spatial": 0, "st": 0},
             "time_find_joins": {"total": 0, "temporal": 0, "spatial": 0, "st": 0},
             "time_join": {"total": 0, "temporal": 0, "spatial": 0, "st": 0},
             "time_correlation": {"total": 0, "temporal": 0, "spatial": 0, "st": 0},
             "time_dump_csv": {"total": 0},
+            "time_create_tmp_tables": {"total": 0},
         }
 
     def load_meta_data(self):
@@ -34,7 +37,39 @@ class CorrSearch:
         tbl_attrs = utils.io_utils.load_json(ATTR_PATH)
         return tbl_attrs
 
+    def create_tmp_agg_tbls(self, granu_list):
+        for tbl in tqdm(self.tbl_attrs.keys()):
+            st_schema = []
+            t_attrs, s_attrs = (
+                self.tbl_attrs[tbl]["t_attrs"],
+                self.tbl_attrs[tbl]["s_attrs"],
+            )
+            for t in t_attrs:
+                st_schema.append([Unit(t, granu_list[0])])
+
+            for s in s_attrs:
+                st_schema.append([Unit(s, granu_list[1])])
+
+            for t in t_attrs:
+                for s in s_attrs:
+                    st_schema.append([Unit(t, granu_list[0]), Unit(s, granu_list[1])])
+
+            for units in st_schema:
+                tbl1_agg_cols = self.tbl_attrs[tbl]["num_columns"]
+                vars = []
+                for agg_col in tbl1_agg_cols:
+                    vars.append(
+                        Variable(agg_col, AggFunc.AVG, "avg_{}".format(agg_col))
+                    )
+                vars.append(Variable("*", AggFunc.COUNT, "count"))
+                self.db_search.create_tmp_agg_tbl(tbl, units, vars)
+
     def find_all_corr_for_all_tbls(self, granu_list, threshold):
+        if self.join_method == "TMP":
+            start = time.time()
+            self.create_tmp_agg_tbls(granu_list)
+            self.perf_profile["time_create_tmp_tables"]["total"] = time.time() - start
+
         for tbl in tqdm(self.tbl_attrs.keys()):
             print(tbl)
             self.find_all_corr_for_a_tbl(tbl, granu_list, threshold)
@@ -131,70 +166,113 @@ class CorrSearch:
                 vars1.append(
                     Variable(agg_col, AggFunc.AVG, "avg_{}_t1".format(agg_col))
                 )
-            vars1.append(Variable("*", AggFunc.COUNT, "count1"))
+            vars1.append(Variable("*", AggFunc.COUNT, "count_t1"))
             for agg_col in tbl2_agg_cols:
                 vars2.append(
                     Variable(agg_col, AggFunc.AVG, "avg_{}_t2".format(agg_col))
                 )
-            vars2.append(Variable("*", AggFunc.COUNT, "count2"))
-
-            # begin joining tables
-            start = time.time()
-            merged = None
-            try:
-                merged = self.db_search.aggregate_join_two_tables(
-                    tbl1, units1, vars1, tbl2, units2, vars2
-                )
-            except:
-                traceback.print_exc()
-            time_used = time.time() - start
-            self.perf_profile["time_join"]["total"] += time_used
-            self.perf_profile["time_join"][flag] += time_used
-
-            if merged is None:
-                continue
+            vars2.append(Variable("*", AggFunc.COUNT, "count_t2"))
 
             # column names in postgres are at most 63-character long
             names1 = [var.var_name[:63] for var in vars1]
             names2 = [var.var_name[:63] for var in vars2]
 
+            start = time.time()
+            merged = None
+
+            if self.join_method == "TMP":
+                merged = self.db_search.aggregate_join_two_tables_using_tmp(
+                    tbl1, units1, vars1, tbl2, units2, vars2
+                ).fillna(0)
+
+            if self.join_method == "ALIGN":
+                # begin align tables
+                merged = self.db_search.align_two_two_tables(
+                    tbl1, units1, vars1, tbl2, units2, vars2
+                ).fillna(0)
+
+            if self.join_method == "JOIN":
+                # begin joining tables
+                merged = self.db_search.aggregate_join_two_tables(
+                    tbl1, units1, vars1, tbl2, units2, vars2
+                ).fillna(0)
+
+            if merged is None:
+                continue
+            df1, df2 = merged[names1].astype(float), merged[names2].astype(float)
+
+            time_used = time.time() - start
+            self.perf_profile["time_join"]["total"] += time_used
+            self.perf_profile["time_join"][flag] += time_used
+
             # begin calculating correlation
             start = time.time()
-            corr_mat = self.get_corr_matrix(
-                merged[names1].astype(float), merged[names2].astype(float)
-            )
-            rows, cols = np.where(corr_mat > threshold)
-            index_pairs = [
-                (corr_mat.index[row], corr_mat.columns[col])
-                for row, col in zip(rows, cols)
-            ]
-            for ix_pair in index_pairs:
-                row, col = ix_pair[0], ix_pair[1]
-                corr_val = corr_mat.loc[row][col]
-                print(tbl1, attrs1, tbl2, attrs2, corr_val)
-                self.append_result(tbl1, tbl2, attrs1, attrs2, row, col, corr_val)
+            res = []
+            if self.corr_method == "MATRIX":
+                res = self.get_corr_opt(df1, df2, tbl1, attrs1, tbl2, attrs2, threshold)
+
+            if self.corr_method == "FOR_PAIR":
+                res = self.get_corr_naive(
+                    merged, tbl1, attrs1, vars1, tbl2, attrs2, vars2, threshold
+                )
+
+            self.data.extend(res)
 
             time_used = time.time() - start
             self.perf_profile["time_correlation"]["total"] += time_used
             self.perf_profile["time_correlation"][flag] += time_used
 
+    def get_corr_opt(
+        self,
+        df1: pd.DataFrame,
+        df2: pd.DataFrame,
+        tbl1,
+        attrs1,
+        tbl2,
+        attrs2,
+        threshold,
+    ):
+        res = []
+        corr_mat = self.get_corr_matrix(df1, df2)
+        rows, cols = np.where(corr_mat > threshold)
+        index_pairs = [
+            (corr_mat.index[row], corr_mat.columns[col]) for row, col in zip(rows, cols)
+        ]
+        for ix_pair in index_pairs:
+            row, col = ix_pair[0], ix_pair[1]
+            corr_val = corr_mat.loc[row][col]
+            # print(tbl1, attrs1, tbl2, attrs2, corr_val)
+            res.append(
+                self.new_result(
+                    tbl1, tbl2, attrs1, attrs2, row, col, round(corr_val, 2)
+                )
+            )
+        return res
+
     def get_corr_naive(
         self, merged: pd.DataFrame, tbl1, attrs1, vars1, tbl2, attrs2, vars2, threshold
     ):
-        try:
-            for var1 in vars1:
-                for var2 in vars2:
-                    agg_col1, agg_col2 = var1.var_name, var2.var_name
-                    df = merged[[agg_col1, agg_col2]].astype(float)
-                    corr_matrix = df.corr(method="pearson", numeric_only=True)
-                    corr = corr_matrix.iloc[1, 0]
-                    if corr > threshold:
-                        print(tbl1, attrs1, tbl2, attrs2, corr)
-                        self.append_result(
-                            tbl1, tbl2, attrs1, attrs2, agg_col1, agg_col2, corr
+        res = []
+        for var1 in vars1:
+            for var2 in vars2:
+                agg_col1, agg_col2 = var1.var_name, var2.var_name
+                df = merged[[agg_col1, agg_col2]].astype(float)
+                corr_matrix = df.corr(method="pearson", numeric_only=True)
+                corr = corr_matrix.iloc[1, 0]
+                if corr > threshold:
+                    # print(tbl1, attrs1, tbl2, attrs2, corr)
+                    res.append(
+                        self.new_result(
+                            tbl1,
+                            tbl2,
+                            attrs1,
+                            attrs2,
+                            agg_col1,
+                            agg_col2,
+                            round(corr, 2),
                         )
-        except:
-            traceback.print_exc()
+                    )
+        return res
 
     def get_corr_matrix(self, df1: pd.DataFrame, df2: pd.DataFrame):
         names1, names2 = df1.columns, df2.columns
@@ -223,32 +301,30 @@ class CorrSearch:
         corrs = pd.DataFrame(corrs, index=names1, columns=names2)
         return corrs
 
-    def append_result(self, tbl1, tbl2, st1, st2, agg_attr1, agg_attr2, corr):
+    def new_result(self, tbl1, tbl2, st1, st2, agg_attr1, agg_attr2, corr):
         tbl_name1, tbl_name2 = (
             self.tbl_attrs[tbl1]["name"],
             self.tbl_attrs[tbl2]["name"],
         )
-        print(
+        # print(
+        #     tbl1,
+        #     tbl_name1,
+        #     st1,
+        #     agg_attr1,
+        #     tbl2,
+        #     tbl_name2,
+        #     st2,
+        #     agg_attr2,
+        #     corr,
+        # )
+        return [
             tbl1,
             tbl_name1,
-            st1,
+            tuple(st1),
             agg_attr1,
             tbl2,
             tbl_name2,
-            st2,
+            tuple(st2),
             agg_attr2,
-            corr,
-        )
-        self.data.append(
-            [
-                tbl1,
-                tbl_name1,
-                st1,
-                agg_attr1,
-                tbl2,
-                tbl_name2,
-                st2,
-                agg_attr2,
-                corr,
-            ]
-        )
+            round(corr, 2),
+        ]

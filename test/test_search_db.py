@@ -5,10 +5,8 @@ import psycopg2
 import numpy as np
 import pandas as pd
 from config import DATA_PATH
-
-
-def test_aggregate_join_two_tables2():
-    pass
+from data_search.data_model import Unit, Variable, AggFunc
+import time
 
 
 def test_search_intersection_between_two_tables():
@@ -37,10 +35,55 @@ def test_search_tbl():
 def test_agg_join_count():
     conn_str = "postgresql://yuegong@localhost/st_tables"
     db_search = DBSearch(conn_str)
-    tbl1, attrs1 = "ijzp-q8t2", ["date", "location"]
-    tbl2, attrs2 = "85ca-t3if", ["crash_date", "location"]
-    granu_list = [T_GRANU.MONTH, S_GRANU.TRACT]
-    db_search.aggregate_join_two_tables(tbl1, attrs1, tbl2, attrs2, granu_list)
+    tbl1 = "ijzp-q8t2"
+    units1 = [Unit("date", T_GRANU.DAY), Unit("location", S_GRANU.BLOCK)]
+    tbl2 = "85ca-t3if"
+    units2 = [Unit("crash_date", T_GRANU.DAY), Unit("location", S_GRANU.BLOCK)]
+    vars1 = [Variable("*", AggFunc.COUNT, "count1")]
+    vars2 = [Variable("*", AggFunc.COUNT, "count2")]
+    start = time.time()
+    # join method
+    merged = db_search.aggregate_join_two_tables(
+        tbl1, units1, vars1, tbl2, units2, vars2
+    )
+
+    names1 = [unit.to_int_name() for unit in units1] + [
+        var.var_name[:63] for var in vars1
+    ]
+    names2 = [unit.to_int_name() for unit in units1] + [
+        var.var_name[:63] for var in vars2
+    ]
+
+    df1_join, df2_join = merged[names1].reset_index(drop=True), merged[
+        names2
+    ].reset_index(drop=True)
+
+    print("join time", time.time() - start)
+    start = time.time()
+    # align method
+    # df1_align, df2_align = db_search.align_two_two_tables(
+    #     tbl1, units1, vars1, tbl2, units2, vars2
+    # )
+    merged = db_search.align_two_two_tables(tbl1, units1, vars1, tbl2, units2, vars2)
+    names1 = [unit.to_int_name() for unit in units1] + [
+        var.var_name[:63] for var in vars1
+    ]
+    names2 = [unit.to_int_name() for unit in units1] + [
+        var.var_name[:63] for var in vars2
+    ]
+
+    df1_align, df2_align = merged[names1].reset_index(drop=True), merged[
+        names2
+    ].reset_index(drop=True)
+
+    print("align time", time.time() - start)
+
+    # print(df1_align)
+    # print(df1_join)
+    print(df1_align.equals(df1_join))
+
+    df2_join.columns = df2_align.columns
+    print(df2_align.equals(df2_join))
 
 
 def test_agg_join_avg():
@@ -61,13 +104,4 @@ def test_select_numerical_columns():
     print(list(df.select_dtypes(include=[np.number]).columns.values))
 
 
-def test_get_table_list():
-    conn_copg2 = psycopg2.connect("postgresql://yuegong@localhost/st_tables")
-    conn_copg2.autocommit = True
-    cur = conn_copg2.cursor()
-    l = get_table_list(cur)
-    print(l)
-
-
-# test_search_intersection_between_two_tables()
-test_select_numerical_columns()
+test_agg_join_count()
