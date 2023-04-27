@@ -51,7 +51,10 @@ class Coordinate:
         return list(reversed(self.full_resolution[granu - 1 :]))
 
     def to_str(self, repr: List[int]):
-        return "-".join([str(x) for x in repr])
+        return "".join([str(x) for x in repr])
+
+    def to_int(self, repr: List[int]):
+        return int("".join([str(x) for x in repr]))
 
     def transform_to_key(self, granu: S_GRANU):
         repr = self.full_resolution[granu - 1 :]

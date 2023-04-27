@@ -21,18 +21,21 @@ class Datetime:
         self.quarter = dt.quarter
         self.year = dt.year
         self.full_resolution = [
-            self.hour,
-            self.day,
-            self.month,
-            self.quarter,
-            self.year,
+            str(self.hour).zfill(2),
+            str(self.day).zfill(2),
+            str(self.month).zfill(2),
+            str(self.quarter).zfill(1),
+            str(self.year).zfill(4),
         ]
 
     def transform(self, granu: T_GRANU):
         return list(reversed(self.full_resolution[granu - 1 :]))
 
     def to_str(self, repr):
-        return "-".join([str(x) for x in repr])
+        return "".join([x for x in repr])
+
+    def to_int(self, repr):
+        return int("".join([x for x in repr]))
 
     def transform_to_key(self, granu: T_GRANU):
         repr = self.full_resolution[granu - 1 :]

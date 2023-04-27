@@ -21,6 +21,14 @@ def test_search_intersection_between_two_tables():
     get_intersection_between_two_ts_schema(tbl1, attrs1, tbl2, attrs2, granu_list, cur)
 
 
+def test_find_joinable_tables():
+    conn_str = "postgresql://yuegong@localhost/st_tables"
+    db_search = DBSearch(conn_str)
+    tbl = "ijzp-q8t2"
+    units = [Unit("date", T_GRANU.DAY), Unit("location", S_GRANU.BLOCK)]
+    aligned_tbls = db_search.find_augmentable_tables(tbl, units, 4, mode="agg_idx")
+
+
 def test_search_tbl():
     conn_copg2 = psycopg2.connect("postgresql://yuegong@localhost/st_tables")
     conn_copg2.autocommit = True
@@ -104,4 +112,4 @@ def test_select_numerical_columns():
     print(list(df.select_dtypes(include=[np.number]).columns.values))
 
 
-test_agg_join_count()
+test_find_joinable_tables()

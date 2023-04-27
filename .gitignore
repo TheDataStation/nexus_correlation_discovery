@@ -10,3 +10,4 @@ venv
 notebook/
 result/
 __pycache__
+network_data/

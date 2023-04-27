@@ -140,7 +140,11 @@ class DBSearch:
                 ]
             ),
         )
-        # print(self.cur.mogrify(query))
+        # print(
+        #     self.cur.mogrify(
+        #         query, [tbl] + [tbl] + [unit.attr_name for unit in units] + [threshold]
+        #     )
+        # )
         self.cur.execute(
             query,
             [tbl] + [tbl] + [unit.attr_name for unit in units] + [threshold],

@@ -1,5 +1,5 @@
 import pandas as pd
-from config import DATA_PATH, META_PATH
+from config import DATA_PATH
 import utils.coordinate as coordinate
 from utils.time_point import set_temporal_granu, parse_datetime, T_GRANU
 import geopandas as gpd
@@ -13,6 +13,9 @@ import psycopg2
 from data_search.data_model import Unit, Variable, AggFunc
 from data_search.search_db import DBSearch
 import numpy as np
+from sqlalchemy.types import *
+from typing import List
+from dataclasses import dataclass
 
 """
 DBIngestor ingests dataframes to a database (current implementation uses postgres)
@@ -24,6 +27,16 @@ Here are the procedure to ingest a spatial-temporal table
 """
 
 
+@dataclass
+class Table:
+    domain: str
+    tbl_id: str
+    tbl_name: str
+    t_attrs: List[str]
+    s_attrs: List[str]
+    num_columns: List[str]
+
+
 class DBIngestor:
     def __init__(self, conn_string: str) -> None:
         db = create_engine(conn_string)
@@ -32,75 +45,109 @@ class DBIngestor:
         conn_copg2.autocommit = True
         self.cur = conn_copg2.cursor()
         self.db_search = DBSearch(conn_string)
-        self.load_tbl_lookup()
         # successfully ingested table information
         self.tbls = {}
-        # self.clean_aggregated_idx_tbls()
-
-    def load_tbl_lookup(self):
-        self.meta_data = io_utils.load_json(META_PATH)
-        self.tbl_lookup = {}
-        for obj in self.meta_data:
-            tbl_id, tbl_name = (
-                obj["tbl_id"],
-                obj["tbl_name"],
-            )
-            self.tbl_lookup[tbl_id] = tbl_name
-        return self.tbl_lookup
 
     def is_num_column_valid(self, col_name):
-        stop_words = [
+        stop_words_contain = [
             "id",
             "longitude",
             "latitude",
             "ward",
             "date",
             "zipcode",
+            "zip_code",
+            "_zip",
+            "street_number",
+            "street_address",
             "district",
             "coordinate",
+            "community_area",
+            "_no",
+            "_year",
+            "_day",
+            "_month",
+            "_hour",
+            "_number",
+            "_code",
+            "census_tract",
+            "address",
+            "x_coord",
+            "y_coord",
         ]
-        for stop_word in stop_words:
+        stop_words_equal = [
+            "permit_",
+            "beat",
+            "zip",
+            "year",
+            "week_number",
+            "ssa",
+            "license_",
+            "day_of_week",
+            "police_sector",
+            "police_beat",
+            "license",
+            "month",
+            "hour",
+            "day",
+            "lat",
+            "long",
+            "mmwr_week",
+            "zip4",
+            "phone",
+        ]
+        for stop_word in stop_words_contain:
             if stop_word in col_name:
+                return False
+        for stop_word in stop_words_equal:
+            if stop_word == col_name:
                 return False
         return True
 
-    def get_numerical_columns(self, df, t_attrs):
-        numerical_columns = list(df.select_dtypes(include=[np.number]).columns.values)
+    def get_numerical_columns(self, all_columns, tbl: Table):
+        numerical_columns = list(set(all_columns) & set(tbl.num_columns))
         valid_num_columns = []
         # exclude columns that contain stop words and timestamp columns
         for col in numerical_columns:
-            if self.is_num_column_valid(col) and col not in t_attrs:
+            if self.is_num_column_valid(col) and col not in tbl.t_attrs:
                 valid_num_columns.append(col)
         return valid_num_columns
 
-    def ingest_tbl(self, tbl_id, t_attrs, s_attrs):
-        df = io_utils.read_csv(DATA_PATH + tbl_id + ".csv")
+    def ingest_tbl(self, tbl: Table):
+        df = io_utils.read_csv(DATA_PATH + tbl.tbl_id + ".csv")
 
         # get numerical columns
-        numerical_columns = self.get_numerical_columns(df, t_attrs)
+        all_columns = list(df.select_dtypes(include=[np.number]).columns.values)
+        numerical_columns = self.get_numerical_columns(all_columns, tbl)
+
         # expand dataframe
-        df, t_attrs_success, s_attrs_success = self.expand_df(df, t_attrs, s_attrs)
+        df, df_schema, t_attrs_success, s_attrs_success = self.expand_df(
+            df, tbl.t_attrs, tbl.s_attrs
+        )
         # if dataframe is None, return
         if df is None:
+            print("df is none")
             return
-        self.tbls[tbl_id] = {
-            "name": self.tbl_lookup[tbl_id],
+        self.tbls[tbl.tbl_id] = {
+            "name": tbl.tbl_name,
             "t_attrs": t_attrs_success,
             "s_attrs": s_attrs_success,
             "num_columns": numerical_columns,
         }
 
         # ingest dataframe to database
-        self.ingest_df_to_db(df, tbl_id)
+        self.ingest_df_to_db(df, tbl.tbl_id, mode="replace")
 
         # create agg tbl
         # self.create_agg_tbl(df, tbl_id, t_attrs_success, s_attrs_success, t_attrs)
         # create aggregated index tables
-        # self.create_aggregated_idx_tbls(df, tbl_id, t_attrs_success, s_attrs_success)
+        self.create_aggregated_idx_tbls(
+            df, tbl.tbl_id, t_attrs_success, s_attrs_success
+        )
         # ingest indices table
-        self.create_idx_tbls(df, tbl_id, t_attrs_success, s_attrs_success)
+        # self.create_idx_tbls(df, tbl_id, t_attrs_success, s_attrs_success)
         # create hash indices
-        self.create_indices_on_tbl(tbl_id, t_attrs_success, s_attrs_success)
+        # self.create_indices_on_tbl(tbl_id, t_attrs_success, s_attrs_success)
 
     def clean_aggregated_idx_tbls(self):
         # delete aggregated indices that are already in the database
@@ -155,12 +202,6 @@ class DBIngestor:
                         ].extend(
                             [[tbl_id, t_attr, s_attr, v[0], v[1]] for v in ts_values]
                         )
-                        # idx_name_to_df[
-                        #     "time_space_{}_{}".format(t_granu.value, s_granu.value)
-                        # ] = pd.DataFrame(
-                        #     [[tbl_id, t_attr, s_attr, v[0], v[1]] for v in ts_values],
-                        #     columns=["tbl_id", "t_attr", "s_attr", "t_val", "s_val"],
-                        # )
 
         for idx_name, df_data in idx_name_to_df_data.items():
             if idx_name.startswith("time_space"):
@@ -261,6 +302,7 @@ class DBIngestor:
     def expand_df(self, df, t_attrs, s_attrs):
         t_attrs_success = []
         s_attrs_success = []
+        df_schema = {}
         for t_attr in t_attrs:
             # parse datetime column to datetime class
             df[t_attr] = pd.to_datetime(
@@ -272,7 +314,8 @@ class DBIngestor:
                     new_attr = "{}_{}".format(t_attr, t_granu.value)
                     df[new_attr] = df_dts.apply(
                         set_temporal_granu, args=(t_granu.value,)
-                    )
+                    ).astype(int)
+                    df_schema[new_attr] = Integer()
                 t_attrs_success.append(t_attr)
         for s_attr in s_attrs:
             # parse (long, lat) pairs to point
@@ -294,23 +337,30 @@ class DBIngestor:
                 new_attr = "{}_{}".format(s_attr, s_granu.value)
                 df[new_attr] = df_resolved.apply(
                     set_spatial_granu, args=(s_granu.value,)
-                )
+                ).astype(int)
+                df_schema[new_attr] = Integer()
             s_attrs_success.append(s_attr)
 
         # numeric_columns = list(df.select_dtypes(include=[np.number]).columns.values)
         # final_proj_list = list(set(attrs_to_project) | set(numeric_columns))
-
-        return df, t_attrs_success, s_attrs_success
+        # print(df.dtypes)
+        return df, df_schema, t_attrs_success, s_attrs_success
 
     def del_tbl(self, tbl_name):
         sql_str = """DROP TABLE IF EXISTS {tbl}"""
         self.cur.execute(sql.SQL(sql_str).format(tbl=sql.Identifier(tbl_name)))
 
-    def ingest_df_to_db(self, df, tbl_name, mode="replace"):
+    def ingest_df_to_db(self, df, tbl_name, mode="replace", df_schema=None):
         if mode == "replace":
             # drop old tables before ingesting the new dataframe
             self.del_tbl(tbl_name)
-            df.to_sql(tbl_name, con=self.conn, if_exists="replace", index=False)
+            df.to_sql(
+                tbl_name,
+                con=self.conn,
+                if_exists="replace",
+                index=False,
+                dtype=df_schema,
+            )
         elif mode == "append":
             df.to_sql(tbl_name, con=self.conn, if_exists="append", index=False)
 
@@ -350,6 +400,60 @@ class DBIngestor:
                         field=sql.Identifier(attr_name),
                     )
                 )
+
+    def create_index_on_agg_idx_table(self):
+        sql_str1 = """
+            CREATE INDEX {idx_name} ON {tbl} using hash({col});
+        """
+        for t_granu in T_GRANU:
+            idx_table_name = "time_{}".format(t_granu.value)
+            query = sql.SQL(sql_str1).format(
+                idx_name=sql.Identifier("{}_t".format(idx_table_name)),
+                tbl=sql.Identifier(idx_table_name),
+                col=sql.Identifier("t_val"),
+            )
+            self.cur.execute(query)
+            query = sql.SQL(sql_str1).format(
+                idx_name=sql.Identifier("{}_tbl_id".format(idx_table_name)),
+                tbl=sql.Identifier(idx_table_name),
+                col=sql.Identifier("tbl_id"),
+            )
+            self.cur.execute(query)
+
+        for s_granu in S_GRANU:
+            idx_table_name = "space_{}".format(s_granu.value)
+            query = sql.SQL(sql_str1).format(
+                idx_name=sql.Identifier("{}_s".format(idx_table_name)),
+                tbl=sql.Identifier(idx_table_name),
+                col=sql.Identifier("s_val"),
+            )
+            self.cur.execute(query)
+            query = sql.SQL(sql_str1).format(
+                idx_name=sql.Identifier("{}_tbl_id".format(idx_table_name)),
+                tbl=sql.Identifier(idx_table_name),
+                col=sql.Identifier("tbl_id"),
+            )
+            self.cur.execute(query)
+
+        sql_str2 = """
+            CREATE INDEX {idx_name} ON {tbl} ({col1}, {col2});
+        """
+        for t_granu in T_GRANU:
+            for s_granu in S_GRANU:
+                idx_table_name = "time_space_{}_{}".format(t_granu.value, s_granu.value)
+                query = sql.SQL(sql_str2).format(
+                    idx_name=sql.Identifier("{}_ts".format(idx_table_name)),
+                    tbl=sql.Identifier(idx_table_name),
+                    col1=sql.Identifier("t_val"),
+                    col2=sql.Identifier("s_val"),
+                )
+                self.cur.execute(query)
+                query = sql.SQL(sql_str1).format(
+                    idx_name=sql.Identifier("{}_tbl_id".format(idx_table_name)),
+                    tbl=sql.Identifier(idx_table_name),
+                    col=sql.Identifier("tbl_id"),
+                )
+                self.cur.execute(query)
 
     def create_index_on_binary_attrs(self, tbl_id, t_attrs, s_attrs):
         sql_str = """
