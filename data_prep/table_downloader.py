@@ -91,8 +91,8 @@ class TableDownloader:
 
 if __name__ == "__main__":
     line_limit = 10000
-    meta_file = "data/st_table_chicago_open_data.json"
-    dataset_dir = "data/chicago_open_data_10k_new/"
+    meta_file = "data/cdc_open_data.json"
+    dataset_dir = "data/cdc_open_data_10k/"
     if not os.path.isdir(dataset_dir):
         os.makedirs(dataset_dir)
     data_downloader = TableDownloader(

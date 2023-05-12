@@ -1,29 +1,47 @@
 import utils.io_utils as io_utils
-from config import DATA_PATH, META_PATH
-from data_ingestion.index_builder_db import DBIngestor, Table
+from config import DATA_PATH, META_PATH, ATTR_PATH
+from data_ingestion.index_builder_raw import DBIngestor, Table
+from data_ingestion.index_builder_agg import DBIngestorAgg
 from sqlalchemy import create_engine
 from tqdm import tqdm
 import time
 from utils.coordinate import S_GRANU
 from utils.time_point import T_GRANU
 
-conn_string = "postgresql://yuegong@localhost/st_tables"
-# # conn_string = "postgresql://yuegong@localhost/chicago_1m"
-ingestor = DBIngestor(conn_string)
+conn_string = "postgresql://yuegong@localhost/cdc_open_data"
+# conn_string = "postgresql://yuegong@localhost/st_tables"
+# conn_string = "postgresql://yuegong@localhost/chicago_1m"
 
 
 def test_ingest_tbl_e2e():
-    # tbl_id = "ijzp-q8t2"
-    tbl_id = "zuxi-7xem"
-    t_attrs = ["creation_date"]
-    s_attrs = ["location"]
+    t_scales = [T_GRANU.DAY, T_GRANU.MONTH, T_GRANU.QUARTER, T_GRANU.YEAR]
+    s_scales = [S_GRANU.COUNTY, S_GRANU.STATE]
+    # ingestor = DBIngestor(conn_string, t_scales, s_scales)
+    ingestor = DBIngestorAgg(conn_string, t_scales, s_scales)
 
-    ingestor.ingest_tbl(tbl_id, t_attrs, s_attrs)
+    tbl_info_all = io_utils.load_json(ATTR_PATH)
+    tbl_id = "4bft-6yws"
+    tbl_info = tbl_info_all[tbl_id]
+    tbl = Table(
+        domain="",
+        tbl_id=tbl_id,
+        tbl_name=tbl_info["name"],
+        t_attrs=tbl_info["t_attrs"],
+        s_attrs=tbl_info["s_attrs"],
+        num_columns=tbl_info["num_columns"],
+    )
+
+    ingestor.ingest_tbl(tbl)
 
 
 def test_ingest_all_tables():
     start_time = time.time()
     meta_data = io_utils.load_json(META_PATH)
+
+    t_scales = [T_GRANU.DAY, T_GRANU.MONTH, T_GRANU.QUARTER, T_GRANU.YEAR]
+    s_scales = [S_GRANU.COUNTY, S_GRANU.STATE]
+    # ingestor = DBIngestor(conn_string, t_scales, s_scales)
+    ingestor = DBIngestorAgg(conn_string, t_scales, s_scales)
 
     ingestor.clean_aggregated_idx_tbls()
 
@@ -39,99 +57,17 @@ def test_ingest_all_tables():
         print(tbl.tbl_id)
         ingestor.ingest_tbl(tbl)
 
-    ingestor.create_index_on_agg_idx_table()
+    # print("begin creating indices")
+    # begin_creating_index = time.time()
+    # ingestor.create_index_on_agg_idx_table()
+    # print("used {}", time.time() - begin_creating_index)
 
     io_utils.dump_json(
         "/Users/yuegong/Documents/spatio_temporal_alignment/data/"
-        + "tbl_attrs_10k.json",
+        + "tbl_attrs_cdc_10k.json",
         ingestor.tbls,
     )
     return time.time() - start_time
-
-
-def is_num_column_valid(col_name):
-    stop_words_contain = [
-        "id",
-        "longitude",
-        "latitude",
-        "ward",
-        "date",
-        "zipcode",
-        "zip_code",
-        "_zip",
-        "street_number",
-        "street_address",
-        "district",
-        "coordinate",
-        "community_area",
-        "_no",
-        "_year",
-        "_day",
-        "_month",
-        "_hour",
-        "_number",
-        "_code",
-        "census_tract",
-        "address",
-        "x_coord",
-        "y_coord",
-    ]
-    stop_words_equal = [
-        "permit_",
-        "beat",
-        "zip",
-        "year",
-        "week_number",
-        "ssa",
-        "license_",
-        "day_of_week",
-        "police_sector",
-        "police_beat",
-        "license",
-        "month",
-        "hour",
-        "day",
-        "lat",
-        "long",
-        "mmwr_week",
-        "zip4",
-        "phone",
-    ]
-    for stop_word in stop_words_contain:
-        if stop_word in col_name:
-            return False
-    for stop_word in stop_words_equal:
-        if stop_word == col_name:
-            return False
-    return True
-
-
-def test_correct_num_columns():
-    tbls_info = io_utils.load_json(
-        "/Users/yuegong/Documents/spatio_temporal_alignment/data/"
-        + "tbl_attrs_10k.json",
-    )
-    new_tbls_info = {}
-    num_columns_cnt_old = 0
-    num_columns_cnt_new = 0
-    for tbl_id, tbl_info in tbls_info.items():
-        num_columns_corrected = []
-        num_columns_cnt_old += len(tbl_info["num_columns"])
-        for col in tbl_info["num_columns"]:
-            if is_num_column_valid(col):
-                num_columns_corrected.append(col)
-
-        tbl_info["num_columns"] = num_columns_corrected
-        num_columns_cnt_new += len(num_columns_corrected)
-        new_tbls_info[tbl_id] = tbl_info
-    print("column cnt old", num_columns_cnt_old)
-    print("column cnt new", num_columns_cnt_new)
-    print("tbl count", len(new_tbls_info))
-    io_utils.dump_json(
-        "/Users/yuegong/Documents/spatio_temporal_alignment/data/"
-        + "tbl_attrs_10k_corrected.json",
-        new_tbls_info,
-    )
 
 
 def test_expand_table():
@@ -159,9 +95,11 @@ def test_expand_table():
         print("t_attrs after: {}".format(after_cnt))
 
 
-# ingesting all tables takes about 6.5 minutes
+# ingesting all tables in chicago open data 10k takes about 6.5 minutes
 duration = test_ingest_all_tables()
 print("ingestion finished in {} s".format(duration))
+# start = time.time()
 # test_ingest_tbl_e2e()
+# print("time took:", time.time() - start)
 # test_correct_num_columns()
 # test_expand_table()

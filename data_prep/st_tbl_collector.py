@@ -3,6 +3,7 @@ import utils.io_utils as io_utils
 from os import path
 from config import ROOT_DIR, APP_TOKEN
 from typing import List
+from data_prep.prep_utils import is_num_column_valid
 
 """
 Tables that contain spatial or temporal attributes
@@ -76,6 +77,8 @@ class STTableDetector:
                         self.spatial_cnt += 1
                     elif column_type == "Number":
                         column_name = column_names[i]
+                        if not is_num_column_valid(column_name):
+                            continue
                         if ":@" in column_name:
                             continue
                         tbl_obj.add_num_attr(column_name)
@@ -91,9 +94,9 @@ class STTableDetector:
 
 
 if __name__ == "__main__":
-    output_path = path.join(ROOT_DIR, "data/st_table_chicago_open_data.json")
+    output_path = path.join(ROOT_DIR, "data/cdc_open_data.json")
     # print(output_path)
-    domain = ["data.cityofchicago.org"]
+    domain = ["data.cdc.gov"]
     st_table_detector = STTableDetector(domain, APP_TOKEN)
     st_table_detector.detect()
     st_table_detector.serialize(output_path)

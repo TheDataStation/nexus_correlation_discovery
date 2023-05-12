@@ -85,18 +85,25 @@ class Correlation:
         r_val: float,
         p_val: float,
         overlap: int,
+        align_type,
     ):
         self.agg_col1 = agg_col1
         self.agg_col2 = agg_col2
         self.r_val = r_val
         self.p_val = p_val
         self.overlap = overlap
+        self.align_type = align_type
 
     def to_list(self):
         return (
             self.agg_col1.to_list()
             + self.agg_col2.to_list()
-            + [round(self.r_val, 3), round(self.p_val, 3), self.overlap]
+            + [
+                round(self.r_val, 3),
+                round(self.p_val, 3),
+                self.overlap,
+                self.align_type,
+            ]
         )
 
 
@@ -176,6 +183,7 @@ class CorrSearch:
                 "r_val",
                 "p_val",
                 "samples",
+                "align_type",
             ],
         )
 
@@ -198,7 +206,7 @@ class CorrSearch:
             self.find_all_corr_for_a_tbl(tbl, granu_list, r_t, p_t, fill_zero)
 
             start = time.time()
-            
+
             self.dump_corrs_to_csv(self.data, dir_path, tbl)
             # after a table is done, clear the data
             self.perf_profile["corr_count"]["total"] += len(self.data)
@@ -358,7 +366,7 @@ class CorrSearch:
             res = []
             if self.corr_method == "MATRIX":
                 res = self.get_corr_opt(
-                    df1, df2, tbl1, attrs1, tbl2, attrs2, r_t, p_t, fill_zero
+                    df1, df2, tbl1, attrs1, tbl2, attrs2, r_t, p_t, fill_zero, flag
                 )
 
             if self.corr_method == "FOR_PAIR":
@@ -416,6 +424,7 @@ class CorrSearch:
         r_threshold,
         p_threshold,
         fill_zero,
+        flag,
     ):
         res = []
         names1, names2 = df1.columns, df2.columns
@@ -453,14 +462,16 @@ class CorrSearch:
                 # for fdr correction, we need to include all correlations regardless of the p value
                 agg_col1 = AggColumn(tbl1, attrs1, row, df1[row])
                 agg_col2 = AggColumn(tbl2, attrs2, col, df2[col])
-                res.append(Correlation(agg_col1, agg_col2, r_val, p_val, overlap))
+                res.append(Correlation(agg_col1, agg_col2, r_val, p_val, overlap, flag))
             else:
                 agg_col1 = AggColumn(tbl1, attrs1, row)
                 agg_col2 = AggColumn(tbl2, attrs2, col)
                 if p_val <= p_threshold:
                     agg_col1.set_profile(df1[row])
                     agg_col2.set_profile(df2[col])
-                    res.append(Correlation(agg_col1, agg_col2, r_val, p_val, overlap))
+                    res.append(
+                        Correlation(agg_col1, agg_col2, r_val, p_val, overlap, flag)
+                    )
 
         return res
 

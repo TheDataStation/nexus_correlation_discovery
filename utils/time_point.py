@@ -1,7 +1,7 @@
 from pandas import Timestamp
 from enum import Enum
 import pandas as pd
-import numpy as np
+from typing import List
 
 
 class T_GRANU(Enum):
@@ -12,8 +12,31 @@ class T_GRANU(Enum):
     YEAR = 5
 
 
+scale_dict = {
+    T_GRANU.HOUR: "hour",
+    T_GRANU.DAY: "day",
+    T_GRANU.MONTH: "month",
+    T_GRANU.QUARTER: "quarter",
+    T_GRANU.YEAR: "year",
+}
+
+
 class Datetime:
-    def __init__(self, dt: Timestamp) -> None:
+    def __init__(self, dt: Timestamp, chain: List[T_GRANU]):
+        self.chain = chain
+        self.full_resolution = []
+        dt_dict = {
+            "hour": str(dt.hour).zfill(2),
+            "day": str(dt.day).zfill(2),
+            "month": str(dt.month).zfill(2),
+            "quarter": str(dt.quarter).zfill(1),
+            "year": str(dt.year).zfill(4),
+        }
+        for t_scale in chain:
+            scale = scale_dict[t_scale]
+            self.full_resolution.append(dt_dict[scale])
+
+    def new(self, dt: Timestamp) -> None:
         self.dt = dt
         self.hour = dt.hour
         self.day = dt.day
@@ -29,7 +52,8 @@ class Datetime:
         ]
 
     def transform(self, granu: T_GRANU):
-        return list(reversed(self.full_resolution[granu - 1 :]))
+        idx = granu - self.chain[0].value
+        return list(reversed(self.full_resolution[idx:]))
 
     def to_str(self, repr):
         return "".join([x for x in repr])
@@ -42,10 +66,10 @@ class Datetime:
         return str(repr)
 
 
-def parse_datetime(dt: Timestamp):
+def parse_datetime(dt: Timestamp, chain: List[T_GRANU]):
     if pd.isnull(dt):
         return None
-    return Datetime(dt)
+    return Datetime(dt, chain)
 
 
 def transform(dt: Datetime, granu: T_GRANU):
@@ -53,6 +77,8 @@ def transform(dt: Datetime, granu: T_GRANU):
 
 
 def set_temporal_granu(dt: Datetime, granu: T_GRANU):
+    if dt is None:
+        return None
     return dt.to_str(dt.transform(granu))
 
 

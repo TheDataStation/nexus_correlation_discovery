@@ -2,7 +2,6 @@ import math
 import re
 import traceback
 import pandas as pd
-import censusgeocode as cg
 from enum import Enum
 from shapely.geometry import Point
 import geopandas as gpd
@@ -15,6 +14,16 @@ class S_GRANU(Enum):
     BLG = 2
     TRACT = 3
     COUNTY = 4
+    STATE = 5
+
+
+# a dictionary from spatial scales to its names in the shape file
+scale_dict = {
+    S_GRANU.BLOCK: "blockce10",
+    S_GRANU.TRACT: "tractce10",
+    S_GRANU.COUNTY: "COUNTYFP",
+    S_GRANU.STATE: "STATEFP",
+}
 
 
 class Coordinate:
@@ -23,7 +32,14 @@ class Coordinate:
     order the coordinates as "longitude, latitude" (X coordinate, Y coordinate), as other GIS coordinate systems are encoded.
     """
 
-    def __init__(self, point, block, block_group, tract, county):
+    def __init__(self, row, chain):
+        self.chain = chain
+        self.full_resolution = []
+        for granu in chain:
+            k = scale_dict[granu]
+            self.full_resolution.append(row[k])
+
+    def new(self, point, block, block_group, tract, county):
         self.point = point
         self.block = block
         self.block_group = block_group
@@ -39,16 +55,9 @@ class Coordinate:
             self.lat, other.lat, rel_tol=1e-5
         )
 
-    def resolve_resolution(self):
-        location = cg.coordinates(x=self.long, y=self.lat)
-        info = location["2020 Census Blocks"][0]
-        self.block = info["BLOCK"]
-        self.block_group = info["BLKGRP"]
-        self.tract = info["TRACT"]
-        self.county = info["COUNTY"]
-
     def transform(self, granu: S_GRANU):
-        return list(reversed(self.full_resolution[granu - 1 :]))
+        idx = granu - self.chain[0].value
+        return list(reversed(self.full_resolution[idx:]))
 
     def to_str(self, repr: List[int]):
         return "".join([str(x) for x in repr])
@@ -106,7 +115,7 @@ def resolve_resolution_hierarchy(points, s_attr, shape_path: str):
         return None
 
 
-def resolve_spatial_hierarchy(points):
+def resolve_spatial_hierarchy(points, chain):
     """
     shape file can contain duplicate shapes, i.e.
     geometry number is different but all the other attributes are identical
@@ -116,22 +125,20 @@ def resolve_spatial_hierarchy(points):
 
     if len(df):
         df_resolved = df.apply(
-            lambda row: Coordinate(
-                row["geometry"],
-                row["blockce10"],
-                row["blockce10"][0],
-                row["tractce10"],
-                row["countyfp10"],
-            ),
+            lambda row: Coordinate(row, chain),
             axis=1,
         )
+
         return df_resolved[~df_resolved.index.duplicated(keep="first")].dropna()
     else:
         return None
 
 
 def set_spatial_granu(crd: Coordinate, s_granu: S_GRANU):
-    return crd.to_str(crd.transform(s_granu))
+    res = crd.to_str(crd.transform(s_granu))
+    if res is pd.NA:
+        print(crd.full_resolution)
+    return res
 
 
 def pt_to_str(pt):

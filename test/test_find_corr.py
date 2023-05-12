@@ -12,7 +12,8 @@ import utils
 from config import ATTR_PATH
 from collections import defaultdict
 
-db_search = DBSearch("postgresql://yuegong@localhost/st_tables")
+# db_search = DBSearch("postgresql://yuegong@localhost/st_tables")
+db_search = DBSearch("postgresql://yuegong@localhost/cdc_open_data")
 # db_search = DBSearch("postgresql://yuegong@localhost/chicago_1m")
 
 
@@ -70,10 +71,10 @@ def test_find_corr_for_a_tbl_schema():
 
 
 def test_find_corr_for_all_tbl():
-    granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
+    granu_lists = [[T_GRANU.DAY, S_GRANU.STATE]]
 
     for granu_list in granu_lists:
-        dir_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/corr_{}_{}_fdr/".format(
+        dir_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/cdc/corr_{}_{}_fdr/".format(
             granu_list[0], granu_list[1]
         )
         corr_search = CorrSearch(db_search, "TMP", "MATRIX", "FDR", 0.05)
@@ -88,7 +89,7 @@ def test_find_corr_for_all_tbl():
         print(corr_search.perf_profile)
 
         dump_json(
-            "result/run_time/perf_time_{}_{}_index_on_single_idx.json".format(
+            "result/cdc/run_time/perf_time_{}_{}_index_on_single_idx.json".format(
                 granu_list[0], granu_list[1]
             ),
             corr_search.perf_profile,

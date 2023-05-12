@@ -26,6 +26,15 @@ When you set it to 0, we download all rows in a table, which could make your dow
 
 ## Ingest data and Build Discovery Index
 
+### Create postgres database
+If you are not familiar with postgres, [this documentation](https://gist.github.com/phortuin/2fe698b6c741fd84357cec84219c6667) is extremely helpful for setting up postgresql on MacOS with apple M1.
+
+```bash
+$ psql postgres -U <username>
+postgres-> CREATE DATABASE <database_name>;
+postgres-> GRANT ALL PRIVILEGES ON DATABASE <database_name> TO <username>;
+```
+
 ```bash
 python test/test_ingest_to_db.py
 ```

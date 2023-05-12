@@ -26,6 +26,6 @@ for tbl_id, info in metadata.items():
     profiles[tbl_id] = profile
 
 io_utils.dump_json(
-    "/Users/yuegong/Documents/spatio_temporal_alignment/data/profile_chicago_10k_new.json",
+    "/Users/yuegong/Documents/spatio_temporal_alignment/data/profile_cdc_10k.json",
     profiles,
 )
