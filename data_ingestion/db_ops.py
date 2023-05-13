@@ -1,12 +1,15 @@
 from typing import List
-from data_search.data_model import Unit, Variable, AggFunc
+from data_search.data_model import Unit, Variable, AggFunc, ST_Schema, SchemaType
 from psycopg2 import sql
 import sys
 from io import StringIO
+import pandas as pd
+from enum import Enum
 
 
-def get_col_names_with_granu(units: List[Unit]):
-    return [unit.to_int_name() for unit in units]
+class IndexType(Enum):
+    B_TREE = "B_TREE"
+    HASH = "HASH"
 
 
 """
@@ -43,18 +46,13 @@ def copy_from_dataFile_StringIO(cur, df, tbl_name):
     cur.copy_expert(copy_sql, buffer)
 
 
-def del_tbl(cur, tbl_name):
-    sql_str = """DROP TABLE IF EXISTS {tbl}"""
-    cur.execute(sql.SQL(sql_str).format(tbl=sql.Identifier(tbl_name)))
-
-
 def create_agg_tbl(
     cur,
     tbl: str,
-    units: List[Unit],
+    st_schema: ST_Schema,
     vars: List[Variable],
 ):
-    col_names = get_col_names_with_granu(units)
+    col_names = st_schema.get_col_names_with_granu()
     agg_tbl_name = "{}_{}".format(tbl, "_".join([col for col in col_names]))
 
     del_tbl(cur, agg_tbl_name)
@@ -92,18 +90,59 @@ def create_agg_tbl(
 
     cur.execute(query)
 
-    create_indices_on_tbl(cur, agg_tbl_name, col_names)
+    create_indices_on_tbl(cur, agg_tbl_name + "_idx", agg_tbl_name, col_names)
+
+    return agg_tbl_name
 
 
-def create_indices_on_tbl(cur, tbl, col_names):
+"""
+BASIC DDL
+"""
+
+
+def select_columns(cur, tbl, col_names):
     sql_str = """
-            CREATE INDEX {idx_name} ON {tbl} ({cols});
-        """
-
+        SELECT {fields} FROM {tbl};
+    """
     query = sql.SQL(sql_str).format(
-        idx_name=sql.Identifier("{}_idx".format(tbl)),
+        fields=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
         tbl=sql.Identifier(tbl),
-        cols=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
     )
 
     cur.execute(query)
+
+    df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
+    return df
+
+
+def create_indices_on_tbl(cur, idx_name, tbl, col_names, mode=IndexType.B_TREE):
+    if mode == IndexType.B_TREE:
+        sql_str = """
+                CREATE INDEX {idx_name} ON {tbl} ({cols});
+            """
+
+        query = sql.SQL(sql_str).format(
+            idx_name=sql.Identifier(idx_name),
+            tbl=sql.Identifier(tbl),
+            cols=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
+        )
+    elif mode == IndexType.HASH:
+        # hash index can only be created on a single column in postgres
+        col_name = col_names[0]
+
+        sql_str = """
+                CREATE INDEX {idx_name} ON {tbl} using hash({col});
+            """
+
+        query = sql.SQL(sql_str).format(
+            idx_name=sql.Identifier(idx_name),
+            tbl=sql.Identifier(tbl),
+            col=sql.Identifier(col_name),
+        )
+
+    cur.execute(query)
+
+
+def del_tbl(cur, tbl_name):
+    sql_str = """DROP TABLE IF EXISTS {tbl}"""
+    cur.execute(sql.SQL(sql_str).format(tbl=sql.Identifier(tbl_name)))

@@ -4,7 +4,7 @@ import utils.io_utils
 from config import ATTR_PATH, PROFILE_PATH
 import numpy as np
 import pandas as pd
-from data_search.data_model import Unit, Variable, AggFunc
+from data_search.data_model import Unit, Variable, AggFunc, ST_Schema
 from tqdm import tqdm
 import time
 import pandas as pd
@@ -14,6 +14,7 @@ from utils import corr_utils
 from collections import defaultdict
 from dataclasses import dataclass
 from typing import List
+import data_search.db_ops as db_ops
 
 column_profiles = utils.io_utils.load_json(PROFILE_PATH)
 tbl_attrs = utils.io_utils.load_json(ATTR_PATH)
@@ -271,6 +272,11 @@ class CorrSearch:
         aligned_tbls = self.db_search.find_augmentable_tables(
             tbl1, units1, 4, mode="agg_idx"
         )
+
+        # aligned_tbls = db_ops.get_intersection_agg_idx(
+        #     self.cur,
+        #     tbl1,
+        # )
 
         # find the number of test times to correct for multiple comparison problem
         # the number of tests equals the sum of numerical column numbers of aligned tables + 1

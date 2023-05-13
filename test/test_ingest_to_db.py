@@ -57,6 +57,8 @@ def test_ingest_all_tables():
         print(tbl.tbl_id)
         ingestor.ingest_tbl(tbl)
 
+    ingestor.create_index_on_agg_idx_table()
+
     # print("begin creating indices")
     # begin_creating_index = time.time()
     # ingestor.create_index_on_agg_idx_table()

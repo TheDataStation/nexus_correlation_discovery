@@ -12,6 +12,17 @@ class AggFunc(Enum):
     COUNT = "count"
 
 
+class UnitType(Enum):
+    TIME = "time"
+    SPACE = "space"
+
+
+class SchemaType(Enum):
+    TIME = "t"
+    SPACE = "s"
+    TS = "ts"
+
+
 class Variable:
     def __init__(self, attr_name: str, agg_func: AggFunc, var_name: str) -> None:
         self.attr_name = attr_name
@@ -32,12 +43,64 @@ class Unit:
 
     def get_type(self):
         if self.granu in T_GRANU:
-            return "t_attr"
+            return UnitType.TIME
         elif self.granu in S_GRANU:
-            return "s_attr"
+            return UnitType.SPACE
+
+    def get_granu_value(self):
+        return self.granu.value
 
     def get_val(self):
         if self.granu in T_GRANU:
             return "t_val"
         elif self.granu in S_GRANU:
             return "s_val"
+
+
+class ST_Schema:
+    def __init__(self, t_unit: Unit = None, s_unit: Unit = None):
+        self.t_unit = t_unit
+        self.s_unit = s_unit
+        self.type = self.get_type()
+
+    def get_type(self):
+        if self.t_unit and self.s_unit:
+            return SchemaType.TS
+        elif self.t_unit:
+            return SchemaType.TIME
+        else:
+            return SchemaType.SPACE
+
+    def get_col_names_with_granu(self):
+        if self.type == SchemaType.TS:
+            return [self.t_unit.to_int_name(), self.s_unit.to_int_name()]
+        elif self.type == SchemaType.TIME:
+            return [self.t_unit.to_int_name()]
+        else:
+            return [self.s_unit.to_int_name()]
+
+    def get_idx_tbl_name(self):
+        # determine which index table to ingest the agg_tbl values
+        if self.type == SchemaType.TS:
+            return "time_{}_space_{}".format(
+                self.t_unit.get_granu_value(), self.s_unit.get_granu_value()
+            )
+
+        elif self.type == SchemaType.TIME:
+            return "time_{}".format(self.t_unit.get_granu_value())
+        else:
+            return "space_{}".format(self.s_unit.get_granu_value())
+
+    def get_idx_col_names(self):
+        if self.type == SchemaType.TS:
+            return ["t_val", "s_val"]
+
+        elif self.type == SchemaType.TIME:
+            return ["t_val"]
+        else:
+            return ["s_val"]
+
+    def get_agg_tbl_name(self, tbl):
+        return "{}_{}".format(
+            tbl, "_".join([col for col in self.get_col_names_with_granu()])
+        )
