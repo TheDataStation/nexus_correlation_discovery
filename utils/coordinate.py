@@ -11,10 +11,10 @@ from config import SHAPE_PATH
 
 class S_GRANU(Enum):
     BLOCK = 1
-    BLG = 2
-    TRACT = 3
-    COUNTY = 4
-    STATE = 5
+    # BLG = 2
+    TRACT = 2
+    COUNTY = 3
+    STATE = 4
 
 
 # a dictionary from spatial scales to its names in the shape file
@@ -136,6 +136,8 @@ def resolve_spatial_hierarchy(points, chain):
 
 def set_spatial_granu(crd: Coordinate, s_granu: S_GRANU):
     res = crd.to_str(crd.transform(s_granu))
+    # print(s_granu)
+    # print(res)
     if res is pd.NA:
         print(crd.full_resolution)
     return res

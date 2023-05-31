@@ -1,11 +1,12 @@
 from utils import io_utils
 from config import ATTR_PATH, DATA_PATH
 import pandas as pd
+from tqdm import tqdm
 
 metadata = io_utils.load_json(ATTR_PATH)
 profiles = {}
 
-for tbl_id, info in metadata.items():
+for tbl_id, info in tqdm(metadata.items()):
     profile = {}
     f_path = "{}/{}.csv".format(DATA_PATH, tbl_id)
     df = pd.read_csv(f_path)
@@ -26,6 +27,6 @@ for tbl_id, info in metadata.items():
     profiles[tbl_id] = profile
 
 io_utils.dump_json(
-    "/Users/yuegong/Documents/spatio_temporal_alignment/data/profile_cdc_10k.json",
+    "/Users/yuegong/Documents/spatio_temporal_alignment/data/profile_chicago_10k.json",
     profiles,
 )

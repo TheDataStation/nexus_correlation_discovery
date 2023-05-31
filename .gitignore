@@ -9,5 +9,7 @@ venv
 *.csv
 notebook/
 result/
+resource/
 __pycache__
 network_data/
+inverted_indices/

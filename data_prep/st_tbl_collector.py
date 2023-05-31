@@ -94,9 +94,12 @@ class STTableDetector:
 
 
 if __name__ == "__main__":
-    output_path = path.join(ROOT_DIR, "data/cdc_open_data.json")
+    # output_path = path.join(ROOT_DIR, "data/cdc_open_data.json")
+    output_path = path.join(ROOT_DIR, "data/chicago_open_data.json")
+    # domain = ["data.cdc.gov"]
+    domain = ["data.cityofchicago.org"]
     # print(output_path)
-    domain = ["data.cdc.gov"]
+
     st_table_detector = STTableDetector(domain, APP_TOKEN)
     st_table_detector.detect()
     st_table_detector.serialize(output_path)

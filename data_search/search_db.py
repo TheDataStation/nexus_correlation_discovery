@@ -7,7 +7,8 @@ import itertools
 import psycopg2
 from utils.coordinate import S_GRANU
 from utils.time_point import T_GRANU
-from data_search.data_model import Unit, Variable
+from data_search.data_model import Unit, Variable, ST_Schema
+from data_search.db_ops import get_intersection_inv_idx
 
 
 class DBSearch:
@@ -49,8 +50,10 @@ class DBSearch:
                 "ts": ts_schemas_ts,
             }
 
-    def find_augmentable_tables(self, tbl: str, units: List[Unit], threshold, mode):
-        if mode == "agg_idx":
+    def find_augmentable_tables(self, tbl: str, st_schema: ST_Schema, threshold, mode):
+        if mode == "inv_idx":
+            return get_intersection_inv_idx(self.cur, tbl, st_schema, threshold)
+        elif mode == "agg_idx":
             return self.find_augmentable_tables_agg_idx(tbl, units, threshold)
         elif mode == "multi_idx":
             return self.find_augmentable_tables_multi_idx(tbl, units, threshold)

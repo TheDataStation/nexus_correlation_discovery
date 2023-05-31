@@ -90,7 +90,9 @@ def create_agg_tbl(
 
     cur.execute(query)
 
-    create_indices_on_tbl(cur, agg_tbl_name + "_idx", agg_tbl_name, col_names)
+    # create_indices_on_tbl(
+    #     cur, agg_tbl_name + "_idx", agg_tbl_name, col_names, IndexType.HASH
+    # )
 
     return agg_tbl_name
 
@@ -100,19 +102,61 @@ BASIC DDL
 """
 
 
-def select_columns(cur, tbl, col_names):
+def select_columns(cur, tbl, col_names, format=None, concat=False):
+    if not concat:
+        sql_str = """
+            SELECT {fields} FROM {tbl};
+        """
+        query = sql.SQL(sql_str).format(
+            fields=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
+            tbl=sql.Identifier(tbl),
+        )
+
+        cur.execute(query)
+    else:
+        sql_str = """
+            SELECT CONCAT_WS(',', {fields}) FROM {tbl};
+        """
+        query = sql.SQL(sql_str).format(
+            fields=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
+            tbl=sql.Identifier(tbl),
+        )
+
+        cur.execute(query)
+
+    if format is None:
+        df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
+        return df
+    elif format == "RAW":
+        data = cur.fetchall()
+        if len(data) == 0:
+            return []
+        if len(data[0]) == 1:
+            return [str(x[0]) for x in data]
+        elif len(data[0]) == 2:
+            return [str(x[0]) + str(x[1]) for x in data]
+
+
+def create_inv_index(cur, idx_tbl):
+    """
+    aggregate index tables to inverted indices
+    """
+    inv_tbl_name = "{}_inv".format(idx_tbl)
+    del_tbl(cur, inv_tbl_name)
     sql_str = """
-        SELECT {fields} FROM {tbl};
+        CREATE TABLE {inv_idx_tbl} AS
+        SELECT "val", array_agg("st_schema") as st_schema_list FROM {idx_tbl}
+        GROUP BY "val"
     """
     query = sql.SQL(sql_str).format(
-        fields=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
-        tbl=sql.Identifier(tbl),
+        inv_idx_tbl=sql.Identifier(inv_tbl_name),
+        idx_tbl=sql.Identifier(idx_tbl),
     )
-
     cur.execute(query)
 
-    df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
-    return df
+    create_indices_on_tbl(
+        cur, inv_tbl_name + "_idx", inv_tbl_name, ["val"], mode=IndexType.HASH
+    )
 
 
 def create_indices_on_tbl(cur, idx_name, tbl, col_names, mode=IndexType.B_TREE):

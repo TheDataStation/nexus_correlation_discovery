@@ -1,12 +1,44 @@
 from utils.coordinate import S_GRANU
 from utils.time_point import T_GRANU
 from data_search.search_db import DBSearch
+from data_ingestion.db_ops import select_columns
+from data_search.db_ops import get_intersection_agg_idx, get_intersection_inv_idx
 import psycopg2
 import numpy as np
 import pandas as pd
 from config import DATA_PATH
-from data_search.data_model import Unit, Variable, AggFunc
+from data_search.data_model import Unit, Variable, AggFunc, ST_Schema
 import time
+import shelve
+from collections import Counter
+
+
+def test_select_columns():
+    conn = psycopg2.connect("postgresql://yuegong@localhost/chicago_open_data_1m")
+    conn.autocommit = True
+    cur = conn.cursor()
+    res = select_columns(
+        cur,
+        "22u3-xenr_violation_date_2_location_1",
+        ["violation_date_2"],
+        "RAW",
+    )
+    print(res[:5])
+
+
+def search_joinable():
+    conn = psycopg2.connect("postgresql://yuegong@localhost/st_tables")
+    cur = conn.cursor()
+    tbl = "22u3-xenr"
+    st_schema = ST_Schema(
+        Unit("violation_date", T_GRANU.DAY), Unit("location", S_GRANU.BLOCK)
+    )
+    # res1 = get_intersection_agg_idx(cur, tbl, st_schema, None, 4)
+    # print(res1)
+    # print(len(res1))
+    res2 = get_intersection_inv_idx(cur, tbl, st_schema, 4)
+    print(res2)
+    print(len(res2))
 
 
 def test_search_intersection_between_two_tables():
@@ -112,4 +144,9 @@ def test_select_numerical_columns():
     print(list(df.select_dtypes(include=[np.number]).columns.values))
 
 
-test_find_joinable_tables()
+search_joinable()
+# with shelve.open("inverted_indices/chicago_1k/{}".format("time_2")) as db:
+#     for key in db:
+#         if len(db[key]) > 1:
+#             print(key)
+#             print(db[key])

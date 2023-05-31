@@ -8,9 +8,9 @@ import time
 from utils.coordinate import S_GRANU
 from utils.time_point import T_GRANU
 
-conn_string = "postgresql://yuegong@localhost/cdc_open_data"
-# conn_string = "postgresql://yuegong@localhost/st_tables"
-# conn_string = "postgresql://yuegong@localhost/chicago_1m"
+# conn_string = "postgresql://yuegong@localhost/cdc_open_data"
+conn_string = "postgresql://yuegong@localhost/st_tables"
+# conn_string = "postgresql://yuegong@localhost/chicago_open_data_1m"
 
 
 def test_ingest_tbl_e2e():
@@ -36,40 +36,34 @@ def test_ingest_tbl_e2e():
 
 def test_ingest_all_tables():
     start_time = time.time()
-    meta_data = io_utils.load_json(META_PATH)
-
+    conn_string = "postgresql://yuegong@localhost/st_tables"
     t_scales = [T_GRANU.DAY, T_GRANU.MONTH, T_GRANU.QUARTER, T_GRANU.YEAR]
-    s_scales = [S_GRANU.COUNTY, S_GRANU.STATE]
+    # s_scales = [S_GRANU.COUNTY, S_GRANU.STATE]
+    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
     # ingestor = DBIngestor(conn_string, t_scales, s_scales)
     ingestor = DBIngestorAgg(conn_string, t_scales, s_scales)
+    ingestor.ingest_data_source("chicago_10k", clean=True, persist=True)
 
-    ingestor.clean_aggregated_idx_tbls()
+    # idx_tables = []
+    # for t_scale in t_scales:
+    #     idx_tables.append("time_{}".format(t_scale.value))
+    # for s_scale in s_scales:
+    #     idx_tables.append("space_{}".format(s_scale.value))
+    # for t_scale in t_scales:
+    #     for s_scale in s_scales:
+    #         idx_tables.append("time_{}_space_{}".format(t_scale.value, s_scale.value))
+    # ingestor.create_inv_indices(idx_tables)
 
-    for obj in tqdm(meta_data):
-        tbl = Table(
-            domain=obj["domain"],
-            tbl_id=obj["tbl_id"],
-            tbl_name=obj["tbl_name"],
-            t_attrs=obj["t_attrs"],
-            s_attrs=obj["s_attrs"],
-            num_columns=obj["num_columns"],
-        )
-        print(tbl.tbl_id)
-        ingestor.ingest_tbl(tbl)
-
-    ingestor.create_index_on_agg_idx_table()
-
-    # print("begin creating indices")
-    # begin_creating_index = time.time()
-    # ingestor.create_index_on_agg_idx_table()
-    # print("used {}", time.time() - begin_creating_index)
-
-    io_utils.dump_json(
-        "/Users/yuegong/Documents/spatio_temporal_alignment/data/"
-        + "tbl_attrs_cdc_10k.json",
-        ingestor.tbls,
-    )
     return time.time() - start_time
+
+
+def test_create_index_on_agg_idx_table():
+    t_scales = [T_GRANU.DAY, T_GRANU.MONTH, T_GRANU.QUARTER, T_GRANU.YEAR]
+    # s_scales = [S_GRANU.COUNTY, S_GRANU.STATE]
+    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
+    ingestor = DBIngestorAgg(conn_string, t_scales, s_scales)
+    print("begin creating indices on the aggregated index tables")
+    ingestor.create_index_on_agg_idx_table()
 
 
 def test_expand_table():
@@ -102,6 +96,10 @@ duration = test_ingest_all_tables()
 print("ingestion finished in {} s".format(duration))
 # start = time.time()
 # test_ingest_tbl_e2e()
+# print("time took:", time.time() - start)
+
+# start = time.time()
+# test_create_index_on_agg_idx_table()
 # print("time took:", time.time() - start)
 # test_correct_num_columns()
 # test_expand_table()

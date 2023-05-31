@@ -34,6 +34,7 @@ class TableDownloader:
         """
         headers = {"X-App-Token": app_token}
         response = requests.get(url, stream=True)
+        print(response)
         with open(local_filename, "wb") as outfile:
             for chunk in response.iter_content(chunk_size=1024):
                 if chunk:  # filter out keep-alive new chunks
@@ -55,6 +56,7 @@ class TableDownloader:
                 "https", domain, file_name, self.format, self.app_token, line_limit
             )
         s_time = time.time()
+        print("begin download")
         self.download(uri, path.join(self.output_dir, file_name + ".csv"), app_token)
         # download_time = time.time() - s_time
         # self.logger.info("finish downloading {} in {} seconds".format(file_name, download_time))
@@ -90,9 +92,12 @@ class TableDownloader:
 
 
 if __name__ == "__main__":
-    line_limit = 10000
-    meta_file = "data/cdc_open_data.json"
-    dataset_dir = "data/cdc_open_data_10k/"
+    # line_limit = 10000
+    line_limit = 1000000
+    # meta_file = "data/cdc_open_data.json"
+    meta_file = "data/chicago_open_data.json"
+    dataset_dir = "data/chicago_open_data_1m/"
+
     if not os.path.isdir(dataset_dir):
         os.makedirs(dataset_dir)
     data_downloader = TableDownloader(

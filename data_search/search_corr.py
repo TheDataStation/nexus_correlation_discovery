@@ -4,7 +4,13 @@ import utils.io_utils
 from config import ATTR_PATH, PROFILE_PATH
 import numpy as np
 import pandas as pd
-from data_search.data_model import Unit, Variable, AggFunc, ST_Schema
+from data_search.data_model import (
+    Unit,
+    Variable,
+    AggFunc,
+    ST_Schema,
+    get_st_schema_list_for_tbl,
+)
 from tqdm import tqdm
 import time
 import pandas as pd
@@ -110,13 +116,23 @@ class Correlation:
 
 class CorrSearch:
     def __init__(
-        self, dbSearch: DBSearch, join_method, corr_method, correct_method, q_val=None
+        self,
+        dbSearch: DBSearch,
+        find_join_method,
+        join_method,
+        corr_method,
+        correct_method,
+        q_val=None,
     ) -> None:
         # database search client
         self.db_search = dbSearch
+        self.cur = self.db_search.cur
         self.data = []
         self.count = 0
         self.visited = set()
+        self.visited_tbls = set()
+        self.all_tbls = set(tbl_attrs.keys())
+        self.find_join_method = find_join_method
         self.join_method = join_method
         self.corr_method = corr_method
         self.correct_method = correct_method
@@ -195,7 +211,7 @@ class CorrSearch:
         df.to_csv("{}/corr_{}.csv".format(dir_path, tbl_id))
 
     def find_all_corr_for_all_tbls(
-        self, granu_list, r_t, p_t, fill_zero=False, dir_path=""
+        self, granu_list, o_t, r_t, p_t, fill_zero=False, dir_path=None
     ):
         if self.join_method == "TMP":
             start = time.time()
@@ -204,36 +220,44 @@ class CorrSearch:
 
         for tbl in tqdm(tbl_attrs.keys()):
             print(tbl)
-            self.find_all_corr_for_a_tbl(tbl, granu_list, r_t, p_t, fill_zero)
+            self.find_all_corr_for_a_tbl(tbl, granu_list, o_t, r_t, p_t, fill_zero)
 
             start = time.time()
-
-            self.dump_corrs_to_csv(self.data, dir_path, tbl)
+            if dir_path:
+                self.dump_corrs_to_csv(self.data, dir_path, tbl)
             # after a table is done, clear the data
             self.perf_profile["corr_count"]["total"] += len(self.data)
             self.data.clear()
             time_used = time.time() - start
             self.perf_profile["time_dump_csv"]["total"] += time_used
 
-    def find_all_corr_for_a_tbl(self, tbl, granu_list, r_t, p_t, fill_zero):
-        st_schema = []
+    def find_all_corr_for_a_tbl(self, tbl, granu_list, o_t, r_t, p_t, fill_zero):
+        st_schema_list = []
         t_attrs, s_attrs = (
             tbl_attrs[tbl]["t_attrs"],
             tbl_attrs[tbl]["s_attrs"],
         )
         print(t_attrs, s_attrs)
+        t_scale, s_scale = granu_list[0], granu_list[1]
         for t in t_attrs:
-            st_schema.append([Unit(t, granu_list[0])])
+            st_schema_list.append(ST_Schema(t_unit=Unit(t, t_scale)))
 
         for s in s_attrs:
-            st_schema.append([Unit(s, granu_list[1])])
+            st_schema_list.append(ST_Schema(s_unit=Unit(s, s_scale)))
 
         for t in t_attrs:
             for s in s_attrs:
-                st_schema.append([Unit(t, granu_list[0]), Unit(s, granu_list[1])])
+                st_schema_list.append(ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
 
-        for units in st_schema:
-            self.find_all_corr_for_a_tbl_schema(tbl, units, r_t, p_t, fill_zero)
+        for st_schema in st_schema_list:
+            if self.find_join_method == "JOIN_ALL":
+                self.find_all_corr_for_a_tbl_schema_join_all(
+                    tbl, st_schema, o_t, r_t, p_t, fill_zero
+                )
+            elif self.find_join_method == "FIND_JOIN":
+                self.find_all_corr_for_a_tbl_schema_find_join(
+                    tbl, st_schema, o_t, r_t, p_t, fill_zero
+                )
 
     def find_corr_between_two_schemas(self, tbl1, units1, tbl2, units2):
         tbl1_agg_cols = tbl_attrs[tbl1]["num_columns"]
@@ -258,59 +282,58 @@ class CorrSearch:
         df1, df2 = merged[names1].astype(float), merged[names2].astype(float)
         return df1, df2
 
-    def find_all_corr_for_a_tbl_schema(self, tbl1, units1, r_t, p_t, fill_zero):
-        attrs1 = [unit.attr_name for unit in units1]
-        if len(units1) == 2:
-            flag = "st"
-        elif units1[0].granu in T_GRANU:
-            flag = "temporal"
-        else:
-            flag = "spatial"
+    def find_all_corr_for_a_tbl_schema_find_join(
+        self, tbl1, st_schema: ST_Schema, o_t, r_t, p_t, fill_zero
+    ):
+        attrs1 = st_schema.get_attrs()
 
+        flag = st_schema.get_type().value
         start = time.time()
-        # find aligned tbls whose overlap score > 4
+        # find aligned tbls whose overlap score > o_t
+
+        self.visited_tbls.add(tbl1)
         aligned_tbls = self.db_search.find_augmentable_tables(
-            tbl1, units1, 4, mode="agg_idx"
+            tbl1, st_schema, o_t, mode="inv_idx"
         )
 
-        # aligned_tbls = db_ops.get_intersection_agg_idx(
-        #     self.cur,
-        #     tbl1,
-        # )
+        # aligned_tbls = set(self.all_tbls).difference(self.visited_tbls)
 
         # find the number of test times to correct for multiple comparison problem
         # the number of tests equals the sum of numerical column numbers of aligned tables + 1
         # plus 1 is because we calculate count for each table
-        test_num = 0
-        for tbl_info in aligned_tbls:
-            tbl2, units2 = (
-                tbl_info[0],
-                tbl_info[2],
-            )
-            attrs2 = [unit.attr_name for unit in units2]
-            if (tbl1, tuple(attrs1), tbl2, tuple(attrs2)) not in self.visited:
-                test_num += len(tbl_attrs[tbl_info[0]]["num_columns"]) + 1
-        print("test_num", test_num)
+        # test_num = 0
+        # for tbl_info in aligned_tbls:
+        #     tbl2, units2 = (
+        #         tbl_info[0],
+        #         tbl_info[2],
+        #     )
+        #     attrs2 = [unit.attr_name for unit in units2]
+        #     if (tbl1, tuple(attrs1), tbl2, tuple(attrs2)) not in self.visited:
+        #         test_num += len(tbl_attrs[tbl_info[0]]["num_columns"]) + 1
 
-        if self.correct_method == "Bonferroni":
-            if test_num != 0:
-                p_t = p_t / test_num
-                print("p value", p_t)
+        # if self.correct_method == "Bonferroni":
+        #     if test_num != 0:
+        #         p_t = p_t / test_num
+        #         print("p value", p_t)
 
         time_used = time.time() - start
-        self.perf_profile["num_joins"]["total"] += len(aligned_tbls)
-        self.perf_profile["num_joins"][flag] += len(aligned_tbls)
+
         self.perf_profile["time_find_joins"]["total"] += time_used
         self.perf_profile["time_find_joins"][flag] += time_used
 
         tbl_schema_corrs = []
 
-        for tbl_info in aligned_tbls:
-            tbl2, units2 = (
+        for tbl_info in tqdm(aligned_tbls):
+            tbl2, st_schema2 = (
                 tbl_info[0],
-                tbl_info[2],
+                tbl_info[1],
             )
-            attrs2 = [unit.attr_name for unit in units2]
+            if tbl2 in self.visited_tbls:
+                continue
+            self.perf_profile["num_joins"]["total"] += 1
+            self.perf_profile["num_joins"][flag] += 1
+
+            attrs2 = st_schema2.get_attrs()
 
             if (tbl1, tuple(attrs1), tbl2, tuple(attrs2)) in self.visited:
                 continue
@@ -319,6 +342,7 @@ class CorrSearch:
                 self.visited.add((tbl2, tuple(attrs2), tbl1, tuple(attrs1)))
 
             # calculate agg avg
+
             tbl1_agg_cols = tbl_attrs[tbl1]["num_columns"]
             tbl2_agg_cols = tbl_attrs[tbl2]["num_columns"]
 
@@ -342,25 +366,30 @@ class CorrSearch:
             start = time.time()
             merged = None
 
-            if self.join_method == "TMP":
+            if self.join_method == "AGG":
+                merged = db_ops.join_two_agg_tables(
+                    self.cur, tbl1, st_schema, vars1, tbl2, st_schema2, vars2
+                )
+            elif self.join_method == "TMP":
                 merged = self.db_search.aggregate_join_two_tables_using_tmp(
-                    tbl1, units1, vars1, tbl2, units2, vars2
+                    tbl1, st_schema, vars1, tbl2, units2, vars2
                 )
 
-            if self.join_method == "ALIGN":
+            elif self.join_method == "ALIGN":
                 # begin align tables
                 merged = self.db_search.align_two_two_tables(
-                    tbl1, units1, vars1, tbl2, units2, vars2
+                    tbl1, st_schema, vars1, tbl2, units2, vars2
                 )
 
-            if self.join_method == "JOIN":
+            elif self.join_method == "JOIN":
                 # begin joining tables
                 merged = self.db_search.aggregate_join_two_tables(
-                    tbl1, units1, vars1, tbl2, units2, vars2
+                    tbl1, st_schema, vars1, tbl2, units2, vars2
                 )
 
-            if merged is None:
+            if merged is None or len(merged) < o_t:
                 continue
+
             df1, df2 = merged[names1].astype(float), merged[names2].astype(float)
 
             time_used = time.time() - start
@@ -391,6 +420,129 @@ class CorrSearch:
         self.perf_profile["time_correlation"]["total"] += time_used
         self.perf_profile["time_correlation"][flag] += time_used
 
+    def find_all_corr_for_a_tbl_schema_join_all(
+        self, tbl1, st_schema: ST_Schema, o_t, r_t, p_t, fill_zero
+    ):
+        attrs1 = st_schema.get_attrs()
+
+        flag = st_schema.get_type().value
+        start = time.time()
+
+        self.visited_tbls.add(tbl1)
+
+        aligned_tbls = set(self.all_tbls).difference(self.visited_tbls)
+
+        # find the number of test times to correct for multiple comparison problem
+        # the number of tests equals the sum of numerical column numbers of aligned tables + 1
+        # plus 1 is because we calculate count for each table
+        # test_num = 0
+        # for tbl_info in aligned_tbls:
+        #     tbl2, units2 = (
+        #         tbl_info[0],
+        #         tbl_info[2],
+        #     )
+        #     attrs2 = [unit.attr_name for unit in units2]
+        #     if (tbl1, tuple(attrs1), tbl2, tuple(attrs2)) not in self.visited:
+        #         test_num += len(tbl_attrs[tbl_info[0]]["num_columns"]) + 1
+        # print("test_num", test_num)
+
+        # if self.correct_method == "Bonferroni":
+        #     if test_num != 0:
+        #         p_t = p_t / test_num
+        #         print("p value", p_t)
+
+        time_used = time.time() - start
+
+        self.perf_profile["time_find_joins"]["total"] += time_used
+        self.perf_profile["time_find_joins"][flag] += time_used
+
+        tbl_schema_corrs = []
+
+        for tbl2 in tqdm(aligned_tbls):
+            t_attrs, s_attrs = tbl_attrs[tbl2]["t_attrs"], tbl_attrs[tbl2]["s_attrs"]
+            st_schema2_list = get_st_schema_list_for_tbl(t_attrs, s_attrs, st_schema)
+            for st_schema2 in st_schema2_list:
+                attrs2 = st_schema2.get_attrs()
+                # calculate agg avg
+                tbl1_agg_cols = tbl_attrs[tbl1]["num_columns"]
+                tbl2_agg_cols = tbl_attrs[tbl2]["num_columns"]
+
+                vars1 = []
+                vars2 = []
+                for agg_col in tbl1_agg_cols:
+                    vars1.append(
+                        Variable(agg_col, AggFunc.AVG, "avg_{}_t1".format(agg_col))
+                    )
+                vars1.append(Variable("*", AggFunc.COUNT, "count_t1"))
+                for agg_col in tbl2_agg_cols:
+                    vars2.append(
+                        Variable(agg_col, AggFunc.AVG, "avg_{}_t2".format(agg_col))
+                    )
+                vars2.append(Variable("*", AggFunc.COUNT, "count_t2"))
+
+                # column names in postgres are at most 63-character long
+                names1 = [var.var_name[:63] for var in vars1]
+                names2 = [var.var_name[:63] for var in vars2]
+
+                start = time.time()
+                merged = None
+
+                if self.join_method == "AGG":
+                    merged = db_ops.join_two_agg_tables(
+                        self.cur, tbl1, st_schema, vars1, tbl2, st_schema2, vars2
+                    )
+                elif self.join_method == "TMP":
+                    merged = self.db_search.aggregate_join_two_tables_using_tmp(
+                        tbl1, st_schema, vars1, tbl2, units2, vars2
+                    )
+
+                elif self.join_method == "ALIGN":
+                    # begin align tables
+                    merged = self.db_search.align_two_two_tables(
+                        tbl1, st_schema, vars1, tbl2, units2, vars2
+                    )
+
+                elif self.join_method == "JOIN":
+                    # begin joining tables
+                    merged = self.db_search.aggregate_join_two_tables(
+                        tbl1, st_schema, vars1, tbl2, units2, vars2
+                    )
+
+                if merged is None or len(merged) < o_t:
+                    continue
+                self.perf_profile["num_joins"]["total"] += 1
+                self.perf_profile["num_joins"][flag] += 1
+                df1, df2 = merged[names1].astype(float), merged[names2].astype(float)
+
+                time_used = time.time() - start
+                self.perf_profile["time_join"]["total"] += time_used
+                self.perf_profile["time_join"][flag] += time_used
+
+                # begin calculating correlation
+                start = time.time()
+                res = []
+                if self.corr_method == "MATRIX":
+                    res = self.get_corr_opt(
+                        df1, df2, tbl1, attrs1, tbl2, attrs2, r_t, p_t, fill_zero, flag
+                    )
+
+                if self.corr_method == "FOR_PAIR":
+                    res = self.get_corr_naive(
+                        merged, tbl1, attrs1, vars1, tbl2, attrs2, vars2, r_t, p_t
+                    )
+
+                tbl_schema_corrs.extend(res)
+                time_used = time.time() - start
+                self.perf_profile["time_correlation"]["total"] += time_used
+                self.perf_profile["time_correlation"][flag] += time_used
+
+        start = time.time()
+        if self.correct_method == "FDR":
+            tbl_schema_corrs = self.bh_correction(tbl_schema_corrs, r_t)
+
+        self.data.extend(tbl_schema_corrs)
+        self.perf_profile["time_correlation"]["total"] += time_used
+
     def bh_correction(self, corrs: List[Correlation], r_t):
         filtered_corrs = []
         # group correlations by their starting columns
@@ -402,7 +554,6 @@ class CorrSearch:
             # sort corr_group by p_value
             corr_group.sort(key=lambda a: a.p_val)
             n = len(corr_group)
-            print("n", n)
             largest_i = -1
             for i, corr in enumerate(corr_group):
                 bh_value = ((i + 1) / n) * self.q_val

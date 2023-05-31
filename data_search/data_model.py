@@ -1,6 +1,7 @@
 from enum import Enum
 from utils.time_point import T_GRANU
 from utils.coordinate import S_GRANU
+from typing import List
 
 
 class AggFunc(Enum):
@@ -18,9 +19,9 @@ class UnitType(Enum):
 
 
 class SchemaType(Enum):
-    TIME = "t"
-    SPACE = "s"
-    TS = "ts"
+    TIME = "temporal"
+    SPACE = "spatial"
+    TS = "st"
 
 
 class Variable:
@@ -71,6 +72,38 @@ class ST_Schema:
         else:
             return SchemaType.SPACE
 
+    def get_scales(self):
+        if self.type == SchemaType.TS:
+            return (self.t_unit.granu, self.s_unit.granu)
+        elif self.type == SchemaType.TIME:
+            return self.t_unit.granu
+        else:
+            return self.s_unit.granu
+
+    def get_id(self, tbl_id):
+        if self.type == SchemaType.TS:
+            return ",".join([tbl_id, self.t_unit.attr_name, self.s_unit.attr_name])
+        elif self.type == SchemaType.TIME:
+            return ",".join([tbl_id, self.t_unit.attr_name])
+        else:
+            return ",".join([tbl_id, self.s_unit.attr_name])
+
+    def get_attrs(self):
+        if self.type == SchemaType.TS:
+            return [self.t_unit.attr_name, self.s_unit.attr_name]
+        elif self.type == SchemaType.TIME:
+            return [self.t_unit.attr_name]
+        else:
+            return [self.s_unit.attr_name]
+
+    def get_idx_attr_names(self):
+        if self.type == SchemaType.TS:
+            return ["t_attr", "s_attr"]
+        elif self.type == SchemaType.TIME:
+            return ["t_attr"]
+        else:
+            return ["s_attr"]
+
     def get_col_names_with_granu(self):
         if self.type == SchemaType.TS:
             return [self.t_unit.to_int_name(), self.s_unit.to_int_name()]
@@ -104,3 +137,44 @@ class ST_Schema:
         return "{}_{}".format(
             tbl, "_".join([col for col in self.get_col_names_with_granu()])
         )
+
+
+def get_st_schema_list_for_tbl(t_attrs, s_attrs, st_schema: ST_Schema):
+    schema_list = []
+    type = st_schema.get_type()
+    if type == SchemaType.TIME:
+        for t_attr in t_attrs:
+            schema_list.append(ST_Schema(t_unit=Unit(t_attr, st_schema.t_unit.granu)))
+    elif type == SchemaType.SPACE:
+        for s_attr in s_attrs:
+            schema_list.append(ST_Schema(s_unit=Unit(s_attr, st_schema.s_unit.granu)))
+    else:
+        for t_attr in t_attrs:
+            for s_attr in s_attrs:
+                schema_list.append(
+                    ST_Schema(
+                        t_unit=Unit(t_attr, st_schema.t_unit.granu),
+                        s_unit=Unit(s_attr, st_schema.s_unit.granu),
+                    )
+                )
+    return schema_list
+
+
+def new_st_schema_from_units(units: List[Unit]):
+    if len(units) == 2:
+        t_unit, s_unit = units[0], units[1]
+        st_schema = ST_Schema(
+            t_unit=Unit(t_unit, t_unit.granu),
+            s_unit=Unit(s_unit, s_unit.granu),
+        )
+    elif len(units) == 1:
+        unit = units[0]
+        if unit.get_type() == UnitType.TIME:
+            st_schema = ST_Schema(
+                t_unit=Unit(unit, unit.granu),
+            )
+        else:
+            st_schema = ST_Schema(
+                s_unit=Unit(unit, unit.granu),
+            )
+    return st_schema
