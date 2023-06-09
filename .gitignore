@@ -13,3 +13,7 @@ resource/
 __pycache__
 network_data/
 inverted_indices/
+
+## evaluation result files
+evaluation/run_time/
+evaluation/plots/

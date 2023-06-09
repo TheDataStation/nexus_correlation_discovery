@@ -58,7 +58,7 @@ def test_find_joinable_tables():
     db_search = DBSearch(conn_str)
     tbl = "ijzp-q8t2"
     units = [Unit("date", T_GRANU.DAY), Unit("location", S_GRANU.BLOCK)]
-    aligned_tbls = db_search.find_augmentable_tables(tbl, units, 4, mode="agg_idx")
+    aligned_tbls = db_search.find_augmentable_st_schemas(tbl, units, 4, mode="agg_idx")
 
 
 def test_search_tbl():

@@ -11,10 +11,10 @@ from config import SHAPE_PATH
 
 class S_GRANU(Enum):
     BLOCK = 1
-    # BLG = 2
-    TRACT = 2
-    COUNTY = 3
-    STATE = 4
+    BLG = 2
+    TRACT = 3
+    COUNTY = 4
+    STATE = 5
 
 
 # a dictionary from spatial scales to its names in the shape file
@@ -25,6 +25,16 @@ scale_dict = {
     S_GRANU.STATE: "STATEFP",
 }
 
+supported_chain = []
+
+name_to_granu = {
+    "block": S_GRANU.BLOCK,
+    "blg": S_GRANU.BLG,
+    "county": S_GRANU.COUNTY,
+    "tract": S_GRANU.TRACT,
+    "state": S_GRANU.STATE,
+}
+
 
 class Coordinate:
     """
@@ -32,20 +42,21 @@ class Coordinate:
     order the coordinates as "longitude, latitude" (X coordinate, Y coordinate), as other GIS coordinate systems are encoded.
     """
 
-    def __init__(self, row, chain):
-        self.chain = chain
-        self.full_resolution = []
-        for granu in chain:
+    def __init__(self, row):
+        # self.chain = chain
+        self.full = {}
+        for granu in supported_chain:
             k = scale_dict[granu]
-            self.full_resolution.append(row[k])
+            self.full[granu] = row[k]
 
-    def new(self, point, block, block_group, tract, county):
-        self.point = point
-        self.block = block
-        self.block_group = block_group
-        self.tract = tract
-        self.county = county
-        self.full_resolution = [self.block, self.block_group, self.tract, self.county]
+    # def __init__(self, block, block_group, tract, county):
+    #     # self.point = point
+    #     self.block = block
+    #     self.block_group = block_group
+    #     self.tract = tract
+    #     self.county = county
+    #     self.state = state
+    #     # self.full_resolution = [self.block, self.block_group, self.tract, self.county]
 
     def __hash__(self):
         return hash((self.long, self.lat))
@@ -56,11 +67,40 @@ class Coordinate:
         )
 
     def transform(self, granu: S_GRANU):
-        idx = granu - self.chain[0].value
-        return list(reversed(self.full_resolution[idx:]))
+        if granu == S_GRANU.BLOCK:
+            return [
+                self.full[S_GRANU.STATE],
+                self.full[S_GRANU.COUNTY],
+                self.full[S_GRANU.TRACT],
+                self.full[S_GRANU.BLOCK],
+            ]
+        elif granu == S_GRANU.BLG:
+            return [
+                self.full[S_GRANU.STATE],
+                self.full[S_GRANU.COUNTY],
+                self.full[S_GRANU.TRACT],
+                self.full[S_GRANU.BLG],
+            ]
+        elif granu == S_GRANU.TRACT:
+            return [
+                self.full[S_GRANU.STATE],
+                self.full[S_GRANU.COUNTY],
+                self.full[S_GRANU.TRACT],
+            ]
+        elif granu == S_GRANU.COUNTY:
+            return [
+                self.full[S_GRANU.STATE],
+                self.full[S_GRANU.COUNTY],
+            ]
+        elif granu == S_GRANU.STATE:
+            return self.full[S_GRANU.STATE]
+
+    # def transform(self, granu: S_GRANU):
+    #     idx = granu - self.chain[0].value
+    #     return list(reversed(self.full_resolution[idx:]))
 
     def to_str(self, repr: List[int]):
-        return "".join([str(x) for x in repr])
+        return "-".join([str(x) for x in repr])
 
     def to_int(self, repr: List[int]):
         return int("".join([str(x) for x in repr]))
@@ -115,7 +155,7 @@ def resolve_resolution_hierarchy(points, s_attr, shape_path: str):
         return None
 
 
-def resolve_spatial_hierarchy(points, chain):
+def resolve_spatial_hierarchy(points):
     """
     shape file can contain duplicate shapes, i.e.
     geometry number is different but all the other attributes are identical
@@ -125,7 +165,7 @@ def resolve_spatial_hierarchy(points, chain):
 
     if len(df):
         df_resolved = df.apply(
-            lambda row: Coordinate(row, chain),
+            lambda row: Coordinate(row),
             axis=1,
         )
 
@@ -147,3 +187,20 @@ def pt_to_str(pt):
     pt = pt[1:-1]
     resolution = pt[::-1]
     return str(resolution)
+
+
+def resolve_geo_chain(geo_chain: str, geo_keys):
+    units = [x.strip() for x in geo_chain.split(",")]
+    keys = [x.strip() for x in geo_keys.split(",")]
+    c = []
+    d = {}
+
+    for i in range(len(units)):
+        granu = name_to_granu[units[i]]
+        c.append(granu)
+        d[granu] = keys[i]
+
+    global scale_dict
+    scale_dict = d
+    global supported_chain
+    supported_chain = c

@@ -84,18 +84,41 @@ def get_pvals(num_samples, corrs, masked):
     return pvals
 
 
-def mat_corr(mat1, mat2, names1, names2, masked):
+def mat_corr(
+    mat1,
+    mat2,
+    mat1_avg,
+    mat2_avg,
+    o_mean1,
+    o_mean2,
+    names1,
+    names2,
+    masked,
+    r_methods,
+    outer_join,
+):
+    to_return = {}
     if not masked:
         # Subtract column means
         res1, res2 = mat1 - np.mean(mat1, axis=0), mat2 - np.mean(mat2, axis=0)
-
+        if not outer_join:
+            _res1, _res2 = mat1_avg - o_mean1, mat2_avg - o_mean2
         # Sum squares across columns
         sums1 = (res1**2).sum(axis=0)
         sums2 = (res2**2).sum(axis=0)
 
         # Compute correlations
         res_products = np.dot(res1.T, res2)
-
+        if "impute_avg" in r_methods and not outer_join:
+            _res_products = np.dot(_res1.T, _res2)
+            to_return["res_sum"] = pd.DataFrame(
+                _res_products, index=names1, columns=names2
+            )
+        if "impute_zero" in r_methods and not outer_join:
+            inner_product = np.dot(mat1.T, mat2)
+            to_return["inner_product"] = pd.DataFrame(
+                inner_product, index=names1, columns=names2
+            )
         sum_products = np.sqrt(np.dot(sums1[:, None], sums2[None]))
 
         # Account for cases when stardard deviation is 0
@@ -107,8 +130,8 @@ def mat_corr(mat1, mat2, names1, names2, masked):
         corrs[sum_zeros] = 0
 
         # Store correlations in DataFrames
-
         num_samples = mat1.shape[0]
+
         pvals = get_pvals(num_samples, corrs, masked)
 
     else:
@@ -139,5 +162,8 @@ def mat_corr(mat1, mat2, names1, names2, masked):
         )
 
     corrs = pd.DataFrame(corrs, index=names1, columns=names2)
+    to_return["corrs"] = corrs
     pvals = pd.DataFrame(pvals, index=names1, columns=names2)
-    return corrs, pvals
+    to_return["p_vals"] = pvals
+    return to_return
+    # return corrs, pvals

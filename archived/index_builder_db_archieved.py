@@ -154,3 +154,21 @@ def create_index_on_unary_attr(self, tbl_id, attrs, resolutions, type):
                         )
                         # print(self.cur.mogrify(query))
                         self.cur.execute(query)
+
+        # find the number of test times to correct for multiple comparison problem
+        # the number of tests equals the sum of numerical column numbers of aligned tables + 1
+        # plus 1 is because we calculate count for each table
+        # test_num = 0
+        # for tbl_info in aligned_tbls:
+        #     tbl2, units2 = (
+        #         tbl_info[0],
+        #         tbl_info[2],
+        #     )
+        #     attrs2 = [unit.attr_name for unit in units2]
+        #     if (tbl1, tuple(attrs1), tbl2, tuple(attrs2)) not in self.visited:
+        #         test_num += len(tbl_attrs[tbl_info[0]]["num_columns"]) + 1
+
+        # if self.correct_method == "Bonferroni":
+        #     if test_num != 0:
+        #         p_t = p_t / test_num
+        #         print("p value", p_t)

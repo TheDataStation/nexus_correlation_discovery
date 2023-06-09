@@ -4,10 +4,8 @@ import utils.coordinate as coordinate
 from utils.time_point import set_temporal_granu, parse_datetime, T_GRANU
 from utils.profile_utils import is_num_column_valid
 import geopandas as gpd
-import shelve
 import pandas as pd
 import os
-from collections import defaultdict
 import utils.io_utils as io_utils
 from sqlalchemy import create_engine
 from utils.coordinate import resolve_spatial_hierarchy, set_spatial_granu, S_GRANU
@@ -29,7 +27,7 @@ from data_search.data_model import (
 import data_ingestion.db_ops as db_ops
 from data_ingestion.db_ops import IndexType
 from typing import List
-import yaml
+from multiprocessing.pool import ThreadPool as Pool
 
 """
 DBIngestor ingests dataframes to a database (current implementation uses postgres)
@@ -69,19 +67,17 @@ class DBIngestorAgg:
                 valid_num_columns.append(col)
         return valid_num_columns
 
-    def load_config(self, source):
-        with open("config.yaml", "r") as f:
-            yaml_data = yaml.load(f, Loader=yaml.FullLoader)
-            config = yaml_data[source]
-            return config
-
     def ingest_data_source(self, source, clean=False, persist=False):
-        config = self.load_config(source)
-        data_path = config["data_path"]
+        config = io_utils.load_config(source)
+        self.data_path = config["data_path"]
         meta_path = config["meta_path"]
+        geo_chain = config["geo_chain"]
+        geo_keys = config["geo_keys"]
+        coordinate.resolve_geo_chain(geo_chain, geo_keys)
         meta_data = io_utils.load_json(meta_path)
         if clean:
             self.clean_aggregated_idx_tbls()
+
         for obj in tqdm(meta_data):
             tbl = Table(
                 domain=obj["domain"],
@@ -92,20 +88,22 @@ class DBIngestorAgg:
                 num_columns=obj["num_columns"],
             )
             print(tbl.tbl_id)
-            self.ingest_tbl(data_path, tbl)
+            self.ingest_tbl(tbl)
+
+        for idx_tbl in tqdm(self.idx_tables):
+            db_ops.create_indices_on_tbl(
+                self.cur, f"{idx_tbl}_inv", idx_tbl, ["val"], mode=IndexType.HASH
+            )
 
         if persist:
             io_utils.dump_json(
                 config["attr_path"],
                 self.tbls,
             )
-            io_utils.dump_json(config["idx_tbl_path"], self.idx_tables)
+            io_utils.dump_json(config["idx_tbl_path"], list(self.idx_tables))
 
-        self.create_inv_indices(self.idx_tables)
-        # Todo: delete original agg tables that are used to create inverted index.
-
-    def ingest_tbl(self, data_path: str, tbl: Table):
-        tbl_path = os.path.join(data_path, f"{tbl.tbl_id}.csv")
+    def ingest_tbl(self, tbl: Table):
+        tbl_path = os.path.join(self.data_path, f"{tbl.tbl_id}.csv")
         df = io_utils.read_csv(tbl_path)
 
         # get numerical columns
@@ -180,9 +178,13 @@ class DBIngestorAgg:
                 vars.append(Variable(agg_col, AggFunc.AVG, "avg_{}".format(agg_col)))
             vars.append(Variable("*", AggFunc.COUNT, "count"))
 
+            start = time.time()
             agg_tbl_name = db_ops.create_agg_tbl(self.cur, tbl, st_schema, vars)
+            print(f"finish aggregating table in {time.time()-start} s")
             # ingest spatio-temporal values to an index table
+            start = time.time()
             self.ingest_agg_tbl_to_idx_tbl(tbl, agg_tbl_name, st_schema)
+            print(f"finish ingesting to idx table in {time.time()-start} s")
 
     def create_idx_on_agg_tbls(
         self,
@@ -230,16 +232,24 @@ class DBIngestorAgg:
 
     def ingest_agg_tbl_to_idx_tbl(self, tbl, agg_tbl, st_schema: ST_Schema):
         # decide which index table to ingest the agg_tbl values
-        idx_tbl_name = st_schema.get_idx_tbl_name()
-        idx_col_names = ["val"]
-        col_names = st_schema.get_col_names_with_granu()
-        if len(col_names) >= 1:
-            df = db_ops.select_columns(self.cur, agg_tbl, col_names, concat=True)
-        else:
-            df = db_ops.select_columns(self.cur, agg_tbl, col_names)
-        df.columns = idx_col_names
-        # df = df.astype(int)
-        df["st_schema"] = st_schema.get_id(tbl)
+        idx_tbl_name = st_schema.get_idx_tbl_name() + "_inv"
+        # if this idx table has not been created yet, create it first
+        if idx_tbl_name not in self.idx_tables:
+            db_ops.create_idx_tbl(self.cur, idx_tbl_name)
+        # idx_col_names = ["val"]
+        # col_names = st_schema.get_col_names_with_granu()
+        # if len(col_names) >= 1:
+        #     df = db_ops.select_columns(self.cur, agg_tbl, col_names, concat=True)
+        # else:
+        #     df = db_ops.select_columns(self.cur, agg_tbl, col_names)
+        # df.columns = idx_col_names
+        # # df = df.astype(int)
+        # df["st_schema"] = st_schema.get_id(tbl)
+
+        # vals = db_ops.select_columns(self.cur, agg_tbl, ["val"], format="RAW")
+        # tuples = tuple([(val, [st_schema.get_id(tbl)]) for val in vals])
+
+        db_ops.insert_to_idx_tbl(self.cur, idx_tbl_name, st_schema.get_id(tbl), agg_tbl)
         # df["tbl_id"] = tbl
         # if st_schema.type == SchemaType.TS:
         #     df["t_attr"] = st_schema.t_unit.attr_name
@@ -249,39 +259,27 @@ class DBIngestorAgg:
         # else:
         #     df["s_attr"] = st_schema.s_unit.attr_name
 
-        self.ingest_df_to_db(df, idx_tbl_name, mode="append")
+        # self.ingest_df_to_db(df, idx_tbl_name, mode="append")
         self.idx_tables.add(idx_tbl_name)
-
-    def create_inv_indices(self, idx_tables):
-        for idx_tbl in idx_tables:
-            print(idx_tbl)
-            db_ops.create_inv_index(self.cur, idx_tbl)
-
-    def ingest_agg_tbl_to_inverted_idx(self, tbl, agg_tbl, st_schema: ST_Schema):
-        col_names = st_schema.get_col_names_with_granu()
-        val_list = db_ops.select_columns(self.cur, agg_tbl, col_names, format="RAW")
-        idx_h = self.inverted_indices[st_schema.get_scales()]
-        self.ingest_vals_to_dict(tbl, val_list, idx_h, st_schema)
-
-    def ingest_vals_to_dict(self, tbl, val_list, idx_h, st_schema: ST_Schema):
-        schema_id = st_schema.get_id(tbl)
-        for val in val_list:
-            if val in idx_h:
-                idx_h[val].append(schema_id)
-            else:
-                idx_h[val] = [schema_id]
 
     def clean_aggregated_idx_tbls(self):
         # delete aggregated indices that are already in the database
         for t_granu in self.t_scales:
             db_ops.del_tbl(self.cur, "time_{}".format(t_granu.value))
+            db_ops.del_tbl(self.cur, "time_{}_inv".format(t_granu.value))
+
         for s_granu in self.s_scales:
             db_ops.del_tbl(self.cur, "space_{}".format(s_granu.value))
+            db_ops.del_tbl(self.cur, "space_{}_inv".format(s_granu.value))
 
         for t_granu in self.t_scales:
             for s_granu in self.s_scales:
                 db_ops.del_tbl(
-                    self.cur, "time_space_{}_{}".format(t_granu.value, s_granu.value)
+                    self.cur, "time_{}_space_{}".format(t_granu.value, s_granu.value)
+                )
+                db_ops.del_tbl(
+                    self.cur,
+                    "time_{}_space_{}_inv".format(t_granu.value, s_granu.value),
                 )
 
     def create_index_on_agg_idx_table(self):
@@ -358,15 +356,13 @@ class DBIngestorAgg:
             df[t_attr] = pd.to_datetime(
                 df[t_attr], infer_datetime_format=True, utc=True, errors="coerce"
             ).dropna()
-            df_dts = df[t_attr].apply(parse_datetime, args=([self.t_scales])).dropna()
+            df_dts = df[t_attr].apply(parse_datetime).dropna()
             # df_dts = np.vectorize(parse_datetime)(df[t_attr])
 
             if len(df_dts):
                 for t_granu in self.t_scales:
                     new_attr = "{}_{}".format(t_attr, t_granu.value)
-                    df[new_attr] = df_dts.apply(
-                        set_temporal_granu, args=(t_granu.value,)
-                    ).astype("Int64")
+                    df[new_attr] = df_dts.apply(set_temporal_granu, args=(t_granu,))
 
                     # df[new_attr] = np.vectorize(set_temporal_granu, otypes=[object])(
                     #     df_dts, t_granu.value
@@ -385,17 +381,14 @@ class DBIngestorAgg:
                 .set_crs(epsg=4326, inplace=True)
             )
 
-            df_resolved = resolve_spatial_hierarchy(gdf, self.s_scales)
+            df_resolved = resolve_spatial_hierarchy(gdf)
 
             # df_resolved can be none meaning there is no point falling into the shape file
             if df_resolved is None:
                 continue
             for s_granu in self.s_scales:
                 new_attr = "{}_{}".format(s_attr, s_granu.value)
-                df[new_attr] = df_resolved.apply(
-                    set_spatial_granu, args=(s_granu.value,)
-                ).astype("Int64")
-
+                df[new_attr] = df_resolved.apply(set_spatial_granu, args=(s_granu,))
                 df_schema[new_attr] = Integer()
             s_attrs_success.append(s_attr)
 

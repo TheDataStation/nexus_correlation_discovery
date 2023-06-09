@@ -22,41 +22,53 @@ scale_dict = {
 
 
 class Datetime:
-    def __init__(self, dt: Timestamp, chain: List[T_GRANU]):
-        self.chain = chain
-        self.full_resolution = []
-        dt_dict = {
-            "hour": str(dt.hour).zfill(2),
-            "day": str(dt.day).zfill(2),
-            "month": str(dt.month).zfill(2),
-            "quarter": str(dt.quarter).zfill(1),
-            "year": str(dt.year).zfill(4),
-        }
-        for t_scale in chain:
-            scale = scale_dict[t_scale]
-            self.full_resolution.append(dt_dict[scale])
+    # def __init__(self, dt: Timestamp, chain: List[T_GRANU]):
+    #     self.chain = chain
+    #     self.full_resolution = []
+    #     dt_dict = {
+    #         "hour": str(dt.hour).zfill(2),
+    #         "day": str(dt.day).zfill(2),
+    #         "month": str(dt.month).zfill(2),
+    #         "quarter": str(dt.quarter).zfill(1),
+    #         "year": str(dt.year).zfill(4),
+    #     }
+    #     for t_scale in chain:
+    #         scale = scale_dict[t_scale]
+    #         self.full_resolution.append(dt_dict[scale])
 
-    def new(self, dt: Timestamp) -> None:
-        self.dt = dt
-        self.hour = dt.hour
-        self.day = dt.day
-        self.month = dt.month
-        self.quarter = dt.quarter
-        self.year = dt.year
-        self.full_resolution = [
-            str(self.hour).zfill(2),
-            str(self.day).zfill(2),
-            str(self.month).zfill(2),
-            str(self.quarter).zfill(1),
-            str(self.year).zfill(4),
-        ]
+    def __init__(self, dt: Timestamp) -> None:
+        # self.dt = dt
+        self.hour = str(dt.hour).zfill(2)
+        self.day = str(dt.day).zfill(2)
+        self.month = str(dt.month).zfill(2)
+        self.quarter = str(dt.quarter).zfill(1)
+        self.year = str(dt.year).zfill(4)
+        # self.full_resolution = [
+        #     str(self.hour).zfill(2),
+        #     str(self.day).zfill(2),
+        #     str(self.month).zfill(2),
+        #     str(self.quarter).zfill(1),
+        #     str(self.year).zfill(4),
+        # ]
 
     def transform(self, granu: T_GRANU):
+        if granu == T_GRANU.HOUR:
+            return [self.year, self.month, self.day, self.hour]
+        elif granu == T_GRANU.DAY:
+            return [self.year, self.month, self.day]
+        elif granu == T_GRANU.MONTH:
+            return [self.year, self.month]
+        elif granu == T_GRANU.QUARTER:
+            return [self.year, self.quarter]
+        elif granu == T_GRANU.YEAR:
+            return [self.year]
+
+    def __transform(self, granu: T_GRANU):
         idx = granu - self.chain[0].value
         return list(reversed(self.full_resolution[idx:]))
 
     def to_str(self, repr):
-        return "".join([x for x in repr])
+        return "-".join([x for x in repr])
 
     def to_int(self, repr):
         return int("".join([x for x in repr]))
@@ -66,10 +78,10 @@ class Datetime:
         return str(repr)
 
 
-def parse_datetime(dt: Timestamp, chain: List[T_GRANU]):
+def parse_datetime(dt: Timestamp):
     if pd.isnull(dt):
         return None
-    return Datetime(dt, chain)
+    return Datetime(dt)
 
 
 def transform(dt: Datetime, granu: T_GRANU):

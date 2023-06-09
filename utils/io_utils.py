@@ -1,9 +1,14 @@
 import json
 import pandas as pd
-import pickle
+import dill as pickle
+import yaml
+import os
 
 
 def dump_json(path: str, obj):
+    dir = os.path.dirname(path)
+    if not os.path.exists(dir):
+        os.makedirs(dir)
     with open(path, "w") as f:
         json.dump(obj, f)
 
@@ -40,3 +45,11 @@ def read_csv(path, t_attrs=None, s_attrs=None):
 
 def persist_to_csv(path, df):
     df.to_csv(path)
+
+
+def load_config(source):
+    config_path = "/Users/yuegong/Documents/spatio_temporal_alignment/config.yaml"
+    with open(config_path, "r") as f:
+        yaml_data = yaml.load(f, Loader=yaml.FullLoader)
+        config = yaml_data[source]
+        return config

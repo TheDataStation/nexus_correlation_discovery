@@ -6,21 +6,30 @@ from sqlalchemy import create_engine
 from tqdm import tqdm
 import time
 from utils.coordinate import S_GRANU
+import utils.coordinate as coordinate
 from utils.time_point import T_GRANU
 
 # conn_string = "postgresql://yuegong@localhost/cdc_open_data"
-conn_string = "postgresql://yuegong@localhost/st_tables"
+# conn_string = "postgresql://yuegong@localhost/st_tables"
 # conn_string = "postgresql://yuegong@localhost/chicago_open_data_1m"
 
 
 def test_ingest_tbl_e2e():
-    t_scales = [T_GRANU.DAY, T_GRANU.MONTH, T_GRANU.QUARTER, T_GRANU.YEAR]
-    s_scales = [S_GRANU.COUNTY, S_GRANU.STATE]
-    # ingestor = DBIngestor(conn_string, t_scales, s_scales)
+    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
+    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
+    conn_string = "postgresql://yuegong@localhost/test"
     ingestor = DBIngestorAgg(conn_string, t_scales, s_scales)
+    data_config = io_utils.load_config("chicago_10k")
+    geo_chain = data_config["geo_chain"]
+    geo_keys = data_config["geo_keys"]
+    coordinate.resolve_geo_chain(geo_chain, geo_keys)
 
-    tbl_info_all = io_utils.load_json(ATTR_PATH)
-    tbl_id = "4bft-6yws"
+    attr_path = data_config["attr_path"]
+    ingestor.data_path = io_utils.load_config("chicago_1m")["data_path"]
+    tbl_info_all = io_utils.load_json(attr_path)
+    # print(tbl_info_all)
+    # tbl_id = "zgvr-7yfd"
+    tbl_id = "ydr8-5enu"
     tbl_info = tbl_info_all[tbl_id]
     tbl = Table(
         domain="",
@@ -30,14 +39,13 @@ def test_ingest_tbl_e2e():
         s_attrs=tbl_info["s_attrs"],
         num_columns=tbl_info["num_columns"],
     )
-
     ingestor.ingest_tbl(tbl)
 
 
 def test_ingest_all_tables():
     start_time = time.time()
     conn_string = "postgresql://yuegong@localhost/st_tables"
-    t_scales = [T_GRANU.DAY, T_GRANU.MONTH, T_GRANU.QUARTER, T_GRANU.YEAR]
+    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
     # s_scales = [S_GRANU.COUNTY, S_GRANU.STATE]
     s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
     # ingestor = DBIngestor(conn_string, t_scales, s_scales)
@@ -92,8 +100,8 @@ def test_expand_table():
 
 
 # ingesting all tables in chicago open data 10k takes about 6.5 minutes
-duration = test_ingest_all_tables()
-print("ingestion finished in {} s".format(duration))
+test_ingest_tbl_e2e()
+# print("ingestion finished in {} s".format(duration))
 # start = time.time()
 # test_ingest_tbl_e2e()
 # print("time took:", time.time() - start)

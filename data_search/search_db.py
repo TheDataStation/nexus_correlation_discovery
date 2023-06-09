@@ -50,7 +50,9 @@ class DBSearch:
                 "ts": ts_schemas_ts,
             }
 
-    def find_augmentable_tables(self, tbl: str, st_schema: ST_Schema, threshold, mode):
+    def find_augmentable_st_schemas(
+        self, tbl: str, st_schema: ST_Schema, threshold, mode
+    ):
         if mode == "inv_idx":
             return get_intersection_inv_idx(self.cur, tbl, st_schema, threshold)
         elif mode == "agg_idx":

@@ -139,25 +139,52 @@ class ST_Schema:
         )
 
 
-def get_st_schema_list_for_tbl(t_attrs, s_attrs, st_schema: ST_Schema):
-    schema_list = []
-    type = st_schema.get_type()
-    if type == SchemaType.TIME:
-        for t_attr in t_attrs:
-            schema_list.append(ST_Schema(t_unit=Unit(t_attr, st_schema.t_unit.granu)))
-    elif type == SchemaType.SPACE:
-        for s_attr in s_attrs:
-            schema_list.append(ST_Schema(s_unit=Unit(s_attr, st_schema.s_unit.granu)))
-    else:
-        for t_attr in t_attrs:
-            for s_attr in s_attrs:
-                schema_list.append(
-                    ST_Schema(
-                        t_unit=Unit(t_attr, st_schema.t_unit.granu),
-                        s_unit=Unit(s_attr, st_schema.s_unit.granu),
-                    )
-                )
-    return schema_list
+def get_st_schema_list_for_tbl(
+    t_attrs: List[str],
+    s_attrs: List[str],
+    t_unit: Unit,
+    s_unit: Unit,
+    st_types: List[SchemaType],
+):
+    st_schema_list = []
+    if SchemaType.TIME in st_types:
+        t_scale = t_unit.granu
+        for t in t_attrs:
+            st_schema_list.append(ST_Schema(t_unit=Unit(t, t_scale)))
+
+    if SchemaType.SPACE in st_types:
+        s_scale = s_unit.granu
+        for s in s_attrs:
+            st_schema_list.append(ST_Schema(s_unit=Unit(s, s_scale)))
+
+    if SchemaType.TS in st_types:
+        t_scale = t_unit.granu
+        s_scale = s_unit.granu
+        for t in t_attrs:
+            for s in s_attrs:
+                st_schema_list.append(ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
+    return st_schema_list
+
+
+# def get_st_schema_list_for_tbl(t_attrs, s_attrs, st_schema: ST_Schema):
+#     schema_list = []
+#     type = st_schema.get_type()
+#     if type == SchemaType.TIME:
+#         for t_attr in t_attrs:
+#             schema_list.append(ST_Schema(t_unit=Unit(t_attr, st_schema.t_unit.granu)))
+#     elif type == SchemaType.SPACE:
+#         for s_attr in s_attrs:
+#             schema_list.append(ST_Schema(s_unit=Unit(s_attr, st_schema.s_unit.granu)))
+#     else:
+#         for t_attr in t_attrs:
+#             for s_attr in s_attrs:
+#                 schema_list.append(
+#                     ST_Schema(
+#                         t_unit=Unit(t_attr, st_schema.t_unit.granu),
+#                         s_unit=Unit(s_attr, st_schema.s_unit.granu),
+#                     )
+#                 )
+#     return schema_list
 
 
 def new_st_schema_from_units(units: List[Unit]):

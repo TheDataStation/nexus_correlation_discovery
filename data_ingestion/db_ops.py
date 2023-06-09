@@ -1,6 +1,7 @@
 from typing import List
 from data_search.data_model import Unit, Variable, AggFunc, ST_Schema, SchemaType
 from psycopg2 import sql
+from psycopg2.extras import execute_batch
 import sys
 from io import StringIO
 import pandas as pd
@@ -46,6 +47,47 @@ def copy_from_dataFile_StringIO(cur, df, tbl_name):
     cur.copy_expert(copy_sql, buffer)
 
 
+def create_idx_tbl(cur, idx_tbl):
+    sql_str = """
+        CREATE TABLE IF NOT EXISTS {idx_tbl} (
+            val text UNIQUE,
+            st_schema_list _text
+        )
+    """
+    query = sql.SQL(sql_str).format(idx_tbl=sql.Identifier(idx_tbl))
+    cur.execute(query)
+
+
+def insert_to_idx_tbl(cur, idx_tbl, id, agg_tbl):
+    sql_str = """
+        INSERT INTO {idx_tbl} (val, st_schema_list)
+        SELECT val, ARRAY[%s] as st_schema_list FROM {agg_tbl}
+        ON CONFLICT (val) 
+        DO
+            UPDATE SET st_schema_list = array_cat({original}, EXCLUDED.st_schema_list)
+    """
+    query = sql.SQL(sql_str).format(
+        idx_tbl=sql.Identifier(idx_tbl),
+        agg_tbl=sql.Identifier(agg_tbl),
+        original=sql.Identifier(idx_tbl, "st_schema_list"),
+    )
+
+    # sql_str = """
+    #     INSERT INTO {idx_tbl} (val, st_schema_list)
+    #     VALUES(%s, %s)
+    #     ON CONFLICT (val)
+    #     DO
+    #         UPDATE SET st_schema_list = array_cat({original}, EXCLUDED.st_schema_list)
+    # """
+
+    # query = sql.SQL(sql_str).format(
+    #     idx_tbl=sql.Identifier(idx_tbl),
+    #     original=sql.Identifier(idx_tbl, "st_schema_list"),
+    # )
+
+    cur.execute(query, (id,))
+
+
 def create_agg_tbl(
     cur,
     tbl: str,
@@ -59,7 +101,7 @@ def create_agg_tbl(
 
     sql_str = """
         CREATE TABLE {agg_tbl} AS
-        SELECT {fields}, {agg_stmts} FROM {tbl} GROUP BY {fields}
+        SELECT CONCAT_WS(',', {fields}) as val, {agg_stmts} FROM {tbl} GROUP BY {fields}
         HAVING {not_null_stmts}
         """
 
@@ -90,9 +132,9 @@ def create_agg_tbl(
 
     cur.execute(query)
 
-    # create_indices_on_tbl(
-    #     cur, agg_tbl_name + "_idx", agg_tbl_name, col_names, IndexType.HASH
-    # )
+    create_indices_on_tbl(
+        cur, agg_tbl_name + "_idx", agg_tbl_name, ["val"], IndexType.HASH
+    )
 
     return agg_tbl_name
 
