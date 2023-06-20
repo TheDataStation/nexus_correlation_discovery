@@ -31,31 +31,35 @@ def load_data(path, vars):
     return data
 
 
-def grouped_bar_plot(categories, group_names, values, params):
+def grouped_bar_plot(ax, categories, group_names, values, params):
     # Set the bar width and spacing
     bar_width = 0.2
     space = 0
-
+    print(categories)
+    print(values)
     # Calculate the positions of the bars on the x-axis
     x = np.arange(len(group_names))
 
     # Plot the bars for each category and group
     for i, category in enumerate(categories):
         offset = (bar_width + space) * i
-        plt.bar(x + offset, values[i], width=bar_width, label=category)
+        ax.bar(x + offset, values[i], width=bar_width, label=category)
 
     # Set the x-axis ticks and labels
-    plt.xticks(x + ((bar_width + space) * len(categories) - space) / 2, group_names)
+    ax.set_xticks(
+        x + ((bar_width + space) * len(categories) - space) / len(categories),
+        group_names,
+    )
 
     # Add labels, title, and legend
     if "xlabel" in params:
-        plt.xlabel(params["xlabel"])
+        ax.xlabel(params["xlabel"])
     if "ylabel" in params:
-        plt.ylabel(params["ylabel"])
+        ax.set_ylabel(params["ylabel"])
     if "title" in params:
-        plt.title(params["title"])
-    plt.legend()
-    if "save_path" in params:
-        plt.savefig(params["save_path"])
+        ax.set_title(params["title"])
+    ax.legend()
+    # if "save_path" in params:
+    #     plt.savefig(params["save_path"])
     # Show the plot
-    plt.show()
+    # plt.show()

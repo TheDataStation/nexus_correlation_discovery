@@ -6,6 +6,7 @@ from tqdm import tqdm
 import psycopg2
 from psycopg2 import sql
 from sqlalchemy import create_engine
+import numpy as np
 
 """
 Collect the following stats for each aggregated table
@@ -41,6 +42,50 @@ class Profiler:
                 tbl, t_attrs, s_attrs, num_columns, self.t_scales, self.s_scales
             )
         io_utils.dump_json(self.config["col_stats_path"], self.stats_dict)
+
+    def load_all_st_schemas(self, t_scale, s_scale):
+        st_schema_list = []
+        all_tbls = list(self.tbl_attrs.keys())
+        for tbl in all_tbls:
+            t_attrs, s_attrs = (
+                self.tbl_attrs[tbl]["t_attrs"],
+                self.tbl_attrs[tbl]["s_attrs"],
+            )
+
+            for t in t_attrs:
+                st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t, t_scale))))
+
+            for s in s_attrs:
+                st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s, s_scale))))
+
+            for t in t_attrs:
+                for s in s_attrs:
+                    st_schema_list.append(
+                        (tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
+                    )
+        return st_schema_list
+
+    def count_avg_rows(self, t_scale, s_scale):
+        all_schemas = self.load_all_st_schemas(t_scale, s_scale)
+        total_cnt = 0
+        all_cnts = []
+        for schema in all_schemas:
+            row_cnt = self.get_row_cnt(schema[0], schema[1])
+            total_cnt += row_cnt
+            all_cnts.append(row_cnt)
+        print(f"num of all schemas: {len(all_schemas)}")
+        print(total_cnt / len(all_schemas))
+        print(f"median: {np.median(all_cnts)}")
+
+    def get_row_cnt(self, tbl: str, st_schema: ST_Schema):
+        sql_str = """
+         SELECT count(*) from {tbl};
+        """
+        query = sql.SQL(sql_str).format(
+            tbl=sql.Identifier(st_schema.get_agg_tbl_name(tbl))
+        )
+        self.cur.execute(query)
+        return self.cur.fetchall()[0][0]
 
     def profile_tbl(self, tbl, t_attrs, s_attrs, num_columns, t_scales, s_scales):
         st_schema_list = []

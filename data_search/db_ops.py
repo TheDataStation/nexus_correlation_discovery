@@ -29,29 +29,97 @@ def __get_intersection_inv_idx(cur, tbl, st_schema: ST_Schema, threshold):
         return result
 
 
-def get_intersection_inv_idx(cur, tbl, st_schema: ST_Schema, threshold):
+def get_inv_idx_cnt(cur, inv_idx_names):
+    res = {}
+    for inv_idx in inv_idx_names:
+        sql_str = """   
+            select val, array_length(st_schema_list, 1) from {inv_idx} 
+        """
+        query = sql.SQL(sql_str).format(inv_idx=inv_idx)
+        cur.execute(query)
+        query_res = cur.fetchall()
+        val_cnt = {}
+        for val, cnt in query_res:
+            val_cnt[val] = cnt
+        res[inv_idx] = val_cnt
+    return res
+
+
+def get_inv_cnt(cur, tbl, st_schema: ST_Schema, threshold: int):
+    agg_cnt_tbl = f"{st_schema.get_agg_tbl_name(tbl)}_cnt"
+
+    sql_str = """
+        SELECT count(cnt), sum(cnt) FROM {inv_cnt}
+    """
+
+    query = sql.SQL(sql_str).format(inv_cnt=sql.Identifier(agg_cnt_tbl))
+    cur.execute(query)
+    res = cur.fetchone()
+    total_lists, total_elements = res[0], res[1]
+    # res = [x[0] for x in cur.fetchall()]
+    # total_elements = sum(res)
+
+    max_joinable_tbls = (total_elements - total_lists) // threshold
+    print(f"max_joinable_tables: {max_joinable_tbls}")
+    # if threshold - 1 >= len(res):
+    #     max_joinable_tbls = res[-1]
+    # else:
+    #     max_joinable_tbls = res[threshold - 1]
+    return total_elements, max_joinable_tbls
+
+
+def get_val_cnt(cur, tbl, st_schema: ST_Schema):
+    sql_str = """
+        SELECT count(*) from {agg_tbl};
+    """
+    query = sql.SQL(sql_str).format(
+        agg_tbl=sql.Identifier(st_schema.get_agg_tbl_name(tbl))
+    )
+    cur.execute(query)
+    query_res = cur.fetchall()[0][0]
+    return query_res
+
+
+def get_intersection_inv_idx(
+    cur, tbl, st_schema: ST_Schema, threshold: int, sample_ratio: int = 0
+):
     inv_idx_name = "{}_inv".format(st_schema.get_idx_tbl_name())
     agg_tbl = st_schema.get_agg_tbl_name(tbl)
     # col_names = st_schema.get_col_names_with_granu()
     sql_str = """
-        SELECT "st_schema_list" FROM {inv_idx} WHERE "val" IN (SELECT "val" FROM {tbl})
+        SELECT "st_schema_list" FROM {inv_idx} inv JOIN {tbl} agg ON inv."val" = agg."val"
     """
+    if sample_ratio > 0:
+        sql_str = """
+            WITH sampled_table AS (
+                SELECT val
+                FROM {tbl} TABLESAMPLE BERNOULLI (%s)
+            )
+            SELECT "st_schema_list" FROM {inv_idx} inv where inv."val" in (SELECT "val" from sampled_table)
+        """
     query = sql.SQL(sql_str).format(
         inv_idx=sql.Identifier(inv_idx_name),
         # fields=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
         tbl=sql.Identifier(agg_tbl),
     )
-    cur.execute(query)
+    cur.execute(query, [sample_ratio])
     query_res = cur.fetchall()
     counter = Counter()
+    total_cnt = 0
+    # print(query_res)
     for pl in query_res:
         counter.update(pl[0])
+        total_cnt += len(pl[0])
     candidates = []
     for cand in counter:
         cnt = counter[cand]
         cand = tuple(cand.split(","))
         if cnt >= threshold and cand[0] != tbl:
             candidates.append((cand, cnt))
+
+    if sample_ratio > 0:
+        return candidates, total_cnt
+
     result = []
     for t in candidates:
         cand, overlap = t[0], t[1]

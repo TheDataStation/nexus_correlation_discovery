@@ -8,16 +8,22 @@ import time
 from utils.io_utils import dump_json
 import utils.io_utils as io_utils
 from tqdm import tqdm
+from data_search.commons import FIND_JOIN_METHOD
 
-# Start with a small dataset chicago_10k
-conn_str = "postgresql://yuegong@localhost/chicago_open_data_1m"
+
 data_source = "chicago_1m"
+config = io_utils.load_config(data_source)
+conn_str = config["db_path"]
 granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
-overlaps = [10, 100, 1000]
-st_schemas = io_utils.load_pickle(f"evaluation/input/{data_source}/100_st_schemas.json")
+overlaps = [100]
+st_schemas = io_utils.load_pickle(f"evaluation/input/{data_source}/200_st_schemas.json")
 
 for granu_list in granu_lists:
-    for join_method in ["FIND_JOIN", "JOIN_ALL"]:
+    for join_method in [
+        FIND_JOIN_METHOD.INDEX_SEARCH,
+        FIND_JOIN_METHOD.JOIN_ALL,
+        FIND_JOIN_METHOD.COST_MODEL,
+    ]:
         for o_t in overlaps:
             print(f"current join method: {join_method}; overlap threshold: {o_t}")
             corr_search = CorrSearch(
@@ -48,8 +54,8 @@ for granu_list in granu_lists:
             print("total time:", total_time)
             corr_search.perf_profile["total_time"] = total_time
             print(corr_search.perf_profile)
-
+            print(corr_search.inv_overhead)
             dump_json(
-                f"evaluation/run_time/{data_source}/perf_time_{granu_list[0]}_{granu_list[1]}_{join_method}_{o_t}.json",
+                f"evaluation/run_time/{data_source}/perf_time_{granu_list[0]}_{granu_list[1]}_{join_method.value}_{o_t}.json",
                 corr_search.perf_profile,
             )

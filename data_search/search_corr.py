@@ -6,6 +6,7 @@ from data_search.data_model import (
     Variable,
     AggFunc,
     ST_Schema,
+    SchemaType,
     get_st_schema_list_for_tbl,
 )
 from tqdm import tqdm
@@ -19,7 +20,7 @@ from dataclasses import dataclass
 from typing import List
 import data_search.db_ops as db_ops
 import math
-
+from data_search.commons import FIND_JOIN_METHOD
 
 agg_col_profiles = None
 
@@ -115,6 +116,9 @@ class Correlation:
         )
         # print("rval", self.r_val_impute_avg)
 
+    def load_inv_cnt_tbl(t_scale, s_scale):
+        pass
+
     def set_impute_zero_r(self, n, inner_prod):
         n = self.agg_col1.get_stats("cnt") + self.agg_col2.get_stats("cnt") - n
         sum1, sum2 = self.agg_col1.get_stats("sum"), self.agg_col2.get_stats("sum")
@@ -181,6 +185,7 @@ class CorrSearch:
         self.outer_join = explicit_outer_join
         self.correct_method = correct_method
         self.q_val = q_val
+        self.inv_overhead = 0
         self.perf_profile = {
             "num_joins": {"total": 0, "temporal": 0, "spatial": 0, "st": 0},
             "time_find_joins": {"total": 0, "temporal": 0, "spatial": 0, "st": 0},
@@ -190,6 +195,7 @@ class CorrSearch:
             "time_dump_csv": {"total": 0},
             "time_create_tmp_tables": {"total": 0},
             "corr_count": {"total": 0},
+            "strategy": {"find_join": 0, "join_all": 0, "skip": 0},
         }
 
     """
@@ -366,6 +372,68 @@ class CorrSearch:
             return df1, df2, df1_outer, df2_outer
         return df1, df2
 
+    def determine_find_join_method(
+        self, tbl, st_schema: ST_Schema, threshold, v_cnt: int
+    ):
+        # get find join overhead
+
+        row_to_read, max_joinable = db_ops.get_inv_cnt(
+            self.cur, tbl, st_schema, threshold
+        )
+
+        v_cnt = min(v_cnt, 587)
+        print("row_cnt", v_cnt)
+        find_join_cost = row_to_read + max_joinable * v_cnt
+        # get schema count for join all
+        aligned_schemas = []
+        aligned_tbls = set(self.all_tbls).difference(self.visited_tbls)
+        total_schema_num = 0
+        for tbl2 in aligned_tbls:
+            t_attrs, s_attrs = (
+                self.tbl_attrs[tbl2]["t_attrs"],
+                self.tbl_attrs[tbl2]["s_attrs"],
+            )
+
+            st_schema_list = get_st_schema_list_for_tbl(
+                t_attrs,
+                s_attrs,
+                st_schema.t_unit,
+                st_schema.s_unit,
+                [st_schema.get_type()],
+            )
+            aligned_schemas.extend(
+                [(tbl2, st_schema2) for st_schema2 in st_schema_list]
+            )
+        # print("num to join", len(aligned_schemas))
+        join_all_cost = len(aligned_schemas) * v_cnt
+        print(f"join all cost: {join_all_cost}; find join cost: {find_join_cost}")
+        if find_join_cost <= join_all_cost:
+            return "FIND_JOIN", None
+        elif row_to_read >= join_all_cost:
+            return "JOIN_ALL", aligned_schemas
+        else:
+            candidates, total_elements_sampled = db_ops.get_intersection_inv_idx(
+                self.cur, tbl, st_schema, threshold, 20
+            )
+
+            scale_factor = row_to_read // total_elements_sampled
+            joinable_estimate = 0
+            for _, cnt in candidates:
+                if cnt * scale_factor >= threshold:
+                    joinable_estimate += 1
+            print(f"joinable_estimate: {joinable_estimate}")
+            if row_to_read + joinable_estimate * v_cnt <= join_all_cost:
+                return "FIND_JOIN", None
+            else:
+                return "JOIN_ALL", aligned_schemas
+            # print(f"row_to_read: {row_to_read}")
+            # magnitude_num1 = math.floor(math.log10(abs(row_to_read)))
+            # magnitude_num2 = math.floor(math.log10(abs(join_all_cost)))
+            # if magnitude_num1 < magnitude_num2:
+            #     return "FIND_JOIN", None
+            # else:
+            #     return "JOIN_ALL", aligned_schemas
+
     def find_all_corr_for_a_tbl_schema(
         self, tbl1, st_schema: ST_Schema, o_t, r_t, p_t, fill_zero
     ):
@@ -375,11 +443,18 @@ class CorrSearch:
         """
         start = time.time()
         self.visited_tbls.add(tbl1)
-        if self.find_join_method == "FIND_JOIN":
+        v_cnt = db_ops.get_val_cnt(self.cur, tbl1, st_schema)
+        print("v_cnt", v_cnt)
+        if v_cnt < o_t:
+            print("skip because this table does not have enough keys")
+            self.perf_profile["strategy"]["skip"] += 1
+            return
+
+        if self.find_join_method == FIND_JOIN_METHOD.INDEX_SEARCH:
             aligned_schemas = self.db_search.find_augmentable_st_schemas(
                 tbl1, st_schema, o_t, mode="inv_idx"
             )
-        elif self.find_join_method == "JOIN_ALL":
+        elif self.find_join_method == FIND_JOIN_METHOD.JOIN_ALL:
             aligned_schemas = []
             aligned_tbls = set(self.all_tbls).difference(self.visited_tbls)
             for tbl2 in aligned_tbls:
@@ -397,6 +472,22 @@ class CorrSearch:
                 aligned_schemas.extend(
                     [(tbl2, st_schema2) for st_schema2 in st_schema_list]
                 )
+        elif self.find_join_method == FIND_JOIN_METHOD.COST_MODEL:
+            s = time.time()
+            method, schemas = self.determine_find_join_method(
+                tbl1, st_schema, o_t, v_cnt
+            )
+            self.inv_overhead += time.time() - s
+            print(f"choose {method}")
+            if method == "FIND_JOIN":
+                self.perf_profile["strategy"]["find_join"] += 1
+                aligned_schemas = self.db_search.find_augmentable_st_schemas(
+                    tbl1, st_schema, o_t, mode="inv_idx"
+                )
+            elif method == "JOIN_ALL":
+                self.perf_profile["strategy"]["join_all"] += 1
+                aligned_schemas = schemas
+
         time_used = time.time() - start
 
         self.perf_profile["time_find_joins"]["total"] += time_used

@@ -1,0 +1,100 @@
+import pandas as pd
+from collections import defaultdict
+import os
+import networkx as nx
+import pandas as pd
+import pickle
+from pyvis.network import Network
+from utils.io_utils import load_json, dump_json
+
+
+class Signal:
+    def __init__(self, name, d, step):
+        self.name = name
+        self.d = d
+        self.step = step
+
+
+def load_corr(path):
+    all_corr = None
+    for filename in os.listdir(path):
+        if filename.endswith(".csv"):
+            df = pd.read_csv(path + filename)
+            if all_corr is None:
+                all_corr = df
+            else:
+                all_corr = pd.concat([all_corr, df])
+    return all_corr
+
+
+def build_graph(corrs, threshold=0):
+    G = nx.Graph()
+    total_corr = 0
+
+    grouped = (
+        corrs.groupby(["tbl_id1", "tbl_id2"])
+        .size()
+        .to_frame(name="count")
+        .reset_index()
+    )
+    for _, row in grouped.iterrows():
+        count = int(row["count"])
+        total_corr += count
+        if count >= threshold:
+            G.add_edge(row["tbl_id1"], row["tbl_id2"], weight=count)
+
+    return G
+
+
+def filter_on_a_signal(corr, signal, t):
+    if "missing_ratio" in signal.name or "zero_ratio" in signal.name:
+        return corr[
+            (corr[signal.name + "1"].values <= t)
+            & (corr[signal.name + "2"].values <= t)
+        ]
+    else:
+        if signal.d == 1:
+            return corr[corr[signal.name].values >= t]
+        else:
+            return corr[corr[signal.name].values <= t]
+
+
+def filter_on_signals(corr, signals, ts):
+    return corr[
+        (corr["missing_ratio1"].values <= ts[0])
+        & (corr["zero_ratio1"].values <= ts[1])
+        & (corr["missing_ratio2"].values <= ts[0])
+        & (corr["zero_ratio2"].values <= ts[1])
+        & (corr["missing_ratio_o1"].values <= ts[2])
+        & (corr["zero_ratio_o1"].values <= ts[3])
+        & (corr["missing_ratio_o2"].values <= ts[2])
+        & (corr["zero_ratio_o2"].values <= ts[3])
+        & (corr["r_val"].values >= ts[4])
+        & (corr["samples"].values >= ts[5])
+    ]
+    # signal_t = zip(signals, thresholds)
+    # first = True
+    # for signal, t in signal_t:
+    #     if t == -1:
+    #         continue
+    #     if first:
+    #         df = filter_on_a_signal(corr, signal, t)
+    #         first = False
+    #     else:
+    #         df = filter_on_a_signal(df, signal, t)
+    # return df
+
+
+def get_cov_ratio(corr, n):
+    # n is the total number of tables in all correlations
+    tbl_num = pd.concat([corr["tbl_id1"], corr["tbl_id2"]]).nunique()
+    # print(tbl_num, n)
+    # print(tbl_num / n)
+    return tbl_num / n
+
+
+def get_mod_score(corr):
+    # get modularity score of a graph from a set of correlations
+    G = build_graph(corr, 0)
+    comps = nx.community.louvain_communities(G)
+    return nx.community.modularity(G, comps)

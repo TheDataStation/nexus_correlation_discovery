@@ -44,13 +44,21 @@ def test_ingest_tbl_e2e():
 
 def test_ingest_all_tables():
     start_time = time.time()
-    conn_string = "postgresql://yuegong@localhost/st_tables"
+
     t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
     # s_scales = [S_GRANU.COUNTY, S_GRANU.STATE]
     s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
     # ingestor = DBIngestor(conn_string, t_scales, s_scales)
+
+    data_source = "chicago_1m"
+    config = io_utils.load_config(data_source)
+    conn_string = config["db_path"]
+    idx_tbl_path = config["idx_tbl_path"]
+    idx_tbls = io_utils.load_json(idx_tbl_path)
     ingestor = DBIngestorAgg(conn_string, t_scales, s_scales)
-    ingestor.ingest_data_source("chicago_10k", clean=True, persist=True)
+    ingestor.create_cnt_tbls(data_source, [T_GRANU.DAY], [S_GRANU.BLOCK])
+    # ingestor.create_inv_cnt_tbls(idx_tbls)
+    # ingestor.ingest_data_source("chicago_10k", clean=True, persist=True)
 
     # idx_tables = []
     # for t_scale in t_scales:
@@ -100,7 +108,7 @@ def test_expand_table():
 
 
 # ingesting all tables in chicago open data 10k takes about 6.5 minutes
-test_ingest_tbl_e2e()
+test_ingest_all_tables()
 # print("ingestion finished in {} s".format(duration))
 # start = time.time()
 # test_ingest_tbl_e2e()

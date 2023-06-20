@@ -102,6 +102,41 @@ class DBIngestorAgg:
             )
             io_utils.dump_json(config["idx_tbl_path"], list(self.idx_tables))
 
+    def create_inv_cnt_tbls(self, idx_tbls):
+        db_ops.create_inv_idx_cnt_tbl(self.cur, idx_tbls)
+
+    def create_cnt_tbls(self, source, t_scales, s_scales):
+        config = io_utils.load_config(source)
+        self.data_path = config["data_path"]
+        attr_path = config["attr_path"]
+        tbl_attrs = io_utils.load_json(attr_path)
+        st_schema_list = []
+        all_tbls = list(tbl_attrs.keys())
+        for tbl in all_tbls:
+            t_attrs, s_attrs = (
+                tbl_attrs[tbl]["t_attrs"],
+                tbl_attrs[tbl]["s_attrs"],
+            )
+
+            for t in t_attrs:
+                for t_scale in t_scales:
+                    st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t, t_scale))))
+
+            for s in s_attrs:
+                for s_scale in s_scales:
+                    st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s, s_scale))))
+
+            for t in t_attrs:
+                for s in s_attrs:
+                    for t_scale in t_scales:
+                        for s_scale in s_scales:
+                            st_schema_list.append(
+                                (tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
+                            )
+
+        for schema in tqdm(st_schema_list):
+            db_ops.create_cnt_tbl_for_agg_tbl(self.cur, schema[0], schema[1])
+
     def ingest_tbl(self, tbl: Table):
         tbl_path = os.path.join(self.data_path, f"{tbl.tbl_id}.csv")
         df = io_utils.read_csv(tbl_path)

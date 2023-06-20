@@ -58,6 +58,24 @@ def create_idx_tbl(cur, idx_tbl):
     cur.execute(query)
 
 
+def create_cnt_tbl_for_agg_tbl(cur, tbl, st_schema: ST_Schema):
+    idx_cnt_name = "{}_inv_cnt".format(st_schema.get_idx_tbl_name())
+    agg_tbl = st_schema.get_agg_tbl_name(tbl)
+    cnt_tbl_name = f"{agg_tbl}_cnt"
+    del_tbl(cur, cnt_tbl_name)
+    sql_str = """
+            CREATE TABLE {cnt_tbl_name} AS
+            SELECT cnt FROM {inv_cnt} inv JOIN {tbl} agg on inv."val" = agg."val" order by cnt desc
+        """
+    query = sql.SQL(sql_str).format(
+        cnt_tbl_name=sql.Identifier(cnt_tbl_name),
+        inv_cnt=sql.Identifier(idx_cnt_name),
+        tbl=sql.Identifier(agg_tbl),
+    )
+
+    cur.execute(query)
+
+
 def insert_to_idx_tbl(cur, idx_tbl, id, agg_tbl):
     sql_str = """
         INSERT INTO {idx_tbl} (val, st_schema_list)
@@ -227,6 +245,23 @@ def create_indices_on_tbl(cur, idx_name, tbl, col_names, mode=IndexType.B_TREE):
         )
 
     cur.execute(query)
+
+
+def create_inv_idx_cnt_tbl(cur, idx_names):
+    for idx_name in idx_names:
+        tbl_name = f"{idx_name}_cnt"
+        print(idx_name, tbl_name)
+        del_tbl(cur, tbl_name)
+        sql_str = """
+             CREATE TABLE {tbl_name} AS
+             SELECT val, array_length(st_schema_list, 1) as cnt from {idx_name}
+        """
+        query = sql.SQL(sql_str).format(
+            tbl_name=sql.Identifier(tbl_name), idx_name=sql.Identifier(idx_name)
+        )
+        cur.execute(query)
+
+        create_indices_on_tbl(cur, tbl_name + "_i", tbl_name, ["val"], IndexType.HASH)
 
 
 def del_tbl(cur, tbl_name):

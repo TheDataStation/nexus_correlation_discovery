@@ -8,7 +8,7 @@ import psycopg2
 from utils.coordinate import S_GRANU
 from utils.time_point import T_GRANU
 from data_search.data_model import Unit, Variable, ST_Schema
-from data_search.db_ops import get_intersection_inv_idx
+from data_search.db_ops import get_intersection_inv_idx, get_inv_idx_cnt
 
 
 class DBSearch:
