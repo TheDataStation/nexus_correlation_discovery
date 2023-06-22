@@ -14,7 +14,10 @@ import time
 import networkx as nx
 from graph.threshold_search import Threshold_Search
 
-corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/cdc_10k/corr_T_GRANU.DAY_S_GRANU.STATE_fdr/"
+# corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/cdc_10k/corr_T_GRANU.DAY_S_GRANU.STATE_fdr/"
+corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/chicago_10k/corr_T_GRANU.DAY_S_GRANU.BLOCK_fdr/"
+# result_path = "/Users/yuegong/Documents/spatio_temporal_alignment/evaluation/graph_result/cdc/"
+result_path = "/Users/yuegong/Documents/spatio_temporal_alignment/evaluation/graph_result/chicago/"
 
 signal_names = [
     "missing_ratio",
@@ -32,14 +35,12 @@ for signal_name in signal_names:
     elif signal_name == "r_val":
         signals.append(Signal(signal_name, 1, 0.1))
     elif signal_name == "samples":
-        signals.append(Signal(signal_name, 1, 10))
+        signals.append(Signal(signal_name, 1, 100))
 
-searcher = Threshold_Search(corr_path, signal_names, signals, 0.7)
+searcher = Threshold_Search(corr_path, signal_names, signals, 0.5)
 start = time.time()
 
 searcher.search_for_thresholds()
-searcher.persist(
-    "/Users/yuegong/Documents/spatio_temporal_alignment/evaluation/graph_result/cdc"
-)
+searcher.persist(result_path)
 print(f"used {time.time() -start} s")
 print(f"found {searcher.count} valid thresholds")

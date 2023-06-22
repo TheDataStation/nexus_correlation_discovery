@@ -90,19 +90,6 @@ def insert_to_idx_tbl(cur, idx_tbl, id, agg_tbl):
         original=sql.Identifier(idx_tbl, "st_schema_list"),
     )
 
-    # sql_str = """
-    #     INSERT INTO {idx_tbl} (val, st_schema_list)
-    #     VALUES(%s, %s)
-    #     ON CONFLICT (val)
-    #     DO
-    #         UPDATE SET st_schema_list = array_cat({original}, EXCLUDED.st_schema_list)
-    # """
-
-    # query = sql.SQL(sql_str).format(
-    #     idx_tbl=sql.Identifier(idx_tbl),
-    #     original=sql.Identifier(idx_tbl, "st_schema_list"),
-    # )
-
     cur.execute(query, (id,))
 
 

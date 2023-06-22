@@ -27,8 +27,34 @@ When you set it to 0, we download all rows in a table, which could make your dow
 ## Ingest data and Build Discovery Index
 
 ### Create postgres database
-If you are not familiar with postgres, [this documentation](https://gist.github.com/phortuin/2fe698b6c741fd84357cec84219c6667) is extremely helpful for setting up postgresql on MacOS with apple M1.
 
+#### On Apple M1
+Follow [this documentation](https://gist.github.com/phortuin/2fe698b6c741fd84357cec84219c6667) to set up postgresql on MacOS with apple M1.
+
+#### On Ubuntu 20.04
+Install postgres
+```bash
+$ sudo apt update
+$ sudo apt install postgresql postgresql-contrib
+# start postgres service
+$ sudo systemctl start postgresql.service
+```
+
+Go to `/etc/postgresql/12/main/pg_hba.conf`, change all methods to `trust`
+
+Create a new role
+```bash
+# switch to postgres account
+$ sudo -i -u postgres
+# access the PostgreSQL prompt
+$ psql
+# begin to create a new user
+postgres-> CREATE ROLE myuser WITH LOGIN;
+postgres-> ALTER ROLE myuser CREATEDB;
+postgres-> \q
+```
+
+Create a new database with the new user
 ```bash
 $ psql postgres -U <username>
 postgres-> CREATE DATABASE <database_name>;
@@ -37,9 +63,4 @@ postgres-> GRANT ALL PRIVILEGES ON DATABASE <database_name> TO <username>;
 
 ```bash
 python test/test_ingest_to_db.py
-```
-
-## Profile datasets
-```bash
-
 ```

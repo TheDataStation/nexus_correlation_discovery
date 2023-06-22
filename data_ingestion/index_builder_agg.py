@@ -67,7 +67,7 @@ class DBIngestorAgg:
                 valid_num_columns.append(col)
         return valid_num_columns
 
-    def ingest_data_source(self, source, clean=False, persist=False):
+    def ingest_data_source(self, source, clean=False, persist=False, first=True):
         config = io_utils.load_config(source)
         self.data_path = config["data_path"]
         meta_path = config["meta_path"]
@@ -79,12 +79,19 @@ class DBIngestorAgg:
             self.clean_aggregated_idx_tbls()
 
         for obj in tqdm(meta_data):
+            t_attrs, s_attrs = obj["t_attrs"], obj["s_attrs"]
+            if first:
+                # when first is specified, only take the first t_attr and s_attr
+                if t_attrs:
+                    t_attrs = [t_attrs[0]]
+                if s_attrs:
+                    s_attrs = [s_attrs[0]]
             tbl = Table(
                 domain=obj["domain"],
                 tbl_id=obj["tbl_id"],
                 tbl_name=obj["tbl_name"],
-                t_attrs=obj["t_attrs"],
-                s_attrs=obj["s_attrs"],
+                t_attrs=t_attrs,
+                s_attrs=s_attrs,
                 num_columns=obj["num_columns"],
             )
             print(tbl.tbl_id)
@@ -93,6 +100,13 @@ class DBIngestorAgg:
         for idx_tbl in tqdm(self.idx_tables):
             db_ops.create_indices_on_tbl(
                 self.cur, f"{idx_tbl}_inv", idx_tbl, ["val"], mode=IndexType.HASH
+            )
+        # create a cnt table for every invereted index
+        self.create_inv_cnt_tbls(self.idx_tables)
+        # create a cnt table for each individual table
+        for tbl in tqdm(self.tbls):
+            self.create_cnt_tbl(
+                tbl.tbl_id, tbl.t_attrs, tbl.s_attrs, self.t_scales, self.s_scales
             )
 
         if persist:
@@ -105,35 +119,23 @@ class DBIngestorAgg:
     def create_inv_cnt_tbls(self, idx_tbls):
         db_ops.create_inv_idx_cnt_tbl(self.cur, idx_tbls)
 
-    def create_cnt_tbls(self, source, t_scales, s_scales):
-        config = io_utils.load_config(source)
-        self.data_path = config["data_path"]
-        attr_path = config["attr_path"]
-        tbl_attrs = io_utils.load_json(attr_path)
+    def create_cnt_tbl(self, tbl, t_attrs, s_attrs, t_scales, s_scales):
         st_schema_list = []
-        all_tbls = list(tbl_attrs.keys())
-        for tbl in all_tbls:
-            t_attrs, s_attrs = (
-                tbl_attrs[tbl]["t_attrs"],
-                tbl_attrs[tbl]["s_attrs"],
-            )
+        for t in t_attrs:
+            for t_scale in t_scales:
+                st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t, t_scale))))
 
-            for t in t_attrs:
-                for t_scale in t_scales:
-                    st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t, t_scale))))
+        for s in s_attrs:
+            for s_scale in s_scales:
+                st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s, s_scale))))
 
+        for t in t_attrs:
             for s in s_attrs:
-                for s_scale in s_scales:
-                    st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s, s_scale))))
-
-            for t in t_attrs:
-                for s in s_attrs:
-                    for t_scale in t_scales:
-                        for s_scale in s_scales:
-                            st_schema_list.append(
-                                (tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
-                            )
-
+                for t_scale in t_scales:
+                    for s_scale in s_scales:
+                        st_schema_list.append(
+                            (tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
+                        )
         for schema in tqdm(st_schema_list):
             db_ops.create_cnt_tbl_for_agg_tbl(self.cur, schema[0], schema[1])
 
@@ -214,6 +216,7 @@ class DBIngestorAgg:
             vars.append(Variable("*", AggFunc.COUNT, "count"))
 
             start = time.time()
+            # transform data and also create an index on the key val column
             agg_tbl_name = db_ops.create_agg_tbl(self.cur, tbl, st_schema, vars)
             print(f"finish aggregating table in {time.time()-start} s")
             # ingest spatio-temporal values to an index table
@@ -271,30 +274,7 @@ class DBIngestorAgg:
         # if this idx table has not been created yet, create it first
         if idx_tbl_name not in self.idx_tables:
             db_ops.create_idx_tbl(self.cur, idx_tbl_name)
-        # idx_col_names = ["val"]
-        # col_names = st_schema.get_col_names_with_granu()
-        # if len(col_names) >= 1:
-        #     df = db_ops.select_columns(self.cur, agg_tbl, col_names, concat=True)
-        # else:
-        #     df = db_ops.select_columns(self.cur, agg_tbl, col_names)
-        # df.columns = idx_col_names
-        # # df = df.astype(int)
-        # df["st_schema"] = st_schema.get_id(tbl)
-
-        # vals = db_ops.select_columns(self.cur, agg_tbl, ["val"], format="RAW")
-        # tuples = tuple([(val, [st_schema.get_id(tbl)]) for val in vals])
-
         db_ops.insert_to_idx_tbl(self.cur, idx_tbl_name, st_schema.get_id(tbl), agg_tbl)
-        # df["tbl_id"] = tbl
-        # if st_schema.type == SchemaType.TS:
-        #     df["t_attr"] = st_schema.t_unit.attr_name
-        #     df["s_attr"] = st_schema.s_unit.attr_name
-        # elif st_schema.type == SchemaType.TIME:
-        #     df["t_attr"] = st_schema.t_unit.attr_name
-        # else:
-        #     df["s_attr"] = st_schema.s_unit.attr_name
-
-        # self.ingest_df_to_db(df, idx_tbl_name, mode="append")
         self.idx_tables.add(idx_tbl_name)
 
     def clean_aggregated_idx_tbls(self):
@@ -315,71 +295,6 @@ class DBIngestorAgg:
                 db_ops.del_tbl(
                     self.cur,
                     "time_{}_space_{}_inv".format(t_granu.value, s_granu.value),
-                )
-
-    def create_index_on_agg_idx_table(self):
-        # for t_granu in self.t_scales:
-        #     idx_tbl = "time_{}".format(t_granu.value)
-        #     print("begin indexing", idx_tbl)
-        #     db_ops.create_indices_on_tbl(
-        #         self.cur,
-        #         idx_tbl + "_tbl_id",
-        #         idx_tbl,
-        #         ["tbl_id"],
-        #         db_ops.IndexType.HASH,
-        #     )
-        #     db_ops.create_indices_on_tbl(
-        #         self.cur, idx_tbl + "_t", idx_tbl, ["t_val"], db_ops.IndexType.HASH
-        #     )
-
-        # for s_granu in self.s_scales:
-        #     idx_tbl = "space_{}".format(s_granu.value)
-        #     print("begin indexing", idx_tbl)
-        #     db_ops.create_indices_on_tbl(
-        #         self.cur,
-        #         idx_tbl + "_tbl_id",
-        #         idx_tbl,
-        #         ["tbl_id"],
-        #         db_ops.IndexType.HASH,
-        #     )
-        #     db_ops.create_indices_on_tbl(
-        #         self.cur, idx_tbl + "_s", idx_tbl, ["s_val"], db_ops.IndexType.HASH
-        #     )
-
-        # for t_granu in self.t_scales:
-        #     for s_granu in self.s_scales:
-        #         print("begin indexing", idx_tbl)
-        #         db_ops.create_indices_on_tbl(
-        #             self.cur,
-        #             idx_tbl + "_tbl_id",
-        #             idx_tbl,
-        #             ["tbl_id"],
-        #             db_ops.IndexType.HASH,
-        #         )
-        #         db_ops.create_indices_on_tbl(
-        #             self.cur, idx_tbl + "_ts", idx_tbl, ["t_val", "s_val"]
-        #         )
-
-        for idx_tbl, idx_tbl_type in self.idx_tables:
-            print(idx_tbl)
-            db_ops.create_indices_on_tbl(
-                self.cur,
-                idx_tbl + "_tbl_id",
-                idx_tbl,
-                ["tbl_id"],
-                db_ops.IndexType.HASH,
-            )
-            if idx_tbl_type == SchemaType.TS:
-                db_ops.create_indices_on_tbl(
-                    self.cur, idx_tbl + "_ts", idx_tbl, ["t_val", "s_val"]
-                )
-            elif idx_tbl_type == SchemaType.TIME:
-                db_ops.create_indices_on_tbl(
-                    self.cur, idx_tbl + "_t", idx_tbl, ["t_val"], db_ops.IndexType.HASH
-                )
-            else:
-                db_ops.create_indices_on_tbl(
-                    self.cur, idx_tbl + "_s", idx_tbl, ["s_val"], db_ops.IndexType.HASH
                 )
 
     def expand_df(self, df, t_attrs, s_attrs):
@@ -451,3 +366,14 @@ class DBIngestorAgg:
             if tbl_name not in self.created_tbls:
                 self.create_tbl(tbl_name, df)
             db_ops.copy_from_dataFile_StringIO(self.cur, df, tbl_name)
+
+
+if __name__ == "__main__":
+    start_time = time.time()
+    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
+    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
+    data_source = "chicago_10k"
+    config = io_utils.load_config(data_source)
+    conn_string = config["db_path"]
+    ingestor = DBIngestorAgg(conn_string, t_scales, s_scales)
+    ingestor.ingest_data_source(data_source, clean=True, persist=True, first=True)

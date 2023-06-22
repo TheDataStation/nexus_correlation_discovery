@@ -2,9 +2,12 @@ from graph.graph_utils import (
     Signal,
     load_corr,
     filter_on_a_signal,
+    build_graph,
     filter_on_signals,
     get_cov_ratio,
     get_mod_score,
+    get_average_clustering,
+    filter_on_graph_edge_weight,
 )
 import numpy as np
 
@@ -30,9 +33,11 @@ class Threshold_Search:
         # print(self.n)
         self.cov_t = cov_t
         self.count = 0
-        self.initial_mod = get_mod_score(self.corr)
+        # self.initial_mod = get_mod_score(self.corr)
         self.max_mod = 0
         self.max_thresholds = None
+        self.max_clustering = 0
+        self.max_thresholds_cluster = None
         # persist all thresholds whose modularity score is larger than the original graph
         self.valid_threholds = {}  # tuple of thresholds -> modularity score
         self.perf_profile = {}
@@ -57,7 +62,7 @@ class Threshold_Search:
             if signal.d == -1:
                 t_range = t_range[::-1]
             signal_ranges[signal] = t_range
-
+        print(signal_ranges)
         # keep thresholds that achieve the coverage ratio
         valid_ranges = {}
         for s, t_range in signal_ranges.items():
@@ -66,8 +71,11 @@ class Threshold_Search:
                 corr_filtered = filter_on_a_signal(self.corr, s, t)
                 if get_cov_ratio(corr_filtered, self.n) < self.cov_t:
                     break
-                if round(get_mod_score(corr_filtered), 3) <= round(self.initial_mod, 3):
-                    continue
+                # print(
+                #     round(get_mod_score(corr_filtered), 3), round(self.initial_mod, 3)
+                # )
+                # if round(get_mod_score(corr_filtered), 3) <= round(self.initial_mod, 3):
+                #     continue
                 # print(f"mod score: {get_mod_score(corr_filtered)}")
                 # print(f"thresholds: {s.name}, {t}")
                 valid_t.append(t)
@@ -104,17 +112,25 @@ class Threshold_Search:
                     return i == 0
                 else:
                     start = time.time()
-                    mod_score = get_mod_score(corr_filtered)
+                    G = build_graph(corr_filtered, 0)
+                    mod_score = get_mod_score(G)
+                    clustering_score = get_average_clustering(G)
                     # print(f"calulate mod score took {time.time() - start}")
-                    if mod_score > self.max_mod:
-                        self.max_mod = mod_score
-                        print(f"max mod score is {self.max_mod}")
+                    # if mod_score > self.max_mod:
+                    #     self.max_mod = mod_score
+                    #     print(f"max mod score is {self.max_mod}")
+                    #     print(f"thresholds: {result}")
+                    #     self.max_thresholds = deepcopy(result)
+                    if clustering_score > self.max_clustering:
+                        self.max_clustering = clustering_score
+                        print(f"max clustering score is {self.max_clustering}")
                         print(f"thresholds: {result}")
-                        self.max_thresholds = deepcopy(result)
-                    if mod_score > self.initial_mod:
-                        self.valid_threholds[
-                            ",".join([str(round(i, 3)) for i in result])
-                        ] = mod_score
+                        self.max_thresholds_cluster = deepcopy(result)
+                    # if mod_score > self.initial_mod:
+                    #     self.valid_threholds[
+                    #         ",".join([str(round(i, 3)) for i in result])
+                    #     ] = mod_score
+
             if self.enumerate_combinations(lists, result, idx + 1):
                 result[idx] = -1
                 return i == 0
@@ -144,8 +160,8 @@ class Threshold_Search:
 
 
 if __name__ == "__main__":
-    corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/cdc_10k/corr_T_GRANU.DAY_S_GRANU.STATE_fdr/"
-
+    # corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/cdc_10k/corr_T_GRANU.DAY_S_GRANU.STATE_fdr/"
+    corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/chicago_10k/corr_T_GRANU.DAY_S_GRANU.BLOCK_fdr/"
     signal_names = [
         "missing_ratio",
         "zero_ratio",
@@ -164,7 +180,25 @@ if __name__ == "__main__":
         elif signal_name == "samples":
             signals.append(Signal(signal_name, 1, 10))
 
-    searcher = Threshold_Search(corr_path, signal_names, signals, 0.7)
+    searcher = Threshold_Search(corr_path, signal_names, signals, 0.2)
+    # max_score = 0
+    # max_threshold = 0
+    # G = build_graph(searcher.corr)
+    # print(G)
+    # for t in range(0, 500, 20):
+    #     print(t)
+    #     new_G = filter_on_graph_edge_weight(G, t)
+    #     print(new_G.number_of_nodes() / searcher.n)
+    #     if new_G.number_of_nodes() / searcher.n < searcher.cov_t:
+    #         break
+    #     comps = nx.community.louvain_communities(G)
+    #     score = nx.community.modularity(G, comps)
+    #     if score > max_score:
+    #         max_score = score
+    #         max_threshold = t
+    #         print(f"max score: {max_score}")
+    #         print(f"max threshold: {max_threshold}")
+
     start = time.time()
     # ranges = searcher.determine_signal_ranges()
     # for signal, range in ranges.items():
