@@ -74,7 +74,8 @@ class DBIngestorAgg:
         valid_attrs = []
         for attr in attrs:
             if any(
-                keyword in attr for keyword in ["update", "modified", "_end", "end_"]
+                keyword in attr
+                for keyword in ["update", "modified", "_end", "end_", "status"]
             ):
                 continue
             valid_attrs.append(attr)
@@ -412,4 +413,4 @@ if __name__ == "__main__":
     #     num_columns=[],
     # )
     # ingestor.ingest_tbl(tbl)
-    ingestor.ingest_data_source(clean=True, persist=True, first=True)
+    ingestor.ingest_data_source(clean=True, persist=True)
