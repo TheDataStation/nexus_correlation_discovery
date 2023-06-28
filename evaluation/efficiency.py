@@ -15,7 +15,7 @@ data_source = "chicago_1m"
 config = io_utils.load_config(data_source)
 conn_str = config["db_path"]
 granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
-overlaps = [100]
+overlaps = [1000]
 st_schemas = io_utils.load_pickle(f"evaluation/input/{data_source}/200_st_schemas.json")
 
 for granu_list in granu_lists:

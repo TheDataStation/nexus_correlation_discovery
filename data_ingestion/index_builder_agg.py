@@ -1,5 +1,4 @@
 import pandas as pd
-from config import DATA_PATH
 import utils.coordinate as coordinate
 from utils.time_point import set_temporal_granu, parse_datetime, T_GRANU
 from utils.profile_utils import is_num_column_valid
@@ -41,7 +40,7 @@ Here are the procedure to ingest a spatial-temporal table
 
 
 class DBIngestorAgg:
-    def __init__(self, conn_string: str, t_scales, s_scales) -> None:
+    def __init__(self, conn_string: str, source, t_scales, s_scales) -> None:
         db = create_engine(conn_string)
         self.conn = db.connect()
         conn_copg2 = psycopg2.connect(conn_string)
@@ -58,6 +57,10 @@ class DBIngestorAgg:
         self.t_scales = t_scales
         self.s_scales = s_scales
 
+        self.config = io_utils.load_config(source)
+        self.data_path = config["data_path"]
+        self.shape_path = config["shape_path"]
+
     def get_numerical_columns(self, all_columns, tbl: Table):
         numerical_columns = list(set(all_columns) & set(tbl.num_columns))
         valid_num_columns = []
@@ -67,19 +70,31 @@ class DBIngestorAgg:
                 valid_num_columns.append(col)
         return valid_num_columns
 
-    def ingest_data_source(self, source, clean=False, persist=False, first=True):
-        config = io_utils.load_config(source)
-        self.data_path = config["data_path"]
-        meta_path = config["meta_path"]
-        geo_chain = config["geo_chain"]
-        geo_keys = config["geo_keys"]
+    def select_valid_attrs(self, attrs):
+        valid_attrs = []
+        for attr in attrs:
+            if any(
+                keyword in attr for keyword in ["update", "modified", "_end", "end_"]
+            ):
+                continue
+            valid_attrs.append(attr)
+        return valid_attrs
+
+    def ingest_data_source(self, clean=False, persist=False, first=False):
+        meta_path = self.config["meta_path"]
+        geo_chain = self.config["geo_chain"]
+        geo_keys = self.config["geo_keys"]
         coordinate.resolve_geo_chain(geo_chain, geo_keys)
         meta_data = io_utils.load_json(meta_path)
         if clean:
             self.clean_aggregated_idx_tbls()
 
         for obj in tqdm(meta_data):
-            t_attrs, s_attrs = obj["t_attrs"], obj["s_attrs"]
+            t_attrs, s_attrs = self.select_valid_attrs(
+                obj["t_attrs"]
+            ), self.select_valid_attrs(obj["s_attrs"])
+            if len(t_attrs) == 0 and len(s_attrs) == 0:
+                continue
             if first:
                 # when first is specified, only take the first t_attr and s_attr
                 if t_attrs:
@@ -104,9 +119,13 @@ class DBIngestorAgg:
         # create a cnt table for every invereted index
         self.create_inv_cnt_tbls(self.idx_tables)
         # create a cnt table for each individual table
-        for tbl in tqdm(self.tbls):
+        for tbl_id, info in self.tbls.items():
             self.create_cnt_tbl(
-                tbl.tbl_id, tbl.t_attrs, tbl.s_attrs, self.t_scales, self.s_scales
+                tbl_id,
+                info["t_attrs"],
+                info["s_attrs"],
+                self.t_scales,
+                self.s_scales,
             )
 
         if persist:
@@ -136,7 +155,7 @@ class DBIngestorAgg:
                         st_schema_list.append(
                             (tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
                         )
-        for schema in tqdm(st_schema_list):
+        for schema in st_schema_list:
             db_ops.create_cnt_tbl_for_agg_tbl(self.cur, schema[0], schema[1])
 
     def ingest_tbl(self, tbl: Table):
@@ -155,6 +174,7 @@ class DBIngestorAgg:
         df, df_schema, t_attrs_success, s_attrs_success = self.expand_df(
             df, tbl.t_attrs, tbl.s_attrs
         )
+
         print("expanding table used {} s".format(time.time() - start))
         # if dataframe is None, return
         if df is None:
@@ -169,6 +189,7 @@ class DBIngestorAgg:
         print("begin ingesting")
         start = time.time()
         # ingest dataframe to database
+        # df = df.replace({np.NaN: None})  # substitue NaT to None to avoid psycopg error
         self.ingest_df_to_db(df, tbl.tbl_id, mode="replace")
         print("ingesting table used {} s".format(time.time() - start))
 
@@ -213,7 +234,10 @@ class DBIngestorAgg:
             vars = []
             for agg_col in num_columns:
                 vars.append(Variable(agg_col, AggFunc.AVG, "avg_{}".format(agg_col)))
-            vars.append(Variable("*", AggFunc.COUNT, "count"))
+            # add count function if and only if there is no numeric columns, which means
+            # the table is about some event.
+            if len(num_columns) == 0:
+                vars.append(Variable("*", AggFunc.COUNT, "count"))
 
             start = time.time()
             # transform data and also create an index on the key val column
@@ -303,12 +327,11 @@ class DBIngestorAgg:
         df_schema = {}
         for t_attr in t_attrs:
             # parse datetime column to datetime class
-            df[t_attr] = pd.to_datetime(
-                df[t_attr], infer_datetime_format=True, utc=True, errors="coerce"
-            ).dropna()
+            df[t_attr] = pd.to_datetime(df[t_attr], utc=False, errors="coerce").replace(
+                {np.NaN: None}
+            )
             df_dts = df[t_attr].apply(parse_datetime).dropna()
             # df_dts = np.vectorize(parse_datetime)(df[t_attr])
-
             if len(df_dts):
                 for t_granu in self.t_scales:
                     new_attr = "{}_{}".format(t_attr, t_granu.value)
@@ -331,7 +354,7 @@ class DBIngestorAgg:
                 .set_crs(epsg=4326, inplace=True)
             )
 
-            df_resolved = resolve_spatial_hierarchy(gdf)
+            df_resolved = resolve_spatial_hierarchy(self.shape_path, gdf)
 
             # df_resolved can be none meaning there is no point falling into the shape file
             if df_resolved is None:
@@ -375,5 +398,18 @@ if __name__ == "__main__":
     data_source = "chicago_10k"
     config = io_utils.load_config(data_source)
     conn_string = config["db_path"]
-    ingestor = DBIngestorAgg(conn_string, t_scales, s_scales)
-    ingestor.ingest_data_source(data_source, clean=True, persist=True, first=True)
+    ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
+    # tbl = Table(
+    #     domain="",
+    #     tbl_id="qqqh-hgyw",
+    #     tbl_name="",
+    #     t_attrs=[
+    #         "lse_report_reviewed_on_date",
+    #         # "scheduled_inspection_date",
+    #         # "rescheduled_inspection_date",
+    #     ],
+    #     s_attrs=[],
+    #     num_columns=[],
+    # )
+    # ingestor.ingest_tbl(tbl)
+    ingestor.ingest_data_source(clean=True, persist=True, first=True)

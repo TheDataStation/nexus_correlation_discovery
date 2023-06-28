@@ -6,7 +6,6 @@ from enum import Enum
 from shapely.geometry import Point
 import geopandas as gpd
 from typing import List
-from config import SHAPE_PATH
 
 
 class S_GRANU(Enum):
@@ -155,12 +154,12 @@ def resolve_resolution_hierarchy(points, s_attr, shape_path: str):
         return None
 
 
-def resolve_spatial_hierarchy(points):
+def resolve_spatial_hierarchy(shape_path, points):
     """
     shape file can contain duplicate shapes, i.e.
     geometry number is different but all the other attributes are identical
     """
-    shapes = gpd.read_file(SHAPE_PATH).to_crs(epsg=4326)
+    shapes = gpd.read_file(shape_path).to_crs(epsg=4326)
     df = gpd.sjoin(points, shapes, predicate="within")
 
     if len(df):

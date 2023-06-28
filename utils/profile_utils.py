@@ -1,6 +1,7 @@
 def is_num_column_valid(col_name):
     stop_words_contain = [
         "id",
+        "primary_key",
         "longitude",
         "latitude",
         "ward",

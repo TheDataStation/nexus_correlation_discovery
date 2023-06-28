@@ -1,4 +1,3 @@
-from config import ATTR_PATH
 import utils.io_utils as io_utils
 import pandas as pd
 from typing import List
@@ -18,12 +17,12 @@ class DBSearch:
         conn = psycopg2.connect(conn_string)
         conn.autocommit = True
         self.cur = conn.cursor()
-        self.load_meta_data()
-        self.tbl_list = list(self.tbl_attrs.keys())
+        # self.load_meta_data()
+        # self.tbl_list = list(self.tbl_attrs.keys())
 
     def load_meta_data(self):
         self.tbl_lookup = {}
-        self.tbl_attrs = io_utils.load_json(ATTR_PATH)
+        # self.tbl_attrs = io_utils.load_json(ATTR_PATH)
 
         for tbl_id, info in self.tbl_attrs.items():
             tbl_name, t_attrs, s_attrs = (

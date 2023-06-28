@@ -6,6 +6,7 @@ import pandas as pd
 import pickle
 from pyvis.network import Network
 from utils.io_utils import load_json, dump_json
+import time
 
 
 class Signal:
@@ -59,19 +60,22 @@ def build_graph_with_labels(corrs, threshold=0, weighted=False):
 def build_graph(corrs, threshold=0):
     G = nx.Graph()
     total_corr = 0
-
+    start = time.time()
     grouped = (
         corrs.groupby(["tbl_id1", "tbl_id2"])
         .size()
-        .to_frame(name="count")
+        .to_frame(name="weight")
         .reset_index()
     )
-    for _, row in grouped.iterrows():
-        count = int(row["count"])
-        total_corr += count
-        if count >= threshold:
-            G.add_edge(row["tbl_id1"], row["tbl_id2"], weight=count)
-
+    # print(f"grouping takes {time.time()-start} s")
+    start = time.time()
+    # for _, row in grouped.iterrows():
+    #     count = int(row["count"])
+    #     total_corr += count
+    #     if count >= threshold:
+    #         G.add_edge(row["tbl_id1"], row["tbl_id2"], weight=count)
+    G = nx.from_pandas_edgelist(grouped, "tbl_id1", "tbl_id2", ["weight"])
+    # print(f"build_graph takes {time.time()-start} s")
     return G
 
 
@@ -108,7 +112,7 @@ def filter_on_signals(corr, signals, ts):
         & (corr["zero_ratio_o1"].values <= ts[3])
         & (corr["missing_ratio_o2"].values <= ts[2])
         & (corr["zero_ratio_o2"].values <= ts[3])
-        & (corr["r_val"].values >= ts[4])
+        & (abs(corr["r_val"]).values >= ts[4])
         & (corr["samples"].values >= ts[5])
     ]
     # signal_t = zip(signals, thresholds)

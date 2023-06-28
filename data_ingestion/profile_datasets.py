@@ -1,5 +1,4 @@
 from utils import io_utils
-from config import ATTR_PATH, DATA_PATH
 from data_search.data_model import get_st_schema_list_for_tbl, ST_Schema, Unit, Variable
 import pandas as pd
 from tqdm import tqdm
@@ -65,14 +64,15 @@ class Profiler:
                     )
         return st_schema_list
 
-    def count_avg_rows(self, t_scale, s_scale):
+    def count_avg_rows(self, t_scale, s_scale, threshold=0):
         all_schemas = self.load_all_st_schemas(t_scale, s_scale)
         total_cnt = 0
         all_cnts = []
         for schema in all_schemas:
             row_cnt = self.get_row_cnt(schema[0], schema[1])
-            total_cnt += row_cnt
-            all_cnts.append(row_cnt)
+            if row_cnt >= threshold:
+                total_cnt += row_cnt
+                all_cnts.append(row_cnt)
         print(f"num of all schemas: {len(all_schemas)}")
         print(total_cnt / len(all_schemas))
         print(f"median: {np.median(all_cnts)}")

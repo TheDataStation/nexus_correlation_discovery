@@ -1,8 +1,6 @@
 from utils import io_utils
 
-data_source_metadata = (
-    "/Users/yuegong/Documents/spatio_temporal_alignment/data/tbl_attrs_chicago_1m.json"
-)
+data_source_metadata = "/Users/yuegong/Documents/spatio_temporal_alignment/resource/chicago_10k/tbl_attrs_chicago_10k.json"
 
 total_st_schemas = 0
 total_cols = 0
