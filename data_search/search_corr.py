@@ -21,6 +21,8 @@ from typing import List
 import data_search.db_ops as db_ops
 import math
 from data_search.commons import FIND_JOIN_METHOD
+from utils.coordinate import S_GRANU
+from utils.time_point import T_GRANU
 
 agg_col_profiles = None
 
@@ -318,10 +320,12 @@ class CorrSearch:
         vars2 = []
         for agg_col in tbl1_agg_cols:
             vars1.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t1".format(agg_col)))
-        vars1.append(Variable("*", AggFunc.COUNT, "count_t1"))
+        if len(tbl1_agg_cols) == 0:
+            vars1.append(Variable("*", AggFunc.COUNT, "count_t1"))
         for agg_col in tbl2_agg_cols:
             vars2.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t2".format(agg_col)))
-        vars2.append(Variable("*", AggFunc.COUNT, "count_t2"))
+        if len(tbl2_agg_cols) == 0:
+            vars2.append(Variable("*", AggFunc.COUNT, "count_t2"))
 
         # column names in postgres are at most 63-character long
         names1 = [var.var_name[:63] for var in vars1]
@@ -380,8 +384,8 @@ class CorrSearch:
         row_to_read, max_joinable = db_ops.get_inv_cnt(
             self.cur, tbl, st_schema, threshold
         )
-
-        v_cnt = min(v_cnt, 587)
+        median = 6447
+        v_cnt = min(v_cnt, median)
         print("row_cnt", v_cnt)
         find_join_cost = row_to_read + max_joinable * v_cnt
         # get schema count for join all
@@ -585,7 +589,7 @@ class CorrSearch:
             if largest_i >= 0:
                 # print("largest i", largest_i)
                 for corr in corr_group[0 : largest_i + 1]:
-                    if corr.r_val >= r_t:
+                    if abs(corr.r_val) >= r_t:
                         corr.agg_col1.set_profile(
                             corr.agg_col1.col_data,
                             self.column_profiles[corr.agg_col1.tbl_id],
@@ -785,3 +789,32 @@ class CorrSearch:
                         )
                     )
         return res
+
+
+if __name__ == "__main__":
+    granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
+    conn_str = "postgresql://yuegong@localhost/st_tables"
+    data_source = "chicago_10k"
+    config = io_utils.load_config(data_source)
+    for granu_list in granu_lists:
+        dir_path = "result/chicago_10k/day_block/"
+        corr_search = CorrSearch(
+            conn_str,
+            data_source,
+            FIND_JOIN_METHOD.INDEX_SEARCH,
+            "AGG",
+            "MATRIX",
+            ["impute_avg", "impute_zero"],
+            False,
+            "FDR",
+            0.05,
+        )
+        start = time.time()
+        corr_search.find_all_corr_for_all_tbls(
+            granu_list, o_t=10, r_t=0.6, p_t=0.05, fill_zero=True, dir_path=dir_path
+        )
+
+        total_time = time.time() - start
+        print("total time:", total_time)
+        corr_search.perf_profile["total_time"] = total_time
+        print(corr_search.perf_profile)

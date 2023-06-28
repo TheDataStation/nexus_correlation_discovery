@@ -4,12 +4,12 @@ from utils.time_point import T_GRANU
 import pandas as pd
 from data_search.search_corr import CorrSearch
 from data_search.search_db import DBSearch
-from utils.io_utils import dump_json
+from utils.io_utils import dump_json, load_config
 from data_search.data_model import Unit, Variable, AggFunc
 import pandas as pd
 import os
 import utils
-from config import ATTR_PATH
+from data_search.commons import FIND_JOIN_METHOD
 from collections import defaultdict
 
 db_search = DBSearch("postgresql://yuegong@localhost/st_tables")
@@ -75,17 +75,26 @@ def test_find_corr_for_all_tbl():
     granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
     conn_str = "postgresql://yuegong@localhost/st_tables"
     data_source = "chicago_10k"
+    config = load_config(data_source)
     for granu_list in granu_lists:
         # dir_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/cdc/corr_{}_{}_all_join/".format(
         #     granu_list[0], granu_list[1]
         # )
-        dir_path = None
+        dir_path = config["corr_storage_path"]
         corr_search = CorrSearch(
-            conn_str, data_source, "FIND_JOIN", "AGG", "MATRIX", "FDR", 0.05
+            conn_str,
+            data_source,
+            FIND_JOIN_METHOD.INDEX_SEARCH,
+            "AGG",
+            "MATRIX",
+            ["impute_avg", "impute_zero"],
+            False,
+            "FDR",
+            0.05,
         )
         start = time.time()
         corr_search.find_all_corr_for_all_tbls(
-            granu_list, o_t=4, r_t=0.6, p_t=0.05, fill_zero=True, dir_path=None
+            granu_list, o_t=4, r_t=0.6, p_t=0.05, fill_zero=True, dir_path=dir_path
         )
 
         total_time = time.time() - start
@@ -143,6 +152,7 @@ def test_count_rows():
 
 
 # test_count_rows()
-test_find_corr_for_a_single_tbl()
+# test_find_corr_for_a_single_tbl()
 # test_count_corr_between_two_tbls()
 # # test_find_corr_for_a_tbl_schema()
+test_find_corr_for_all_tbl()

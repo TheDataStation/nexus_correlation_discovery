@@ -1,7 +1,6 @@
 from sodapy import Socrata
 import utils.io_utils as io_utils
 from os import path
-from config import ROOT_DIR, APP_TOKEN
 from typing import List
 from data_prep.prep_utils import is_num_column_valid
 
@@ -57,7 +56,7 @@ class STTableDetector:
             print("domain name: {}".format(domain))
             client = Socrata(domain, self.app_token)
             data = client.datasets(only=["dataset"])
-
+            print(len(data))
             for obj in data:
                 resource = obj["resource"]
                 tbl_name = resource["name"]
@@ -95,11 +94,14 @@ class STTableDetector:
 
 if __name__ == "__main__":
     # output_path = path.join(ROOT_DIR, "data/cdc_open_data.json")
-    output_path = path.join(ROOT_DIR, "data/chicago_open_data.json")
+    config = io_utils.load_config("data_prep")
+    root_dir, app_token = config["root_dir"], config["app_token"]
+    output_path = "data/world_bank.json"
+    print(output_path)
     # domain = ["data.cdc.gov"]
-    domain = ["data.cityofchicago.org"]
+    domain = ["datacatalog.worldbank.org"]
     # print(output_path)
 
-    st_table_detector = STTableDetector(domain, APP_TOKEN)
+    st_table_detector = STTableDetector(domain, app_token)
     st_table_detector.detect()
     st_table_detector.serialize(output_path)

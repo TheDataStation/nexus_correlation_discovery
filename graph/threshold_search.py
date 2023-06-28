@@ -22,22 +22,31 @@ from utils.io_utils import dump_json
 import os
 from copy import deepcopy
 
+from enum import Enum
+
+
+class Score(Enum):
+    MODULARITY = "mod"
+    CLUSTER = "cluster"
+
 
 class Threshold_Search:
-    def __init__(self, path, names, signals, cov_t) -> None:
+    def __init__(self, path, names, signals, cov_t, metric: Score) -> None:
         self.corr = load_corr(path)
         print("finished loading correlation, begin to search for thresholds")
         self.signals = signals
         self.signal_names = names
         self.n = pd.concat([self.corr["tbl_id1"], self.corr["tbl_id2"]]).nunique()
-        # print(self.n)
+        self.metric = metric
+
         self.cov_t = cov_t
         self.count = 0
         # self.initial_mod = get_mod_score(self.corr)
         self.max_mod = 0
-        self.max_thresholds = None
         self.max_clustering = 0
-        self.max_thresholds_cluster = None
+        self.max_cov = 0
+        self.max_thresholds = set()  # skyline points
+        self.metrics_thresholds = {}
         # persist all thresholds whose modularity score is larger than the original graph
         self.valid_threholds = {}  # tuple of thresholds -> modularity score
         self.perf_profile = {}
@@ -47,15 +56,19 @@ class Threshold_Search:
 
     def determine_signal_ranges(self):
         signal_ranges = {}
-
         for signal in self.signals:
             if "missing_ratio" in signal.name or "zero_ratio" in signal.name:
                 min_v, max_v = 0, 1
+            elif "r_val" in signal.name:
+                min_v = abs(self.corr[signal.name]).min()
+                max_v = abs(self.corr[signal.name]).max()
             else:
                 min_v, max_v = (
                     self.corr[signal.name].min(),
                     self.corr[signal.name].max(),
                 )
+            print(signal.name, signal.step)
+            print(np.arange(min_v, max_v, signal.step))
             t_range = np.arange(min_v, max_v, signal.step)
             if not np.any(t_range == max_v):
                 t_range = np.append(t_range, max_v)
@@ -69,7 +82,9 @@ class Threshold_Search:
             valid_t = []
             for t in t_range:
                 corr_filtered = filter_on_a_signal(self.corr, s, t)
-                if get_cov_ratio(corr_filtered, self.n) < self.cov_t:
+                cov_ratio = get_cov_ratio(corr_filtered, self.n)
+                print(f"signal name: {s.name}, threshold: {t}, cov_ratio: {cov_ratio}")
+                if cov_ratio < self.cov_t:
                     break
                 # print(
                 #     round(get_mod_score(corr_filtered), 3), round(self.initial_mod, 3)
@@ -99,6 +114,8 @@ class Threshold_Search:
         # Base case: If we have a complete combination
         if idx == len(lists):
             self.count += 1
+            if self.count % 1000 == 0:
+                print(f"progress: {self.count}")
             return False
 
         # Recursive case: Iterate over the remaining elements of the current list
@@ -106,26 +123,35 @@ class Threshold_Search:
         for i, item in enumerate(lists[idx]):
             result[idx] = item
             if idx == len(lists) - 1:
+                start = time.time()
                 corr_filtered = filter_on_signals(self.corr, self.signals, result)
-                if not self.is_valid(corr_filtered):
+                # print(f"filter used: {time.time() - start} s")
+                curr_cov = round(get_cov_ratio(corr_filtered, self.n), 2)
+                if curr_cov < self.cov_t:
                     result[idx] = -1
                     return i == 0
                 else:
                     start = time.time()
                     G = build_graph(corr_filtered, 0)
-                    mod_score = get_mod_score(G)
-                    clustering_score = get_average_clustering(G)
+                    # print(f"build graph took {time.time() - start}")
+                    if self.metric == Score.MODULARITY:
+                        score = round(get_mod_score(G), 2)
+                    elif self.metric == Score.CLUSTER:
+                        score = round(get_average_clustering(G), 2)
+                    if (curr_cov, score) not in self.metrics_thresholds:
+                        self.metrics_thresholds[(curr_cov, score)] = deepcopy(result)
                     # print(f"calulate mod score took {time.time() - start}")
                     # if mod_score > self.max_mod:
                     #     self.max_mod = mod_score
                     #     print(f"max mod score is {self.max_mod}")
                     #     print(f"thresholds: {result}")
                     #     self.max_thresholds = deepcopy(result)
-                    if clustering_score > self.max_clustering:
-                        self.max_clustering = clustering_score
-                        print(f"max clustering score is {self.max_clustering}")
-                        print(f"thresholds: {result}")
-                        self.max_thresholds_cluster = deepcopy(result)
+                    # if clustering_score > self.max_clustering:
+                    #     self.max_clustering = clustering_score
+                    #     print(f"max clustering score is {self.max_clustering}")
+                    #     print(f"thresholds: {result}")
+                    #     print(f"coverage score: {get_cov_ratio(corr_filtered, self.n)}")
+                    #     self.max_thresholds_cluster = deepcopy(result)
                     # if mod_score > self.initial_mod:
                     #     self.valid_threholds[
                     #         ",".join([str(round(i, 3)) for i in result])
@@ -147,21 +173,46 @@ class Threshold_Search:
             print(len(val))
         self.enumerate_combinations(vals, [-1] * len(vals), 0)
         end = time.time()
-        self.perf_profile["num_valid_thresholds"] = self.count
-        self.perf_profile["total_time"] = end - start
-        self.perf_profile["max_mod"] = self.max_mod
-        self.perf_profile["max_thresholds"] = tuple(
-            [float(round(i, 3)) for i in self.max_thresholds]
-        )
+        points = list(self.metrics_thresholds.keys())
+        skyline = self.find_skyline(points)
+        print(f"find {len(skyline)} points")
+        self.skyline_map = {}
+        print(skyline)
+        for point in skyline:
+            thresholds = self.metrics_thresholds[point]
+            self.skyline_map[str(point)] = [float(round(x, 2)) for x in thresholds]
+        print(self.skyline_map)
+        # self.perf_profile["num_valid_thresholds"] = self.count
+        # self.perf_profile["total_time"] = end - start
+        # self.perf_profile["max_mod"] = self.max_mod
+        # self.perf_profile["max_thresholds"] = tuple(
+        #     [float(round(i, 3)) for i in self.max_thresholds]
+        # )
+
+    def find_skyline(self, points):
+        # sort points by the first dimension
+        points = sorted(points)
+        mono_stack = []
+        stack_len = 0
+        for point in points:
+            while stack_len > 0 and point[1] >= mono_stack[-1][1]:
+                mono_stack.pop()
+                stack_len -= 1
+            mono_stack.append(point)
+            stack_len += 1
+        return mono_stack
 
     def persist(self, path):
-        dump_json(os.path.join(path, "perf_profile.json"), self.perf_profile)
-        dump_json(os.path.join(path, "valid_thresholds.json"), self.valid_threholds)
+        dump_json(os.path.join(path, "skyline.json"), self.skyline_map)
+        # dump_json(os.path.join(path, "perf_profile.json"), self.perf_profile)
+        # dump_json(os.path.join(path, "valid_thresholds.json"), self.valid_threholds)
 
 
 if __name__ == "__main__":
     # corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/cdc_10k/corr_T_GRANU.DAY_S_GRANU.STATE_fdr/"
-    corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/chicago_10k/corr_T_GRANU.DAY_S_GRANU.BLOCK_fdr/"
+    # corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/chicago_10k/corr_T_GRANU.DAY_S_GRANU.BLOCK_fdr/"
+    corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/chicago_10k/day_block/"
+    result_path = "/Users/yuegong/Documents/spatio_temporal_alignment/evaluation/graph_result/chicago/"
     signal_names = [
         "missing_ratio",
         "zero_ratio",
@@ -176,11 +227,15 @@ if __name__ == "__main__":
         if "missing_ratio" in signal_name or "zero_ratio" in signal_name:
             signals.append(Signal(signal_name, -1, 0.2))
         elif signal_name == "r_val":
-            signals.append(Signal(signal_name, 1, 0.1))
+            signals.append(Signal(signal_name, 1, 0.2))
         elif signal_name == "samples":
             signals.append(Signal(signal_name, 1, 10))
-
-    searcher = Threshold_Search(corr_path, signal_names, signals, 0.2)
+    for signal in signals:
+        print(signal.name, signal.step)
+    searcher = Threshold_Search(
+        corr_path, signal_names, signals, 0.4, metric=Score.CLUSTER
+    )
+    print(searcher.n)
     # max_score = 0
     # max_threshold = 0
     # G = build_graph(searcher.corr)
@@ -205,5 +260,6 @@ if __name__ == "__main__":
     #     print(signal.name)
     #     print(range)
     searcher.search_for_thresholds()
+    searcher.persist(result_path)
     print(f"used {time.time() -start} s")
     print(f"found {searcher.count} valid thresholds")

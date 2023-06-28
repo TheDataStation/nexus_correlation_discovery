@@ -20,7 +20,7 @@ def test_get_avg_rows():
     t_scales = [T_GRANU.DAY]
     s_scales = [S_GRANU.BLOCK]
     profiler = Profiler("chicago_1m", t_scales, s_scales)
-    profiler.count_avg_rows(t_scales[0], s_scales[0])
+    profiler.count_avg_rows(t_scales[0], s_scales[0], 1000)
 
 
 test_get_avg_rows()
