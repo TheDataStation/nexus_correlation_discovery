@@ -12,8 +12,8 @@ chicago_10k:
 
 chicago_1m:
     db_path: "postgresql://yuegong@localhost/chicago_open_data_1m"
-    data_path: "data/chicago_open_data_1m/"
-    shape_path: "data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp"
+    data_path: "/home/cc/data/chicago_open_data_1m/"
+    shape_path: "/home/cc/data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp"
     geo_chain: "block, tract, county, state"
     geo_keys: "blockce10, tractce10, countyfp10, statefp10"
     meta_path: "resource/chicago_1m/chicago_open_data.json"
