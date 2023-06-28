@@ -61,6 +61,8 @@ postgres-> CREATE DATABASE <database_name>;
 postgres-> GRANT ALL PRIVILEGES ON DATABASE <database_name> TO <username>;
 ```
 
+### Install python dependencies
+If you are on ubuntu, please first run the following in order to support psycopg2
 ```bash
-python test/test_ingest_to_db.py
+sudo apt-get install libpq-dev python3-dev
 ```
