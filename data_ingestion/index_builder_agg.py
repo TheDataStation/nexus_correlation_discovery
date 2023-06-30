@@ -3,7 +3,6 @@ import utils.coordinate as coordinate
 from utils.time_point import set_temporal_granu, parse_datetime, T_GRANU
 from utils.profile_utils import is_num_column_valid
 import geopandas as gpd
-import pandas as pd
 import os
 import utils.io_utils as io_utils
 from sqlalchemy import create_engine
@@ -58,8 +57,8 @@ class DBIngestorAgg:
         self.s_scales = s_scales
 
         self.config = io_utils.load_config(source)
-        self.data_path = config["data_path"]
-        self.shape_path = config["shape_path"]
+        self.data_path = self.config["data_path"]
+        self.shape_path = self.config["shape_path"]
 
     def get_numerical_columns(self, all_columns, tbl: Table):
         numerical_columns = list(set(all_columns) & set(tbl.num_columns))
@@ -70,16 +69,17 @@ class DBIngestorAgg:
                 valid_num_columns.append(col)
         return valid_num_columns
 
-    def select_valid_attrs(self, attrs):
+    def select_valid_attrs(self, attrs, max_limit=0):
         valid_attrs = []
         for attr in attrs:
             if any(
                 keyword in attr
-                for keyword in ["update", "modified", "_end", "end_", "status"]
+                for keyword in ["update", "modified", "_end", "end_", "status", "_notified"]
             ):
                 continue
             valid_attrs.append(attr)
-        return valid_attrs
+        # limit the max number of spatio/temporal join keys a table can have
+        return valid_attrs[:max_limit]
 
     def ingest_data_source(self, clean=False, persist=False, first=False):
         meta_path = self.config["meta_path"]
@@ -90,10 +90,11 @@ class DBIngestorAgg:
         if clean:
             self.clean_aggregated_idx_tbls()
 
+        max_limit = 2
         for obj in tqdm(meta_data):
             t_attrs, s_attrs = self.select_valid_attrs(
-                obj["t_attrs"]
-            ), self.select_valid_attrs(obj["s_attrs"])
+                obj["t_attrs"], max_limit
+            ), self.select_valid_attrs(obj["s_attrs"], max_limit)
             if len(t_attrs) == 0 and len(s_attrs) == 0:
                 continue
             if first:
@@ -110,6 +111,7 @@ class DBIngestorAgg:
                 s_attrs=s_attrs,
                 num_columns=obj["num_columns"],
             )
+            print(tbl.t_attrs, tbl.s_attrs)
             print(tbl.tbl_id)
             self.ingest_tbl(tbl)
 
@@ -131,10 +133,10 @@ class DBIngestorAgg:
 
         if persist:
             io_utils.dump_json(
-                config["attr_path"],
+                self.config["attr_path"],
                 self.tbls,
             )
-            io_utils.dump_json(config["idx_tbl_path"], list(self.idx_tables))
+            io_utils.dump_json(self.config["idx_tbl_path"], list(self.idx_tables))
 
     def create_inv_cnt_tbls(self, idx_tbls):
         db_ops.create_inv_idx_cnt_tbl(self.cur, idx_tbls)
