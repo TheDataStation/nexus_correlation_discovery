@@ -6,6 +6,7 @@ from enum import Enum
 
 class Stages(Enum):
     TOTAL = "Total Time"
+    FIND_JOIN_AND_MATER = "Find Join+Materialization"
     FIND_JOIN = "Find Join"
     MATERIALIZATION = "Materialization"
     CORRELATION = "Correlation"
@@ -18,6 +19,10 @@ def load_data(path, vars):
     for var in vars:
         if var == Stages.TOTAL:
             data.append(profile["total_time"])
+        elif var == Stages.FIND_JOIN_AND_MATER:
+            data.append(
+                profile["time_find_joins"]["total"] + profile["time_join"]["total"]
+            )
         elif var == Stages.FIND_JOIN:
             data.append(
                 profile["time_find_joins"]["total"],

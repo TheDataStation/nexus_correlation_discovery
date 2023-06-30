@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 data_source = "chicago_1m"
 
-vars = [Stages.TOTAL, Stages.FIND_JOIN, Stages.MATERIALIZATION]
+vars = [Stages.FIND_JOIN_AND_MATER, Stages.FIND_JOIN, Stages.MATERIALIZATION]
 
 fig, axs = plt.subplots(1, 3, sharey=True, figsize=(15, 5))
 

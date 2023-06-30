@@ -1,11 +1,12 @@
 from utils import io_utils
-from data_search.data_model import get_st_schema_list_for_tbl, ST_Schema, Unit, Variable
+from data_search.data_model import ST_Schema, Unit, T_GRANU, S_GRANU, SchemaType
 import pandas as pd
 from tqdm import tqdm
 import psycopg2
 from psycopg2 import sql
 from sqlalchemy import create_engine
 import numpy as np
+from collections import defaultdict, namedtuple
 
 """
 Collect the following stats for each aggregated table
@@ -76,6 +77,45 @@ class Profiler:
         print(f"num of all schemas: {len(all_schemas)}")
         print(total_cnt / len(all_schemas))
         print(f"median: {np.median(all_cnts)}")
+
+    def get_join_cost(self, t_scale, s_scale, threshold):
+        all_schemas = self.load_all_st_schemas(t_scale, s_scale)
+        total_cnt = 0
+        # group tbls by their schema types since only tbls with the same schema types can join with each other
+        # schemas in the same tbl can not join
+        all_cnts = {SchemaType.TIME: [], SchemaType.SPACE: [], SchemaType.TS: []}
+        total_cnts = {SchemaType.TIME: 0, SchemaType.SPACE: 0, SchemaType.TS: 0}
+
+        for tbl, st_schema in all_schemas:
+            agg_name = st_schema.get_agg_tbl_name(tbl)
+            st_type = st_schema.get_type()
+            row_cnt = self.get_row_cnt(tbl, st_schema)
+
+            if row_cnt >= threshold:
+                cnts_list = all_cnts[st_type]
+                cnts_list.append((tbl, agg_name, row_cnt))
+                total_cnts[st_type] += row_cnt
+        print(total_cnts)
+        res = {}
+        for st_type in [SchemaType.TIME, SchemaType.SPACE, SchemaType.TS]:
+            cnts_list = all_cnts[st_type]
+            cnts_list = sorted(cnts_list, key=lambda x: x[2], reverse=True)
+            total_cnt = total_cnts[st_type]
+            n = len(cnts_list)
+            for i, tbl_cnt in enumerate(cnts_list):
+                tbl, agg_tbl, cnt = tbl_cnt[0], tbl_cnt[1], tbl_cnt[2]
+                avg_cnt = total_cnt / (n - i)
+                total_cnt -= cnt  # substract the current cnt
+                """
+                for tbls having cnts larger than cur tbl, the cost is cnt
+                otherwise, the cost is avg_cnt
+                """
+                cost = i / n * cnt + (1 - i / n) * avg_cnt
+                Stats = namedtuple("Stats", ["cost", "cnt"])
+                res[agg_tbl] = Stats(round(cost, 2), cnt)
+        # for tbl, val in res.items():
+        #     print(tbl, val)
+        return res
 
     def get_row_cnt(self, tbl: str, st_schema: ST_Schema):
         sql_str = """
@@ -166,3 +206,11 @@ class Profiler:
             self.config["profile_path"],
             profiles,
         )
+
+
+if __name__ == "__main__":
+    t_scales = [T_GRANU.DAY]
+    s_scales = [S_GRANU.BLOCK]
+    profiler = Profiler("chicago_1m", t_scales, s_scales)
+    res = profiler.get_join_cost(t_scales[0], s_scales[0], 10)
+    print(res["cnna-nmxx_approval_date_2_location_1"])

@@ -60,7 +60,7 @@ def get_inv_cnt(cur, tbl, st_schema: ST_Schema, threshold: int):
     # total_elements = sum(res)
 
     max_joinable_tbls = (total_elements - total_lists) // threshold
-    print(f"max_joinable_tables: {max_joinable_tbls}")
+
     # if threshold - 1 >= len(res):
     #     max_joinable_tbls = res[-1]
     # else:
@@ -93,7 +93,7 @@ def get_intersection_inv_idx(
         sql_str = """
             WITH sampled_table AS (
                 SELECT val
-                FROM {tbl} TABLESAMPLE BERNOULLI (%s)
+                FROM {tbl} TABLESAMPLE SYSTEM (%s)
             )
             SELECT "st_schema_list" FROM {inv_idx} inv where inv."val" in (SELECT "val" from sampled_table)
         """
@@ -102,8 +102,9 @@ def get_intersection_inv_idx(
         # fields=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
         tbl=sql.Identifier(agg_tbl),
     )
-    cur.execute(query, [sample_ratio])
+    cur.execute(query, [sample_ratio * 100])
     query_res = cur.fetchall()
+    print(f"sampled {len(query_res)}")
     counter = Counter()
     total_cnt = 0
     # print(query_res)
@@ -117,10 +118,8 @@ def get_intersection_inv_idx(
         if cnt >= threshold and cand[0] != tbl:
             candidates.append((cand, cnt))
 
-    if sample_ratio > 0:
-        return candidates, total_cnt
-
     result = []
+    parsed_candidates = []
     for t in candidates:
         cand, overlap = t[0], t[1]
         tbl2_id = cand[0]
@@ -137,7 +136,10 @@ def get_intersection_inv_idx(
             st_schema2 = ST_Schema(
                 t_unit=Unit(cand[1], st_schema.s_unit.granu),
             )
+        parsed_candidates.append([st_schema2.get_agg_tbl_name(tbl2_id), overlap])
         result.append([tbl2_id, st_schema2, overlap])
+    if sample_ratio > 0:
+        return parsed_candidates, total_cnt
 
     return result
 
