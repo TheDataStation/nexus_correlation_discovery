@@ -179,7 +179,7 @@ class CorrSearch:
         self.count = 0
         self.visited_tbls = set()
         self.visited_schemas = set()
-        self.joins = set()
+       
         self.find_join_method = find_join_method
         self.join_costs = join_costs
         self.join_method = join_method
@@ -429,7 +429,8 @@ class CorrSearch:
             self.cur, tbl, st_schema, threshold
         )
 
-        index_search_over_head = v_cnt + row_to_read
+        index_search_over_head = v_cnt + 2*row_to_read
+        max_joinable = min(max_joinable, len(aligned_schemas))
         if max_joinable >= len(aligned_schemas):
             find_join_cost = index_search_over_head + join_all_cost
         else:
@@ -441,23 +442,24 @@ class CorrSearch:
         start = time.time()
         sample_ratio = 0.1
         min_sample_rows, max_sampled_rows = 1000, 10000
+        sampled_rows = v_cnt * sample_ratio
         # if v_cnt >= 400000:
         #     return "JOIN_ALL", aligned_schemas
-        sample_cost = (
-            v_cnt + sample_ratio * 6 * row_to_read
-        )  # sampling needs to read the column
+        sample_cost = index_search_over_head # sampling needs to read the column
         if find_join_cost <= join_all_cost:
             return "FIND_JOIN", None
         elif index_search_over_head >= join_all_cost:
             return "JOIN_ALL", aligned_schemas
         else:
+            # if v_cnt <= sampled_rows:
+            #     return "FIND_JOIN", None
             if v_cnt <= min_sample_rows / sample_ratio:
                 return "FIND_JOIN", None
             elif v_cnt >= max_sampled_rows / sample_ratio:
                 return "JOIN_ALL", aligned_schemas
             self.perf_profile["strategy"]["sample_times"] += 1
             candidates, total_elements_sampled = db_ops.get_intersection_inv_idx(
-                self.cur, tbl, st_schema, threshold, sample_ratio
+                self.cur, tbl, st_schema, threshold, sampled_rows
             )
             if total_elements_sampled != 0:
                 scale_factor = row_to_read // total_elements_sampled
@@ -470,15 +472,15 @@ class CorrSearch:
             joinable_estimate = 0
             avg_join_cost = 0
             for cand, overlap in candidates:
-                avg_join_cost += self.join_costs[cand].cnt
                 if overlap * scale_factor >= threshold:
                     joinable_estimate += 1
+                    avg_join_cost += min(v_cnt, self.join_costs[cand].cnt)
             if len(candidates) == 0:
                 avg_join_cost = join_cost
             else:
-                avg_join_cost = avg_join_cost / len(candidates)
+                avg_join_cost = avg_join_cost / joinable_estimate
             print(
-                f"joinable_estimate: {joinable_estimate}; join cost estimate: {avg_join_cost}"
+                f"index_search cost: {index_search_over_head + joinable_estimate * avg_join_cost}; joinable_estimate: {joinable_estimate}; join cost estimate: {avg_join_cost}"
             )
             print(f"step 5 takes {time.time() - start}")
             if (
@@ -591,7 +593,7 @@ class CorrSearch:
 
             if df1 is None or df2 is None:
                 continue
-            self.joins.add(tuple(sorted([agg_name1, agg_name2])))
+           
             self.perf_profile["num_joins"]["total"] += 1
             self.perf_profile["num_joins"][flag] += 1
 
