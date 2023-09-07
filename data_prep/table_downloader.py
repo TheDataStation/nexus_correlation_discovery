@@ -4,7 +4,6 @@ import utils.io_utils as io_utils
 from os import path
 
 # from log import get_logger
-from config import ROOT_DIR, APP_TOKEN
 from multiprocessing import Pool as ProcessPool
 from tqdm import tqdm
 import os
@@ -34,7 +33,6 @@ class TableDownloader:
         """
         headers = {"X-App-Token": app_token}
         response = requests.get(url, stream=True)
-        print(response)
         with open(local_filename, "wb") as outfile:
             for chunk in response.iter_content(chunk_size=1024):
                 if chunk:  # filter out keep-alive new chunks
@@ -95,13 +93,15 @@ if __name__ == "__main__":
     # line_limit = 10000
     line_limit = 1000000
     # meta_file = "data/cdc_open_data.json"
-    meta_file = "data/chicago_open_data.json"
-    dataset_dir = "data/chicago_open_data_1m/"
+    meta_file = "resource/cdc_1m/cdc_open_data.json"
+    dataset_dir = "data/cdc_open_data_1m/"
 
+    config = io_utils.load_config("data_prep")
+    root_dir, app_token = config["root_dir"], config["app_token"]
     if not os.path.isdir(dataset_dir):
         os.makedirs(dataset_dir)
     data_downloader = TableDownloader(
-        output_dir=path.join(ROOT_DIR, dataset_dir), app_token=APP_TOKEN
+        output_dir=dataset_dir, app_token=app_token
     )
 
-    data_downloader.download_all(path.join(ROOT_DIR, meta_file), line_limit)
+    data_downloader.download_all(meta_file, line_limit)

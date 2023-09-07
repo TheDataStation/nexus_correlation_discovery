@@ -209,8 +209,14 @@ class Profiler:
 
 
 if __name__ == "__main__":
-    t_scales = [T_GRANU.DAY]
-    s_scales = [S_GRANU.BLOCK]
+    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
+    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
     profiler = Profiler("chicago_1m", t_scales, s_scales)
-    res = profiler.get_join_cost(t_scales[0], s_scales[0], 10)
-    print(res["cnna-nmxx_approval_date_2_location_1"])
+    profiler.collect_agg_tbl_col_stats()
+    # profiler.profile_original_data()
+    # t_scales = [T_GRANU.DAY]
+    # s_scales = [S_GRANU.STATE]
+    # profiler = Profiler("cdc_1m", t_scales, s_scales)
+    # profiler.collect_agg_tbl_col_stats()
+    # profiler.profile_original_data()
+    

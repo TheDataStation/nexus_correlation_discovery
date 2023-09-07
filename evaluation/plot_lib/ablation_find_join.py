@@ -19,7 +19,7 @@ for i, o_t in enumerate([10, 100, 1000]):
     data_list = []
     for label in labels:
         data = load_data(
-            f"../run_time/{data_source}/perf_time_T_GRANU.DAY_S_GRANU.BLOCK_{label.value}_{o_t}.json",
+            f"/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/run_time/{data_source}/full_st_schemas/perf_time_T_GRANU.DAY_S_GRANU.BLOCK_{label.value}_{o_t}.json",
             vars,
         )
         data_list.append(data)
@@ -36,5 +36,4 @@ for i, o_t in enumerate([10, 100, 1000]):
         ax, [l.value for l in labels], [var.value for var in vars], values, params
     )
 
-plt.savefig(f"../plots/{data_source}_run_time_comp.png")
-plt.show()
+plt.savefig(f"/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/plots/{data_source}_run_time_comp.png")

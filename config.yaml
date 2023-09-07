@@ -11,9 +11,9 @@ chicago_10k:
     idx_tbl_path: "resource/chicago_10k/idx_tbl_names.json"
 
 chicago_1m:
-    db_path: "postgresql://yuegong@localhost/chicago_open_data_1m"
-    data_path: "/home/cc/data/chicago_open_data_1m/"
-    shape_path: "/home/cc/data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp"
+    db_path: "postgresql://yuegong@localhost/chicago_1m"
+    data_path: "data/chicago_open_data_1m/"
+    shape_path: "data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp"
     geo_chain: "block, tract, county, state"
     geo_keys: "blockce10, tractce10, countyfp10, statefp10"
     meta_path: "resource/chicago_1m/chicago_open_data.json"
@@ -21,6 +21,18 @@ chicago_1m:
     profile_path: "resource/chicago_1m/profile_chicago_1m.json"
     col_stats_path: "resource/chicago_1m/col_stats_chicago_1m.json"
     idx_tbl_path: "resource/chicago_1m/idx_tbl_names.json"
+
+cdc_1m:
+    db_path: "postgresql://yuegong@localhost/cdc_1m"
+    data_path: "data/cdc_open_data_1m/"
+    shape_path: "data/shape_usa_counties/cb_2018_us_county_20m.shp"
+    geo_chain: "state"
+    geo_keys: "STATEFP"
+    meta_path: "resource/cdc_1m/cdc_open_data.json"
+    attr_path: "resource/cdc_1m/tbl_attrs_cdc_1m.json"
+    profile_path: "resource/cdc_1m/profile_cdc_1m.json"
+    col_stats_path: "resource/cdc_1m/col_stats_cdc_1m.json"
+    idx_tbl_path: "resource/cdc_1m/idx_tbl_names.json"
 
 data_prep:
     root_dir: os.path.dirname(os.path.abspath(__file__))

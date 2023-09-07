@@ -23,7 +23,7 @@ import os
 from copy import deepcopy
 
 from enum import Enum
-
+from collections import defaultdict
 
 class Score(Enum):
     MODULARITY = "mod"
@@ -46,7 +46,7 @@ class Threshold_Search:
         self.max_clustering = 0
         self.max_cov = 0
         self.max_thresholds = set()  # skyline points
-        self.metrics_thresholds = {}
+        self.metrics_thresholds = defaultdict(list)
         # persist all thresholds whose modularity score is larger than the original graph
         self.valid_threholds = {}  # tuple of thresholds -> modularity score
         self.perf_profile = {}
@@ -138,18 +138,18 @@ class Threshold_Search:
                         score = round(get_mod_score(G), 2)
                     elif self.metric == Score.CLUSTER:
                         score = round(get_average_clustering(G), 2)
-                    if (curr_cov, score) not in self.metrics_thresholds:
-                        self.metrics_thresholds[(curr_cov, score)] = deepcopy(result)
+                    # if (curr_cov, score) not in self.metrics_thresholds:
+                    self.metrics_thresholds[(curr_cov, score)].append(deepcopy(result))
                     # print(f"calulate mod score took {time.time() - start}")
                     # if mod_score > self.max_mod:
                     #     self.max_mod = mod_score
                     #     print(f"max mod score is {self.max_mod}")
                     #     print(f"thresholds: {result}")
                     #     self.max_thresholds = deepcopy(result)
-                    # if clustering_score > self.max_clustering:
-                    #     self.max_clustering = clustering_score
-                    #     print(f"max clustering score is {self.max_clustering}")
-                    #     print(f"thresholds: {result}")
+                    if score > self.max_clustering:
+                        self.max_clustering = score
+                        print(f"max clustering score is {self.max_clustering}")
+                        print(f"thresholds: {result}")
                     #     print(f"coverage score: {get_cov_ratio(corr_filtered, self.n)}")
                     #     self.max_thresholds_cluster = deepcopy(result)
                     # if mod_score > self.initial_mod:
@@ -180,8 +180,8 @@ class Threshold_Search:
         print(skyline)
         for point in skyline:
             thresholds = self.metrics_thresholds[point]
-            self.skyline_map[str(point)] = [float(round(x, 2)) for x in thresholds]
-        print(self.skyline_map)
+            self.skyline_map[str(point)] = [self.round_thresholds(t) for t in thresholds]
+        # print(self.skyline_map)
         # self.perf_profile["num_valid_thresholds"] = self.count
         # self.perf_profile["total_time"] = end - start
         # self.perf_profile["max_mod"] = self.max_mod
@@ -189,6 +189,9 @@ class Threshold_Search:
         #     [float(round(i, 3)) for i in self.max_thresholds]
         # )
 
+    def round_thresholds(self, thresholds):
+        return [float(round(threshold, 2)) for threshold in thresholds]
+    
     def find_skyline(self, points):
         # sort points by the first dimension
         points = sorted(points)
@@ -203,7 +206,7 @@ class Threshold_Search:
         return mono_stack
 
     def persist(self, path):
-        dump_json(os.path.join(path, "skyline.json"), self.skyline_map)
+        dump_json(path, self.skyline_map)
         # dump_json(os.path.join(path, "perf_profile.json"), self.perf_profile)
         # dump_json(os.path.join(path, "valid_thresholds.json"), self.valid_threholds)
 
@@ -211,7 +214,8 @@ class Threshold_Search:
 if __name__ == "__main__":
     # corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/cdc_10k/corr_T_GRANU.DAY_S_GRANU.STATE_fdr/"
     # corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/chicago_10k/corr_T_GRANU.DAY_S_GRANU.BLOCK_fdr/"
-    corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/chicago_10k/day_block/"
+    # corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/chicago_10k/day_block/"
+    corr_path = "/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/correlations/chicago_1m_T_GRANU.DAY_S_GRANU.BLOCK/"
     result_path = "/Users/yuegong/Documents/spatio_temporal_alignment/evaluation/graph_result/chicago/"
     signal_names = [
         "missing_ratio",

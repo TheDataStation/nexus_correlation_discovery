@@ -16,21 +16,26 @@ data_source = "chicago_1m"
 config = io_utils.load_config(data_source)
 conn_str = config["db_path"]
 granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
-overlaps = [10]
-st_schemas = io_utils.load_pickle(f"evaluation/input/{data_source}/200_st_schemas.json")
+overlaps = [1000]
+st_schemas = io_utils.load_pickle(f"evaluation/input/{data_source}/full_st_schemas.json")
 
 
-def get_ground_truth():
+def get_ground_truth(input):
     for granu_list in granu_lists:
         for o_t in overlaps:
             optimal_time = 0
+            index_search_time = 0
+            join_all_time = 0
             optimal = {}
-            profile_index_p = f"evaluation/run_time/{data_source}/perf_time_per_tbl_{granu_list[0]}_{granu_list[1]}_{FIND_JOIN_METHOD.INDEX_SEARCH.value}_{o_t}.json"
+            profile_index_p = f"evaluation/run_time/{data_source}/{input}/perf_time_per_tbl_{granu_list[0]}_{granu_list[1]}_{FIND_JOIN_METHOD.INDEX_SEARCH.value}_{o_t}.json"
             profile_index = load_json(profile_index_p)
-            profile_join_p = f"evaluation/run_time/{data_source}/perf_time_per_tbl_{granu_list[0]}_{granu_list[1]}_{FIND_JOIN_METHOD.JOIN_ALL.value}_{o_t}.json"
+            profile_join_p = f"evaluation/run_time/{data_source}/{input}/perf_time_per_tbl_{granu_list[0]}_{granu_list[1]}_{FIND_JOIN_METHOD.JOIN_ALL.value}_{o_t}.json"
             profile_join = load_json(profile_join_p)
-            for tbl_name, run_time1 in profile_index.items():
-                run_time2 = profile_join[tbl_name]
+            for tbl_name, l in profile_index.items():
+                run_time1 = l[0]
+                index_search_time += run_time1
+                run_time2 = profile_join[tbl_name][0]
+                join_all_time += run_time2
                 optimal_time += min(run_time1, run_time2)
                 if abs(run_time1 - run_time2) <= 0.1:
                     optimal[tbl_name] = ["BOTH", run_time1]
@@ -40,20 +45,19 @@ def get_ground_truth():
                     optimal[tbl_name] = ["FIND_JOIN", run_time1, run_time2 - run_time1]
 
             dump_json(
-                f"evaluation/run_time/{data_source}/ground_truth_{granu_list[0]}_{granu_list[1]}_{o_t}.json",
+                f"evaluation/run_time/{data_source}/{input}/ground_truth_{granu_list[0]}_{granu_list[1]}_{o_t}.json",
                 optimal,
             )
-            print(optimal_time)
+            print(f"optimal_time: {optimal_time}; index search time: {index_search_time}; join all time: {join_all_time};")
 
 
-def test_cost_model():
+def test_cost_model(input):
     data_source = "chicago_1m"
     config = io_utils.load_config(data_source)
     conn_str = config["db_path"]
     granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
-    overlaps = [10]
     st_schemas = io_utils.load_pickle(
-        f"evaluation/input/{data_source}/200_st_schemas.json"
+        f"evaluation/input/{data_source}/full_st_schemas.json"
     )
     for granu_list in granu_lists:
         profiler = Profiler(data_source, granu_list[0], granu_list[1])
@@ -66,7 +70,7 @@ def test_cost_model():
         sorted_st_schemas = sorted(sorted_st_schemas, key=lambda x: x[1], reverse=False)
         for o_t in overlaps:
             ground_truth = load_json(
-                f"evaluation/run_time/{data_source}/ground_truth_{granu_list[0]}_{granu_list[1]}_{o_t}.json"
+                f"evaluation/run_time/{data_source}/{input}/ground_truth_{granu_list[0]}_{granu_list[1]}_{o_t}.json"
             )
             join_costs = profiler.get_join_cost(granu_list[0], granu_list[1], o_t)
             join_method = FIND_JOIN_METHOD.COST_MODEL
@@ -92,6 +96,8 @@ def test_cost_model():
             for st_schema in tqdm(sorted_st_schemas):
                 tbl, schema = st_schema[0]
                 agg_name = schema.get_agg_tbl_name(tbl)
+                if agg_name not in join_costs:
+                    continue
                 best_method = ground_truth[agg_name][0]
                 print("best_method", best_method)
                 print(agg_name)
@@ -123,8 +129,9 @@ def test_cost_model():
                 f"correct: {correct}, both: {both}, wrong: {wrong}, ratio: {(correct+both)/(correct+wrong+both)}, overhead: {overhead}, lost_time: {lost_time}"
             )
             print(wrong_list)
+            print(corr_search.perf_profile)
 
 
 if __name__ == "__main__":
-    # get_ground_truth()
-    test_cost_model()
+    # get_ground_truth("full_st_schemas")
+    test_cost_model("full_st_schemas")

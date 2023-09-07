@@ -17,7 +17,8 @@ inverted_indices/
 ## evaluation result files
 evaluation/run_time/
 evaluation/plots/
-evaluation/graph_result/
+evaluation/graph_results*/
+evaluation/correlations*/
 
 data.zip
 .idea

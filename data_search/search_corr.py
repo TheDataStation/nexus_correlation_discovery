@@ -24,6 +24,7 @@ import math
 from data_search.commons import FIND_JOIN_METHOD
 from utils.coordinate import S_GRANU
 from utils.time_point import T_GRANU
+from scipy.stats import pearsonr
 
 agg_col_profiles = None
 
@@ -182,6 +183,7 @@ class CorrSearch:
        
         self.find_join_method = find_join_method
         self.join_costs = join_costs
+        self.join_all_cost = 0
         self.join_method = join_method
         self.corr_method = corr_method
         self.r_methods = r_methods
@@ -197,6 +199,7 @@ class CorrSearch:
             "time_correction": {"total": 0},
             "time_dump_csv": {"total": 0},
             "time_create_tmp_tables": {"total": 0},
+            "corr_counts": {"before": 0, "after": 0},
             "corr_count": {"total": 0},
             "strategy": {"find_join": 0, "join_all": 0, "skip": 0, "sample_times": 0},
         }
@@ -321,11 +324,11 @@ class CorrSearch:
         vars2 = []
         for agg_col in tbl1_agg_cols:
             vars1.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t1".format(agg_col)))
-        if len(tbl1_agg_cols) == 0:
+        if len(tbl1_agg_cols) == 0 or tbl1 == '85ca-t3if':
             vars1.append(Variable("*", AggFunc.COUNT, "count_t1"))
         for agg_col in tbl2_agg_cols:
             vars2.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t2".format(agg_col)))
-        if len(tbl2_agg_cols) == 0:
+        if len(tbl2_agg_cols) == 0 or tbl2 == '85ca-t3if':
             vars2.append(Variable("*", AggFunc.COUNT, "count_t2"))
 
         # column names in postgres are at most 63-character long
@@ -335,10 +338,15 @@ class CorrSearch:
         merged = None
 
         if self.join_method == "AGG":
-            merged = db_ops.join_two_agg_tables(
-                self.cur, tbl1, st_schema1, vars1, tbl2, st_schema2, vars2, outer=False
-            )
             if self.outer_join:
+                # merged = db_ops.join_two_agg_tables(self.cur,
+                #     tbl1,
+                #     st_schema1,
+                #     vars1,
+                #     tbl2,
+                #     st_schema2,
+                #     vars2,
+                #     outer=False)
                 merged_outer = db_ops.join_two_agg_tables(
                     self.cur,
                     tbl1,
@@ -349,6 +357,13 @@ class CorrSearch:
                     vars2,
                     outer=True,
                 )
+  
+                merged = merged_outer.dropna(subset=["key1", "key2"])
+            else:
+                merged = db_ops.join_two_agg_tables(
+                    self.cur, tbl1, st_schema1, vars1, tbl2, st_schema2, vars2, outer=False
+                )
+            
         elif self.join_method == "TMP":
             merged = self.db_search.aggregate_join_two_tables_using_tmp(
                 tbl1, st_schema1, vars1, tbl2, st_schema2, vars2
@@ -367,7 +382,10 @@ class CorrSearch:
             )
 
         if merged is None or len(merged) < o_t:
-            return None, None
+            if not self.outer_join:
+                return None, None
+            else:
+                return None, None, None, None
 
         df1, df2 = merged[names1].astype(float), merged[names2].astype(float)
         if outer:
@@ -414,49 +432,57 @@ class CorrSearch:
 
             for st_schema2 in st_schema_list:
                 agg_name = st_schema2.get_agg_tbl_name(tbl2)
+               
                 if agg_name not in self.join_costs or agg_name in self.visited_schemas:
                     continue  # meaning it does not have enough keys
                 cnt2 = self.join_costs[agg_name].cnt
-                if cnt2 <= v_cnt:
-                    join_all_cost += cnt2
-                else:
-                    join_all_cost += v_cnt
+                join_all_cost += min(cnt2, v_cnt)
                 aligned_schemas.append((tbl2, st_schema2))
         # join_all_cost = min(len(aligned_schemas) * join_cost, join_all_cost)
-
+        
         # estimate index_search cost
         row_to_read, max_joinable = db_ops.get_inv_cnt(
             self.cur, tbl, st_schema, threshold
         )
 
-        index_search_over_head = v_cnt + 2*row_to_read
-        max_joinable = min(max_joinable, len(aligned_schemas))
-        if max_joinable >= len(aligned_schemas):
-            find_join_cost = index_search_over_head + join_all_cost
+        # coef = 3
+        if v_cnt >= 100000:
+            coef = 4.2#7
         else:
-            find_join_cost = index_search_over_head + max_joinable * join_cost
+            coef = 0.1#0.15
+        index_search_overhead = coef*(v_cnt + row_to_read)
+        self.index_search_over_head = row_to_read
+        max_joinable = min(max_joinable, len(aligned_schemas))
+        # if max_joinable >= len(aligned_schemas):
+        #     find_join_cost = index_search_over_head + join_all_cost
+        # else:
+        find_join_cost = index_search_overhead + max_joinable * v_cnt
         print(
             f"row_to_read: {row_to_read}; join all cost: {join_all_cost}; find join cost: {find_join_cost}; max_joinable: {min(max_joinable, len(aligned_schemas))}"
         )
 
         start = time.time()
-        sample_ratio = 0.1
+        sample_ratio = 0.05
+        if v_cnt > 200000:
+            sample_ratio = 0.05
         min_sample_rows, max_sampled_rows = 1000, 10000
         sampled_rows = v_cnt * sample_ratio
         # if v_cnt >= 400000:
         #     return "JOIN_ALL", aligned_schemas
-        sample_cost = index_search_over_head # sampling needs to read the column
+        sample_cost = index_search_overhead # sampling needs to read the column
         if find_join_cost <= join_all_cost:
             return "FIND_JOIN", None
-        elif index_search_over_head >= join_all_cost:
+        elif index_search_overhead >= join_all_cost:
             return "JOIN_ALL", aligned_schemas
         else:
             # if v_cnt <= sampled_rows:
             #     return "FIND_JOIN", None
-            if v_cnt <= min_sample_rows / sample_ratio:
-                return "FIND_JOIN", None
-            elif v_cnt >= max_sampled_rows / sample_ratio:
-                return "JOIN_ALL", aligned_schemas
+            # if v_cnt <= min_sample_rows / sample_ratio:
+            #     return "FIND_JOIN", None
+            # elif v_cnt >= max_sampled_rows / sample_ratio:
+            #     return "JOIN_ALL", aligned_schemas
+            # if len(aligned_schemas) <= 10:
+            #     return "JOIN_ALL", aligned_schemas
             self.perf_profile["strategy"]["sample_times"] += 1
             candidates, total_elements_sampled = db_ops.get_intersection_inv_idx(
                 self.cur, tbl, st_schema, threshold, sampled_rows
@@ -471,20 +497,24 @@ class CorrSearch:
 
             joinable_estimate = 0
             avg_join_cost = 0
-            for cand, overlap in candidates:
+            for tbl, schema, overlap in candidates:
+                cand = schema.get_agg_tbl_name(tbl)
+                if cand not in self.join_costs:
+                    continue
                 if overlap * scale_factor >= threshold:
-                    joinable_estimate += 1
-                    avg_join_cost += min(v_cnt, self.join_costs[cand].cnt)
-            if len(candidates) == 0:
+                    if cand not in self.visited_schemas:
+                        joinable_estimate += 1
+                        avg_join_cost += min(v_cnt, self.join_costs[cand].cnt)
+            if len(candidates) == 0 or joinable_estimate == 0:
                 avg_join_cost = join_cost
             else:
                 avg_join_cost = avg_join_cost / joinable_estimate
             print(
-                f"index_search cost: {index_search_over_head + joinable_estimate * avg_join_cost}; joinable_estimate: {joinable_estimate}; join cost estimate: {avg_join_cost}"
+                f"index_search cost: {index_search_overhead + joinable_estimate * avg_join_cost}; joinable_estimate: {joinable_estimate}; join cost estimate: {avg_join_cost}"
             )
             print(f"step 5 takes {time.time() - start}")
             if (
-                index_search_over_head + joinable_estimate * avg_join_cost
+                index_search_overhead + joinable_estimate * avg_join_cost
                 <= join_all_cost
             ):
                 return "FIND_JOIN", None
@@ -494,6 +524,8 @@ class CorrSearch:
     def find_all_corr_for_a_tbl_schema(
         self, tbl1, st_schema: ST_Schema, o_t, r_t, p_t, fill_zero
     ):
+        self.join_all_cost = 0
+        self.cur_join_time = 0
         flag = st_schema.get_type().value
         # join method to be used
         method = self.find_join_method
@@ -533,11 +565,13 @@ class CorrSearch:
                 )
                 for st_schema2 in st_schema_list:
                     agg_name2 = st_schema2.get_agg_tbl_name(tbl2)
+                    
                     if (
                         agg_name2 not in self.join_costs
-                        or agg_name2 in self.visited_schemas
+                        or agg_name2 in self.visited_schemas 
                     ):
                         continue  # meaning it does not have enough keys
+                    
                     aligned_schemas.append((tbl2, st_schema2))
 
         elif self.find_join_method == FIND_JOIN_METHOD.COST_MODEL:
@@ -559,7 +593,7 @@ class CorrSearch:
                 aligned_schemas = schemas
 
         time_used = time.time() - start
-
+        self.cur_find_join_time = time_used
         self.perf_profile["time_find_joins"]["total"] += time_used
         self.perf_profile["time_find_joins"][flag] += time_used
 
@@ -575,7 +609,8 @@ class CorrSearch:
             agg_name2 = st_schema2.get_agg_tbl_name(tbl2)
             if tbl2 == tbl1 or agg_name2 in self.visited_schemas:
                 continue
-
+            
+            self.join_all_cost += min(v_cnt, self.join_costs[agg_name2].cnt)
             # Align two schemas
             start = time.time()
             df1_outer, df2_outer = None, None
@@ -588,6 +623,7 @@ class CorrSearch:
                     tbl1, st_schema, tbl2, st_schema2, o_t, outer=True
                 )
             time_used = time.time() - start
+            self.cur_join_time += time_used
             self.perf_profile["time_join"]["total"] += time_used
             self.perf_profile["time_join"][flag] += time_used
 
@@ -620,7 +656,18 @@ class CorrSearch:
 
             if self.corr_method == "FOR_PAIR":
                 res = self.get_corr_naive(
-                    merged, tbl1, attrs1, vars1, tbl2, attrs2, vars2, r_t, p_t
+                    df1,
+                    df2,
+                    df1_outer,
+                    df2_outer,
+                    tbl1,
+                    st_schema,
+                    tbl2,
+                    st_schema2,
+                    r_t,
+                    p_t,
+                    fill_zero,
+                    flag,
                 )
             if res is not None:
                 tbl_schema_corrs.extend(res)
@@ -634,6 +681,7 @@ class CorrSearch:
         start = time.time()
         if self.correct_method == "FDR":
             tbl_schema_corrs = self.bh_correction(tbl_schema_corrs, r_t)
+            self.perf_profile["corr_counts"]["after"] += len(tbl_schema_corrs)
         self.perf_profile["time_correction"]["total"] += time.time() - start
         self.data.extend(tbl_schema_corrs)
         return method
@@ -790,7 +838,7 @@ class CorrSearch:
             # whether the corr coefficent exceeds the threhold or not.
             rows, cols = np.where(corr_mat >= -1)
         else:
-            rows, cols = np.where(corr_mat > r_threshold)
+            rows, cols = np.where(corr_mat >= r_threshold)
         index_pairs = [
             (corr_mat.index[row], corr_mat.columns[col]) for row, col in zip(rows, cols)
         ]
@@ -805,6 +853,8 @@ class CorrSearch:
             if "impute_zero" in self.r_methods and not self.outer_join:
                 inner_prod_val = inner_prod_mat.loc[row][col]
             if self.correct_method == "FDR":
+                if abs(r_val) >= r_threshold and p_val <= p_threshold:
+                    self.perf_profile["corr_counts"]["before"] += 1
                 # for fdr correction, we need to include all correlations regardless of the p value
                 agg_col1 = AggColumn(
                     tbl1, self.tbl_attrs[tbl1]["name"], st_schema1, row, df1[row]
@@ -835,28 +885,44 @@ class CorrSearch:
         return res
 
     def get_corr_naive(
-        self, merged: pd.DataFrame, tbl1, attrs1, vars1, tbl2, attrs2, vars2, threshold
+        self,
+        df1: pd.DataFrame,
+        df2: pd.DataFrame,
+        df1_outer: pd.DataFrame,
+        df2_outer: pd.DataFrame,
+        tbl1,
+        st_schema1,
+        tbl2,
+        st_schema2,
+        r_threshold,
+        p_threshold,
+        fill_zero,
+        flag,
     ):
         res = []
-        for var1 in vars1:
-            for var2 in vars2:
-                agg_col1, agg_col2 = var1.var_name, var2.var_name
-                df = merged[[agg_col1, agg_col2]].astype(float)
-                corr_matrix = df.corr(method="pearson", numeric_only=True)
-                corr = corr_matrix.iloc[1, 0]
-                if corr > threshold:
+        df1, df2 = df1.fillna(0), df2.fillna(0)
+        merged = pd.concat([df1, df2], axis=1)
+        overlap = len(merged)
+        for col_name1 in df1.columns:
+            for col_name2 in df2.columns:
+                col1, col2 = merged[col_name1], merged[col_name2]
+                col1_array, col2_array = col1.to_numpy(), col2.to_numpy()
+                if np.all(np.isclose(col1_array, col1_array[0])) or np.all(np.isclose(col2_array, col2_array[0])):
+                    continue
+                corr, p_val = pearsonr(col1.to_numpy(), col2.to_numpy())
+                # df = merged[[agg_col1, agg_col2]].astype(float)
+                # corr_matrix = df.corr(method="pearson", numeric_only=True)
+                # corr = corr_matrix.iloc[1, 0]
+                if abs(corr) >= r_threshold:
                     # print(tbl1, attrs1, tbl2, attrs2, corr)
-                    res.append(
-                        self.new_result(
-                            tbl1,
-                            tbl2,
-                            attrs1,
-                            attrs2,
-                            agg_col1,
-                            agg_col2,
-                            round(corr, 2),
-                        )
+                    agg_col1 = AggColumn(
+                        tbl1, self.tbl_attrs[tbl1]["name"], st_schema1, col_name1, col1
                     )
+                    agg_col2 = AggColumn(
+                        tbl2, self.tbl_attrs[tbl2]["name"], st_schema2, col_name2, col2
+                    )
+                    new_corr = Correlation(agg_col1, agg_col2, corr, p_val, overlap, flag)
+                    res.append(new_corr)
         return res
 
 

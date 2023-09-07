@@ -227,6 +227,10 @@ class DBIngestorAgg:
 
         for t in t_attrs:
             for s in s_attrs:
+                # for i in range(len(t_scales)):
+                #     st_schema_list.append(
+                #         ST_Schema(Unit(t, t_scales[i]), Unit(s, s_scales[i]))
+                #     )
                 for t_scale in t_scales:
                     for s_scale in s_scales:
                         st_schema_list.append(
@@ -237,10 +241,7 @@ class DBIngestorAgg:
             vars = []
             for agg_col in num_columns:
                 vars.append(Variable(agg_col, AggFunc.AVG, "avg_{}".format(agg_col)))
-            # add count function if and only if there is no numeric columns, which means
-            # the table is about some event.
-            if len(num_columns) == 0:
-                vars.append(Variable("*", AggFunc.COUNT, "count"))
+            vars.append(Variable("*", AggFunc.COUNT, "count"))
 
             start = time.time()
             # transform data and also create an index on the key val column

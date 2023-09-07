@@ -14,8 +14,10 @@ from typing import List
 import data_search.db_ops as db_ops
 import random
 
-data_source = "chicago_1m"
-t_scale, s_scale = T_GRANU.DAY, S_GRANU.BLOCK
+# data_source = "chicago_1m"
+# t_scale, s_scale = T_GRANU.DAY, S_GRANU.BLOCK
+data_source = "cdc_1m"
+t_scale, s_scale = T_GRANU.DAY, S_GRANU.STATE
 config = io_utils.load_config(data_source)
 attr_path = config["attr_path"]
 tbl_attrs = io_utils.load_json(attr_path)
@@ -38,10 +40,16 @@ for tbl in all_tbls:
         for s in s_attrs:
             st_schema_list.append((tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale))))
 
-sample_num = 200
+sample_num = 0
 # print(len(st_schema_list))
-sampled_elements = random.sample(st_schema_list, sample_num)
+if sample_num == 0:
+    sampled_elements = st_schema_list
+    io_utils.persist_to_pickle(
+        f"evaluation/input/{data_source}/full_st_schemas.json", sampled_elements
+    )
+else:
+    sampled_elements = random.sample(st_schema_list, sample_num)
 # print(sampled_elements)
-io_utils.persist_to_pickle(
-    f"evaluation/input/{data_source}/{sample_num}_st_schemas.json", sampled_elements
-)
+    io_utils.persist_to_pickle(
+        f"evaluation/input/{data_source}/{sample_num}_st_schemas.json", sampled_elements
+    )

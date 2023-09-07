@@ -52,19 +52,28 @@ def grouped_bar_plot(ax, categories, group_names, values, params):
 
     # Set the x-axis ticks and labels
     ax.set_xticks(
-        x + ((bar_width + space) * len(categories) - space) / len(categories),
+        x + bar_width/2,
         group_names,
     )
+    
+    for bars in ax.containers:
+        ax.bar_label(bars)
 
     # Add labels, title, and legend
     if "xlabel" in params:
-        ax.xlabel(params["xlabel"])
+        ax.set_xlabel(params["xlabel"])
     if "ylabel" in params:
         ax.set_ylabel(params["ylabel"])
+    if "ylim" in params:
+        s, e = params["ylim"][0], params["ylim"][1]
+        ax.set_ylim(s, e)
     if "title" in params:
         ax.set_title(params["title"])
-    ax.legend()
-    # if "save_path" in params:
-    #     plt.savefig(params["save_path"])
+    if "legend" in params:
+        ax.legend(loc=params["legend"])
+    else:
+        ax.legend()
+    if "save_path" in params:
+        plt.savefig(params["save_path"])
     # Show the plot
     # plt.show()

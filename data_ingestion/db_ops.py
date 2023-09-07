@@ -65,7 +65,7 @@ def create_cnt_tbl_for_agg_tbl(cur, tbl, st_schema: ST_Schema):
     del_tbl(cur, cnt_tbl_name)
     sql_str = """
             CREATE TABLE {cnt_tbl_name} AS
-            SELECT cnt FROM {inv_cnt} inv JOIN {tbl} agg on inv."val" = agg."val" order by cnt desc
+            SELECT "inv"."val", cnt FROM {inv_cnt} inv JOIN {tbl} agg on inv."val" = agg."val" order by cnt desc
         """
     query = sql.SQL(sql_str).format(
         cnt_tbl_name=sql.Identifier(cnt_tbl_name),

@@ -87,41 +87,68 @@ def get_intersection_inv_idx(
     agg_tbl = st_schema.get_agg_tbl_name(tbl)
     # col_names = st_schema.get_col_names_with_granu()
     sql_str = """
-        SELECT "st_schema_list" FROM {inv_idx} inv JOIN {tbl} agg ON inv."val" = agg."val"
+        SELECT val, count(*) as cnt
+        FROM( 
+            SELECT unnest("st_schema_list") as val FROM {inv_idx} inv JOIN {tbl} agg ON inv."val" = agg."val"
+        ) subquery
+        GROUP BY val
     """
+    # WITH sampled_table AS (
+            #     SELECT "val"
+            #     FROM {tbl_cnt} limit %s
+            # )
+    #  WITH sampled_table AS (
+    #             SELECT "val"
+    #             FROM {tbl_cnt} TABLESAMPLE SYSTEM(%s)
+    #         )
+    #  SELECT "val"
+    #             FROM {tbl_cnt} order by cnt desc limit %s
     if sample_ratio > 0:
         sql_str = """
-            WITH sampled_table AS (
-                SELECT val
-                FROM {tbl} TABLESAMPLE SYSTEM (%s)
-            )
-            SELECT "st_schema_list" FROM {inv_idx} inv where inv."val" in (SELECT "val" from sampled_table)
+        WITH sampled_table AS (
+             SELECT "val" FROM {tbl_cnt} limit %s
+        )
+        SELECT val, count(*) as cnt
+        FROM(
+            SELECT unnest("st_schema_list") as val FROM {inv_idx} inv where inv."val" in (SELECT "val" from sampled_table)
+        ) subquery
+        GROUP BY val
         """
     query = sql.SQL(sql_str).format(
         inv_idx=sql.Identifier(inv_idx_name),
         # fields=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
+        tbl_cnt = sql.Identifier(f"{st_schema.get_agg_tbl_name(tbl)}_cnt"),
         tbl=sql.Identifier(agg_tbl),
     )
-    cur.execute(query, [sample_ratio * 100])
+    if sample_ratio == 0:
+        cur.execute(query)
+    else:
+        cur.execute(query, [sample_ratio])
+    
     query_res = cur.fetchall()
-    print(f"sampled {len(query_res)}")
-    counter = Counter()
-    total_cnt = 0
-    # print(query_res)
-    for pl in query_res:
-        counter.update(pl[0])
-        total_cnt += len(pl[0])
-    candidates = []
-    for cand in counter:
-        cnt = counter[cand]
-        cand = tuple(cand.split(","))
-        if cnt >= threshold and cand[0] != tbl:
-            candidates.append((cand, cnt))
+   
+    # counter = Counter()
+    # total_cnt = 0
+    # # print(query_res)
+    # for pl in query_res:
+    #     counter.update(pl[0])
+    #     total_cnt += len(pl[0])
+    # candidates = []
+    # for cand in counter:
+    #     cnt = counter[cand]
+    #     cand = tuple(cand.split(","))
+    #     if cnt >= threshold and cand[0] != tbl:
+    #         candidates.append((cand, cnt))
 
     result = []
-    parsed_candidates = []
-    for t in candidates:
-        cand, overlap = t[0], t[1]
+    sampled_cnt = 0
+    # parsed_candidates = []
+    # for t in candidates:
+    for t in query_res:
+        cand, overlap = tuple(t[0].split(",")), t[1]
+        sampled_cnt += overlap
+        if sample_ratio == 0 and overlap < threshold:
+            continue
         tbl2_id = cand[0]
         if st_schema.type == SchemaType.TS:
             st_schema2 = ST_Schema(
@@ -136,11 +163,10 @@ def get_intersection_inv_idx(
             st_schema2 = ST_Schema(
                 t_unit=Unit(cand[1], st_schema.s_unit.granu),
             )
-        parsed_candidates.append([st_schema2.get_agg_tbl_name(tbl2_id), overlap])
+        # parsed_candidates.append([st_schema2.get_agg_tbl_name(tbl2_id), overlap])
         result.append([tbl2_id, st_schema2, overlap])
     if sample_ratio > 0:
-        return parsed_candidates, total_cnt
-
+        return result, sampled_cnt
     return result
 
 
@@ -284,7 +310,7 @@ def join_two_agg_tables(
         """
     if outer:
         agg_join_sql = """
-        SELECT a1.val, {agg_vars} FROM
+        SELECT a1.val as key1, a2.val as key2, {agg_vars} FROM
         {agg_tbl1} a1 FULL JOIN {agg_tbl2} a2
         ON a1.val = a2.val
         """
