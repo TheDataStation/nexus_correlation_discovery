@@ -19,6 +19,7 @@ evaluation/run_time/
 evaluation/plots/
 evaluation/graph_results*/
 evaluation/correlations*/
+evaluation/synthetic_eval/data/
 
 data.zip
 .idea
