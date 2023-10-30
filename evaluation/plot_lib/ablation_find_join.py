@@ -26,14 +26,15 @@ for i, o_t in enumerate([10, 100, 1000]):
 
     values = np.array(data_list)
 
+    # print(values)
     params = {
         "ylabel": "Run time(s)",
         "title": f"Overlap threshold {o_t}",
-        "save_path": f"../plots/{data_source}_run_time_{o_t}.png",
+        # "save_path": f"../plots/{data_source}_run_time_{o_t}.png",
     }
 
     grouped_bar_plot(
         ax, [l.value for l in labels], [var.value for var in vars], values, params
     )
 
-plt.savefig(f"/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/plots/{data_source}_run_time_comp.png")
+# plt.savefig(f"/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/plots/{data_source}_run_time_comp.png")

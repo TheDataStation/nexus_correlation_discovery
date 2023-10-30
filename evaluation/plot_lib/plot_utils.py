@@ -38,7 +38,7 @@ def load_data(path, vars):
 
 def grouped_bar_plot(ax, categories, group_names, values, params):
     # Set the bar width and spacing
-    bar_width = 0.2
+    bar_width = 0.25
     space = 0
     print(categories)
     print(values)
@@ -55,9 +55,10 @@ def grouped_bar_plot(ax, categories, group_names, values, params):
         x + bar_width/2,
         group_names,
     )
-    
+    def custom_formatter(value):
+        return f"{value:.2f}"
     for bars in ax.containers:
-        ax.bar_label(bars)
+        ax.bar_label(bars, fmt=custom_formatter)
 
     # Add labels, title, and legend
     if "xlabel" in params:

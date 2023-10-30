@@ -1,8 +1,10 @@
 from graph.graph_utils import (
     Signal,
     load_corr,
+    remove_bad_cols,
     filter_on_a_signal,
     build_graph,
+    build_graph_on_vars,
     filter_on_signals,
     get_cov_ratio,
     get_mod_score,
@@ -31,14 +33,20 @@ class Score(Enum):
 
 
 class Threshold_Search:
-    def __init__(self, path, names, signals, cov_t, metric: Score) -> None:
+    def __init__(self, path, names, signals, cov_t, metric: Score, level) -> None:
         self.corr = load_corr(path)
+      
+        stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom", "census_block", 
+              "stnoto", "stnofrom", "lon", "lat", "northing", "easting", "property_group", "insepctnumber", 'primarykey','beat_',
+              "north", "south", "west", "east", "beat_of_occurrence", "lastinspectionnumber", "fax", "latest_dist_res", "majority_dist", "latest_dist",
+             "f12", "f13"]
+        self.corr = remove_bad_cols(stop_words, self.corr)
         print("finished loading correlation, begin to search for thresholds")
         self.signals = signals
         self.signal_names = names
         self.n = pd.concat([self.corr["tbl_id1"], self.corr["tbl_id2"]]).nunique()
         self.metric = metric
-
+        self.level = level
         self.cov_t = cov_t
         self.count = 0
         # self.initial_mod = get_mod_score(self.corr)
@@ -132,7 +140,10 @@ class Threshold_Search:
                     return i == 0
                 else:
                     start = time.time()
-                    G = build_graph(corr_filtered, 0)
+                    if self.level == "TABLE":
+                        G = build_graph(corr_filtered, 0, False)
+                    elif self.level == "VARIABLE":
+                        G = build_graph_on_vars(corr_filtered, 0, False)
                     # print(f"build graph took {time.time() - start}")
                     if self.metric == Score.MODULARITY:
                         score = round(get_mod_score(G), 2)
@@ -149,6 +160,7 @@ class Threshold_Search:
                     if score > self.max_clustering:
                         self.max_clustering = score
                         print(f"max clustering score is {self.max_clustering}")
+                        print(f"tbl coverage: {curr_cov}")
                         print(f"thresholds: {result}")
                     #     print(f"coverage score: {get_cov_ratio(corr_filtered, self.n)}")
                     #     self.max_thresholds_cluster = deepcopy(result)

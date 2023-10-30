@@ -45,7 +45,7 @@ def run(corr_path, result_path, cov_ratio):
             signals.append(Signal(signal_name, 1, 10))
 
     searcher = Threshold_Search(
-        corr_path, signal_names, signals, cov_ratio, metric=Score.CLUSTER
+        corr_path, signal_names, signals, cov_ratio, metric=Score.MODULARITY, level="VARIABLE"
     )
     
     ranges = searcher.determine_signal_ranges()
@@ -67,9 +67,9 @@ if __name__ == '__main__':
     root_path = "/home/cc/resolution_aware_spatial_temporal_alignment/"
     # corr_dir_name = "chicago_1m_T_GRANU.DAY_S_GRANU.BLOCK"
     # corr_dir_name = "chicago_1m_T_GRANU.MONTH_S_GRANU.TRACT"
-    corr_dir_names = ["chicago_1m_T_GRANU.MONTH_S_GRANU.TRACT", "chicago_1m_T_GRANU.DAY_S_GRANU.BLOCK", "chicago_1m_T_GRANU.DAY_S_GRANU.TRACT", "chicago_1m_T_GRANU.MONTH_S_GRANU.BLOCK"]
+    corr_dir_names = ["chicago_1m_T_GRANU.MONTH_S_GRANU.TRACT"]
     for corr_dir_name in corr_dir_names:
         corr_path = f"{root_path}/evaluation/correlations2/{corr_dir_name}/"
-        result_dir = f"{root_path}/evaluation/graph_results4/{corr_dir_name}/"
-        for cov_ratio in [0.2]:
+        result_dir = f"{root_path}/evaluation/graph_results2/{corr_dir_name}/"
+        for cov_ratio in [0.5]:
             run(corr_path, result_dir, cov_ratio)

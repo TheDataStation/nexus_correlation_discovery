@@ -20,6 +20,7 @@ evaluation/plots/
 evaluation/graph_results*/
 evaluation/correlations*/
 evaluation/synthetic_eval/data/
+evaluation/synthetic_eval/*.png
 
 data.zip
 .idea

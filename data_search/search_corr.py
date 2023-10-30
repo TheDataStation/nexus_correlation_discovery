@@ -204,38 +204,7 @@ class CorrSearch:
             "strategy": {"find_join": 0, "join_all": 0, "skip": 0, "sample_times": 0},
         }
 
-    """
-    Online aggregation
-    """
-
-    def create_tmp_agg_tbls(self, granu_list):
-        for tbl in tqdm(self.tbl_attrs.keys()):
-            print(tbl)
-            st_schema = []
-            t_attrs, s_attrs = (
-                self.tbl_attrs[tbl]["t_attrs"],
-                self.tbl_attrs[tbl]["s_attrs"],
-            )
-            for t in t_attrs:
-                st_schema.append([Unit(t, granu_list[0])])
-
-            for s in s_attrs:
-                st_schema.append([Unit(s, granu_list[1])])
-
-            for t in t_attrs:
-                for s in s_attrs:
-                    st_schema.append([Unit(t, granu_list[0]), Unit(s, granu_list[1])])
-
-            for units in st_schema:
-                tbl1_agg_cols = self.tbl_attrs[tbl]["num_columns"]
-                vars = []
-                for agg_col in tbl1_agg_cols:
-                    vars.append(
-                        Variable(agg_col, AggFunc.AVG, "avg_{}".format(agg_col))
-                    )
-                vars.append(Variable("*", AggFunc.COUNT, "count"))
-                self.db_search.create_tmp_agg_tbl(tbl, units, vars)
-
+    
     def dump_corrs_to_csv(self, data: List[Correlation], dir_path, tbl_id):
         df = pd.DataFrame(
             [corr.to_list() for corr in data],
@@ -276,11 +245,6 @@ class CorrSearch:
     def find_all_corr_for_all_tbls(
         self, granu_list, o_t, r_t, p_t, fill_zero=False, dir_path=None
     ):
-        if self.join_method == "TMP":
-            start = time.time()
-            self.create_tmp_agg_tbls(granu_list)
-            self.perf_profile["time_create_tmp_tables"]["total"] = time.time() - start
-
         for tbl in tqdm(self.tbl_attrs.keys()):
             print(tbl)
             self.find_all_corr_for_a_tbl(tbl, granu_list, o_t, r_t, p_t, fill_zero)
@@ -316,6 +280,24 @@ class CorrSearch:
                 tbl, st_schema, o_t, r_t, p_t, fill_zero
             )
 
+    def find_corr_in_a_tbl(self, tbl, granu_list, r_t, p_t):
+        """
+        Find correlations between variables in a table.
+        """
+        t_attrs, s_attrs = (
+            self.tbl_attrs[tbl]["t_attrs"],
+            self.tbl_attrs[tbl]["s_attrs"],
+        )
+        st_schema_list = get_st_schema_list_for_tbl(t_attrs, s_attrs, granu_list[0], granu_list[1], [SchemaType.TIME, SchemaType.SPACE, SchemaType.TS])
+        corrs = []
+        for st_schema in st_schema_list:
+            res = self.find_corr_in_a_tbl_schema(
+                tbl, st_schema, r_t, p_t
+            )
+            corrs.extend(res)
+        return corrs
+    
+  
     def align_two_st_schemas(self, tbl1, st_schema1, tbl2, st_schema2, o_t, outer):
         tbl1_agg_cols = self.tbl_attrs[tbl1]["num_columns"]
         tbl2_agg_cols = self.tbl_attrs[tbl2]["num_columns"]
@@ -364,11 +346,6 @@ class CorrSearch:
                     self.cur, tbl1, st_schema1, vars1, tbl2, st_schema2, vars2, outer=False
                 )
             
-        elif self.join_method == "TMP":
-            merged = self.db_search.aggregate_join_two_tables_using_tmp(
-                tbl1, st_schema1, vars1, tbl2, st_schema2, vars2
-            )
-
         elif self.join_method == "ALIGN":
             # begin align tables
             merged = self.db_search.align_two_two_tables(
@@ -520,6 +497,38 @@ class CorrSearch:
                 return "FIND_JOIN", None
             else:
                 return "JOIN_ALL", aligned_schemas
+
+    def find_corr_in_a_tbl_schema(self, tbl, st_schema: ST_Schema, r_t, p_t):
+        corrs = []
+        flag = st_schema.get_type().value
+        tbl_agg_cols = self.tbl_attrs[tbl]["num_columns"]
+        
+        vars = []
+      
+        for agg_col in tbl_agg_cols:
+            vars.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t1".format(agg_col)))
+        if len(tbl_agg_cols) == 0 or tbl == '85ca-t3if':
+            vars.append(Variable("*", AggFunc.COUNT, "count_t1"))
+        
+        df = db_ops.read_agg_tbl(self.cur, tbl, st_schema, vars)
+        for i, col1 in enumerate(df.columns):
+            for j, col2 in enumerate(df.columns):
+                if i < j:
+                    r_v, p_v = pearsonr(df[col1], df[col2])
+                    if r_v >= r_t and p_v <= p_t:
+                        agg_col1 = AggColumn(tbl, self.tbl_attrs[tbl]["name"], st_schema, col1, df[col1])
+                        agg_col2 = AggColumn(tbl, self.tbl_attrs[tbl]["name"], st_schema, col2, df[col2])
+                        corr = Correlation(agg_col1, agg_col2, r_v, p_v, len(df), flag)
+                        corr.agg_col1.set_profile(
+                            corr.agg_col1.col_data,
+                            self.column_profiles[corr.agg_col1.tbl_id],
+                        )
+                        corr.agg_col2.set_profile(
+                            corr.agg_col2.col_data,
+                            self.column_profiles[corr.agg_col2.tbl_id],
+                        )
+                        corrs.append(corr)
+        return corrs
 
     def find_all_corr_for_a_tbl_schema(
         self, tbl1, st_schema: ST_Schema, o_t, r_t, p_t, fill_zero

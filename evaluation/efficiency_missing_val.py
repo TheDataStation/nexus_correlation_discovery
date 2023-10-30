@@ -43,50 +43,58 @@ for granu_list in granu_lists:
     sorted_st_schemas = sorted(sorted_st_schemas, key=lambda x: x[1], reverse=False)
     # print(sorted_st_schemas)
     for join_method in [
-        FIND_JOIN_METHOD.COST_MODEL,
+        FIND_JOIN_METHOD.INDEX_SEARCH
+        # FIND_JOIN_METHOD.COST_MODEL,
     ]:
-        for o_t in overlaps:
-            join_costs = profiler.get_join_cost(granu_list[0], granu_list[1], o_t)
-            print(f"current join method: {join_method}; overlap threshold: {o_t}")
-            corr_search = CorrSearch(
-                conn_str,
-                data_source,
-                join_method,
-                join_costs,
-                "AGG",
-                "MATRIX",
-                ["impute_avg", "impute_zero"],
-                True,
-                "FDR",
-                0.05,
-            )
-            tbl_perf_profiles = {}
-            start = time.time()
-            for st_schema in tqdm(sorted_st_schemas):
-                tbl, schema = st_schema[0]
-                agg_name = schema.get_agg_tbl_name(tbl)
-                if agg_name not in join_costs:
-                    print("skip")
-                    continue
-                # print(agg_name, join_costs[agg_name].cnt)
-              
-                method = corr_search.find_all_corr_for_a_tbl_schema(
-                    tbl,
-                    schema,
-                    o_t=o_t,
-                    r_t=0.6,
-                    p_t=0.05,
-                    fill_zero=True,
+        for out_join in [False, True]:
+            for o_t in overlaps:
+                join_costs = profiler.get_join_cost(granu_list[0], granu_list[1], o_t)
+                print(f"current join method: {join_method}; overlap threshold: {o_t}")
+                corr_search = CorrSearch(
+                    conn_str,
+                    data_source,
+                    join_method,
+                    join_costs,
+                    "AGG",
+                    "MATRIX",
+                    ["impute_avg", "impute_zero"],
+                    out_join,
+                    "FDR",
+                    0.05,
                 )
-              
-            total_time = time.time() - start
-            print("total time:", total_time)
-            corr_search.perf_profile["total_time"] = total_time
-            print(corr_search.perf_profile)
-            print(corr_search.overhead)
-            corr_search.perf_profile["cost_model_overhead"] = corr_search.overhead
-            
-            io_utils.dump_json(
-                f"evaluation/run_time/{data_source}/{input}/perf_time_{granu_list[0]}_{granu_list[1]}_{join_method.value}_{o_t}_outer_join_2.json",
-                corr_search.perf_profile,
-            )
+                tbl_perf_profiles = {}
+                start = time.time()
+                for st_schema in tqdm(sorted_st_schemas):
+                    tbl, schema = st_schema[0]
+                    agg_name = schema.get_agg_tbl_name(tbl)
+                    if agg_name not in join_costs:
+                        print("skip")
+                        continue
+                    # print(agg_name, join_costs[agg_name].cnt)
+                
+                    method = corr_search.find_all_corr_for_a_tbl_schema(
+                        tbl,
+                        schema,
+                        o_t=o_t,
+                        r_t=0.6,
+                        p_t=0.05,
+                        fill_zero=True,
+                    )
+                
+                total_time = time.time() - start
+                print("total time:", total_time)
+                corr_search.perf_profile["total_time"] = total_time
+                print(corr_search.perf_profile)
+                print(corr_search.overhead)
+                corr_search.perf_profile["cost_model_overhead"] = corr_search.overhead
+                
+                if out_join:
+                    io_utils.dump_json(
+                        f"evaluation/run_time/{data_source}/{input}/perf_time_{granu_list[0]}_{granu_list[1]}_{join_method.value}_{o_t}_outer_join.json",
+                        corr_search.perf_profile,
+                    )
+                else:
+                    io_utils.dump_json(
+                        f"evaluation/run_time/{data_source}/{input}/perf_time_{granu_list[0]}_{granu_list[1]}_{join_method.value}_{o_t}_inner_join.json",
+                        corr_search.perf_profile,
+                    )
