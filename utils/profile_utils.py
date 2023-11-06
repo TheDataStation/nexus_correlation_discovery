@@ -25,6 +25,8 @@ def is_num_column_valid(col_name):
         "address",
         "x_coord",
         "y_coord",
+        "accumulative",
+        "cumulative"
     ]
     stop_words_equal = [
         "census",
@@ -50,6 +52,10 @@ def is_num_column_valid(col_name):
         "x",
         "y",
         "area",
+        "wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom", "census_block", 
+        "stnoto", "stnofrom", "lon", "lat", "northing", "easting", "property_group", "insepctnumber", 'primarykey','beat_',
+        "north", "south", "west", "east", "beat_of_occurrence", "lastinspectionnumber", "fax", "latest_dist_res", "majority_dist", "latest_dist",
+        "f12", "f13"
     ]
     for stop_word in stop_words_contain:
         if stop_word in col_name:

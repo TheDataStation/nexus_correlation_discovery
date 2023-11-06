@@ -2,7 +2,7 @@ from sodapy import Socrata
 import utils.io_utils as io_utils
 from os import path
 from typing import List
-from data_prep.prep_utils import is_num_column_valid
+from utils.profile_utils import is_num_column_valid
 
 """
 Tables that contain spatial or temporal attributes
