@@ -9,11 +9,13 @@ from typing import List
 
 
 class S_GRANU(Enum):
+    Point = 0
     BLOCK = 1
     BLG = 2
     TRACT = 3
     COUNTY = 4
     STATE = 5
+    ZIPCODE = 6
 
 
 # a dictionary from spatial scales to its names in the shape file
@@ -22,6 +24,7 @@ scale_dict = {
     S_GRANU.TRACT: "tractce10",
     S_GRANU.COUNTY: "COUNTYFP",
     S_GRANU.STATE: "STATEFP",
+    S_GRANU.ZIPCODE: "zip"
 }
 
 supported_chain = []
@@ -32,6 +35,7 @@ name_to_granu = {
     "county": S_GRANU.COUNTY,
     "tract": S_GRANU.TRACT,
     "state": S_GRANU.STATE,
+    "zipcode": S_GRANU.ZIPCODE,
 }
 
 
@@ -93,6 +97,8 @@ class Coordinate:
             ]
         elif granu == S_GRANU.STATE:
             return self.full[S_GRANU.STATE]
+        elif granu == S_GRANU.ZIPCODE:
+            return self.full[S_GRANU.ZIPCODE]
 
     # def transform(self, granu: S_GRANU):
     #     idx = granu - self.chain[0].value
@@ -174,7 +180,10 @@ def resolve_spatial_hierarchy(shape_path, points):
 
 
 def set_spatial_granu(crd: Coordinate, s_granu: S_GRANU):
-    res = crd.to_str(crd.transform(s_granu))
+    if s_granu == S_GRANU.ZIPCODE:
+        res = crd.transform(s_granu)
+    else:
+        res = crd.to_str(crd.transform(s_granu))
     # print(s_granu)
     # print(res)
     if res is pd.NA:
@@ -193,7 +202,6 @@ def resolve_geo_chain(geo_chain: str, geo_keys):
     keys = [x.strip() for x in geo_keys.split(",")]
     c = []
     d = {}
-
     for i in range(len(units)):
         granu = name_to_granu[units[i]]
         c.append(granu)

@@ -276,6 +276,7 @@ class CorrSearch:
                 st_schema_list.append(ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
 
         for st_schema in st_schema_list:
+            print("r_t", r_t)
             self.find_all_corr_for_a_tbl_schema(
                 tbl, st_schema, o_t, r_t, p_t, fill_zero
             )
@@ -533,6 +534,7 @@ class CorrSearch:
     def find_all_corr_for_a_tbl_schema(
         self, tbl1, st_schema: ST_Schema, o_t, r_t, p_t, fill_zero
     ):
+        print("enter")
         self.join_all_cost = 0
         self.cur_join_time = 0
         flag = st_schema.get_type().value
@@ -687,6 +689,7 @@ class CorrSearch:
         """
         Perform multiple-comparison correction
         """
+        print(len(tbl_schema_corrs))
         start = time.time()
         if self.correct_method == "FDR":
             tbl_schema_corrs = self.bh_correction(tbl_schema_corrs, r_t)
@@ -776,11 +779,15 @@ class CorrSearch:
             names1, names2 = df1.columns, df2.columns
             mat1, mat2 = df1.fillna(0).to_numpy(), df2.fillna(0).to_numpy()
             mat1_avg, mat2_avg = None, None
-            if "impute_avg" in self.r_methods and not self.outer_join:
-                mat1_avg, mat2_avg = (
+            # if "impute_avg" in self.r_methods and not self.outer_join:
+            #     mat1_avg, mat2_avg = (
+            #         df1.fillna(avg_dict1).to_numpy(),
+            #         df2.fillna(avg_dict2).to_numpy(),
+            #     )
+            mat1_avg, mat2_avg = (
                     df1.fillna(avg_dict1).to_numpy(),
                     df2.fillna(avg_dict2).to_numpy(),
-                )
+            )
             mat_dict = corr_utils.mat_corr(
                 mat1,
                 mat2,
@@ -847,7 +854,7 @@ class CorrSearch:
             # whether the corr coefficent exceeds the threhold or not.
             rows, cols = np.where(corr_mat >= -1)
         else:
-            rows, cols = np.where(corr_mat >= r_threshold)
+            rows, cols = np.where(np.absolute(corr_mat) >= r_threshold)
         index_pairs = [
             (corr_mat.index[row], corr_mat.columns[col]) for row, col in zip(rows, cols)
         ]
@@ -856,6 +863,8 @@ class CorrSearch:
 
             overlap = len(df1.index)  # number of samples that make up the correlation
             r_val = corr_mat.loc[row][col]
+            if r_val < 0:
+                print(r_val)
             p_val = pval_mat.loc[row][col]
             if "impute_avg" in self.r_methods and not self.outer_join:
                 res_sum_val = res_sum_mat.loc[row][col]
@@ -882,15 +891,18 @@ class CorrSearch:
                     new_corr.r_val_impute_zero = corr_impute_zero.loc[row][col]
                 res.append(new_corr)
             else:
-                agg_col1 = AggColumn(tbl1, st_schema1, row)
-                agg_col2 = AggColumn(tbl2, st_schema2, col)
+                agg_col1 = AggColumn(
+                    tbl1, self.tbl_attrs[tbl1]["name"], st_schema1, row, df1[row]
+                )
+                agg_col2 = AggColumn(
+                    tbl2, self.tbl_attrs[tbl2]["name"], st_schema2, col, df2[col]
+                )
                 if p_val <= p_threshold:
                     agg_col1.set_profile(df1[row], self.column_profiles[tbl1])
                     agg_col2.set_profile(df2[col], self.column_profiles[tbl2])
                     res.append(
                         Correlation(agg_col1, agg_col2, r_val, p_val, overlap, flag)
                     )
-
         return res
 
     def get_corr_naive(

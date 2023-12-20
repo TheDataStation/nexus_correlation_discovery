@@ -11,7 +11,7 @@ import psycopg2
 from data_search.search_db import DBSearch
 import numpy as np
 from sqlalchemy.types import *
-from data_ingestion.table import Table
+from data_ingestion.table import Attr, Table
 import time
 from tqdm import tqdm
 from data_search.data_model import (
@@ -107,8 +107,8 @@ class DBIngestorAgg:
                 domain=obj["domain"],
                 tbl_id=obj["tbl_id"],
                 tbl_name=obj["tbl_name"],
-                t_attrs=t_attrs,
-                s_attrs=s_attrs,
+                t_attrs=[Attr(attr, T_GRANU.Point) for attr in t_attrs],
+                s_attrs=[Attr(attr, S_GRANU.Point) for attr in s_attrs],
                 num_columns=obj["num_columns"],
             )
             print(tbl.t_attrs, tbl.s_attrs)
@@ -162,14 +162,17 @@ class DBIngestorAgg:
             db_ops.create_cnt_tbl_for_agg_tbl(self.cur, schema[0], schema[1])
 
     def ingest_tbl(self, tbl: Table):
-        tbl_path = os.path.join(self.data_path, f"{tbl.tbl_id}.csv")
+        if tbl.path is None:
+            tbl_path = os.path.join(self.data_path, f"{tbl.tbl_id}.csv")
+        else:
+            tbl_path = tbl.path
         df = io_utils.read_csv(tbl_path)
 
         # get numerical columns
         all_columns = list(df.select_dtypes(include=[np.number]).columns.values)
         numerical_columns = self.get_numerical_columns(all_columns, tbl)
-
-        df = df[tbl.t_attrs + tbl.s_attrs + numerical_columns]
+        print(tbl.t_attrs)
+        df = df[[t_attr.name for t_attr in tbl.t_attrs] + [s_attr.name for s_attr in tbl.s_attrs] + numerical_columns]
 
         print("begin expanding dataframe")
         # expand dataframe
@@ -177,7 +180,7 @@ class DBIngestorAgg:
         df, df_schema, t_attrs_success, s_attrs_success = self.expand_df(
             df, tbl.t_attrs, tbl.s_attrs
         )
-
+        print(t_attrs_success, s_attrs_success)
         print("expanding table used {} s".format(time.time() - start))
         # if dataframe is None, return
         if df is None:
@@ -217,6 +220,7 @@ class DBIngestorAgg:
 
     def create_agg_tbl(self, tbl, t_attrs, s_attrs, t_scales, s_scales, num_columns):
         st_schema_list = []
+
         for t in t_attrs:
             for scale in t_scales:
                 st_schema_list.append(ST_Schema(t_unit=Unit(t, scale)))
@@ -236,7 +240,7 @@ class DBIngestorAgg:
                         st_schema_list.append(
                             ST_Schema(Unit(t, t_scale), Unit(s, s_scale))
                         )
-
+       
         for st_schema in st_schema_list:
             vars = []
             for agg_col in num_columns:
@@ -246,6 +250,7 @@ class DBIngestorAgg:
             start = time.time()
             # transform data and also create an index on the key val column
             agg_tbl_name = db_ops.create_agg_tbl(self.cur, tbl, st_schema, vars)
+            print(agg_tbl_name)
             print(f"finish aggregating table in {time.time()-start} s")
             # ingest spatio-temporal values to an index table
             start = time.time()
@@ -329,45 +334,52 @@ class DBIngestorAgg:
         t_attrs_success = []
         s_attrs_success = []
         df_schema = {}
-        for t_attr in t_attrs:
-            # parse datetime column to datetime class
-            df[t_attr] = pd.to_datetime(df[t_attr], utc=False, errors="coerce").replace(
-                {np.NaN: None}
-            )
-            df_dts = df[t_attr].apply(parse_datetime).dropna()
-            # df_dts = np.vectorize(parse_datetime)(df[t_attr])
-            if len(df_dts):
-                for t_granu in self.t_scales:
-                    new_attr = "{}_{}".format(t_attr, t_granu.value)
-                    df[new_attr] = df_dts.apply(set_temporal_granu, args=(t_granu,))
+        if len(self.t_scales):
+            for t_attr in t_attrs:
+                # parse datetime column to datetime class
+                df[t_attr] = pd.to_datetime(df[t_attr], utc=False, errors="coerce").replace(
+                    {np.NaN: None}
+                )
+                df_dts = df[t_attr].apply(parse_datetime).dropna()
+                # df_dts = np.vectorize(parse_datetime)(df[t_attr])
+                if len(df_dts):
+                    for t_granu in self.t_scales:
+                        new_attr = "{}_{}".format(t_attr, t_granu.value)
+                        df[new_attr] = df_dts.apply(set_temporal_granu, args=(t_granu,))
 
-                    # df[new_attr] = np.vectorize(set_temporal_granu, otypes=[object])(
-                    #     df_dts, t_granu.value
-                    # )
+                        # df[new_attr] = np.vectorize(set_temporal_granu, otypes=[object])(
+                        #     df_dts, t_granu.value
+                        # )
 
+                        df_schema[new_attr] = Integer()
+                    t_attrs_success.append(t_attr)
+        if len(self.s_scales):
+            for s_attr in s_attrs:
+                if s_attr.type != S_GRANU.Point:
+                    df = df.rename(columns={s_attr.name: "{}_{}".format(s_attr.name, s_attr.type.value)})
+                    s_attrs_success.append(s_attr)
+                    continue
+                # parse (long, lat) pairs to point
+                s_attr = s_attr.name
+                df_points = df[s_attr].apply(coordinate.parse_coordinate)
+
+                # create a geopandas dataframe using points
+                gdf = (
+                    gpd.GeoDataFrame(geometry=df_points)
+                    .dropna()
+                    .set_crs(epsg=4326, inplace=True)
+                )
+
+                df_resolved = resolve_spatial_hierarchy(self.shape_path, gdf)
+
+                # df_resolved can be none meaning there is no point falling into the shape file
+                if df_resolved is None:
+                    continue
+                for s_granu in self.s_scales:
+                    new_attr = "{}_{}".format(s_attr, s_granu.value)
+                    df[new_attr] = df_resolved.apply(set_spatial_granu, args=(s_granu,))
                     df_schema[new_attr] = Integer()
-                t_attrs_success.append(t_attr)
-        for s_attr in s_attrs:
-            # parse (long, lat) pairs to point
-            df_points = df[s_attr].apply(coordinate.parse_coordinate)
-
-            # create a geopandas dataframe using points
-            gdf = (
-                gpd.GeoDataFrame(geometry=df_points)
-                .dropna()
-                .set_crs(epsg=4326, inplace=True)
-            )
-
-            df_resolved = resolve_spatial_hierarchy(self.shape_path, gdf)
-
-            # df_resolved can be none meaning there is no point falling into the shape file
-            if df_resolved is None:
-                continue
-            for s_granu in self.s_scales:
-                new_attr = "{}_{}".format(s_attr, s_granu.value)
-                df[new_attr] = df_resolved.apply(set_spatial_granu, args=(s_granu,))
-                df_schema[new_attr] = Integer()
-            s_attrs_success.append(s_attr)
+                s_attrs_success.append(s_attr)
 
         return df, df_schema, t_attrs_success, s_attrs_success
 
@@ -397,22 +409,20 @@ class DBIngestorAgg:
 
 if __name__ == "__main__":
     start_time = time.time()
-    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
-    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
-    data_source = "chicago_10k"
+    t_scales = []
+    s_scales = [S_GRANU.ZIPCODE]
+    data_source = "chicago_1m_zipcode"
     config = io_utils.load_config(data_source)
     conn_string = config["db_path"]
     ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
+    # coordinate.resolve_geo_chain(config["geo_chain"], config["geo_keys"])
     # tbl = Table(
     #     domain="",
-    #     tbl_id="qqqh-hgyw",
+    #     tbl_id="xc8g-xha7",
     #     tbl_name="",
     #     t_attrs=[
-    #         "lse_report_reviewed_on_date",
-    #         # "scheduled_inspection_date",
-    #         # "rescheduled_inspection_date",
     #     ],
-    #     s_attrs=[],
+    #     s_attrs=['location'],
     #     num_columns=[],
     # )
     # ingestor.ingest_tbl(tbl)

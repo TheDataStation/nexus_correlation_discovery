@@ -161,7 +161,7 @@ def get_intersection_inv_idx(
             )
         else:
             st_schema2 = ST_Schema(
-                t_unit=Unit(cand[1], st_schema.s_unit.granu),
+                s_unit=Unit(cand[1], st_schema.s_unit.granu),
             )
         # parsed_candidates.append([st_schema2.get_agg_tbl_name(tbl2_id), overlap])
         result.append([tbl2_id, st_schema2, overlap])
