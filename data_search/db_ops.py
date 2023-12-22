@@ -87,11 +87,11 @@ def get_intersection_inv_idx(
     agg_tbl = st_schema.get_agg_tbl_name(tbl)
     # col_names = st_schema.get_col_names_with_granu()
     sql_str = """
-        SELECT val, count(*) as cnt
+        SELECT cand, count(*) as cnt
         FROM( 
-            SELECT unnest("st_schema_list") as val FROM {inv_idx} inv JOIN {tbl} agg ON inv."val" = agg."val"
+            SELECT unnest("st_schema_list") as cand FROM {inv_idx} inv JOIN {tbl} agg ON inv."val" = agg."val"
         ) subquery
-        GROUP BY val
+        GROUP BY cand
     """
     # WITH sampled_table AS (
             #     SELECT "val"
@@ -126,19 +126,6 @@ def get_intersection_inv_idx(
         cur.execute(query, [sample_ratio])
     
     query_res = cur.fetchall()
-   
-    # counter = Counter()
-    # total_cnt = 0
-    # # print(query_res)
-    # for pl in query_res:
-    #     counter.update(pl[0])
-    #     total_cnt += len(pl[0])
-    # candidates = []
-    # for cand in counter:
-    #     cnt = counter[cand]
-    #     cand = tuple(cand.split(","))
-    #     if cnt >= threshold and cand[0] != tbl:
-    #         candidates.append((cand, cnt))
 
     result = []
     sampled_cnt = 0
@@ -146,10 +133,13 @@ def get_intersection_inv_idx(
     # for t in candidates:
     for t in query_res:
         cand, overlap = tuple(t[0].split(",")), t[1]
+        tbl2_id = cand[0]
+        if tbl2_id == tbl:
+            continue
         sampled_cnt += overlap
         if sample_ratio == 0 and overlap < threshold:
             continue
-        tbl2_id = cand[0]
+
         if st_schema.type == SchemaType.TS:
             st_schema2 = ST_Schema(
                 t_unit=Unit(cand[1], st_schema.t_unit.granu),
@@ -161,7 +151,7 @@ def get_intersection_inv_idx(
             )
         else:
             st_schema2 = ST_Schema(
-                t_unit=Unit(cand[1], st_schema.s_unit.granu),
+                s_unit=Unit(cand[1], st_schema.s_unit.granu),
             )
         # parsed_candidates.append([st_schema2.get_agg_tbl_name(tbl2_id), overlap])
         result.append([tbl2_id, st_schema2, overlap])

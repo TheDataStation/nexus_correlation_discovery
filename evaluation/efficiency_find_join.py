@@ -11,12 +11,12 @@ from tqdm import tqdm
 from data_search.commons import FIND_JOIN_METHOD
 from data_ingestion.profile_datasets import Profiler
 
-# data_source = "chicago_1m"
+data_source = "chicago_1m"
 
-# granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
+granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
 
-data_source = "cdc_1m"
-granu_lists = [[T_GRANU.DAY, S_GRANU.STATE]]
+# data_source = "cdc_1m"
+# granu_lists = [[T_GRANU.DAY, S_GRANU.STATE]]
 
 config = io_utils.load_config(data_source)
 conn_str = config["db_path"]

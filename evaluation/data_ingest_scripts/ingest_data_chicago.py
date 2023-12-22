@@ -10,13 +10,13 @@ start_time = time.time()
 data_source = "chicago_1m"
 config = io_utils.load_config(data_source)
 conn_string = config["db_path"]
-conn_string = "postgresql://yuegong@localhost/chicago_1m"
+conn_string = "postgresql://yuegong@localhost/chicago_1m_new"
 t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
 s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
 
 ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
-attr_path = config["attr_path"]
-tbls = io_utils.load_json(attr_path)
+# attr_path = config["attr_path"]
+# tbls = io_utils.load_json(attr_path)
 # for tbl_id, info in tqdm(tbls.items()):
 #     ingestor.create_cnt_tbl(
 #         tbl_id,

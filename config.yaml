@@ -11,7 +11,7 @@ chicago_10k:
     idx_tbl_path: "resource/chicago_10k/idx_tbl_names.json"
 
 chicago_1m:
-    db_path: "postgresql://yuegong@localhost/chicago_1m"
+    db_path: "postgresql://yuegong@localhost/chicago_1m_new"
     data_path: "data/chicago_open_data_1m/"
     shape_path: "data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp"
     geo_chain: "block, tract, county, state"

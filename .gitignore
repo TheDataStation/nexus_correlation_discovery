@@ -25,3 +25,5 @@ evaluation/synthetic_eval/*.png
 data.zip
 .idea
 test.txt
+join_key_data/
+lazo_joinable/

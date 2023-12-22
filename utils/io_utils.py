@@ -3,14 +3,17 @@ import pandas as pd
 import dill as pickle
 import yaml
 import os
+from utils.coordinate import S_GRANU
+
+from utils.time_point import T_GRANU
 
 
 def dump_json(path: str, obj):
     dir = os.path.dirname(path)
-    if not os.path.exists(dir):
+    if dir and not os.path.exists(dir):
         os.makedirs(dir)
     with open(path, "w") as f:
-        json.dump(obj, f)
+        json.dump(obj, f, indent=4)
 
 
 def load_json(path: str):
@@ -53,3 +56,7 @@ def load_config(source):
         yaml_data = yaml.load(f, Loader=yaml.FullLoader)
         config = yaml_data[source]
         return config
+
+def create_dir(dir_path):
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)    

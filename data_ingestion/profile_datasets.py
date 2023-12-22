@@ -43,9 +43,12 @@ class Profiler:
             )
         io_utils.dump_json(self.config["col_stats_path"], self.stats_dict)
 
-    def load_all_st_schemas(self, t_scale, s_scale):
+    def load_all_st_schemas(self, t_scale, s_scale, type_aware=False):
         st_schema_list = []
+       
         all_tbls = list(self.tbl_attrs.keys())
+        if type_aware:
+            st_schema_dict = {SchemaType.TIME: [], SchemaType.SPACE: [], SchemaType.TS: []}
         for tbl in all_tbls:
             t_attrs, s_attrs = (
                 self.tbl_attrs[tbl]["t_attrs"],
@@ -54,16 +57,25 @@ class Profiler:
 
             for t in t_attrs:
                 st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t, t_scale))))
+                if type_aware:
+                    st_schema_dict[SchemaType.TIME].append((tbl, ST_Schema(t_unit=Unit(t, t_scale))))
 
             for s in s_attrs:
                 st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s, s_scale))))
+                if type_aware:
+                    st_schema_dict[SchemaType.SPACE].append((tbl, ST_Schema(s_unit=Unit(s, s_scale))))
 
             for t in t_attrs:
                 for s in s_attrs:
                     st_schema_list.append(
                         (tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
                     )
-        return st_schema_list
+                    if type_aware:
+                        st_schema_dict[SchemaType.TS].append((tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale))))
+        if type_aware:
+            return st_schema_dict
+        else:
+            return st_schema_list
 
     def count_avg_rows(self, t_scale, s_scale, threshold=0):
         all_schemas = self.load_all_st_schemas(t_scale, s_scale)

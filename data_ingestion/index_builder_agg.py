@@ -60,7 +60,8 @@ class DBIngestorAgg:
         self.data_path = self.config["data_path"]
         self.shape_path = self.config["shape_path"]
 
-    def get_numerical_columns(self, all_columns, tbl: Table):
+    @staticmethod
+    def get_numerical_columns(all_columns, tbl: Table):
         numerical_columns = list(set(all_columns) & set(tbl.num_columns))
         valid_num_columns = []
         # exclude columns that contain stop words and timestamp columns
@@ -69,7 +70,8 @@ class DBIngestorAgg:
                 valid_num_columns.append(col)
         return valid_num_columns
 
-    def select_valid_attrs(self, attrs, max_limit=0):
+    @staticmethod
+    def select_valid_attrs(attrs, max_limit=0):
         valid_attrs = []
         for attr in attrs:
             if any(
