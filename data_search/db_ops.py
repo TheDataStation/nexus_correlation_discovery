@@ -283,15 +283,15 @@ def _join_two_agg_tables(
 def join_two_agg_tables(
     cur,
     tbl1: str,
-    st_schema1: ST_Schema,
+    agg_tbl1: str,
     vars1: List[Variable],
     tbl2: str,
-    st_schema2: ST_Schema,
+    agg_tbl2: str,
     vars2: List[Variable],
     outer,
 ):
-    agg_tbl1 = st_schema1.get_agg_tbl_name(tbl1)
-    agg_tbl2 = st_schema2.get_agg_tbl_name(tbl2)
+    # agg_tbl1 = st_schema1.get_agg_tbl_name(tbl1)
+    # agg_tbl2 = st_schema2.get_agg_tbl_name(tbl2)
 
     agg_join_sql = """
         SELECT a1.val, {agg_vars} FROM

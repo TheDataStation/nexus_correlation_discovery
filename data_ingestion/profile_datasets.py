@@ -107,7 +107,7 @@ class Profiler:
                 cnts_list = all_cnts[st_type]
                 cnts_list.append((tbl, agg_name, row_cnt))
                 total_cnts[st_type] += row_cnt
-        print(total_cnts)
+        # print(total_cnts)
         res = {}
         for st_type in [SchemaType.TIME, SchemaType.SPACE, SchemaType.TS]:
             cnts_list = all_cnts[st_type]

@@ -28,4 +28,5 @@ test.txt
 join_key_data/
 lazo_joinable/
 lazo_eval/join_ground_truth_T_GRANU.DAY_S_GRANU.BLOCK_overlap_10.json
-*png
+*.png
+*.json

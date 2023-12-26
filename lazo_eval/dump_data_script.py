@@ -46,4 +46,4 @@ def retrive(data_source, t_granu: T_GRANU, s_granu: S_GRANU):
             io_utils.dump_json(f'{cur_storage_dir}/{agg_name}.json', res)
 
 if __name__ == "__main__":
-    retrive('chicago_1m', T_GRANU.DAY, S_GRANU.BLOCK)
+    retrive('chicago_1m', T_GRANU.MONTH, S_GRANU.TRACT)

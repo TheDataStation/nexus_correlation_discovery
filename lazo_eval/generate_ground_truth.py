@@ -41,10 +41,10 @@ def generate_ground_truth(data_source, t_granu, s_granu, o_t):
                     tbl_info[2]
                 )
                 gt[st_schema.get_agg_tbl_name(tbl)].append((st_schema2.get_agg_tbl_name(tbl2), overlap))
-    io_utils.dump_json(f"lazo_integration/join_ground_truth_{t_granu}_{s_granu}_overlap_{o_t}.json", gt)
+    io_utils.dump_json(f"lazo_eval/join_ground_truth_{t_granu}_{s_granu}_overlap_{o_t}.json", gt)
 
 if __name__ == "__main__":
     data_source = "chicago_1m" 
-    t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
+    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
     o_t = 10
     generate_ground_truth(data_source, t_granu, s_granu, 10)

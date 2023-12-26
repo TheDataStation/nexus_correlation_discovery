@@ -13,20 +13,30 @@ class Stages(Enum):
     CORRECTION = "Correction"
 
 
-def load_data(path, vars):
+def load_data(path, vars, lazo=False, granu_list=None, jc_t=None):
     profile = io_utils.load_json(path)
     data = []
     for var in vars:
         if var == Stages.TOTAL:
-            data.append(profile["total_time"])
+            if lazo:
+                path = f"lazo_eval/lazo_join_res/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf.json"
+                res = io_utils.load_json(path)
+                data.append(profile["total_time"] + res["TotalTime"]/1000)
+            else:
+                data.append(profile["total_time"])
         elif var == Stages.FIND_JOIN_AND_MATER:
             data.append(
                 profile["time_find_joins"]["total"] + profile["time_join"]["total"]
             )
         elif var == Stages.FIND_JOIN:
-            data.append(
-                profile["time_find_joins"]["total"],
-            )
+            if lazo:
+                path = f"lazo_eval/lazo_join_res/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf.json"
+                res = io_utils.load_json(path)
+                data.append(profile["time_find_joins"]["total"] + res["TotalTime"]/1000)
+            else:
+                data.append(
+                    profile["time_find_joins"]["total"],
+                )
         elif var == Stages.MATERIALIZATION:
             data.append(profile["time_join"]["total"])
         elif var == Stages.CORRELATION:
