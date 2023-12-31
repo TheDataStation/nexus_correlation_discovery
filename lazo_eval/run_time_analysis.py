@@ -16,8 +16,30 @@ def box_plot(ax, data_i):
     ax.set_ylabel('The size of the larger table involved in a join')
     ax.set_xticks([1, 2], ['Ground Truth Joinable Pairs', 'Joinable Pairs Missed by Lazo'])
 
+def lazo_nexus_runtime_comparison_overall(granu_list, jc_threshold_l, o_t, r_t, data_source, storage_dir):
+    nexus_perf_path = f"evaluation/{storage_dir}/{data_source}/full_tables/perf_time_{granu_list[0]}_{granu_list[1]}_{FIND_JOIN_METHOD.COST_MODEL}_{o_t}_{r_t}.json"
+    nexus_profile = io_utils.load_json(nexus_perf_path)
+    nexus_runtime = nexus_profile['total_time']
+    lazo_runtime_l = []
+    nexus_runtime_l = []
+    for jc_threshold in jc_threshold_l:
+        lazo_perf_path = f"evaluation/{storage_dir}/{data_source}/full_tables/perf_time_{granu_list[0]}_{granu_list[1]}_lazo_jc_{jc_threshold}_{o_t}.json"
+        lazo_profile = load_data(lazo_perf_path, [Stages.TOTAL], mode='lazo', granu_list=granu_list, jc_t=jc_threshold)
+        lazo_runtime_l.append(lazo_profile[0])
+        nexus_runtime_l.append(nexus_runtime)
+    values = np.array([lazo_runtime_l, nexus_runtime_l])
+    params = {
+        "ylabel": "Run time(s)",
+        # "title": f"Overlap threshold {o_t}",
+        "save_path": f"lazo_eval/figure/{data_source}_run_time_comparison_total_time_{r_t}_{o_t}.png",
+    }
+    fig, axs = plt.subplots(1, 1, sharey=True, figsize=(15, 5))
+    grouped_bar_plot(
+        axs, ['Lazo', 'Nexus'], [f"JC={jc}" for jc in jc_threshold_l], values, params
+    )
+
 def lazo_nexus_runtime_comparison():
-    granu_list = [T_GRANU.DAY, S_GRANU.BLOCK]
+    granu_list = [T_GRANU.MONTH, S_GRANU.TRACT]
     jc_threshold, o_t, r_t = 0.2, 30, 0.2
     find_join_method = FIND_JOIN_METHOD.COST_MODEL
     data_source = "chicago_1m"
@@ -83,5 +105,6 @@ def find_dist_false_nagetive_joins():
     plt.savefig('lazo_eval/figure/fn_joins.png')
 
 if __name__ == "__main__":
-    lazo_nexus_runtime_comparison()
+    lazo_nexus_runtime_comparison_overall([T_GRANU.MONTH, S_GRANU.TRACT], [0.0, 0.2, 0.4, 0.6], 10, 0.0, 'chicago_1m', 'runtime12_29')
+    # lazo_nexus_runtime_comparison()
     # find_dist_false_nagetive_joins()

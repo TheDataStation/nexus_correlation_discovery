@@ -1,6 +1,5 @@
 import utils.io_utils as io_utils
-from config import DATA_PATH, META_PATH, ATTR_PATH
-from data_ingestion.index_builder_raw import DBIngestor, Table
+# from data_ingestion.index_builder_raw import DBIngestor, Table
 from data_ingestion.index_builder_agg import DBIngestorAgg
 from sqlalchemy import create_engine
 from tqdm import tqdm
@@ -106,16 +105,28 @@ def test_expand_table():
         )
         print("t_attrs after: {}".format(after_cnt))
 
+def test_create_sketch_tbl():
+    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
+    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
+    data_source = "chicago_1m"
+    config = io_utils.load_config(data_source)
+    conn_string = config["db_path"]
+    ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
+    agg_tbl = 'ijzp-q8t2_date_2'
+    k = 256
+    ingestor.create_correlation_sketch(agg_tbl, k)
 
-# ingesting all tables in chicago open data 10k takes about 6.5 minutes
-test_ingest_all_tables()
-# print("ingestion finished in {} s".format(duration))
-# start = time.time()
-# test_ingest_tbl_e2e()
-# print("time took:", time.time() - start)
+if __name__ == '__main__':
+    test_create_sketch_tbl()
+    # ingesting all tables in chicago open data 10k takes about 6.5 minutes
+    # test_ingest_all_tables()
+    # print("ingestion finished in {} s".format(duration))
+    # start = time.time()
+    # test_ingest_tbl_e2e()
+    # print("time took:", time.time() - start)
 
-# start = time.time()
-# test_create_index_on_agg_idx_table()
-# print("time took:", time.time() - start)
-# test_correct_num_columns()
-# test_expand_table()
+    # start = time.time()
+    # test_create_index_on_agg_idx_table()
+    # print("time took:", time.time() - start)
+    # test_correct_num_columns()
+    # test_expand_table()

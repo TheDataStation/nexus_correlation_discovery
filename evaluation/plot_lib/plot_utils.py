@@ -13,15 +13,19 @@ class Stages(Enum):
     CORRECTION = "Correction"
 
 
-def load_data(path, vars, lazo=False, granu_list=None, jc_t=None):
+def load_data(path, vars, mode=None, granu_list=None, jc_t=None):
     profile = io_utils.load_json(path)
     data = []
     for var in vars:
         if var == Stages.TOTAL:
-            if lazo:
+            if mode =='lazo':
                 path = f"lazo_eval/lazo_join_res/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf.json"
                 res = io_utils.load_json(path)
                 data.append(profile["total_time"] + res["TotalTime"]/1000)
+            elif mode == 'sketch':
+                path = f"lazo_eval/find_joinable_time_{granu_list[0]}_{granu_list[1]}_overlap_30.json"
+                res = io_utils.load_json(path)
+                data.append(profile["total_time"] + res["total_time"])
             else:
                 data.append(profile["total_time"])
         elif var == Stages.FIND_JOIN_AND_MATER:
@@ -29,10 +33,14 @@ def load_data(path, vars, lazo=False, granu_list=None, jc_t=None):
                 profile["time_find_joins"]["total"] + profile["time_join"]["total"]
             )
         elif var == Stages.FIND_JOIN:
-            if lazo:
+            if mode =='lazo':
                 path = f"lazo_eval/lazo_join_res/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf.json"
                 res = io_utils.load_json(path)
                 data.append(profile["time_find_joins"]["total"] + res["TotalTime"]/1000)
+            elif mode == 'sketch':
+                path = f"lazo_eval/find_joinable_time_{granu_list[0]}_{granu_list[1]}_overlap_30.json"
+                res = io_utils.load_json(path)
+                data.append(profile["time_find_joins"]["total"] + res["total_time"])
             else:
                 data.append(
                     profile["time_find_joins"]["total"],

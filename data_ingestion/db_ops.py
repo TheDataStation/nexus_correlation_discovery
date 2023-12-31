@@ -254,3 +254,26 @@ def create_inv_idx_cnt_tbl(cur, idx_names):
 def del_tbl(cur, tbl_name):
     sql_str = """DROP TABLE IF EXISTS {tbl}"""
     cur.execute(sql.SQL(sql_str).format(tbl=sql.Identifier(tbl_name)))
+
+def create_correlation_sketch_tbl(cur, agg_tbl, k, keys):
+    tbl_name = f"{agg_tbl}_sketch_{k}"
+    del_tbl(cur, tbl_name)
+    sql_str = """
+        CREATE TABLE {tbl_name} AS
+        SELECT * FROM {agg_tbl} WHERE val IN %s;
+    """
+    query = sql.SQL(sql_str).format(
+        tbl_name=sql.Identifier(tbl_name), agg_tbl=sql.Identifier(agg_tbl)
+    )
+    cur.execute(query, (tuple(keys),))
+
+def read_key(cur, agg_tbl: str):
+    sql_str = """
+        SELECT val FROM {agg_tbl};
+    """
+
+    query = sql.SQL(sql_str).format(
+        agg_tbl=sql.Identifier(agg_tbl)
+    )
+    cur.execute(query)
+    return [r[0] for r in cur.fetchall()]

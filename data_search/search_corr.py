@@ -59,21 +59,21 @@ class AggColumn:
         self.col_data = col_data
 
     def set_profile(self, col_data, tbl_profiles):
-        missing_ratio = col_data.isnull().sum() / len(col_data)
-        zero_ratio = (col_data == 0).sum() / len(col_data)
+        # missing_ratio = col_data.isnull().sum() / len(col_data)
+        # zero_ratio = (col_data == 0).sum() / len(col_data)
         # if the agg attr is using avg, calculate original missing and zero ratio
         missing_ratio_o, zero_ratio_o = 0, 0
         if self.agg_attr[0:3] == "avg":
             missing_ratio_o = tbl_profiles[self.agg_attr]["missing_ratio"]
             zero_ratio_o = tbl_profiles[self.agg_attr]["zero_ratio"]
 
-        cv = col_data.dropna().std() / col_data.dropna().mean()
+        # cv = col_data.dropna().std() / col_data.dropna().mean()
         self.profile = AggColumnProfile(
-            missing_ratio=missing_ratio,
-            zero_ratio=zero_ratio,
+            missing_ratio=0,
+            zero_ratio=0,
             missing_ratio_o=missing_ratio_o,
             zero_ratio_o=zero_ratio_o,
-            cv=cv,
+            cv=0,
         )
 
     def get_stats(self, stat_name):
@@ -162,7 +162,8 @@ class CorrSearch:
         correct_method,
         q_val=None,
         joinable_lookup = None,
-        mode = None
+        mode = None,
+        sketch_size = None,
     ) -> None:
         self.data_source = data_source
         config = io_utils.load_config(data_source)
@@ -196,6 +197,13 @@ class CorrSearch:
         self.q_val = q_val
         self.joinable_lookup = joinable_lookup
         self.mode = mode
+        if self.mode == 'sketch':
+            self.sketch = True
+            self.sketch_size = sketch_size
+        else:
+            self.sketch = False
+            self.sketch_size = 0
+
         self.joinable_pairs = []
         self.overhead = 0
         self.perf_profile = {
@@ -325,7 +333,7 @@ class CorrSearch:
         return corrs
     
   
-    def align_two_st_schemas(self, tbl1, agg_name1, tbl2, agg_name2, o_t, outer):
+    def align_two_st_schemas(self, tbl1, agg_name1, tbl2, agg_name2, o_t, outer, sketch=False, k=0):
         tbl1_agg_cols = self.tbl_attrs[tbl1]["num_columns"]
         tbl2_agg_cols = self.tbl_attrs[tbl2]["num_columns"]
 
@@ -334,24 +342,28 @@ class CorrSearch:
         for agg_col in tbl1_agg_cols:
             if is_num_column_valid(agg_col):
                 vars1.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t1".format(agg_col)))
-        if len(tbl1_agg_cols) == 0 or tbl1 == '85ca-t3if':
+        if len(vars1) == 0 or tbl1 == '85ca-t3if':
             vars1.append(Variable("*", AggFunc.COUNT, "count_t1"))
         for agg_col in tbl2_agg_cols:
             if is_num_column_valid(agg_col):
                 vars2.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t2".format(agg_col)))
-        if len(tbl2_agg_cols) == 0 or tbl2 == '85ca-t3if':
+        if len(vars2) == 0 or tbl2 == '85ca-t3if':
             vars2.append(Variable("*", AggFunc.COUNT, "count_t2"))
 
-        if len(vars1) == 0 or len(vars2) == 0:
-            if not self.outer_join:
-                return None, None
-            else:
-                return None, None, None, None
+        # if len(vars1) == 0 or len(vars2) == 0:
+        #     if not self.outer_join:
+        #         return None, None
+        #     else:
+        #         return None, None, None, None
         # column names in postgres are at most 63-character long
         names1 = [var.var_name[:63] for var in vars1]
         names2 = [var.var_name[:63] for var in vars2]
 
         merged = None
+
+        if sketch:
+            agg_name1 = f"{agg_name1}_sketch_{k}"
+            agg_name2 = f"{agg_name2}_sketch_{k}"
 
         if self.join_method == "AGG":
             if self.outer_join:
@@ -384,7 +396,19 @@ class CorrSearch:
         #         tbl1, st_schema1, vars1, tbl2, st_schema2, vars2
         #     )
 
-        if merged is None or len(merged) < o_t:
+        if merged is None:
+            if not self.outer_join:
+                return None, None
+            else:
+                return None, None, None, None
+
+        if len(merged) < o_t and not sketch:
+            if not self.outer_join:
+                return None, None
+            else:
+                return None, None, None, None
+        
+        if sketch and len(merged) < 3:
             if not self.outer_join:
                 return None, None
             else:
@@ -558,7 +582,10 @@ class CorrSearch:
         return corrs
 
     def find_joinable_lookup(self, tbl1, st_schema: ST_Schema, o_t):
-        candidates = self.joinable_lookup[st_schema.get_agg_tbl_name(tbl1)]
+        key = st_schema.get_agg_tbl_name(tbl1)
+        if key not in self.joinable_lookup:
+            return []
+        candidates = self.joinable_lookup[key]
         candidates = [x[0] for x in candidates if x[1] >= o_t]
         res = []
         for cand in candidates:
@@ -648,7 +675,9 @@ class CorrSearch:
         
         v_cnt = self.join_costs[agg_name1].cnt
 
-        if self.joinable_lookup and self.mode == 'lazo':
+        if self.mode == 'sketch':
+            aligned_schemas = self.find_joinable_lookup(tbl1, st_schema, o_t)
+        elif self.joinable_lookup and self.mode == 'lazo':
             aligned_schemas = self.find_joinable_lookup(tbl1, st_schema, o_t)
         elif self.joinable_lookup and self.mode == 'nexus':
             # exlude aligned schema that are not in lazo's result
@@ -682,17 +711,17 @@ class CorrSearch:
             # agg_name2 = st_schema2.get_agg_tbl_name(tbl2)
             if tbl2 == tbl1 or agg_name2 in self.visited_schemas:
                 continue
-            self.join_all_cost += min(v_cnt, self.join_costs[agg_name2].cnt)
+            # self.join_all_cost += min(v_cnt, self.join_costs[agg_name2].cnt)
             # Align two schemas
             start = time.time()
             df1_outer, df2_outer = None, None
             if not self.outer_join:
                 df1, df2 = self.align_two_st_schemas(
-                    tbl1, agg_name1, tbl2, agg_name2, o_t, outer=False
+                    tbl1, agg_name1, tbl2, agg_name2, o_t, outer=False, sketch=self.sketch, k=self.sketch_size
                 )
             else:
                 df1, df2, df1_outer, df2_outer = self.align_two_st_schemas(
-                    tbl1, agg_name1, tbl2, agg_name2, o_t, outer=True
+                    tbl1, agg_name1, tbl2, agg_name2, o_t, outer=True, sketch=self.sketch, k=self.sketch_size
                 )
             time_used = time.time() - start
             self.cur_join_time += time_used
@@ -912,7 +941,7 @@ class CorrSearch:
             # whether the corr coefficent exceeds the threhold or not.
             rows, cols = np.where(corr_mat >= -1)
         else:
-            rows, cols = np.where(corr_mat >= r_threshold)
+            rows, cols = np.where(np.abs(corr_mat) >= r_threshold)
         index_pairs = [
             (corr_mat.index[row], corr_mat.columns[col]) for row, col in zip(rows, cols)
         ]

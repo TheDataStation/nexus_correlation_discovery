@@ -25,7 +25,7 @@ from data_search.data_model import (
 import data_ingestion.db_ops as db_ops
 from data_ingestion.db_ops import IndexType
 from typing import List
-from multiprocessing.pool import ThreadPool as Pool
+from utils.correlation_sketch_utils import murmur3_32, grm, FixedSizeMaxHeap
 
 """
 DBIngestor ingests dataframes to a database (current implementation uses postgres)
@@ -253,6 +253,22 @@ class DBIngestorAgg:
             start = time.time()
             self.ingest_agg_tbl_to_idx_tbl(tbl, agg_tbl_name, st_schema)
             print(f"finish ingesting to idx table in {time.time()-start} s")
+            # create correlation sketch for an aggregation table.
+            self.create_correlation_sketch(agg_tbl_name)
+    
+    def create_correlation_sketch(self, agg_tbl: str, k: int):
+        # read the key column from agg_tbl
+        keys = db_ops.read_key(self.cur, agg_tbl)
+        sketch = FixedSizeMaxHeap(k) # consists of k min values
+        for key in keys:
+            # hash each key using murmur3
+            hash_val = murmur3_32(key)
+            # use another function to map hash_val to 0-1
+            hu = grm(hash_val)
+            sketch.push((hu, key))
+        min_keys = [item[1] for item in sketch.get_data()]
+        # project these values from the original table
+        db_ops.create_correlation_sketch_tbl(self.cur, agg_tbl, k, min_keys)
 
     def create_idx_on_agg_tbls(
         self,

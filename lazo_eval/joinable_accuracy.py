@@ -57,11 +57,11 @@ def box_plot(ax, data_i, jc_value):
     ax.set_xticks([1, 2, 3], ['Precision', 'Recall', 'F1-Score'])
 
 if __name__ == "__main__":
-    t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
-    # t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
-    o_t_l = [30]
+    # t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
+    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    o_t_l = [10]
     for o_t in o_t_l:
-        jc_values = [0.5]
+        jc_values = [0.0, 0.2, 0.4, 0.6]
         fig, axs = plt.subplots(1, len(jc_values), figsize=(15, 5))
         for i, jc_value in enumerate(jc_values):
             precision_l, recall_l, f_score_l = [], [], []

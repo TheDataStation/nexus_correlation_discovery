@@ -1,14 +1,16 @@
 from matplotlib import pyplot as plt
 from utils import io_utils
+from utils.coordinate import S_GRANU
+from utils.time_point import T_GRANU
 
-def lazo_joinable_run_time():
+def lazo_joinable_run_time(t_granu, s_granu):
     fig, ax = plt.subplots()
-    lazo_thresholds = [0.0, 0.1, 0.2]
-    jc_values = ["jc=0", "jc=0.1", "jc=0.2"]
+    lazo_thresholds = [0.0, 0.2, 0.4, 0.6]
+    jc_values = ["jc=0", "jc=0.2", "jc=0.4", "jc=0.6"]
     filter_time = []
     validate_time = []
     for t in lazo_thresholds:
-        path = f"lazo_eval/lazo_join_res/jc_{t}_perf.json"
+        path = f"lazo_eval/lazo_join_res/time_{t_granu.value}_space_{s_granu.value}/jc_{t}_perf.json"
         res = io_utils.load_json(path)
         filter_time.append(res["filterTime"]/1000)
         validate_time.append(res["validateTime"]/1000)
@@ -33,7 +35,9 @@ def lazo_joinable_run_time():
     plt.ylabel('Runtime(s)')
     plt.title('Join Search Runtime')
     plt.legend()
-    plt.savefig('lazo_eval/figure/jc_runtime.png')
+    plt.savefig(f'lazo_eval/figure/jc_runtime_{t_granu}_{s_granu}.png')
 
 if __name__ == "__main__":
-    lazo_joinable_run_time()
+    # t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
+    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    lazo_joinable_run_time(t_granu, s_granu)

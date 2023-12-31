@@ -10,7 +10,7 @@ from utils.coordinate import S_GRANU
 from utils.time_point import T_GRANU
 import time
 
-def generate_ground_truth(data_source, t_granu, s_granu, o_t):
+def generate_ground_truth(data_source, t_granu, s_granu, o_t, persist):
     # use inverted index to construct the ground truth, no comparison between performance yet.
     config = io_utils.load_config(data_source)
     tbl_attrs = io_utils.load_json(config["attr_path"])
@@ -41,10 +41,17 @@ def generate_ground_truth(data_source, t_granu, s_granu, o_t):
                     tbl_info[2]
                 )
                 gt[st_schema.get_agg_tbl_name(tbl)].append((st_schema2.get_agg_tbl_name(tbl2), overlap))
-    io_utils.dump_json(f"lazo_eval/join_ground_truth_{t_granu}_{s_granu}_overlap_{o_t}.json", gt)
+    if persist:
+        io_utils.dump_json(f"lazo_eval/join_ground_truth_{t_granu}_{s_granu}_overlap_{o_t}.json", gt)
 
 if __name__ == "__main__":
     data_source = "chicago_1m" 
-    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
-    o_t = 10
-    generate_ground_truth(data_source, t_granu, s_granu, 10)
+    granu_lists = [(T_GRANU.DAY, S_GRANU.BLOCK), (T_GRANU.MONTH, S_GRANU.TRACT)]
+    # t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    o_t = 30
+    persist = False
+    for t_granu, s_granu in granu_lists:
+        start = time.time()
+        generate_ground_truth(data_source, t_granu, s_granu, o_t, persist)
+        total_time = time.time() - start
+        io_utils.dump_json(f"lazo_eval/find_joinable_time_{t_granu}_{s_granu}_overlap_{o_t}.json", {"total_time": total_time})

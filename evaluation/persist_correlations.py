@@ -11,7 +11,7 @@ from data_ingestion.profile_datasets import Profiler
 root_path = "/home/cc/resolution_aware_spatial_temporal_alignment/"
 
 def load_lazo_join_res(t_granu, s_granu):
-    jc_l = [0.0, 0.1, 0.2]
+    jc_l = [0.0, 0.2, 0.4, 0.6]
     jc_joinable_tbls = {}
     for jc in jc_l:
         jc_joinable_tbls[jc] = {}
@@ -22,98 +22,151 @@ def load_lazo_join_res(t_granu, s_granu):
                 jc_joinable_tbls[jc][join_key] = [(x["l"], x["r"]) for x in candidates]
     return jc_joinable_tbls
 
-def lazo_chicago():
-    data_source = "chicago_1m"
-    config = io_utils.load_config(data_source)
-    conn_str = config["db_path"]
-    # granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
-    granu_lists = [[T_GRANU.MONTH, S_GRANU.TRACT]]
-    o_t, r_t = 30, 0.2
-    jc_threshold = 0.2
-    for granu_list in granu_lists:
-        jc_joinable_tbls = load_lazo_join_res(granu_list[0], granu_list[1])
-        profiler = Profiler(data_source, granu_list[0], granu_list[1])
-        join_costs = profiler.get_join_cost(granu_list[0], granu_list[1], o_t)
-        corr_search = CorrSearch(
-            conn_str,
-            data_source,
-            FIND_JOIN_METHOD.COST_MODEL,
-            join_costs,
-            "AGG",
-            "MATRIX",
-            ["impute_avg", "impute_zero"],
-            False,
-            "FDR",
-            0.05,
-            jc_joinable_tbls[jc_threshold],
-            mode="lazo",
-        )
-        start = time.time()
-        dir_path = f'{root_path}/evaluation/correlations5/lazo_jc_{jc_threshold}/{data_source}_{granu_list[0]}_{granu_list[1]}/'
-        corr_search.find_all_corr_for_all_tbls(
-            granu_list, o_t=o_t, r_t=r_t, p_t=0.05, fill_zero=True, dir_path=dir_path
-        )
-        print(len(corr_search.joinable_pairs))
-        dump_json('joinable_pairs.json', sorted(corr_search.joinable_pairs))
-        total_time = time.time() - start
-        print("total time:", total_time)
-        corr_search.perf_profile["total_time"] = total_time
-        # corr_search.perf_profile["cost_model_overhead"] = corr_search.overhead
-        dump_json(
-                f"{root_path}/evaluation/run_time2/{data_source}/full_tables/perf_time_{granu_list[0]}_{granu_list[1]}_lazo_jc_{jc_threshold}_{o_t}_2.json",
-                corr_search.perf_profile,
-        )
+def load_gt_join_res(t_granu, s_granu):
+    path = f"lazo_eval/join_ground_truth_{t_granu}_{s_granu}_overlap_10.json"
+    return io_utils.load_json(path)
 
-def chicago():
+def lazo_chicago(data_source, granu_list, o_t, r_t, jc_threshold, persist, persist_dir):
+    config = io_utils.load_config(data_source)
+    conn_str = config["db_path"]
+    jc_joinable_tbls = load_lazo_join_res(granu_list[0], granu_list[1])
+    profiler = Profiler(data_source, granu_list[0], granu_list[1])
+    join_costs = profiler.get_join_cost(granu_list[0], granu_list[1], o_t)
+    corr_search = CorrSearch(
+        conn_str,
+        data_source,
+        FIND_JOIN_METHOD.COST_MODEL,
+        join_costs,
+        "AGG",
+        "MATRIX",
+        ["impute_avg", "impute_zero"],
+        False,
+        "FDR",
+        0.05,
+        jc_joinable_tbls[jc_threshold],
+        mode="lazo",
+    )
+    start = time.time()
+    if persist:
+        dir_path = f'{root_path}/evaluation/{persist_dir[0]}/lazo_jc_{jc_threshold}_{r_t}/{data_source}_{granu_list[0]}_{granu_list[1]}/'
+    else:
+        dir_path = None
+    corr_search.find_all_corr_for_all_tbls(
+        granu_list, o_t=o_t, r_t=r_t, p_t=0.05, fill_zero=True, dir_path=dir_path
+    )
+    # print(len(corr_search.joinable_pairs))
+    # dump_json('joinable_pairs.json', sorted(corr_search.joinable_pairs))
+    total_time = time.time() - start
+    print("total time:", total_time)
+    corr_search.perf_profile["total_time"] = total_time
+    # corr_search.perf_profile["cost_model_overhead"] = corr_search.overhead
+    dump_json(
+            f"{root_path}/evaluation/{persist_dir[1]}/{data_source}/full_tables/perf_time_{granu_list[0]}_{granu_list[1]}_lazo_jc_{jc_threshold}_{o_t}.json",
+            corr_search.perf_profile,
+    )
+
+def chicago(data_source, granu_list, o_t, r_t, find_join_method, correction, persist, persist_dir):
+    config = io_utils.load_config(data_source)
+    conn_str = config["db_path"]
+    # jc_threshold = 0.2
+    # jc_joinable_tbls = load_lazo_join_res(granu_list[0], granu_list[1])
+    profiler = Profiler(data_source, granu_list[0], granu_list[1])
+    join_costs = profiler.get_join_cost(granu_list[0], granu_list[1], o_t)
+    corr_search = CorrSearch(
+        conn_str,
+        data_source,
+        find_join_method,
+        join_costs,
+        "AGG",
+        "MATRIX",
+        ["impute_avg", "impute_zero"],
+        False,
+        correction,
+        0.05,
+        # jc_joinable_tbls[jc_threshold],
+        # mode = 'nexus'
+    )
+
+    start = time.time()
+    if persist:
+        dir_path = f'{root_path}/evaluation/{persist_dir[0]}/nexus_{r_t}/{data_source}_{granu_list[0]}_{granu_list[1]}/'
+    else:
+        dir_path = None
+    corr_search.find_all_corr_for_all_tbls(
+        granu_list, o_t=o_t, r_t=r_t, p_t=0.05, fill_zero=True, dir_path=dir_path
+    )
+    total_time = time.time() - start
+    print("total time:", total_time)
+    corr_search.perf_profile["total_time"] = total_time
+    corr_search.perf_profile["cost_model_overhead"] = corr_search.overhead
+    dump_json(
+            f"{root_path}/evaluation/{persist_dir[1]}/{data_source}/full_tables/perf_time_{granu_list[0]}_{granu_list[1]}_{find_join_method}_{o_t}_{r_t}.json",
+            corr_search.perf_profile,
+    )
+
+def sketch_chicago(data_source, granu_list, o_t, r_t, sketch_size, correction, persist, persist_dir):
     data_source = "chicago_1m"
     config = io_utils.load_config(data_source)
     conn_str = config["db_path"]
-    # granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
-    granu_lists = [[T_GRANU.MONTH, S_GRANU.TRACT]]
-    # granu_lists = [[T_GRANU.DAY, S_GRANU.TRACT], [T_GRANU.MONTH, S_GRANU.BLOCK]]
-    o_t, r_t = 30, 0.2
+   
     find_join_method = FIND_JOIN_METHOD.COST_MODEL
-    jc_threshold = 0.2
-    persist = False
-    for granu_list in granu_lists:
-        jc_joinable_tbls = load_lazo_join_res(granu_list[0], granu_list[1])
-        profiler = Profiler(data_source, granu_list[0], granu_list[1])
-        join_costs = profiler.get_join_cost(granu_list[0], granu_list[1], o_t)
-        corr_search = CorrSearch(
-            conn_str,
-            data_source,
-            find_join_method,
-            join_costs,
-            "AGG",
-            "MATRIX",
-            ["impute_avg", "impute_zero"],
-            False,
-            "FDR",
-            0.05,
-            # jc_joinable_tbls[jc_threshold],
-            # mode = 'nexus'
-        )
 
-        start = time.time()
-        if persist:
-            dir_path = f'{root_path}/evaluation/correlations5/nexus/{data_source}_{granu_list[0]}_{granu_list[1]}/'
-        else:
-            dir_path = None
-        corr_search.find_all_corr_for_all_tbls(
-            granu_list, o_t=o_t, r_t=r_t, p_t=0.05, fill_zero=True, dir_path=dir_path
+    joinable_tbls = load_gt_join_res(granu_list[0], granu_list[1])
+    profiler = Profiler(data_source, granu_list[0], granu_list[1])
+    join_costs = profiler.get_join_cost(granu_list[0], granu_list[1], o_t)
+    corr_search = CorrSearch(
+        conn_str,
+        data_source,
+        find_join_method,
+        join_costs,
+        "AGG",
+        "MATRIX",
+        ["impute_avg", "impute_zero"],
+        False,
+        correction,
+        0.05,
+        joinable_tbls,
+        mode = 'sketch',
+        sketch_size=sketch_size
+    )
+
+    start = time.time()
+    if persist:
+        dir_path = f'{root_path}/evaluation/{persist_dir[0]}/corr_sketch_{r_t}_{sketch_size}/{data_source}_{granu_list[0]}_{granu_list[1]}/'
+    else:
+        dir_path = None
+
+    corr_search.find_all_corr_for_all_tbls(
+        granu_list, o_t=o_t, r_t=r_t, p_t=0.05, fill_zero=True, dir_path=dir_path
+    )
+    total_time = time.time() - start
+    print("total time:", total_time)
+    corr_search.perf_profile["total_time"] = total_time
+    corr_search.perf_profile["cost_model_overhead"] = corr_search.overhead
+    dump_json(
+            f"{root_path}/evaluation/{persist_dir[1]}/{data_source}/full_tables/perf_time_{granu_list[0]}_{granu_list[1]}_{o_t}_{r_t}_{sketch_size}_correlation_sketch.json",
+            corr_search.perf_profile,
         )
-        total_time = time.time() - start
-        print("total time:", total_time)
-        corr_search.perf_profile["total_time"] = total_time
-        corr_search.perf_profile["cost_model_overhead"] = corr_search.overhead
-        dump_json(
-                f"{root_path}/evaluation/run_time2/{data_source}/full_tables/perf_time_{granu_list[0]}_{granu_list[1]}_{find_join_method}_{o_t}_{r_t}.json",
-                corr_search.perf_profile,
-            )
 
 if __name__ == "__main__":
+    data_source = "chicago_1m"
+    granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK], [T_GRANU.MONTH, S_GRANU.TRACT]]
+    # granu_lists = [[T_GRANU.MONTH, S_GRANU.TRACT]]
+    o_t, r_t = 10, 0.0
+    # jc_threshold = 0.2
+    jc_threshold_l = [0.0, 0.2, 0.4, 0.6]
+    sketch_size = 256
+    correction = 'FDR'
+    persist = True
+    persist_dir = ["correlations12_29", "runtime12_29"]
+    for granu_list in granu_lists:
+        chicago(data_source, granu_list, o_t, r_t, FIND_JOIN_METHOD.COST_MODEL, correction, persist, persist_dir)
+        sketch_chicago(data_source, granu_list, o_t, r_t, sketch_size, correction, persist, persist_dir)
+        for jc_threshold in jc_threshold_l:
+            lazo_chicago(data_source, granu_list, o_t, r_t, jc_threshold, persist, persist_dir)
+    
     # chicago()
-    lazo_chicago()
+    # lazo_chicago()
     # joinable_dict = load_lazo_join_res()
     # lookup = joinable_dict[0.2]
     # pairs = set()
