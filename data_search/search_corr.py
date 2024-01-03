@@ -1,3 +1,4 @@
+from data_search.data_polygamy import DataPolygamy
 import utils.io_utils as io_utils
 import numpy as np
 import pandas as pd
@@ -203,6 +204,9 @@ class CorrSearch:
         else:
             self.sketch = False
             self.sketch_size = 0
+        
+        if self.mode == 'data_polygamy':
+            self.dataPolygamy = DataPolygamy(conn_str, attr_path)
 
         self.joinable_pairs = []
         self.overhead = 0
@@ -216,8 +220,28 @@ class CorrSearch:
             "time_create_tmp_tables": {"total": 0},
             "corr_counts": {"before": 0, "after": 0},
             "corr_count": {"total": 0},
+            "significant": {"total": 0, "temporal": 0, "spatial": 0, "st": 0},
+            "not_significant": {"total": 0, "temporal": 0, "spatial": 0, "st": 0},
             "strategy": {"find_join": 0, "join_all": 0, "skip": 0, "sample_times": 0},
         }
+
+    def dump_polygamy_rel_to_csv(self, data, dir_path, schema_id):
+        df = pd.DataFrame(
+            data,
+            columns=[
+                'align_attrs1',
+                'agg_attr1',
+                'align_attrs2',
+                'agg_attr2',
+                'score',
+                'strength',
+            ],
+        )
+        if not os.path.exists(dir_path):
+            # create the directory if it does not exist
+            os.makedirs(dir_path)
+
+        df.to_csv("{}/corr_{}.csv".format(dir_path, schema_id))
 
     
     def dump_corrs_to_csv(self, data: List[Correlation], dir_path, schema_id):
@@ -258,10 +282,13 @@ class CorrSearch:
         df.to_csv("{}/corr_{}.csv".format(dir_path, schema_id))
 
     def find_all_corr_for_all_tbls(
-        self, granu_list, o_t, r_t, p_t, fill_zero=False, dir_path=None
+        self, granu_list, o_t, r_t, p_t, fill_zero=False, dir_path=None, st_type=None
     ):
         t_granu, s_granu = granu_list[0], granu_list[1]
         profiler = Profiler(self.data_source, [t_granu], [s_granu])
+        if self.mode == 'data_polygamy':
+            self.dataPolygamy.set_path(t_granu, s_granu)
+            print(self.shuffle_num)
         self.st_schemas_dict = profiler.load_all_st_schemas(t_granu, s_granu, type_aware=True)
         st_schema_list = profiler.load_all_st_schemas(t_granu, s_granu)
         sorted_st_schemas = []
@@ -269,11 +296,22 @@ class CorrSearch:
             cnt = profiler.get_row_cnt(tbl, st_schema)
             sorted_st_schemas.append((tbl, st_schema, cnt))
         sorted_st_schemas = sorted(sorted_st_schemas, key=lambda x: x[2], reverse=False)
+        cur_idx = 0
         for tbl, st_schema, cnt in tqdm(sorted_st_schemas):
+            # if cur_idx < 692:
+            #     cur_idx += 1
+            #     continue
+            # print(tbl)
+            if st_type == 'time_space':
+                if st_schema.get_type() != SchemaType.TIME and st_schema.get_type() != SchemaType.SPACE:
+                    continue
             self.find_all_corr_for_a_tbl_schema(tbl, st_schema, o_t, r_t, p_t, fill_zero)
             start = time.time()
             if dir_path:
-                self.dump_corrs_to_csv(self.data, dir_path, st_schema.get_agg_tbl_name(tbl))
+                if self.mode == 'data_polygamy':
+                    self.dump_polygamy_rel_to_csv(self.data, dir_path, st_schema.get_agg_tbl_name(tbl))
+                else:
+                    self.dump_corrs_to_csv(self.data, dir_path, st_schema.get_agg_tbl_name(tbl))
             # after a table is done, clear the data
             self.perf_profile["corr_count"]["total"] += len(self.data)
             self.data.clear()
@@ -673,9 +711,26 @@ class CorrSearch:
             self.perf_profile["strategy"]["skip"] += 1
             return
         
+        if self.mode == 'data_polygamy':
+            vars1 = self.dataPolygamy.get_vars(tbl1)
+            # agg_tbl1_df = db_ops.read_agg_tbl(self.cur, agg_name1, vars1)
+            # funcs1 = self.dataPolygamy.get_functions(agg_tbl1_df, vars1)
+            feature_map = {}
+            for var in vars1:
+                pos, neg = self.dataPolygamy.load_features(agg_name1, var.var_name)
+                # pos, neg = self.dataPolygamy.find_features(func)
+                if pos is not None and neg is not None:
+                    feature_map[var.var_name] = (pos, neg)
+                    if st_schema.get_type() == SchemaType.TS:
+                        shuffle_num = self.st_shuffle_num
+                    else:
+                        shuffle_num = self.shuffle_num
+                    for i in range(shuffle_num):
+                        feature_map[f"{var.var_name}_{i}"] =  self.dataPolygamy.load_features(agg_name1, var.var_name, shuffle=i)
+        
         v_cnt = self.join_costs[agg_name1].cnt
 
-        if self.mode == 'sketch':
+        if self.mode == 'sketch' or self.mode == 'data_polygamy':
             aligned_schemas = self.find_joinable_lookup(tbl1, st_schema, o_t)
         elif self.joinable_lookup and self.mode == 'lazo':
             aligned_schemas = self.find_joinable_lookup(tbl1, st_schema, o_t)
@@ -702,16 +757,51 @@ class CorrSearch:
         Begin to align and compute correlations
         """
         tbl_schema_corrs = []
-        # for tbl_info in aligned_schemas:
-            # tbl2, st_schema2 = (
-            #     tbl_info[0],
-            #     tbl_info[1],
-            # )
+       
         for tbl2, agg_name2 in aligned_schemas:
             # agg_name2 = st_schema2.get_agg_tbl_name(tbl2)
             if tbl2 == tbl1 or agg_name2 in self.visited_schemas:
                 continue
-            # self.join_all_cost += min(v_cnt, self.join_costs[agg_name2].cnt)
+            if self.mode == 'data_polygamy':
+                vars2 = self.dataPolygamy.get_vars(tbl2)
+                # agg_tbl2_df = db_ops.read_agg_tbl(self.cur, agg_name2, vars2)
+                # funcs2 = self.dataPolygamy.get_functions(agg_tbl2_df, vars2)
+                for var1 in vars1:
+                    if var1.var_name not in feature_map:
+                        continue
+                    for var2 in vars2:
+                        pos1, neg1 = feature_map[var1.var_name]
+                        pos2, neg2 = self.dataPolygamy.load_features(agg_name2, var2.var_name)
+                        # self.dataPolygamy.find_features(func2)
+                        if pos2 is None or neg2 is None:
+                            continue
+                        score, strength = self.dataPolygamy.relationships(pos1, neg1, pos2, neg2)
+                        if score != 0:
+                            significant = True
+                            if st_schema.get_type() == SchemaType.TS:
+                                shuffle_num = self.st_shuffle_num
+                            else:
+                                shuffle_num = self.shuffle_num
+                            for i in range(shuffle_num):
+                                pos1, neg1 = feature_map[f"{var1.var_name}_{i}"]
+                                pos2, neg2 = self.dataPolygamy.load_features(agg_name2, var2.var_name, shuffle=i)
+                                score_shuffle, strength_shuffle = self.dataPolygamy.relationships(pos1, neg1, pos2, neg2)
+                                if abs(score_shuffle) >= abs(score):
+                                    self.perf_profile['not_significant']["total"] += 1
+                                    self.perf_profile['not_significant'][flag] += 1
+                                    if self.perf_profile['not_significant']["total"] % 1000 == 0:
+                                        print("not significant", self.perf_profile['not_significant'])
+                                    significant = False
+                                    break
+                           # print((agg_name1, var1+'_t1', agg_name2, var2 + '_t2', score, strength))
+                            if significant:
+                                self.perf_profile['significant']["total"] += 1
+                                self.perf_profile['significant'][flag] += 1
+                                if self.perf_profile['significant']["total"] % 1000 == 0:
+                                    print("significant", self.perf_profile['significant'])
+                                self.data.append((agg_name1, var1.var_name+'_t1', agg_name2, var2.var_name + '_t2', score, strength))
+                continue
+                
             # Align two schemas
             start = time.time()
             df1_outer, df2_outer = None, None

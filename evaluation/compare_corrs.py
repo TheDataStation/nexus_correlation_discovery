@@ -39,7 +39,7 @@ def compare_corrs(dir1, dir2, r_t, type=None, output_path=None):
     else:
         all_corrs_nexus = load_all_corrs(dir1, r_t, type)
     print(len(all_corrs_nexus))
-    all_corrs_baseline = load_all_corrs(dir2, r_t, 'inner')
+    all_corrs_baseline = load_all_corrs(dir2, r_t, 'inner', polygamy=True)
     # calculate the jaccard similarity between the two sets of correlations
     all_corrs_nexus = set(all_corrs_nexus)
     all_corrs_baseline = set(all_corrs_baseline)
@@ -70,12 +70,21 @@ def compare_corrs(dir1, dir2, r_t, type=None, output_path=None):
     # print("number of correlations in either:", len(all_corrs_nexus.union(all_corrs_baseline)))
     # print("jaccard similarity:", len(all_corrs_nexus.intersection(all_corrs_baseline)) / len(all_corrs_nexus.union(all_corrs_baseline)))
 
-def load_all_corrs(dir, r_t, type=None, with_r=False):
+def load_all_corrs(dir, r_t, type=None, with_r=False, polygamy=False, st_type=None):
     all_corrs = []
     all_corrs_map = {}
     for filename in os.listdir(dir):
         # if len(filename) <= 18:
         #     continue
+        if st_type == 'time':
+            if not ('_2' in filename and '_1' not in filename):
+                continue
+        if st_type == 'space':
+            if not ('_2' not in filename and '_1' in filename):
+                continue
+        if st_type == 'time_and_space':
+            if '_2' in filename and '_1' in filename:
+                continue
         if filename.endswith(".csv"):
             df = pd.read_csv(dir + filename)
             df = remove_bad_cols(stop_words, df)
@@ -84,14 +93,22 @@ def load_all_corrs(dir, r_t, type=None, with_r=False):
                 #     if df['align_type'][i] != type:
                 #         continue
                 if type == 'inner':
-                    v = abs(df['r_val'][i])
+                    if not polygamy:
+                        v = abs(df['r_val'][i])
+                    else:
+                        v = abs(df['score'][i])
+                        strength = abs(df['strength'][i])
                 elif type == 'impute_zero':
                     v = abs(df['r_impute_zero_val'][i])
                 elif type == 'impute_avg':
                     v = abs(df['r_impute_avg_val'][i])
                 if v >= r_t:
                     if not with_r:
-                        all_corrs.append((df['align_attrs1'][i], df['agg_attr1'][i], df['align_attrs2'][i], df['agg_attr2'][i]))
+                        if polygamy:
+                            if strength >= 0:
+                                all_corrs.append((df['align_attrs1'][i], df['agg_attr1'][i], df['align_attrs2'][i], df['agg_attr2'][i]))
+                        else:
+                            all_corrs.append((df['align_attrs1'][i], df['agg_attr1'][i], df['align_attrs2'][i], df['agg_attr2'][i]))
                     else:
                         all_corrs_map[(df['align_attrs1'][i], df['agg_attr1'][i], df['align_attrs2'][i], df['agg_attr2'][i])] = df['r_val'][i]
     if with_r:
@@ -100,20 +117,25 @@ def load_all_corrs(dir, r_t, type=None, with_r=False):
         return all_corrs
 
 if __name__ == "__main__":
-    storage_dir = 'correlations12_29'
-    dump_dir = 'correlation_quality12_29'
-    baseline = 'corr_sketch'
-    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
-    # t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
-    dir1 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/{storage_dir}/nexus_0.0/chicago_1m_{t_granu}_{s_granu}/'
-    dir2 =  f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/{storage_dir}/corr_sketch_0.0_256/chicago_1m_{t_granu}_{s_granu}/'
+    storage_dir = 'correlations12_30'
+    dump_dir = 'correlation_quality12_30'
+    baseline = 'polygamy'
+    # t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
+    dir1 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/correlations12_29/nexus_0.0/chicago_1m_{t_granu}_{s_granu}/'
+    # dir2 =  f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/{storage_dir}/corr_sketch_0.0_256/chicago_1m_{t_granu}_{s_granu}/'
+    # dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment//evaluation/{storage_dir}/data_polygmay/chicago_1m_{t_granu}_{s_granu}/'
+    dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/correlations12_30/data_polygmay_full_4_new/chicago_1m_T_GRANU.DAY_S_GRANU.BLOCK/'
     # plot_distribution(dir1, dir2, 0)
-    r_t_l = [0.2, 0.4, 0.6]
+    r_t_l = [0]
+    # all_corrs_baseline = load_all_corrs(dir2, 0, 'inner', polygamy=True, st_type='space')
+    # print(len(all_corrs_baseline))
     for r_t in r_t_l:
+        compare_corrs(dir1, dir2, r_t, type=None, output_path=f'evaluation/{dump_dir}/correlation_comparison__{r_t}_{baseline}_{t_granu}_{s_granu}_all.json')
         # for jc in [0.4]:
-            # dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/{storage_dir}/lazo_jc_{jc}_{r_t}/chicago_1m_{t_granu}_{s_granu}/'
-        for type in ['inner', 'impute_zero', 'impute_avg']:
-            # print(f"r_t: {r_t}; jc: {jc}")
-            print(f"r_t: {r_t}; type: {type}")
-            # compare_corrs(dir1, dir2, r_t, type=None, output_path=f'evaluation/{dump_dir}/correlation_comparison_jc_{jc}_{r_t}_{baseline}_{t_granu}_{s_granu}.json')
-            compare_corrs(dir1, dir2, r_t, type=type, output_path=f'evaluation/{dump_dir}/correlation_comparison_{type}_{r_t}_{baseline}_{t_granu}_{s_granu}.json')
+        #     dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/{storage_dir}/lazo_jc_{jc}_{r_t}/chicago_1m_{t_granu}_{s_granu}/'
+        # for type in ['inner', 'impute_zero', 'impute_avg']:
+        #     # print(f"r_t: {r_t}; jc: {jc}")
+        #     print(f"r_t: {r_t}; type: {type}")
+        #     # compare_corrs(dir1, dir2, r_t, type=None, output_path=f'evaluation/{dump_dir}/correlation_comparison_jc_{jc}_{r_t}_{baseline}_{t_granu}_{s_granu}.json')
+        #     compare_corrs(dir1, dir2, r_t, type=type, output_path=f'evaluation/{dump_dir}/correlation_comparison_{type}_{r_t}_{baseline}_{t_granu}_{s_granu}.json')

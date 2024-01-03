@@ -104,8 +104,51 @@ def chicago(data_source, granu_list, o_t, r_t, find_join_method, correction, per
             corr_search.perf_profile,
     )
 
+def polygamy(data_source, granu_list, o_t, r_t, persist, persist_dir, shuffle_num):
+    config = io_utils.load_config(data_source)
+    conn_str = config["db_path"]
+   
+    find_join_method = FIND_JOIN_METHOD.COST_MODEL
+
+    joinable_tbls = load_gt_join_res(granu_list[0], granu_list[1])
+    profiler = Profiler(data_source, granu_list[0], granu_list[1])
+    join_costs = profiler.get_join_cost(granu_list[0], granu_list[1], o_t)
+    corr_search = CorrSearch(
+        conn_str,
+        data_source,
+        find_join_method,
+        join_costs,
+        "AGG",
+        "MATRIX",
+        ["impute_avg", "impute_zero"],
+        False,
+        correction,
+        0.05,
+        joinable_tbls,
+        mode = 'data_polygamy',
+    )
+    
+    corr_search.shuffle_num = shuffle_num
+    corr_search.st_shuffle_num = 2
+    start = time.time()
+    if persist:
+        dir_path = f'{root_path}/evaluation/{persist_dir[0]}/data_polygmay_full_{shuffle_num}_new/{data_source}_{granu_list[0]}_{granu_list[1]}/'
+    else:
+        dir_path = None
+
+    corr_search.find_all_corr_for_all_tbls(
+        granu_list, o_t=o_t, r_t=r_t, p_t=0.05, fill_zero=True, dir_path=dir_path
+    )
+    total_time = time.time() - start
+    print("total time:", total_time)
+    corr_search.perf_profile["total_time"] = total_time
+    corr_search.perf_profile["cost_model_overhead"] = corr_search.overhead
+    dump_json(
+            f"{root_path}/evaluation/{persist_dir[1]}/{data_source}/full_tables/perf_time_{granu_list[0]}_{granu_list[1]}_{o_t}_data_polygamy_full_{shuffle_num}.json",
+            corr_search.perf_profile,
+    )
+
 def sketch_chicago(data_source, granu_list, o_t, r_t, sketch_size, correction, persist, persist_dir):
-    data_source = "chicago_1m"
     config = io_utils.load_config(data_source)
     conn_str = config["db_path"]
    
@@ -150,7 +193,7 @@ def sketch_chicago(data_source, granu_list, o_t, r_t, sketch_size, correction, p
 
 if __name__ == "__main__":
     data_source = "chicago_1m"
-    granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK], [T_GRANU.MONTH, S_GRANU.TRACT]]
+    granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
     # granu_lists = [[T_GRANU.MONTH, S_GRANU.TRACT]]
     o_t, r_t = 10, 0.0
     # jc_threshold = 0.2
@@ -158,12 +201,14 @@ if __name__ == "__main__":
     sketch_size = 256
     correction = 'FDR'
     persist = True
-    persist_dir = ["correlations12_29", "runtime12_29"]
+    persist_dir = ["correlations12_30", "runtime12_30"]
+    shuffle_num = 4
     for granu_list in granu_lists:
-        chicago(data_source, granu_list, o_t, r_t, FIND_JOIN_METHOD.COST_MODEL, correction, persist, persist_dir)
-        sketch_chicago(data_source, granu_list, o_t, r_t, sketch_size, correction, persist, persist_dir)
-        for jc_threshold in jc_threshold_l:
-            lazo_chicago(data_source, granu_list, o_t, r_t, jc_threshold, persist, persist_dir)
+        polygamy(data_source, granu_list, o_t, r_t, persist, persist_dir, shuffle_num)
+        # chicago(data_source, granu_list, o_t, r_t, FIND_JOIN_METHOD.COST_MODEL, correction, persist, persist_dir)
+        # sketch_chicago(data_source, granu_list, o_t, r_t, sketch_size, correction, persist, persist_dir)
+        # for jc_threshold in jc_threshold_l:
+        #     lazo_chicago(data_source, granu_list, o_t, r_t, jc_threshold, persist, persist_dir)
     
     # chicago()
     # lazo_chicago()

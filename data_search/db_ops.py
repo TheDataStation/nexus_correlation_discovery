@@ -330,21 +330,20 @@ def join_two_agg_tables(
     df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
     return df
 
-def read_agg_tbl(cur, tbl:str, st_schema: ST_Schema, vars: List[Variable]):
+def read_agg_tbl(cur, agg_tbl: str, vars: List[Variable]):
     sql_str = """
-        SELECT {agg_vars} FROM {agg_tbl};
+        SELECT val, {agg_vars} FROM {agg_tbl};
     """
 
     query = sql.SQL(sql_str).format(
         agg_vars=sql.SQL(",").join(
             [
-                sql.SQL("{} AS {}").format(
-                    sql.Identifier("a1", var.var_name[:-3]),
+                sql.SQL("{}").format(
                     sql.Identifier(var.var_name),
                 )
                 for var in vars
             ]),
-        agg_tbl=sql.Identifier(st_schema.get_agg_tbl_name(tbl))
+        agg_tbl=sql.Identifier(agg_tbl)
     )
 
     cur.execute(query)
