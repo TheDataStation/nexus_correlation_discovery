@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <origin/>
+                <pubdate>unknown</pubdate>
+                <title>Census Tracts 2020</title>
+                <onlink>https://public.gis.lacounty.gov/public/rest/services/LACounty_Dynamic/Demographics/MapServer/14</onlink>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>The Census Bureau (https://www.census.gov/)maintains geographic boundaries for the analysis and mapping of demographic information across the United States. Every 10 years the Census Bureau counts the population of the United States as mandated by Constitution. The Census Bureau releases the results of this county as demographic data with geographic identifiers so that maps and analysis can be performed on the US population. There are little more Census Tracts within Los Angeles County in 2020 Census TIGER/Line Shapefiles, compared to 2010.Created/Updated: Updated on September 2023, to merged Long Beach Breakwater land-based tracts silver polygons into bigger tract 990300 as per 2022 TIGER Line Shapefiles, and to update Santa Catalina Islands and San Clemente Islands tract boundary based on DPW City boundaries (except 599000 tract in Avalon). Updated on Sep 2022 and Dec 2022, to align tract boundary along city boundaries. Created on March 2021. How was this data created? This geographic file was downloaded from Census Bureau website: https://www2.census.gov/geo/tiger/TIGER2020PL/STATE/06_CALIFORNIA/06037/on February, 2021 and customized for LA County. Data Fields:1. CT20 (TRACTCE20): 6-digit census tract number, 2. Label (NAME20): Decimal point census tract number.</abstract>
+            <purpose>Hosted feature layer of 2020 Census Tracts for the purposes of visualization and analysis. A census tract is a small, relatively permanent statistical subdivision of a county delineated for the purpose of presenting data. Census tracts ideally contain about 4,000 people and 1,600 housing units.</purpose>
+        </descript>
+        <spdom>
+            <bounding>
+                <westbc>-119.21167871093179</westbc>
+                <eastbc>-117.35296230468133</eastbc>
+                <northbc>35.0126777566846</northbc>
+                <southbc>32.797699999998315</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>Census Tracts</themekey>
+                <themekey>Census</themekey>
+                <themekey>Demography</themekey>
+                <themekey>Demographic</themekey>
+                <themekey>Tract</themekey>
+            </theme>
+        </keywords>
+        <accconst>None</accconst>
+        <useconst>The data herein is for informational purposes and may not
+have been prepared for or be suitable for legal, engineering, or surveying
+intents. The County of Los Angeles reserves the right to change, restrict or
+discontinue access at any time. All users of the maps and data presented on
+https://lacounty.maps.arcgis.com or deriving from any LA County REST URLs,
+agree to follows Terms of Use as outlined on the County of LA Enterprise GIS
+(eGIS) Hub (https://egis-lacounty.hub.arcgis.com/pages/terms-of-use).</useconst>
+        <datacred>Los Angeles County, US Census Bureau</datacred>
+    </idinfo>
+    <metainfo>
+        <metd>20210319</metd>
+        <metc>
+            <cntinfo>
+                <!--no contact person or organization name available-->
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>

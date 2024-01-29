@@ -36,13 +36,8 @@ def read_columns(path, fields):
     return df
 
 
-def read_csv(path, t_attrs=None, s_attrs=None):
+def read_csv(path):
     df = pd.read_csv(path, engine="c", on_bad_lines="skip", low_memory=False)
-    # if t_attrs:
-    #     for t_attr in t_attrs:
-    #         df[t_attr] = pd.to_datetime(
-    #             df[t_attr], infer_datetime_format=True, utc=True, errors="coerce"
-    #         )
     return df
 
 

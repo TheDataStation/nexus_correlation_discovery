@@ -9,7 +9,6 @@ venv
 *.csv
 notebook/
 result/
-resource/
 __pycache__
 network_data/
 inverted_indices/
@@ -21,6 +20,7 @@ evaluation/graph_results*/
 evaluation/correlations*/
 evaluation/synthetic_eval/data/
 evaluation/synthetic_eval/*.png
+evaluation/final_plots/
 
 data.zip
 .idea
