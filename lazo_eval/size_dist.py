@@ -35,7 +35,11 @@ def load():
         #     json.dump(set_size, f)
 
 def plot_dist(ax, values):
-    ax.hist(values, bins=50)
+    # ax.hist(values, bins=50)
+    # create a box plot on values
+    green_diamond = dict(markerfacecolor='g', marker='D')
+    ax.boxplot(values)
+    ax.set_yscale('log', flierprops=green_diamond)
 
 def plot_size_dist():
     fig, axs = plt.subplots(1, 3, figsize=(15, 5))
@@ -48,18 +52,32 @@ def plot_size_dist():
         axs[i].set_ylabel("Frequency")
     plt.savefig("set_size_dist.png")
 
+def plot_size_dist_in_one():
+    fig, axs = plt.subplots(1, 1, figsize=(5, 5))
+    sizes = []
+    for i, category in enumerate(["temporal", "spatial", "st"]):
+        with open(f"{category}_set_size.json") as f:
+            data = json.load(f)
+        sizes.extend(data.values())
+    plot_dist(axs, sizes)
+    # axs[i].set_title(category)
+    axs.set_xlabel("Granularity: Day, Census Block")
+    axs.set_ylabel("#Rows (log scale)")
+    plt.savefig("set_size_dist.png")
+
 if __name__ == "__main__":
-    t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
-    o_t = 100
-    js_fn = []
-    # load js_fn.json and plot the distribution
-    js_fn = io_utils.load_json("js_all.json")
-    # in the histgram, add a line with x = 0.0
-    plt.hist(js_fn, label='CDF', cumulative=True, histtype='step', density=True, bins=100)
-    # plt.axvline(x = 0.05, color = 'red', linestyle = '--')
-    # plt.savefig("js_fn_dist.png")
-    # sns.displot(js_fn, kde=True)
-    plt.savefig("js_all_cde.png")
+    plot_size_dist_in_one()
+    # t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
+    # o_t = 100
+    # js_fn = []
+    # # load js_fn.json and plot the distribution
+    # js_fn = io_utils.load_json("js_all.json")
+    # # in the histgram, add a line with x = 0.0
+    # plt.hist(js_fn, label='CDF', cumulative=True, histtype='step', density=True, bins=100)
+    # # plt.axvline(x = 0.05, color = 'red', linestyle = '--')
+    # # plt.savefig("js_fn_dist.png")
+    # # sns.displot(js_fn, kde=True)
+    # plt.savefig("js_all_cde.png")
     # plt.boxplot(js_fn)
     # plt.savefig("js_fn_boxplot.png")
     # load()

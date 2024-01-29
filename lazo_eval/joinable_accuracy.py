@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 
 
-def calculate_precision_recall(join_key, gt, lazo, o_t, fn_p=False):
+def calculate_precision_recall(join_key, gt, lazo, o_t, fn_p=False, validate=False):
     if join_key not in gt:
         gt_list = [] 
     else:
@@ -13,7 +13,10 @@ def calculate_precision_recall(join_key, gt, lazo, o_t, fn_p=False):
         gt_list = [x[0] for x in gt_list if x[1]>=o_t]
     # print(gt_list)
     lazo_list = lazo[join_key]
-    lazo_list = [x['l'] for x in lazo_list if x['r']>=o_t]
+    if validate:
+        lazo_list = [x['l'] for x in lazo_list if x['r']>=o_t]
+    else:
+        lazo_list = [x['l'] for x in lazo_list]
     # print(lazo_list)
     TP = len(set(gt_list).intersection(set(lazo_list)))
     FP = len(set(lazo_list).difference(set(gt_list)))
@@ -60,16 +63,23 @@ if __name__ == "__main__":
     # t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
     t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
     o_t_l = [10]
+    jc_values = [0.0, 0.2, 0.4, 0.6]
+    jc_values = [0.2]
+    validate = False
+    data_sources = ['chicago_1m']
+    data_sources = ['nyc_open_data', 'chicago_open_data']
     for o_t in o_t_l:
-        jc_values = [0.0, 0.2, 0.4, 0.6]
         fig, axs = plt.subplots(1, len(jc_values), figsize=(15, 5))
         for i, jc_value in enumerate(jc_values):
             precision_l, recall_l, f_score_l = [], [], []
             for category in ["temporal", "spatial", "st"]:
-                gt = io_utils.load_json(f"lazo_eval/join_ground_truth_{t_granu}_{s_granu}_overlap_10.json")
-                lazo = io_utils.load_json(f"lazo_eval/lazo_join_res/time_{t_granu.value}_space_{s_granu.value}/{category}_joinable_jc_{str(jc_value)}.json")
+                gt = io_utils.load_json(f"lazo_eval/ground_truth_join/{'_'.join(data_sources)}/join_ground_truth_{t_granu}_{s_granu}_overlap_10.json")
+                if validate:
+                    lazo = io_utils.load_json(f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{t_granu.value}_space_{s_granu.value}/{category}_joinable_jc_{str(jc_value)}.json")
+                else:
+                    lazo = io_utils.load_json(f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{t_granu.value}_space_{s_granu.value}/{category}_joinable_jc_{str(jc_value)}_validate_false.json")
                 for join_key in lazo.keys():
-                    join_key, precision, recall, f_score = calculate_precision_recall(join_key, gt, lazo, o_t)
+                    join_key, precision, recall, f_score = calculate_precision_recall(join_key, gt, lazo, o_t, validate)
                     precision_l.append(precision)
                     recall_l.append(recall)
                     f_score_l.append(f_score)
@@ -77,7 +87,9 @@ if __name__ == "__main__":
                 box_plot(axs, [precision_l, recall_l, f_score_l], jc_value)
             else:
                 box_plot(axs[i], [precision_l, recall_l, f_score_l], jc_value)
-        plt.savefig(f'lazo_eval/figure/box_plots_{t_granu}_{s_granu}_o_t_{o_t}.png')
+        # if a directory does not exist, create it
+        io_utils.create_dir(f'lazo_eval/figure/{"_".join(data_sources)}')
+        plt.savefig(f'lazo_eval/figure/{"_".join(data_sources)}/box_plots_{t_granu}_{s_granu}_o_t_{o_t}_validate_{validate}.png')
     
     # folder = "jc_01_k_512"
     # for i, o_t in enumerate(o_t_l):

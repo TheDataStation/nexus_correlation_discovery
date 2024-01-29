@@ -37,12 +37,12 @@ def read_columns(path, fields):
 
 
 def read_csv(path, t_attrs=None, s_attrs=None):
-    df = pd.read_csv(path, engine="python", on_bad_lines="skip")
-    if t_attrs:
-        for t_attr in t_attrs:
-            df[t_attr] = pd.to_datetime(
-                df[t_attr], infer_datetime_format=True, utc=True, errors="coerce"
-            )
+    df = pd.read_csv(path, engine="c", on_bad_lines="skip", low_memory=False)
+    # if t_attrs:
+    #     for t_attr in t_attrs:
+    #         df[t_attr] = pd.to_datetime(
+    #             df[t_attr], infer_datetime_format=True, utc=True, errors="coerce"
+    #         )
     return df
 
 

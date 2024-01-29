@@ -3,7 +3,7 @@ import utils.io_utils as io_utils
 from os import path
 from typing import List
 from utils.profile_utils import is_num_column_valid
-
+from opendata_client import OpenDataClient
 """
 Tables that contain spatial or temporal attributes
 """
@@ -71,8 +71,9 @@ class STTableDetector:
         for domain in self.domains:
             print(domain)
             print("domain name: {}".format(domain))
-            client = Socrata(domain, self.app_token)
-            data = client.datasets(only=["dataset"])
+            #client = Socrata(domain, self.app_token)
+            client = OpenDataClient(domain, f"https://{domain}/resource/", self.app_token)
+            data = client.datasets(domain)
             print("total number of datasets:", len(data))
             for obj in data:
                 resource = obj["resource"]
@@ -104,8 +105,8 @@ class STTableDetector:
                     if "cdc_case_earliest_dt" in tbl_obj.t_attrs:
                         tbl_obj.t_attrs = ["cdc_case_earliest_dt"]
                     self.st_tables.append(tbl_obj.__dict__)
-                   
-            client.close()
+            return len(self.st_tables)
+            # client.close()
             print("detected {} st_tables in total".format(len(self.st_tables)))
 
     def serialize(self, output_path):
@@ -114,15 +115,33 @@ class STTableDetector:
 
 
 if __name__ == "__main__":
-    # output_path = path.join(ROOT_DIR, "data/cdc_open_data.json")
     config = io_utils.load_config("data_prep")
     root_dir, app_token = config["root_dir"], config["app_token"]
-    # output_path = "data/cdc_open_data.json"
-    output_path = None
-    # domain = ["data.cdc.gov"]
-    domain = ["data.cdc.gov"]
+    # output_path = "resource/nyc_open_data/nyc_open_data.json"
+    # output_path = None
+# domains = ["data.cityofchicago.org", "data.cityofnewyork.us", "data.lacity.org",
+    #            "www.dallasopendata.com", "data.ny.gov", "data.wa.gov", "data.nj.gov",
+    #            "data.sfgov.org", "data.texas.gov", "opendata.maryland.gov",
+    #            "data.pa.gov", "data.cambridgema.gov", "data.ct.gov"]
+    domains = {
+                "ny": "data.ny.gov", 
+                "texas": "data.texas.gov", 
+                "sf": "data.sfgov.org",
+                "wa": 'data.wa.gov',
+                "ct": 'data.ct.gov', 
+                "pa": 'data.pa.gov', 
+                "maryland": 'opendata.maryland.gov',
+                "la": 'data.lacity.org'
+                }
+   
     # print(output_path)
-
-    st_table_detector = STTableDetector(domain, app_token)
-    st_table_detector.detect()
-    st_table_detector.serialize(output_path)
+    domain_cnt = []
+    for key, domain in domains.items():
+        output_path = f'resource/{key}_open_data/{key}_open_data.json'
+        st_table_detector = STTableDetector([domain], app_token)
+        st_tbls_cnt = st_table_detector.detect()
+        domain_cnt.append((domain, st_tbls_cnt))
+        st_table_detector.serialize(output_path)
+    # domain_cnt.sort(key=lambda x: x[1], reverse=True)
+    # print(domain_cnt)
+    # st_table_detector.serialize(output_path)

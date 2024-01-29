@@ -51,8 +51,9 @@ class AggColumnProfile:
 
 class AggColumn:
     def __init__(
-        self, tbl_id, tbl_name, agg_name: str, agg_attr, col_data=None
+        self, domain, tbl_id, tbl_name, agg_name: str, agg_attr, col_data=None
     ) -> None:
+        self.domain = domain
         self.tbl_id = tbl_id
         self.tbl_name = tbl_name
         self.agg_name = agg_name
@@ -87,6 +88,7 @@ class AggColumn:
 
     def to_list(self):
         return [
+            self.domain,
             self.tbl_id,
             self.tbl_name,
             self.agg_name,
@@ -153,9 +155,8 @@ class CorrSearch:
     def __init__(
         self,
         conn_str: str,
-        data_source: str,
+        data_sources: List[str],
         find_join_method,
-        join_costs,
         join_method,
         corr_method,
         r_methods,
@@ -166,29 +167,43 @@ class CorrSearch:
         mode = None,
         sketch_size = None,
     ) -> None:
-        self.data_source = data_source
-        config = io_utils.load_config(data_source)
-        attr_path = config["attr_path"]
-        self.tbl_attrs = io_utils.load_json(attr_path)
-        self.all_tbls = set(self.tbl_attrs.keys())
-
-        profile_path = config["profile_path"]
-        self.column_profiles = io_utils.load_json(profile_path)
-
-        agg_col_profile_path = config["col_stats_path"]
+        # self.data_source = data_source
+        self.tbl_attrs = {}
+        self.all_tbls = set()
+        self.column_profiles = {}
         global agg_col_profiles
-        agg_col_profiles = io_utils.load_json(agg_col_profile_path)
+        agg_col_profiles = {}
+        for data_source in data_sources:
+            config = io_utils.load_config(data_source)
+            attr_path = config["attr_path"]
+            profile_path = config["profile_path"]
+            agg_col_profile_path = config["col_stats_path"]
+            self.tbl_attrs.update(io_utils.load_json(attr_path))
+            self.all_tbls = self.all_tbls.union(set(self.tbl_attrs.keys()))
+            self.column_profiles.update(io_utils.load_json(profile_path))
+            agg_col_profiles.update(io_utils.load_json(agg_col_profile_path))
+        
+            # self.tbl_attrs = io_utils.load_json(attr_path)
+            # self.all_tbls = set(self.tbl_attrs.keys())
+
+            # profile_path = config["profile_path"]
+            # self.column_profiles = io_utils.load_json(profile_path)
+
+            # agg_col_profile_path = config["col_stats_path"]
+            # global agg_col_profiles
+            # self.agg_col_profiles = io_utils.load_json(agg_col_profile_path)
 
         self.db_search = DBSearch(conn_str)
         self.cur = self.db_search.cur
-
+        
         self.data = []
         self.count = 0
         self.visited_tbls = set()
         self.visited_schemas = set()
        
         self.find_join_method = find_join_method
-        self.join_costs = join_costs
+        # self.join_costs = join_costs
+     
         self.join_all_cost = 0
         self.join_method = join_method
         self.corr_method = corr_method
@@ -198,6 +213,7 @@ class CorrSearch:
         self.q_val = q_val
         self.joinable_lookup = joinable_lookup
         self.mode = mode
+        self.find_join_only = False
         if self.mode == 'sketch':
             self.sketch = True
             self.sketch_size = sketch_size
@@ -224,6 +240,12 @@ class CorrSearch:
             "not_significant": {"total": 0, "temporal": 0, "spatial": 0, "st": 0},
             "strategy": {"find_join": 0, "join_all": 0, "skip": 0, "sample_times": 0},
         }
+    
+    def set_find_join_only(self, find_join_only):
+        self.find_join_only = find_join_only
+
+    def set_join_cost(self, t_granu, s_granu, o_t):
+        self.join_costs = Profiler.get_join_cost(self.cur, self.tbl_attrs, t_granu, s_granu, o_t)
 
     def dump_polygamy_rel_to_csv(self, data, dir_path, schema_id):
         df = pd.DataFrame(
@@ -248,6 +270,7 @@ class CorrSearch:
         df = pd.DataFrame(
             [corr.to_list() for corr in data],
             columns=[
+                "domain1",
                 "tbl_id1",
                 "tbl_name1",
                 "align_attrs1",
@@ -257,6 +280,7 @@ class CorrSearch:
                 "missing_ratio_o1",
                 "zero_ratio_o1",
                 "cv1",
+                "domain2",
                 "tbl_id2",
                 "tbl_name2",
                 "align_attrs2",
@@ -285,15 +309,15 @@ class CorrSearch:
         self, granu_list, o_t, r_t, p_t, fill_zero=False, dir_path=None, st_type=None
     ):
         t_granu, s_granu = granu_list[0], granu_list[1]
-        profiler = Profiler(self.data_source, [t_granu], [s_granu])
+        # profiler = Profiler(self.data_source, [t_granu], [s_granu])
         if self.mode == 'data_polygamy':
             self.dataPolygamy.set_path(t_granu, s_granu)
             print(self.shuffle_num)
-        self.st_schemas_dict = profiler.load_all_st_schemas(t_granu, s_granu, type_aware=True)
-        st_schema_list = profiler.load_all_st_schemas(t_granu, s_granu)
+        self.st_schemas_dict = Profiler.load_all_st_schemas(self.tbl_attrs, t_granu, s_granu, type_aware=True)
+        st_schema_list = Profiler.load_all_st_schemas(self.tbl_attrs, t_granu, s_granu)
         sorted_st_schemas = []
         for tbl, st_schema in st_schema_list:
-            cnt = profiler.get_row_cnt(tbl, st_schema)
+            cnt = Profiler.get_row_cnt(self.cur, tbl, st_schema)
             sorted_st_schemas.append((tbl, st_schema, cnt))
         sorted_st_schemas = sorted(sorted_st_schemas, key=lambda x: x[2], reverse=False)
         cur_idx = 0
@@ -370,7 +394,7 @@ class CorrSearch:
             corrs.extend(res)
         return corrs
     
-  
+    
     def align_two_st_schemas(self, tbl1, agg_name1, tbl2, agg_name2, o_t, outer, sketch=False, k=0):
         tbl1_agg_cols = self.tbl_attrs[tbl1]["num_columns"]
         tbl2_agg_cols = self.tbl_attrs[tbl2]["num_columns"]
@@ -378,11 +402,15 @@ class CorrSearch:
         vars1 = []
         vars2 = []
         for agg_col in tbl1_agg_cols:
+            if len(agg_col) > 56:
+                continue
             if is_num_column_valid(agg_col):
                 vars1.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t1".format(agg_col)))
         if len(vars1) == 0 or tbl1 == '85ca-t3if':
             vars1.append(Variable("*", AggFunc.COUNT, "count_t1"))
         for agg_col in tbl2_agg_cols:
+            if len(agg_col) > 56:
+                continue
             if is_num_column_valid(agg_col):
                 vars2.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t2".format(agg_col)))
         if len(vars2) == 0 or tbl2 == '85ca-t3if':
@@ -705,6 +733,8 @@ class CorrSearch:
         start = time.time()
         self.visited_tbls.add(tbl1)
         agg_name1 = st_schema.get_agg_tbl_name(tbl1)
+        # if agg_name1 != '4t62-jm4m_annual_maximum_demand_mm_3':
+        #     return
         self.visited_schemas.add(agg_name1)
         if agg_name1 not in self.join_costs:
             print("skip because this table does not have enough keys")
@@ -757,10 +787,27 @@ class CorrSearch:
         Begin to align and compute correlations
         """
         tbl_schema_corrs = []
-       
+        print(method)
+        if self.find_join_only and method == FIND_JOIN_METHOD.INDEX_SEARCH:
+            print('Find_Join', len(aligned_schemas))
+            self.perf_profile["num_joins"]["total"] += len(aligned_schemas)
+            self.perf_profile["num_joins"][flag] += len(aligned_schemas)
+            return
+        print(len(aligned_schemas))
         for tbl2, agg_name2 in aligned_schemas:
+            if self.find_join_only:
+                start = time.time()
+                overlap = db_ops.get_intersection(self.cur, agg_name1, agg_name2)
+                time_used = time.time() - start
+                if overlap >= o_t:
+                    self.perf_profile["num_joins"]["total"] += 1
+                    self.perf_profile["num_joins"][flag] += 1
+                self.perf_profile["time_find_joins"]["total"] += time_used
+                self.perf_profile["time_find_joins"][flag] += time_used
+                continue
+                
             # agg_name2 = st_schema2.get_agg_tbl_name(tbl2)
-            if tbl2 == tbl1 or agg_name2 in self.visited_schemas:
+            if tbl2 == tbl1 or agg_name2 in self.visited_schemas or agg_name2 not in agg_col_profiles:
                 continue
             if self.mode == 'data_polygamy':
                 vars2 = self.dataPolygamy.get_vars(tbl2)
@@ -805,6 +852,7 @@ class CorrSearch:
             # Align two schemas
             start = time.time()
             df1_outer, df2_outer = None, None
+
             if not self.outer_join:
                 df1, df2 = self.align_two_st_schemas(
                     tbl1, agg_name1, tbl2, agg_name2, o_t, outer=False, sketch=self.sketch, k=self.sketch_size
@@ -868,13 +916,14 @@ class CorrSearch:
             self.perf_profile["time_correlation"]["total"] += time_used
             self.perf_profile["time_correlation"][flag] += time_used
 
+
         """
         Perform multiple-comparison correction
         """
         start = time.time()
         if self.correct_method == "FDR":
             tbl_schema_corrs = self.bh_correction(tbl_schema_corrs, r_t)
-            self.perf_profile["corr_counts"]["after"] += len(tbl_schema_corrs)
+        self.perf_profile["corr_counts"]["after"] += len(tbl_schema_corrs)
         self.perf_profile["time_correction"]["total"] += time.time() - start
         self.data.extend(tbl_schema_corrs)
         return method
@@ -919,6 +968,7 @@ class CorrSearch:
         rows = len(df)
         names = df.columns
         for name in names:
+            # print(name)
             _name = name[:-3]
             # remove invalid columns (columns that are all nulls or have only one non-null value)
             average = stats[_name]["avg"]
@@ -1045,16 +1095,20 @@ class CorrSearch:
                 res_sum_val = res_sum_mat.loc[row][col]
             if "impute_zero" in self.r_methods and not self.outer_join:
                 inner_prod_val = inner_prod_mat.loc[row][col]
-            if self.correct_method == "FDR":
-                if abs(r_val) >= r_threshold:
-                    self.perf_profile["corr_counts"]["before"] += 1
+            if abs(r_val) >= r_threshold:
+                self.perf_profile["corr_counts"]["before"] += 1
+            if self.correct_method == "FDR" or self.correct_method is None:
                 # for fdr correction, we need to include all correlations regardless of the p value
                 agg_col1 = AggColumn(
-                    tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, row, df1[row]
+                    self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, row, df1[row]
                 )
+                if self.correct_method is None:
+                    agg_col1.set_profile(df1[row], self.column_profiles[tbl1])
                 agg_col2 = AggColumn(
-                    tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col, df2[col]
+                    self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col, df2[col]
                 )
+                if self.correct_method is None:
+                    agg_col2.set_profile(df2[col], self.column_profiles[tbl2])
                 new_corr = Correlation(agg_col1, agg_col2, r_val, p_val, overlap, flag)
                 if "impute_avg" in self.r_methods and not self.outer_join:
                     new_corr.set_impute_avg_r(res_sum_val)
@@ -1065,15 +1119,15 @@ class CorrSearch:
                 if "impute_zero" in self.r_methods and self.outer_join:
                     new_corr.r_val_impute_zero = corr_impute_zero.loc[row][col]
                 res.append(new_corr)
-            else:
-                agg_col1 = AggColumn(tbl1, agg_name1, row)
-                agg_col2 = AggColumn(tbl2, agg_name2, col)
-                if p_val <= p_threshold:
-                    agg_col1.set_profile(df1[row], self.column_profiles[tbl1])
-                    agg_col2.set_profile(df2[col], self.column_profiles[tbl2])
-                    res.append(
-                        Correlation(agg_col1, agg_col2, r_val, p_val, overlap, flag)
-                    )
+            # else:
+            #     agg_col1 = AggColumn(tbl1, agg_name1, row)
+            #     agg_col2 = AggColumn(tbl2, agg_name2, col)
+            #     if p_val <= p_threshold:
+            #         agg_col1.set_profile(df1[row], self.column_profiles[tbl1])
+            #         agg_col2.set_profile(df2[col], self.column_profiles[tbl2])
+            #         res.append(
+            #             Correlation(agg_col1, agg_col2, r_val, p_val, overlap, flag)
+            #         )
 
         return res
 

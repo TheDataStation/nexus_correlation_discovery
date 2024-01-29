@@ -8,33 +8,38 @@ class Stages(Enum):
     TOTAL = "Total Time"
     FIND_JOIN_AND_MATER = "Find Join+Materialization"
     FIND_JOIN = "Find Join"
+    FILTER = "Filter"
+    VALIDATION = "Validation"
     MATERIALIZATION = "Materialization"
     CORRELATION = "Correlation"
     CORRECTION = "Correction"
 
 
-def load_data(path, vars, mode=None, granu_list=None, jc_t=None):
+def load_data(path, vars, mode=None, granu_list=None, jc_t=None, data_sources=None, validate=None):
     profile = io_utils.load_json(path)
     data = []
     for var in vars:
         if var == Stages.TOTAL:
             if mode =='lazo':
-                path = f"lazo_eval/lazo_join_res/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf.json"
+                if validate == "False":
+                    path = f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf_validate_{validate.lower()}.json"
+                else:
+                    path = f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf.json"
                 res = io_utils.load_json(path)
-                data.append(profile["total_time"] + res["TotalTime"]/1000)
+                data.append(profile["total_time"] + res["TotalTime"]/1000 - profile["time_dump_csv"]["total"])
             elif mode == 'sketch':
                 path = f"lazo_eval/find_joinable_time_{granu_list[0]}_{granu_list[1]}_overlap_30.json"
                 res = io_utils.load_json(path)
-                data.append(profile["total_time"] + res["total_time"])
+                data.append(profile["total_time"] + res["total_time"]-profile["time_dump_csv"]["total"])
             else:
-                data.append(profile["total_time"])
+                data.append(profile["total_time"]-profile["time_dump_csv"]["total"])
         elif var == Stages.FIND_JOIN_AND_MATER:
             data.append(
                 profile["time_find_joins"]["total"] + profile["time_join"]["total"]
             )
         elif var == Stages.FIND_JOIN:
             if mode =='lazo':
-                path = f"lazo_eval/lazo_join_res/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf.json"
+                path = f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf.json"
                 res = io_utils.load_json(path)
                 data.append(profile["time_find_joins"]["total"] + res["TotalTime"]/1000)
             elif mode == 'sketch':
@@ -45,12 +50,30 @@ def load_data(path, vars, mode=None, granu_list=None, jc_t=None):
                 data.append(
                     profile["time_find_joins"]["total"],
                 )
+        elif var == Stages.FILTER:
+            if validate is "False":
+                path = f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf_validate_{validate.lower()}.json"
+            else:
+                path = f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf.json"
+            res = io_utils.load_json(path)
+            data.append(res["filterTime"]/1000)
+        elif var == Stages.VALIDATION:
+            if mode =='lazo':
+                if validate == "False":
+                    path = f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf_validate_{validate.lower()}.json"
+                else:
+                    path = f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{granu_list[0].value}_space_{granu_list[1].value}/jc_{jc_t}_perf.json"
+                res = io_utils.load_json(path)
+                data.append(res["validateTime"]/1000)
+            else:
+                data.append(0)
         elif var == Stages.MATERIALIZATION:
             data.append(profile["time_join"]["total"])
         elif var == Stages.CORRELATION:
             data.append(profile["time_correlation"]["total"])
         elif var == Stages.CORRECTION:
             data.append(profile["time_correction"]["total"])
+    print("data", data)
     return data
 
 

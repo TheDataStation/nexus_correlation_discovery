@@ -13,11 +13,15 @@ def build_spatial_graph(shapefile_path):
     region_id_l = []
     # Iterate through the geometries (regions) in the GeoDataFrame
     for index, row in gdf.iterrows():
-        block = row["blockce10"]
-        tract = row["tractce10"]
-        county = row["countyfp10"]
-        state = row["statefp10"]
-        region_id = '-'.join(str(x) for x in [state, county, tract, block])
+        # block = row["blockce10"]
+        # tract = row["tractce10"]
+        # county = row["countyfp10"]
+        # state = row["statefp10"]
+        tract = row["TRACTCE10"]
+        county = row["COUNTYFP10"]
+        state = row["STATEFP10"]
+        # region_id = '-'.join(str(x) for x in [state, county, tract, block])
+        region_id = '-'.join(str(x) for x in [state, county, tract])
         # Add a node for each region
         region_id_l.append(region_id)
         adjacency_list[region_id] = []  # Initialize an empty list for neighbors
@@ -34,12 +38,21 @@ def build_spatial_graph(shapefile_path):
             if index != neighbor_index:  # Avoid adding self-loops
                 adjacency_list[region_id_l[index]].append(region_id_l[neighbor_index])
                 adjacency_list[region_id_l[neighbor_index]].append(region_id_l[index])  # If the graph is undirected, add both directions
+    return adjacency_list
 
 
 if __name__ == "__main__":
-    shapefile_path = '/home/cc/resolution_aware_spatial_temporal_alignment/data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp'
-    graph = load_json('/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/adjacency_list_T_GRANU.DAY_S_GRANU.BLOCK.json')
+    # shapefile_path = '/home/cc/resolution_aware_spatial_temporal_alignment/data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp'
+    # graph = load_json('/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/adjacency_list_T_GRANU.DAY_S_GRANU.BLOCK.json')
+    # for k, v in graph.items():
+    #     graph[k] = list(set(v))
+    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    # dump_json(f'evaluation/data_polygamy_indices/chicago_1m/spatial_graph_{t_granu}_{s_granu}.json', graph)
+    # shapefile_path = "resource/chicago_shapes/shape_chicago_tracts/geo_export_c59e0875-addc-4363-a542-497356e993cf.shp"
+    shapefile_path = "resource/chicago_tracts/tl_2010_17031_tract10.shp"
+    graph = build_spatial_graph(shapefile_path)
     for k, v in graph.items():
         graph[k] = list(set(v))
-    t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
     dump_json(f'evaluation/data_polygamy_indices/chicago_1m/spatial_graph_{t_granu}_{s_granu}.json', graph)
+    # df = gpd.read_file(shapefile_path)
+    # print(df.iloc[1])

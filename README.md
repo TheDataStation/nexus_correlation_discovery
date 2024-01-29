@@ -66,3 +66,30 @@ If you are on ubuntu, please first run the following in order to support psycopg
 ```bash
 sudo apt-get install libpq-dev python3-dev
 ```
+
+## Experiment
+
+### Ingest data sources
+
+1. First run script to ingest data
+2. Update inverted index cnt table
+
+### Run Lazo
+
+1. First dump spatio-temporal keys out of the database
+
+```python
+python lazo_eval/dump_data_script.py 
+```
+
+2. scp the files to lazo directory
+
+first zip the directory, and then scp 
+
+```
+ scp -r cc@129.114.109.175:/home/cc/resolution_aware_spatial_temporal_alignment/join_key_data/nyc_chicago.zip .
+```
+
+3. Run Lazo. Move the result back to Nexus
+
+4. Generate ground truth joins

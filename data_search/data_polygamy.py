@@ -42,7 +42,7 @@ class DataPolygamy:
        
     def create_indices(self, data_source, t_granu, s_granu, dir_path, shuffle_num=2, st_shuffle_num=2):
         profiler = Profiler(data_source, [t_granu], [s_granu])
-        st_schema_list = profiler.load_all_st_schemas(t_granu, s_granu)
+        st_schema_list = profiler.load_all_st_schemas(profiler.tbl_attrs, t_granu, s_granu)
         threshold_map = {}
         # print(st_schema_list[0])
         for tbl, st_schema in tqdm(st_schema_list):
@@ -302,8 +302,9 @@ class DataPolygamy:
 if __name__ == '__main__':
     data_source = "chicago_1m"
     config = io_utils.load_config(data_source)
-    conn_str = config["db_path"]
-    t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
+    # conn_str = config["db_path"]
+    conn_str = 'postgresql://yuegong@localhost/chicago_1m_new'
+    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
     start = time.time()
     data_polygamy = DataPolygamy(conn_str, config['attr_path'])
     data_polygamy.set_path(t_granu, s_granu)

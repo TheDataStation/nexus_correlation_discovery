@@ -10,6 +10,25 @@ from collections import Counter
 Intersection Query
 """
 
+def get_intersection(cur, agg_name1, agg_name2):
+    # sql_str = """
+    # SELECT count(*) FROM (
+    #     SELECT val FROM {agg_tbl1} a1 
+    #     INTERSECT
+    #     SELECT val FROM {agg_tbl2} a2
+    #     ) subquery
+    # """
+    sql_str = """
+        SELECT count('val') FROM {agg_tbl1} a1 join {agg_tbl2} a2 on a1.val = a2.val
+    """
+    query = sql.SQL(sql_str).format(
+        agg_tbl1=sql.Identifier(f"{agg_name1}_cnt"),
+        agg_tbl2=sql.Identifier(f"{agg_name2}_cnt"),
+    )
+    cur.execute(query)
+    res = cur.fetchone()[0]
+    return res
+
 
 def __get_intersection_inv_idx(cur, tbl, st_schema: ST_Schema, threshold):
     agg_tbl = st_schema.get_agg_tbl_name(tbl)
@@ -46,7 +65,13 @@ def get_inv_idx_cnt(cur, inv_idx_names):
 
 
 def get_inv_cnt(cur, tbl, st_schema: ST_Schema, threshold: int):
-    agg_cnt_tbl = f"{st_schema.get_agg_tbl_name(tbl)}_cnt"
+    agg_name = st_schema.get_agg_tbl_name(tbl)
+    if len(agg_name) >= 63:
+        agg_cnt_tbl = agg_name[:59] + "_cnt"
+    else:
+        agg_cnt_tbl = agg_name + "_cnt"
+
+    # agg_cnt_tbl = f"{st_schema.get_agg_tbl_name(tbl)}_cnt"
 
     sql_str = """
         SELECT count(cnt), sum(cnt) FROM {inv_cnt}

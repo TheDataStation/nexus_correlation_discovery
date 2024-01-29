@@ -30,7 +30,7 @@ def plot_distribution(dir1, dir2, r_t):
     axs.set_ylabel('Estimated Pearson\'s Correlation')
     plt.savefig('correlation_distribution.png')
 
-def compare_corrs(dir1, dir2, r_t, type=None, output_path=None):
+def compare_corrs(dir1, dir2, r_t, type=None, output_path=None, polygamy=False):
     # compare the divergence between two sets of correlations.
     # dir1 and dir2 are the directories containing the correlation files.
     profile = {}
@@ -39,7 +39,7 @@ def compare_corrs(dir1, dir2, r_t, type=None, output_path=None):
     else:
         all_corrs_nexus = load_all_corrs(dir1, r_t, type)
     print(len(all_corrs_nexus))
-    all_corrs_baseline = load_all_corrs(dir2, r_t, 'inner', polygamy=True)
+    all_corrs_baseline = load_all_corrs(dir2, r_t, 'inner', polygamy=polygamy)
     # calculate the jaccard similarity between the two sets of correlations
     all_corrs_nexus = set(all_corrs_nexus)
     all_corrs_baseline = set(all_corrs_baseline)
@@ -48,6 +48,9 @@ def compare_corrs(dir1, dir2, r_t, type=None, output_path=None):
     print("number of correlations in baseline:", len(all_corrs_baseline))
     TP = len(all_corrs_nexus.intersection(all_corrs_baseline))
     FN = len(all_corrs_nexus.difference(all_corrs_baseline))
+    # wrap false negatives into a csv file
+    
+
     FP = len(all_corrs_baseline.difference(all_corrs_nexus))
     profile['corr_nexus'] = len(all_corrs_nexus)
     profile['corr_baseline'] = len(all_corrs_baseline)
@@ -57,25 +60,11 @@ def compare_corrs(dir1, dir2, r_t, type=None, output_path=None):
     profile['precision'] = TP / (TP + FP)
     profile['recall'] = TP / (TP + FN)
     dump_json(output_path, profile)
-    # print("true postives:", TP)
-    # print("precision:", TP / (TP + FP))
-    # print("recall:", TP / (TP + FN))
-    # print("number of correlations in both:", len(all_corrs_nexus.intersection(all_corrs_baseline)))
-    # fn = all_corrs_nexus.difference(all_corrs_baseline)
-    # print("numebr of correlations in Nexus but not in Baseline", len(fn))
-    # print("numebr of correlations in baseline but not in Nexus", len(all_corrs_baseline.difference(all_corrs_nexus)))
-    
-    # for i in fn:
-    #     print(i)
-    # print("number of correlations in either:", len(all_corrs_nexus.union(all_corrs_baseline)))
-    # print("jaccard similarity:", len(all_corrs_nexus.intersection(all_corrs_baseline)) / len(all_corrs_nexus.union(all_corrs_baseline)))
-
+  
 def load_all_corrs(dir, r_t, type=None, with_r=False, polygamy=False, st_type=None):
     all_corrs = []
     all_corrs_map = {}
     for filename in os.listdir(dir):
-        # if len(filename) <= 18:
-        #     continue
         if st_type == 'time':
             if not ('_2' in filename and '_1' not in filename):
                 continue
@@ -117,25 +106,33 @@ def load_all_corrs(dir, r_t, type=None, with_r=False, polygamy=False, st_type=No
         return all_corrs
 
 if __name__ == "__main__":
-    storage_dir = 'correlations12_30'
-    dump_dir = 'correlation_quality12_30'
-    baseline = 'polygamy'
-    # t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
-    t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
-    dir1 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/correlations12_29/nexus_0.0/chicago_1m_{t_granu}_{s_granu}/'
-    # dir2 =  f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/{storage_dir}/corr_sketch_0.0_256/chicago_1m_{t_granu}_{s_granu}/'
-    # dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment//evaluation/{storage_dir}/data_polygmay/chicago_1m_{t_granu}_{s_granu}/'
-    dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/correlations12_30/data_polygmay_full_4_new/chicago_1m_T_GRANU.DAY_S_GRANU.BLOCK/'
-    # plot_distribution(dir1, dir2, 0)
-    r_t_l = [0]
-    # all_corrs_baseline = load_all_corrs(dir2, 0, 'inner', polygamy=True, st_type='space')
-    # print(len(all_corrs_baseline))
-    for r_t in r_t_l:
-        compare_corrs(dir1, dir2, r_t, type=None, output_path=f'evaluation/{dump_dir}/correlation_comparison__{r_t}_{baseline}_{t_granu}_{s_granu}_all.json')
-        # for jc in [0.4]:
-        #     dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/{storage_dir}/lazo_jc_{jc}_{r_t}/chicago_1m_{t_granu}_{s_granu}/'
+    storage_dir = 'correlations12_29'
+    # dump_dir = 'correlation_quality12_30'
+    # baseline = 'polygamy'
+    # baseline = 'lazo'
+    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    # t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
+    # dir1 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/correlations12_29/nexus_0.0/chicago_1m_{t_granu}_{s_granu}/'
+    # # dir2 =  f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/{storage_dir}/corr_sketch_0.0_256/chicago_1m_{t_granu}_{s_granu}/'
+    # # dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment//evaluation/{storage_dir}/data_polygmay/chicago_1m_{t_granu}_{s_granu}/'
+    # # dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/correlations12_30/data_polygmay_full_4_new/chicago_1m_T_GRANU.DAY_S_GRANU.BLOCK/'
+    # # plot_distribution(dir1, dir2, 0)
+    # r_t_l = [0]
+    # # all_corrs_baseline = load_all_corrs(dir2, 0, 'inner', polygamy=True, st_type='space')
+    # # print(len(all_corrs_baseline))
+    # for r_t in r_t_l:
+    #     # compare_corrs(dir1, dir2, r_t, type=None, output_path=f'evaluation/{dump_dir}/correlation_comparison__{r_t}_{baseline}_{t_granu}_{s_granu}_all.json')
+    #     for jc in [0]:
+    #         dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/{storage_dir}/lazo_jc_{jc}_{r_t}/chicago_1m_{t_granu}_{s_granu}/'
+    #         compare_corrs(dir1, dir2, r_t, type=None)
         # for type in ['inner', 'impute_zero', 'impute_avg']:
         #     # print(f"r_t: {r_t}; jc: {jc}")
         #     print(f"r_t: {r_t}; type: {type}")
         #     # compare_corrs(dir1, dir2, r_t, type=None, output_path=f'evaluation/{dump_dir}/correlation_comparison_jc_{jc}_{r_t}_{baseline}_{t_granu}_{s_granu}.json')
         #     compare_corrs(dir1, dir2, r_t, type=type, output_path=f'evaluation/{dump_dir}/correlation_comparison_{type}_{r_t}_{baseline}_{t_granu}_{s_granu}.json')
+    
+   
+    dir1 = f"evaluation/correlations12_29/nexus_0.0/chicago_1m_{t_granu}_{s_granu}/"
+    # dir2 = f"evaluation/correlations12_29/corr_sketch_jc_0.2_0.0_256/chicago_1m_{t_granu}_{s_granu}/"
+    dir2 = f"evaluation/correlations12_29/data_polygmay_full_4_new/chicago_1m_T_GRANU.MONTH_S_GRANU.TRACT/"
+    compare_corrs(dir1, dir2, 0, type=None, output_path=f"evaluation/correlation_quality12_29/correlation_comparison_nexus_poly_{t_granu}_{s_granu}.json", polygamy=True)
