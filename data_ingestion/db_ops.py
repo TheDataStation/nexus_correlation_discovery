@@ -61,11 +61,14 @@ def create_idx_tbl(cur, idx_tbl):
 def create_cnt_tbl_for_agg_tbl(cur, tbl, st_schema: ST_Schema):
     idx_cnt_name = "{}_inv_cnt".format(st_schema.get_idx_tbl_name())
     agg_tbl = st_schema.get_agg_tbl_name(tbl)
-    cnt_tbl_name = f"{agg_tbl}_cnt"
+    if len(agg_tbl) >= 63:
+        cnt_tbl_name = agg_tbl[:59] + "_cnt"
+    else:
+        cnt_tbl_name = f"{agg_tbl}_cnt"
     del_tbl(cur, cnt_tbl_name)
     sql_str = """
             CREATE TABLE {cnt_tbl_name} AS
-            SELECT cnt FROM {inv_cnt} inv JOIN {tbl} agg on inv."val" = agg."val" order by cnt desc
+            SELECT "inv"."val", cnt FROM {inv_cnt} inv JOIN {tbl} agg on inv."val" = agg."val" order by cnt desc
         """
     query = sql.SQL(sql_str).format(
         cnt_tbl_name=sql.Identifier(cnt_tbl_name),
@@ -82,7 +85,8 @@ def insert_to_idx_tbl(cur, idx_tbl, id, agg_tbl):
         SELECT val, ARRAY[%s] as st_schema_list FROM {agg_tbl}
         ON CONFLICT (val) 
         DO
-            UPDATE SET st_schema_list = array_cat({original}, EXCLUDED.st_schema_list)
+            UPDATE SET st_schema_list = (SELECT array_agg(distinct x)
+                                         FROM unnest({original} || EXCLUDED.st_schema_list) as t(x));
     """
     query = sql.SQL(sql_str).format(
         idx_tbl=sql.Identifier(idx_tbl),
@@ -136,9 +140,12 @@ def create_agg_tbl(
     )
 
     cur.execute(query)
-
+    if len(agg_tbl_name) >= 63:
+        idx_name = agg_tbl_name[:59] + "_idx"
+    else:
+        idx_name = agg_tbl_name + "_idx"
     create_indices_on_tbl(
-        cur, agg_tbl_name + "_idx", agg_tbl_name, ["val"], IndexType.HASH
+        cur, idx_name, agg_tbl_name, ["val"], IndexType.HASH
     )
 
     return agg_tbl_name
@@ -230,7 +237,7 @@ def create_indices_on_tbl(cur, idx_name, tbl, col_names, mode=IndexType.B_TREE):
             tbl=sql.Identifier(tbl),
             col=sql.Identifier(col_name),
         )
-
+    # print(cur.mogrify(query))
     cur.execute(query)
 
 
@@ -254,3 +261,26 @@ def create_inv_idx_cnt_tbl(cur, idx_names):
 def del_tbl(cur, tbl_name):
     sql_str = """DROP TABLE IF EXISTS {tbl}"""
     cur.execute(sql.SQL(sql_str).format(tbl=sql.Identifier(tbl_name)))
+
+def create_correlation_sketch_tbl(cur, agg_tbl, k, keys):
+    tbl_name = f"{agg_tbl}_sketch_{k}"
+    del_tbl(cur, tbl_name)
+    sql_str = """
+        CREATE TABLE {tbl_name} AS
+        SELECT * FROM {agg_tbl} WHERE val IN %s;
+    """
+    query = sql.SQL(sql_str).format(
+        tbl_name=sql.Identifier(tbl_name), agg_tbl=sql.Identifier(agg_tbl)
+    )
+    cur.execute(query, (tuple(keys),))
+
+def read_key(cur, agg_tbl: str):
+    sql_str = """
+        SELECT val FROM {agg_tbl};
+    """
+
+    query = sql.SQL(sql_str).format(
+        agg_tbl=sql.Identifier(agg_tbl)
+    )
+    cur.execute(query)
+    return [r[0] for r in cur.fetchall()]

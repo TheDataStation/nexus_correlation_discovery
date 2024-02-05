@@ -18,6 +18,19 @@ class Signal:
 
 def load_corr(path):
     all_corr = None
+    to_include = ['ijzp-q8t2', '85ca-t3if', 'x2n5-8w5q'] 
+    for filename in os.listdir(path):
+        if filename.endswith(".csv"):
+            df = pd.read_csv(path + filename)
+            if all_corr is None:
+                all_corr = df
+            else:
+                all_corr = pd.concat([all_corr, df])
+    all_corr = all_corr[~(((all_corr['agg_attr1'] == 'count_t1') & (~all_corr['tbl_id1'].isin(to_include))) | (((all_corr['agg_attr2'] == 'count_t2') & (~all_corr['tbl_id2'].isin(to_include)))))]
+    return all_corr
+
+def load_all_corrs(path):
+    all_corr = None
     for filename in os.listdir(path):
         if filename.endswith(".csv"):
             df = pd.read_csv(path + filename)
@@ -27,6 +40,10 @@ def load_corr(path):
                 all_corr = pd.concat([all_corr, df])
     return all_corr
 
+def remove_bad_cols(stop_words, corrs):
+    for stop_word in stop_words:
+        corrs = corrs[~((corrs['agg_attr1'] == f'avg_{stop_word}_t1') | (corrs['agg_attr2'] == f'avg_{stop_word}_t2'))]
+    return corrs
 
 def build_graph_with_labels(corrs, threshold=0, weighted=False):
     G = nx.Graph()
@@ -57,7 +74,7 @@ def build_graph_with_labels(corrs, threshold=0, weighted=False):
     return G
 
 
-def build_graph(corrs, threshold=0):
+def build_graph(corrs, threshold=0, weighted=False):
     G = nx.Graph()
     total_corr = 0
     start = time.time()
@@ -74,10 +91,58 @@ def build_graph(corrs, threshold=0):
     #     total_corr += count
     #     if count >= threshold:
     #         G.add_edge(row["tbl_id1"], row["tbl_id2"], weight=count)
-    G = nx.from_pandas_edgelist(grouped, "tbl_id1", "tbl_id2", ["weight"])
+    if weighted:
+        G = nx.from_pandas_edgelist(grouped, "tbl_id1", "tbl_id2", ["weight"])
+    else:
+        G = nx.from_pandas_edgelist(grouped, "tbl_id1", "tbl_id2")
     # print(f"build_graph takes {time.time()-start} s")
     return G
 
+def build_graph_on_vars(corrs, threshold=0, weighted=False):
+    G = nx.Graph()
+    total_corr = 0
+    covered_corr = 0  # number of corr that are included in the graph
+
+    grouped = (
+        corrs.groupby([corrs["tbl_id1"]+corrs["agg_attr1"].str[0:-3], corrs["tbl_id2"]+corrs["agg_attr2"].str[0:-3]])
+        .size()
+        .to_frame(name="weight")
+        .reset_index()
+    )
+
+    if weighted:
+        G = nx.from_pandas_edgelist(grouped, "level_0", "level_1", ["weight"])
+    else:
+        G = nx.from_pandas_edgelist(grouped, "level_0", "level_1")
+
+    return G
+
+def build_graph_with_labels_on_vars(corrs, threshold=0, weighted=False):
+    G = nx.Graph()
+    total_corr = 0
+    covered_corr = 0  # number of corr that are included in the graph
+    labels = {}
+    from collections import defaultdict
+    tbl_attrs = defaultdict(set)
+    for _, row in corrs.iterrows():
+        tbl_id1, tbl_id2, tbl_name1, tbl_name2, agg_attr1, agg_attr2 = row["tbl_id1"], row["tbl_id2"], \
+        row["tbl_name1"], row["tbl_name2"], row['agg_attr1'][0:-3], row['agg_attr2'][0:-3]
+      
+        tbl_id1, tbl_id2 = row["tbl_id1"], row["tbl_id2"]
+        G.add_edge(f"{tbl_id1}--{agg_attr1}", f"{tbl_id2}--{agg_attr2}")
+        tbl_attrs[tbl_id1].add(agg_attr1)
+        tbl_attrs[tbl_id2].add(agg_attr2)
+        labels[f"{tbl_id1}--{agg_attr1}"] = f"{tbl_name1}--{agg_attr1}"
+        labels[f"{tbl_id2}--{agg_attr2}"] = f"{tbl_name2}--{agg_attr2}"
+
+    # for tbl, attrs in tbl_attrs.items():
+    #     attrs = list(attrs)
+    #     l = len(attrs)
+    #     for i in range(l):
+    #         for j in range(i, l):
+    #             G.add_edge(f"{tbl}-{attrs[i]}", f"{tbl}-{attrs[j]}")
+    nx.set_node_attributes(G, labels, "label")
+    return G
 
 def filter_on_a_signal(corr, signal, t):
     if "missing_ratio" in signal.name or "zero_ratio" in signal.name:

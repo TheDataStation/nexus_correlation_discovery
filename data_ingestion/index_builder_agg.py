@@ -25,7 +25,8 @@ from data_search.data_model import (
 import data_ingestion.db_ops as db_ops
 from data_ingestion.db_ops import IndexType
 from typing import List
-from multiprocessing.pool import ThreadPool as Pool
+from utils.correlation_sketch_utils import murmur3_32, grm, FixedSizeMaxHeap
+import traceback
 
 """
 DBIngestor ingests dataframes to a database (current implementation uses postgres)
@@ -39,7 +40,7 @@ Here are the procedure to ingest a spatial-temporal table
 
 
 class DBIngestorAgg:
-    def __init__(self, conn_string: str, source, t_scales, s_scales) -> None:
+    def __init__(self, conn_string: str, source, t_scales, s_scales, mode='no_cross') -> None:
         db = create_engine(conn_string)
         self.conn = db.connect()
         conn_copg2 = psycopg2.connect(conn_string)
@@ -50,6 +51,7 @@ class DBIngestorAgg:
         self.created_tbls = set()
         # successfully ingested table information
         self.tbls = {}
+        self.failed_tbls = []
         # idx tables that are created successfully
         self.idx_tables = set()
 
@@ -59,9 +61,21 @@ class DBIngestorAgg:
         self.config = io_utils.load_config(source)
         self.data_path = self.config["data_path"]
         self.shape_path = self.config["shape_path"]
+        self.t_range = None
+        self.mode = mode
+        self.sketch = False
 
-    def get_numerical_columns(self, all_columns, tbl: Table):
+        geo_chain = self.config["geo_chain"]
+        geo_keys = self.config["geo_keys"]
+        coordinate.resolve_geo_chain(geo_chain, geo_keys)
+
+    def set_time_range(self, t_range):
+        self.t_range = t_range
+
+    @staticmethod
+    def get_numerical_columns(all_columns, tbl: Table):
         numerical_columns = list(set(all_columns) & set(tbl.num_columns))
+        # numerical_columns = tbl.num_columns
         valid_num_columns = []
         # exclude columns that contain stop words and timestamp columns
         for col in numerical_columns:
@@ -69,9 +83,12 @@ class DBIngestorAgg:
                 valid_num_columns.append(col)
         return valid_num_columns
 
-    def select_valid_attrs(self, attrs, max_limit=0):
+    @staticmethod
+    def select_valid_attrs(attrs, max_limit=0):
         valid_attrs = []
         for attr in attrs:
+            if len(attr) > 48:
+                continue
             if any(
                 keyword in attr
                 for keyword in ["update", "modified", "_end", "end_", "status", "_notified"]
@@ -79,30 +96,25 @@ class DBIngestorAgg:
                 continue
             valid_attrs.append(attr)
         # limit the max number of spatio/temporal join keys a table can have
+        valid_attrs.sort()
         return valid_attrs[:max_limit]
 
-    def ingest_data_source(self, clean=False, persist=False, first=False):
+    def ingest_data_source(self, clean=False, persist=False, max_limit=2, retry_list=None):
         meta_path = self.config["meta_path"]
-        geo_chain = self.config["geo_chain"]
-        geo_keys = self.config["geo_keys"]
-        coordinate.resolve_geo_chain(geo_chain, geo_keys)
         meta_data = io_utils.load_json(meta_path)
+        if retry_list is not None:
+            previous_failed_tbls = io_utils.load_json(self.config['failed_tbl_path'])
         if clean:
             self.clean_aggregated_idx_tbls()
 
-        max_limit = 2
         for obj in tqdm(meta_data):
             t_attrs, s_attrs = self.select_valid_attrs(
                 obj["t_attrs"], max_limit
             ), self.select_valid_attrs(obj["s_attrs"], max_limit)
+            # print(t_attrs, s_attrs)
             if len(t_attrs) == 0 and len(s_attrs) == 0:
                 continue
-            if first:
-                # when first is specified, only take the first t_attr and s_attr
-                if t_attrs:
-                    t_attrs = [t_attrs[0]]
-                if s_attrs:
-                    s_attrs = [s_attrs[0]]
+           
             tbl = Table(
                 domain=obj["domain"],
                 tbl_id=obj["tbl_id"],
@@ -111,32 +123,77 @@ class DBIngestorAgg:
                 s_attrs=s_attrs,
                 num_columns=obj["num_columns"],
             )
-            print(tbl.t_attrs, tbl.s_attrs)
+            # print(tbl.t_attrs, tbl.s_attrs)
             print(tbl.tbl_id)
-            self.ingest_tbl(tbl)
-
-        for idx_tbl in tqdm(self.idx_tables):
-            db_ops.create_indices_on_tbl(
-                self.cur, f"{idx_tbl}_inv", idx_tbl, ["val"], mode=IndexType.HASH
-            )
-        # create a cnt table for every invereted index
-        self.create_inv_cnt_tbls(self.idx_tables)
+            if retry_list is not None:
+                if tbl.tbl_id not in retry_list:
+                    continue
+                try:
+                    self.ingest_tbl(tbl)
+                    # previous_failed_tbls.remove(tbl.tbl_id)
+                except Exception as e:
+                    print("failed")
+                    traceback.print_exc()
+                # if tbl.tbl_id == '3gj5-t7ah':
+                #     self.ingest_tbl(tbl)
+            else:
+                try:
+                    self.ingest_tbl(tbl)
+                except Exception as e:
+                    print("failed")
+                    self.failed_tbls.append(tbl.tbl_id)
+                    traceback.print_exc()
         # create a cnt table for each individual table
-        for tbl_id, info in self.tbls.items():
-            self.create_cnt_tbl(
-                tbl_id,
-                info["t_attrs"],
-                info["s_attrs"],
-                self.t_scales,
-                self.s_scales,
-            )
+        # for tbl_id, info in self.tbls.items():
+        #     try:
+        #         self.create_cnt_tbl(
+        #             tbl_id,
+        #             info["t_attrs"],
+        #             info["s_attrs"],
+        #             self.t_scales,
+        #             self.s_scales,
+        #         )
+        #     except Exception as e:
+        #         print("failed creating cnt tbl")
+        #         self.failed_tbls.append(f"{tbl_id}_cnt")
+        #         traceback.print_exc() 
+
+        # for idx_tbl in tqdm(self.idx_tables):
+        #     db_ops.create_indices_on_tbl(
+        #         self.cur, f"{idx_tbl}_inv", idx_tbl, ["val"], mode=IndexType.HASH
+        #     )
+        # # create a cnt table for every invereted index
+        # self.create_inv_cnt_tbls(self.idx_tables)
 
         if persist:
-            io_utils.dump_json(
-                self.config["attr_path"],
-                self.tbls,
-            )
-            io_utils.dump_json(self.config["idx_tbl_path"], list(self.idx_tables))
+            if retry_list is not None:
+                ingested_tbls = io_utils.load_json(self.config['attr_path'])
+                ingested_tbls.update(self.tbls)
+                io_utils.dump_json(self.config['attr_path'], ingested_tbls)
+                io_utils.dump_json(self.config['failed_tbl_path'], previous_failed_tbls)
+            else:
+                io_utils.dump_json(
+                    self.config["attr_path"],
+                    self.tbls,
+                )
+                io_utils.dump_json(
+                    self.config["failed_tbl_path"],
+                    self.failed_tbls
+                )
+                io_utils.dump_json(self.config["idx_tbl_path"], list(self.idx_tables))
+
+    @staticmethod
+    def create_cnt_tbls_for_inv_index_tbls(conn_str, idx_tbls):
+        conn_copg2 = psycopg2.connect(conn_str)
+        conn_copg2.autocommit = True
+        cur = conn_copg2.cursor()
+        # for idx_tbl in tqdm(idx_tbls):
+        #     print(idx_tbl)
+        #     db_ops.create_indices_on_tbl(
+        #         cur, f"{idx_tbl}_inv", idx_tbl, ["val"], mode=IndexType.HASH
+        #     )
+        # create a cnt table for every invereted index
+        db_ops.create_inv_idx_cnt_tbl(cur, idx_tbls)
 
     def create_inv_cnt_tbls(self, idx_tbls):
         db_ops.create_inv_idx_cnt_tbl(self.cur, idx_tbls)
@@ -153,29 +210,38 @@ class DBIngestorAgg:
 
         for t in t_attrs:
             for s in s_attrs:
-                for t_scale in t_scales:
-                    for s_scale in s_scales:
+                if self.mode == 'cross':
+                    for t_scale in t_scales:
+                        for s_scale in s_scales:
+                            st_schema_list.append(
+                                (tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
+                            )
+                elif self.mode == 'no_cross':
+                    for i in range(len(t_scales)):
                         st_schema_list.append(
-                            (tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
+                            (tbl, ST_Schema(Unit(t, t_scales[i]), Unit(s, s_scales[i])))
                         )
         for schema in st_schema_list:
             db_ops.create_cnt_tbl_for_agg_tbl(self.cur, schema[0], schema[1])
 
     def ingest_tbl(self, tbl: Table):
         tbl_path = os.path.join(self.data_path, f"{tbl.tbl_id}.csv")
+        print("reading csv")
         df = io_utils.read_csv(tbl_path)
 
         # get numerical columns
         all_columns = list(df.select_dtypes(include=[np.number]).columns.values)
         numerical_columns = self.get_numerical_columns(all_columns, tbl)
-
+        numerical_columns = [x for x in numerical_columns if len(x) <= 56]
+        print(df.columns)
+        print(tbl.t_attrs, tbl.s_attrs, numerical_columns)
         df = df[tbl.t_attrs + tbl.s_attrs + numerical_columns]
 
         print("begin expanding dataframe")
         # expand dataframe
         start = time.time()
         df, df_schema, t_attrs_success, s_attrs_success = self.expand_df(
-            df, tbl.t_attrs, tbl.s_attrs
+            df, tbl.t_attrs, tbl.s_attrs, self.t_range
         )
 
         print("expanding table used {} s".format(time.time() - start))
@@ -184,6 +250,7 @@ class DBIngestorAgg:
             print("df is none")
             return
         self.tbls[tbl.tbl_id] = {
+            "domain": tbl.domain,
             "name": tbl.tbl_name,
             "t_attrs": t_attrs_success,
             "s_attrs": s_attrs_success,
@@ -227,29 +294,52 @@ class DBIngestorAgg:
 
         for t in t_attrs:
             for s in s_attrs:
-                for t_scale in t_scales:
-                    for s_scale in s_scales:
+                if self.mode == 'no_cross':
+                    for i in range(len(t_scales)):
                         st_schema_list.append(
-                            ST_Schema(Unit(t, t_scale), Unit(s, s_scale))
+                            ST_Schema(Unit(t, t_scales[i]), Unit(s, s_scales[i]))
                         )
+                elif self.mode == 'cross':
+                    for t_scale in t_scales:
+                        for s_scale in s_scales:
+                            st_schema_list.append(
+                                ST_Schema(Unit(t, t_scale), Unit(s, s_scale))
+                            )
 
         for st_schema in st_schema_list:
             vars = []
             for agg_col in num_columns:
+                if len(agg_col) > 56:
+                    continue
                 vars.append(Variable(agg_col, AggFunc.AVG, "avg_{}".format(agg_col)))
-            # add count function if and only if there is no numeric columns, which means
-            # the table is about some event.
-            if len(num_columns) == 0:
-                vars.append(Variable("*", AggFunc.COUNT, "count"))
+            vars.append(Variable("*", AggFunc.COUNT, "count"))
 
             start = time.time()
             # transform data and also create an index on the key val column
             agg_tbl_name = db_ops.create_agg_tbl(self.cur, tbl, st_schema, vars)
+            print(agg_tbl_name)
             print(f"finish aggregating table in {time.time()-start} s")
             # ingest spatio-temporal values to an index table
             start = time.time()
             self.ingest_agg_tbl_to_idx_tbl(tbl, agg_tbl_name, st_schema)
             print(f"finish ingesting to idx table in {time.time()-start} s")
+            if self.sketch == True:
+                # create correlation sketch for an aggregation table.
+                self.create_correlation_sketch(agg_tbl_name)
+    
+    def create_correlation_sketch(self, agg_tbl: str, k: int):
+        # read the key column from agg_tbl
+        keys = db_ops.read_key(self.cur, agg_tbl)
+        sketch = FixedSizeMaxHeap(k) # consists of k min values
+        for key in keys:
+            # hash each key using murmur3
+            hash_val = murmur3_32(key)
+            # use another function to map hash_val to 0-1
+            hu = grm(hash_val)
+            sketch.push((hu, key))
+        min_keys = [item[1] for item in sketch.get_data()]
+        # project these values from the original table
+        db_ops.create_correlation_sketch_tbl(self.cur, agg_tbl, k, min_keys)
 
     def create_idx_on_agg_tbls(
         self,
@@ -298,6 +388,7 @@ class DBIngestorAgg:
     def ingest_agg_tbl_to_idx_tbl(self, tbl, agg_tbl, st_schema: ST_Schema):
         # decide which index table to ingest the agg_tbl values
         idx_tbl_name = st_schema.get_idx_tbl_name() + "_inv"
+        print(idx_tbl_name)
         # if this idx table has not been created yet, create it first
         if idx_tbl_name not in self.idx_tables:
             db_ops.create_idx_tbl(self.cur, idx_tbl_name)
@@ -324,7 +415,7 @@ class DBIngestorAgg:
                     "time_{}_space_{}_inv".format(t_granu.value, s_granu.value),
                 )
 
-    def expand_df(self, df, t_attrs, s_attrs):
+    def expand_df(self, df, t_attrs, s_attrs, temporal_range=False, spatial_range=False):
         t_attrs_success = []
         s_attrs_success = []
         df_schema = {}
@@ -333,6 +424,22 @@ class DBIngestorAgg:
             df[t_attr] = pd.to_datetime(df[t_attr], utc=False, errors="coerce").replace(
                 {np.NaN: None}
             )
+            if temporal_range:
+                # if temporal_range is specified, we only ingest data within a certain range
+                print(f"df len before: {len(df)}")
+                print(df[t_attr].dtype)
+                # print(df[t_attr].head())
+                is_datetime64_utc = df[t_attr].dtype == "datetime64[ns, UTC]"
+                try:
+                    if is_datetime64_utc:
+                        df = df.loc[(df[t_attr] >= pd.to_datetime(temporal_range[0], utc=True)) & (df[t_attr] < pd.to_datetime(temporal_range[1], utc=True))]
+                    else:   
+                        df = df.loc[(df[t_attr] >= temporal_range[0]) & (df[t_attr] < temporal_range[1])]
+                except TypeError:
+                    df = df.loc[(df[t_attr] >= pd.to_datetime(temporal_range[0], utc=True)) & (df[t_attr] < pd.to_datetime(temporal_range[1], utc=True))]
+                print(f"df len after: {len(df)}")
+                if len(df) == 0:
+                    return None, None, [], []
             df_dts = df[t_attr].apply(parse_datetime).dropna()
             # df_dts = np.vectorize(parse_datetime)(df[t_attr])
             if len(df_dts):

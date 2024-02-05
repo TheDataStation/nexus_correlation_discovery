@@ -10,6 +10,25 @@ from collections import Counter
 Intersection Query
 """
 
+def get_intersection(cur, agg_name1, agg_name2):
+    # sql_str = """
+    # SELECT count(*) FROM (
+    #     SELECT val FROM {agg_tbl1} a1 
+    #     INTERSECT
+    #     SELECT val FROM {agg_tbl2} a2
+    #     ) subquery
+    # """
+    sql_str = """
+        SELECT count('val') FROM {agg_tbl1} a1 join {agg_tbl2} a2 on a1.val = a2.val
+    """
+    query = sql.SQL(sql_str).format(
+        agg_tbl1=sql.Identifier(f"{agg_name1}_cnt"),
+        agg_tbl2=sql.Identifier(f"{agg_name2}_cnt"),
+    )
+    cur.execute(query)
+    res = cur.fetchone()[0]
+    return res
+
 
 def __get_intersection_inv_idx(cur, tbl, st_schema: ST_Schema, threshold):
     agg_tbl = st_schema.get_agg_tbl_name(tbl)
@@ -46,7 +65,13 @@ def get_inv_idx_cnt(cur, inv_idx_names):
 
 
 def get_inv_cnt(cur, tbl, st_schema: ST_Schema, threshold: int):
-    agg_cnt_tbl = f"{st_schema.get_agg_tbl_name(tbl)}_cnt"
+    agg_name = st_schema.get_agg_tbl_name(tbl)
+    if len(agg_name) >= 63:
+        agg_cnt_tbl = agg_name[:59] + "_cnt"
+    else:
+        agg_cnt_tbl = agg_name + "_cnt"
+
+    # agg_cnt_tbl = f"{st_schema.get_agg_tbl_name(tbl)}_cnt"
 
     sql_str = """
         SELECT count(cnt), sum(cnt) FROM {inv_cnt}
@@ -87,42 +112,59 @@ def get_intersection_inv_idx(
     agg_tbl = st_schema.get_agg_tbl_name(tbl)
     # col_names = st_schema.get_col_names_with_granu()
     sql_str = """
-        SELECT "st_schema_list" FROM {inv_idx} inv JOIN {tbl} agg ON inv."val" = agg."val"
+        SELECT cand, count(*) as cnt
+        FROM( 
+            SELECT unnest("st_schema_list") as cand FROM {inv_idx} inv JOIN {tbl} agg ON inv."val" = agg."val"
+        ) subquery
+        GROUP BY cand
     """
+    # WITH sampled_table AS (
+            #     SELECT "val"
+            #     FROM {tbl_cnt} limit %s
+            # )
+    #  WITH sampled_table AS (
+    #             SELECT "val"
+    #             FROM {tbl_cnt} TABLESAMPLE SYSTEM(%s)
+    #         )
+    #  SELECT "val"
+    #             FROM {tbl_cnt} order by cnt desc limit %s
     if sample_ratio > 0:
         sql_str = """
-            WITH sampled_table AS (
-                SELECT val
-                FROM {tbl} TABLESAMPLE SYSTEM (%s)
-            )
-            SELECT "st_schema_list" FROM {inv_idx} inv where inv."val" in (SELECT "val" from sampled_table)
+        WITH sampled_table AS (
+             SELECT "val" FROM {tbl_cnt} limit %s
+        )
+        SELECT val, count(*) as cnt
+        FROM(
+            SELECT unnest("st_schema_list") as val FROM {inv_idx} inv where inv."val" in (SELECT "val" from sampled_table)
+        ) subquery
+        GROUP BY val
         """
     query = sql.SQL(sql_str).format(
         inv_idx=sql.Identifier(inv_idx_name),
         # fields=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
+        tbl_cnt = sql.Identifier(f"{st_schema.get_agg_tbl_name(tbl)}_cnt"),
         tbl=sql.Identifier(agg_tbl),
     )
-    cur.execute(query, [sample_ratio * 100])
+    if sample_ratio == 0:
+        cur.execute(query)
+    else:
+        cur.execute(query, [sample_ratio])
+    
     query_res = cur.fetchall()
-    print(f"sampled {len(query_res)}")
-    counter = Counter()
-    total_cnt = 0
-    # print(query_res)
-    for pl in query_res:
-        counter.update(pl[0])
-        total_cnt += len(pl[0])
-    candidates = []
-    for cand in counter:
-        cnt = counter[cand]
-        cand = tuple(cand.split(","))
-        if cnt >= threshold and cand[0] != tbl:
-            candidates.append((cand, cnt))
 
     result = []
-    parsed_candidates = []
-    for t in candidates:
-        cand, overlap = t[0], t[1]
+    sampled_cnt = 0
+    # parsed_candidates = []
+    # for t in candidates:
+    for t in query_res:
+        cand, overlap = tuple(t[0].split(",")), t[1]
         tbl2_id = cand[0]
+        if tbl2_id == tbl:
+            continue
+        sampled_cnt += overlap
+        if sample_ratio == 0 and overlap < threshold:
+            continue
+
         if st_schema.type == SchemaType.TS:
             st_schema2 = ST_Schema(
                 t_unit=Unit(cand[1], st_schema.t_unit.granu),
@@ -134,13 +176,12 @@ def get_intersection_inv_idx(
             )
         else:
             st_schema2 = ST_Schema(
-                t_unit=Unit(cand[1], st_schema.s_unit.granu),
+                s_unit=Unit(cand[1], st_schema.s_unit.granu),
             )
-        parsed_candidates.append([st_schema2.get_agg_tbl_name(tbl2_id), overlap])
+        # parsed_candidates.append([st_schema2.get_agg_tbl_name(tbl2_id), overlap])
         result.append([tbl2_id, st_schema2, overlap])
     if sample_ratio > 0:
-        return parsed_candidates, total_cnt
-
+        return result, sampled_cnt
     return result
 
 
@@ -267,15 +308,15 @@ def _join_two_agg_tables(
 def join_two_agg_tables(
     cur,
     tbl1: str,
-    st_schema1: ST_Schema,
+    agg_tbl1: str,
     vars1: List[Variable],
     tbl2: str,
-    st_schema2: ST_Schema,
+    agg_tbl2: str,
     vars2: List[Variable],
     outer,
 ):
-    agg_tbl1 = st_schema1.get_agg_tbl_name(tbl1)
-    agg_tbl2 = st_schema2.get_agg_tbl_name(tbl2)
+    # agg_tbl1 = st_schema1.get_agg_tbl_name(tbl1)
+    # agg_tbl2 = st_schema2.get_agg_tbl_name(tbl2)
 
     agg_join_sql = """
         SELECT a1.val, {agg_vars} FROM
@@ -284,7 +325,7 @@ def join_two_agg_tables(
         """
     if outer:
         agg_join_sql = """
-        SELECT a1.val, {agg_vars} FROM
+        SELECT a1.val as key1, a2.val as key2, {agg_vars} FROM
         {agg_tbl1} a1 FULL JOIN {agg_tbl2} a2
         ON a1.val = a2.val
         """
@@ -307,6 +348,27 @@ def join_two_agg_tables(
         ),
         agg_tbl1=sql.Identifier(agg_tbl1),
         agg_tbl2=sql.Identifier(agg_tbl2),
+    )
+
+    cur.execute(query)
+
+    df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
+    return df
+
+def read_agg_tbl(cur, agg_tbl: str, vars: List[Variable]):
+    sql_str = """
+        SELECT val, {agg_vars} FROM {agg_tbl};
+    """
+
+    query = sql.SQL(sql_str).format(
+        agg_vars=sql.SQL(",").join(
+            [
+                sql.SQL("{}").format(
+                    sql.Identifier(var.var_name),
+                )
+                for var in vars
+            ]),
+        agg_tbl=sql.Identifier(agg_tbl)
     )
 
     cur.execute(query)

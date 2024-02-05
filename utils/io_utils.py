@@ -3,14 +3,17 @@ import pandas as pd
 import dill as pickle
 import yaml
 import os
+from utils.coordinate import S_GRANU
+
+from utils.time_point import T_GRANU
 
 
 def dump_json(path: str, obj):
     dir = os.path.dirname(path)
-    if not os.path.exists(dir):
+    if dir and not os.path.exists(dir):
         os.makedirs(dir)
     with open(path, "w") as f:
-        json.dump(obj, f)
+        json.dump(obj, f, indent=4)
 
 
 def load_json(path: str):
@@ -33,13 +36,8 @@ def read_columns(path, fields):
     return df
 
 
-def read_csv(path, t_attrs=None, s_attrs=None):
-    df = pd.read_csv(path, engine="python", on_bad_lines="skip")
-    if t_attrs:
-        for t_attr in t_attrs:
-            df[t_attr] = pd.to_datetime(
-                df[t_attr], infer_datetime_format=True, utc=True, errors="coerce"
-            )
+def read_csv(path):
+    df = pd.read_csv(path, engine="c", on_bad_lines="skip", low_memory=False)
     return df
 
 
@@ -48,8 +46,12 @@ def persist_to_csv(path, df):
 
 
 def load_config(source):
-    config_path = "/Users/yuegong/Documents/spatio_temporal_alignment/config.yaml"
+    config_path = "/home/cc/resolution_aware_spatial_temporal_alignment/config.yaml"
     with open(config_path, "r") as f:
         yaml_data = yaml.load(f, Loader=yaml.FullLoader)
         config = yaml_data[source]
         return config
+
+def create_dir(dir_path):
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)    
