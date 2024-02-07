@@ -2,6 +2,7 @@
 import pandas as pd
 import random
 import numpy as np
+from scipy.stats import pearsonr, spearmanr
 
 random.seed(124)
 
@@ -88,5 +89,23 @@ def impute_avg():
     # Print the filled DataFrame
     print(df_filled)
 
+def get_corr_numpy(df1, df2, corr_type='spearman'):
+    df1, df2 = df1.fillna(0), df2.fillna(0)
+    col_num1, col_num2 = len(df1.columns), len(df2.columns)
+    mat1 = np.transpose(df1.to_numpy())
+    mat2 = np.transpose(df2.to_numpy())
+    for i in range(col_num1):
+        for j in range(col_num2):
+            col1, col2 = mat1[i], mat2[j]
+            if corr_type == 'pearson':
+                corr, p_val = pearsonr(col1, col2)
+            elif corr_type == 'spearman':
+                corr, p_val = spearmanr(col1, col2)
+            print(df1.columns[i], df2.columns[j], round(corr, 5), p_val)
 
-impute_zero()
+if __name__ == '__main__':
+    df1 = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
+    df2 = pd.DataFrame({'C': [2, 5, 7], 'D': [4, 5, 6]})
+    df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6], 'C': [2, 5, 7], 'D': [4, 5, 6]})
+    get_corr_numpy(df1, df2, 'pearson')
+    print(df.corr(method='pearson'))

@@ -29,6 +29,7 @@ def is_num_column_valid(col_name):
         "borough",
         "block",
         "_lot",
+        "interval",
         # "accumulative",
         # "cumulative"
     ]

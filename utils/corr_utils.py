@@ -58,10 +58,6 @@ def calculate_moments_with_additional_mask(x, mask):
 
 
 def get_pvals(num_samples, corrs, masked):
-    # print(corrs)
-    # print(corrs.shape)
-    # print(type(corrs))
-    # exit()
     # Compute significance values
     ab = num_samples / 2 - 1
 
@@ -101,7 +97,7 @@ def mat_corr(
     if not masked:
         # Subtract column means
         res1, res2 = mat1 - np.mean(mat1, axis=0), mat2 - np.mean(mat2, axis=0)
-        if not outer_join:
+        if not outer_join and mat1_avg:
             _res1, _res2 = mat1_avg - o_mean1, mat2_avg - o_mean2
         # Sum squares across columns
         sums1 = (res1**2).sum(axis=0)
