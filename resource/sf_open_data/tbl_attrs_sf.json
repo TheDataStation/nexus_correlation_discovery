@@ -1,0 +1,5740 @@
+{
+    "rkru-6vcg": {
+        "domain": "data.sfgov.org",
+        "name": "Air Traffic Passenger Statistics",
+        "t_attrs": [
+            "activity_period_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "activity_period",
+            "passenger_count"
+        ]
+    },
+    "j2j3-acqj": {
+        "domain": "data.sfgov.org",
+        "name": "[Historical] Existing Buildings Energy Performance Ordinance Report",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "_2011_site_eui_kbtu_ft2",
+            "_2013_source_eui_kbtu_ft2",
+            "_2013_site_eui_kbtu_ft2",
+            "_2015_percent_better_than_national_median_site_eui",
+            "_2015_source_eui_kbtu_ft2",
+            "_2015_site_eui_kbtu_ft2",
+            "_2015_energy_star_score",
+            "_2016_source_eui_kbtu_ft2",
+            "_2018_natural_gas_use_kbtu_",
+            "_2018_total_ghg_emissions_intensity_kgco2e_ft2_",
+            "_2018_percent_better_than_national_median_site_eui",
+            "_2020_total_ghg_emissions_intensity_kgco2e_ft2_",
+            "_2020_source_eui_kbtu_ft2_",
+            "_2020_energy_star_score",
+            "_2021_total_ghg_emissions_metric_tons_co2e_",
+            "_2021_percent_better_than_national_median_site_eui",
+            "_2021_site_eui_kbtu_ft2_",
+            "_2021_energy_star_score",
+            "_2011_percent_better_than_national_median_site_eui",
+            "_2012_percent_better_than_national_median_site_eui",
+            "_2012_source_eui_kbtu_ft2",
+            "_2012_energy_star_score",
+            "_2013_energy_star_score",
+            "_2014_percent_better_than_national_median_site_eui",
+            "_2016_percent_better_than_national_median_site_eui",
+            "_2016_site_eui_kbtu_ft2",
+            "_2017_percent_better_than_national_median_site_eui",
+            "_2017_source_eui_kbtu_ft2",
+            "_2018_site_energy_use_kbtu_",
+            "_2018_total_ghg_emissions_metric_tons_co2e_",
+            "_2018_source_eui_kbtu_ft2_",
+            "_2019_natural_gas_use_kbtu_",
+            "_2019_total_ghg_emissions_intensity_kgco2e_ft2_",
+            "_2019_total_ghg_emissions_metric_tons_co2e_",
+            "a_2019_percent_better_than_national_median_site_eui",
+            "a_2019_source_eui_kbtu_ft2_",
+            "_2020_natural_gas_use_kbtu_",
+            "_2021_total_ghg_emissions_intensity_kgco2e_ft2_",
+            "_2021_source_eui_kbtu_ft2_",
+            "_2022_site_energy_use_kbtu_",
+            "_2022_natural_gas_use_kbtu_",
+            "_2022_total_ghg_emissions_intensity_kgco2e_ft2_",
+            "_2022_percent_better_than_national_median_site_eui",
+            "_2022_site_eui_kbtu_ft2_",
+            "_2022_energy_star_score",
+            "floor_area",
+            "_2017_energy_star_score",
+            "_2019_site_energy_use_kbtu_",
+            "_2011_energy_star_score",
+            "_2012_site_eui_kbtu_ft2",
+            "_2013_percent_better_than_national_median_site_eui",
+            "_2014_energy_star_score",
+            "_2016_energy_star_score",
+            "_2018_site_eui_kbtu_ft2_",
+            "_2018_energy_star_score",
+            "_2020_site_energy_use_kbtu_",
+            "_2020_percent_better_than_national_median_site_eui",
+            "_2020_site_eui_kbtu_ft2_",
+            "_2021_site_energy_use_kbtu_",
+            "_2014_site_eui_kbtu_ft2",
+            "_2016_percentage_better_than_national_median_source_eui",
+            "a_2019_site_eui_kbtu_ft2_",
+            "a_2019_energy_star_score",
+            "_2021_natural_gas_use_kbtu_",
+            "_2022_total_ghg_emissions_metric_tons_co2e_",
+            "_2011_source_eui_kbtu_ft2",
+            "_2014_source_eui_kbtu_ft2",
+            "_2017_site_eui_kbtu_ft2",
+            "_2020_total_ghg_emissions_metric_tons_co2e_",
+            "_2022_source_eui_kbtu_ft2_"
+        ]
+    },
+    "nfpa-mg4g": {
+        "domain": "data.sfgov.org",
+        "name": "COVID-19 Testing Over Time",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cumulative_negative_tests",
+            "pct",
+            "tests",
+            "indeterminate",
+            "cumulative_tests",
+            "neg",
+            "cumulative_positive_tests",
+            "cumulative_indeterminate_tests",
+            "pos"
+        ]
+    },
+    "nxjg-bhem": {
+        "domain": "data.sfgov.org",
+        "name": "COVID-19 Hospitalizations Over Time",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "hospitalreportingpct",
+            "patientcount"
+        ]
+    },
+    "mwjb-biik": {
+        "domain": "data.sfgov.org",
+        "name": "311 Call Metrics by Month",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "transferred_calls_percentage",
+            "average_speed_of_answer",
+            "calls_answered"
+        ]
+    },
+    "gyr2-k29z": {
+        "domain": "data.sfgov.org",
+        "name": "ARCHIVED: COVID-19 Cases Over Time",
+        "t_attrs": [
+            "specimen_collection_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "new_cases",
+            "cumulative_cases"
+        ]
+    },
+    "tpyr-dvnc": {
+        "domain": "data.sfgov.org",
+        "name": "ARCHIVED: COVID-19 Cases and Deaths Summarized by Geography",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "rate",
+            "count",
+            "deaths",
+            "acs_population"
+        ]
+    },
+    "fpux-q53t": {
+        "domain": "data.sfgov.org",
+        "name": "Air Traffic Landings Statistics",
+        "t_attrs": [
+            "activity_period_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_landed_weight",
+            "activity_period",
+            "landing_count"
+        ]
+    },
+    "d2ef-idww": {
+        "domain": "data.sfgov.org",
+        "name": "ARCHIVED: COVID-19 Cases by Geography Over Time",
+        "t_attrs": [
+            "specimen_collection_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "acs_population",
+            "cumulative_confirmed_cases",
+            "new_confirmed_cases",
+            "rate_of_cumulative_confirmed_cases"
+        ]
+    },
+    "rh24-ebzg": {
+        "domain": "data.sfgov.org",
+        "name": "[Historical Data Only] COVID-19 Hospital Capacity",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "count"
+        ]
+    },
+    "vx35-bnbs": {
+        "domain": "data.sfgov.org",
+        "name": "Dataset Alerts",
+        "t_attrs": [
+            "resolution_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "y8fp-fbf5": {
+        "domain": "data.sfgov.org",
+        "name": "Dataset inventory",
+        "t_attrs": [
+            "date_published"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "7br7-cj6v": {
+        "domain": "data.sfgov.org",
+        "name": "City Employment Classification Definitions",
+        "t_attrs": [
+            "effectivedate"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "g2di-xufg": {
+        "domain": "data.sfgov.org",
+        "name": "COVID-19 Deaths Over Time",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cumulative_deaths",
+            "new_deaths"
+        ]
+    },
+    "u397-j8nr": {
+        "domain": "data.sfgov.org",
+        "name": "Air Traffic Cargo Statistics",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cargo_metric_tons",
+            "activity_period",
+            "cargo_weight_lbs"
+        ]
+    },
+    "3psu-pn9h": {
+        "domain": "data.sfgov.org",
+        "name": "Streets \u2013 Active and Retired",
+        "t_attrs": [
+            "date_dropped"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "rt_fadd",
+            "classcode",
+            "lf_fadd",
+            "lf_toadd",
+            "cnn",
+            "rt_toadd"
+        ]
+    },
+    "j7i3-u9ke": {
+        "domain": "data.sfgov.org",
+        "name": "ARCHIVED: COVID-19 Cases by Population Characteristics Over Time",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "population_estimate",
+            "new_cases",
+            "characteristic_group_sort_order",
+            "cumulative_cases"
+        ]
+    },
+    "5kya-mfst": {
+        "domain": "data.sfgov.org",
+        "name": "Tall Building Inventory",
+        "t_attrs": [
+            "collected_on"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "stories_below_grade",
+            "height_ft",
+            "stories_above_grade",
+            "percent_sprinklered",
+            "bedrockdepth_max",
+            "bedrockdepth_min",
+            "shape_length",
+            "shape_area",
+            "square_footage",
+            "bedrockdepth_mean"
+        ]
+    },
+    "q3xd-hfi8": {
+        "domain": "data.sfgov.org",
+        "name": "Aircraft Noise Report Summary",
+        "t_attrs": [
+            "month_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_complaints"
+        ]
+    },
+    "gtr9-ntp6": {
+        "domain": "data.sfgov.org",
+        "name": "Recreation and Parks Properties",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "perimeterlength",
+            "squarefeet",
+            "acres"
+        ]
+    },
+    "vmnk-skih": {
+        "domain": "data.sfgov.org",
+        "name": "San Francisco Plant Finder Data",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "stormwater_int",
+            "top20_int",
+            "sandy_soil_int",
+            "thrifty150_int",
+            "habitat_int",
+            "shady_clay_int",
+            "super60_int"
+        ]
+    },
+    "chfu-j7tc": {
+        "domain": "data.sfgov.org",
+        "name": "SFO Gate and Stand Assignment Information",
+        "t_attrs": [
+            "time"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "qz8r-q5ne": {
+        "domain": "data.sfgov.org",
+        "name": "Call Center Metrics for the Health Service System",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "call_abandonment_rate",
+            "abandoned_calls",
+            "inbound_calls",
+            "in_person_visits",
+            "average_speed_of_answer_in_secs"
+        ]
+    },
+    "smdf-6c45": {
+        "domain": "data.sfgov.org",
+        "name": "Utility Excavation Permits",
+        "t_attrs": [
+            "expiration_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cnn"
+        ]
+    },
+    "ebux-gcnq": {
+        "domain": "data.sfgov.org",
+        "name": "Inventory of citywide enterprise systems of record",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "yrgu-vakm": {
+        "domain": "data.sfgov.org",
+        "name": "Right of Way Exception Data",
+        "t_attrs": [
+            "expirationdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cnn"
+        ]
+    },
+    "gqw3-444p": {
+        "domain": "data.sfgov.org",
+        "name": "ARCHIVED: COVID-19 Cases by Vaccination Status Over Time",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pct_tot_new_cases",
+            "new_case_rate",
+            "new_cases"
+        ]
+    },
+    "j67f-aayr": {
+        "domain": "data.sfgov.org",
+        "name": "Dwelling Unit Completion Counts by Building Permit",
+        "t_attrs": [
+            "date_issued"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "number_of_units_certified"
+        ]
+    },
+    "yg87-cd6v": {
+        "domain": "data.sfgov.org",
+        "name": "San Francisco Department of Public Health Flu Shot Locations 2013",
+        "t_attrs": [
+            "begin_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cost"
+        ]
+    },
+    "pigs-fac7": {
+        "domain": "data.sfgov.org",
+        "name": "Parking Signs / Street Space Permit Photos",
+        "t_attrs": [
+            "dateadded"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "kkr3-wq7h": {
+        "domain": "data.sfgov.org",
+        "name": "COVID-19 Deaths by Population Characteristics Over Time",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cumulative_deaths",
+            "population_estimate",
+            "new_deaths",
+            "characteristic_group_sort_order"
+        ]
+    },
+    "xu5w-5kgd": {
+        "domain": "data.sfgov.org",
+        "name": "Surface Mounted Facility Permits",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "4qbq-hvtt": {
+        "domain": "data.sfgov.org",
+        "name": "San Francisco Population and Demographic Census data",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "lower_ci",
+            "estimate",
+            "cv",
+            "max_age",
+            "upper_ci",
+            "se",
+            "moe",
+            "min_age"
+        ]
+    },
+    "tmph-tgz9": {
+        "domain": "data.sfgov.org",
+        "name": "Census 2020: Tracts for San Francisco",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "awater",
+            "aland"
+        ]
+    },
+    "9dsr-3f97": {
+        "domain": "data.sfgov.org",
+        "name": "Deprecated: SFMTA-Enforced Temporary Tow Zones",
+        "t_attrs": [
+            "datetimeposted"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cnn",
+            "streetfrontagefeet",
+            "numberofsigns"
+        ]
+    },
+    "qhc5-mubk": {
+        "domain": "data.sfgov.org",
+        "name": "COVID-19 Testing by Geography Over Time",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cumulative_positive_tests",
+            "cumulative_tests",
+            "acs_population",
+            "new_tests",
+            "cumulative_negative_tests",
+            "new_negative_tests",
+            "new_indeterminate_tests",
+            "new_positive_tests",
+            "cumulative_indeterminate_tests",
+            "cumulative_testing_rate"
+        ]
+    },
+    "dcjk-vw8q": {
+        "domain": "data.sfgov.org",
+        "name": "District Attorney Cases Prosecuted",
+        "t_attrs": [
+            "arrest_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "nnh5-5rwz": {
+        "domain": "data.sfgov.org",
+        "name": "2017 SFO Customer Survey",
+        "t_attrs": [
+            "deptime"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "q4bags",
+            "q4store",
+            "q5timesflown",
+            "q5firsttime",
+            "q20gender",
+            "q19age",
+            "q13getrate",
+            "weight",
+            "q23oak",
+            "q22fly",
+            "q3park",
+            "destgeo",
+            "gate",
+            "q4food",
+            "q6longuse",
+            "q7store",
+            "q7airtrain",
+            "q8com5",
+            "q9food",
+            "q9com1",
+            "q10safe",
+            "q11tsapre",
+            "q10com3",
+            "q12prechekcrate",
+            "q15com2",
+            "netpro",
+            "q13county",
+            "q9com2",
+            "q14find",
+            "q15com3",
+            "q21income",
+            "q23sjc",
+            "q10com2",
+            "q7food",
+            "destmark",
+            "saq",
+            "method",
+            "respnum",
+            "strata",
+            "flight",
+            "q2purp1",
+            "q2purp2",
+            "q9boarding",
+            "q7art",
+            "q3getto1",
+            "q4wifi",
+            "q7sign",
+            "q7walkways",
+            "q7screens",
+            "q7wifi",
+            "q7roads",
+            "q7ltparking",
+            "q7rental",
+            "q8com1",
+            "q8com2",
+            "q8com3",
+            "q8com4",
+            "q9airtrain",
+            "q9restroom",
+            "q10com1",
+            "q12com1",
+            "q15problem",
+            "q16live",
+            "home",
+            "lang",
+            "howlong",
+            "q14passthru",
+            "q7infodown",
+            "q3getto3",
+            "q3getto2",
+            "q2purp3",
+            "q7infoup",
+            "q9rental",
+            "peak",
+            "q7park",
+            "q9all",
+            "q12com2",
+            "q15com1"
+        ]
+    },
+    "jz25-nkm4": {
+        "domain": "data.sfgov.org",
+        "name": "311 Cases by Channel",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "summary",
+            "twitter",
+            "web",
+            "mobile"
+        ]
+    },
+    "czsm-3ei3": {
+        "domain": "data.sfgov.org",
+        "name": "District Attorney Actions Taken on Arrests Presented",
+        "t_attrs": [
+            "arrest_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "kja3-qsky": {
+        "domain": "data.sfgov.org",
+        "name": "COVID-19 Testing by Race/Ethnicity Over Time",
+        "t_attrs": [
+            "specimen_collection_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cumulative_positive_tests",
+            "total_new_tests",
+            "population_estimate",
+            "race_ethnicity_sort_order",
+            "cumulative_negative_tests",
+            "cumulative_indeterminate_tests",
+            "total_cumulative_tests",
+            "new_indeterminate_tests",
+            "new_positive_tests",
+            "new_negative_tests"
+        ]
+    },
+    "5xmc-5bjj": {
+        "domain": "data.sfgov.org",
+        "name": "Cultural Districts",
+        "t_attrs": [
+            "designation_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "jzu3-4yxp": {
+        "domain": "data.sfgov.org",
+        "name": "100-Year Storm Flood Risk Zone (July 2022)",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "shape_area",
+            "shape_leng"
+        ]
+    },
+    "3pee-9qhc": {
+        "domain": "data.sfgov.org",
+        "name": "Building Permits Contacts",
+        "t_attrs": [
+            "to_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "ckai-dve4": {
+        "domain": "data.sfgov.org",
+        "name": "2012 SFO Customer Survey",
+        "t_attrs": [
+            "q18zip"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "q4buy",
+            "lang",
+            "q21_income",
+            "home",
+            "q15a_find",
+            "q14rategetto",
+            "q14wheredepart",
+            "q10e_clnfood",
+            "q10d_clnrent",
+            "q10c_clnairtrain",
+            "q10a_clnboard",
+            "q8n_whole",
+            "q8l_ltpark",
+            "q8k_airtrain",
+            "q8j_park",
+            "q8f_screens",
+            "q8e_walk",
+            "q3park",
+            "minutes",
+            "dest",
+            "flight",
+            "airline",
+            "gate",
+            "respnum",
+            "q17region",
+            "q16_problem",
+            "q15b_security",
+            "q13_rateweb",
+            "q12_useweb",
+            "q10b_clnpark",
+            "q8h_infodep",
+            "destmark",
+            "q20_sex",
+            "q19_age",
+            "q10f_clnbath",
+            "q8m_rental",
+            "q8g_infoarr",
+            "q8c_shop",
+            "q8b_food",
+            "q8a_art",
+            "q8d_signs",
+            "q6nofood",
+            "q11safe",
+            "q8i_road",
+            "strata",
+            "saq",
+            "q7flyperyr",
+            "q5notbuy",
+            "category",
+            "destgeo",
+            "q2purp1",
+            "q3getto1",
+            "q4bags",
+            "q4food"
+        ]
+    },
+    "87xy-gk8d": {
+        "domain": "data.sfgov.org",
+        "name": "Building Permit Addenda with Routing",
+        "t_attrs": [
+            "in_hold"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "step"
+        ]
+    },
+    "ynfy-z5kt": {
+        "domain": "data.sfgov.org",
+        "name": "District Attorney Case Resolutions",
+        "t_attrs": [
+            "disposition_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "6r5h-j298": {
+        "domain": "data.sfgov.org",
+        "name": "SFMTA - Enforced Temporary Tow Zones",
+        "t_attrs": [
+            "enddate"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "mxvq-mfs5": {
+        "domain": "data.sfgov.org",
+        "name": "San Francisco Arts Commission Grants FY2004-2016",
+        "t_attrs": [
+            "grant_fiscal_year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "grant_amount"
+        ]
+    },
+    "hmh3-ff63": {
+        "domain": "data.sfgov.org",
+        "name": "Airport (SFO) Contract Opportunities",
+        "t_attrs": [
+            "bid_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "d98w-yij4": {
+        "domain": "data.sfgov.org",
+        "name": "Unemployment Insurance Weekly Claims for Bay Area Counties",
+        "t_attrs": [
+            "week"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pua_claims",
+            "ui_claims"
+        ]
+    },
+    "qq7v-hds4": {
+        "domain": "data.sfgov.org",
+        "name": "Meter Policies",
+        "t_attrs": [
+            "revisiondate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pk_mapi",
+            "timelimitminutes",
+            "hourlyrate"
+        ]
+    },
+    "qmdj-wtj2": {
+        "domain": "data.sfgov.org",
+        "name": "Travel Decision Survey 2019",
+        "t_attrs": [
+            "interview_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "q16p_adj",
+            "q7p",
+            "q16m",
+            "q4dp",
+            "q19",
+            "q9m_adj",
+            "q20",
+            "q25a_nsf",
+            "q30",
+            "respnum",
+            "rel",
+            "dk_p_sf",
+            "q5hp",
+            "q4dm",
+            "q21a",
+            "cycle1",
+            "q25b",
+            "q23",
+            "q11cp",
+            "q2",
+            "q5fp",
+            "da2",
+            "home",
+            "oth_p_sf",
+            "tnc2",
+            "q22b_4",
+            "crshre2",
+            "q22",
+            "q11bp",
+            "shttle2",
+            "q11total",
+            "q11fp",
+            "sch",
+            "walk",
+            "q11ep",
+            "q5am",
+            "q5bm",
+            "q5cm",
+            "q5em",
+            "taxi",
+            "q4bp",
+            "q21b",
+            "q4hm",
+            "bike",
+            "q24a",
+            "bike2",
+            "q18total",
+            "q13",
+            "q8",
+            "cycle",
+            "soc2",
+            "dk_m_sf",
+            "soc",
+            "q4em",
+            "q5hm",
+            "q6",
+            "q12",
+            "q9p_adj",
+            "shop2",
+            "q11am",
+            "do1",
+            "work2",
+            "q5fm",
+            "tnc1",
+            "taxi2",
+            "trans1",
+            "drvrflag",
+            "q20_last",
+            "oth2_m",
+            "walk2",
+            "q26b_1",
+            "q21c",
+            "q22b_1",
+            "do",
+            "firstmode",
+            "q22b_3",
+            "q5dm",
+            "q4hp",
+            "q5ep",
+            "q5cp",
+            "q5bp",
+            "q4fp",
+            "q4ap",
+            "q27",
+            "q29_1",
+            "q29_2",
+            "q29_3",
+            "tnc",
+            "oth1_m",
+            "q5gm",
+            "shop",
+            "q28",
+            "crshre1",
+            "q18dm",
+            "q14m",
+            "q11fm",
+            "dk2_p",
+            "q18dp",
+            "q18bp",
+            "q5gp",
+            "trans",
+            "walk1",
+            "q5ap",
+            "q4cp",
+            "q4tot",
+            "ageco",
+            "q4bm",
+            "oth2_p",
+            "crshre",
+            "trips",
+            "q26a",
+            "shttle1",
+            "oth1_p",
+            "home1",
+            "q22a",
+            "sch1",
+            "zone",
+            "da1",
+            "q14p",
+            "oth_m_sf",
+            "work",
+            "bike1",
+            "rel1",
+            "q16m_adj",
+            "q15",
+            "shttle",
+            "cycle2",
+            "q18cm",
+            "q10",
+            "q11em",
+            "q11cm",
+            "home2",
+            "scoot2",
+            "q18am",
+            "q11bm",
+            "q3",
+            "da",
+            "q11dm",
+            "rel2",
+            "q25a_sf",
+            "soc1",
+            "q4ep",
+            "lastmode",
+            "q22b_2",
+            "q7m",
+            "q18cp",
+            "q9m",
+            "q18ap",
+            "q4gm",
+            "q18bm",
+            "sch2",
+            "q4fm",
+            "q31",
+            "lang",
+            "weight",
+            "do2",
+            "q17",
+            "sfintmode",
+            "dk1_m",
+            "q5tot",
+            "dk2_m",
+            "work1",
+            "q11dp",
+            "shop1",
+            "q4cm",
+            "taxi1",
+            "dk1_p",
+            "scoot1",
+            "scoot",
+            "q4am",
+            "trans2",
+            "q5dp",
+            "q4gp",
+            "q11ap"
+        ]
+    },
+    "sevw-6tgi": {
+        "domain": "data.sfgov.org",
+        "name": "Analysis Neighborhoods - 2020 census tracts assigned to neighborhoods",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "hkz3-itiu": {
+        "domain": "data.sfgov.org",
+        "name": "Slow Streets",
+        "t_attrs": [
+            "install_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "phase",
+            "slw_st",
+            "cnn",
+            "classcode",
+            "length"
+        ]
+    },
+    "3w8r-nuxp": {
+        "domain": "data.sfgov.org",
+        "name": "2018 SFO Customer Survey",
+        "t_attrs": [
+            "arrtime"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "q7infoup",
+            "q7store",
+            "q7art",
+            "q5timesflown",
+            "q4food",
+            "q4bags",
+            "q3getto2",
+            "q2purp2",
+            "q2purp1",
+            "destgeo",
+            "peak",
+            "strata",
+            "q8_2",
+            "q9rental",
+            "q11tsapre",
+            "q15problem",
+            "q24sjc",
+            "q15_3",
+            "q13county",
+            "q12precheckrate",
+            "saq",
+            "destmark",
+            "q22income",
+            "q17live",
+            "netpro",
+            "q15_1",
+            "q3getto1",
+            "q7food",
+            "q7walkway",
+            "q7screens",
+            "q9food",
+            "q9boarding",
+            "q5firsttime",
+            "q8_6",
+            "q8_3",
+            "q4wifi",
+            "q4store",
+            "q7sign",
+            "q2purp3",
+            "gate",
+            "q7wifi",
+            "q7roads",
+            "q7park",
+            "q8_1",
+            "q8_5",
+            "q3park",
+            "q9_1",
+            "q9_2",
+            "q12_2",
+            "q15_2",
+            "home",
+            "q19clear",
+            "q20age",
+            "weight",
+            "meth",
+            "q3getto3",
+            "q7infodown",
+            "q7ltparking",
+            "q10safe",
+            "q14passthru",
+            "flight",
+            "q6longuse",
+            "respnum",
+            "lang",
+            "q24oak",
+            "q23fly",
+            "q21gender",
+            "q13getrate",
+            "q10_3",
+            "q9_3",
+            "q9airtrain",
+            "q12_1",
+            "q12_3",
+            "q14find",
+            "q8_4",
+            "q9restroom",
+            "q9all",
+            "q7airtrain",
+            "q7rental",
+            "q10_1",
+            "q10_2"
+        ]
+    },
+    "u7dr-xm3v": {
+        "domain": "data.sfgov.org",
+        "name": "Aircraft Tail Numbers and Models at SFO",
+        "t_attrs": [
+            "modification_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "vi7r-brsi": {
+        "domain": "data.sfgov.org",
+        "name": "Mpox Cases Over Time",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cumulative_cases",
+            "new_cases"
+        ]
+    },
+    "htiq-28bt": {
+        "domain": "data.sfgov.org",
+        "name": "SFO Ground Transport Day Permits",
+        "t_attrs": [
+            "created_timestamp"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "x344-v6h6": {
+        "domain": "data.sfgov.org",
+        "name": "SFMTA - Transit Vehicle Location History (Current Year)",
+        "t_attrs": [
+            "vehicle_position_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "loc_y",
+            "average_speed",
+            "loc_x"
+        ]
+    },
+    "pnbj-y63g": {
+        "domain": "data.sfgov.org",
+        "name": "Fire Department 30 day calls",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_emergency_calls"
+        ]
+    },
+    "43dv-5hf4": {
+        "domain": "data.sfgov.org",
+        "name": "Street Space Permit Report for SFMTA",
+        "t_attrs": [
+            "permit_received_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cnn"
+        ]
+    },
+    "gtnh-hgvs": {
+        "domain": "data.sfgov.org",
+        "name": "City Lands",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "g8hh-rwgb": {
+        "domain": "data.sfgov.org",
+        "name": "ARCHIVED: COVID-19 Vaccinations Given to SF Residents by Demographics",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "subgroup_population",
+            "total_booster_doses",
+            "total_series_completed",
+            "total_booster_recipients",
+            "total_bivalent_booster_recipients",
+            "total_bivalent_booster_doses",
+            "total_primary_series_doses",
+            "demographic_subgroup_sort_order",
+            "total_2nd_booster_recipients",
+            "total_recipients"
+        ]
+    },
+    "rutu-rpar": {
+        "domain": "data.sfgov.org",
+        "name": "ARCHIVED: COVID-19 Vaccinations Given to SF Residents Over Time",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cumulative_recipients",
+            "cumulative_primary_series_doses",
+            "new_bivalent_booster_recipients",
+            "cumulative_2nd_booster_recipients",
+            "cumulative_booster_recipients",
+            "new_booster_recipients",
+            "new_series_completed",
+            "cumulative_bivalent_booster_recipients",
+            "new_2nd_booster_recipients",
+            "new_bivalent_booster_doses",
+            "new_booster_doses",
+            "cumulative_booster_doses",
+            "cumulative_bivalent_booster_doses",
+            "new_primary_series_doses",
+            "new_recipients",
+            "cumulative_series_completed"
+        ]
+    },
+    "ez9i-q28j": {
+        "domain": "data.sfgov.org",
+        "name": "Mayor\u2019s Office of Housing and Community Development Grants and Loans",
+        "t_attrs": [
+            "funding_agreement_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "amount_of_loan_commitment"
+        ]
+    },
+    "t59u-ig8c": {
+        "domain": "data.sfgov.org",
+        "name": "Hourly Rates of Pay by Classification and Step",
+        "t_attrs": [
+            "eff_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "step_10",
+            "step_18",
+            "step_16",
+            "step_13",
+            "step_11",
+            "step_9",
+            "step_6",
+            "step_4",
+            "step_3",
+            "step_1",
+            "biweekly_max",
+            "biweekly_min",
+            "step_7",
+            "step_5",
+            "step_20",
+            "step_19",
+            "step_17",
+            "step_15",
+            "extended_range",
+            "step_2",
+            "step_8",
+            "step_14",
+            "step_12"
+        ]
+    },
+    "2q9t-p8jg": {
+        "domain": "data.sfgov.org",
+        "name": "Pending Basemap Updates",
+        "t_attrs": [
+            "date_recorded"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "e3x5-4br3": {
+        "domain": "data.sfgov.org",
+        "name": "SFO Ground Transport Trip Counts By Month and Permit Type",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "revenue_trip_count",
+            "airport_revenue"
+        ]
+    },
+    "m2xz-p7ja": {
+        "domain": "data.sfgov.org",
+        "name": "BART Daily Station Exits",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "wd",
+            "cv",
+            "ed",
+            "pl",
+            "ml",
+            "ws",
+            "oa",
+            "mb",
+            "wp",
+            "or",
+            "_12",
+            "_19",
+            "nb",
+            "cc",
+            "sl",
+            "fv",
+            "lf",
+            "so",
+            "nc",
+            "bp",
+            "_16",
+            "hy",
+            "ep",
+            "total",
+            "an",
+            "sb",
+            "ss",
+            "gp",
+            "_24",
+            "ow",
+            "sh",
+            "mt",
+            "rr",
+            "ph",
+            "bk",
+            "en",
+            "rm",
+            "cm",
+            "dc",
+            "em",
+            "uc",
+            "bf",
+            "ma",
+            "as",
+            "fm",
+            "cl",
+            "be",
+            "wc",
+            "cn",
+            "lm",
+            "pc"
+        ]
+    },
+    "ejrc-vnwu": {
+        "domain": "data.sfgov.org",
+        "name": "ARCHIVED: COVID-19 Vaccinations Given to SF Residents by Geography",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "count_received_booster",
+            "count_received_bivalent_booster",
+            "count_series_completed",
+            "count_received_2nd_booster",
+            "count_vaccinated_by_dph",
+            "count_vaccinated",
+            "acs_population"
+        ]
+    },
+    "ib5c-xgwu": {
+        "domain": "data.sfgov.org",
+        "name": "Recreation and Parks Facilities",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "perimeterlength",
+            "acres",
+            "squarefeet"
+        ]
+    },
+    "24e8-pd2q": {
+        "domain": "data.sfgov.org",
+        "name": "Census 2020: Block Groups for San Francisco",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "intptlon",
+            "intptlat",
+            "awater",
+            "aland"
+        ]
+    },
+    "ekxv-883u": {
+        "domain": "data.sfgov.org",
+        "name": "Field Profiles",
+        "t_attrs": [
+            "profile_last_updt_dt"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "range",
+            "iqr",
+            "_95",
+            "_75",
+            "_25",
+            "variance",
+            "standard_deviation",
+            "mean",
+            "total_count",
+            "completeness",
+            "_5",
+            "null_count",
+            "sum",
+            "skewness",
+            "median",
+            "kurtosis",
+            "uniqueness",
+            "avg_field_length",
+            "distinctness",
+            "cardinality",
+            "actual_count",
+            "missing_count",
+            "max_field_length",
+            "min_field_length"
+        ]
+    },
+    "huqr-9p9x": {
+        "domain": "data.sfgov.org",
+        "name": "Police Department Investigated Hate Crimes",
+        "t_attrs": [
+            "occurence_month"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "t3vr-buhp": {
+        "domain": "data.sfgov.org",
+        "name": "2016 SFO Customer Survey",
+        "t_attrs": [
+            "intdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "q15com1",
+            "home",
+            "q23sjc",
+            "howlong",
+            "respnum",
+            "q4bags",
+            "q5firsttime",
+            "q7wifi",
+            "q7park",
+            "q7airtrain",
+            "q7rental",
+            "q7all",
+            "q8com2",
+            "q22fly",
+            "q7ltparking",
+            "q7walkways",
+            "q2purp3",
+            "q4store",
+            "saq",
+            "q4wifi",
+            "destgeo",
+            "q3park",
+            "q7screens",
+            "q14passthru",
+            "lang",
+            "q3getto2",
+            "q15com2",
+            "q16live",
+            "q9com2",
+            "q9com3",
+            "q9all",
+            "q23oak",
+            "q8com5",
+            "q10com1",
+            "q10com2",
+            "q21incme",
+            "q6longuse",
+            "q4food",
+            "q7store",
+            "egyptair",
+            "q15com3",
+            "method",
+            "strata",
+            "peak",
+            "destmark",
+            "q2purp1",
+            "q5timesflown",
+            "q7art",
+            "q7food",
+            "q7sign",
+            "q7infodown",
+            "q9com",
+            "q10safe",
+            "q10com3",
+            "q11tsapre",
+            "q12precheckrate",
+            "q12precom3",
+            "q13getrate",
+            "q14find",
+            "q15problem",
+            "q18pet",
+            "weight",
+            "gate",
+            "flight",
+            "q2purp2",
+            "q3getto1",
+            "q7infoup",
+            "q7roads",
+            "q8com",
+            "q8com3",
+            "q9boarding",
+            "q9rental",
+            "q9food",
+            "q12precom1",
+            "q12precom2",
+            "q13_county",
+            "q8com4",
+            "q9airtrain",
+            "q9restroom"
+        ]
+    },
+    "2ymc-znns": {
+        "domain": "data.sfgov.org",
+        "name": "Aircraft Parking Location Inventory at SFO",
+        "t_attrs": [
+            "creation_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "akmp-ztcg": {
+        "domain": "data.sfgov.org",
+        "name": "San Andreas M7.8 Earthquake Scenario",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "pgapol_",
+            "perimeter",
+            "value",
+            "dem_dat1_d",
+            "st_area_sh",
+            "st_length_"
+        ]
+    },
+    "mx8n-vbe2": {
+        "domain": "data.sfgov.org",
+        "name": "Management Classification and  Compensation Plan Pay Ranges",
+        "t_attrs": [
+            "eff_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "min_a",
+            "max_c",
+            "max_a",
+            "min_b",
+            "min_c",
+            "max_b"
+        ]
+    },
+    "84zg-myyk": {
+        "domain": "data.sfgov.org",
+        "name": "Retiree Pensions Annual Benefit Received",
+        "t_attrs": [
+            "retirement_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "3g5j-aamw": {
+        "domain": "data.sfgov.org",
+        "name": "2010 SFO Customer Survey",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "q8b",
+            "lang",
+            "respnum",
+            "q4c",
+            "q3_2",
+            "q13b",
+            "q11a1",
+            "q9aneg1",
+            "q7a3",
+            "gatenum",
+            "q7a2",
+            "q7com2",
+            "q6n",
+            "q5",
+            "q8com1",
+            "q9apos1",
+            "q9antr1",
+            "q13a",
+            "q14a1",
+            "country",
+            "q8f",
+            "q8a",
+            "weight",
+            "destgeo",
+            "sfflag",
+            "q14a3",
+            "q14a2",
+            "q13com1",
+            "q8c",
+            "q8com2",
+            "q9antr2",
+            "q10",
+            "q11",
+            "q11a3",
+            "q13com2",
+            "q14",
+            "q17",
+            "q18",
+            "inc",
+            "q12",
+            "q6f",
+            "q9apos3",
+            "q9apos2",
+            "airline",
+            "q2_1",
+            "q6a",
+            "q6g",
+            "q6h",
+            "q6l",
+            "q7com1",
+            "q7com3",
+            "q7a1",
+            "strata",
+            "q3a",
+            "q9aneg2",
+            "q1",
+            "q15",
+            "q8e",
+            "q8d",
+            "q19",
+            "mail",
+            "destmark",
+            "q2_6",
+            "q3_4",
+            "q5avg",
+            "q6b",
+            "q6c",
+            "q6i",
+            "q6m",
+            "q9",
+            "q11a2",
+            "term",
+            "atype",
+            "dest",
+            "q2_2",
+            "q2_3",
+            "q2_4",
+            "q2_5",
+            "q3_1",
+            "q3_3",
+            "q4a",
+            "q4b",
+            "saq",
+            "q6d",
+            "age",
+            "q6e",
+            "q6j",
+            "q6k"
+        ]
+    },
+    "63x5-g3m4": {
+        "domain": "data.sfgov.org",
+        "name": "Historic Districts",
+        "t_attrs": [
+            "dateadop"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "aqb8-9r2r": {
+        "domain": "data.sfgov.org",
+        "name": "Nighttime High Power Run-ups",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percentage_of_power_run_ups_for_the_period",
+            "number_of_power_run_ups",
+            "number_of_power_run_ups_per_1000_departures"
+        ]
+    },
+    "x2zf-uu4r": {
+        "domain": "data.sfgov.org",
+        "name": "SFO Permitted Ground Transport Companies",
+        "t_attrs": [
+            "permit_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "9722-grnf": {
+        "domain": "data.sfgov.org",
+        "name": "SFMTA - Transit Vehicle Location History (2021)",
+        "t_attrs": [
+            "vehicle_position_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "loc_y",
+            "loc_x",
+            "average_speed"
+        ]
+    },
+    "rny7-88gk": {
+        "domain": "data.sfgov.org",
+        "name": "Linear Assets Maintained by the Recreation and Parks Department",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "length"
+        ]
+    },
+    "38b7-6db3": {
+        "domain": "data.sfgov.org",
+        "name": "Functional Areas maintained by Recreation and Parks Department",
+        "t_attrs": [
+            "created_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "squarefeet",
+            "perimeterlength"
+        ]
+    },
+    "jxrr-bmra": {
+        "domain": "data.sfgov.org",
+        "name": "Preliminary Unintentional Drug Overdose Deaths",
+        "t_attrs": [
+            "month_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_deaths"
+        ]
+    },
+    "bna4-itif": {
+        "domain": "data.sfgov.org",
+        "name": "Landslide Susceptibility Hazard Zones",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "sum_shape_",
+            "shape_leng",
+            "shape_le_1",
+            "shape_area"
+        ]
+    },
+    "2sdw-jdpk": {
+        "domain": "data.sfgov.org",
+        "name": "Mayor's Office of Housing and Community Development Bond Issuances",
+        "t_attrs": [
+            "date_initial_bond_issuance"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "approved_issuance_amount"
+        ]
+    },
+    "7crf-46s6": {
+        "domain": "data.sfgov.org",
+        "name": "Dam or Reservoir Failure Hazard Zone",
+        "t_attrs": [
+            "created_da"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "st_length_",
+            "st_area_sh"
+        ]
+    },
+    "sej3-bbrc": {
+        "domain": "data.sfgov.org",
+        "name": "ARCHIVED: COVID-19 Vaccinations Given to SF Residents by Demographics Over Time",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "new_booster_doses",
+            "new_bivalent_booster_recipients",
+            "demographic_subgroup_sort_order",
+            "new_bivalent_booster_doses",
+            "new_primary_series_doses",
+            "subgroup_population",
+            "new_booster_recipients",
+            "new_2nd_booster_recipients",
+            "cumulative_series_completed",
+            "cumulative_booster_recipients",
+            "cumulative_2nd_booster_recipients",
+            "new_series_completed",
+            "new_recipients",
+            "cumulative_bivalent_booster_doses",
+            "cumulative_bivalent_booster_recipients",
+            "cumulative_booster_doses",
+            "cumulative_primary_series_doses",
+            "cumulative_recipients"
+        ]
+    },
+    "q7uq-hghg": {
+        "domain": "data.sfgov.org",
+        "name": "Tsunami Inundation Hazard Zone (Outdated, 2015)",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "st_length_",
+            "shape_leng",
+            "st_area_sh"
+        ]
+    },
+    "48aa-8sj9": {
+        "domain": "data.sfgov.org",
+        "name": "SFMTA - Transit Vehicle Location History (2020)",
+        "t_attrs": [
+            "vehicle_position_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "loc_y",
+            "loc_x",
+            "average_speed"
+        ]
+    },
+    "5cki-ur53": {
+        "domain": "data.sfgov.org",
+        "name": "Mpox Case Summary",
+        "t_attrs": [
+            "max_received_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "population_estimate",
+            "percent_of_all_sf_cases",
+            "total_cases"
+        ]
+    },
+    "evfs-dvkf": {
+        "domain": "data.sfgov.org",
+        "name": "SFMTA Projects - Lines",
+        "t_attrs": [
+            "last_edited_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "ubf6-e57x": {
+        "domain": "data.sfgov.org",
+        "name": "San Francisco Department of Public Health Substance Use Services",
+        "t_attrs": [
+            "reporting_period_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "metric_value"
+        ]
+    },
+    "su99-qvi4": {
+        "domain": "data.sfgov.org",
+        "name": "Public Dataset Access and Usage",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "5mt3-4e49": {
+        "domain": "data.sfgov.org",
+        "name": "Streets with Vehicle Restrictions",
+        "t_attrs": [
+            "last_edited_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cnn"
+        ]
+    },
+    "ed3a-sn39": {
+        "domain": "data.sfgov.org",
+        "name": "Overdose-Related 911 Responses by Emergency Medical Services",
+        "t_attrs": [
+            "week_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_overdose_related_911_calls"
+        ]
+    },
+    "k4g8-b3sf": {
+        "domain": "data.sfgov.org",
+        "name": "Unintentional Drug Overdose Death Rate by Race/Ethnicity",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "population_size",
+            "overdose_death_count",
+            "overdose_death_rate"
+        ]
+    },
+    "pcra-csp6": {
+        "domain": "data.sfgov.org",
+        "name": "DBI Building Inspection Division Districts",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "e2st-aufe": {
+        "domain": "data.sfgov.org",
+        "name": "Census 2020: Blocks for San Francisco Clipped to the Shoreline",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pop20",
+            "housing20",
+            "intptlat20",
+            "intptlon20",
+            "aland20",
+            "awater20"
+        ]
+    },
+    "jt6x-6hpy": {
+        "domain": "data.sfgov.org",
+        "name": "SFO Screening Checkpoint Satisfaction May, 2019",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "q2b",
+            "q6",
+            "q5",
+            "lang",
+            "q2f",
+            "q1",
+            "q2d",
+            "q2e",
+            "meth",
+            "q2h",
+            "q2j",
+            "q7",
+            "q3",
+            "q8",
+            "respnum",
+            "q3a1",
+            "q3a2",
+            "q3a3",
+            "q10",
+            "q2i",
+            "q4_3",
+            "q2k",
+            "q2c",
+            "q4_2",
+            "q2l",
+            "q4_1",
+            "q9",
+            "q2a",
+            "q2g"
+        ]
+    },
+    "6vxp-9av3": {
+        "domain": "data.sfgov.org",
+        "name": "Mpox Vaccinations Given to SF Residents Over Time",
+        "t_attrs": [
+            "date_administered"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "new_second_dose_recipients",
+            "cumulative_doses_administered",
+            "new_doses_administered",
+            "cumulative_first_dose",
+            "cumulative_second_dose",
+            "new_first_dose_recipients"
+        ]
+    },
+    "fk8q-nu3s": {
+        "domain": "data.sfgov.org",
+        "name": "Mpox Vaccinations Given to SF Residents by Demographics",
+        "t_attrs": [
+            "max_date_administered"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_recipients",
+            "population_estimate",
+            "percent_of_recipients"
+        ]
+    },
+    "8w9a-q5s8": {
+        "domain": "data.sfgov.org",
+        "name": "Behested Payments Waivers",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "xyey-v962": {
+        "domain": "data.sfgov.org",
+        "name": "SFO Screening Checkpoint Satisfaction October, 2019",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "q2l",
+            "q2d",
+            "q2e",
+            "q2g",
+            "q8",
+            "q9",
+            "lang",
+            "q3a2",
+            "q3a3",
+            "respnum",
+            "q7",
+            "q4_1",
+            "q2k",
+            "q2h",
+            "q2c",
+            "q2a",
+            "q5",
+            "q3",
+            "q2j",
+            "q2i",
+            "q2f",
+            "meth",
+            "q4_2",
+            "q10",
+            "q2b",
+            "q1",
+            "q6",
+            "q3a1"
+        ]
+    },
+    "u3rf-fdu7": {
+        "domain": "data.sfgov.org",
+        "name": "DBI Plumbing Inspection Division Districts",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "nz48-2k5q": {
+        "domain": "data.sfgov.org",
+        "name": "MTA Fuel Usage",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "gallons"
+        ]
+    },
+    "p2fw-hsrv": {
+        "domain": "data.sfgov.org",
+        "name": "Census 2020: Blocks for San Francisco",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pop20",
+            "aland20",
+            "awater20",
+            "intptlat20",
+            "housing20",
+            "intptlon20"
+        ]
+    },
+    "hcgx-vtsb": {
+        "domain": "data.sfgov.org",
+        "name": "Current Supervisor Districts (trimmed to remove water and other non-populated City territories)",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "sup_dist_num"
+        ]
+    },
+    "6rf8-dnst": {
+        "domain": "data.sfgov.org",
+        "name": "Census 2020: Block Groups for San Francisco Clipped to the Shoreline",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "intptlat",
+            "awater",
+            "aland",
+            "intptlon"
+        ]
+    },
+    "d6pi-gknj": {
+        "domain": "data.sfgov.org",
+        "name": "Hayward M7.0 Earthquake Scenario",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "st_length_",
+            "st_area_sh",
+            "dem_dat1_d",
+            "value",
+            "perimeter",
+            "pgapol_"
+        ]
+    },
+    "q6g7-y2et": {
+        "domain": "data.sfgov.org",
+        "name": "Current Season Viral Respiratory Vaccinations",
+        "t_attrs": [
+            "max_date_administered"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "population_estimate",
+            "total_recipients_current",
+            "demographic_subgroup_sort_order"
+        ]
+    },
+    "jc98-7xvv": {
+        "domain": "data.sfgov.org",
+        "name": "Analysis Neighborhoods to ZIP Code Crosswalk",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "855n-xpnm": {
+        "domain": "data.sfgov.org",
+        "name": "Late Night Aircraft Departures",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "peaa-dyr3": {
+        "domain": "data.sfgov.org",
+        "name": "Aircraft Noise Reports",
+        "t_attrs": [
+            "disturbance_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "2gdm-7nym": {
+        "domain": "data.sfgov.org",
+        "name": "Runway Usage",
+        "t_attrs": [
+            "month_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "preferential_late_night_departing_runway",
+            "total_arrival_percent_utilization",
+            "late_night_departure_percent_utilization",
+            "total_departure_percent_utilization"
+        ]
+    },
+    "2x22-z5j6": {
+        "domain": "data.sfgov.org",
+        "name": "Supervisor District (2022) to ZIP Code Crosswalk",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "xdht-4php": {
+        "domain": "data.sfgov.org",
+        "name": "Housing Production - 2005-present",
+        "t_attrs": [
+            "issued_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "market_rate",
+            "affordable_units",
+            "moderate_income_ndr",
+            "moderate_income",
+            "low_income",
+            "proposed_units",
+            "pts_proposed_units",
+            "pts_existing_units",
+            "net_units",
+            "net_units_completed",
+            "extremely_low_income",
+            "very_low_income"
+        ]
+    },
+    "43zc-xw3x": {
+        "domain": "data.sfgov.org",
+        "name": "SFO Flight Operations",
+        "t_attrs": [
+            "flight_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "center_deviation",
+            "altitude",
+            "gate_penetration"
+        ]
+    },
+    "b7eg-vqw2": {
+        "domain": "data.sfgov.org",
+        "name": "Travel Decision Survey 2021",
+        "t_attrs": [
+            "interview_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "q38",
+            "q36",
+            "q32b",
+            "q32a",
+            "q30",
+            "q29",
+            "trans2",
+            "da2",
+            "walk1",
+            "tnc1",
+            "do1",
+            "da1",
+            "q14m_1",
+            "q11bm_1",
+            "q9m_adj_1",
+            "oth2_p",
+            "home2",
+            "sch2",
+            "home1",
+            "q18cp",
+            "q11ap",
+            "q9m_1",
+            "q19",
+            "q6",
+            "trans",
+            "taxi",
+            "do",
+            "da",
+            "q5hm_1",
+            "q5am_2",
+            "q4hm_1",
+            "q4bm_1",
+            "q4am_1",
+            "rel",
+            "oth_p_sf",
+            "work",
+            "q5ip",
+            "q5fp",
+            "q5bp",
+            "q5ap",
+            "q4hp",
+            "q4fp",
+            "q4tot",
+            "q3",
+            "respnum",
+            "weight",
+            "ageco",
+            "zone",
+            "lang",
+            "q37",
+            "q35_2",
+            "q35_1",
+            "q34",
+            "q33",
+            "q31",
+            "q26",
+            "q25",
+            "q24",
+            "q23_1",
+            "q22_2",
+            "q22_1",
+            "q21",
+            "q20a",
+            "dk2_m",
+            "oth2_m",
+            "walk2",
+            "bike2",
+            "shttle2",
+            "taxi2",
+            "tnc2",
+            "do2",
+            "trans1",
+            "q18em_1",
+            "q18bm_1",
+            "q18am_1",
+            "q11cm_1",
+            "q11am_1",
+            "dk2_p",
+            "shop2",
+            "work2",
+            "dk1_p",
+            "oth1_p",
+            "soc1",
+            "shop1",
+            "work1",
+            "q18bp",
+            "q18ap",
+            "q14p",
+            "q11dp",
+            "q11cp",
+            "q11bp",
+            "q9p_adj",
+            "q7p",
+            "q18total",
+            "q17",
+            "q16m_1",
+            "q12",
+            "q11total",
+            "q8",
+            "walk",
+            "shttle",
+            "q5im_1",
+            "q5fm_1",
+            "q5dm_1",
+            "q5cm_1",
+            "q4gm_1",
+            "q4fm_1",
+            "q4dm_1",
+            "q4cm_1",
+            "home",
+            "soc",
+            "shop",
+            "q5hp",
+            "q5gp",
+            "q4ep",
+            "q4ap",
+            "trips",
+            "bike1",
+            "q5ep",
+            "q5gm_1",
+            "soc2",
+            "q10",
+            "cycle2",
+            "q4em_1",
+            "scoot1",
+            "scoot2",
+            "q5tot",
+            "crshre",
+            "q4am_2",
+            "sch1",
+            "q4bp",
+            "sch",
+            "q18dp",
+            "q23_2",
+            "oth1_m",
+            "q4cp",
+            "q7m_1",
+            "bike",
+            "q15",
+            "dk_p_sf",
+            "q4bm_2",
+            "scoot",
+            "q18ep",
+            "q16m_adj_1",
+            "cycle",
+            "rel2",
+            "crshre2",
+            "q20",
+            "q5dp",
+            "q4gp",
+            "q2",
+            "q5bm_1",
+            "tnc",
+            "q18cm_1",
+            "q5am_1",
+            "q5dm_2",
+            "q13",
+            "crshre1",
+            "q27",
+            "q5cp",
+            "q16p_adj",
+            "cycle1",
+            "shttle1",
+            "q28",
+            "dk1_m",
+            "rel1",
+            "oth_m_sf",
+            "dk_m_sf",
+            "q18dm_1",
+            "taxi1",
+            "q5em_1",
+            "q4dm_2",
+            "q4dp",
+            "q11dm_1"
+        ]
+    },
+    "my8t-jqzp": {
+        "domain": "data.sfgov.org",
+        "name": "MTA.Muni_simpleroutes_data",
+        "t_attrs": [
+            "created_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "shape_area",
+            "com_carpoo",
+            "mta_equitystrategy_nhoods_area",
+            "shape_len",
+            "com_transi",
+            "com_da",
+            "veh_capita",
+            "zero_veh_h"
+        ]
+    },
+    "s66h-h4vp": {
+        "domain": "data.sfgov.org",
+        "name": "Slopes 20 Percent Or Greater",
+        "t_attrs": [
+            "date_intro"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "shape_area",
+            "shape_leng",
+            "provision",
+            "priority",
+            "provisio_1"
+        ]
+    },
+    "642n-3htf": {
+        "domain": "data.sfgov.org",
+        "name": "MTA.signals_rail_data",
+        "t_attrs": [
+            "last_edited_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "shape_len",
+            "shape_area"
+        ]
+    },
+    "ejht-vp5d": {
+        "domain": "data.sfgov.org",
+        "name": "Article 11 Rating",
+        "t_attrs": [
+            "individuals_article_11_datelisted"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "h339-uwfj": {
+        "domain": "data.sfgov.org",
+        "name": "MTA.colorcurb_blue_accessible_data",
+        "t_attrs": [
+            "created_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "geom_len"
+        ]
+    },
+    "m22e-6hkz": {
+        "domain": "data.sfgov.org",
+        "name": "California Register Historic Districts",
+        "t_attrs": [
+            "dateadop"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "tsdh-z53a": {
+        "domain": "data.sfgov.org",
+        "name": "HistoricZoningDistricts2008",
+        "t_attrs": [
+            "lastsale"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "estimatedv",
+            "industrial",
+            "publicfacs",
+            "commsqft_p",
+            "netcomml",
+            "planningdi",
+            "stories_co",
+            "costarrba",
+            "incomplete",
+            "stories",
+            "notsoftres",
+            "changedsin",
+            "netcomml_e",
+            "ressqft",
+            "units_new",
+            "netcomml_p",
+            "building_t",
+            "overlay",
+            "cie",
+            "nonpdrport",
+            "visitor",
+            "lcu",
+            "commlsqf_1",
+            "commlsqft1",
+            "flex_bldg",
+            "height_010",
+            "building_1",
+            "height_sto",
+            "assessedva",
+            "inother_pi",
+            "paperlot",
+            "taz2007",
+            "scenario",
+            "netunits",
+            "commsqft_m",
+            "netsqft",
+            "strucval",
+            "landval",
+            "pseudopipe",
+            "retail_bld",
+            "high_sqft",
+            "shape_area",
+            "retail",
+            "softsite",
+            "netcomml_1",
+            "bldgindust",
+            "censustrac",
+            "planning_2",
+            "totalsqft",
+            "pdroccupan",
+            "shape_len",
+            "ressqft_ex",
+            "netcomml_m",
+            "heightnum",
+            "taz",
+            "soft_overr",
+            "netcomml_o",
+            "costarinfe",
+            "commlsqft",
+            "bdrms",
+            "lastsalepr",
+            "temp",
+            "commsqft",
+            "med",
+            "seq",
+            "pdr",
+            "office_bld",
+            "height_s_1",
+            "total_uses",
+            "resunits",
+            "mips",
+            "inrandompi",
+            "inprojectt",
+            "pdrportion",
+            "cityfacili",
+            "livework_n",
+            "pdr_share",
+            "pdr_possib",
+            "historic",
+            "height_11",
+            "rescom_uni",
+            "yrbuilt",
+            "bldgsqft"
+        ]
+    },
+    "4yr8-u35c": {
+        "domain": "data.sfgov.org",
+        "name": "National Register Historic Districts",
+        "t_attrs": [
+            "dateadop"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "g8m3-pdis": {
+        "domain": "data.sfgov.org",
+        "name": "Registered Business Locations - San Francisco",
+        "t_attrs": [
+            "location_start_date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "tmnf-yvry": {
+        "domain": "data.sfgov.org",
+        "name": "Police Department Incident Reports: Historical 2003 to May 2018",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "wg3w-h783": {
+        "domain": "data.sfgov.org",
+        "name": "Police Department Incident Reports: 2018 to Present",
+        "t_attrs": [
+            "incident_date"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": []
+    },
+    "vw6y-z8j6": {
+        "domain": "data.sfgov.org",
+        "name": "311 Cases",
+        "t_attrs": [
+            "closed_date"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "bos_2012"
+        ]
+    },
+    "wr8u-xric": {
+        "domain": "data.sfgov.org",
+        "name": "Fire Incidents",
+        "t_attrs": [],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "number_of_floors_with_minimum_damage",
+            "other_personnel",
+            "suppression_units",
+            "number_of_floors_with_significant_damage",
+            "floor_of_fire_origin",
+            "suppression_personnel",
+            "ems_units",
+            "other_units",
+            "estimated_property_loss",
+            "number_of_floors_with_extreme_damage",
+            "number_of_alarms",
+            "number_of_sprinkler_heads_operating",
+            "fire_fatalities",
+            "ems_personnel",
+            "fire_injuries",
+            "estimated_contents_loss",
+            "civilian_injuries",
+            "civilian_fatalities",
+            "number_of_floors_with_heavy_damage"
+        ]
+    },
+    "nuek-vuh3": {
+        "domain": "data.sfgov.org",
+        "name": "Fire Department Calls for Service",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [
+            "case_location"
+        ],
+        "num_columns": [
+            "unit_sequence_in_call_dispatch",
+            "number_of_alarms"
+        ]
+    },
+    "pyih-qa8i": {
+        "domain": "data.sfgov.org",
+        "name": "[Historical] Restaurant Scores (2016-2019)",
+        "t_attrs": [
+            "inspection_date"
+        ],
+        "s_attrs": [
+            "business_location"
+        ],
+        "num_columns": [
+            "inspection_score"
+        ]
+    },
+    "rqzj-sfat": {
+        "domain": "data.sfgov.org",
+        "name": "Mobile Food Facility Permit",
+        "t_attrs": [
+            "expirationdate"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "cnn",
+            "priorpermit"
+        ]
+    },
+    "tkzw-k3nq": {
+        "domain": "data.sfgov.org",
+        "name": "Street Tree List",
+        "t_attrs": [
+            "plantdate"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "siteorder",
+            "xcoord",
+            "ycoord",
+            "dbh"
+        ]
+    },
+    "i98e-djp9": {
+        "domain": "data.sfgov.org",
+        "name": "Building Permits",
+        "t_attrs": [
+            "last_permit_activity_date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "plansets",
+            "existing_units",
+            "estimated_cost",
+            "proposed_units",
+            "revised_cost",
+            "number_of_proposed_stories",
+            "number_of_existing_stories",
+            "permit_type"
+        ]
+    },
+    "8vzz-qzz9": {
+        "domain": "data.sfgov.org",
+        "name": "Parking Meters",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "ms_space_num",
+            "street_num",
+            "orientation"
+        ]
+    },
+    "dtit-7gp4": {
+        "domain": "data.sfgov.org",
+        "name": "COVID-19 Testing Locations",
+        "t_attrs": [],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": []
+    },
+    "gnap-fj3t": {
+        "domain": "data.sfgov.org",
+        "name": "Law Enforcement Dispatched Calls for Service: Real-Time",
+        "t_attrs": [
+            "received_datetime"
+        ],
+        "s_attrs": [
+            "intersection_point"
+        ],
+        "num_columns": []
+    },
+    "nbtm-fbw5": {
+        "domain": "data.sfgov.org",
+        "name": "Notices of Violation issued by the Department of Building Inspection",
+        "t_attrs": [
+            "date_filed"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "b6tj-gt35": {
+        "domain": "data.sfgov.org",
+        "name": "Street-Use Permits",
+        "t_attrs": [
+            "approved_date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "cnn"
+        ]
+    },
+    "jjew-r69b": {
+        "domain": "data.sfgov.org",
+        "name": "Mobile Food Schedule",
+        "t_attrs": [
+            "addr_date_create"
+        ],
+        "s_attrs": [
+            "location_2"
+        ],
+        "num_columns": [
+            "cnn",
+            "dayorder"
+        ]
+    },
+    "nc68-ngbr": {
+        "domain": "data.sfgov.org",
+        "name": "City Facilities",
+        "t_attrs": [],
+        "s_attrs": [
+            "geom"
+        ],
+        "num_columns": [
+            "gross_sq_ft"
+        ]
+    },
+    "beah-shgi": {
+        "domain": "data.sfgov.org",
+        "name": "Soft-Story Properties",
+        "t_attrs": [],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "tier"
+        ]
+    },
+    "aaxw-2cb8": {
+        "domain": "data.sfgov.org",
+        "name": "Affordable Housing Pipeline",
+        "t_attrs": [
+            "entitlement_approval"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "ami_undeclared",
+            "_150_ami",
+            "_130_ami",
+            "_110_ami",
+            "_105_ami",
+            "_100_ami",
+            "_90_ami",
+            "_80_ami",
+            "_60_ami",
+            "_55_ami",
+            "_50_ami",
+            "_40_ami",
+            "_30_ami",
+            "_20_ami",
+            "public_housing_replacement_units",
+            "losp_units",
+            "disabled_units",
+            "homeless_units",
+            "tay_units",
+            "senior_units",
+            "family_units",
+            "manager_units",
+            "mobility_units",
+            "_5_bd_units",
+            "_4bd_units",
+            "_3bd_units",
+            "_2bd_units",
+            "_1bd_units",
+            "studio_units",
+            "sro_units",
+            "affordable",
+            "market_rate_units",
+            "affordable_units",
+            "project_units",
+            "_120_ami"
+        ]
+    },
+    "ab4h-6ztd": {
+        "domain": "data.sfgov.org",
+        "name": "SFMTA - Parking Citations",
+        "t_attrs": [
+            "date_added"
+        ],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "fine_amount"
+        ]
+    },
+    "ramy-di5m": {
+        "domain": "data.sfgov.org",
+        "name": "Addresses with Units - Enterprise Addressing System",
+        "t_attrs": [],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "cnn",
+            "supervisor"
+        ]
+    },
+    "tpp3-epx2": {
+        "domain": "data.sfgov.org",
+        "name": "Schools",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "lower_age",
+            "upper_age",
+            "lower_grade",
+            "upper_grade"
+        ]
+    },
+    "gm2e-bten": {
+        "domain": "data.sfgov.org",
+        "name": "Department of Building Inspection Complaints (All Divisions)",
+        "t_attrs": [
+            "date_1st_nov_issued"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": []
+    },
+    "5wbp-dwzt": {
+        "domain": "data.sfgov.org",
+        "name": "Utility Excavation Moratorium Streets",
+        "t_attrs": [
+            "expirationdate"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "cnn"
+        ]
+    },
+    "3mea-di5p": {
+        "domain": "data.sfgov.org",
+        "name": "Addresses - Enterprise Addressing System",
+        "t_attrs": [],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "cnn",
+            "supervisor"
+        ]
+    },
+    "hn4j-6fx5": {
+        "domain": "data.sfgov.org",
+        "name": "Bicycle Parking",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "install_yr",
+            "racks",
+            "spaces",
+            "install_mo"
+        ]
+    },
+    "jhsu-2pka": {
+        "domain": "data.sfgov.org",
+        "name": "Health Care Facilities",
+        "t_attrs": [],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": []
+    },
+    "sftu-nd43": {
+        "domain": "data.sfgov.org",
+        "name": "Parking Signs / Street Space Permits",
+        "t_attrs": [
+            "datetimeposted"
+        ],
+        "s_attrs": [
+            "location_2"
+        ],
+        "num_columns": [
+            "cnn",
+            "streetfrontagefeet",
+            "numberofsigns"
+        ]
+    },
+    "ch9w-7kih": {
+        "domain": "data.sfgov.org",
+        "name": "Curb Ramps",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "conditionscore",
+            "yloc",
+            "cnn",
+            "flushtocorner",
+            "crtoonarrow",
+            "probstreetmeetcr",
+            "levellandbottom",
+            "topclearance",
+            "paintedred",
+            "vitalfacilities",
+            "colorcontrast",
+            "levellandtop",
+            "detectablesurf",
+            "heavytraffic",
+            "liptoohigh",
+            "crexist",
+            "catchbasinfrontofcr",
+            "surfcond",
+            "slopewing",
+            "xloc",
+            "signalpoleinwing",
+            "possbasementobstacle"
+        ]
+    },
+    "ybh5-27n2": {
+        "domain": "data.sfgov.org",
+        "name": "Traffic Signals",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "percent_po",
+            "percent_sf",
+            "percent_c"
+        ]
+    },
+    "2zdj-bwza": {
+        "domain": "data.sfgov.org",
+        "name": "Law Enforcement Dispatched Calls for Service: Closed",
+        "t_attrs": [
+            "enroute_datetime"
+        ],
+        "s_attrs": [
+            "intersection_point"
+        ],
+        "num_columns": []
+    },
+    "5aye-4rtt": {
+        "domain": "data.sfgov.org",
+        "name": "Streets Data - Pavement Condition Index (PCI) Scores",
+        "t_attrs": [
+            "pci_change_date"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "cnn",
+            "pci_score"
+        ]
+    },
+    "4zuq-2cbe": {
+        "domain": "data.sfgov.org",
+        "name": "Fire Violations",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "kncr-c6jw": {
+        "domain": "data.sfgov.org",
+        "name": "SF Planning Permitting Data",
+        "t_attrs": [
+            "date_plan_check_letter_issued"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "industrial_pdr_exist",
+            "parking_gsf_exist",
+            "number_market_rate_units_prop",
+            "number_of_units",
+            "cie_exist",
+            "number_affordable_units_prop",
+            "number_of_units_exist",
+            "cie_prop",
+            "parking_gsf_prop",
+            "number_market_rate_units_exist",
+            "industrial_pdr_prop",
+            "office_prop",
+            "number_affordable_units_exist",
+            "office_exist",
+            "number_of_units_prop",
+            "retail_commercial_prop",
+            "number_of_affordable_units",
+            "number_of_market_rate_units",
+            "retail_commercial_exist"
+        ]
+    },
+    "wb4c-6hwj": {
+        "domain": "data.sfgov.org",
+        "name": "Fire Inspections",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "penalty_amount",
+            "fee",
+            "posting_fee",
+            "interest_amount",
+            "invoice_amount"
+        ]
+    },
+    "sf93-6dmr": {
+        "domain": "data.sfgov.org",
+        "name": "[DEPRECATED] Envista Projects for Utility Excavation and Paving",
+        "t_attrs": [
+            "modify_date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "duration",
+            "cnn"
+        ]
+    },
+    "893e-xam6": {
+        "domain": "data.sfgov.org",
+        "name": "Fire Permits",
+        "t_attrs": [
+            "date_all_permit_fees_were_paid"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "permit_fee",
+            "referral_fee",
+            "posting_fee"
+        ]
+    },
+    "2wsq-7wmv": {
+        "domain": "data.sfgov.org",
+        "name": "Fire Safety Complaints",
+        "t_attrs": [
+            "received_date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "i28k-bkz6": {
+        "domain": "data.sfgov.org",
+        "name": "Muni Stops",
+        "t_attrs": [
+            "insert_timestamp"
+        ],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "shelter",
+            "accessibilitymask"
+        ]
+    },
+    "a6aw-rudh": {
+        "domain": "data.sfgov.org",
+        "name": "Plumbing Permits",
+        "t_attrs": [
+            "application_date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "cf6e-9e4j": {
+        "domain": "data.sfgov.org",
+        "name": "Public Art (from 1% Art Program)",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": []
+    },
+    "uf55-k7py": {
+        "domain": "data.sfgov.org",
+        "name": "Metered motorcycle spaces",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "street_seg",
+            "street_num"
+        ]
+    },
+    "bxqh-5px8": {
+        "domain": "data.sfgov.org",
+        "name": "[DEPRECATED] Envista Projects for Paving",
+        "t_attrs": [
+            "modify_date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "duration"
+        ]
+    },
+    "dtz9-jkjt": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2016 Q1",
+        "t_attrs": [
+            "firstfiled"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "medical_proposed",
+            "retailcomm_proposed",
+            "entitlementstatus",
+            "visitor_proposed",
+            "visitor_net",
+            "cie_net",
+            "cie_proposed",
+            "industrial_net",
+            "industrial_proposed",
+            "office_net",
+            "office_proposed",
+            "affordable",
+            "unitsnet",
+            "units",
+            "cost",
+            "affordable_net",
+            "medical_net",
+            "retailcomm_net"
+        ]
+    },
+    "ftty-kx6y": {
+        "domain": "data.sfgov.org",
+        "name": "Electrical Permits",
+        "t_attrs": [
+            "completed_date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "jczu-j2ku": {
+        "domain": "data.sfgov.org",
+        "name": "Parklet Permits",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "cnn"
+        ]
+    },
+    "ubvf-ztfx": {
+        "domain": "data.sfgov.org",
+        "name": "Traffic Crashes Resulting in Injury",
+        "t_attrs": [
+            "collision_date"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "number_injured",
+            "number_killed",
+            "distance"
+        ]
+    },
+    "vwjj-xa8f": {
+        "domain": "data.sfgov.org",
+        "name": "Recognized Healthy Nail Salons in San Francisco",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "geocoding_accuracy"
+        ]
+    },
+    "abvp-arbf": {
+        "domain": "data.sfgov.org",
+        "name": "Street Acceptance Data",
+        "t_attrs": [
+            "dateaccepted"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "length_ft",
+            "cnn"
+        ]
+    },
+    "r7bn-7v9c": {
+        "domain": "data.sfgov.org",
+        "name": "Civic Art Collection",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": []
+    },
+    "7qzr-p6xn": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2017 Q1",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "entitled",
+            "net_aff_units",
+            "aff_units",
+            "net_units",
+            "units",
+            "mips",
+            "med",
+            "total_gsf",
+            "net_visit",
+            "visit",
+            "net_ret",
+            "ret",
+            "net_pdr",
+            "pdr",
+            "net_mips",
+            "net_med",
+            "net_cie",
+            "cie",
+            "net_gsf",
+            "cost"
+        ]
+    },
+    "5dp4-gtxk": {
+        "domain": "data.sfgov.org",
+        "name": "Boiler Permits",
+        "t_attrs": [
+            "application_date"
+        ],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": []
+    },
+    "78va-8dhi": {
+        "domain": "data.sfgov.org",
+        "name": "Streets Data -Historical Pavement Condition Index (PCI) Scores",
+        "t_attrs": [
+            "pci_change_date"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "cnn",
+            "pci_score"
+        ]
+    },
+    "xtj2-daw9": {
+        "domain": "data.sfgov.org",
+        "name": "Wireless Service Facility Permits",
+        "t_attrs": [
+            "permit_approval_date"
+        ],
+        "s_attrs": [
+            "location1"
+        ],
+        "num_columns": []
+    },
+    "v5p2-emnu": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2012 Q1",
+        "t_attrs": [
+            "dbi_filed"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "sitearea",
+            "net_visitor",
+            "net_ret_ent",
+            "net_prod_dist_rep",
+            "net_cult_inst_educ",
+            "net_added_sf",
+            "dbi_permit",
+            "visitor",
+            "ret_ent",
+            "prod_dist_rep",
+            "office",
+            "taz",
+            "net_medical",
+            "net_added_units",
+            "medical",
+            "cult_inst_educ",
+            "total_gsf_commercial",
+            "supdist",
+            "net_office",
+            "units"
+        ]
+    },
+    "4542-gpa3": {
+        "domain": "data.sfgov.org",
+        "name": "Stop Signs",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "cnn"
+        ]
+    },
+    "wg8w-68vc": {
+        "domain": "data.sfgov.org",
+        "name": "StreetSmArts Murals",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": []
+    },
+    "ua32-eewd": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2017 Q3",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "mednet",
+            "supervisor",
+            "total_gsf",
+            "net_gsf",
+            "hotel_room_net",
+            "hotel_room_prop",
+            "cie",
+            "med",
+            "hotel_room_exist",
+            "visitnet",
+            "visit",
+            "visit_exist",
+            "restaurantnet",
+            "retnet",
+            "ret",
+            "ret_exist",
+            "pdrnet",
+            "pdr",
+            "pdr_exist",
+            "mipsnet",
+            "mips",
+            "mips_exist",
+            "units",
+            "cienet",
+            "med_exist",
+            "cie_exist",
+            "restaurant",
+            "unitsnet",
+            "affordable",
+            "affordablenet"
+        ]
+    },
+    "858q-nwrm": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2014 Q4",
+        "t_attrs": [
+            "filedate"
+        ],
+        "s_attrs": [
+            "geography"
+        ],
+        "num_columns": [
+            "affordable",
+            "pdr",
+            "cienet",
+            "net_gsf",
+            "visit",
+            "cie",
+            "total_gsf",
+            "unitsnet",
+            "mips",
+            "ret",
+            "retnet",
+            "affnet",
+            "visitnet",
+            "pdrnet",
+            "mipsnet",
+            "mednet",
+            "med",
+            "units"
+        ]
+    },
+    "8mm5-z8i7": {
+        "domain": "data.sfgov.org",
+        "name": "census_tracts_odata2",
+        "t_attrs": [],
+        "s_attrs": [
+            "geom"
+        ],
+        "num_columns": [
+            "point_order",
+            "aland10"
+        ]
+    },
+    "apz9-dh7k": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2015 Q3",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "ret",
+            "total_gsf",
+            "med",
+            "visit",
+            "bpapplno",
+            "units",
+            "unitsnet",
+            "affordablenet",
+            "affordable",
+            "net_gsf",
+            "cie",
+            "cienet",
+            "mednet",
+            "mips",
+            "mipsnet",
+            "pdr",
+            "pdrnet",
+            "retnet",
+            "visitnet",
+            "entitled"
+        ]
+    },
+    "rzkk-54yv": {
+        "domain": "data.sfgov.org",
+        "name": "Commercial Vacancy Tax - San Francisco",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "rate"
+        ]
+    },
+    "9kr6-dynr": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2018 Q4",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "visit_exist",
+            "restaurant",
+            "retnet",
+            "supedist",
+            "pdrnet",
+            "ret",
+            "pdr",
+            "pdr_exist",
+            "mipsnet",
+            "mips",
+            "mednet",
+            "med",
+            "cienet",
+            "cie",
+            "net_gsf",
+            "total_gsf",
+            "affordable_net",
+            "affordable",
+            "unitsnet",
+            "units",
+            "hotel_room_exist",
+            "mips_exist",
+            "visit",
+            "visitnet",
+            "hotel_room",
+            "hotel_ro_2",
+            "ret_exist",
+            "med_exist",
+            "cie_exist",
+            "entitled",
+            "restaurant_net"
+        ]
+    },
+    "i926-ujnc": {
+        "domain": "data.sfgov.org",
+        "name": "Large Utility Excavation Permits",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "cnn"
+        ]
+    },
+    "ra2x-jzmk": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2015 Q4",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "geography"
+        ],
+        "num_columns": [
+            "cie",
+            "pdr",
+            "entitled",
+            "affordable",
+            "mednet",
+            "affordab_1",
+            "cienet",
+            "med",
+            "mipsnet",
+            "units",
+            "unitsnet",
+            "total_gsf",
+            "net_gsf",
+            "mips",
+            "pdrnet",
+            "ret",
+            "retnet",
+            "visit",
+            "visitnet"
+        ]
+    },
+    "g5sr-9nhs": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2016 Q2",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "mednet",
+            "affnet",
+            "unitsnet",
+            "units",
+            "ret",
+            "aff",
+            "visitnet",
+            "med",
+            "cie",
+            "net_gsf",
+            "total_gsf",
+            "visit",
+            "retnet",
+            "pdrnet",
+            "pdr",
+            "mipsnet",
+            "mips",
+            "cienet",
+            "cost",
+            "entitlement"
+        ]
+    },
+    "rwdu-9wb2": {
+        "domain": "data.sfgov.org",
+        "name": "Police Stations (2011)",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "w3e8-bxrm": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2015 Q2",
+        "t_attrs": [
+            "filedate"
+        ],
+        "s_attrs": [
+            "geography"
+        ],
+        "num_columns": [
+            "med",
+            "mednet",
+            "mips",
+            "pdrnet",
+            "visitnet",
+            "visit",
+            "retnet",
+            "pdr",
+            "mipsnet",
+            "cienet",
+            "cie",
+            "net_gsf",
+            "total_gsf",
+            "affordablenet",
+            "affordable",
+            "unitsnet",
+            "units",
+            "ret",
+            "entitlementstatus"
+        ]
+    },
+    "sd75-dps9": {
+        "domain": "data.sfgov.org",
+        "name": "Muni Driver Reported Transit Only Lane Violations",
+        "t_attrs": [
+            "citation_issue_date"
+        ],
+        "s_attrs": [
+            "geom"
+        ],
+        "num_columns": [
+            "amount_due",
+            "fine_amount"
+        ]
+    },
+    "qrwx-q4gg": {
+        "domain": "data.sfgov.org",
+        "name": "Street Tree Removal Notifications",
+        "t_attrs": [
+            "actiondate"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "siteorder"
+        ]
+    },
+    "eb2x-6eay": {
+        "domain": "data.sfgov.org",
+        "name": "Clearance Heights - Bridges and Underpasses",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "mtab_motion"
+        ]
+    },
+    "55nt-hnr5": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2019 Q1",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "supedist",
+            "affordablenet",
+            "total_gsf",
+            "net_gsf",
+            "mips",
+            "mipsnet",
+            "pdr_exist",
+            "pdr",
+            "pdrnet",
+            "ret_exist",
+            "ret",
+            "restaurantnet",
+            "visit",
+            "visitnet",
+            "cienet",
+            "unitsnet",
+            "cie",
+            "mips_exist",
+            "retnet",
+            "restaurant",
+            "hotel_room_prop",
+            "hotel_room_net",
+            "visit_exist",
+            "med_exist",
+            "med",
+            "hotel_room_exist",
+            "affordable",
+            "cie_exist",
+            "mednet",
+            "units"
+        ]
+    },
+    "9grn-xjpx": {
+        "domain": "data.sfgov.org",
+        "name": "Parcels with overlay attributes",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": []
+    },
+    "wjie-z8kp": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2020 Q4",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "hotel_room_net",
+            "sd",
+            "visit",
+            "ret",
+            "pdr",
+            "pdr_exist",
+            "mipsnet",
+            "cienet",
+            "cie",
+            "cie_exist",
+            "net_gsf",
+            "affordable",
+            "unitsnet",
+            "cfctco_units",
+            "units",
+            "hotel_room_prop",
+            "ret_exist",
+            "pdrnet",
+            "mips",
+            "mips_exist",
+            "total_gsf",
+            "affordablenet",
+            "pipeline_units",
+            "visitnet",
+            "retnet",
+            "restaurantnet",
+            "visit_exist",
+            "restaurant",
+            "med",
+            "med_exist",
+            "hotel_room_exist",
+            "mednet"
+        ]
+    },
+    "v4v2-5x7s": {
+        "domain": "data.sfgov.org",
+        "name": "Bike Volume - Manual Counts",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "cnn",
+            "yr2010_pm",
+            "yr2013_pm",
+            "yr2015_pm",
+            "yr2007_pm",
+            "yr2009_pm",
+            "yr2011padj",
+            "yr2016_pm",
+            "yr2006_pm",
+            "yr2017_pm",
+            "yr2014_pm",
+            "yr2011_pm",
+            "yr2008_pm"
+        ]
+    },
+    "n5ik-nmm3": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2014 Q3",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "net_office",
+            "net_added_sf",
+            "net_medical",
+            "net_added_units",
+            "net_visitor",
+            "net_prod_dist_rep",
+            "medical",
+            "net_cult_inst_educ",
+            "ret_ent",
+            "heightnum",
+            "dbi_permit",
+            "net_ret_ent",
+            "prod_dist_rep",
+            "cult_inst_educ",
+            "totalsqftestim",
+            "taz",
+            "units",
+            "entitlementstatus",
+            "total_gsf_commercial",
+            "office",
+            "visitor"
+        ]
+    },
+    "mr6h-cr3u": {
+        "domain": "data.sfgov.org",
+        "name": "Covid-19 Pit Stops",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "8iri-b2sz": {
+        "domain": "data.sfgov.org",
+        "name": "Housing Balance March 2016",
+        "t_attrs": [
+            "action_date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "supervisor",
+            "form",
+            "netunits_c",
+            "units",
+            "aff_hsg"
+        ]
+    },
+    "8r3f-pc6a": {
+        "domain": "data.sfgov.org",
+        "name": "Colleges in San Francisco (2011)",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "dg6z-zdpi": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2018 Q1",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "cie",
+            "med",
+            "cienet",
+            "affordable",
+            "affordablenet",
+            "mips_exist",
+            "mipsnet",
+            "restaurantnet",
+            "units",
+            "unitsnet",
+            "visit",
+            "ret_exist",
+            "pdr_exist",
+            "mednet",
+            "total_gsf",
+            "supedist",
+            "hotel_room_net",
+            "hotel_room_exist",
+            "ret",
+            "hotel_room_prop",
+            "visitnet",
+            "visit_exist",
+            "restaurant",
+            "pdrnet",
+            "pdr",
+            "mips",
+            "retnet",
+            "med_exist",
+            "cie_exist",
+            "net_gsf"
+        ]
+    },
+    "bime-puj8": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2013 Q1",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "net_visitor",
+            "net_ret_ent",
+            "net_office",
+            "dbi_permit",
+            "prod_dist_rep",
+            "cult_inst_educ",
+            "taz",
+            "units",
+            "net_prod_dist_rep",
+            "net_cult_inst_educ",
+            "net_added_sf",
+            "net_added_units",
+            "visitor",
+            "ret_ent",
+            "office",
+            "supdist",
+            "total_gsf_commercial",
+            "net_medical",
+            "medical"
+        ]
+    },
+    "ugxk-ztb8": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2012 Q2",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "entitlementstatus",
+            "net_added_units",
+            "net_added_sf",
+            "net_cult_inst_educ",
+            "net_prod_dist_rep",
+            "cult_inst_educ",
+            "office",
+            "traffic_analysis_zone",
+            "net_visitor",
+            "visitor",
+            "units",
+            "net_ret_ent",
+            "net_office",
+            "net_medical",
+            "ret_ent",
+            "prod_dist_rep",
+            "total_gsf_commercial",
+            "medical"
+        ]
+    },
+    "tcek-yifh": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2017 Q4",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "hotel_room_net",
+            "mednet",
+            "med_exist",
+            "med",
+            "pdrnet",
+            "restaurant",
+            "visit_exist",
+            "year_",
+            "units",
+            "unitsnet",
+            "affordable",
+            "affordable_net",
+            "total_gsf",
+            "net_gsf",
+            "sd",
+            "cie_exist",
+            "cie",
+            "cienet",
+            "mips_exist",
+            "mips",
+            "mipsnet",
+            "pdr_exist",
+            "pdr",
+            "ret_exist",
+            "ret",
+            "retnet",
+            "restaurant_net",
+            "visit",
+            "visitnet",
+            "hotel_room_exist",
+            "hotel_room"
+        ]
+    },
+    "eduu-fkrk": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2018 Q2",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "mips_exist",
+            "hotel_room_exist",
+            "med",
+            "mipsnet",
+            "mips",
+            "units",
+            "supedist",
+            "affordable",
+            "restaurantnet",
+            "restaurant",
+            "pdrnet",
+            "total_gsf",
+            "affordablenet",
+            "unitsnet",
+            "net_gsf",
+            "cie_exist",
+            "cie",
+            "ret",
+            "cienet",
+            "med_exist",
+            "mednet",
+            "pdr_exist",
+            "pdr",
+            "ret_exist",
+            "hotel_room_net",
+            "hotel_room_prop",
+            "visitnet",
+            "visit",
+            "visit_exist",
+            "retnet"
+        ]
+    },
+    "ep85-j8df": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2013 Q4",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "visitor",
+            "parkingnet",
+            "lot",
+            "net_visitor",
+            "net_prod_dist_rep",
+            "net_office",
+            "net_medical",
+            "net_cult_inst_educ",
+            "net_added_units",
+            "dbi_permit",
+            "ret_ent",
+            "prod_dist_rep",
+            "cult_inst_educ",
+            "office",
+            "taz",
+            "units",
+            "tempselect",
+            "total_gsf_commercial",
+            "supdist",
+            "parking",
+            "sitearea",
+            "net_ret_ent",
+            "net_added_sf",
+            "medical"
+        ]
+    },
+    "33nh-56zb": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2019 Q2",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "net_gsf",
+            "pdr_exist",
+            "entitled",
+            "mips",
+            "mipsnet",
+            "visitnet",
+            "hotel_room_prop",
+            "restaurant",
+            "hotel_room_exist",
+            "total_gsf",
+            "visit",
+            "hotel_room_net",
+            "med_exist",
+            "pdrnet",
+            "cie_exist",
+            "mednet",
+            "retnet",
+            "unitsnet",
+            "cie",
+            "mips_exist",
+            "pdr",
+            "med",
+            "restaurantnet",
+            "ret",
+            "ret_exist",
+            "visit_exist",
+            "affordablenet",
+            "cienet",
+            "affordable",
+            "sd",
+            "units"
+        ]
+    },
+    "v5uc-gana": {
+        "domain": "data.sfgov.org",
+        "name": "Municipal Transportation Agency Board Resolutions",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "letter_sequence",
+            "to_feet",
+            "from_feet"
+        ]
+    },
+    "x5tj-txci": {
+        "domain": "data.sfgov.org",
+        "name": "DPW Maintained Roadway Structures",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "bw5r-gd57": {
+        "domain": "data.sfgov.org",
+        "name": "[Deprecated] San Francisco Vaccine Access Points",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": []
+    },
+    "49cy-x5m5": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2017 Q2",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "supdist",
+            "visit",
+            "visit_exist",
+            "retnet",
+            "ret",
+            "ret_exist",
+            "pdr_exist",
+            "mips",
+            "cienet",
+            "cie",
+            "net_gsf",
+            "total_gsf",
+            "cost",
+            "affordablenet",
+            "affordable",
+            "visitnet",
+            "pdrnet",
+            "pdr",
+            "mipsnet",
+            "mips_exist",
+            "med",
+            "bpapplno",
+            "unitsnet",
+            "units",
+            "cie_exist",
+            "mednet",
+            "med_exist"
+        ]
+    },
+    "gmfx-8h6i": {
+        "domain": "data.sfgov.org",
+        "name": "Street Intersections",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "cnn"
+        ]
+    },
+    "b2bw-u33d": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2012 Q4",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "net_prod_dist_rep",
+            "net_ret_ent",
+            "net_visitor",
+            "prod_dist_rep",
+            "cult_inst_educ",
+            "total_gsf_commercial",
+            "taz",
+            "units",
+            "office",
+            "net_office",
+            "net_added_sf",
+            "net_cult_inst_educ",
+            "net_added_units",
+            "entitlementstatus",
+            "dbi_permit",
+            "medical",
+            "net_medical",
+            "ret_ent",
+            "visitor"
+        ]
+    },
+    "pm3p-32gh": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2019 Q4",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "mipsnet",
+            "mips_exist",
+            "cie",
+            "cie_exist",
+            "net_gsf",
+            "total_gsf",
+            "sd",
+            "hotel_room_prop",
+            "visitnet",
+            "restaurantnet",
+            "pdr",
+            "pdr_exist",
+            "unitsnet",
+            "med_exist",
+            "year_",
+            "hotel_room_exist",
+            "visit_exist",
+            "mednet",
+            "ret",
+            "restaurant",
+            "hotel_room_net",
+            "visit",
+            "retnet",
+            "entitled",
+            "ret_exist",
+            "cienet",
+            "units",
+            "affordable",
+            "pdrnet",
+            "mips",
+            "med"
+        ]
+    },
+    "fv2q-qaux": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2014 Q2",
+        "t_attrs": [
+            "planning_filed"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "entitlementstatus",
+            "medical",
+            "prod_dist_rep",
+            "ret_ent",
+            "net_added_units",
+            "net_cult_inst_educ",
+            "net_office",
+            "affordable",
+            "units",
+            "taz",
+            "total_gsf_commercial",
+            "office",
+            "cult_inst_educ",
+            "visitor",
+            "heightnum",
+            "net_added_sf",
+            "net_medical",
+            "net_prod_dist_rep",
+            "net_ret_ent",
+            "net_visitor",
+            "affordablenet"
+        ]
+    },
+    "8gtc-pjc6": {
+        "domain": "data.sfgov.org",
+        "name": "Traffic Crashes Resulting in Injury: Parties Involved",
+        "t_attrs": [
+            "collision_date"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "distance",
+            "number_injured",
+            "number_killed",
+            "party_age"
+        ]
+    },
+    "vd6w-dq8r": {
+        "domain": "data.sfgov.org",
+        "name": "Street Nodes",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "cnn"
+        ]
+    },
+    "hxup-t2n6": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2013 Q3",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "net_added_sf",
+            "total_gsf_commercial",
+            "prod_dist_rep",
+            "office",
+            "net_office",
+            "parkingnet",
+            "net_visitor",
+            "net_ret_ent",
+            "net_prod_dist_rep",
+            "net_cult_inst_educ",
+            "supdist",
+            "parking",
+            "net_medical",
+            "ret_ent",
+            "net_added_units",
+            "sitearea",
+            "tempselect",
+            "action_seq",
+            "units",
+            "taz",
+            "visitor",
+            "cult_inst_educ",
+            "medical"
+        ]
+    },
+    "k7mk-w2pq": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2016 Q3",
+        "t_attrs": [
+            "firstfiled"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "visitnet",
+            "visit",
+            "retnet",
+            "pdrnet",
+            "pdr",
+            "mipsnet",
+            "mips",
+            "cienet",
+            "cie",
+            "total_gsf",
+            "affordablenet",
+            "affordable",
+            "unitsnet",
+            "units",
+            "entitlement",
+            "cost",
+            "ret",
+            "mednet",
+            "med",
+            "net_gsf"
+        ]
+    },
+    "5s89-azqa": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2020 Q1",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "net_gsf",
+            "total_gsf",
+            "affordablenet",
+            "unitsnet",
+            "mips",
+            "ret",
+            "retnet",
+            "restaurantnet",
+            "visitnet",
+            "hotel_room_exist",
+            "hotel_room_prop",
+            "hotel_room_net",
+            "sd",
+            "year_",
+            "visit",
+            "visit_exist",
+            "restaurant",
+            "ret_exist",
+            "pdrnet",
+            "pdr",
+            "pdr_exist",
+            "mipsnet",
+            "mips_exist",
+            "mednet",
+            "med",
+            "med_exist",
+            "cienet",
+            "cie_exist",
+            "affordable",
+            "units",
+            "entitled",
+            "cie"
+        ]
+    },
+    "2cma-9y6y": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2015 Q1",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "geography"
+        ],
+        "num_columns": [
+            "bpapplno",
+            "pdrnet",
+            "total_gsf",
+            "aff",
+            "units",
+            "supervisor",
+            "mednet",
+            "visitnet",
+            "visit",
+            "retnet",
+            "ret",
+            "pdr",
+            "mipsnet",
+            "mips",
+            "med",
+            "cienet",
+            "cie",
+            "net_gsf",
+            "affnet",
+            "unitsnet"
+        ]
+    },
+    "yuvm-3ujh": {
+        "domain": "data.sfgov.org",
+        "name": "SF Municipal Green Building Inventory",
+        "t_attrs": [
+            "certification_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "gross_area"
+        ]
+    },
+    "vqzx-t7c4": {
+        "domain": "data.sfgov.org",
+        "name": "SFMTA Managed Off-street Parking",
+        "t_attrs": [
+            "last_upd_dt"
+        ],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "capacity",
+            "card_replace_fee",
+            "no_key_valet_fee",
+            "veh_exit_lanes",
+            "veh_entry_lanes",
+            "mc_exit_lanes",
+            "main_entrance_lat",
+            "late_fee",
+            "main_entrance_long",
+            "reopen_fee",
+            "activation_fee",
+            "mc_entry_lanes"
+        ]
+    },
+    "i67a-ip28": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2018 Q3",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "supedist",
+            "hotel_room_net",
+            "hotel_room",
+            "hotel_room_exist",
+            "visitnet",
+            "visit",
+            "visit_exist",
+            "restaurant_net",
+            "restaurant",
+            "retnet",
+            "ret",
+            "ret_exist",
+            "pdrnet",
+            "pdr",
+            "pdr_exist",
+            "mipsnet",
+            "mips",
+            "mips_exist",
+            "mednet",
+            "med_exist",
+            "cienet",
+            "cie",
+            "cie_exist",
+            "net_gsf",
+            "total_gsf",
+            "affordable_net",
+            "affordable",
+            "unitsnet",
+            "units",
+            "med"
+        ]
+    },
+    "g383-7xmf": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2014 Q1",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "net_ret_ent",
+            "net_prod_dist_rep",
+            "net_office",
+            "net_cult_inst_educ",
+            "net_added_units",
+            "heightnum",
+            "dbi_permit",
+            "prod_dist_rep",
+            "office",
+            "total_gsf_commercial",
+            "units",
+            "ret_ent",
+            "medical",
+            "cult_inst_educ",
+            "taz",
+            "net_visitor",
+            "visitor",
+            "net_medical",
+            "net_added_sf"
+        ]
+    },
+    "k6qg-djmi": {
+        "domain": "data.sfgov.org",
+        "name": "SFMTA Bikeway Network Point Features",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "count",
+            "install_mo",
+            "cnn"
+        ]
+    },
+    "d7xx-7z6v": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2016 Q4",
+        "t_attrs": [
+            "firstfiled"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "net_gsf",
+            "pdrnet",
+            "mipsnet",
+            "entitlement",
+            "ret",
+            "mednet",
+            "retnet",
+            "units",
+            "cienet",
+            "affordablenet",
+            "unitsnet",
+            "cie",
+            "total_gsf",
+            "cost",
+            "mips",
+            "med",
+            "pdr",
+            "visitnet",
+            "visit",
+            "affordable"
+        ]
+    },
+    "9r2x-93qm": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2021 Q4",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "year_",
+            "adu",
+            "visitnet",
+            "retnet",
+            "ret",
+            "units",
+            "entitled",
+            "affordab_1",
+            "med_exist",
+            "mips",
+            "mips_exist",
+            "med",
+            "hotel_ro_2",
+            "hotel_ro_1",
+            "hotel_room",
+            "visit",
+            "visit_exis",
+            "ret_exist",
+            "mednet",
+            "affordable",
+            "pipeline_u",
+            "unitsnet",
+            "pdr_exist",
+            "net_gsf",
+            "total_gsf",
+            "legalizati",
+            "mipsnet",
+            "cie_exist"
+        ]
+    },
+    "evrp-pcmc": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2013 Q2",
+        "t_attrs": [
+            "dbi_filed"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "net_visitor",
+            "net_ret_ent",
+            "net_added_sf",
+            "dbi_permit",
+            "prod_dist_rep",
+            "cult_inst_educ",
+            "taz",
+            "lot",
+            "net_prod_dist_rep",
+            "net_office",
+            "net_cult_inst_educ",
+            "visitor",
+            "ret_ent",
+            "medical",
+            "office",
+            "units",
+            "net_added_units",
+            "total_gsf_commercial",
+            "net_medical"
+        ]
+    },
+    "7j2t-hunp": {
+        "domain": "data.sfgov.org",
+        "name": "Bicycle Loop Counters",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "counter"
+        ]
+    },
+    "ubqf-aqzw": {
+        "domain": "data.sfgov.org",
+        "name": "Police Department Stop Data",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "perceived_age",
+            "duration_of_stop"
+        ]
+    },
+    "nrtx-srqj": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2020 Q3",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "year_",
+            "hotel_room_prop",
+            "hotel_room_exist",
+            "visitnet",
+            "retnet",
+            "ret",
+            "ret_exist",
+            "pdr_exist",
+            "mips",
+            "net_gsf",
+            "affordablenet",
+            "affordable",
+            "pipeline_units",
+            "unitsnet",
+            "visit",
+            "mednet",
+            "med",
+            "med_exist",
+            "cie",
+            "sd",
+            "hotel_room_net",
+            "mipsnet",
+            "units",
+            "pdr",
+            "mips_exist",
+            "cienet",
+            "cie_exist",
+            "total_gsf",
+            "entitled",
+            "pdrnet",
+            "restaurantnet",
+            "visit_exist",
+            "restaurant"
+        ]
+    },
+    "vtn2-q8ky": {
+        "domain": "data.sfgov.org",
+        "name": "Painted Safety Zones",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "cnn",
+            "units",
+            "workorder"
+        ]
+    },
+    "httc-cz47": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2022 Q2",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "lat_long"
+        ],
+        "num_columns": [
+            "visit",
+            "tcocfc_units",
+            "cie_exist",
+            "med_exist",
+            "mednet",
+            "ret_exist",
+            "visit_exist",
+            "units",
+            "unitsnet",
+            "pipeline_units",
+            "affordablenet",
+            "total_gsf",
+            "net_gsf",
+            "cie",
+            "cienet",
+            "med",
+            "mips_exist",
+            "mips",
+            "mipsnet",
+            "pdr_exist",
+            "pdr",
+            "pdrnet",
+            "ret",
+            "retnet",
+            "visitnet",
+            "hotel_room_exist",
+            "hotel_room_prop",
+            "hotel_room_net"
+        ]
+    },
+    "e3jj-mbb3": {
+        "domain": "data.sfgov.org",
+        "name": "Assets Maintained by the Recreation and Parks Department",
+        "t_attrs": [
+            "created_date"
+        ],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": []
+    },
+    "nwes-mmgh": {
+        "domain": "data.sfgov.org",
+        "name": "Traffic Crashes Resulting in Injury: Victims Involved",
+        "t_attrs": [
+            "collision_datetime"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "number_killed",
+            "victim_age",
+            "distance",
+            "number_injured",
+            "party_age"
+        ]
+    },
+    "96ck-qcfe": {
+        "domain": "data.sfgov.org",
+        "name": "Existing Buildings Energy Performance Ordinance Report",
+        "t_attrs": [
+            "energy_audit_due_date"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "natural_gas_use",
+            "site_energy_use",
+            "total_ghg_emissions_intensity",
+            "total_ghg_emissions",
+            "percent_better_than_national_median_site_eui",
+            "source_eui",
+            "energy_star_score",
+            "floor_area",
+            "site_eui"
+        ]
+    },
+    "hnxa-ebrb": {
+        "domain": "data.sfgov.org",
+        "name": "Commuter Shuttle Stops",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "pilotstope",
+            "currentsto",
+            "nub_parkin"
+        ]
+    },
+    "c5wg-gcqb": {
+        "domain": "data.sfgov.org",
+        "name": "Traffic Circles",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "install_yr",
+            "workorder",
+            "count"
+        ]
+    },
+    "egmb-2zhs": {
+        "domain": "data.sfgov.org",
+        "name": "Motorcycle Parking - Unmetered",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "z_of_unmet"
+        ]
+    },
+    "udmf-verx": {
+        "domain": "data.sfgov.org",
+        "name": "Mayor\u2019s Office of Housing and Community Development Single Family Remediation and Rehabilitation Loans",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "community_housing_rehabilitation_program_loan_amount",
+            "units_assisted",
+            "code_enforcement_rehabilitation_fund_loan_amount",
+            "calhome_loan_amount"
+        ]
+    },
+    "4pmb-vmy4": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2023 Q1",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "lat_long"
+        ],
+        "num_columns": [
+            "cie_exist",
+            "net_gsf",
+            "pipeline_units",
+            "unitsnet",
+            "hotel_room_net",
+            "hotel_room_prop",
+            "hotel_room_exist",
+            "visit",
+            "retnet",
+            "ret_exist",
+            "pdrnet",
+            "units",
+            "pdr",
+            "mipsnet",
+            "mips",
+            "mips_exist",
+            "med_exist",
+            "cie",
+            "total_gsf",
+            "cienet",
+            "med",
+            "mednet",
+            "pdr_exist",
+            "ret",
+            "visitnet",
+            "sd22",
+            "affordablenet"
+        ]
+    },
+    "4ay7-dtaw": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2021 Q3",
+        "t_attrs": [
+            "tcocfc_dat"
+        ],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "tcocfc_uni",
+            "hotel_ro_1",
+            "visitnet",
+            "retnet",
+            "ret_exist",
+            "pdr",
+            "mipsnet",
+            "mips_exist",
+            "med",
+            "cie",
+            "net_gsf",
+            "affordab_1",
+            "affordable",
+            "tco_unit",
+            "restaurant",
+            "sd",
+            "year_",
+            "pipeline_u",
+            "unitsnet",
+            "units",
+            "mednet",
+            "hotel_room",
+            "total_gsf",
+            "cie_exist",
+            "med_exist",
+            "mips",
+            "pdr_exist",
+            "pdrnet",
+            "restaura_1",
+            "visit_exis",
+            "legalizati",
+            "adu",
+            "entitled",
+            "cienet",
+            "ret",
+            "visit",
+            "hotel_ro_2"
+        ]
+    },
+    "mm2x-xj5y": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2020 Q2",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "visit",
+            "visitnet",
+            "restaurantnet",
+            "retnet",
+            "pdr",
+            "pdr_exist",
+            "mips",
+            "mednet",
+            "cie_exist",
+            "net_gsf",
+            "affordablenet",
+            "affordable",
+            "units",
+            "hotel_room_prop",
+            "pdrnet",
+            "mips_exist",
+            "med",
+            "total_gsf",
+            "sd",
+            "hotel_room_net",
+            "hotel_room_exist",
+            "restaurant",
+            "ret",
+            "mipsnet",
+            "cienet",
+            "cie",
+            "unitsnet",
+            "visit_exist",
+            "ret_exist",
+            "year_",
+            "med_exist",
+            "entitled"
+        ]
+    },
+    "a5zr-cehj": {
+        "domain": "data.sfgov.org",
+        "name": "Greenwave Bicycle Signals",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": []
+    },
+    "bk8g-9b93": {
+        "domain": "data.sfgov.org",
+        "name": "SF311 Prior Case Data Structure",
+        "t_attrs": [
+            "opened"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": []
+    },
+    "f5ak-rkkp": {
+        "domain": "data.sfgov.org",
+        "name": "Mayor\u2019s Office of Housing and Community Development Lead Mediation Grant Program",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": [
+            "grant_amount",
+            "number_of_units_assisted",
+            "lead_dollars_disbursed"
+        ]
+    },
+    "iwbt-5xpd": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2021 Q2",
+        "t_attrs": [
+            "tcocfc_dat"
+        ],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "pdr_exist",
+            "mipsnet",
+            "mips_exist",
+            "cienet",
+            "net_gsf",
+            "pipeline_u",
+            "hotel_ro_2",
+            "hotel_ro_1",
+            "hotel_room",
+            "visitnet",
+            "visit",
+            "ret",
+            "ret_exist",
+            "pdrnet",
+            "pdr",
+            "med",
+            "cie",
+            "cie_exist",
+            "affordab_1",
+            "affordable",
+            "units",
+            "tcocfc_uni",
+            "legalizati",
+            "retnet",
+            "mips",
+            "total_gsf",
+            "unitsnet",
+            "adu",
+            "restaura_1",
+            "mednet",
+            "tco_unit",
+            "visit_exis",
+            "year_",
+            "restaurant",
+            "med_exist",
+            "sd",
+            "entitled"
+        ]
+    },
+    "j4dm-6zyr": {
+        "domain": "data.sfgov.org",
+        "name": "SFMTA Projects - Points",
+        "t_attrs": [],
+        "s_attrs": [
+            "shape"
+        ],
+        "num_columns": []
+    },
+    "f7r8-58gw": {
+        "domain": "data.sfgov.org",
+        "name": "[DEPRECATED] SF Development Pipeline 2022 Q1",
+        "t_attrs": [
+            "tcocfc_date"
+        ],
+        "s_attrs": [
+            "lat_long"
+        ],
+        "num_columns": [
+            "hotel_room_net",
+            "retnet",
+            "ret",
+            "mips",
+            "cienet",
+            "pipeline_units",
+            "unitsnet",
+            "sd22",
+            "hotel_room_prop",
+            "visitnet",
+            "visit",
+            "visit_exist",
+            "ret_exist",
+            "pdrnet",
+            "pdr",
+            "pdr_exist",
+            "mipsnet",
+            "mips_exist",
+            "mednet",
+            "med",
+            "med_exist",
+            "cie",
+            "cie_exist",
+            "net_gsf",
+            "total_gsf",
+            "affordablenet",
+            "tcocfc_units",
+            "units",
+            "hotel_room_exist"
+        ]
+    },
+    "pyxv-n29e": {
+        "domain": "data.sfgov.org",
+        "name": "Mayor's Office of Housing and Community Development Affordable Housing Portfolio",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "manager_units_rollup",
+            "losp_units_rollup",
+            "homeless_units_rollup",
+            "_5_bedroom_units_rollup",
+            "_4_bedroom_units_rollup",
+            "_3_bedroom_units_rollup",
+            "_2_bedroom_units_rollup",
+            "_1_bedroom_units_rollup",
+            "studios_units_rollup",
+            "sro_units_rollup",
+            "vash_units_rollup",
+            "tay_units_rollup",
+            "senior_units_rollup",
+            "market_rate_units_rollup"
+        ]
+    },
+    "7ksu-vf3n": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2022 Q4",
+        "t_attrs": [
+            "tcocfc_date"
+        ],
+        "s_attrs": [
+            "lat_long"
+        ],
+        "num_columns": [
+            "hotel_room_net",
+            "hotel_room_prop",
+            "hotel_room_exist",
+            "visit",
+            "visit_exist",
+            "retnet",
+            "ret",
+            "ret_exist",
+            "pdrnet",
+            "pdr_exist",
+            "mipsnet",
+            "mips",
+            "mips_exist",
+            "med_exist",
+            "cienet",
+            "cie",
+            "net_gsf",
+            "total_gsf",
+            "affordablenet",
+            "pipeline_units",
+            "unitsnet",
+            "tcocfc_units",
+            "units",
+            "visitnet",
+            "mednet",
+            "cie_exist",
+            "pdr",
+            "med"
+        ]
+    },
+    "9itm-3rmi": {
+        "domain": "data.sfgov.org",
+        "name": "Building Permits with Permit Contacts",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "prmp-bj7n": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2021 Q1",
+        "t_attrs": [
+            "tco_date"
+        ],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "hotel_ro_2",
+            "visitnet",
+            "visit",
+            "ret_exist",
+            "pdrnet",
+            "pdr_exist",
+            "mipsnet",
+            "cienet",
+            "cie",
+            "net_gsf",
+            "pipeline_u",
+            "units",
+            "sd",
+            "tcocfc_uni",
+            "hotel_ro_1",
+            "hotel_room",
+            "retnet",
+            "pdr",
+            "med",
+            "unitsnet",
+            "visit_exis",
+            "ret",
+            "mips",
+            "mips_exist",
+            "total_gsf",
+            "affordab_1",
+            "affordable",
+            "tco_unit",
+            "entitled",
+            "mednet",
+            "restaurant",
+            "legalizati",
+            "adu",
+            "restaura_1",
+            "year_",
+            "med_exist",
+            "cie_exist"
+        ]
+    },
+    "ywks-3zda": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2022 Q3",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "lat_long"
+        ],
+        "num_columns": [
+            "visitnet",
+            "units",
+            "tcocfc_units",
+            "unitsnet",
+            "pipeline_units",
+            "affordablenet",
+            "total_gsf",
+            "net_gsf",
+            "cie_exist",
+            "cie",
+            "cienet",
+            "med_exist",
+            "med",
+            "mednet",
+            "mips_exist",
+            "mips",
+            "mipsnet",
+            "pdr_exist",
+            "pdr",
+            "pdrnet",
+            "ret_exist",
+            "ret",
+            "retnet",
+            "visit_exist",
+            "visit",
+            "hotel_room_exist",
+            "hotel_room_prop",
+            "hotel_room_net"
+        ]
+    },
+    "7yx4-u2y9": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2019 Q3",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "mips",
+            "pdr_exist",
+            "pdr",
+            "year_",
+            "entitled",
+            "cie",
+            "mipsnet",
+            "cienet",
+            "ret_exist",
+            "retnet",
+            "restaurantnet",
+            "visitnet",
+            "net_gsf",
+            "hotel_room_net",
+            "hotel_room_exist",
+            "visit",
+            "affordable",
+            "sd",
+            "hotel_room_prop",
+            "ret",
+            "pdrnet",
+            "visit_exist",
+            "med_exist",
+            "mednet",
+            "med",
+            "cie_exist",
+            "mips_exist",
+            "units",
+            "unitsnet",
+            "total_gsf"
+        ]
+    },
+    "ybkd-mgtp": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2022 Q1 [REVISED]",
+        "t_attrs": [
+            "bestdate"
+        ],
+        "s_attrs": [
+            "lat_long"
+        ],
+        "num_columns": [
+            "total_gsf",
+            "net_gsf",
+            "cie",
+            "cienet",
+            "med_exist",
+            "mips_exist",
+            "hotel_room_net",
+            "aff_projection",
+            "affordablenet",
+            "hotel_room_exist",
+            "hotel_room_prop",
+            "pipeline_units",
+            "unitsnet",
+            "tcocfc_units",
+            "units",
+            "mednet",
+            "mips",
+            "visitnet",
+            "visit",
+            "visit_exist",
+            "retnet",
+            "ret",
+            "ret_exist",
+            "pdrnet",
+            "pdr",
+            "pdr_exist",
+            "mipsnet",
+            "cie_exist",
+            "med",
+            "sd22"
+        ]
+    },
+    "qxw2-ncq3": {
+        "domain": "data.sfgov.org",
+        "name": "Aircraft Noise Climates",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "uptime",
+            "total_cnel",
+            "sfo_cnel",
+            "aircraft_cnel_aneem",
+            "community_cnel",
+            "community_leq_count",
+            "aircraft_cnel",
+            "aircraft_leq_count",
+            "non_sfo_cnel",
+            "non_sfo_leq_count",
+            "sfo_leq_count",
+            "elevation"
+        ]
+    },
+    "86e8-rfem": {
+        "domain": "data.sfgov.org",
+        "name": "Entertainment Commission's Places of Entertainment",
+        "t_attrs": [
+            "data_loaded_at"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": []
+    },
+    "kz7a-chgk": {
+        "domain": "data.sfgov.org",
+        "name": "SF Development Pipeline 2023 Q3",
+        "t_attrs": [
+            "approved_date_planning"
+        ],
+        "s_attrs": [
+            "lat_long"
+        ],
+        "num_columns": [
+            "mednet",
+            "cienet",
+            "cie_exist",
+            "mips_exist",
+            "mips",
+            "mipsnet",
+            "pdr_exist",
+            "pdr",
+            "bmr_units_moderate",
+            "pdrnet",
+            "ret_exist",
+            "ret",
+            "retnet",
+            "visit_exist",
+            "visit",
+            "visitnet",
+            "sd22",
+            "bmr_units_low",
+            "cie",
+            "med_exist",
+            "med",
+            "bmr_units_very_low",
+            "bmr_units_ex_low",
+            "pipeline_affordable_units",
+            "completed_new_units",
+            "net_pipeline_units",
+            "demo_units",
+            "proposed_units",
+            "exisitng_units",
+            "new_pipeline_units"
+        ]
+    },
+    "8xik-8ycu": {
+        "domain": "data.sfgov.org",
+        "name": "MTA.meteredstreetblocks_data",
+        "t_attrs": [
+            "last_edited_date"
+        ],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "cnn",
+            "yr2013_pm",
+            "yr2016_pm",
+            "yr2015_pm",
+            "yr2011_pm",
+            "yr2007_pm",
+            "yr2009_pm",
+            "yr2014_pm",
+            "yr2008_pm",
+            "yr2017_pm",
+            "yr2006_pm",
+            "yr2011padj",
+            "yr2010_pm"
+        ]
+    },
+    "veef-x49p": {
+        "domain": "data.sfgov.org",
+        "name": "street intersections",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "cnn"
+        ]
+    },
+    "qqn9-j3rz": {
+        "domain": "data.sfgov.org",
+        "name": "MTA.equitystrategy_nhoods_data",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "units",
+            "cnn",
+            "workorder"
+        ]
+    },
+    "usjh-7855": {
+        "domain": "data.sfgov.org",
+        "name": "MTA.bikewaynetwork_pointfeatures_data",
+        "t_attrs": [
+            "created_date"
+        ],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": []
+    },
+    "mizu-nf6z": {
+        "domain": "data.sfgov.org",
+        "name": "MTA.offstreetparking_data",
+        "t_attrs": [
+            "ver_date_1"
+        ],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "dailymax_1",
+            "regcap_1",
+            "satclose",
+            "twohr_1",
+            "valetcap_1",
+            "fourhr_1",
+            "thursopen",
+            "assignmt_1",
+            "monclose",
+            "twelvehr_1",
+            "regmonth_1",
+            "assessor_1",
+            "thursclose",
+            "earlybird1",
+            "onehr_1",
+            "sunopen",
+            "earlybird2",
+            "early1star",
+            "wedopen",
+            "wedclose",
+            "mc_cap_1",
+            "satopen",
+            "tuesopen",
+            "sunclose",
+            "dailyfla_1",
+            "friopen",
+            "early2end",
+            "threehr_1",
+            "monopen",
+            "tuesclose",
+            "early1end",
+            "lotgone",
+            "eveflat_1",
+            "friclosed",
+            "early2star"
+        ]
+    },
+    "qmxt-r2x4": {
+        "domain": "data.sfgov.org",
+        "name": "MTA.parkingmanagementdistricts_data",
+        "t_attrs": [
+            "created_date"
+        ],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "count",
+            "cnn",
+            "install_yr",
+            "install_mo"
+        ]
+    }
+}

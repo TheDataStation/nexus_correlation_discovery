@@ -1,0 +1,2291 @@
+[
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety Permit Information Old",
+        "tbl_id": "yv23-pmwf",
+        "t_attrs": [
+            "license_expiration_date",
+            "issue_date",
+            "status_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "valuation",
+            "_of_accessory_dwelling_units",
+            "of_stories"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Listing of Active Businesses",
+        "tbl_id": "6rrh-rzua",
+        "t_attrs": [
+            "location_start_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Los Angeles International Airport (LAX) - Parking Lots Current Status",
+        "tbl_id": "dik5-hwp6",
+        "t_attrs": [
+            "dataexportdatetime"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Crime Data from 2020 to Present",
+        "tbl_id": "2nrs-mtv8",
+        "t_attrs": [
+            "date_rptd",
+            "date_occ"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "part_1_2",
+            "premis_cd"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "2014 Registered Foreclosure Properties",
+        "tbl_id": "fdwe-pgcu",
+        "t_attrs": [
+            "registereddate"
+        ],
+        "s_attrs": [
+            "property_location"
+        ],
+        "num_columns": [
+            "cd",
+            "apn"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Arrest Data from 2010 to 2019",
+        "tbl_id": "yru6-6re4",
+        "t_attrs": [
+            "bkg_date",
+            "arst_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Crime Data from 2010 to 2019",
+        "tbl_id": "63jg-8b9z",
+        "t_attrs": [
+            "date_occ",
+            "date_rptd"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "part_1_2"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Traffic Collision Data from 2010 to Present",
+        "tbl_id": "d5tf-ez2w",
+        "t_attrs": [
+            "date_rptd",
+            "date_occ"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Immigration Workshops",
+        "tbl_id": "2in3-5b7t",
+        "t_attrs": [
+            "date_of_event"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety Certificate of Occupancy",
+        "tbl_id": "3f9m-afei",
+        "t_attrs": [
+            "license_expiration_date",
+            "issue_date",
+            "cofo_issue_date",
+            "status_date"
+        ],
+        "s_attrs": [
+            "latitude_longitude"
+        ],
+        "num_columns": [
+            "valuation",
+            "of_stories"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Listing of All Businesses",
+        "tbl_id": "r4uk-afju",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "naics"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Vacant Building Abatement",
+        "tbl_id": "q3ak-s5hy",
+        "t_attrs": [
+            "abate_effective"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "ARCHIVED: Parking Citations",
+        "tbl_id": "wjz9-h9np",
+        "t_attrs": [
+            "issue_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fine_amount",
+            "agency",
+            "issue_time"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "RAMP Open Bid Opportunities",
+        "tbl_id": "hf3r-utnq",
+        "t_attrs": [
+            "closedate",
+            "bidpost"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LADOT Traffic Counts Summary",
+        "tbl_id": "94wu-3ps3",
+        "t_attrs": [
+            "count_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "s_b",
+            "w_b",
+            "n_b",
+            "total",
+            "e_b"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2020",
+        "tbl_id": "84iq-i2r6",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Los Angeles International Airport - Passenger Traffic By Terminal",
+        "tbl_id": "g3qu-7q2u",
+        "t_attrs": [
+            "reportperiod",
+            "dataextractdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "passenger_count"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2019",
+        "tbl_id": "r4ka-x5je",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety Code Enforcement Case",
+        "tbl_id": "2uz8-3tj3",
+        "t_attrs": [
+            "date_case_generated",
+            "date_case_closed"
+        ],
+        "s_attrs": [
+            "latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Vehicle and Pedestrian Stop Data 2010 to June 30th, 2018",
+        "tbl_id": "ci25-wgt7",
+        "t_attrs": [
+            "stop_dt"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Arrest Data from 2020 to Present",
+        "tbl_id": "amvf-fr72",
+        "t_attrs": [
+            "bkg_date",
+            "arst_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "What's Happening LA Calendar Dataset - ARCHIVED",
+        "tbl_id": "d3th-bqdk",
+        "t_attrs": [
+            "event_date_time_ends",
+            "event_date_time_start"
+        ],
+        "s_attrs": [
+            "location_address"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LADOT Parking Meter Occupancy",
+        "tbl_id": "e7h6-4a3e",
+        "t_attrs": [
+            "eventtime"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Los Angeles International Airport (LAX) - Closures",
+        "tbl_id": "63kx-necw",
+        "t_attrs": [
+            "dataexportdatetime",
+            "expireddate",
+            "constructionstartdate"
+        ],
+        "s_attrs": [
+            "geo_location"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Animal Services Intake Data",
+        "tbl_id": "8cmr-fbcu",
+        "t_attrs": [
+            "intake_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LADWP Water Supply in Acre Feet",
+        "tbl_id": "qyvz-diiw",
+        "t_attrs": [
+            "date_value"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "recycled_water_of_total",
+            "recycled_water",
+            "local_groundwater",
+            "local_groundwater_of_total",
+            "la_aqueduct",
+            "mwd",
+            "la_aqueduct_of_total",
+            "mwd_of_toal",
+            "total_acre_feet"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LADOT Metered Parking Inventory & Policies",
+        "tbl_id": "s49e-q6j2",
+        "t_attrs": [],
+        "s_attrs": [
+            "latlng"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2014",
+        "tbl_id": "mgue-vbsx",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Registered City Lobbyists",
+        "tbl_id": "j4zm-9kqu",
+        "t_attrs": [
+            "date_registered",
+            "date_terminated",
+            "date_qualified"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2018",
+        "tbl_id": "nayp-w2tw",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety Inspections",
+        "tbl_id": "9w5z-rg2h",
+        "t_attrs": [
+            "inspection_date"
+        ],
+        "s_attrs": [
+            "lat_lon"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Department of Recreation and Parks' Facility and Park Information",
+        "tbl_id": "ax8j-dhzm",
+        "t_attrs": [],
+        "s_attrs": [
+            "city"
+        ],
+        "num_columns": [
+            "geolong",
+            "geolat",
+            "stnumber"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Bureau of Engineering Permit Information",
+        "tbl_id": "j7mw-thyc",
+        "t_attrs": [
+            "permitissuedate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "refno"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "311 Call Center Service Request Data - Archived 2013-2014",
+        "tbl_id": "bpyg-ytsg",
+        "t_attrs": [
+            "date_value",
+            "date_name"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "_311_avg_call_wait_time_change_yoy_seconds",
+            "_311_avg_call_wait_times_seconds",
+            "of_311_requests_by_app_web",
+            "total_311_contacts",
+            "total_311_requests_using_app_web"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LA County COVID Cases",
+        "tbl_id": "jsff-uc6b",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "state_deaths",
+            "deaths",
+            "new_state_cases",
+            "new_state_deaths",
+            "new_cases",
+            "cases",
+            "new_deaths",
+            "state_cases"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Museum Visitors",
+        "tbl_id": "trxm-jn3c",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "biscailuz_gallery",
+            "visitor_center_avila_adobe",
+            "gateway_to_nature_center",
+            "avila_adobe",
+            "firehouse_museum",
+            "pico_house",
+            "iamla",
+            "chinese_american_museum",
+            "museum_of_social_justice",
+            "hellman_quon",
+            "america_tropical_interpretive_center"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2017",
+        "tbl_id": "ryvm-a59m",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety Code Enforcement Case (Closed)",
+        "tbl_id": "q3qu-98vb",
+        "t_attrs": [
+            "date_case_closed",
+            "date_case_gen"
+        ],
+        "s_attrs": [
+            "lat_lon"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD - Annual High Level Metrics - GOVSTAT - Archived",
+        "tbl_id": "t6kt-2yic",
+        "t_attrs": [
+            "final_report_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "non_emergency_calls_answered_within_20_seconds",
+            "_911_calls_answered_within_10_seconds",
+            "gang_crimes",
+            "part_1_crimes",
+            "collisions",
+            "sworn_officers"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Library Branches",
+        "tbl_id": "a4nt-4gca",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Restaurant and Market Health Inspections",
+        "tbl_id": "29fd-3paw",
+        "t_attrs": [
+            "activity_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "score",
+            "program_element_pe"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2016",
+        "tbl_id": "xwgr-xw5q",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAHD Affordable Housing Projects List (2003 to Present)",
+        "tbl_id": "mymu-zi3s",
+        "t_attrs": [
+            "date_funded"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "jobs",
+            "sh_units_per_site",
+            "tax_exempt_conduit_bond",
+            "tdc",
+            "leverage",
+            "project_total_units",
+            "site_units",
+            "site_cd",
+            "apn"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Library Monthly Stats",
+        "tbl_id": "m4ev-cuzz",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "of_attendees_at_children_s_and_teen_programming",
+            "total_computer_usage_wireless_pc_sessions",
+            "total_cardholders",
+            "total_emedia_circulation",
+            "total_program_attendees",
+            "new_cardholders",
+            "total_library_visitors"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Clients of Registered Lobbying Firms",
+        "tbl_id": "9z5d-hgrh",
+        "t_attrs": [
+            "date_registered",
+            "date_terminated",
+            "date_representation_began"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety Temporary Special Event (TSE) Permits",
+        "tbl_id": "8spw-3fhx",
+        "t_attrs": [],
+        "s_attrs": [
+            "lat_lon"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Housing & Community Investment Service Locations",
+        "tbl_id": "29cn-rph9",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Multipurpose Senior Center Locations",
+        "tbl_id": "qf8m-dzta",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "index"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2022",
+        "tbl_id": "u6ri-98iw",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2021",
+        "tbl_id": "cibt-wiru",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Los Angeles International Airport - Passenger Count By Carrier Type",
+        "tbl_id": "d3a2-7j6v",
+        "t_attrs": [
+            "dataextractdate",
+            "reportperiod"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "passenger_count"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety Customer Service Request",
+        "tbl_id": "bsvt-chkv",
+        "t_attrs": [
+            "due_date",
+            "date_received",
+            "date_closed"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Metro Bike Share Trip Data",
+        "tbl_id": "sii9-rjps",
+        "t_attrs": [],
+        "s_attrs": [
+            "ending_lat_long",
+            "starting_lat_long"
+        ],
+        "num_columns": [
+            "plan_duration",
+            "duration"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Public Housing Sites Managed HACLA 2014",
+        "tbl_id": "vxhy-r447",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "rate_of_occupied_units",
+            "actual_units",
+            "acres",
+            "occupied_units"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2015",
+        "tbl_id": "tss8-455b",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Energy and Water Use - Municipal Buildings",
+        "tbl_id": "8m62-bye6",
+        "t_attrs": [
+            "year_ending"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "site_eui_kbtu_ft",
+            "source_eui_kbtu_ft",
+            "total_ghg_emissions_intensity_kgco2e_ft",
+            "direct_ghg_emissions_metric_tons_co2e",
+            "indirect_ghg_emissions_metric_tons_co2e",
+            "property_gfa___self_reported_ft",
+            "water_use_all_water_sources_kgal",
+            "total_ghg_emissions_metric_tons_co2e",
+            "energy_star_score",
+            "indoor_water_use_all_water_sources_kgal"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Recently Constructed Bus Pads and Landings",
+        "tbl_id": "msv5-mj8x",
+        "t_attrs": [
+            "datecompletedp",
+            "datecompletedl"
+        ],
+        "s_attrs": [
+            "intersection"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "2019 Registered Foreclosure Properties",
+        "tbl_id": "rsxb-x48z",
+        "t_attrs": [
+            "registered_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "apn",
+            "propertyzip"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LADWP Solar Incentive Program",
+        "tbl_id": "2yrw-q8tw",
+        "t_attrs": [
+            "month_year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "netenergymetering_installed_capacity_kw"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Restaurant and Market Health Violations",
+        "tbl_id": "ckya-qgys",
+        "t_attrs": [
+            "activity_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "score",
+            "points",
+            "program_element_pe"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Emergency Management Department - Community Outreach - First Quarter 2014",
+        "tbl_id": "6xuk-a67v",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "meetings_held",
+            "materials_distributed",
+            "antendees"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety Customer Service Request (Closed)",
+        "tbl_id": "8qjh-sbs9",
+        "t_attrs": [
+            "date_closed",
+            "date_received",
+            "due_date"
+        ],
+        "s_attrs": [
+            "latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "2016 Registered Foreclosure Properties",
+        "tbl_id": "4sbs-dcfn",
+        "t_attrs": [
+            "registereddate"
+        ],
+        "s_attrs": [
+            "propertyaddress"
+        ],
+        "num_columns": [
+            "apn"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Los Angeles International Airport - Terminal Concession Locations",
+        "tbl_id": "j6u4-c4yh",
+        "t_attrs": [
+            "processdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "secuirtycheckpoint"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Events from LA Festival Guide 2014",
+        "tbl_id": "acy8-72w9",
+        "t_attrs": [],
+        "s_attrs": [
+            "event_location"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Los Angeles International Airport - Flight Operations By Month",
+        "tbl_id": "ajiv-uc63",
+        "t_attrs": [
+            "reportperiod",
+            "dataextractdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "flightopscount"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LASAN:  Solid Resources Abandoned Waste Collection Activity",
+        "tbl_id": "97ra-aqza",
+        "t_attrs": [
+            "completion_date",
+            "scheduled_date",
+            "creation_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Emergency Management Department - Responder Training - Second Quarter 2014",
+        "tbl_id": "mbhz-6it5",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "antendees"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Emergency Management Department \u2013 Community Outreach - Second Quarter 2014",
+        "tbl_id": "4k67-bwgi",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "antendees",
+            "materials_distributed",
+            "meetings_held"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Street Tree Inventory - 1990s",
+        "tbl_id": "vt5t-mscf",
+        "t_attrs": [
+            "inv_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "blsd",
+            "grow",
+            "tg_pg",
+            "cd",
+            "y_original",
+            "x_original",
+            "drgycoord",
+            "spp",
+            "locunit",
+            "blsdval",
+            "un",
+            "des_spp1",
+            "drgxcoord",
+            "gisno",
+            "locsite",
+            "tr_rec"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Vaccine demographic data",
+        "tbl_id": "iv7a-6rrq",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_partially_vaccinated",
+            "cumulative_unvax_5plus_pop",
+            "partially_vaccinated",
+            "cumulative_bivalent_booster_recip_count",
+            "cumulative_unvax_12plus_pop",
+            "cumulative_unvax_total_pop",
+            "at_least_one_dose",
+            "fully_vaccinated",
+            "est_age_5plus_pop",
+            "cumulative_booster_recip_count",
+            "est_population",
+            "bivalent_booster_recip_count",
+            "bivalent_booster_eligible_population",
+            "cumulative_fully_vaccinated",
+            "cumulative_at_least_one_dose"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAcity.org Website Traffic",
+        "tbl_id": "822f-gjp4",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "sessions",
+            "bounce_rate",
+            "users"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "2015 Registered Foreclosure Properties",
+        "tbl_id": "f37w-ye7d",
+        "t_attrs": [
+            "registereddate"
+        ],
+        "s_attrs": [
+            "propertyaddress"
+        ],
+        "num_columns": [
+            "propertyzip",
+            "apn"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Emergency Management Department - Community Outreach - 1st Quarter 2015",
+        "tbl_id": "iz9s-qc6r",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "meetings_held",
+            "antendees",
+            "materials_distributed"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "DOT- Traffic Signal Trouble Call Responses Within One Hour",
+        "tbl_id": "rjdk-rz7f",
+        "t_attrs": [
+            "date_value"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percentage_of_calls"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Cultural Centers, Theaters, Historic Sites, and Galleries: Location and Contact Information",
+        "tbl_id": "vdjf-if28",
+        "t_attrs": [],
+        "s_attrs": [
+            "address"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Election 2014 August LAUSD District 1 Polling Place List",
+        "tbl_id": "aeva-nfqz",
+        "t_attrs": [],
+        "s_attrs": [
+            "polling_place_address"
+        ],
+        "num_columns": [
+            "ballot_group"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Building Permits Issued from 2020 to Present (N)",
+        "tbl_id": "pi9x-tg5x",
+        "t_attrs": [
+            "status_date",
+            "issue_date",
+            "submitted_date",
+            "refresh_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cd"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Election 2013 March Primary Polling Place List",
+        "tbl_id": "hkig-2qjq",
+        "t_attrs": [],
+        "s_attrs": [
+            "polling_place_address"
+        ],
+        "num_columns": [
+            "council_distrct",
+            "ballot_group"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "2018 Registered Foreclosure Properties",
+        "tbl_id": "e6cg-sqdy",
+        "t_attrs": [
+            "registereddate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "apn",
+            "propertyzip"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD RIPA (AB 953) STOP Person Detail from 7/1/2018 to Present",
+        "tbl_id": "bwdf-y5fe",
+        "t_attrs": [
+            "stop_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Arts Ed Profile",
+        "tbl_id": "f232-7zb7",
+        "t_attrs": [
+            "cde_closed_school"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "est_fte_rec",
+            "esm_fte_rec",
+            "cde_12th_grade_media_arts_1",
+            "cde_11th_grade_media_arts_1",
+            "cde_10th_grade_media_arts_1",
+            "cde_9th_grade_media_arts_1",
+            "cde_12th_grade_visual_arts_1",
+            "cde_11th_grade_visual_arts_1",
+            "cde_10th_grade_visual_arts_1",
+            "cde_11th_grade_drama_courses",
+            "cde_10th_grade_drama_courses",
+            "cde_12th_grade_music_courses",
+            "cde_11th_grade_music_courses",
+            "cde_10th_grade_music_courses",
+            "cde_9th_grade_music_courses",
+            "cde_11th_grade_dance_courses",
+            "cde_10th_grade_dance_courses",
+            "cde_12th_grade_media_arts",
+            "cde_11th_grade_media_arts",
+            "cde_10th_grade_media_arts",
+            "cde_12th_grade_visual_arts",
+            "cde_11th_grade_visual_arts",
+            "cde_10th_grade_visual_arts",
+            "cde_9th_grade_visual_arts",
+            "cde_12th_grade_drama",
+            "cde_11th_grade_drama",
+            "cde_10th_grade_drama",
+            "cde_9th_grade_drama_enrollment",
+            "cde_12th_grade_music",
+            "cde_11th_grade_music",
+            "cde_10th_grade_music",
+            "cde_12th_grade_dance",
+            "cde_11th_grade_dance",
+            "cde_10th_grade_dance",
+            "cde_estimatedfte_sum_mediaarts",
+            "cde_estimatedfte_sum_drama",
+            "cde_estimatedfte_sum_dance",
+            "cde_media_arts_course_count",
+            "cde_visual_arts_course_count",
+            "cde_drama_course_count",
+            "cde_music_course_count",
+            "cde_dance_course_count",
+            "cde_twoormore_pct",
+            "cde_whitenh_pct",
+            "cde_afamnh_pct",
+            "cde_latino_pct",
+            "cde_filipino_pct",
+            "cde_pi_pct",
+            "cde_asian_pct",
+            "cde_aioran_pct",
+            "cde_freereducedmealsschool",
+            "cde_englishlearnersschool",
+            "schoolenrollment",
+            "esma_fte_rec",
+            "cde_9th_grade_music_enrollment",
+            "esd_fte_rec",
+            "cde_12th_grade_drama_courses",
+            "cde_9th_grade_media_arts",
+            "cde_maxgrade",
+            "cde_9th_grade_dance_courses",
+            "cde_9th_grade_dance_enrollment",
+            "cde_9th_grade_visual_arts_1",
+            "cde_12th_grade_dance_courses",
+            "cde_9th_grade_drama_courses",
+            "esva_fte_rec"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "El Pueblo Tours",
+        "tbl_id": "diev-46hg",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "DWP - Quarterly Cumulative In- Basin Solar Installments",
+        "tbl_id": "4g57-9wbx",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_cumulative_in_basin_solar_kw",
+            "quarterly_in_basin_solar_installed_kw"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Los Angeles International Airport - Air Cargo Volume",
+        "tbl_id": "tx7r-x3hp",
+        "t_attrs": [
+            "reportperiod",
+            "dataextractdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "aircargotons"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2010",
+        "tbl_id": "iy4q-t9vr",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Customer Survey Responses",
+        "tbl_id": "uj6a-ab47",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "enjoyed_the_visit",
+            "purchased_an_item_on_olvera_st",
+            "came_for_a_specific_event_exhibit",
+            "knew_that_el_pueblo_offers_free_tours",
+            "visited_a_restaurant",
+            "out_of_state_visitors",
+            "would_recommend_el_pueblo_to_a_friend"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Neighborhood-level COVID data",
+        "tbl_id": "fvye-93wd",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cases_per100k",
+            "new_cases",
+            "deaths",
+            "cases",
+            "population",
+            "cases_per100k_avg7",
+            "new_deaths_avg7",
+            "new_cases_avg7",
+            "new_deaths",
+            "cases_avg7",
+            "deaths_per100k",
+            "deaths_per100k_avg7",
+            "deaths_avg7"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Water Capture by Method",
+        "tbl_id": "xe35-4wsy",
+        "t_attrs": [
+            "timestamp"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "rain_in",
+            "green_streets_and_alleys_capture",
+            "barrels_and_cisterns_capture",
+            "total_capture",
+            "gi_capture",
+            "spreading_capture"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Location of FY 2014 Curb Ramps Installed",
+        "tbl_id": "cu97-7vhd",
+        "t_attrs": [
+            "mid_block_alley_date_completed",
+            "sw_date_completed",
+            "se_date_completed",
+            "ne_date_completed",
+            "nw_date_completed"
+        ],
+        "s_attrs": [
+            "to_latlon",
+            "from_latlon"
+        ],
+        "num_columns": [
+            "ne_quantity_constructed",
+            "se_quantity_constructed",
+            "nw_quantity_constructed",
+            "sw_quantity_constructed"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Bureau Of Street Lighting (BSL) - Performance Metrics",
+        "tbl_id": "5y5q-d9ew",
+        "t_attrs": [
+            "date_value"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "of_streetlights_operating_annual_fy",
+            "projected_cumulative_of_street_lights_converted_to_led_annual_fy",
+            "cumulative_of_street_lights_converted_to_led_annual_fy",
+            "street_lighting_maintenance_assessment_fund_revenue_in_millions_annual_fy",
+            "projected_of_streetlights_operating_annual_fy",
+            "projected_street_lighting_maintenance_assessment_fund_revenue_in_millions_annual_fy"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LASAN:  S.A.F.E. (Solvents, Automotive, Flammables, E-Waste) Centers",
+        "tbl_id": "t8kf-2y96",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Vaccines by California County",
+        "tbl_id": "rpp7-mevy",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "partially_vaccinated",
+            "jj_doses",
+            "cumulative_total_doses",
+            "cumulative_pfizer_doses",
+            "cumulative_jj_doses",
+            "cumulative_fully_vaccinated",
+            "booster_recip_count",
+            "bivalent_booster_recip_count",
+            "bivalent_booster_eligible_population",
+            "county_pop2020",
+            "cumulative_bivalent_booster_recip_count",
+            "cumulative_booster_recip_count",
+            "cumulative_at_least_one_dose",
+            "at_least_one_dose",
+            "fully_vaccinated",
+            "total_partially_vaccinated",
+            "cumulative_moderna_doses",
+            "moderna_doses",
+            "pfizer_doses",
+            "total_doses"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Port of Los Angeles - ADP Project",
+        "tbl_id": "s5jy-jcce",
+        "t_attrs": [
+            "reporttoapplicant",
+            "cdpsentdatetodivsions",
+            "endofappealperioddate",
+            "publichearingdate",
+            "cdpreceiveddate",
+            "cdpsentdatetoapplicant",
+            "adpcompletiondate",
+            "engpermitreceiveddate",
+            "emdreceiveddate",
+            "adpsenttodivisiondate",
+            "bhcapprovaldate",
+            "adpreceiveddate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "appealablecdp",
+            "riskanalysis"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Port of Los Angeles - TEU Counts Monthly And Calendar YTD",
+        "tbl_id": "tsuv-4rgh",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "change_total_teus_cytd",
+            "cytd_total_teus",
+            "monthly_total_teus"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "2020 Registered Foreclosure Properties",
+        "tbl_id": "kde4-k7yx",
+        "t_attrs": [
+            "registered_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "propertyzip",
+            "apn"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2023",
+        "tbl_id": "uq7m-rynj",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Cultural & Special Events at El Pueblo Historical Monument",
+        "tbl_id": "8sbu-dvfy",
+        "t_attrs": [
+            "date_of_event"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "DOT - Total Miles Of Bicycle Lanes And Paths Chart",
+        "tbl_id": "pnat-cnpj",
+        "t_attrs": [
+            "date_value"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_miles_of_bicycle_lanes_and_paths"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Open Data Website Traffic",
+        "tbl_id": "d4kt-8j3n",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "geohub_bounce_rate",
+            "geohub_sessions",
+            "geohub_users",
+            "socrata_bounce_rate",
+            "socrata_sessions",
+            "socrata_users",
+            "combined_users"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Behested Payment Reports",
+        "tbl_id": "ybqa-gmkn",
+        "t_attrs": [
+            "date_filed",
+            "pay_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pay_amt"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Mayor's ED No.5 GPCD Target Progress",
+        "tbl_id": "ubph-b4it",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2012",
+        "tbl_id": "i7pm-cnmm",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Renewable Projects Since 2003",
+        "tbl_id": "xuce-e6ip",
+        "t_attrs": [
+            "ownership_option_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "la_s_share_of_gwh",
+            "la_s_share_of_mw"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD RIPA (AB 953) STOP Incident Details from 7/1/2018 to Present",
+        "tbl_id": "5gp9-8nrb",
+        "t_attrs": [
+            "stop_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2013",
+        "tbl_id": "urhh-yf63",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Work Orders Completed: El Pueblo Historical Monument",
+        "tbl_id": "nsdh-74d5",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "work_orders_completed",
+            "work_order_submitted"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Great Streets Pedestrian Survey 2015",
+        "tbl_id": "6yv9-t9gq",
+        "t_attrs": [
+            "surveyed_end_date",
+            "surveyed_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Building Permits Submitted from 2020 to Present (N)",
+        "tbl_id": "gwh9-jnip",
+        "t_attrs": [
+            "issue_date",
+            "status_date",
+            "submitted_date",
+            "refresh_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cd"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Rain Barrels And Cisterns Issued Through LADWP Rebate Program",
+        "tbl_id": "a5vt-xsyi",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "small_cisterns",
+            "rain_barrels",
+            "large_cisterns",
+            "medium_cisterns"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "BSL- Percent Of Streetlight Outages Repaired Within 10 Business Days",
+        "tbl_id": "fc3u-86zh",
+        "t_attrs": [
+            "date_value"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Eastern Sierra Overall Snow Pack",
+        "tbl_id": "4a8d-4327",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "inches_water_content"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Total Bills Vs Estimated Bill at LADWP",
+        "tbl_id": "svt7-r3ww",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Rental Contracts Completed at El Pueblo Historical Monument",
+        "tbl_id": "t5zm-4d79",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_contracts"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "City Campaign Contributions (and Misc Increases to Cash)",
+        "tbl_id": "m6g2-gc6c",
+        "t_attrs": [
+            "per_beg_date",
+            "con_date",
+            "election_date",
+            "per_end_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "con_amount_pd_forgiven",
+            "con_amount"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "POLA - Emissions From Port Operations - NOx  SOx  DPM",
+        "tbl_id": "k98w-s24w",
+        "t_attrs": [
+            "date_value"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "nox",
+            "dpm",
+            "sox"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "BSL - Cumulative Number Of Streetlights Converted To LED",
+        "tbl_id": "pwhu-m93q",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cumulative_of_streetlights_converted_to_led"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "2021 Registered Foreclosure Properties",
+        "tbl_id": "spg4-9ux7",
+        "t_attrs": [
+            "registered_date"
+        ],
+        "s_attrs": [
+            "property_on_map"
+        ],
+        "num_columns": [
+            "propertyzip",
+            "apn"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Arts District Pedestrian and Bike Counts - LA CoMotion",
+        "tbl_id": "mbz9-j2zk",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "bike_count",
+            "ped_count"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAPD Calls for Service 2011",
+        "tbl_id": "4tmc-7r6g",
+        "t_attrs": [
+            "dispatch_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Election 2013 May General Polling Place List",
+        "tbl_id": "rnxp-tz2v",
+        "t_attrs": [],
+        "s_attrs": [
+            "polling_place_address"
+        ],
+        "num_columns": [
+            "voters",
+            "sample_ballot_group",
+            "ballot_group"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "2017 Registered Foreclosure Properties",
+        "tbl_id": "r53k-qp8f",
+        "t_attrs": [
+            "registered_date"
+        ],
+        "s_attrs": [
+            "propertyonmap"
+        ],
+        "num_columns": [
+            "propertyzip",
+            "apn"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Electrical Permits Issued from 2020 to Present (N)",
+        "tbl_id": "ysqd-apz7",
+        "t_attrs": [
+            "status_date",
+            "submitted_date",
+            "refresh_time",
+            "issue_date",
+            "cofo_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "DWP - Renewables Percentage  Annual",
+        "tbl_id": "95j2-9tdv",
+        "t_attrs": [
+            "date_value"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percentage_of_energy_porftolio_from_renewable_sources"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "ITA- Monthly Downloads My LA 311 App",
+        "tbl_id": "tsrc-szkh",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "of_myla311_app_downloads"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "City Campaign Expenditures",
+        "tbl_id": "5mrt-4zhe",
+        "t_attrs": [
+            "exp_date",
+            "per_beg_date",
+            "per_end_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "dist_num",
+            "exp_amount",
+            "amt_outstd_beg",
+            "amt_incurred",
+            "amt_received",
+            "amt_outstd_end"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Spreading Grounds Centralized Monthly Capture",
+        "tbl_id": "cy8h-q3bu",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "branford_spreading_basin_441_afy",
+            "lopez_spreading_grounds_564_afy",
+            "hansen_spreading_grounds_10_484_afy",
+            "pacoima_spreading_grounds_5_079_afy",
+            "tujunga_spreading_grounds_7_975_afy"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "City Campaign Statements Filed",
+        "tbl_id": "br3a-db9a",
+        "t_attrs": [
+            "election_date",
+            "period_from_date",
+            "period_to_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Fused Maps",
+        "tbl_id": "dw2y-59sj",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Asset Inventory",
+        "tbl_id": "4qmh-sz39",
+        "t_attrs": [
+            "last_update_date_data",
+            "creation_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "downloads",
+            "visits"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LA County COVID Testing",
+        "tbl_id": "w9vh-pj9e",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "county_performed",
+            "county_positive"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "DWP - Power Sourced From Coal Chart",
+        "tbl_id": "9hxb-dad7",
+        "t_attrs": [
+            "date_value"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "of_dwp_power_sourced_from_coal"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "DBS Performance Plan Check Development Services Counter- Quarterly",
+        "tbl_id": "c8jn-ua56",
+        "t_attrs": [
+            "date_value"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "served_in_30_minutes_or_less_services_counter"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "BSS Pavement Preservation Annual Data",
+        "tbl_id": "qer2-sxr5",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "small_asphalt_repairs",
+            "reconstruction",
+            "total_centerline_miles",
+            "slurry_seal",
+            "pavement_preservation_total",
+            "resurfacing"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "2016 Walk To School Day Registration - Online Report  - WTSD 2016",
+        "tbl_id": "cq4z-inke",
+        "t_attrs": [
+            "week_registered"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "expected_attendees",
+            "_"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LAcity.org Website Traffic - Page Views",
+        "tbl_id": "ni7t-83qi",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pageviews"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Electrical Permits Issued Between 2010 and 2019 (N)",
+        "tbl_id": "yaaf-cyfa",
+        "t_attrs": [
+            "status_date",
+            "issue_date",
+            "submitted_date",
+            "refresh_time",
+            "cofo_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Payment Data Version 2",
+        "tbl_id": "3qv2-p4kj",
+        "t_attrs": [
+            "transactiondatetime",
+            "meterexpiresdatetime"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Sign Line Task & Work Order Data",
+        "tbl_id": "86ry-dcuc",
+        "t_attrs": [
+            "closed_dt"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "2022 Registered Foreclosure Properties",
+        "tbl_id": "6hte-wqh2",
+        "t_attrs": [
+            "registered_date"
+        ],
+        "s_attrs": [
+            "property_on_map"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LADOT Re Striping After Slurry Metrics FY 13 14",
+        "tbl_id": "vt7b-3i5m",
+        "t_attrs": [
+            "week_ending",
+            "date_dot_notified_of_completion"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "week"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "LA City Events (2022)",
+        "tbl_id": "9aw9-mn4p",
+        "t_attrs": [
+            "dayofweekend",
+            "dayofweekstart",
+            "event_full_date_field_end",
+            "event_date_field_end",
+            "event_date",
+            "start",
+            "event_full_date_field_start",
+            "event_date_field_start"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "event_duration"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "RAMP Opportunity Awards",
+        "tbl_id": "h8mw-iegk",
+        "t_attrs": [
+            "effectivedate",
+            "lastmodifieddate",
+            "expdate",
+            "awarddate"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "PPP Loans in the City of Los Angeles",
+        "tbl_id": "bkfc-yqhx",
+        "t_attrs": [
+            "loanstatusdate",
+            "dateapproved"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "initialapprovalamount",
+            "loannumber",
+            "rent_proceed",
+            "payroll_proceed",
+            "jobsreported",
+            "currentapprovalamount",
+            "sbaguarantypercentage",
+            "naicscode",
+            "undisbursedamount"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Building Permits Issued Between 2010 and 2019 (N)",
+        "tbl_id": "dyxf-7hc4",
+        "t_attrs": [
+            "issue_date",
+            "submitted_date",
+            "status_date",
+            "refresh_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cd"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Mechanical Permits Issued from 2020 to Present (N)",
+        "tbl_id": "67is-svtd",
+        "t_attrs": [
+            "status_date",
+            "submitted_date",
+            "issue_date",
+            "refresh_time",
+            "cofo_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Mechanical Permits Submitted Between 2010 and 2019 (N)",
+        "tbl_id": "bjvp-eqku",
+        "t_attrs": [
+            "submitted_date",
+            "status_date",
+            "issue_date",
+            "refresh_time",
+            "cofo_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Electrical Permits Submitted from 2020 to Present (N)",
+        "tbl_id": "9k3p-zrda",
+        "t_attrs": [
+            "issue_date",
+            "status_date",
+            "refresh_time",
+            "submitted_date",
+            "cofo_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Building Permits Issued Before 2010 (N)",
+        "tbl_id": "e67z-kt2n",
+        "t_attrs": [
+            "refresh_time",
+            "issue_date",
+            "status_date",
+            "submitted_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cd"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "2023 Registered Foreclosure Properties",
+        "tbl_id": "hxr7-rjig",
+        "t_attrs": [
+            "registered_date"
+        ],
+        "s_attrs": [
+            "property_on_map"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Building Permits Submitted Between 2010 and 2019 (N)",
+        "tbl_id": "n3xg-rixm",
+        "t_attrs": [
+            "status_date",
+            "issue_date",
+            "submitted_date",
+            "refresh_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cd"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Parking Citations",
+        "tbl_id": "4f5p-udkv",
+        "t_attrs": [
+            "issue_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fine_amount",
+            "issue_time",
+            "loc_lat",
+            "agency",
+            "loc_long"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Electrical Permits Issued Before 2010 (N)",
+        "tbl_id": "h8me-eag6",
+        "t_attrs": [
+            "issue_date",
+            "submitted_date",
+            "status_date",
+            "cofo_date",
+            "refresh_time"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Mechanical Permits Submitted from 2020 to Present (N)",
+        "tbl_id": "9rag-xmmd",
+        "t_attrs": [
+            "refresh_time",
+            "status_date",
+            "issue_date",
+            "submitted_date",
+            "cofo_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Building Permits Submitted Before 2010 (N)",
+        "tbl_id": "b6ii-mhed",
+        "t_attrs": [
+            "status_date",
+            "issue_date",
+            "submitted_date",
+            "refresh_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cd"
+        ]
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Mechanical Permits Issued Before 2010 (N)",
+        "tbl_id": "mcip-sa6g",
+        "t_attrs": [
+            "status_date",
+            "issue_date",
+            "submitted_date",
+            "refresh_time"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Electrical Permits Submitted Before 2010 (N)",
+        "tbl_id": "7ts7-nh4y",
+        "t_attrs": [
+            "status_date",
+            "issue_date",
+            "submitted_date",
+            "cofo_date",
+            "refresh_time"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Electrical Permits Submitted Between 2010 and 2019 (N)",
+        "tbl_id": "9i2c-csvn",
+        "t_attrs": [
+            "issue_date",
+            "submitted_date",
+            "cofo_date",
+            "status_date",
+            "refresh_time"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Mechanical Permits Submitted Before 2010 (N)",
+        "tbl_id": "vnau-u5ph",
+        "t_attrs": [
+            "status_date",
+            "issue_date",
+            "submitted_date",
+            "refresh_time",
+            "cofo_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Mechanical Permits Issued Between 2010 and 2019 (N)",
+        "tbl_id": "5m3t-xjex",
+        "t_attrs": [
+            "status_date",
+            "issue_date",
+            "refresh_time",
+            "submitted_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Code Enforcement Case - Open (N)",
+        "tbl_id": "u82d-eh7z",
+        "t_attrs": [
+            "resdttm",
+            "adddttm"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.lacity.org",
+        "tbl_name": "Building and Safety - Code Enforcement Case - Closed (N)",
+        "tbl_id": "rken-a55j",
+        "t_attrs": [
+            "resdttm",
+            "adddttm"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    }
+]

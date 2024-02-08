@@ -1,0 +1,3757 @@
+{
+    "9nnw-c693": {
+        "domain": "data.wa.gov",
+        "name": "Lobbyist Compensation and Expenses by Source",
+        "t_attrs": [
+            "filing_period"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "net_total",
+            "net_compensation",
+            "entertainment",
+            "contributions",
+            "compensation",
+            "sub_lobbyist_compensation",
+            "personal_expenses",
+            "total_expenses",
+            "political_ads",
+            "advertising",
+            "other"
+        ]
+    },
+    "we9k-a58y": {
+        "domain": "data.wa.gov",
+        "name": "Vehicle Battery Registration",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "tx5i-i2ja": {
+        "domain": "data.wa.gov",
+        "name": "WAOFM - Census - Population and Housing, 2000 and 2010",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "land_area_square_miles_2000",
+            "vacancy_rate_numeric_change_2000_to_2010",
+            "vacant_housing_units_2010",
+            "occupied_housing_units_2000",
+            "total_housing_units_2000",
+            "population_density_numeric_change_2000_to_2010",
+            "population_density_persons_square_mile_2000",
+            "population_rank_2010",
+            "population_rank_2000",
+            "total_population_2000",
+            "water_area_2010",
+            "water_area_2000",
+            "total_area_square_miles_2010",
+            "total_area_square_miles_2000",
+            "land_area_square_miles_2010",
+            "vacancy_rate_2010",
+            "vacancy_rate_2000",
+            "occupancy_rate_numeric_change_2000_to_2010",
+            "occupancy_rate_2010",
+            "occupancy_rate_2000",
+            "vacant_housing_units_2000",
+            "occupied_housing_units_2010",
+            "total_housing_units_percent_change_2000_to_2010",
+            "total_housing_units_numeric_change_2000_to_2010",
+            "total_housing_units_2010",
+            "population_density_percent_change_2000_to_2010",
+            "population_density_persons_square_mile_2010",
+            "population_rank_change_in_rank_2000_to_2010",
+            "total_population_percent_change_2000_to_2010",
+            "total_population_numeric_change_2000_to_2010",
+            "total_population_2010"
+        ]
+    },
+    "m8qx-ubtq": {
+        "domain": "data.wa.gov",
+        "name": "L&I Contractor License Data - General",
+        "t_attrs": [
+            "contractorlicensesuspenddate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "ubi",
+            "phonenumber"
+        ]
+    },
+    "f6w7-q2d2": {
+        "domain": "data.wa.gov",
+        "name": "Electric Vehicle Population Data",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "base_msrp",
+            "electric_range"
+        ]
+    },
+    "kv7h-kjye": {
+        "domain": "data.wa.gov",
+        "name": "Contributions to Candidates and Political Committees",
+        "t_attrs": [
+            "receipt_date"
+        ],
+        "s_attrs": [
+            "contributor_location"
+        ],
+        "num_columns": [
+            "amount"
+        ]
+    },
+    "tijg-9zyp": {
+        "domain": "data.wa.gov",
+        "name": "Expenditures by Candidates and Political Committees",
+        "t_attrs": [
+            "expenditure_date"
+        ],
+        "s_attrs": [
+            "recipient_location"
+        ],
+        "num_columns": [
+            "amount"
+        ]
+    },
+    "gpri-47xz": {
+        "domain": "data.wa.gov",
+        "name": "Attorney General Consumer Complaints",
+        "t_attrs": [
+            "openeddate"
+        ],
+        "s_attrs": [
+            "geocode"
+        ],
+        "num_columns": [
+            "estimatedsavings",
+            "actualsavings",
+            "openedyear"
+        ]
+    },
+    "auvb-4rvk": {
+        "domain": "data.wa.gov",
+        "name": "WDFW-Coded Wire Tag Fish Recoveries",
+        "t_attrs": [
+            "verifieddate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "releasedtagadclipcnt",
+            "releaseduntagadclipcnt",
+            "releasedtagnoadclipcnt",
+            "headnumber",
+            "returnyear",
+            "broodyear",
+            "forklength_cm",
+            "releaseduntagnoadclipcnt"
+        ]
+    },
+    "rpr4-cgyd": {
+        "domain": "data.wa.gov",
+        "name": "Electric Vehicle Title and Registration Activity",
+        "t_attrs": [
+            "transaction_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "base_msrp",
+            "sale_price",
+            "odometer_reading",
+            "electric_range"
+        ]
+    },
+    "mcp7-tcwf": {
+        "domain": "data.wa.gov",
+        "name": "2016-2019 WDFW Deer and Elk Salvage Permits",
+        "t_attrs": [
+            "salvage_date_time"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "gtd3-scga": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Enrollment 2019-20 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "non_mobile",
+            "non_military_parent",
+            "non_migrant",
+            "non_low_income",
+            "non_english_language_learners",
+            "students_with_disabilities",
+            "native_hawaiian_other_pacific",
+            "black_african_american",
+            "american_indian_alaskan_native",
+            "male",
+            "gender_x",
+            "all_students",
+            "students_without_disabilities",
+            "section_504",
+            "mobile",
+            "military_parent",
+            "migrant",
+            "low_income",
+            "homeless",
+            "english_language_learners",
+            "white",
+            "two_or_more_races",
+            "hispanic_latino_of_any_race",
+            "asian",
+            "female",
+            "non_homeless",
+            "non_section_504"
+        ]
+    },
+    "nvpc-yr7b": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Enrollment 2020-21 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "students_without_disabilities",
+            "non_military_parent",
+            "military_parent",
+            "migrant",
+            "low_income",
+            "homeless",
+            "highly_capable",
+            "english_language_learners",
+            "white",
+            "two_or_more_races",
+            "asian",
+            "non_section_504",
+            "non_mobile",
+            "non_migrant",
+            "non_low_income",
+            "non_homeless",
+            "non_highly_capable",
+            "non_english_language_learners",
+            "section_504",
+            "native_hawaiian_other_pacific",
+            "hispanic_latino_of_any_race",
+            "black_african_american",
+            "american_indian_alaskan_native",
+            "male",
+            "female",
+            "students_with_disabilities",
+            "gender_x",
+            "mobile",
+            "all_students"
+        ]
+    },
+    "6du3-3h9e": {
+        "domain": "data.wa.gov",
+        "name": "Washington State Certified Public Accountants",
+        "t_attrs": [
+            "expires"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "idhm-59de": {
+        "domain": "data.wa.gov",
+        "name": "GHG Reporting Program Publication",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "hfcs_mtco2e",
+            "total_emissions_mtco2e",
+            "point_size",
+            "pfcs_mtco2e",
+            "methane_mtco2e",
+            "fluorinated_other_mtco2e"
+        ]
+    },
+    "ciwg-agsx": {
+        "domain": "data.wa.gov",
+        "name": "L&I Contractor License Data - Insurance",
+        "t_attrs": [
+            "expirationdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "insuranceamt",
+            "ubi"
+        ]
+    },
+    "j78t-andi": {
+        "domain": "data.wa.gov",
+        "name": "Imaged Documents and Reports",
+        "t_attrs": [
+            "report_from"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "7qr9-q2c9": {
+        "domain": "data.wa.gov",
+        "name": "Campaign Finance Reporting History",
+        "t_attrs": [
+            "report_from"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "u4gd-6wxx": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Enrollment 2018-19 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "students_without_disabilities",
+            "non_section_504",
+            "non_mobile",
+            "non_migrant",
+            "non_low_income",
+            "non_homeless",
+            "non_english_language_learners",
+            "section_504",
+            "two_or_more_races",
+            "hispanic_latino_of_any_race",
+            "black_african_american",
+            "male",
+            "gender_x",
+            "all_students",
+            "non_military_parent",
+            "students_with_disabilities",
+            "military_parent",
+            "migrant",
+            "homeless",
+            "english_language_learners",
+            "white",
+            "native_hawaiian_other_pacific",
+            "female",
+            "american_indian_alaskan_native",
+            "asian",
+            "mobile",
+            "low_income"
+        ]
+    },
+    "brw6-jymh": {
+        "domain": "data.wa.gov",
+        "name": "Vehicle Registration Transactions by Department of Licensing",
+        "t_attrs": [
+            "start_of_month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_record_count"
+        ]
+    },
+    "3h9x-7bvm": {
+        "domain": "data.wa.gov",
+        "name": "Campaign Finance Summary",
+        "t_attrs": [
+            "receipt_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "independent_expenditures_for_amount",
+            "pledges_amount",
+            "expenditures_amount",
+            "independent_expenditures_against_amount",
+            "loans_amount",
+            "contributions_amount",
+            "debts_amount"
+        ]
+    },
+    "vgcw-qfjm": {
+        "domain": "data.wa.gov",
+        "name": "LCB Local Authority Letters",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "292v-tb9r": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Spring Assessment Data from 2014-15 to 2021-22",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "mcr6-ujqw": {
+        "domain": "data.wa.gov",
+        "name": "L&I Apprenticeship Apprentice Details",
+        "t_attrs": [
+            "probation_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "current_step",
+            "initial_step"
+        ]
+    },
+    "rxjk-6ieq": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Enrollment from 2014-15 to Current Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "non_low_income",
+            "non_migrant",
+            "students_without_disabilities",
+            "non_section_504",
+            "non_mobile",
+            "all_students",
+            "homeless",
+            "female",
+            "asian",
+            "non_homeless",
+            "two_or_more_races",
+            "mobile",
+            "male",
+            "gender_x",
+            "black_african_american",
+            "native_hawaiian_other_pacific",
+            "migrant",
+            "section_504",
+            "students_with_disabilities",
+            "non_military_parent",
+            "american_indian_alaskan_native",
+            "hispanic_latino_of_any_race",
+            "white",
+            "english_language_learners",
+            "low_income",
+            "military_parent",
+            "non_english_language_learners"
+        ]
+    },
+    "769e-73q6": {
+        "domain": "data.wa.gov",
+        "name": "Driver Licenses and ID Cards Transferred to Washington",
+        "t_attrs": [
+            "issue_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "count_of_new_credential"
+        ]
+    },
+    "xfwh-dmij": {
+        "domain": "data.wa.gov",
+        "name": "Agency Contracts Fiscal Year 2017",
+        "t_attrs": [
+            "period_of_performance_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "other_amount",
+            "federal_amount",
+            "state_amount",
+            "cost_of_contract"
+        ]
+    },
+    "idwx-fext": {
+        "domain": "data.wa.gov",
+        "name": "WDFW-SGS",
+        "t_attrs": [
+            "surveydate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "adiposeclip_cwtbeep",
+            "previousreddcount",
+            "deadpreviouslysampled",
+            "upperrivermile",
+            "adiposeclipunknown_cwtbeep",
+            "newreddcount",
+            "deadjack",
+            "livejack",
+            "deadadultmale",
+            "liveadultfemale",
+            "noadiposeclip_cwtbeep",
+            "deadadultfemale",
+            "liveadultmale",
+            "deadtotal",
+            "wria",
+            "lowerrivermile",
+            "livetotal",
+            "liveadultunknownsex",
+            "combinedreddcount"
+        ]
+    },
+    "6iji-4nux": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Graduation 2018-19",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "dropout",
+            "transferin",
+            "year2dropout",
+            "year3dropout",
+            "year4dropout",
+            "year6dropout",
+            "year7dropout",
+            "transferout",
+            "graduate",
+            "graduationrate",
+            "schoolcode",
+            "beggininggrade9",
+            "year5dropout",
+            "year1dropout",
+            "finalcohort",
+            "continuing"
+        ]
+    },
+    "pzcu-jpab": {
+        "domain": "data.wa.gov",
+        "name": "Washington State CPA (Certified Public Accountant) Firms",
+        "t_attrs": [
+            "expires"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "firmnumber"
+        ]
+    },
+    "3d5d-sdqb": {
+        "domain": "data.wa.gov",
+        "name": "Electric Vehicle Population Size History By County",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "electric_vehicle_ev_total",
+            "percent_electric_vehicles",
+            "total_vehicles",
+            "battery_electric_vehicles_bevs_",
+            "non_electric_vehicles"
+        ]
+    },
+    "t9je-9qwa": {
+        "domain": "data.wa.gov",
+        "name": "L&I Intent Project Details",
+        "t_attrs": [
+            "bid_due_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cntrct_amt",
+            "amount",
+            "numberofowner_operatorworked"
+        ]
+    },
+    "d886-d5q2": {
+        "domain": "data.wa.gov",
+        "name": "Electric Vehicle Population Size History",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "electric_vehicle_total",
+            "battery_electric_vehicle"
+        ]
+    },
+    "ehbc-shxw": {
+        "domain": "data.wa.gov",
+        "name": "Financial Affairs Disclosures",
+        "t_attrs": [
+            "period_start"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "67cp-h962": {
+        "domain": "data.wa.gov",
+        "name": "Independent Campaign Expenditures and Electioneering Communications",
+        "t_attrs": [
+            "date_received"
+        ],
+        "s_attrs": [
+            "sponsor_location"
+        ],
+        "num_columns": [
+            "amount",
+            "portion_of_amount",
+            "expenditure_amount",
+            "total_this_report",
+            "total_cycle",
+            "total_unitemized"
+        ]
+    },
+    "vtkh-65is": {
+        "domain": "data.wa.gov",
+        "name": "Cleanup Sites in Washington State",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "iz23-7xxj": {
+        "domain": "data.wa.gov",
+        "name": "Candidate and Committee Registrations",
+        "t_attrs": [
+            "election_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "9dvy-pnhx": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Graduation 2014-15 to Most Recent Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "fvrz-yz45": {
+        "domain": "data.wa.gov",
+        "name": "Complaint By Practice",
+        "t_attrs": [
+            "openeddate"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "openedyear",
+            "actualsavings",
+            "estimatedsavings"
+        ]
+    },
+    "87uq-bpim": {
+        "domain": "data.wa.gov",
+        "name": "Agency Contracts Fiscal Year 2019",
+        "t_attrs": [
+            "contract_effective_start"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "federal_amount",
+            "cost_of_contract",
+            "other_amount",
+            "state_amount"
+        ]
+    },
+    "9ncw-tqjn": {
+        "domain": "data.wa.gov",
+        "name": "L&I Affidavit Project Details",
+        "t_attrs": [
+            "formreceiveddate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "contractamount",
+            "amount",
+            "prime_sintentnumber",
+            "_apprentice_utilization",
+            "intent",
+            "numberofowner_operatorworked"
+        ]
+    },
+    "jeuk-pueh": {
+        "domain": "data.wa.gov",
+        "name": "Agency Contracts Fiscal Year 2014",
+        "t_attrs": [
+            "period_of_performance_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cost_of_contract",
+            "other_amount",
+            "state_amount",
+            "federal_amount"
+        ]
+    },
+    "agvw-ch2s": {
+        "domain": "data.wa.gov",
+        "name": "State Agency Amazon Spend Fiscal Year 22",
+        "t_attrs": [
+            "shipment_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "purchase_ppu",
+            "payment_amount",
+            "listed_ppu",
+            "item_tax",
+            "item_subtotal",
+            "item_shipping_handling",
+            "item_quantity",
+            "item_promotion",
+            "item_net_total"
+        ]
+    },
+    "6iab-kcxu": {
+        "domain": "data.wa.gov",
+        "name": "Washington State Public Library Initial Service Changes & Closures Due to COVID-19",
+        "t_attrs": [
+            "libraryprogramsannounced"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "3r6b-hsaa": {
+        "domain": "data.wa.gov",
+        "name": "Debt Reported by Candidates and Political Committees",
+        "t_attrs": [
+            "thru_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ]
+    },
+    "brpd-b6zd": {
+        "domain": "data.wa.gov",
+        "name": "LCB Cannabis Renewal",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "sb4j-ca4h": {
+        "domain": "data.wa.gov",
+        "name": "Data Breach Notifications Affecting Washington Residents",
+        "t_attrs": [
+            "dateaware"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "daysofexposure",
+            "daysbreachlifecycle",
+            "daystocontainbreach",
+            "washingtoniansaffected",
+            "dayselapsedbeforenotification",
+            "dayselapsedbetweenendanddiscovery"
+        ]
+    },
+    "8bva-rkeb": {
+        "domain": "data.wa.gov",
+        "name": "Pledges Reporting History",
+        "t_attrs": [
+            "receipt_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ]
+    },
+    "4xk5-x9j6": {
+        "domain": "data.wa.gov",
+        "name": "L&I Contractor License - Principal Data",
+        "t_attrs": [
+            "startdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "ubi"
+        ]
+    },
+    "d958-q2ci": {
+        "domain": "data.wa.gov",
+        "name": "Municipal Stormwater Permit Outfall Data",
+        "t_attrs": [
+            "lab_analysis_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "original_eim_result_value",
+            "new_result_value",
+            "season"
+        ]
+    },
+    "r5ki-dmfz": {
+        "domain": "data.wa.gov",
+        "name": "Washington State Criminal Justice Training Commission Officer Certification Cases",
+        "t_attrs": [
+            "date_closed"
+        ],
+        "s_attrs": [
+            "agency_location_"
+        ],
+        "num_columns": []
+    },
+    "mpef-t92p": {
+        "domain": "data.wa.gov",
+        "name": "Student Enrollment 2009-10 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "black_african_american",
+            "white",
+            "english_language_learners",
+            "schoolcode",
+            "foster_care",
+            "low_income",
+            "migrant",
+            "section_504",
+            "students_with_disabilities",
+            "non_homeless",
+            "non_low_income",
+            "non_migrant",
+            "non_mobile",
+            "students_without_disabilities",
+            "non_military_parent",
+            "non_foster_care",
+            "non_english_language_learners",
+            "mobile",
+            "homeless",
+            "two_or_more_races",
+            "male",
+            "female",
+            "military_parent",
+            "hispanic_latino_of_any_race",
+            "native_hawaiian_other_pacific",
+            "non_section_504",
+            "all_students",
+            "gender_x",
+            "american_indian_alaskan_native",
+            "asian"
+        ]
+    },
+    "cdk6-5kdf": {
+        "domain": "data.wa.gov",
+        "name": "Vehicle Title Transactions by Department of Licensing",
+        "t_attrs": [
+            "start_of_month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_record_count"
+        ]
+    },
+    "d2ig-r3q4": {
+        "domain": "data.wa.gov",
+        "name": "Loans to Candidates and Political Committees",
+        "t_attrs": [
+            "receipt_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "amount",
+            "endorser_liable_amount"
+        ]
+    },
+    "9zru-c2kz": {
+        "domain": "data.wa.gov",
+        "name": "All students, kindergarten through 12th grade, immunization data by school, 2016-2017",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "number_exempt_for_polio",
+            "number_exempt_for_diphtheria_tetanus",
+            "percent_exempt_for_polio",
+            "percent_exempt_for_hepatitisb",
+            "percent_exempt_for_varicella",
+            "number_complete_for_all_immunizations",
+            "number_with_any_exemption",
+            "number_with_personal_exemption",
+            "number_with_religious_membership_exemption",
+            "number_exempt_for_pertussis",
+            "number_exempt_for_measles_mumps_rubella",
+            "number_exempt_for_hepatitisb",
+            "number_exempt_for_varicella",
+            "number_with_religious_exemption",
+            "percent_with_religious_exemption",
+            "number_with_medical_exemption",
+            "percent_with_any_exemption",
+            "percent_complete_for_all_immunizations",
+            "k_12_enrollment",
+            "percent_with_medical_exemption",
+            "percent_with_personal_exemption",
+            "percent_with_religious_membership_exemption",
+            "percent_exempt_for_diphtheria_tetanus",
+            "percent_exempt_for_pertussis",
+            "percent_exempt_for_measles_mumps_rubella"
+        ]
+    },
+    "3f3v-gugf": {
+        "domain": "data.wa.gov",
+        "name": "Agency Contracts Fiscal Year 2018",
+        "t_attrs": [
+            "period_of_performance_start"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "state_amount",
+            "federal_amount",
+            "other_amount",
+            "cost_of_contract"
+        ]
+    },
+    "ikwr-f47z": {
+        "domain": "data.wa.gov",
+        "name": "RSMP Illicit Discharge Detection and Elimination (IDDE)",
+        "t_attrs": [
+            "_15_final_resolution_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "_5b_precipitation_in_previous_24hrs",
+            "_5a_temperature"
+        ]
+    },
+    "r6r4-h2x4": {
+        "domain": "data.wa.gov",
+        "name": "Apprentice Utilization",
+        "t_attrs": [
+            "report_period_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "hrs",
+            "proj_summ_total"
+        ]
+    },
+    "x574-csgd": {
+        "domain": "data.wa.gov",
+        "name": "L&I Public Notes For Intent",
+        "t_attrs": [
+            "comment_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "fs63-sd8y": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Enrollment 2017-18 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "students_without_disabilities",
+            "low_income",
+            "native_hawaiian_other_pacific",
+            "hispanic_latino_of_any_race",
+            "asian",
+            "non_migrant",
+            "non_english_language_learners",
+            "students_with_disabilities",
+            "section_504",
+            "mobile",
+            "homeless",
+            "white",
+            "american_indian_alaskan_native",
+            "male",
+            "female",
+            "all_students",
+            "non_section_504",
+            "non_military_parent",
+            "english_language_learners",
+            "two_or_more_races",
+            "non_homeless",
+            "military_parent",
+            "non_mobile",
+            "non_low_income",
+            "migrant",
+            "black_african_american"
+        ]
+    },
+    "bzff-4fmt": {
+        "domain": "data.wa.gov",
+        "name": "L&I Contractor License Data - Bond",
+        "t_attrs": [
+            "bondcanceldate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "bondamt",
+            "ubi"
+        ]
+    },
+    "qp8s-a5uf": {
+        "domain": "data.wa.gov",
+        "name": "L&I Public Works Project Details",
+        "t_attrs": [
+            "date_work_completed"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "contract_total_amt",
+            "prime_contractor_ubi",
+            "retainage_amt",
+            "final_apprentice_wages",
+            "number_of_contractors",
+            "total_wages",
+            "final_veteran_utilization",
+            "final_omwbe_utilization",
+            "final_minority_utilization",
+            "final_apprentice_utilization",
+            "final_female_utilization",
+            "final_journeylevel_wages"
+        ]
+    },
+    "i23g-ymbg": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Graduation 2021-22",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "9kcu-2bem": {
+        "domain": "data.wa.gov",
+        "name": "Candidate Surplus Funds Reports",
+        "t_attrs": [
+            "thru_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "balance",
+            "spent",
+            "raised"
+        ]
+    },
+    "ti55-mvy5": {
+        "domain": "data.wa.gov",
+        "name": "Surplus Funds Expenditures",
+        "t_attrs": [
+            "expenditure_date"
+        ],
+        "s_attrs": [
+            "recipient_location"
+        ],
+        "num_columns": [
+            "amount"
+        ]
+    },
+    "inqc-k3vt": {
+        "domain": "data.wa.gov",
+        "name": "Report Card SQSS from 2014-15 to 2021-22 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "qgtz-buis": {
+        "domain": "data.wa.gov",
+        "name": "Broadband Community Anchor Institution Listings",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "caicat",
+            "subsrbup",
+            "transtech",
+            "subscrbdow",
+            "bldgnbr"
+        ]
+    },
+    "bv9x-jtbr": {
+        "domain": "data.wa.gov",
+        "name": "Better Brakes - List of Certified Parts",
+        "t_attrs": [
+            "certificationstartdate"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "vdfh-vn22": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Teacher Demographics",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "3vxk-ghwr": {
+        "domain": "data.wa.gov",
+        "name": "Criminal Justice",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "jst_sexcr",
+            "jst_othpropcr",
+            "jst_othcrime",
+            "jdp_totaladp",
+            "jdp_pre_adp",
+            "jdp_post_adp",
+            "scf_total",
+            "scf_sexcr",
+            "scf_propcr",
+            "scf_robbery",
+            "scf_drug_cr",
+            "scf_assault",
+            "arr_theft",
+            "arr_mvt",
+            "arr_murder",
+            "arr_drug_cr",
+            "arr_burglary",
+            "arr_arson",
+            "arr_ag_asslt",
+            "ucr_total",
+            "ucr_robbery",
+            "ucr_rape",
+            "ucr_mvt",
+            "ucr_murder",
+            "ucr_burglary",
+            "pop_m_40up",
+            "pop_m_18to39",
+            "pop_m_12to17",
+            "pop_f_total",
+            "pop_f_40up",
+            "pop_f_12to17",
+            "aps_drug_cr",
+            "jrr_othfelcrime",
+            "jrr_mvt",
+            "jrr_murder",
+            "pst_mnslghtr",
+            "pdp_other",
+            "jst_mnslghtr",
+            "jst_burglary",
+            "ucr_arson",
+            "ajs_unknown",
+            "jst_robbery",
+            "jrr_arson",
+            "pop_f_0to11",
+            "juv_assault",
+            "aps_unknown",
+            "pop_m_total",
+            "pop_m_0to11",
+            "pst_othpropcr",
+            "pst_sexcr",
+            "pst_unknown",
+            "aps_avg_sent",
+            "pdp_parole_v",
+            "pst_drug_cr",
+            "ucr_theft",
+            "aps_assault",
+            "ajs_robbery",
+            "ajs_sexcr",
+            "ajs_assault",
+            "ajs_burglary",
+            "ajs_mnslghtr",
+            "jst_drug_cr",
+            "jst_murder",
+            "jdp_othradp",
+            "jdp_capacity",
+            "arr_othcrime",
+            "arr_rape",
+            "max_g_msdmnr",
+            "max_mnslghtr",
+            "min_sexcr",
+            "max_burglary",
+            "max_sexcr",
+            "jst_total",
+            "jst_assault",
+            "juv_robbery",
+            "min_drug_cr",
+            "jad_doc_adm",
+            "jad_new_adm",
+            "juv_msdmnr",
+            "pop_total",
+            "max_robbery",
+            "max_othfelcrime",
+            "max_msdmnr",
+            "juv_g_msdmnr",
+            "juv_mnslghtr",
+            "juv_burglary",
+            "max_murder",
+            "max_othpropcr",
+            "juv_total",
+            "max_drug_cr",
+            "max_avg_max_disp",
+            "max_assault",
+            "min_robbery",
+            "min_avg_min_disp",
+            "min_othpropcr",
+            "min_othfelcrime",
+            "min_murder",
+            "min_msdmnr",
+            "min_mnslghtr",
+            "juv_othpropcr",
+            "min_g_msdmnr",
+            "aps_robbery",
+            "pop_f_18to39",
+            "min_burglary",
+            "min_assault",
+            "juv_sexcr",
+            "juv_othfelcrime",
+            "juv_drug_cr",
+            "jad_total",
+            "jad_parole_r",
+            "jad_readm",
+            "jrr_total",
+            "jrr_theft",
+            "pdp_total",
+            "ajs_murder",
+            "jrr_robbery",
+            "jrr_rape",
+            "jrr_drug_cr",
+            "jrr_burglary",
+            "jrr_ag_asslt",
+            "aps_sexcr",
+            "aps_othpropcr",
+            "aps_othcrime",
+            "aps_murder",
+            "aps_mnslghtr",
+            "aps_burglary",
+            "pst_total",
+            "ucr_ag_asslt",
+            "juv_murder",
+            "arr_total",
+            "arr_robbery",
+            "pst_robbery",
+            "pst_othcrime",
+            "pst_murder",
+            "pst_burglary",
+            "pst_assault",
+            "pdp_readm",
+            "pdp_new_adm",
+            "ajs_othpropcr",
+            "ajs_othcrime",
+            "scf_othfelon",
+            "ajs_drug_cr",
+            "ajs_avg_sent",
+            "jst_unknown"
+        ]
+    },
+    "ma99-sxnd": {
+        "domain": "data.wa.gov",
+        "name": "Washington State Public Library Services during COVID-19 Building Closure & Reopening",
+        "t_attrs": [
+            "lastwebsitecheckdate"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "9dee-kzm5": {
+        "domain": "data.wa.gov",
+        "name": "LCB Liquor Renewal",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "2zsf-krin": {
+        "domain": "data.wa.gov",
+        "name": "Report Card SQSS for 2018-19",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percenttakingctetechprep",
+            "numbertakingctetechprep",
+            "percenttakingrunningstart",
+            "numbertakingrunningstart",
+            "numbertakingcollegeinthe",
+            "percenttakingib",
+            "numbertakingib",
+            "percenttakingcollegeinth",
+            "percenttakingap",
+            "numbertakingap",
+            "denominator",
+            "numerator"
+        ]
+    },
+    "3v2j-kqbi": {
+        "domain": "data.wa.gov",
+        "name": "Pre-2016 Lobbyist Compensation and Expenses by Source",
+        "t_attrs": [
+            "receipt_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "contributions",
+            "personal_expenses",
+            "compensation",
+            "other",
+            "political_ads",
+            "advertising",
+            "entertainment"
+        ]
+    },
+    "a4ma-dq6s": {
+        "domain": "data.wa.gov",
+        "name": "PDC Enforcement Cases",
+        "t_attrs": [
+            "earliest_complaint"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_penalties",
+            "balance_due",
+            "total_suspended",
+            "total_reinstated"
+        ]
+    },
+    "uj4q-wr8d": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Growth for 2018-19",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percenttypicalgrowth",
+            "studentcount",
+            "numbertypicalgrowth",
+            "mediansgp",
+            "percentlowgrowth",
+            "percenthighgrowth",
+            "numberlowgrowth",
+            "numberhighgrowth",
+            "schoolcode"
+        ]
+    },
+    "j59h-dkq5": {
+        "domain": "data.wa.gov",
+        "name": "Agency Contracts Fiscal Year 2015",
+        "t_attrs": [
+            "period_of_performance_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "state_amount",
+            "federal_amount",
+            "other_amount",
+            "cost_of_contract"
+        ]
+    },
+    "ixni-jq78": {
+        "domain": "data.wa.gov",
+        "name": "Professional License Transactions by Department of Licensing",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "count"
+        ]
+    },
+    "hdw4-yhs4": {
+        "domain": "data.wa.gov",
+        "name": "Summer Low Flow Trend Indicator 1975-2013",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "trend_cfs_yr",
+            "reg_p",
+            "trib_level",
+            "wria",
+            "m_k_p"
+        ]
+    },
+    "3cbn-54c3": {
+        "domain": "data.wa.gov",
+        "name": "Candidate Surplus Funds Latest Report",
+        "t_attrs": [
+            "from_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "spent",
+            "balance",
+            "raised"
+        ]
+    },
+    "gs3k-hp7i": {
+        "domain": "data.wa.gov",
+        "name": "L&I Public Notes For Affidavit",
+        "t_attrs": [
+            "notesenteredon"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "y85c-tmgt": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Enrollment 2016-17 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "non_section_504",
+            "students_with_disabilities",
+            "military_parent",
+            "migrant",
+            "low_income",
+            "english_language_learners",
+            "white",
+            "native_hawaiian_other_pacific",
+            "hispanic_latino_of_any_race",
+            "american_indian_alaskan_native",
+            "male",
+            "students_without_disabilities",
+            "non_military_parent",
+            "non_migrant",
+            "non_english_language_learners",
+            "section_504",
+            "mobile",
+            "homeless",
+            "two_or_more_races",
+            "black_african_american",
+            "female",
+            "all_students",
+            "non_homeless",
+            "non_mobile",
+            "asian",
+            "non_low_income"
+        ]
+    },
+    "ufi5-ki2f": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Growth from 2014-15 to 2018-19",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percenttypicalgrowth",
+            "numberlowgrowth",
+            "percenthighgrowth",
+            "numberhighgrowth",
+            "studentcount",
+            "percentlowgrowth",
+            "numbertypicalgrowth",
+            "mediansgp"
+        ]
+    },
+    "i9gq-g35m": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Enrollment 2014-15 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "english_language_learners",
+            "students_without_disabilities",
+            "two_or_more_races",
+            "native_hawaiian_other_pacific",
+            "hispanic_latino_of_any_race",
+            "black_african_american",
+            "highly_capable",
+            "homeless",
+            "asian",
+            "american_indian_alaskan_native",
+            "male",
+            "female",
+            "all_students",
+            "low_income",
+            "mobile",
+            "students_with_disabilities",
+            "migrant",
+            "white",
+            "non_homeless",
+            "non_low_income",
+            "non_migrant",
+            "non_military_parent",
+            "non_section_504",
+            "non_mobile",
+            "non_english_language_learners",
+            "section_504"
+        ]
+    },
+    "w9k2-96gh": {
+        "domain": "data.wa.gov",
+        "name": "Historical Drought Permits -- Washington State",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "384s-ygbu": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Graduation 2017-18",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "dropout",
+            "transferout",
+            "year6dropout",
+            "year2dropout",
+            "year1dropout",
+            "transferin",
+            "beggininggrade9",
+            "graduate",
+            "finalcohort",
+            "year4dropout",
+            "schoolyear",
+            "graduationrate",
+            "continuing",
+            "year7dropout",
+            "year5dropout",
+            "year3dropout",
+            "schoolcode"
+        ]
+    },
+    "wajg-ig9g": {
+        "domain": "data.wa.gov",
+        "name": "Most- Recent- Cohorts- Scorecard- Elements",
+        "t_attrs": [],
+        "s_attrs": [
+            "maplocation"
+        ],
+        "num_columns": [
+            "ug25abv",
+            "pctpell",
+            "pptug_ef",
+            "ugds_nra",
+            "ugds_nhpi",
+            "ugds_asian",
+            "pcip52",
+            "pcip50",
+            "pcip45",
+            "pcip44",
+            "pcip43",
+            "pcip23",
+            "pcip16",
+            "pcip15",
+            "pcip14",
+            "pcip12",
+            "pcip09",
+            "pcip05",
+            "pcip03",
+            "relaffil",
+            "pcip54",
+            "pcip48",
+            "pcip38",
+            "pcip27",
+            "pcip11",
+            "hcm2",
+            "pctfloan",
+            "ugds_2mor",
+            "ugds_aian",
+            "ugds_hisp",
+            "ugds_black",
+            "ugds_white",
+            "pcip51",
+            "pcip49",
+            "pcip47",
+            "pcip46",
+            "pcip42",
+            "pcip41",
+            "pcip40",
+            "pcip39",
+            "pcip31",
+            "pcip30",
+            "pcip29",
+            "pcip26",
+            "pcip24",
+            "pcip13",
+            "pcip10",
+            "pcip01",
+            "womenonly",
+            "menonly",
+            "hsi",
+            "aanapii",
+            "pbi",
+            "control",
+            "locale",
+            "preddeg",
+            "pcip25",
+            "pcip22",
+            "annhi",
+            "nanti",
+            "pcip04",
+            "pcip19",
+            "distanceonly",
+            "curroper",
+            "hbcu",
+            "ugds_unkn",
+            "ugds",
+            "tribal"
+        ]
+    },
+    "ajpq-2bg9": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Enrollment 2015-16 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "two_or_more_races",
+            "students_without_disabilities",
+            "non_section_504",
+            "non_mobile",
+            "non_migrant",
+            "non_homeless",
+            "non_english_language_learners",
+            "white",
+            "native_hawaiian_other_pacific",
+            "hispanic_latino_of_any_race",
+            "black_african_american",
+            "female",
+            "non_military_parent",
+            "non_low_income",
+            "students_with_disabilities",
+            "section_504",
+            "mobile",
+            "migrant",
+            "low_income",
+            "homeless",
+            "english_language_learners",
+            "asian",
+            "american_indian_alaskan_native",
+            "male",
+            "all_students"
+        ]
+    },
+    "dq2q-43tp": {
+        "domain": "data.wa.gov",
+        "name": "Agency Contracts Fiscal Year 2016",
+        "t_attrs": [
+            "period_of_performance_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "other_amount",
+            "cost_of_contract",
+            "state_amount",
+            "federal_amount"
+        ]
+    },
+    "kck7-yb2v": {
+        "domain": "data.wa.gov",
+        "name": "Kindergarten Immunization Data, 2016-17",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "percent_complete_for_hepatitisb",
+            "number_incomplete_for_diphtheria_tetanus",
+            "number_incomplete_for_pertussis",
+            "number_out_of_compliance",
+            "number_with_religious_membership_exemption",
+            "number_with_religious_exemption",
+            "number_incomplete_for_polio",
+            "has_6thgrade",
+            "percent_out_of_compliance",
+            "percent_with_any_exemption",
+            "percent_with_medical_exemption",
+            "percent_with_religious_membership_exemption",
+            "number_incomplete_for_varicella",
+            "number_incomplete_for_hepatitisb",
+            "percent_complete_for_pertussis",
+            "percent_complete_for_polio",
+            "percent_with_religious_exemption",
+            "percent_complete_for_all_immunizations",
+            "percent_conditional",
+            "number_conditional",
+            "number_incomplete_for_measles_mumps_rubella",
+            "number_with_medical_exemption",
+            "number_with_personal_exemption",
+            "number_with_any_exemption",
+            "number_complete_for_all_immunizations",
+            "reported_enrollment",
+            "percent_complete_for_measles_mumps_rubella",
+            "percent_complete_for_varicella",
+            "percent_complete_for_diphtheria_tetanus",
+            "has_kindergarten",
+            "percent_with_personal_exemption"
+        ]
+    },
+    "6i3q-gfgy": {
+        "domain": "data.wa.gov",
+        "name": "Summer Low Flow Trend Indicator 1975-2014",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "trend_cfs_yr",
+            "m_k_p",
+            "trib_level",
+            "wria",
+            "reg_p"
+        ]
+    },
+    "6y4e-8ftk": {
+        "domain": "data.wa.gov",
+        "name": "WDFW-Creel Analysis Catch",
+        "t_attrs": [
+            "event_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fish_count"
+        ]
+    },
+    "9q4e-xhag": {
+        "domain": "data.wa.gov",
+        "name": "WDFW-Hatchery Adult Salmon Returns",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "jack_count",
+            "male_count",
+            "adult_count",
+            "tagged_jacks",
+            "tagged_females",
+            "tagged_males",
+            "female_count",
+            "egg_take_count",
+            "non_viable_female_count"
+        ]
+    },
+    "wdb7-jbuv": {
+        "domain": "data.wa.gov",
+        "name": "Better Brakes - Tracking Progress",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "avg_sb_concentration",
+            "avg_zn_concentration",
+            "avg_cu_concentration",
+            "avg_ni_concentration"
+        ]
+    },
+    "533j-4nbp": {
+        "domain": "data.wa.gov",
+        "name": "2017 Greenhouse Gas Report Facility Data",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "fossil_co2_mt_co2",
+            "methane_mt_co2e",
+            "perfluorocarbons_mt_co2e",
+            "point_size_based_on_total",
+            "hydrofluorocarbons_mt_co2e",
+            "other_mt_co2e",
+            "total_emissions_mt_co2e",
+            "biogenic_co2_mt_co2"
+        ]
+    },
+    "4mxd-hz2q": {
+        "domain": "data.wa.gov",
+        "name": "L&I Apprenticeship Program Details",
+        "t_attrs": [
+            "approvaldate"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "ub89-7wbv": {
+        "domain": "data.wa.gov",
+        "name": "PDC Enforcement Case Attachments",
+        "t_attrs": [
+            "case_opened"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "3nrj-de9w": {
+        "domain": "data.wa.gov",
+        "name": "Kindergarten Immunization Data, 2014-2015",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "number_incomplete_for_varicella",
+            "number_incomplete_for_polio",
+            "number_with_medical_exemption",
+            "number_with_any_exemption",
+            "percent_complete_for_varicella",
+            "percent_complete_for_hepatitisb",
+            "percent_complete_for_polio",
+            "percent_complete_for_pertussis",
+            "percent_with_religious_membership_exemption",
+            "percent_with_religious_exemption",
+            "percent_with_personal_exemption",
+            "percent_with_medical_exemption",
+            "percent_with_any_exemption",
+            "percent_out_of_compliance",
+            "percent_complete_for_all_immunizations",
+            "reported_enrollment",
+            "number_incomplete_for_measles_mumps_rubella",
+            "percent_complete_for_diphtheria_tetanus",
+            "percent_conditional",
+            "percent_complete_for_measles_mumps_rubella",
+            "number_conditional",
+            "number_out_of_compliance",
+            "number_complete_for_all_immunizations",
+            "number_with_religious_membership_exemption",
+            "number_incomplete_for_diphtheria_tetanus",
+            "number_incomplete_for_pertussis",
+            "number_with_religious_exemption",
+            "number_with_personal_exemption",
+            "number_incomplete_for_hepatitisb"
+        ]
+    },
+    "9nwy-y8k5": {
+        "domain": "data.wa.gov",
+        "name": "Timberland Regional Library New Cardholder Registrations",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "count"
+        ]
+    },
+    "5my5-gbc9": {
+        "domain": "data.wa.gov",
+        "name": "DCYF Early Learning Office Locations",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocodedphysicaladdress"
+        ],
+        "num_columns": [
+            "officenumber"
+        ]
+    },
+    "esyr-g8p5": {
+        "domain": "data.wa.gov",
+        "name": "Student Enrollment 2013-14 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "students_with_disabilities",
+            "non_english_language_learners",
+            "non_migrant",
+            "non_military_parent",
+            "non_mobile",
+            "non_section_504",
+            "section_504",
+            "mobile",
+            "military_parent",
+            "migrant",
+            "low_income",
+            "english_language_learners",
+            "white",
+            "two_or_more_races",
+            "native_hawaiian_other_pacific",
+            "hispanic_latino_of_any_race",
+            "black_african_american",
+            "american_indian_alaskan_native",
+            "all_students",
+            "schoolcode",
+            "non_homeless",
+            "students_without_disabilities",
+            "non_low_income",
+            "homeless",
+            "foster_care",
+            "asian",
+            "female",
+            "non_foster_care",
+            "male",
+            "gender_x"
+        ]
+    },
+    "byam-m4a8": {
+        "domain": "data.wa.gov",
+        "name": "Asotin County Library Most Circulated Items from Clarkston Branch",
+        "t_attrs": [
+            "lastcheckoutdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "totalcheckouts"
+        ]
+    },
+    "bm2r-usqu": {
+        "domain": "data.wa.gov",
+        "name": "Timberland Regional Library Registered Cardholders by Zip Code",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded"
+        ],
+        "num_columns": []
+    },
+    "e7i3-cutn": {
+        "domain": "data.wa.gov",
+        "name": "Timberland Regional Library Digital Circulation",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "circulation"
+        ]
+    },
+    "ef3e-qpb8": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Graduation 2016-17",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "year6dropout",
+            "dropout",
+            "schoolyear",
+            "continuing",
+            "transferin",
+            "year5dropout",
+            "graduationrate",
+            "beggininggrade9",
+            "year7dropout",
+            "year3dropout",
+            "year1dropout",
+            "finalcohort",
+            "year2dropout",
+            "transferout",
+            "graduate",
+            "year4dropout",
+            "schoolcode"
+        ]
+    },
+    "jvx2-m4u3": {
+        "domain": "data.wa.gov",
+        "name": "2015 Greenhouse Gas Report- Data",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_latitude_longitude"
+        ],
+        "num_columns": [
+            "methane_mt_co2e",
+            "fossil_co2_mt_co2",
+            "biogenic_co2_mt_co2",
+            "point_size_based_on_total_emissions",
+            "total_emissions_mt_co2e",
+            "perfluorocarbons_mt_co2e",
+            "hydrofluorocarbons_mt_co2e",
+            "other_mt_co2e"
+        ]
+    },
+    "tb2x-p7u5": {
+        "domain": "data.wa.gov",
+        "name": "Asotin County Current Restaurant Inspections",
+        "t_attrs": [
+            "last_inspection_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "last_inspection_total_score",
+            "last_inspection_critical"
+        ]
+    },
+    "6zih-i79k": {
+        "domain": "data.wa.gov",
+        "name": "L&I Apprenticeship Occupation details",
+        "t_attrs": [
+            "inactivedate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "step1wage",
+            "rsihours",
+            "termhours",
+            "journeywage"
+        ]
+    },
+    "4j29-snvr": {
+        "domain": "data.wa.gov",
+        "name": "Office of Privacy and Data Protection - Activities",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "maplocation"
+        ],
+        "num_columns": [
+            "localtrainees",
+            "statetrainees",
+            "consumersreached",
+            "monthcode",
+            "totalimpressions",
+            "orgsadopting",
+            "docs_accessed",
+            "publicinquiries"
+        ]
+    },
+    "mihd-6b5x": {
+        "domain": "data.wa.gov",
+        "name": "Timberland Regional Library Service Points",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded"
+        ],
+        "num_columns": [
+            "hours_per_week",
+            "estimated_service_population"
+        ]
+    },
+    "ez9k-2c5k": {
+        "domain": "data.wa.gov",
+        "name": "City of Asotin Building Permits",
+        "t_attrs": [
+            "dateissued"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "vzry-t2nc": {
+        "domain": "data.wa.gov",
+        "name": "Fund Finder Master Content (4-05-2019)",
+        "t_attrs": [
+            "application_closed_yr_2_"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_match"
+        ]
+    },
+    "67t4-gp46": {
+        "domain": "data.wa.gov",
+        "name": "Illicit Discharge Detection & Elimination (IDDE)",
+        "t_attrs": [
+            "_3_date_incident_initially_reported"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "jth9-gdxk": {
+        "domain": "data.wa.gov",
+        "name": "PWS SRC Well Depth",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "township",
+            "section",
+            "total_conn",
+            "resconn",
+            "maxtotalpop",
+            "ft_respop",
+            "src_capacity",
+            "welldepth",
+            "wria_num",
+            "srcnum"
+        ]
+    },
+    "h5ih-67hr": {
+        "domain": "data.wa.gov",
+        "name": "Report Card SQSS for 2017-18",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percenttakingctetechprep",
+            "numbertakingctetechprep",
+            "percenttakingrunningstart",
+            "numbertakingrunningstart",
+            "percenttakingcollegeinth",
+            "numbertakingcollegeinthe",
+            "percenttakingib",
+            "numbertakingib",
+            "percenttakingap",
+            "numbertakingap",
+            "denominator",
+            "numerator"
+        ]
+    },
+    "ekki-gi8u": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Growth for 2017-18",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "studentcount",
+            "percentlowgrowth",
+            "percenthighgrowth",
+            "mediansgp",
+            "percenttypicalgrowth",
+            "numbertypicalgrowth",
+            "numberhighgrowth",
+            "schoolcode",
+            "numberlowgrowth"
+        ]
+    },
+    "9949-vk3e": {
+        "domain": "data.wa.gov",
+        "name": "Student Enrollment 2012-13 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "english_language_learners",
+            "gender_x",
+            "students_without_disabilities",
+            "non_section_504",
+            "non_mobile",
+            "non_military_parent",
+            "non_migrant",
+            "non_homeless",
+            "non_english_language_learners",
+            "students_with_disabilities",
+            "section_504",
+            "mobile",
+            "low_income",
+            "homeless",
+            "foster_care",
+            "two_or_more_races",
+            "hispanic_latino_of_any_race",
+            "black_african_american",
+            "asian",
+            "male",
+            "all_students",
+            "non_low_income",
+            "military_parent",
+            "migrant",
+            "white",
+            "native_hawaiian_other_pacific",
+            "american_indian_alaskan_native",
+            "female",
+            "schoolcode",
+            "non_foster_care"
+        ]
+    },
+    "tcxy-uh9b": {
+        "domain": "data.wa.gov",
+        "name": "Master Content",
+        "t_attrs": [
+            "application_closed"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_match"
+        ]
+    },
+    "ucdg-xgbj": {
+        "domain": "data.wa.gov",
+        "name": "Department of Licensing's Business Licenses Related to the Transportation Industry",
+        "t_attrs": [
+            "first_issue_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "padd-mby7": {
+        "domain": "data.wa.gov",
+        "name": "Data Breach Notifications Affecting Washington Residents (Personal Information Breakdown)",
+        "t_attrs": [
+            "datesubmitted"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "xqmm-4rhy": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access To Educators Summary 2019-20 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "g8kr-9vgm": {
+        "domain": "data.wa.gov",
+        "name": "Middle Snake Low Flow Trend Indicator 2005-2013",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "reg_p",
+            "trend_cfs_yr",
+            "wria",
+            "m_k_p"
+        ]
+    },
+    "93ce-b95t": {
+        "domain": "data.wa.gov",
+        "name": "Student Enrollment 2010-11 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "non_military_parent",
+            "non_foster_care",
+            "non_english_language_learners",
+            "students_with_disabilities",
+            "section_504",
+            "mobile",
+            "migrant",
+            "white",
+            "two_or_more_races",
+            "black_african_american",
+            "asian",
+            "american_indian_alaskan_native",
+            "female",
+            "schoolcode",
+            "english_language_learners",
+            "native_hawaiian_other_pacific",
+            "students_without_disabilities",
+            "non_section_504",
+            "non_mobile",
+            "non_migrant",
+            "non_low_income",
+            "non_homeless",
+            "low_income",
+            "homeless",
+            "foster_care",
+            "hispanic_latino_of_any_race",
+            "male",
+            "gender_x",
+            "all_students",
+            "military_parent"
+        ]
+    },
+    "ui95-axtn": {
+        "domain": "data.wa.gov",
+        "name": "WDFW-Creel Analysis Creel Event",
+        "t_attrs": [
+            "event_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "pidt-c4kw": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access to Educators Content Area 2019-20 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "knvg-qm85": {
+        "domain": "data.wa.gov",
+        "name": "Master Expenditure Tracking Table 3-21-2018",
+        "t_attrs": [
+            "start"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "spent_1",
+            "budget",
+            "spent_2"
+        ]
+    },
+    "f6st-whvb": {
+        "domain": "data.wa.gov",
+        "name": "Summer Low Flow Indicator 1975-2017",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "wria",
+            "trend_cfs_yr",
+            "trib_level",
+            "reg_p",
+            "m_k_p"
+        ]
+    },
+    "d5dm-bwe8": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Graduation 2014-15",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "year2dropout",
+            "year3dropout",
+            "year4dropout",
+            "year5dropout",
+            "finalcohort",
+            "graduate",
+            "continuing",
+            "transferin",
+            "schoolyear",
+            "year6dropout",
+            "schoolcode",
+            "beggininggrade9",
+            "year1dropout",
+            "dropout",
+            "graduationrate",
+            "year7dropout",
+            "transferout"
+        ]
+    },
+    "t6qr-f2pq": {
+        "domain": "data.wa.gov",
+        "name": "PWS SRC Master 051115",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "township",
+            "total_conn",
+            "resconn",
+            "maxtotalpop",
+            "ft_respop",
+            "section",
+            "srcnum",
+            "wria_num",
+            "welldepth",
+            "src_capacity"
+        ]
+    },
+    "i3jn-y8vx": {
+        "domain": "data.wa.gov",
+        "name": "WA School Water Lead Test Data",
+        "t_attrs": [
+            "date_received"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "uxv9-c2g9": {
+        "domain": "data.wa.gov",
+        "name": "City of Clarkston Building Permits",
+        "t_attrs": [
+            "permit_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "valuation"
+        ]
+    },
+    "5bjv-pebn": {
+        "domain": "data.wa.gov",
+        "name": "Student Enrollment 2011-12 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "non_mobile",
+            "non_homeless",
+            "section_504",
+            "low_income",
+            "homeless",
+            "english_language_learners",
+            "white",
+            "black_african_american",
+            "asian",
+            "students_without_disabilities",
+            "non_section_504",
+            "non_military_parent",
+            "non_migrant",
+            "non_foster_care",
+            "students_with_disabilities",
+            "mobile",
+            "migrant",
+            "foster_care",
+            "two_or_more_races",
+            "native_hawaiian_other_pacific",
+            "hispanic_latino_of_any_race",
+            "american_indian_alaskan_native",
+            "male",
+            "female",
+            "schoolcode",
+            "non_english_language_learners",
+            "gender_x",
+            "all_students",
+            "non_low_income",
+            "military_parent"
+        ]
+    },
+    "ed66-842c": {
+        "domain": "data.wa.gov",
+        "name": "PWS SRC Well Depth And Source Cap",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "ft_respop",
+            "section",
+            "township",
+            "total_conn",
+            "resconn",
+            "maxtotalpop",
+            "src_capacity",
+            "welldepth",
+            "wria_num",
+            "srcnum"
+        ]
+    },
+    "hsuv-x2dz": {
+        "domain": "data.wa.gov",
+        "name": "PWS SRC Source Cap And Well Depth",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "total_conn",
+            "welldepth",
+            "section",
+            "township",
+            "resconn",
+            "maxtotalpop",
+            "ft_respop",
+            "src_capacity",
+            "wria_num",
+            "srcnum"
+        ]
+    },
+    "dpqw-kc2b": {
+        "domain": "data.wa.gov",
+        "name": "WDFW - Creel Summary Counts",
+        "t_attrs": [
+            "survey_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "other_released",
+            "other_harvest",
+            "hatchery_released",
+            "hatchery_harvest",
+            "wild_harvest",
+            "anglers",
+            "wild_released",
+            "boatanglers"
+        ]
+    },
+    "k67g-t283": {
+        "domain": "data.wa.gov",
+        "name": "WA Prisons Average Daily Population",
+        "t_attrs": [
+            "monthdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "in_state_rented_beds_community",
+            "yakima_county_prison_capacity",
+            "airway_heights_corrections",
+            "prison_facility_totals",
+            "washington_correction_center_1",
+            "olympic_corrections_center",
+            "monroe_correctional_complex",
+            "larch_corrections_center",
+            "cedar_creek_corrections_center",
+            "work_release",
+            "washington_correction_center",
+            "mission_creek_corrections",
+            "washington_state_penitentiary",
+            "stafford_creek_corrections",
+            "total_and_partial_confinement",
+            "grand_total",
+            "clallam_bay_corrections_center"
+        ]
+    },
+    "j2u5-4qpk": {
+        "domain": "data.wa.gov",
+        "name": "[to be retired] WA State Accessibility Coordinators",
+        "t_attrs": [
+            "last_change_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "tf7e-z5t7": {
+        "domain": "data.wa.gov",
+        "name": "PWS SRC Source Capacity",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "srcnum",
+            "ft_respop",
+            "maxtotalpop",
+            "resconn",
+            "wria_num",
+            "section",
+            "total_conn",
+            "src_capacity",
+            "welldepth",
+            "township"
+        ]
+    },
+    "fdkr-wxze": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Graduation 2015-16",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "graduationrate",
+            "dropout",
+            "graduate",
+            "finalcohort",
+            "year5dropout",
+            "year4dropout",
+            "year3dropout",
+            "beggininggrade9",
+            "transferout",
+            "year7dropout",
+            "year2dropout",
+            "year6dropout",
+            "year1dropout",
+            "transferin",
+            "schoolcode",
+            "continuing",
+            "schoolyear"
+        ]
+    },
+    "k5p7-4crk": {
+        "domain": "data.wa.gov",
+        "name": "Master Expenditure Tracking Table 07-15-2016",
+        "t_attrs": [
+            "funding_agreement_start"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "planned_to_spend"
+        ]
+    },
+    "7ipt-eqqd": {
+        "domain": "data.wa.gov",
+        "name": "SC Fields Summary Statementof Apprentice- Journeyman Participation - OHNO Construction",
+        "t_attrs": [
+            "actual_constntp_dt"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "proj_summ_total",
+            "hrs"
+        ]
+    },
+    "aw3j-6k75": {
+        "domain": "data.wa.gov",
+        "name": "Summer Low Flow Trend Indicator 1975-2015",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "reg_p",
+            "trib_level",
+            "trend_cfs_yr",
+            "m_k_p",
+            "wria"
+        ]
+    },
+    "sefr-g784": {
+        "domain": "data.wa.gov",
+        "name": "City of Colfax: Building Permits February 2016",
+        "t_attrs": [
+            "issue_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "permit_fee",
+            "project_cost"
+        ]
+    },
+    "iqrw-294q": {
+        "domain": "data.wa.gov",
+        "name": "City of Colfax: Building Permits January 2016",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "project_cost",
+            "permit_fee"
+        ]
+    },
+    "gjiu-inph": {
+        "domain": "data.wa.gov",
+        "name": "Report Card SQSS for 2014-15",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percenttakingctetechprep",
+            "numbertakingctetechprep",
+            "percenttakingrunningstart",
+            "numbertakingrunningstart",
+            "percenttakingcollegeinth",
+            "numbertakingcollegeinthe",
+            "percenttakingib",
+            "numbertakingib",
+            "percenttakingap",
+            "numbertakingap",
+            "denominator",
+            "numerator"
+        ]
+    },
+    "ayz3-kckw": {
+        "domain": "data.wa.gov",
+        "name": "Report Card SQSS for 2016-17",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percenttakingctetechprep",
+            "numbertakingctetechprep",
+            "percenttakingrunningstart",
+            "numbertakingrunningstart",
+            "percenttakingcollegeinth",
+            "numbertakingcollegeinthe",
+            "numbertakingib",
+            "percenttakingap",
+            "numbertakingap",
+            "percenttakingib",
+            "denominator",
+            "numerator"
+        ]
+    },
+    "85wj-zd4e": {
+        "domain": "data.wa.gov",
+        "name": "2023 School Year Highly Capable Data",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "schoolyear"
+        ]
+    },
+    "xh35-3825": {
+        "domain": "data.wa.gov",
+        "name": "Drought Permit Authorizations",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "wr_doc_application_irrigated_acres_qt",
+            "wr_doc_application_qa_qt",
+            "wr_doc_permit_qa_qt"
+        ]
+    },
+    "yu78-e98h": {
+        "domain": "data.wa.gov",
+        "name": "Asotin County Vehicle Collisions",
+        "t_attrs": [
+            "collision_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "motor_vehicles_involved",
+            "mile_post",
+            "pedestrians_involved",
+            "pedalcyclists_involved"
+        ]
+    },
+    "rfra-yhpm": {
+        "domain": "data.wa.gov",
+        "name": "North Central Regional Library (WA) Bookmobile Checkouts by Location",
+        "t_attrs": [
+            "datetime_byhour"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "q3qk-yy3p": {
+        "domain": "data.wa.gov",
+        "name": "WA-APCD Quality and Cost Summary Report: Hospital Quality",
+        "t_attrs": [
+            "reporting_period_begin_dt"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "lower_95_ci",
+            "upper_95_ci",
+            "measure_result"
+        ]
+    },
+    "vhzd-vikk": {
+        "domain": "data.wa.gov",
+        "name": "Driver License Transfers to Asotin County",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "countcardcount"
+        ]
+    },
+    "x7f4-cm3f": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Growth for 2016-17",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "studentcount",
+            "schoolcode",
+            "percenttypicalgrowth",
+            "numbertypicalgrowth",
+            "numberlowgrowth",
+            "percenthighgrowth",
+            "mediansgp",
+            "percentlowgrowth",
+            "numberhighgrowth"
+        ]
+    },
+    "k328-cdkz": {
+        "domain": "data.wa.gov",
+        "name": "Summer Low Flow Trend Indicator 1975-2016",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "reg_p",
+            "m_k_p",
+            "wria",
+            "trib_level",
+            "trend_cfs_yr"
+        ]
+    },
+    "nvyx-ge76": {
+        "domain": "data.wa.gov",
+        "name": "Report Card SQSS for 2015-16",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percenttakingctetechprep",
+            "percenttakingrunningstart",
+            "numbertakingrunningstart",
+            "percenttakingcollegeinth",
+            "numbertakingcollegeinthe",
+            "percenttakingib",
+            "numbertakingib",
+            "percenttakingap",
+            "numbertakingap",
+            "denominator",
+            "numerator",
+            "numbertakingctetechprep"
+        ]
+    },
+    "2xmg-9s94": {
+        "domain": "data.wa.gov",
+        "name": "Public Records Requests",
+        "t_attrs": [
+            "date_closed"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "tzrg-kkis": {
+        "domain": "data.wa.gov",
+        "name": "Asotin County Library District Interlibrary Loan",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "illfromtotal",
+            "illfromnonshare",
+            "illtovalnet",
+            "illtototal",
+            "illtononshare",
+            "illfromvalnet"
+        ]
+    },
+    "76ay-i9t9": {
+        "domain": "data.wa.gov",
+        "name": "Asotin County Library District Program Attendance",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "adultprog",
+            "childprogattend",
+            "childprog",
+            "sumreadattend",
+            "adultprogattend",
+            "servpop",
+            "yaprog",
+            "yaprogattend"
+        ]
+    },
+    "7gpg-n8f9": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access To Educators Summary 2018-19 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "emhz-m99x": {
+        "domain": "data.wa.gov",
+        "name": "Sixth (6th) grade immunization data by school, 2016-2017",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "percent_with_medical_exemption",
+            "percent_complete_for_pertussis",
+            "percent_complete_for_diphtheria_tetanus",
+            "number_conditional",
+            "number_complete_for_all_immunizations",
+            "percent_complete_for_varicella",
+            "percent_complete_for_hepatitisb",
+            "percent_complete_for_polio",
+            "percent_complete_for_measles_mumps_rubella",
+            "percent_with_religious_membership_exemption",
+            "percent_with_personal_exemption",
+            "percent_with_any_exemption",
+            "percent_out_of_compliance",
+            "percent_conditional",
+            "percent_complete_for_all_immunizations",
+            "reported_enrollment",
+            "number_incomplete_for_varicella",
+            "number_incomplete_for_polio",
+            "number_incomplete_for_measles_mumps_rubella",
+            "number_incomplete_for_pertussis",
+            "number_incomplete_for_diphtheria_tetanus",
+            "number_with_religious_exemption",
+            "number_with_personal_exemption",
+            "number_with_medical_exemption",
+            "number_out_of_compliance",
+            "number_incomplete_for_hepatitisb",
+            "percent_with_religious_exemption",
+            "number_with_religious_membership_exemption",
+            "number_with_any_exemption"
+        ]
+    },
+    "fbtu-87pv": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access To Educators Summary",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "mibg-3zz6": {
+        "domain": "data.wa.gov",
+        "name": "Habitat Project Focus Metrics  (12-04-2020)",
+        "t_attrs": [
+            "enddate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "unitvalue",
+            "prj_count"
+        ]
+    },
+    "k32n-7vtp": {
+        "domain": "data.wa.gov",
+        "name": "WAOFM - SAEP - School District Population Estimates, 2000-2020",
+        "t_attrs": [
+            "saep_version"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_change_in_population_1",
+            "numeric_change_in_population_1",
+            "percent_change_in_population",
+            "estimated_total_population_2020",
+            "estimated_total_population_18",
+            "estimated_total_population_17",
+            "estimated_total_population_16",
+            "estimated_total_population_15",
+            "estimated_total_population_13",
+            "estimated_total_population_12",
+            "estimated_total_population_11",
+            "estimated_total_population_10",
+            "estimated_total_population_7",
+            "estimated_total_population_5",
+            "estimated_total_population_4",
+            "estimated_total_population_2",
+            "estimated_total_population",
+            "numeric_change_in_population",
+            "estimated_total_population_9",
+            "estimated_total_population_8",
+            "estimated_total_population_6",
+            "estimated_total_population_3",
+            "estimated_total_population_1",
+            "estimated_total_population_19",
+            "estimated_total_population_14"
+        ]
+    },
+    "hn4a-bdxf": {
+        "domain": "data.wa.gov",
+        "name": "TEST Centroids for School District maps",
+        "t_attrs": [
+            "graderange"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "longtude",
+            "sdlea",
+            "code",
+            "unsd",
+            "landarea",
+            "highgrade",
+            "shape_leng",
+            "shape_area",
+            "region",
+            "ddd",
+            "esd",
+            "lsad",
+            "cc",
+            "ccddd",
+            "coord_change_bool"
+        ]
+    },
+    "5ntt-w96d": {
+        "domain": "data.wa.gov",
+        "name": "National Groundwater Monitoring Network-Water Level Data",
+        "t_attrs": [
+            "date_of_measurement"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "depth_to_water_accuracy",
+            "land_surface_altitude"
+        ]
+    },
+    "4rjj-n636": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Growth for 2015-16",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percentlowgrowth",
+            "schoolcode",
+            "studentcount",
+            "percenttypicalgrowth",
+            "numberlowgrowth",
+            "numberhighgrowth",
+            "mediansgp",
+            "percenthighgrowth",
+            "numbertypicalgrowth"
+        ]
+    },
+    "7na8-mwsc": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Growth for 2014-15",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "numberlowgrowth",
+            "schoolcode",
+            "studentcount",
+            "percenttypicalgrowth",
+            "percentlowgrowth",
+            "percenthighgrowth",
+            "numbertypicalgrowth",
+            "mediansgp",
+            "numberhighgrowth"
+        ]
+    },
+    "t94r-s3m2": {
+        "domain": "data.wa.gov",
+        "name": "Reported Facility Emissions (2014)",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "pm",
+            "so2",
+            "pm10",
+            "co",
+            "voc",
+            "nox",
+            "nh3",
+            "pm25"
+        ]
+    },
+    "wmtw-ckd3": {
+        "domain": "data.wa.gov",
+        "name": "Chehalis River Basin Flood Authority Flood Warning System Sign-ups",
+        "t_attrs": [],
+        "s_attrs": [
+            "geo_floodalertloc"
+        ],
+        "num_columns": [
+            "number_of_registrations_2017",
+            "number_of_registrations_2014",
+            "number_of_registrations_2022",
+            "number_of_registrations_2021",
+            "number_of_registrations_2018",
+            "number_of_registrations_2016",
+            "number_of_registrations_2015",
+            "elevation",
+            "number_of_registrations_2020",
+            "number_of_registrations_2019"
+        ]
+    },
+    "q4ba-s3jc": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Enrollment 2023-24 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "students_without_disabilities",
+            "non_section_504",
+            "non_mobile",
+            "non_military_parent",
+            "non_migrant",
+            "non_low_income",
+            "non_homeless",
+            "non_highly_capable",
+            "non_foster_care",
+            "non_english_language_learners",
+            "students_with_disabilities",
+            "section_504",
+            "mobile",
+            "military_parent",
+            "low_income",
+            "homeless",
+            "highly_capable",
+            "foster_care",
+            "english_language_learners",
+            "white",
+            "two_or_more_races",
+            "native_hawaiian_other_pacific",
+            "hispanic_latino_of_any_race",
+            "black_african_american",
+            "asian",
+            "american_indian_alaskan_native",
+            "male",
+            "gender_x",
+            "female",
+            "all_students",
+            "migrant"
+        ]
+    },
+    "apmy-6dgi": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access To Educators Content Area 2018-19 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "9fej-br89": {
+        "domain": "data.wa.gov",
+        "name": "KSD Apprenticeship Utilization",
+        "t_attrs": [
+            "actual_constntp_dt"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "hrs",
+            "proj_summ_total"
+        ]
+    },
+    "fbwt-rp22": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access to Educators Summary and Content Area",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "schoolyear"
+        ]
+    },
+    "j8pm-xq6k": {
+        "domain": "data.wa.gov",
+        "name": "Asotin County Library District Services",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pubcompuses",
+            "servpop",
+            "dbasesearch",
+            "physvisits",
+            "physmatcirc",
+            "wifisessions",
+            "virtvisits",
+            "totalcirc",
+            "ematcirc"
+        ]
+    },
+    "mppc-zjn9": {
+        "domain": "data.wa.gov",
+        "name": "Last Minute Contributions to Candidates and Political Committees",
+        "t_attrs": [
+            "receipt_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "amount",
+            "aggregate"
+        ]
+    },
+    "tw6a-23eg": {
+        "domain": "data.wa.gov",
+        "name": "WA-APCD Quality and Cost Summary Report: Facility Cost",
+        "t_attrs": [
+            "reporting_period_begin_dt"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "median_allowed_amt",
+            "lower_25_allowed_amt",
+            "upper_75_allowed_amt"
+        ]
+    },
+    "j78i-gfy5": {
+        "domain": "data.wa.gov",
+        "name": "WA-APCD Quality and Cost Summary Report: ACH Quality",
+        "t_attrs": [
+            "reporting_period_begin_dt"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "upper_95_ci",
+            "lower_95_ci",
+            "measure_result"
+        ]
+    },
+    "hmzg-s6q4": {
+        "domain": "data.wa.gov",
+        "name": "Vehicle Registrations by Class and County",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "number_of_registrations"
+        ]
+    },
+    "ivv9-qjzt": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access to Educators Summary and Content Area 2021-22 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "schoolyear"
+        ]
+    },
+    "59us-gyxk": {
+        "domain": "data.wa.gov",
+        "name": "Master Fund Finder Data 11092017 (test)",
+        "t_attrs": [
+            "application_open_yr_1"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_match"
+        ]
+    },
+    "kw82-bcav": {
+        "domain": "data.wa.gov",
+        "name": "ALD Phase I- Faber- Summary Statementof Apprentice- Journeyman Participation DES",
+        "t_attrs": [
+            "report_period_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "hrs",
+            "worker_reg_num",
+            "proj_summ_total"
+        ]
+    },
+    "ykfu-5nf4": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access To Educators Content Area 2017-18 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "studentpercent",
+            "studentcount",
+            "studenttotalcount"
+        ]
+    },
+    "2di7-6ncs": {
+        "domain": "data.wa.gov",
+        "name": "State Agency Amazon Spend Fiscal Year 21",
+        "t_attrs": [
+            "shipment_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "unspsc",
+            "purchase_ppu",
+            "pricing_discount_applied_1",
+            "payment_amount",
+            "listed_ppu",
+            "item_tax",
+            "item_subtotal",
+            "item_shipping_handling",
+            "item_quantity",
+            "item_promotion",
+            "item_net_total",
+            "pricing_discount_applied"
+        ]
+    },
+    "4rfn-62je": {
+        "domain": "data.wa.gov",
+        "name": "WA-APCD Quality and Cost Summary Report: County Cost",
+        "t_attrs": [
+            "reporting_period_begin_dt"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "upper_75_allowed_amt",
+            "median_allowed_amt",
+            "lower_25_allowed_amt"
+        ]
+    },
+    "73wi-zquj": {
+        "domain": "data.wa.gov",
+        "name": "WAOFM - SAEP - Congressional District Population Estimates, 2000-2020",
+        "t_attrs": [
+            "saep_version"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_change_in_population_1",
+            "numeric_change_in_population_1",
+            "percent_change_in_population",
+            "estimated_total_population_15",
+            "estimated_total_population_14",
+            "estimated_total_population_13",
+            "estimated_total_population_9",
+            "estimated_total_population_8",
+            "estimated_total_population_6",
+            "estimated_total_population_5",
+            "estimated_total_population_3",
+            "estimated_total_population",
+            "estimated_total_population_2020",
+            "estimated_total_population_16",
+            "estimated_total_population_10",
+            "numeric_change_in_population",
+            "estimated_total_population_18",
+            "estimated_total_population_1",
+            "estimated_total_population_19",
+            "estimated_total_population_17",
+            "estimated_total_population_12",
+            "estimated_total_population_11",
+            "estimated_total_population_7",
+            "estimated_total_population_4",
+            "estimated_total_population_2"
+        ]
+    },
+    "ebwb-9rx9": {
+        "domain": "data.wa.gov",
+        "name": "WA-APCD Quality and Cost Summary Report: Practice Quality",
+        "t_attrs": [
+            "reporting_period_begin_dt"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "measure_result",
+            "lower_95_ci",
+            "upper_95_ci"
+        ]
+    },
+    "dqb8-2ba4": {
+        "domain": "data.wa.gov",
+        "name": "WAOFM - SAEP - State Legislative District Population Estimates, 2000-2020",
+        "t_attrs": [
+            "saep_version"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "estimated_total_population_16",
+            "estimated_total_population_15",
+            "estimated_total_population_14",
+            "estimated_total_population_11",
+            "estimated_total_population_8",
+            "percent_change_in_population",
+            "estimated_total_population_17",
+            "estimated_total_population_9",
+            "estimated_total_population_2",
+            "estimated_total_population",
+            "percent_change_in_population_1",
+            "numeric_change_in_population_1",
+            "numeric_change_in_population",
+            "estimated_total_population_2020",
+            "estimated_total_population_19",
+            "estimated_total_population_18",
+            "estimated_total_population_13",
+            "estimated_total_population_12",
+            "estimated_total_population_10",
+            "estimated_total_population_7",
+            "estimated_total_population_6",
+            "estimated_total_population_5",
+            "estimated_total_population_4",
+            "estimated_total_population_3",
+            "estimated_total_population_1"
+        ]
+    },
+    "fpbu-w4ay": {
+        "domain": "data.wa.gov",
+        "name": "State Agency Amazon Spend Fiscal Year 20",
+        "t_attrs": [
+            "shipment_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "unspsc",
+            "purchase_ppu",
+            "pricing_discount_applied",
+            "payment_amount",
+            "listed_ppu",
+            "item_tax",
+            "item_subtotal",
+            "item_shipping_handling",
+            "item_quantity",
+            "item_promotion",
+            "item_net_total",
+            "pricing_discount_applied_1"
+        ]
+    },
+    "msv2-8gcv": {
+        "domain": "data.wa.gov",
+        "name": "State Agency Amazon Spend Fiscal Year 19",
+        "t_attrs": [
+            "shipment_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "unspsc",
+            "purchase_ppu",
+            "pricing_discount_applied_1",
+            "pricing_discount_applied",
+            "payment_amount",
+            "listed_ppu",
+            "item_tax",
+            "item_subtotal",
+            "item_shipping_handling",
+            "item_quantity",
+            "item_promotion",
+            "item_net_total"
+        ]
+    },
+    "rk5w-3q8b": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access To Educators Summary 2017-18 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "bn4u-fdfv": {
+        "domain": "data.wa.gov",
+        "name": "NC - Kassel - Summary Statementof Apprentice- Journeyman Participation DES",
+        "t_attrs": [
+            "report_period_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "hrs",
+            "proj_summ_total"
+        ]
+    },
+    "2hyn-3mjj": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access to Educators Summary and Content Area 2020-21 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "schoolyear"
+        ]
+    },
+    "adxt-ewux": {
+        "domain": "data.wa.gov",
+        "name": "MAP -- All Projects (2012-21) 08-29-2018",
+        "t_attrs": [
+            "end"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "funded_expended"
+        ]
+    },
+    "7uih-j4nm": {
+        "domain": "data.wa.gov",
+        "name": "Flood Alert Gage User Sign-up Data 12/22",
+        "t_attrs": [],
+        "s_attrs": [
+            "geo_flood_alert"
+        ],
+        "num_columns": [
+            "sign_up_2020_21",
+            "sign_up_2019_20",
+            "sign_up_2021_22",
+            "sign_up_2017_18",
+            "sign_up_2022_23",
+            "sign_up_2015_16",
+            "sign_up_2016_17",
+            "sign_up_2014_15",
+            "sign_up_2018_19"
+        ]
+    },
+    "ja54-ddzj": {
+        "domain": "data.wa.gov",
+        "name": "State Agency Amazon Spend Fiscal Year 18",
+        "t_attrs": [
+            "shipment_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "unspsc",
+            "purchase_ppu",
+            "pricing_discount_applied_1",
+            "pricing_discount_applied",
+            "payment_amount",
+            "listed_ppu",
+            "item_subtotal",
+            "item_shipping_handling",
+            "item_quantity",
+            "item_promotion",
+            "item_net_total",
+            "item_tax"
+        ]
+    },
+    "ncqf-syud": {
+        "domain": "data.wa.gov",
+        "name": "Department of Licensing Data Sharing Contract Audits History",
+        "t_attrs": [
+            "audit_received_or_conducted"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "ubi_ein"
+        ]
+    },
+    "n5j5-n3nw": {
+        "domain": "data.wa.gov",
+        "name": "FundFinder_Programs",
+        "t_attrs": [
+            "application_open_yr_2"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "6zm6-iep6": {
+        "domain": "data.wa.gov",
+        "name": "WDFW-Creel Fishery Closure",
+        "t_attrs": [
+            "event_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "section_num"
+        ]
+    },
+    "43ir-hnt6": {
+        "domain": "data.wa.gov",
+        "name": "Report Card English Learner Assessment Data 2022-23 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "progressingdat",
+            "progressingdenominatordat",
+            "metstandarddat",
+            "metstandarddenominatordat"
+        ]
+    },
+    "kigx-4b2d": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Graduation 2022-23",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "ef7g-tyg8": {
+        "domain": "data.wa.gov",
+        "name": "Draft Pre-L7",
+        "t_attrs": [
+            "receipt_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "lobbyist_postcode"
+        ]
+    },
+    "x3ib-5f46": {
+        "domain": "data.wa.gov",
+        "name": "Washington's State Art Collection 2023-10-28",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoordinates"
+        ],
+        "num_columns": []
+    },
+    "gjs3-kcin": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Teacher Qualification Summary",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "2tkz-y7m3": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access to Educators Summary and Content Area 2019-20 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "schoolyear"
+        ]
+    },
+    "9kav-dq2q": {
+        "domain": "data.wa.gov",
+        "name": "State Agency Amazon Spend Fiscal Year 23",
+        "t_attrs": [
+            "shipment_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pricing_discount_applied",
+            "item_net_total",
+            "item_promotion",
+            "item_shipping_handling",
+            "purchase_ppu",
+            "listed_ppu",
+            "unspsc",
+            "item_tax",
+            "pricing_discount_applied_1",
+            "item_subtotal",
+            "item_quantity"
+        ]
+    },
+    "jnwp-rrf7": {
+        "domain": "data.wa.gov",
+        "name": "Flood Alert Gage Cost per Sign-up",
+        "t_attrs": [],
+        "s_attrs": [
+            "geo_costs"
+        ],
+        "num_columns": [
+            "sign_ups",
+            "per_sign_up_cost"
+        ]
+    },
+    "ebhk-h4np": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access to Educators Summary and Content Area 2017-18 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "schoolyear"
+        ]
+    },
+    "scsy-sgj8": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Student Access to Educators Summary and Content Area 2018-19 School Year",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "schoolyear"
+        ]
+    },
+    "jum2-3mgi": {
+        "domain": "data.wa.gov",
+        "name": "Report Card Growth for 2022-23",
+        "t_attrs": [
+            "dataasof"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "x25s-cxg8": {
+        "domain": "data.wa.gov",
+        "name": "WDFW - Salmonid Population Indicators Database (SPI) Metrics and Indicators",
+        "t_attrs": [
+            "upddate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "age7proplowerlimit",
+            "age6proplowerlimit",
+            "tsaijupperlimit",
+            "tsaijlowerlimit",
+            "nosaijlowerlimit",
+            "escapementlong",
+            "age9propupperlimit",
+            "age7prop",
+            "age6propupperlimit",
+            "age4proplowerlimit",
+            "age3prop",
+            "tsaejlowerlimit",
+            "tsaej",
+            "phosejupperlimit",
+            "phosejlowerlimit",
+            "phosijupperlimit",
+            "phosijlowerlimit",
+            "phosij",
+            "nobroodstockremoved",
+            "nosaejalpha",
+            "nosaejupperlimit",
+            "nosaij",
+            "agepropalpha",
+            "age11plusproplowerlimit",
+            "age10proplowerlimit",
+            "age10prop",
+            "age9proplowerlimit",
+            "age8prop",
+            "age7propupperlimit",
+            "age6prop",
+            "age5propupperlimit",
+            "age5prop",
+            "age4prop",
+            "age3propupperlimit",
+            "age3proplowerlimit",
+            "age2proplowerlimit",
+            "age2prop",
+            "tsaejalpha",
+            "tsaejupperlimit",
+            "tsaijalpha",
+            "tsaij",
+            "hosjf",
+            "nosjfalpha",
+            "nosjfupperlimit",
+            "nosjflowerlimit",
+            "nosjf",
+            "phosejalpha",
+            "phosej",
+            "phosijalpha",
+            "nosaejlowerlimit",
+            "nosaej",
+            "methodnumber",
+            "age11pluspropupperlimit",
+            "age11plusprop",
+            "age10propupperlimit",
+            "age9prop",
+            "age8propupperlimit",
+            "age8proplowerlimit",
+            "age5proplowerlimit",
+            "age4propupperlimit",
+            "age2propupperlimit",
+            "nosaijalpha",
+            "nosaijupperlimit",
+            "escapementlat"
+        ]
+    },
+    "mz6y-pfem": {
+        "domain": "data.wa.gov",
+        "name": "Agency Contracts Fiscal Year 2023",
+        "t_attrs": [
+            "contract_effective_start"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "t4ge-rgcp": {
+        "domain": "data.wa.gov",
+        "name": "RCI Monthly Counts SFY2023",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "isolation_events",
+            "rci_events",
+            "adp",
+            "rci_event_rate"
+        ]
+    },
+    "9d3i-sw8c": {
+        "domain": "data.wa.gov",
+        "name": "RCI Start Reason SFY2023",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "events"
+        ]
+    },
+    "hycx-v82h": {
+        "domain": "data.wa.gov",
+        "name": "IT Contracts Report 2023",
+        "t_attrs": [
+            "contract_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "it_tower_storage",
+            "it_tower_platform",
+            "it_tower_output",
+            "it_tower_network",
+            "it_tower_end_user",
+            "it_tower_delivery",
+            "it_tower_data_center",
+            "it_tower_compute",
+            "it_tower_application",
+            "it_tower_it_management",
+            "total_percentage_auto",
+            "it_tower_security"
+        ]
+    },
+    "mfad-833t": {
+        "domain": "data.wa.gov",
+        "name": "Timberland Regional Library - Library of Things",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "circulation"
+        ]
+    }
+}

@@ -1,0 +1,5409 @@
+{
+    "dik5-hwp6_dataexportdatetime_3": {
+        "count": {
+            "sum": 11.0,
+            "sum_square": 121.0,
+            "avg": 11.0,
+            "res_sum": null,
+            "cnt": 1
+        }
+    },
+    "2nrs-mtv8_date_rptd_3": {
+        "avg_part_1_2": {
+            "sum": 272.4970347784288,
+            "sum_square": 448.29643599385554,
+            "avg": 1.622,
+            "res_sum": 6.3046,
+            "cnt": 168
+        },
+        "avg_premis_cd": {
+            "sum": 67001.29052590963,
+            "sum_square": 27847581.000656266,
+            "avg": 398.8172,
+            "res_sum": 1126313.5475,
+            "cnt": 168
+        },
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 3779238476.0,
+            "avg": 2976.1905,
+            "res_sum": 2291143237.9048,
+            "cnt": 168
+        }
+    },
+    "63jg-8b9z_date_occ_3": {
+        "avg_part_1_2": {
+            "sum": 77.82150394958173,
+            "sum_square": 120.01081077614846,
+            "avg": 1.5259,
+            "res_sum": 1.2621,
+            "cnt": 51
+        },
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 8423451628.0,
+            "avg": 9803.9216,
+            "res_sum": 3521490843.6863,
+            "cnt": 51
+        }
+    },
+    "q3ak-s5hy_abate_effective_3": {
+        "count": {
+            "sum": 629.0,
+            "sum_square": 5711.0,
+            "avg": 3.514,
+            "res_sum": 3500.7151,
+            "cnt": 179
+        }
+    },
+    "wjz9-h9np_issue_date_3": {
+        "avg_fine_amount": {
+            "sum": 2212.3831082041634,
+            "sum_square": 169116.9907220474,
+            "avg": 69.137,
+            "res_sum": 17202.0712,
+            "cnt": 34
+        },
+        "avg_agency": {
+            "sum": 841.1383257599942,
+            "sum_square": 35941.83564822583,
+            "avg": 24.7394,
+            "res_sum": 15132.6097,
+            "cnt": 34
+        },
+        "avg_issue_time": {
+            "sum": 38707.64270751811,
+            "sum_square": 50082439.656299844,
+            "avg": 1138.4601,
+            "res_sum": 6015333.6571,
+            "cnt": 34
+        },
+        "count": {
+            "sum": 499994.0,
+            "sum_square": 75249576608.0,
+            "avg": 14705.7059,
+            "res_sum": 67896811901.0588,
+            "cnt": 34
+        }
+    },
+    "hf3r-utnq_closedate_3": {
+        "count": {
+            "sum": 155.0,
+            "sum_square": 15603.0,
+            "avg": 19.375,
+            "res_sum": 12599.875,
+            "cnt": 8
+        }
+    },
+    "94wu-3ps3_count_date_3": {
+        "avg_s_b": {
+            "sum": 320131.74090893654,
+            "sum_square": 2141967790.1422195,
+            "avg": 4573.3106,
+            "res_sum": 677905911.0367,
+            "cnt": 70
+        },
+        "avg_w_b": {
+            "sum": 339406.9042541022,
+            "sum_square": 2412361500.41634,
+            "avg": 4848.6701,
+            "res_sum": 766689405.3399,
+            "cnt": 70
+        },
+        "avg_n_b": {
+            "sum": 322244.89261734945,
+            "sum_square": 2207785057.551307,
+            "avg": 4603.4985,
+            "res_sum": 724331188.7232,
+            "cnt": 70
+        },
+        "avg_total": {
+            "sum": 1116927.0550691085,
+            "sum_square": 20696553582.417927,
+            "avg": 15956.1008,
+            "res_sum": 2874752920.3415,
+            "cnt": 70
+        },
+        "avg_e_b": {
+            "sum": 377619.05309686053,
+            "sum_square": 3617540105.26986,
+            "avg": 5394.5579,
+            "res_sum": 1580452258.6732,
+            "cnt": 70
+        },
+        "count": {
+            "sum": 5946.0,
+            "sum_square": 906632.0,
+            "avg": 84.9429,
+            "res_sum": 401561.7714,
+            "cnt": 70
+        }
+    },
+    "84iq-i2r6_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 59272715828.0,
+            "avg": 83333.3333,
+            "res_sum": 17606049161.3333,
+            "cnt": 6
+        }
+    },
+    "g3qu-7q2u_reportperiod_3": {
+        "avg_passenger_count": {
+            "sum": 31862674.30133514,
+            "sum_square": 5013939521032.981,
+            "avg": 148891.0014,
+            "res_sum": 269874036766.8003,
+            "cnt": 214
+        },
+        "count": {
+            "sum": 7883.0,
+            "sum_square": 291389.0,
+            "avg": 36.8364,
+            "res_sum": 1007.2757,
+            "cnt": 214
+        }
+    },
+    "r4ka-x5je_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 72061705656.0,
+            "avg": 125000.0,
+            "res_sum": 9561705656.0,
+            "cnt": 4
+        }
+    },
+    "ci25-wgt7_stop_dt_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 23399038522.0,
+            "avg": 41666.6667,
+            "res_sum": 2565705188.6667,
+            "cnt": 12
+        }
+    },
+    "e7h6-4a3e_eventtime_3": {
+        "count": {
+            "sum": 2509.0,
+            "sum_square": 5996425.0,
+            "avg": 1254.5,
+            "res_sum": 2848884.5,
+            "cnt": 2
+        }
+    },
+    "8cmr-fbcu_intake_date_3": {
+        "count": {
+            "sum": 187593.0,
+            "sum_square": 1032580083.0,
+            "avg": 5210.9167,
+            "res_sum": 55048592.75,
+            "cnt": 36
+        }
+    },
+    "qyvz-diiw_date_value_3": {
+        "avg_recycled_water_of_total": {
+            "sum": 20.5,
+            "sum_square": 27.69,
+            "avg": 0.4184,
+            "res_sum": 19.1135,
+            "cnt": 49
+        },
+        "avg_recycled_water": {
+            "sum": 116585.0,
+            "sum_square": 823469425.0,
+            "avg": 2379.2857,
+            "res_sum": 546080400.0,
+            "cnt": 49
+        },
+        "avg_local_groundwater": {
+            "sum": 4194467.0,
+            "sum_square": 389586987431.0,
+            "avg": 85601.3673,
+            "res_sum": 30534876939.3878,
+            "cnt": 49
+        },
+        "avg_local_groundwater_of_total": {
+            "sum": 689.0999999999999,
+            "sum_square": 10380.69,
+            "avg": 14.0633,
+            "res_sum": 689.6939,
+            "cnt": 49
+        },
+        "avg_la_aqueduct": {
+            "sum": 15966553.0,
+            "sum_square": 6143941966699.0,
+            "avg": 325848.0204,
+            "res_sum": 941272278906.9796,
+            "cnt": 49
+        },
+        "avg_mwd": {
+            "sum": 9410770.0,
+            "sum_square": 2749450751936.0,
+            "avg": 192056.5306,
+            "res_sum": 942050915346.2041,
+            "cnt": 49
+        },
+        "avg_la_aqueduct_of_total": {
+            "sum": 2628.7,
+            "sum_square": 165865.04999999996,
+            "avg": 53.6469,
+            "res_sum": 24843.342,
+            "cnt": 49
+        },
+        "avg_mwd_of_toal": {
+            "sum": 1561.6999999999996,
+            "sum_square": 75905.39,
+            "avg": 31.8714,
+            "res_sum": 26131.78,
+            "cnt": 49
+        },
+        "avg_total_acre_feet": {
+            "sum": 29688375.0,
+            "sum_square": 18132071053851.0,
+            "avg": 605885.2041,
+            "res_sum": 144323908123.9592,
+            "cnt": 49
+        },
+        "count": {
+            "sum": 49.0,
+            "sum_square": 49.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 49
+        }
+    },
+    "mgue-vbsx_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 37851893916.0,
+            "avg": 71428.5714,
+            "res_sum": 2137608201.7143,
+            "cnt": 7
+        }
+    },
+    "j4zm-9kqu_date_registered_3": {
+        "count": {
+            "sum": 8416.0,
+            "sum_square": 1400870.0,
+            "avg": 37.9099,
+            "res_sum": 1081820.1982,
+            "cnt": 222
+        }
+    },
+    "nayp-w2tw_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 44879126168.0,
+            "avg": 83333.3333,
+            "res_sum": 3212459501.3333,
+            "cnt": 6
+        }
+    },
+    "j7mw-thyc_permitissuedate_3": {
+        "avg_refno": {
+            "sum": 314526377011.3393,
+            "sum_square": 3.467068555466549e+20,
+            "avg": 726388861.4581,
+            "res_sum": 1.1823839865086008e+20,
+            "cnt": 433
+        },
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 917929580.0,
+            "avg": 1154.7344,
+            "res_sum": 340562374.4573,
+            "cnt": 433
+        }
+    },
+    "bpyg-ytsg_date_value_3": {
+        "avg__311_avg_call_wait_time_change_yoy_seconds": {
+            "sum": -778.0,
+            "sum_square": 192860.0,
+            "avg": -194.5,
+            "res_sum": 207695.0,
+            "cnt": 16
+        },
+        "avg__311_avg_call_wait_times_seconds": {
+            "sum": 1976.0,
+            "sum_square": 407648.0,
+            "avg": 123.5,
+            "res_sum": 163612.0,
+            "cnt": 16
+        },
+        "avg_of_311_requests_by_app_web": {
+            "sum": 51.49999999999999,
+            "sum_square": 222.43,
+            "avg": 3.2188,
+            "res_sum": 56.6644,
+            "cnt": 16
+        },
+        "avg_total_311_contacts": {
+            "sum": 1513129.0,
+            "sum_square": 144135505953.0,
+            "avg": 94570.5625,
+            "res_sum": 1038045287.9375,
+            "cnt": 16
+        },
+        "avg_total_311_requests_using_app_web": {
+            "sum": 48872.0,
+            "sum_square": 200505612.0,
+            "avg": 3054.5,
+            "res_sum": 51226088.0,
+            "cnt": 16
+        },
+        "count": {
+            "sum": 16.0,
+            "sum_square": 16.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 16
+        }
+    },
+    "jsff-uc6b_date_3": {
+        "avg_state_deaths": {
+            "sum": 2247377.163808949,
+            "sum_square": 180248394672.40964,
+            "avg": 60739.9233,
+            "res_sum": 43742878012.6811,
+            "cnt": 37
+        },
+        "avg_deaths": {
+            "sum": 823860.7496009315,
+            "sum_square": 23505515528.539032,
+            "avg": 22266.5067,
+            "res_sum": 5161014589.8091,
+            "cnt": 37
+        },
+        "avg_new_state_cases": {
+            "sum": 203143.9660925162,
+            "sum_square": 3815199611.733284,
+            "avg": 5490.3775,
+            "res_sum": 2699862558.7658,
+            "cnt": 37
+        },
+        "avg_new_state_deaths": {
+            "sum": 2506.982219038275,
+            "sum_square": 586446.4449578973,
+            "avg": 67.7563,
+            "res_sum": 416582.6653,
+            "cnt": 37
+        },
+        "avg_new_cases": {
+            "sum": 65023.11511107168,
+            "sum_square": 456542911.3243088,
+            "avg": 1757.3815,
+            "res_sum": 342272492.4392,
+            "cnt": 37
+        },
+        "avg_cases": {
+            "sum": 66332622.30787762,
+            "sum_square": 180924136044833.53,
+            "avg": 1792773.5759,
+            "res_sum": 62004763551872.9,
+            "cnt": 37
+        },
+        "avg_new_deaths": {
+            "sum": 934.1215831471503,
+            "sum_square": 92977.50580857832,
+            "avg": 25.2465,
+            "res_sum": 69394.1779,
+            "cnt": 37
+        },
+        "avg_state_cases": {
+            "sum": 212491988.9492343,
+            "sum_square": 1889553403595440.5,
+            "avg": 5743026.7284,
+            "res_sum": 669206231498102.2,
+            "cnt": 37
+        },
+        "count": {
+            "sum": 29289.0,
+            "sum_square": 251195095.0,
+            "avg": 791.5946,
+            "res_sum": 228010080.9189,
+            "cnt": 37
+        }
+    },
+    "trxm-jn3c_month_3": {
+        "avg_biscailuz_gallery": {
+            "sum": 42456.0,
+            "sum_square": 63013990.0,
+            "avg": 597.9718,
+            "res_sum": 62352482.3066,
+            "cnt": 117
+        },
+        "avg_visitor_center_avila_adobe": {
+            "sum": 118566.0,
+            "sum_square": 498306812.0,
+            "avg": 1646.75,
+            "res_sum": 495137424.9859,
+            "cnt": 117
+        },
+        "avg_gateway_to_nature_center": {
+            "sum": 40477.0,
+            "sum_square": 95652541.0,
+            "avg": 632.4531,
+            "res_sum": 128985989.8363,
+            "cnt": 117
+        },
+        "avg_avila_adobe": {
+            "sum": 1880590.0,
+            "sum_square": 43240626858.0,
+            "avg": 17096.2727,
+            "res_sum": 11801720094.1184,
+            "cnt": 117
+        },
+        "avg_firehouse_museum": {
+            "sum": 498776.0,
+            "sum_square": 6169209086.0,
+            "avg": 4534.3273,
+            "res_sum": 4158541964.0487,
+            "cnt": 117
+        },
+        "avg_pico_house": {
+            "sum": 111616.0,
+            "sum_square": 423683920.0,
+            "avg": 970.5739,
+            "res_sum": 320884839.3519,
+            "cnt": 117
+        },
+        "avg_iamla": {
+            "sum": 76479.0,
+            "sum_square": 139323035.0,
+            "avg": 968.0886,
+            "res_sum": 97089897.693,
+            "cnt": 117
+        },
+        "avg_chinese_american_museum": {
+            "sum": 223429.0,
+            "sum_square": 670117413.0,
+            "avg": 2031.1727,
+            "res_sum": 230184995.59,
+            "cnt": 117
+        },
+        "avg_museum_of_social_justice": {
+            "sum": 111967.0,
+            "sum_square": 377141919.0,
+            "avg": 1805.9194,
+            "res_sum": 332670023.0365,
+            "cnt": 117
+        },
+        "avg_hellman_quon": {
+            "sum": 9190.0,
+            "sum_square": 8244500.0,
+            "avg": 173.3962,
+            "res_sum": 14836820.8999,
+            "cnt": 117
+        },
+        "avg_america_tropical_interpretive_center": {
+            "sum": 519109.0,
+            "sum_square": 3696047681.0,
+            "avg": 4719.1727,
+            "res_sum": 1326319145.9019,
+            "cnt": 117
+        },
+        "count": {
+            "sum": 117.0,
+            "sum_square": 117.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 117
+        }
+    },
+    "ryvm-a59m_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 43339119112.0,
+            "avg": 83333.3333,
+            "res_sum": 1672452445.3333,
+            "cnt": 6
+        }
+    },
+    "t6kt-2yic_final_report_date_3": {
+        "avg_non_emergency_calls_answered_within_20_seconds": {
+            "sum": 432.01,
+            "sum_square": 31240.7839,
+            "avg": 72.0017,
+            "res_sum": 135.3439,
+            "cnt": 6
+        },
+        "avg__911_calls_answered_within_10_seconds": {
+            "sum": 544.42,
+            "sum_square": 49487.731199999995,
+            "avg": 90.7367,
+            "res_sum": 88.8751,
+            "cnt": 6
+        },
+        "avg_gang_crimes": {
+            "sum": 25426.0,
+            "sum_square": 124116902.0,
+            "avg": 4237.6667,
+            "res_sum": 16369989.3333,
+            "cnt": 6
+        },
+        "avg_part_1_crimes": {
+            "sum": 574941.0,
+            "sum_square": 60079120619.0,
+            "avg": 95823.5,
+            "res_sum": 4986261705.5,
+            "cnt": 6
+        },
+        "avg_collisions": {
+            "sum": 68302.0,
+            "sum_square": 1316501972.0,
+            "avg": 17075.5,
+            "res_sum": 250351951.6667,
+            "cnt": 6
+        },
+        "avg_sworn_officers": {
+            "sum": 59608.0,
+            "sum_square": 592197190.0,
+            "avg": 9934.6667,
+            "res_sum": 11579.3333,
+            "cnt": 6
+        },
+        "count": {
+            "sum": 6.0,
+            "sum_square": 6.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 6
+        }
+    },
+    "29fd-3paw_activity_date_3": {
+        "avg_score": {
+            "sum": 3454.076001847814,
+            "sum_square": 322454.0791646606,
+            "avg": 93.3534,
+            "res_sum": 4.3217,
+            "cnt": 37
+        },
+        "avg_program_element_pe": {
+            "sum": 60290.46605565853,
+            "sum_square": 98241644.33642474,
+            "avg": 1629.4721,
+            "res_sum": 14.6821,
+            "cnt": 37
+        },
+        "count": {
+            "sum": 67573.0,
+            "sum_square": 126066431.0,
+            "avg": 1826.2973,
+            "res_sum": 2658043.7297,
+            "cnt": 37
+        }
+    },
+    "xwgr-xw5q_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 42035201602.0,
+            "avg": 83333.3333,
+            "res_sum": 368534935.3333,
+            "cnt": 6
+        }
+    },
+    "m4ev-cuzz_date_3": {
+        "avg_of_attendees_at_children_s_and_teen_programming": {
+            "sum": 736966.0,
+            "sum_square": 14581408844.0,
+            "avg": 17974.7805,
+            "res_sum": 2769309041.5756,
+            "cnt": 84
+        },
+        "avg_total_computer_usage_wireless_pc_sessions": {
+            "sum": 24449161.0,
+            "sum_square": 9301856014639.0,
+            "avg": 354335.6667,
+            "res_sum": 779524102027.3037,
+            "cnt": 84
+        },
+        "avg_total_cardholders": {
+            "sum": 128584363.0,
+            "sum_square": 234453905241245.0,
+            "avg": 1691899.5132,
+            "res_sum": 18704973050555.156,
+            "cnt": 84
+        },
+        "avg_total_emedia_circulation": {
+            "sum": 38141664.0,
+            "sum_square": 21045819469450.0,
+            "avg": 470884.7407,
+            "res_sum": 3201197851841.6685,
+            "cnt": 84
+        },
+        "avg_total_program_attendees": {
+            "sum": 2530800.0,
+            "sum_square": 86402166182.0,
+            "avg": 31635.0,
+            "res_sum": 6661336444.3797,
+            "cnt": 84
+        },
+        "avg_new_cardholders": {
+            "sum": 1799352.0,
+            "sum_square": 100851741124.0,
+            "avg": 26077.5652,
+            "res_sum": 65825129787.9617,
+            "cnt": 84
+        },
+        "avg_total_library_visitors": {
+            "sum": 83377065.0,
+            "sum_square": 89362237234151.0,
+            "avg": 1029346.4815,
+            "res_sum": 3671036817903.782,
+            "cnt": 84
+        },
+        "count": {
+            "sum": 84.0,
+            "sum_square": 84.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 84
+        }
+    },
+    "9z5d-hgrh_date_registered_3": {
+        "count": {
+            "sum": 22137.0,
+            "sum_square": 10737435.0,
+            "avg": 178.5242,
+            "res_sum": 6785444.9274,
+            "cnt": 124
+        }
+    },
+    "u6ri-98iw_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 58102356556.0,
+            "avg": 62500.0,
+            "res_sum": 26852356556.0,
+            "cnt": 8
+        }
+    },
+    "cibt-wiru_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 63272545358.0,
+            "avg": 83333.3333,
+            "res_sum": 21605878691.3333,
+            "cnt": 6
+        }
+    },
+    "d3a2-7j6v_dataextractdate_3": {
+        "avg_passenger_count": {
+            "sum": 45928695.65417192,
+            "sum_square": 45580302760340.63,
+            "avg": 740785.4138,
+            "res_sum": 11556994945928.523,
+            "cnt": 62
+        },
+        "count": {
+            "sum": 2011.0,
+            "sum_square": 2179431.0,
+            "avg": 32.4355,
+            "res_sum": 2114203.2419,
+            "cnt": 62
+        }
+    },
+    "tss8-455b_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 39967311856.0,
+            "avg": 71428.5714,
+            "res_sum": 4253026141.7143,
+            "cnt": 7
+        }
+    },
+    "2yrw-q8tw_month_year_3": {
+        "avg_netenergymetering_installed_capacity_kw": {
+            "sum": 6515208.0,
+            "sum_square": 1395823386206.0,
+            "avg": 210168.0,
+            "res_sum": 26535151262.0,
+            "cnt": 31
+        },
+        "count": {
+            "sum": 31.0,
+            "sum_square": 31.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 31
+        }
+    },
+    "ckya-qgys_activity_date_3": {
+        "avg_score": {
+            "sum": 3112.478657561877,
+            "sum_square": 284932.2814870776,
+            "avg": 91.5435,
+            "res_sum": 5.1228,
+            "cnt": 34
+        },
+        "avg_points": {
+            "sum": 45.157505118600724,
+            "sum_square": 59.997978187150075,
+            "avg": 1.3282,
+            "res_sum": 0.0215,
+            "cnt": 34
+        },
+        "avg_program_element_pe": {
+            "sum": 55431.20342589081,
+            "sum_square": 90371139.35287832,
+            "avg": 1630.3295,
+            "res_sum": 12.4928,
+            "cnt": 34
+        },
+        "count": {
+            "sum": 313675.0,
+            "sum_square": 2946101605.0,
+            "avg": 9225.7353,
+            "res_sum": 52219086.6176,
+            "cnt": 34
+        }
+    },
+    "6xuk-a67v_date_3": {
+        "avg_meetings_held": {
+            "sum": 3.0,
+            "sum_square": 3.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "avg_materials_distributed": {
+            "sum": 16150.454545454546,
+            "sum_square": 170701772.9338843,
+            "avg": 5383.4848,
+            "res_sum": 125634068.3884,
+            "cnt": 4
+        },
+        "avg_antendees": {
+            "sum": 317.1904761904762,
+            "sum_square": 59276.337868480725,
+            "avg": 105.7302,
+            "res_sum": 38609.6077,
+            "cnt": 4
+        },
+        "count": {
+            "sum": 31.0,
+            "sum_square": 267.0,
+            "avg": 7.75,
+            "res_sum": 26.75,
+            "cnt": 4
+        }
+    },
+    "j6u4-c4yh_processdate_3": {
+        "avg_secuirtycheckpoint": {
+            "sum": 0.6198083067092651,
+            "sum_square": 0.3841623370658065,
+            "avg": 0.6198,
+            "res_sum": null,
+            "cnt": 1
+        },
+        "count": {
+            "sum": 590.0,
+            "sum_square": 348100.0,
+            "avg": 590.0,
+            "res_sum": null,
+            "cnt": 1
+        }
+    },
+    "ajiv-uc63_reportperiod_3": {
+        "avg_flightopscount": {
+            "sum": 1273155.5416666667,
+            "sum_square": 7877001587.255917,
+            "avg": 5949.325,
+            "res_sum": 302585543.9076,
+            "cnt": 214
+        },
+        "count": {
+            "sum": 1645.0,
+            "sum_square": 12711.0,
+            "avg": 7.6869,
+            "res_sum": 66.0234,
+            "cnt": 214
+        }
+    },
+    "97ra-aqza_completion_date_3": {
+        "count": {
+            "sum": 14865.0,
+            "sum_square": 199288577.0,
+            "avg": 7432.5,
+            "res_sum": 88804464.5,
+            "cnt": 2
+        }
+    },
+    "mbhz-6it5_date_3": {
+        "avg_antendees": {
+            "sum": 93.0,
+            "sum_square": 3299.0,
+            "avg": 31.0,
+            "res_sum": 416.0,
+            "cnt": 3
+        },
+        "count": {
+            "sum": 15.0,
+            "sum_square": 117.0,
+            "avg": 5.0,
+            "res_sum": 42.0,
+            "cnt": 3
+        }
+    },
+    "4k67-bwgi_date_3": {
+        "avg_antendees": {
+            "sum": 671.2288961038961,
+            "sum_square": 201926.94525056923,
+            "avg": 167.8072,
+            "res_sum": 89289.8875,
+            "cnt": 4
+        },
+        "avg_materials_distributed": {
+            "sum": 3412.7714285714287,
+            "sum_square": 3824583.4665306127,
+            "avg": 853.1929,
+            "res_sum": 912831.2606,
+            "cnt": 4
+        },
+        "avg_meetings_held": {
+            "sum": 3.0,
+            "sum_square": 3.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "count": {
+            "sum": 40.0,
+            "sum_square": 522.0,
+            "avg": 10.0,
+            "res_sum": 122.0,
+            "cnt": 4
+        }
+    },
+    "iv7a-6rrq_date_3": {
+        "avg_total_partially_vaccinated": {
+            "sum": 332525.52965897816,
+            "sum_square": 7969164183.0939865,
+            "avg": 23751.8235,
+            "res_sum": 71076477.738,
+            "cnt": 14
+        },
+        "avg_cumulative_unvax_5plus_pop": {
+            "sum": 830988.1356857433,
+            "sum_square": 53262615712.798965,
+            "avg": 59356.2954,
+            "res_sum": 3938238452.0513,
+            "cnt": 14
+        },
+        "avg_partially_vaccinated": {
+            "sum": 354.9919229060603,
+            "sum_square": 29595.358360636503,
+            "avg": 25.3566,
+            "res_sum": 20593.9823,
+            "cnt": 14
+        },
+        "avg_cumulative_bivalent_booster_recip_count": {
+            "sum": null,
+            "sum_square": null,
+            "avg": null,
+            "res_sum": null,
+            "cnt": 14
+        },
+        "avg_cumulative_unvax_12plus_pop": {
+            "sum": 479827.0098265058,
+            "sum_square": 18539934592.565945,
+            "avg": 34273.3578,
+            "res_sum": 2094651781.2055,
+            "cnt": 14
+        },
+        "avg_cumulative_unvax_total_pop": {
+            "sum": 1079529.7834435715,
+            "sum_square": 86885483826.55072,
+            "avg": 77109.2702,
+            "res_sum": 3643730016.4275,
+            "cnt": 14
+        },
+        "avg_at_least_one_dose": {
+            "sum": 368.02403981873334,
+            "sum_square": 33260.5329667726,
+            "avg": 26.2874,
+            "res_sum": 23586.1263,
+            "cnt": 14
+        },
+        "avg_fully_vaccinated": {
+            "sum": 269.249055267876,
+            "sum_square": 41191.576546178025,
+            "avg": 19.2321,
+            "res_sum": 36013.3584,
+            "cnt": 14
+        },
+        "avg_est_age_5plus_pop": {
+            "sum": 4085597.547556784,
+            "sum_square": 1207590738295.446,
+            "avg": 291828.3963,
+            "res_sum": 15297358252.4451,
+            "cnt": 14
+        },
+        "avg_cumulative_booster_recip_count": {
+            "sum": null,
+            "sum_square": null,
+            "avg": null,
+            "res_sum": null,
+            "cnt": 14
+        },
+        "avg_est_population": {
+            "sum": 4525000.171390406,
+            "sum_square": 1469295280605.6267,
+            "avg": 323214.298,
+            "res_sum": 6750526956.8266,
+            "cnt": 14
+        },
+        "avg_bivalent_booster_recip_count": {
+            "sum": null,
+            "sum_square": null,
+            "avg": null,
+            "res_sum": null,
+            "cnt": 14
+        },
+        "avg_bivalent_booster_eligible_population": {
+            "sum": null,
+            "sum_square": null,
+            "avg": null,
+            "res_sum": null,
+            "cnt": 14
+        },
+        "avg_cumulative_fully_vaccinated": {
+            "sum": 2991918.4337360924,
+            "sum_square": 643361427623.9563,
+            "avg": 213708.4596,
+            "res_sum": 3963148043.2542,
+            "cnt": 14
+        },
+        "avg_cumulative_at_least_one_dose": {
+            "sum": 3324635.151966768,
+            "sum_square": 794458540061.1931,
+            "avg": 237473.9394,
+            "res_sum": 4944333368.8289,
+            "cnt": 14
+        },
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 21531283834.0,
+            "avg": 35714.2857,
+            "res_sum": 3674140976.8571,
+            "cnt": 14
+        }
+    },
+    "822f-gjp4_date_3": {
+        "avg_sessions": {
+            "sum": 40501.20431438062,
+            "sum_square": 28632008.59518159,
+            "avg": 686.4611,
+            "res_sum": 829507.7322,
+            "cnt": 59
+        },
+        "avg_bounce_rate": {
+            "sum": 3124.2808524716584,
+            "sum_square": 167998.9951298042,
+            "avg": 52.9539,
+            "res_sum": 2556.0994,
+            "cnt": 59
+        },
+        "avg_users": {
+            "sum": 36139.82248523665,
+            "sum_square": 22792943.051354684,
+            "avg": 612.5394,
+            "res_sum": 655879.1655,
+            "cnt": 59
+        },
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 4328761772.0,
+            "avg": 8474.5763,
+            "res_sum": 91473636.4068,
+            "cnt": 59
+        }
+    },
+    "iz9s-qc6r_date_3": {
+        "avg_meetings_held": {
+            "sum": 3.0,
+            "sum_square": 3.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 3
+        },
+        "avg_antendees": {
+            "sum": 565.6428571428571,
+            "sum_square": 117325.12755102041,
+            "avg": 188.5476,
+            "res_sum": 10674.5136,
+            "cnt": 3
+        },
+        "avg_materials_distributed": {
+            "sum": 360.41666666666663,
+            "sum_square": 47991.840277777774,
+            "avg": 120.1389,
+            "res_sum": 4691.7824,
+            "cnt": 3
+        },
+        "count": {
+            "sum": 21.0,
+            "sum_square": 179.0,
+            "avg": 7.0,
+            "res_sum": 32.0,
+            "cnt": 3
+        }
+    },
+    "rjdk-rz7f_date_value_3": {
+        "avg_percentage_of_calls": {
+            "sum": 217.0,
+            "sum_square": 9529.0,
+            "avg": 43.4,
+            "res_sum": 111.2,
+            "cnt": 5
+        },
+        "count": {
+            "sum": 5.0,
+            "sum_square": 5.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 5
+        }
+    },
+    "pi9x-tg5x_issue_date_3": {
+        "avg_cd": {
+            "sum": 377.446435075022,
+            "sum_square": 2968.329118290527,
+            "avg": 7.8635,
+            "res_sum": 0.2914,
+            "cnt": 48
+        },
+        "count": {
+            "sum": 239205.0,
+            "sum_square": 1223460539.0,
+            "avg": 4983.4375,
+            "res_sum": 31397371.8125,
+            "cnt": 48
+        }
+    },
+    "bwdf-y5fe_stop_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 24430224502.0,
+            "avg": 27777.7778,
+            "res_sum": 10541335613.1111,
+            "cnt": 18
+        }
+    },
+    "f232-7zb7_cde_closed_school_3": {
+        "avg_est_fte_rec": {
+            "sum": 0.25,
+            "sum_square": 0.0625,
+            "avg": 0.25,
+            "res_sum": null,
+            "cnt": 4
+        },
+        "avg_esm_fte_rec": {
+            "sum": 0.85,
+            "sum_square": 0.7224999999999999,
+            "avg": 0.85,
+            "res_sum": null,
+            "cnt": 4
+        },
+        "avg_cde_12th_grade_media_arts_1": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "avg_cde_11th_grade_media_arts_1": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "avg_cde_10th_grade_media_arts_1": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "avg_cde_9th_grade_media_arts_1": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "avg_cde_12th_grade_visual_arts_1": {
+            "sum": 5.666666666666666,
+            "sum_square": 16.11111111111111,
+            "avg": 1.4167,
+            "res_sum": 8.0833,
+            "cnt": 4
+        },
+        "avg_cde_11th_grade_visual_arts_1": {
+            "sum": 5.055555555555555,
+            "sum_square": 13.33641975308642,
+            "avg": 1.2639,
+            "res_sum": 6.9468,
+            "cnt": 4
+        },
+        "avg_cde_10th_grade_visual_arts_1": {
+            "sum": 5.5,
+            "sum_square": 16.25,
+            "avg": 1.375,
+            "res_sum": 8.6875,
+            "cnt": 4
+        },
+        "avg_cde_11th_grade_drama_courses": {
+            "sum": 1.2777777777777777,
+            "sum_square": 1.0771604938271606,
+            "avg": 0.3194,
+            "res_sum": 0.669,
+            "cnt": 4
+        },
+        "avg_cde_10th_grade_drama_courses": {
+            "sum": 0.16666666666666666,
+            "sum_square": 0.027777777777777776,
+            "avg": 0.0417,
+            "res_sum": 0.0208,
+            "cnt": 4
+        },
+        "avg_cde_12th_grade_music_courses": {
+            "sum": 1.1111111111111112,
+            "sum_square": 1.0123456790123457,
+            "avg": 0.2778,
+            "res_sum": 0.7037,
+            "cnt": 4
+        },
+        "avg_cde_11th_grade_music_courses": {
+            "sum": 1.1666666666666667,
+            "sum_square": 1.0277777777777777,
+            "avg": 0.2917,
+            "res_sum": 0.6875,
+            "cnt": 4
+        },
+        "avg_cde_10th_grade_music_courses": {
+            "sum": 1.1111111111111112,
+            "sum_square": 1.0123456790123457,
+            "avg": 0.2778,
+            "res_sum": 0.7037,
+            "cnt": 4
+        },
+        "avg_cde_9th_grade_music_courses": {
+            "sum": 0.16666666666666666,
+            "sum_square": 0.027777777777777776,
+            "avg": 0.0417,
+            "res_sum": 0.0208,
+            "cnt": 4
+        },
+        "avg_cde_11th_grade_dance_courses": {
+            "sum": 0.05555555555555555,
+            "sum_square": 0.0030864197530864196,
+            "avg": 0.0139,
+            "res_sum": 0.0023,
+            "cnt": 4
+        },
+        "avg_cde_10th_grade_dance_courses": {
+            "sum": 0.05555555555555555,
+            "sum_square": 0.0030864197530864196,
+            "avg": 0.0139,
+            "res_sum": 0.0023,
+            "cnt": 4
+        },
+        "avg_cde_12th_grade_media_arts": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "avg_cde_11th_grade_media_arts": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "avg_cde_10th_grade_media_arts": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "avg_cde_12th_grade_visual_arts": {
+            "sum": 66.0,
+            "sum_square": 2186.0,
+            "avg": 33.0,
+            "res_sum": 24.0,
+            "cnt": 4
+        },
+        "avg_cde_11th_grade_visual_arts": {
+            "sum": 54.166666666666664,
+            "sum_square": 2121.0277777777774,
+            "avg": 27.0833,
+            "res_sum": 1962.0417,
+            "cnt": 4
+        },
+        "avg_cde_10th_grade_visual_arts": {
+            "sum": 34.83333333333333,
+            "sum_square": 1022.3611111111111,
+            "avg": 17.4167,
+            "res_sum": 1247.0417,
+            "cnt": 4
+        },
+        "avg_cde_9th_grade_visual_arts": {
+            "sum": 28.0,
+            "sum_square": 730.0,
+            "avg": 14.0,
+            "res_sum": 1014.0,
+            "cnt": 4
+        },
+        "avg_cde_12th_grade_drama": {
+            "sum": 7.5,
+            "sum_square": 34.25,
+            "avg": 3.75,
+            "res_sum": 18.375,
+            "cnt": 4
+        },
+        "avg_cde_11th_grade_drama": {
+            "sum": 2.833333333333333,
+            "sum_square": 4.361111111111111,
+            "avg": 1.4167,
+            "res_sum": 1.0417,
+            "cnt": 4
+        },
+        "avg_cde_10th_grade_drama": {
+            "sum": 2.6666666666666665,
+            "sum_square": 7.111111111111111,
+            "avg": 1.3333,
+            "res_sum": 10.6667,
+            "cnt": 4
+        },
+        "avg_cde_9th_grade_drama_enrollment": {
+            "sum": 6.5,
+            "sum_square": 31.25,
+            "avg": 3.25,
+            "res_sum": 30.375,
+            "cnt": 4
+        },
+        "avg_cde_12th_grade_music": {
+            "sum": 10.166666666666666,
+            "sum_square": 82.36111111111111,
+            "avg": 5.0833,
+            "res_sum": 92.0417,
+            "cnt": 4
+        },
+        "avg_cde_11th_grade_music": {
+            "sum": 4.0,
+            "sum_square": 10.0,
+            "avg": 2.0,
+            "res_sum": 6.0,
+            "cnt": 4
+        },
+        "avg_cde_10th_grade_music": {
+            "sum": 1.3333333333333333,
+            "sum_square": 1.1111111111111112,
+            "avg": 0.6667,
+            "res_sum": 0.6667,
+            "cnt": 4
+        },
+        "avg_cde_12th_grade_dance": {
+            "sum": 1.5,
+            "sum_square": 2.25,
+            "avg": 0.75,
+            "res_sum": 3.375,
+            "cnt": 4
+        },
+        "avg_cde_11th_grade_dance": {
+            "sum": 0.6666666666666666,
+            "sum_square": 0.4444444444444444,
+            "avg": 0.3333,
+            "res_sum": 0.6667,
+            "cnt": 4
+        },
+        "avg_cde_10th_grade_dance": {
+            "sum": 0.16666666666666666,
+            "sum_square": 0.027777777777777776,
+            "avg": 0.0833,
+            "res_sum": 0.0417,
+            "cnt": 4
+        },
+        "avg_cde_estimatedfte_sum_mediaarts": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "avg_cde_estimatedfte_sum_drama": {
+            "sum": 0.15236470588235296,
+            "sum_square": 0.012742062422145331,
+            "avg": 0.0381,
+            "res_sum": 0.0069,
+            "cnt": 4
+        },
+        "avg_cde_estimatedfte_sum_dance": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "avg_cde_media_arts_course_count": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "avg_cde_visual_arts_course_count": {
+            "sum": 16.692307692307693,
+            "sum_square": 196.47928994082838,
+            "avg": 8.3462,
+            "res_sum": 171.4882,
+            "cnt": 4
+        },
+        "avg_cde_drama_course_count": {
+            "sum": 2.8461538461538463,
+            "sum_square": 4.40828402366864,
+            "avg": 1.4231,
+            "res_sum": 1.074,
+            "cnt": 4
+        },
+        "avg_cde_music_course_count": {
+            "sum": 3.6153846153846154,
+            "sum_square": 7.840236686390533,
+            "avg": 1.8077,
+            "res_sum": 3.9142,
+            "cnt": 4
+        },
+        "avg_cde_dance_course_count": {
+            "sum": 0.15384615384615385,
+            "sum_square": 0.02366863905325444,
+            "avg": 0.0769,
+            "res_sum": 0.0355,
+            "cnt": 4
+        },
+        "avg_cde_twoormore_pct": {
+            "sum": 1.9912227999444445,
+            "sum_square": 1.9824848075300365,
+            "avg": 0.4978,
+            "res_sum": 0.9912,
+            "cnt": 4
+        },
+        "avg_cde_whitenh_pct": {
+            "sum": 21.19864496344444,
+            "sum_square": 233.85362188089155,
+            "avg": 5.2997,
+            "res_sum": 121.508,
+            "cnt": 4
+        },
+        "avg_cde_afamnh_pct": {
+            "sum": 67.24199449272223,
+            "sum_square": 1430.3666094082453,
+            "avg": 16.8105,
+            "res_sum": 299.9952,
+            "cnt": 4
+        },
+        "avg_cde_latino_pct": {
+            "sum": 270.25542384444446,
+            "sum_square": 19170.019545111474,
+            "avg": 67.5639,
+            "res_sum": 910.521,
+            "cnt": 4
+        },
+        "avg_cde_filipino_pct": {
+            "sum": 1.5306351061666665,
+            "sum_square": 2.3428438282298427,
+            "avg": 0.3827,
+            "res_sum": 1.7571,
+            "cnt": 4
+        },
+        "avg_cde_pi_pct": {
+            "sum": 0.10990541738888888,
+            "sum_square": 0.01207920077142588,
+            "avg": 0.0275,
+            "res_sum": 0.0091,
+            "cnt": 4
+        },
+        "avg_cde_asian_pct": {
+            "sum": 3.3495133457222224,
+            "sum_square": 8.381427803613082,
+            "avg": 0.8374,
+            "res_sum": 5.5766,
+            "cnt": 4
+        },
+        "avg_cde_aioran_pct": {
+            "sum": 1.6664645976666668,
+            "sum_square": 1.4409058036906264,
+            "avg": 0.4166,
+            "res_sum": 0.7466,
+            "cnt": 4
+        },
+        "avg_cde_freereducedmealsschool": {
+            "sum": 262.0904474671111,
+            "sum_square": 18948.200823183503,
+            "avg": 65.5226,
+            "res_sum": 1775.3502,
+            "cnt": 4
+        },
+        "avg_cde_englishlearnersschool": {
+            "sum": 100.88646787166667,
+            "sum_square": 3585.3601803839647,
+            "avg": 25.2216,
+            "res_sum": 1040.8403,
+            "cnt": 4
+        },
+        "avg_schoolenrollment": {
+            "sum": 596.8333333333333,
+            "sum_square": 158034.02777777775,
+            "avg": 149.2083,
+            "res_sum": 68981.5208,
+            "cnt": 4
+        },
+        "avg_esma_fte_rec": {
+            "sum": null,
+            "sum_square": null,
+            "avg": null,
+            "res_sum": null,
+            "cnt": 4
+        },
+        "avg_cde_9th_grade_music_enrollment": {
+            "sum": 3.0,
+            "sum_square": 9.0,
+            "avg": 1.5,
+            "res_sum": 13.5,
+            "cnt": 4
+        },
+        "avg_esd_fte_rec": {
+            "sum": null,
+            "sum_square": null,
+            "avg": null,
+            "res_sum": null,
+            "cnt": 4
+        },
+        "avg_cde_12th_grade_drama_courses": {
+            "sum": 1.5555555555555556,
+            "sum_square": 1.308641975308642,
+            "avg": 0.3889,
+            "res_sum": 0.7037,
+            "cnt": 4
+        },
+        "avg_cde_9th_grade_media_arts": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        },
+        "avg_cde_maxgrade": {
+            "sum": 41.27777777777778,
+            "sum_square": 438.0771604938272,
+            "avg": 10.3194,
+            "res_sum": 12.1134,
+            "cnt": 4
+        },
+        "avg_cde_9th_grade_dance_courses": {
+            "sum": 0.05555555555555555,
+            "sum_square": 0.0030864197530864196,
+            "avg": 0.0139,
+            "res_sum": 0.0023,
+            "cnt": 4
+        },
+        "avg_cde_9th_grade_dance_enrollment": {
+            "sum": 0.16666666666666666,
+            "sum_square": 0.027777777777777776,
+            "avg": 0.0833,
+            "res_sum": 0.0417,
+            "cnt": 4
+        },
+        "avg_cde_9th_grade_visual_arts_1": {
+            "sum": 4.0,
+            "sum_square": 10.0,
+            "avg": 1.0,
+            "res_sum": 6.0,
+            "cnt": 4
+        },
+        "avg_cde_12th_grade_dance_courses": {
+            "sum": 0.05555555555555555,
+            "sum_square": 0.0030864197530864196,
+            "avg": 0.0139,
+            "res_sum": 0.0023,
+            "cnt": 4
+        },
+        "avg_cde_9th_grade_drama_courses": {
+            "sum": 1.2222222222222223,
+            "sum_square": 1.0493827160493827,
+            "avg": 0.3056,
+            "res_sum": 0.6759,
+            "cnt": 4
+        },
+        "avg_esva_fte_rec": {
+            "sum": 0.4,
+            "sum_square": 0.16000000000000003,
+            "avg": 0.4,
+            "res_sum": null,
+            "cnt": 4
+        },
+        "count": {
+            "sum": 21.0,
+            "sum_square": 327.0,
+            "avg": 5.25,
+            "res_sum": 216.75,
+            "cnt": 4
+        }
+    },
+    "diev-46hg_month_3": {
+        "count": {
+            "sum": 117.0,
+            "sum_square": 117.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 117
+        }
+    },
+    "4g57-9wbx_date_3": {
+        "avg_total_cumulative_in_basin_solar_kw": {
+            "sum": 1083161.0,
+            "sum_square": 62012789205.0,
+            "avg": 36105.3667,
+            "res_sum": 22904864140.9667,
+            "cnt": 30
+        },
+        "avg_quarterly_in_basin_solar_installed_kw": {
+            "sum": 100693.0,
+            "sum_square": 610400743.0,
+            "avg": 3356.4333,
+            "res_sum": 272431401.3667,
+            "cnt": 30
+        },
+        "count": {
+            "sum": 30.0,
+            "sum_square": 30.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 30
+        }
+    },
+    "tx7r-x3hp_reportperiod_3": {
+        "avg_aircargotons": {
+            "sum": 4869069.25,
+            "sum_square": 113935570972.75,
+            "avg": 22752.66,
+            "res_sum": 3151293583.5184,
+            "cnt": 214
+        },
+        "count": {
+            "sum": 1712.0,
+            "sum_square": 13696.0,
+            "avg": 8.0,
+            "res_sum": 0.0,
+            "cnt": 214
+        }
+    },
+    "iy4q-t9vr_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 36826851074.0,
+            "avg": 71428.5714,
+            "res_sum": 1112565359.7143,
+            "cnt": 7
+        }
+    },
+    "uj6a-ab47_month_3": {
+        "avg_enjoyed_the_visit": {
+            "sum": 9019.0,
+            "sum_square": 894121.0,
+            "avg": 77.0855,
+            "res_sum": 198887.1453,
+            "cnt": 117
+        },
+        "avg_purchased_an_item_on_olvera_st": {
+            "sum": 1284.0,
+            "sum_square": 31180.0,
+            "avg": 10.9744,
+            "res_sum": 17088.9231,
+            "cnt": 117
+        },
+        "avg_came_for_a_specific_event_exhibit": {
+            "sum": 5670.0,
+            "sum_square": 371578.0,
+            "avg": 48.4615,
+            "res_sum": 96801.0769,
+            "cnt": 117
+        },
+        "avg_knew_that_el_pueblo_offers_free_tours": {
+            "sum": 2351.0,
+            "sum_square": 67053.0,
+            "avg": 20.094,
+            "res_sum": 19811.9658,
+            "cnt": 117
+        },
+        "avg_visited_a_restaurant": {
+            "sum": 3731.0,
+            "sum_square": 160689.0,
+            "avg": 31.8889,
+            "res_sum": 41711.5556,
+            "cnt": 117
+        },
+        "avg_out_of_state_visitors": {
+            "sum": 2066.0,
+            "sum_square": 56436.0,
+            "avg": 17.6581,
+            "res_sum": 19954.3248,
+            "cnt": 117
+        },
+        "avg_would_recommend_el_pueblo_to_a_friend": {
+            "sum": 9035.0,
+            "sum_square": 897435.0,
+            "avg": 77.2222,
+            "res_sum": 199732.2222,
+            "cnt": 117
+        },
+        "count": {
+            "sum": 117.0,
+            "sum_square": 117.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 117
+        }
+    },
+    "fvye-93wd_date_3": {
+        "avg_cases_per100k": {
+            "sum": 306031.8144121292,
+            "sum_square": 5300832861.503416,
+            "avg": 10552.8212,
+            "res_sum": 2071333846.5938,
+            "cnt": 29
+        },
+        "avg_new_cases": {
+            "sum": -3893.126504515627,
+            "sum_square": 18865385.229270782,
+            "avg": -134.2457,
+            "res_sum": 18342749.5748,
+            "cnt": 29
+        },
+        "avg_deaths": {
+            "sum": 2447.8821256142264,
+            "sum_square": 285257.71128663805,
+            "avg": 84.4097,
+            "res_sum": 78632.6457,
+            "cnt": 29
+        },
+        "avg_cases": {
+            "sum": 148629.14035909917,
+            "sum_square": 1093209508.1414232,
+            "avg": 5125.1428,
+            "res_sum": 331463943.8695,
+            "cnt": 29
+        },
+        "avg_population": {
+            "sum": 1548839.4417463753,
+            "sum_square": 84981452472.30806,
+            "avg": 53408.2566,
+            "res_sum": 2260638116.8176,
+            "cnt": 29
+        },
+        "avg_cases_per100k_avg7": {
+            "sum": 322615.5585220562,
+            "sum_square": 5582307550.260704,
+            "avg": 11124.6744,
+            "res_sum": 1993314495.0711,
+            "cnt": 29
+        },
+        "avg_new_deaths_avg7": {
+            "sum": 5.37271631708149,
+            "sum_square": 3.3312218462503944,
+            "avg": 0.1853,
+            "res_sum": 2.3358,
+            "cnt": 29
+        },
+        "avg_new_cases_avg7": {
+            "sum": -1332.0225602975431,
+            "sum_square": 3007499.456574066,
+            "avg": -45.9318,
+            "res_sum": 2946317.2462,
+            "cnt": 29
+        },
+        "avg_new_deaths": {
+            "sum": 5.400992335814461,
+            "sum_square": 3.3370087470161316,
+            "avg": 0.1862,
+            "res_sum": 2.3311,
+            "cnt": 29
+        },
+        "avg_cases_avg7": {
+            "sum": 159019.0204328435,
+            "sum_square": 1199254596.4185436,
+            "avg": 5483.4145,
+            "res_sum": 327287394.3695,
+            "cnt": 29
+        },
+        "avg_deaths_per100k": {
+            "sum": 4656.5600555367355,
+            "sum_square": 1039708.9699882591,
+            "avg": 160.571,
+            "res_sum": 292000.2958,
+            "cnt": 29
+        },
+        "avg_deaths_per100k_avg7": {
+            "sum": 4691.7954423288475,
+            "sum_square": 1036138.9938585132,
+            "avg": 161.786,
+            "res_sum": 277071.9431,
+            "cnt": 29
+        },
+        "avg_deaths_avg7": {
+            "sum": 2468.8973281942503,
+            "sum_square": 283968.04518316267,
+            "avg": 85.1344,
+            "res_sum": 73779.9756,
+            "cnt": 29
+        },
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 77435022188.0,
+            "avg": 17241.3793,
+            "res_sum": 68814332532.8276,
+            "cnt": 29
+        }
+    },
+    "xe35-4wsy_timestamp_3": {
+        "avg_rain_in": {
+            "sum": 1517.042972222222,
+            "sum_square": 2038793.2362432168,
+            "avg": 101.1362,
+            "res_sum": 1885365.2776,
+            "cnt": 15
+        },
+        "avg_green_streets_and_alleys_capture": {
+            "sum": 100883.10398611109,
+            "sum_square": 9016052568.760822,
+            "avg": 6725.5403,
+            "res_sum": 8337559190.7693,
+            "cnt": 15
+        },
+        "avg_barrels_and_cisterns_capture": {
+            "sum": 597.2176111111111,
+            "sum_square": 73282.92172711418,
+            "avg": 39.8145,
+            "res_sum": 49504.9967,
+            "cnt": 15
+        },
+        "avg_total_capture": {
+            "sum": 1080238.954696414,
+            "sum_square": 742756228954.139,
+            "avg": 72015.9303,
+            "res_sum": 664961815671.2328,
+            "cnt": 15
+        },
+        "avg_gi_capture": {
+            "sum": 360653.3370849999,
+            "sum_square": 115404019852.1792,
+            "avg": 24043.5558,
+            "res_sum": 106732631215.4761,
+            "cnt": 15
+        },
+        "avg_spreading_capture": {
+            "sum": 3210.3333333333335,
+            "sum_square": 5673496.777777778,
+            "avg": 214.0222,
+            "res_sum": 4986414.1037,
+            "cnt": 15
+        },
+        "count": {
+            "sum": 99.0,
+            "sum_square": 1217.0,
+            "avg": 6.6,
+            "res_sum": 563.6,
+            "cnt": 15
+        }
+    },
+    "5y5q-d9ew_date_value_3": {
+        "avg_of_streetlights_operating_annual_fy": {
+            "sum": 595.3,
+            "sum_square": 59063.78999999999,
+            "avg": 99.2167,
+            "res_sum": 1.495,
+            "cnt": 70
+        },
+        "avg_cumulative_of_street_lights_converted_to_led_annual_fy": {
+            "sum": 951855.0,
+            "sum_square": 142760326777.0,
+            "avg": 135979.2857,
+            "res_sum": 153269283394.4282,
+            "cnt": 70
+        },
+        "avg_projected_of_streetlights_operating_annual_fy": {
+            "sum": 396.6,
+            "sum_square": 39322.920000000006,
+            "avg": 99.15,
+            "res_sum": 0.69,
+            "cnt": 70
+        },
+        "count": {
+            "sum": 70.0,
+            "sum_square": 70.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 70
+        }
+    },
+    "rpp7-mevy_date_3": {
+        "avg_partially_vaccinated": {
+            "sum": 16207.003531269245,
+            "sum_square": 30980092.53726899,
+            "avg": 491.1213,
+            "res_sum": 23020487.5839,
+            "cnt": 33
+        },
+        "avg_jj_doses": {
+            "sum": 1217.6864229592095,
+            "sum_square": 256346.22832359726,
+            "avg": 64.0888,
+            "res_sum": 316988.8293,
+            "cnt": 33
+        },
+        "avg_cumulative_total_doses": {
+            "sum": 11112492.715094386,
+            "sum_square": 7977643393256.954,
+            "avg": 336742.2035,
+            "res_sum": 4235598110134.9595,
+            "cnt": 33
+        },
+        "avg_cumulative_pfizer_doses": {
+            "sum": 5408416.218809557,
+            "sum_square": 2616383150145.711,
+            "avg": 284653.4852,
+            "res_sum": 1914415331638.48,
+            "cnt": 33
+        },
+        "avg_cumulative_jj_doses": {
+            "sum": 326951.213990895,
+            "sum_square": 9661903397.143686,
+            "avg": 17207.9586,
+            "res_sum": 7174649657.6009,
+            "cnt": 33
+        },
+        "avg_cumulative_fully_vaccinated": {
+            "sum": 4790695.231946998,
+            "sum_square": 1572199809651.233,
+            "avg": 145172.5828,
+            "res_sum": 876722209487.6055,
+            "cnt": 33
+        },
+        "avg_booster_recip_count": {
+            "sum": 7842.666364210944,
+            "sum_square": 12411129.583465759,
+            "avg": 784.2666,
+            "res_sum": 22259157.3811,
+            "cnt": 33
+        },
+        "avg_bivalent_booster_recip_count": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": null,
+            "cnt": 33
+        },
+        "avg_bivalent_booster_eligible_population": {
+            "sum": 411748.25,
+            "sum_square": 169536621378.0625,
+            "avg": 411748.25,
+            "res_sum": null,
+            "cnt": 33
+        },
+        "avg_county_pop2020": {
+            "sum": 11407326.730704125,
+            "sum_square": 7097765700324.635,
+            "avg": 345676.5676,
+            "res_sum": 3154520150596.245,
+            "cnt": 33
+        },
+        "avg_cumulative_bivalent_booster_recip_count": {
+            "sum": 3.0,
+            "sum_square": 9.0,
+            "avg": 3.0,
+            "res_sum": null,
+            "cnt": 33
+        },
+        "avg_cumulative_booster_recip_count": {
+            "sum": 662316.0894530704,
+            "sum_square": 106100259497.85469,
+            "avg": 66231.6089,
+            "res_sum": 221276441824.0496,
+            "cnt": 33
+        },
+        "avg_cumulative_at_least_one_dose": {
+            "sum": 5622383.83846386,
+            "sum_square": 2062928765191.1,
+            "avg": 170375.2678,
+            "res_sum": 1105013612857.1729,
+            "cnt": 33
+        },
+        "avg_at_least_one_dose": {
+            "sum": 17602.42731480091,
+            "sum_square": 37059274.27882892,
+            "avg": 533.4069,
+            "res_sum": 27670018.2978,
+            "cnt": 33
+        },
+        "avg_fully_vaccinated": {
+            "sum": 15472.85516689998,
+            "sum_square": 30059262.308281716,
+            "avg": 468.8744,
+            "res_sum": 22804436.6411,
+            "cnt": 33
+        },
+        "avg_total_partially_vaccinated": {
+            "sum": 831643.8714409606,
+            "sum_square": 46714991741.17255,
+            "avg": 25201.3294,
+            "res_sum": 25756460562.2238,
+            "cnt": 33
+        },
+        "avg_cumulative_moderna_doses": {
+            "sum": 3813193.1965874396,
+            "sum_square": 1224227860258.2148,
+            "avg": 200694.3788,
+            "res_sum": 815895858751.3792,
+            "cnt": 33
+        },
+        "avg_moderna_doses": {
+            "sum": 14734.857084797643,
+            "sum_square": 23350140.677754406,
+            "avg": 775.5188,
+            "res_sum": 21196412.5912,
+            "cnt": 33
+        },
+        "avg_pfizer_doses": {
+            "sum": 22347.685980967173,
+            "sum_square": 43946423.51148689,
+            "avg": 1176.194,
+            "res_sum": 31397705.5452,
+            "cnt": 33
+        },
+        "avg_total_doses": {
+            "sum": 40093.11858001813,
+            "sum_square": 145483155.2967869,
+            "avg": 1214.943,
+            "res_sum": 96772302.0401,
+            "cnt": 33
+        },
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 52363496046.0,
+            "avg": 15151.5152,
+            "res_sum": 44787738470.2424,
+            "cnt": 33
+        }
+    },
+    "s5jy-jcce_reporttoapplicant_3": {
+        "avg_appealablecdp": {
+            "sum": 150.7809829059829,
+            "sum_square": 419.66636473628466,
+            "avg": 2.2505,
+            "res_sum": 92.5121,
+            "cnt": 77
+        },
+        "avg_riskanalysis": {
+            "sum": 32.90277777777778,
+            "sum_square": 75.5210262345679,
+            "avg": 0.6581,
+            "res_sum": 83.5522,
+            "cnt": 77
+        },
+        "count": {
+            "sum": 452.0,
+            "sum_square": 3436.0,
+            "avg": 5.8701,
+            "res_sum": 782.7013,
+            "cnt": 77
+        }
+    },
+    "tsuv-4rgh_date_3": {
+        "avg_change_total_teus_cytd": {
+            "sum": 227.1,
+            "sum_square": 3728.9699999999993,
+            "avg": 4.3673,
+            "res_sum": 4937.6119,
+            "cnt": 93
+        },
+        "avg_cytd_total_teus": {
+            "sum": 252738094.95,
+            "sum_square": 1326065075827792.0,
+            "avg": 3829365.075,
+            "res_sum": 507045462387522.94,
+            "cnt": 93
+        },
+        "avg_monthly_total_teus": {
+            "sum": 61336335.850000024,
+            "sum_square": 40983381413761.52,
+            "avg": 659530.493,
+            "res_sum": 530197591137.9079,
+            "cnt": 93
+        },
+        "count": {
+            "sum": 93.0,
+            "sum_square": 93.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 93
+        }
+    },
+    "uq7m-rynj_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 56758536130.0,
+            "avg": 100000.0,
+            "res_sum": 6758536130.0,
+            "cnt": 5
+        }
+    },
+    "8sbu-dvfy_date_of_event_3": {
+        "count": {
+            "sum": 894.0,
+            "sum_square": 9906.0,
+            "avg": 9.5106,
+            "res_sum": 1403.4894,
+            "cnt": 94
+        }
+    },
+    "pnat-cnpj_date_value_3": {
+        "avg_total_miles_of_bicycle_lanes_and_paths": {
+            "sum": 1306.07,
+            "sum_square": 364665.38869999995,
+            "avg": 261.214,
+            "res_sum": 23501.6197,
+            "cnt": 5
+        },
+        "count": {
+            "sum": 5.0,
+            "sum_square": 5.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 5
+        }
+    },
+    "d4kt-8j3n_date_3": {
+        "avg_geohub_bounce_rate": {
+            "sum": 1203.165994831631,
+            "sum_square": 48351.276155326734,
+            "avg": 37.5989,
+            "res_sum": 5222.6675,
+            "cnt": 53
+        },
+        "avg_geohub_sessions": {
+            "sum": 5993.699923435853,
+            "sum_square": 1288810.1000965042,
+            "avg": 187.3031,
+            "res_sum": 278739.1032,
+            "cnt": 53
+        },
+        "avg_geohub_users": {
+            "sum": 5198.536918846818,
+            "sum_square": 982616.985126229,
+            "avg": 162.4543,
+            "res_sum": 231638.8974,
+            "cnt": 53
+        },
+        "avg_socrata_bounce_rate": {
+            "sum": 983.7089390183417,
+            "sum_square": 32626.425265054728,
+            "avg": 18.5605,
+            "res_sum": 14368.2502,
+            "cnt": 53
+        },
+        "avg_socrata_sessions": {
+            "sum": 18661.560432146027,
+            "sum_square": 7362968.492733929,
+            "avg": 352.1049,
+            "res_sum": 792141.3651,
+            "cnt": 53
+        },
+        "avg_socrata_users": {
+            "sum": 16146.524516337699,
+            "sum_square": 5530565.184520418,
+            "avg": 304.6514,
+            "res_sum": 611503.7891,
+            "cnt": 53
+        },
+        "avg_combined_users": {
+            "sum": 16187.506468466647,
+            "sum_square": 8850437.32038813,
+            "avg": 505.8596,
+            "res_sum": 1110170.0468,
+            "cnt": 53
+        },
+        "count": {
+            "sum": 1573.0,
+            "sum_square": 47525.0,
+            "avg": 29.6792,
+            "res_sum": 839.5472,
+            "cnt": 53
+        }
+    },
+    "ybqa-gmkn_date_filed_3": {
+        "avg_pay_amt": {
+            "sum": 13795193.134674184,
+            "sum_square": 5997140272095.58,
+            "avg": 72990.4399,
+            "res_sum": 4990223057159.274,
+            "cnt": 189
+        },
+        "count": {
+            "sum": 2545.0,
+            "sum_square": 115341.0,
+            "avg": 13.4656,
+            "res_sum": 81071.0265,
+            "cnt": 189
+        }
+    },
+    "ubph-b4it_date_3": {
+        "count": {
+            "sum": 37.0,
+            "sum_square": 37.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 37
+        }
+    },
+    "i7pm-cnmm_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 37992193594.0,
+            "avg": 71428.5714,
+            "res_sum": 2277907879.7143,
+            "cnt": 7
+        }
+    },
+    "xuce-e6ip_ownership_option_date_3": {
+        "avg_la_s_share_of_gwh": {
+            "sum": 4601.5,
+            "sum_square": 2260613.27,
+            "avg": 418.3182,
+            "res_sum": 335722.1564,
+            "cnt": 11
+        },
+        "avg_la_s_share_of_mw": {
+            "sum": 1669.2,
+            "sum_square": 329227.83999999997,
+            "avg": 166.92,
+            "res_sum": 56227.7511,
+            "cnt": 11
+        },
+        "count": {
+            "sum": 11.0,
+            "sum_square": 11.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 11
+        }
+    },
+    "5gp9-8nrb_stop_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 20692043202.0,
+            "avg": 23809.5238,
+            "res_sum": 8787281297.2381,
+            "cnt": 21
+        }
+    },
+    "urhh-yf63_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 37021375540.0,
+            "avg": 71428.5714,
+            "res_sum": 1307089825.7143,
+            "cnt": 7
+        }
+    },
+    "nsdh-74d5_month_3": {
+        "avg_work_orders_completed": {
+            "sum": 4347.0,
+            "sum_square": 210485.0,
+            "avg": 37.1538,
+            "res_sum": 48977.2308,
+            "cnt": 117
+        },
+        "avg_work_order_submitted": {
+            "sum": 5506.0,
+            "sum_square": 316296.0,
+            "avg": 47.0598,
+            "res_sum": 57184.5812,
+            "cnt": 117
+        },
+        "count": {
+            "sum": 117.0,
+            "sum_square": 117.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 117
+        }
+    },
+    "6yv9-t9gq_surveyed_date_3": {
+        "count": {
+            "sum": 427.0,
+            "sum_square": 154177.0,
+            "avg": 213.5,
+            "res_sum": 63012.5,
+            "cnt": 2
+        }
+    },
+    "gwh9-jnip_issue_date_3": {
+        "avg_cd": {
+            "sum": 379.06586156517824,
+            "sum_square": 2994.306938426304,
+            "avg": 7.8972,
+            "res_sum": 0.746,
+            "cnt": 48
+        },
+        "count": {
+            "sum": 129712.0,
+            "sum_square": 375366810.0,
+            "avg": 2702.3333,
+            "res_sum": 24841748.6667,
+            "cnt": 48
+        }
+    },
+    "a5vt-xsyi_month_3": {
+        "avg_small_cisterns": {
+            "sum": 502.0,
+            "sum_square": 27764.0,
+            "avg": 7.9683,
+            "res_sum": 23763.9365,
+            "cnt": 63
+        },
+        "avg_rain_barrels": {
+            "sum": 87555.0,
+            "sum_square": 1290780895.0,
+            "avg": 1389.7619,
+            "res_sum": 1169100291.4286,
+            "cnt": 63
+        },
+        "avg_large_cisterns": {
+            "sum": 3.0,
+            "sum_square": 3.0,
+            "avg": 0.0476,
+            "res_sum": 2.8571,
+            "cnt": 63
+        },
+        "avg_medium_cisterns": {
+            "sum": 6.0,
+            "sum_square": 8.0,
+            "avg": 0.0952,
+            "res_sum": 7.4286,
+            "cnt": 63
+        },
+        "count": {
+            "sum": 63.0,
+            "sum_square": 63.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 63
+        }
+    },
+    "fc3u-86zh_date_value_3": {
+        "count": {
+            "sum": 63.0,
+            "sum_square": 63.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 63
+        }
+    },
+    "4a8d-4327_month_3": {
+        "avg_inches_water_content": {
+            "sum": 205.88,
+            "sum_square": 7615.024600000001,
+            "avg": 13.7253,
+            "res_sum": 5131.3425,
+            "cnt": 16
+        },
+        "count": {
+            "sum": 16.0,
+            "sum_square": 16.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 16
+        }
+    },
+    "svt7-r3ww_month_3": {
+        "count": {
+            "sum": 61.0,
+            "sum_square": 61.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 61
+        }
+    },
+    "t5zm-4d79_month_3": {
+        "avg_total_contracts": {
+            "sum": 409.0,
+            "sum_square": 1933.0,
+            "avg": 3.4957,
+            "res_sum": 503.2479,
+            "cnt": 117
+        },
+        "count": {
+            "sum": 117.0,
+            "sum_square": 117.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 117
+        }
+    },
+    "m6g2-gc6c_per_beg_date_3": {
+        "avg_con_amount_pd_forgiven": {
+            "sum": 65548.28815425585,
+            "sum_square": 3955000602.3162975,
+            "avg": 560.2418,
+            "res_sum": 3918277712.744,
+            "cnt": 117
+        },
+        "avg_con_amount": {
+            "sum": 229410.29049918894,
+            "sum_square": 4931923620.028505,
+            "avg": 1960.7717,
+            "res_sum": 4482102411.5933,
+            "cnt": 117
+        },
+        "count": {
+            "sum": 339344.0,
+            "sum_square": 2531230224.0,
+            "avg": 2900.3761,
+            "res_sum": 1547005007.453,
+            "cnt": 117
+        }
+    },
+    "k98w-s24w_date_value_3": {
+        "avg_nox": {
+            "sum": 100270.0,
+            "sum_square": 1399910756.0,
+            "avg": 12533.75,
+            "res_sum": 143151643.5,
+            "cnt": 8
+        },
+        "avg_dpm": {
+            "sum": 4328.0,
+            "sum_square": 2944194.0,
+            "avg": 541.0,
+            "res_sum": 602746.0,
+            "cnt": 8
+        },
+        "avg_sox": {
+            "sum": 23871.0,
+            "sum_square": 96350855.0,
+            "avg": 2983.875,
+            "res_sum": 25122774.875,
+            "cnt": 8
+        },
+        "count": {
+            "sum": 8.0,
+            "sum_square": 8.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 8
+        }
+    },
+    "pwhu-m93q_date_3": {
+        "avg_cumulative_of_streetlights_converted_to_led": {
+            "sum": 1302000.0,
+            "sum_square": 198390000000.0,
+            "avg": 130200.0,
+            "res_sum": 28869600000.0,
+            "cnt": 10
+        },
+        "count": {
+            "sum": 10.0,
+            "sum_square": 10.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 10
+        }
+    },
+    "4tmc-7r6g_dispatch_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 36945364984.0,
+            "avg": 71428.5714,
+            "res_sum": 1231079269.7143,
+            "cnt": 7
+        }
+    },
+    "ysqd-apz7_submitted_date_3": {
+        "count": {
+            "sum": 34795.0,
+            "sum_square": 24059541.0,
+            "avg": 414.2262,
+            "res_sum": 9646540.7024,
+            "cnt": 84
+        }
+    },
+    "95j2-9tdv_date_value_3": {
+        "avg_percentage_of_energy_porftolio_from_renewable_sources": {
+            "sum": 110.0,
+            "sum_square": 1986.0,
+            "avg": 15.7143,
+            "res_sum": 257.4286,
+            "cnt": 7
+        },
+        "count": {
+            "sum": 7.0,
+            "sum_square": 7.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 7
+        }
+    },
+    "tsrc-szkh_date_3": {
+        "avg_of_myla311_app_downloads": {
+            "sum": 23082.0,
+            "sum_square": 107142878.0,
+            "avg": 1442.625,
+            "res_sum": 73844207.75,
+            "cnt": 16
+        },
+        "count": {
+            "sum": 16.0,
+            "sum_square": 16.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 16
+        }
+    },
+    "5mrt-4zhe_exp_date_3": {
+        "avg_dist_num": {
+            "sum": 2384.6316085452527,
+            "sum_square": 19851.7899127634,
+            "avg": 7.7929,
+            "res_sum": 1301.8352,
+            "cnt": 314
+        },
+        "avg_exp_amount": {
+            "sum": 652889.7556018407,
+            "sum_square": 6994874591.146601,
+            "avg": 2079.2667,
+            "res_sum": 5637342639.0134,
+            "cnt": 314
+        },
+        "avg_amt_outstd_beg": {
+            "sum": 83568.67124999997,
+            "sum_square": 2742521941.848198,
+            "avg": 2881.6783,
+            "res_sum": 27965475893.1287,
+            "cnt": 314
+        },
+        "avg_amt_incurred": {
+            "sum": 64735.7503876465,
+            "sum_square": 350909378.8518191,
+            "avg": 323.6788,
+            "res_sum": 518975692.8827,
+            "cnt": 314
+        },
+        "avg_amt_received": {
+            "sum": 12924.845992037739,
+            "sum_square": 15772799.63193149,
+            "avg": 64.6242,
+            "res_sum": 23494725.94,
+            "cnt": 314
+        },
+        "avg_amt_outstd_end": {
+            "sum": 59284.401666666665,
+            "sum_square": 772704632.012375,
+            "avg": 2044.2897,
+            "res_sum": 7282952631.5656,
+            "cnt": 314
+        },
+        "count": {
+            "sum": 135946.0,
+            "sum_square": 134479964.0,
+            "avg": 432.949,
+            "res_sum": 75622273.1847,
+            "cnt": 314
+        }
+    },
+    "cy8h-q3bu_month_3": {
+        "avg_branford_spreading_basin_441_afy": {
+            "sum": 816.0,
+            "sum_square": 87810.0,
+            "avg": 32.64,
+            "res_sum": 63724.75,
+            "cnt": 26
+        },
+        "avg_lopez_spreading_grounds_564_afy": {
+            "sum": 1514.0,
+            "sum_square": 401916.0,
+            "avg": 60.56,
+            "res_sum": 323154.3333,
+            "cnt": 26
+        },
+        "avg_hansen_spreading_grounds_10_484_afy": {
+            "sum": 13446.0,
+            "sum_square": 51633116.0,
+            "avg": 537.84,
+            "res_sum": 46251374.3333,
+            "cnt": 26
+        },
+        "avg_pacoima_spreading_grounds_5_079_afy": {
+            "sum": 9342.0,
+            "sum_square": 12131528.0,
+            "avg": 373.68,
+            "res_sum": 9000634.8333,
+            "cnt": 26
+        },
+        "avg_tujunga_spreading_grounds_7_975_afy": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 26
+        },
+        "count": {
+            "sum": 26.0,
+            "sum_square": 26.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 26
+        }
+    },
+    "br3a-db9a_election_date_3": {
+        "count": {
+            "sum": 7209.0,
+            "sum_square": 2877679.0,
+            "avg": 133.5,
+            "res_sum": 1915277.5,
+            "cnt": 54
+        }
+    },
+    "4qmh-sz39_creation_date_3": {
+        "avg_downloads": {
+            "sum": 82042.1643839823,
+            "sum_square": 2201851324.2172785,
+            "avg": 953.9787,
+            "res_sum": 2123584850.5335,
+            "cnt": 86
+        },
+        "avg_visits": {
+            "sum": 138392.7262652601,
+            "sum_square": 795328304.9103576,
+            "avg": 1609.2177,
+            "res_sum": 572624273.7112,
+            "cnt": 86
+        },
+        "count": {
+            "sum": 3505.0,
+            "sum_square": 257805.0,
+            "avg": 40.7558,
+            "res_sum": 114955.8721,
+            "cnt": 86
+        }
+    },
+    "w9vh-pj9e_date_3": {
+        "avg_county_performed": {
+            "sum": 1339920.483431085,
+            "sum_square": 83697369275.25342,
+            "avg": 43223.2414,
+            "res_sum": 25781662761.7633,
+            "cnt": 31
+        },
+        "avg_county_positive": {
+            "sum": 75347.90206675045,
+            "sum_square": 503945562.60852355,
+            "avg": 2430.5775,
+            "res_sum": 320806648.2259,
+            "cnt": 31
+        },
+        "count": {
+            "sum": 911.0,
+            "sum_square": 27425.0,
+            "avg": 29.3871,
+            "res_sum": 653.3548,
+            "cnt": 31
+        }
+    },
+    "9hxb-dad7_date_value_3": {
+        "avg_of_dwp_power_sourced_from_coal": {
+            "sum": 197.0,
+            "sum_square": 7821.0,
+            "avg": 39.4,
+            "res_sum": 59.2,
+            "cnt": 5
+        },
+        "count": {
+            "sum": 5.0,
+            "sum_square": 5.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 5
+        }
+    },
+    "c8jn-ua56_date_value_3": {
+        "avg_served_in_30_minutes_or_less_services_counter": {
+            "sum": 1684.0,
+            "sum_square": 150022.0,
+            "avg": 88.6316,
+            "res_sum": 766.4211,
+            "cnt": 19
+        },
+        "count": {
+            "sum": 19.0,
+            "sum_square": 19.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 19
+        }
+    },
+    "qer2-sxr5_date_3": {
+        "avg_small_asphalt_repairs": {
+            "sum": 1315544.0,
+            "sum_square": 436134058780.0,
+            "avg": 328886.0,
+            "res_sum": 3470054796.0,
+            "cnt": 4
+        },
+        "avg_reconstruction": {
+            "sum": 52.0,
+            "sum_square": 702.0,
+            "avg": 13.0,
+            "res_sum": 26.0,
+            "cnt": 4
+        },
+        "avg_total_centerline_miles": {
+            "sum": 2463.0,
+            "sum_square": 1530295.0,
+            "avg": 615.75,
+            "res_sum": 13702.75,
+            "cnt": 4
+        },
+        "avg_slurry_seal": {
+            "sum": 1658.0,
+            "sum_square": 689428.0,
+            "avg": 414.5,
+            "res_sum": 2187.0,
+            "cnt": 4
+        },
+        "avg_pavement_preservation_total": {
+            "sum": 805.0999999999999,
+            "sum_square": 168673.5322,
+            "avg": 201.275,
+            "res_sum": 6627.0297,
+            "cnt": 4
+        },
+        "avg_resurfacing": {
+            "sum": 753.49,
+            "sum_square": 148917.5401,
+            "avg": 188.3725,
+            "res_sum": 6980.7451,
+            "cnt": 4
+        },
+        "count": {
+            "sum": 4.0,
+            "sum_square": 4.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 4
+        }
+    },
+    "ni7t-83qi_date_3": {
+        "avg_pageviews": {
+            "sum": 25319.4339747868,
+            "sum_square": 15045892.427474836,
+            "avg": 575.4417,
+            "res_sum": 476034.7728,
+            "cnt": 44
+        },
+        "count": {
+            "sum": 33350.0,
+            "sum_square": 25308750.0,
+            "avg": 757.9545,
+            "res_sum": 30965.9091,
+            "cnt": 44
+        }
+    },
+    "yaaf-cyfa_issue_date_3": {
+        "count": {
+            "sum": 391309.0,
+            "sum_square": 1351716197.0,
+            "avg": 3260.9083,
+            "res_sum": 75693417.9917,
+            "cnt": 120
+        }
+    },
+    "3qv2-p4kj_transactiondatetime_3": {
+        "avg_amount": {
+            "sum": 27.65296318754207,
+            "sum_square": 113.79462154108126,
+            "avg": 3.4566,
+            "res_sum": 18.2088,
+            "cnt": 8
+        },
+        "count": {
+            "sum": 124792.0,
+            "sum_square": 6455152484.0,
+            "avg": 15599.0,
+            "res_sum": 4508522076.0,
+            "cnt": 8
+        }
+    },
+    "86ry-dcuc_closed_dt_3": {
+        "count": {
+            "sum": 102575.0,
+            "sum_square": 316200469.0,
+            "avg": 2699.3421,
+            "res_sum": 39315452.5526,
+            "cnt": 38
+        }
+    },
+    "9aw9-mn4p_dayofweekend_3": {
+        "avg_event_duration": {
+            "sum": 279.22231576328585,
+            "sum_square": 9502.977292227082,
+            "avg": 11.6343,
+            "res_sum": 6254.4314,
+            "cnt": 24
+        },
+        "count": {
+            "sum": 18484.0,
+            "sum_square": 24410198.0,
+            "avg": 770.1667,
+            "res_sum": 10174437.3333,
+            "cnt": 24
+        }
+    },
+    "h8mw-iegk_effectivedate_3": {
+        "count": {
+            "sum": 23.0,
+            "sum_square": 209.0,
+            "avg": 2.875,
+            "res_sum": 142.875,
+            "cnt": 8
+        }
+    },
+    "dyxf-7hc4_issue_date_3": {
+        "avg_cd": {
+            "sum": 927.1038877604753,
+            "sum_square": 7164.766318168334,
+            "avg": 7.7259,
+            "res_sum": 2.0862,
+            "cnt": 120
+        },
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 2186083470.0,
+            "avg": 4166.6667,
+            "res_sum": 102750136.6667,
+            "cnt": 120
+        }
+    },
+    "67is-svtd_submitted_date_3": {
+        "count": {
+            "sum": 27702.0,
+            "sum_square": 14797464.0,
+            "avg": 307.8,
+            "res_sum": 6270788.4,
+            "cnt": 90
+        }
+    },
+    "bjvp-eqku_submitted_date_3": {
+        "count": {
+            "sum": 89174.0,
+            "sum_square": 71646270.0,
+            "avg": 743.1167,
+            "res_sum": 5379584.3667,
+            "cnt": 120
+        }
+    },
+    "9k3p-zrda_issue_date_3": {
+        "count": {
+            "sum": 33413.0,
+            "sum_square": 24489081.0,
+            "avg": 696.1042,
+            "res_sum": 1230152.4792,
+            "cnt": 48
+        }
+    },
+    "e67z-kt2n_refresh_time_3": {
+        "avg_cd": {
+            "sum": 7.884185198075054,
+            "sum_square": 62.160376237545776,
+            "avg": 7.8842,
+            "res_sum": null,
+            "cnt": 1
+        },
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 250000000000.0,
+            "avg": 500000.0,
+            "res_sum": null,
+            "cnt": 1
+        }
+    },
+    "n3xg-rixm_issue_date_3": {
+        "avg_cd": {
+            "sum": 1297.8214280958223,
+            "sum_square": 10044.657083154067,
+            "avg": 7.7251,
+            "res_sum": 18.821,
+            "cnt": 168
+        },
+        "count": {
+            "sum": 358665.0,
+            "sum_square": 1056307743.0,
+            "avg": 2134.9107,
+            "res_sum": 290589991.6607,
+            "cnt": 168
+        }
+    },
+    "4f5p-udkv_issue_date_3": {
+        "avg_fine_amount": {
+            "sum": 6004.058905141315,
+            "sum_square": 935041.8571554042,
+            "avg": 117.7266,
+            "res_sum": 228204.1447,
+            "cnt": 51
+        },
+        "avg_issue_time": {
+            "sum": 61154.612726543746,
+            "sum_square": 75674455.72941983,
+            "avg": 1199.1101,
+            "res_sum": 2343344.7935,
+            "cnt": 51
+        },
+        "avg_loc_lat": {
+            "sum": 1731.4576821025496,
+            "sum_square": 58786.02337719359,
+            "avg": 33.9502,
+            "res_sum": 2.7743,
+            "cnt": 51
+        },
+        "avg_agency": {
+            "sum": 435.0523883428752,
+            "sum_square": 16944.34251688154,
+            "avg": 8.5304,
+            "res_sum": 13233.1547,
+            "cnt": 51
+        },
+        "avg_loc_long": {
+            "sum": -6022.036054532933,
+            "sum_square": 711107.2630171062,
+            "avg": -118.0791,
+            "res_sum": 30.4347,
+            "cnt": 51
+        },
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 61931446718.0,
+            "avg": 9803.9216,
+            "res_sum": 57029485933.6863,
+            "cnt": 51
+        }
+    },
+    "h8me-eag6_issue_date_3": {
+        "count": {
+            "sum": 361052.0,
+            "sum_square": 844698096.0,
+            "avg": 2242.559,
+            "res_sum": 35017681.6894,
+            "cnt": 161
+        }
+    },
+    "9rag-xmmd_refresh_time_3": {
+        "count": {
+            "sum": 38560.0,
+            "sum_square": 1486873600.0,
+            "avg": 38560.0,
+            "res_sum": null,
+            "cnt": 1
+        }
+    },
+    "b6ii-mhed_issue_date_3": {
+        "avg_cd": {
+            "sum": 1752.309919101943,
+            "sum_square": 14211.215530972924,
+            "avg": 7.8579,
+            "res_sum": 441.7534,
+            "cnt": 223
+        },
+        "count": {
+            "sum": 292570.0,
+            "sum_square": 683607510.0,
+            "avg": 1311.9731,
+            "res_sum": 299763541.8386,
+            "cnt": 223
+        }
+    },
+    "mcip-sa6g_issue_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 1687075732.0,
+            "avg": 3105.5901,
+            "res_sum": 134280700.9441,
+            "cnt": 161
+        }
+    },
+    "7ts7-nh4y_issue_date_3": {
+        "count": {
+            "sum": 25199.0,
+            "sum_square": 4969443.0,
+            "avg": 134.754,
+            "res_sum": 1573776.6845,
+            "cnt": 187
+        }
+    },
+    "9i2c-csvn_issue_date_3": {
+        "count": {
+            "sum": 52932.0,
+            "sum_square": 25821002.0,
+            "avg": 316.9581,
+            "res_sum": 9043776.7066,
+            "cnt": 167
+        }
+    },
+    "vnau-u5ph_issue_date_3": {
+        "count": {
+            "sum": 38516.0,
+            "sum_square": 13133388.0,
+            "avg": 199.5648,
+            "res_sum": 5446951.4404,
+            "cnt": 193
+        }
+    },
+    "5m3t-xjex_issue_date_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 2120227176.0,
+            "avg": 4166.6667,
+            "res_sum": 36893842.6667,
+            "cnt": 120
+        }
+    },
+    "u82d-eh7z_resdttm_3": {
+        "count": {
+            "sum": 42.0,
+            "sum_square": 72.0,
+            "avg": 1.4,
+            "res_sum": 13.2,
+            "cnt": 30
+        }
+    },
+    "rken-a55j_resdttm_3": {
+        "count": {
+            "sum": 499993.0,
+            "sum_square": 1175945291.0,
+            "avg": 1412.4096,
+            "res_sum": 469750375.6073,
+            "cnt": 354
+        }
+    },
+    "yv23-pmwf_license_expiration_date_3": {
+        "avg_valuation": {
+            "sum": 194816648.0329505,
+            "sum_square": 2.3018463599421016e+16,
+            "avg": 1070421.143,
+            "res_sum": 2.583444854570106e+16,
+            "cnt": 206
+        },
+        "avg__of_accessory_dwelling_units": {
+            "sum": 96.55732996933983,
+            "sum_square": 100.78819142798707,
+            "avg": 1.0164,
+            "res_sum": 5.7749,
+            "cnt": 206
+        },
+        "avg_of_stories": {
+            "sum": 373.97376611821494,
+            "sum_square": 5787.070256638604,
+            "avg": 2.2665,
+            "res_sum": 6174.3198,
+            "cnt": 206
+        },
+        "count": {
+            "sum": 447894.0,
+            "sum_square": 1930800452.0,
+            "avg": 2174.2427,
+            "res_sum": 956970183.8641,
+            "cnt": 206
+        }
+    },
+    "yv23-pmwf_location_1_3": {
+        "avg_valuation": {
+            "sum": 175398956.59779644,
+            "sum_square": 254159368357184.28,
+            "avg": 157167.5238,
+            "res_sum": 227202014177895.78,
+            "cnt": 1119
+        },
+        "avg__of_accessory_dwelling_units": {
+            "sum": 850.6837225915824,
+            "sum_square": 946.5327429821401,
+            "avg": 0.9938,
+            "res_sum": 132.2408,
+            "cnt": 1119
+        },
+        "avg_of_stories": {
+            "sum": 1789.0566566074256,
+            "sum_square": 13240.466368136013,
+            "avg": 1.6264,
+            "res_sum": 10509.3196,
+            "cnt": 1119
+        },
+        "count": {
+            "sum": 472264.0,
+            "sum_square": 357294302.0,
+            "avg": 422.0411,
+            "res_sum": 157979480.109,
+            "cnt": 1119
+        }
+    },
+    "yv23-pmwf_license_expiration_date_3_location_1_3": {
+        "avg_valuation": {
+            "sum": 8316087129.643045,
+            "sum_square": 4.6632026806393434e+17,
+            "avg": 135297.9278,
+            "res_sum": 8.051378291856369e+17,
+            "cnt": 106380
+        },
+        "avg__of_accessory_dwelling_units": {
+            "sum": 2471.3602813852813,
+            "sum_square": 2732.371493049699,
+            "avg": 0.9788,
+            "res_sum": 13213.5631,
+            "cnt": 106380
+        },
+        "avg_of_stories": {
+            "sum": 27326.48662491151,
+            "sum_square": 6726819.48801362,
+            "avg": 1.6531,
+            "res_sum": 43002401.647,
+            "cnt": 106380
+        },
+        "count": {
+            "sum": 424238.0,
+            "sum_square": 5168716.0,
+            "avg": 3.9879,
+            "res_sum": 3476876.5504,
+            "cnt": 106380
+        }
+    },
+    "6rrh-rzua_location_start_date_3": {
+        "count": {
+            "sum": 496423.0,
+            "sum_square": 1385625489.0,
+            "avg": 520.9056,
+            "res_sum": 1127035987.5005,
+            "cnt": 953
+        }
+    },
+    "6rrh-rzua_location_1_3": {
+        "count": {
+            "sum": 471221.0,
+            "sum_square": 256279179.0,
+            "avg": 80.3994,
+            "res_sum": 218393283.958,
+            "cnt": 5861
+        }
+    },
+    "6rrh-rzua_location_start_date_3_location_1_3": {
+        "count": {
+            "sum": 467911.0,
+            "sum_square": 1969679.0,
+            "avg": 1.8396,
+            "res_sum": 1108907.3828,
+            "cnt": 254354
+        }
+    },
+    "fdwe-pgcu_registereddate_3": {
+        "avg_cd": {
+            "sum": 97.49446707096263,
+            "sum_square": 793.7873377230023,
+            "avg": 8.1245,
+            "res_sum": 1.6897,
+            "cnt": 12
+        },
+        "avg_apn": {
+            "sum": 49339429956.94355,
+            "sum_square": 2.06081933905182e+20,
+            "avg": 4111619163.0786,
+            "res_sum": 3.2169881988371425e+18,
+            "cnt": 12
+        },
+        "count": {
+            "sum": 7599.0,
+            "sum_square": 5859039.0,
+            "avg": 633.25,
+            "res_sum": 1046972.25,
+            "cnt": 12
+        }
+    },
+    "fdwe-pgcu_property_location_3": {
+        "avg_cd": {
+            "sum": 8150.273669177493,
+            "sum_square": 83335.98973522574,
+            "avg": 8.1178,
+            "res_sum": 17173.6781,
+            "cnt": 1004
+        },
+        "avg_apn": {
+            "sum": 4243240542586.425,
+            "sum_square": 2.0336346985415456e+22,
+            "avg": 4226335201.7793,
+            "res_sum": 2.402990110665317e+21,
+            "cnt": 1004
+        },
+        "count": {
+            "sum": 7599.0,
+            "sum_square": 102709.0,
+            "avg": 7.5687,
+            "res_sum": 45194.258,
+            "cnt": 1004
+        }
+    },
+    "fdwe-pgcu_registereddate_3_property_location_3": {
+        "avg_cd": {
+            "sum": 37376.18354978355,
+            "sum_square": 378859.5460833859,
+            "avg": 8.1679,
+            "res_sum": 73575.6526,
+            "cnt": 4576
+        },
+        "avg_apn": {
+            "sum": 18951663717421.07,
+            "sum_square": 8.999662004419653e+22,
+            "avg": 4141534903.2826,
+            "res_sum": 1.1507643283223154e+22,
+            "cnt": 4576
+        },
+        "count": {
+            "sum": 7599.0,
+            "sum_square": 19477.0,
+            "avg": 1.6606,
+            "res_sum": 6857.9438,
+            "cnt": 4576
+        }
+    },
+    "yru6-6re4_bkg_date_3": {
+        "count": {
+            "sum": 112091.0,
+            "sum_square": 895082409.0,
+            "avg": 789.3732,
+            "res_sum": 806600773.2183,
+            "cnt": 142
+        }
+    },
+    "yru6-6re4_location_1_3": {
+        "count": {
+            "sum": 499771.0,
+            "sum_square": 1688231785.0,
+            "avg": 346.5818,
+            "res_sum": 1515020236.844,
+            "cnt": 1442
+        }
+    },
+    "yru6-6re4_bkg_date_3_location_1_3": {
+        "count": {
+            "sum": 111901.0,
+            "sum_square": 2768477.0,
+            "avg": 5.9051,
+            "res_sum": 2107694.2137,
+            "cnt": 18950
+        }
+    },
+    "d5tf-ez2w_date_rptd_3": {
+        "count": {
+            "sum": 500000.0,
+            "sum_square": 1962230638.0,
+            "avg": 3125.0,
+            "res_sum": 399730638.0,
+            "cnt": 160
+        }
+    },
+    "d5tf-ez2w_location_1_3": {
+        "count": {
+            "sum": 499204.0,
+            "sum_square": 342369614.0,
+            "avg": 370.6043,
+            "res_sum": 157362462.095,
+            "cnt": 1347
+        }
+    },
+    "d5tf-ez2w_date_rptd_3_location_1_3": {
+        "count": {
+            "sum": 499204.0,
+            "sum_square": 3287664.0,
+            "avg": 3.7972,
+            "res_sum": 1392096.0353,
+            "cnt": 131467
+        }
+    },
+    "2in3-5b7t_date_of_event_3": {
+        "count": {
+            "sum": 163.0,
+            "sum_square": 4109.0,
+            "avg": 12.5385,
+            "res_sum": 2065.2308,
+            "cnt": 13
+        }
+    },
+    "2in3-5b7t_location_3": {
+        "count": {
+            "sum": 148.0,
+            "sum_square": 416.0,
+            "avg": 2.0,
+            "res_sum": 120.0,
+            "cnt": 74
+        }
+    },
+    "2in3-5b7t_date_of_event_3_location_3": {
+        "count": {
+            "sum": 148.0,
+            "sum_square": 188.0,
+            "avg": 1.1563,
+            "res_sum": 16.875,
+            "cnt": 128
+        }
+    },
+    "3f9m-afei_license_expiration_date_3": {
+        "avg_valuation": {
+            "sum": 136359717.2884296,
+            "sum_square": 434340962325876.4,
+            "avg": 462236.3298,
+            "res_sum": 371310547075094.3,
+            "cnt": 295
+        },
+        "avg_of_stories": {
+            "sum": 401.6314268224015,
+            "sum_square": 908.6965652026344,
+            "avg": 1.3946,
+            "res_sum": 357.1025,
+            "cnt": 295
+        },
+        "count": {
+            "sum": 29303.0,
+            "sum_square": 36043483.0,
+            "avg": 99.3322,
+            "res_sum": 33132751.4441,
+            "cnt": 295
+        }
+    },
+    "3f9m-afei_latitude_longitude_3": {
+        "avg_valuation": {
+            "sum": 565063522.3776232,
+            "sum_square": 2412147758762460.5,
+            "avg": 512761.817,
+            "res_sum": 2122404760285316.5,
+            "cnt": 1102
+        },
+        "avg_of_stories": {
+            "sum": 1716.8018332361867,
+            "sum_square": 11321.411611603096,
+            "avg": 1.5693,
+            "res_sum": 8690.3994,
+            "cnt": 1102
+        },
+        "count": {
+            "sum": 41877.0,
+            "sum_square": 3443801.0,
+            "avg": 38.0009,
+            "res_sum": 1852436.9991,
+            "cnt": 1102
+        }
+    },
+    "3f9m-afei_license_expiration_date_3_latitude_longitude_3": {
+        "avg_valuation": {
+            "sum": 7401841169.594959,
+            "sum_square": 2.647505975951361e+17,
+            "avg": 436918.7869,
+            "res_sum": 2.6153203194565235e+17,
+            "cnt": 16942
+        },
+        "avg_of_stories": {
+            "sum": 17768.067820622742,
+            "sum_square": 3366422.112918644,
+            "avg": 1.4514,
+            "res_sum": 4623288.2996,
+            "cnt": 16942
+        },
+        "count": {
+            "sum": 25852.0,
+            "sum_square": 112250.0,
+            "avg": 1.5259,
+            "res_sum": 72802.1247,
+            "cnt": 16942
+        }
+    },
+    "r4uk-afju_location_3": {
+        "avg_naics": {
+            "sum": 1630929378.4155679,
+            "sum_square": 766384313071968.0,
+            "avg": 438775.7273,
+            "res_sum": 53286099723285.78,
+            "cnt": 3901
+        },
+        "count": {
+            "sum": 120679.0,
+            "sum_square": 21251465.0,
+            "avg": 30.9354,
+            "res_sum": 17518211.7211,
+            "cnt": 3901
+        }
+    },
+    "2uz8-3tj3_latitude_longitude_3": {
+        "count": {
+            "sum": 15850.0,
+            "sum_square": 498712.0,
+            "avg": 14.6488,
+            "res_sum": 266528.5434,
+            "cnt": 1082
+        }
+    },
+    "amvf-fr72_bkg_date_3": {
+        "count": {
+            "sum": 204384.0,
+            "sum_square": 880036258.0,
+            "avg": 3716.0727,
+            "res_sum": 120530449.7091,
+            "cnt": 55
+        }
+    },
+    "amvf-fr72_location_1_3": {
+        "count": {
+            "sum": 254729.0,
+            "sum_square": 171419101.0,
+            "avg": 210.8684,
+            "res_sum": 117704810.072,
+            "cnt": 1208
+        }
+    },
+    "amvf-fr72_bkg_date_3_location_1_3": {
+        "count": {
+            "sum": 203316.0,
+            "sum_square": 2397964.0,
+            "avg": 4.5259,
+            "res_sum": 1477780.6673,
+            "cnt": 44923
+        }
+    },
+    "d3th-bqdk_event_date_time_start_3": {
+        "count": {
+            "sum": 29476.0,
+            "sum_square": 42421750.0,
+            "avg": 755.7949,
+            "res_sum": 20143940.359,
+            "cnt": 39
+        }
+    },
+    "d3th-bqdk_location_address_3": {
+        "count": {
+            "sum": 15939.0,
+            "sum_square": 4178597.0,
+            "avg": 48.8926,
+            "res_sum": 3399297.2423,
+            "cnt": 326
+        }
+    },
+    "d3th-bqdk_event_date_time_start_3_location_address_3": {
+        "count": {
+            "sum": 15938.0,
+            "sum_square": 416500.0,
+            "avg": 11.5409,
+            "res_sum": 232560.9385,
+            "cnt": 1381
+        }
+    },
+    "63kx-necw_dataexportdatetime_3": {
+        "count": {
+            "sum": 5.0,
+            "sum_square": 13.0,
+            "avg": 2.5,
+            "res_sum": 0.5,
+            "cnt": 2
+        }
+    },
+    "63kx-necw_geo_location_3": {
+        "count": {
+            "sum": 5.0,
+            "sum_square": 25.0,
+            "avg": 5.0,
+            "res_sum": null,
+            "cnt": 1
+        }
+    },
+    "63kx-necw_dataexportdatetime_3_geo_location_3": {
+        "count": {
+            "sum": 5.0,
+            "sum_square": 13.0,
+            "avg": 2.5,
+            "res_sum": 0.5,
+            "cnt": 2
+        }
+    },
+    "s49e-q6j2_latlng_3": {
+        "count": {
+            "sum": 35178.0,
+            "sum_square": 9064396.0,
+            "avg": 92.8179,
+            "res_sum": 5799246.438,
+            "cnt": 379
+        }
+    },
+    "9w5z-rg2h_inspection_date_3": {
+        "count": {
+            "sum": 496528.0,
+            "sum_square": 12121560432.0,
+            "avg": 12110.439,
+            "res_sum": 6108388364.0976,
+            "cnt": 41
+        }
+    },
+    "9w5z-rg2h_lat_lon_3": {
+        "count": {
+            "sum": 496528.0,
+            "sum_square": 655475270.0,
+            "avg": 445.3166,
+            "res_sum": 434363113.243,
+            "cnt": 1115
+        }
+    },
+    "9w5z-rg2h_inspection_date_3_lat_lon_3": {
+        "count": {
+            "sum": 496528.0,
+            "sum_square": 40545668.0,
+            "avg": 12.6698,
+            "res_sum": 34254776.0688,
+            "cnt": 39190
+        }
+    },
+    "ax8j-dhzm_city_3": {
+        "avg_geolong": {
+            "sum": -42489.07796021112,
+            "sum_square": 5028757.562663866,
+            "avg": -118.354,
+            "res_sum": 6.1813,
+            "cnt": 359
+        },
+        "avg_geolat": {
+            "sum": 12233.95983100587,
+            "sum_square": 416913.6825230959,
+            "avg": 34.0779,
+            "res_sum": 6.2364,
+            "cnt": 359
+        },
+        "avg_stnumber": {
+            "sum": 2058496.9700135756,
+            "sum_square": 23308994887.327293,
+            "avg": 6163.1646,
+            "res_sum": 11419597175.1882,
+            "cnt": 359
+        },
+        "count": {
+            "sum": 985.0,
+            "sum_square": 5481.0,
+            "avg": 2.7437,
+            "res_sum": 2778.4234,
+            "cnt": 359
+        }
+    },
+    "q3qu-98vb_lat_lon_3": {
+        "count": {
+            "sum": 408759.0,
+            "sum_square": 687931303.0,
+            "avg": 367.589,
+            "res_sum": 537675979.1862,
+            "cnt": 1112
+        }
+    },
+    "a4nt-4gca_location_3": {
+        "count": {
+            "sum": 73.0,
+            "sum_square": 73.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 73
+        }
+    },
+    "mymu-zi3s_date_funded_3": {
+        "avg_jobs": {
+            "sum": 30835.41028138528,
+            "sum_square": 10005155.879023511,
+            "avg": 197.6629,
+            "res_sum": 4616487.4918,
+            "cnt": 184
+        },
+        "avg_sh_units_per_site": {
+            "sum": 3909.8097763347764,
+            "sum_square": 273687.6659947978,
+            "avg": 21.249,
+            "res_sum": 190608.2503,
+            "cnt": 184
+        },
+        "avg_tax_exempt_conduit_bond": {
+            "sum": 514671958.83492064,
+            "sum_square": 1.1554534809974128e+16,
+            "avg": 2797130.2111,
+            "res_sum": 1.0114930325131876e+16,
+            "cnt": 184
+        },
+        "avg_tdc": {
+            "sum": 4293058416.9952126,
+            "sum_square": 1.3928780899963651e+17,
+            "avg": 23331839.2228,
+            "res_sum": 3.912286024021546e+16,
+            "cnt": 184
+        },
+        "avg_leverage": {
+            "sum": 3006568652.399444,
+            "sum_square": 7.043362997205742e+16,
+            "avg": 16340047.0239,
+            "res_sum": 2.1306156811236784e+16,
+            "cnt": 184
+        },
+        "avg_project_total_units": {
+            "sum": 14493.534235209236,
+            "sum_square": 1579094.781084366,
+            "avg": 78.7692,
+            "res_sum": 437450.5712,
+            "cnt": 184
+        },
+        "avg_site_units": {
+            "sum": 12417.401803751804,
+            "sum_square": 1209648.563431962,
+            "avg": 67.4859,
+            "res_sum": 371649.2832,
+            "cnt": 184
+        },
+        "avg_site_cd": {
+            "sum": 238.71756854256853,
+            "sum_square": 521.9351701994694,
+            "avg": 1.2974,
+            "res_sum": 212.2282,
+            "cnt": 184
+        },
+        "avg_apn": {
+            "sum": 886520876842.1047,
+            "sum_square": 4.480480657017993e+21,
+            "avg": 4818048243.7071,
+            "res_sum": 2.0918030333922024e+20,
+            "cnt": 184
+        },
+        "count": {
+            "sum": 568.0,
+            "sum_square": 3520.0,
+            "avg": 3.087,
+            "res_sum": 1766.6087,
+            "cnt": 184
+        }
+    },
+    "mymu-zi3s_geocoded_column_3": {
+        "avg_jobs": {
+            "sum": 48679.87738095238,
+            "sum_square": 14493596.436560376,
+            "avg": 191.6531,
+            "res_sum": 6225313.9505,
+            "cnt": 306
+        },
+        "avg_sh_units_per_site": {
+            "sum": 5774.460714285714,
+            "sum_square": 310545.3194855442,
+            "avg": 18.8708,
+            "res_sum": 201576.7033,
+            "cnt": 306
+        },
+        "avg_tax_exempt_conduit_bond": {
+            "sum": 1016065048.8507936,
+            "sum_square": 5.1080338580013256e+16,
+            "avg": 3320474.0159,
+            "res_sum": 4.7706520986888536e+16,
+            "cnt": 306
+        },
+        "avg_tdc": {
+            "sum": 7074039804.875477,
+            "sum_square": 2.6015784110921542e+17,
+            "avg": 23117777.1401,
+            "res_sum": 9.662176541979482e+16,
+            "cnt": 306
+        },
+        "avg_leverage": {
+            "sum": 4837164124.238967,
+            "sum_square": 1.1540159647084466e+17,
+            "avg": 15807725.8962,
+            "res_sum": 3.893703187991479e+16,
+            "cnt": 306
+        },
+        "avg_project_total_units": {
+            "sum": 27697.69365079365,
+            "sum_square": 3689481.8835285967,
+            "avg": 90.5153,
+            "res_sum": 1182415.7607,
+            "cnt": 306
+        },
+        "avg_site_units": {
+            "sum": 17392.6623015873,
+            "sum_square": 1728855.1122601726,
+            "avg": 56.8388,
+            "res_sum": 740277.6549,
+            "cnt": 306
+        },
+        "avg_site_cd": {
+            "sum": 600.1599206349206,
+            "sum_square": 2873.579308547493,
+            "avg": 1.9613,
+            "res_sum": 1696.4815,
+            "cnt": 306
+        },
+        "avg_apn": {
+            "sum": 1462427532510.0774,
+            "sum_square": 7.512632997859053e+21,
+            "avg": 4779174942.8434,
+            "res_sum": 5.234359787626036e+20,
+            "cnt": 306
+        },
+        "count": {
+            "sum": 570.0,
+            "sum_square": 1658.0,
+            "avg": 1.8627,
+            "res_sum": 596.2353,
+            "cnt": 306
+        }
+    },
+    "mymu-zi3s_date_funded_3_geocoded_column_3": {
+        "avg_jobs": {
+            "sum": 72637.5,
+            "sum_square": 21819412.75,
+            "avg": 189.1602,
+            "res_sum": 10905989.3277,
+            "cnt": 518
+        },
+        "avg_sh_units_per_site": {
+            "sum": 10171.0,
+            "sum_square": 688095.0555555555,
+            "avg": 19.6351,
+            "res_sum": 488386.0961,
+            "cnt": 518
+        },
+        "avg_tax_exempt_conduit_bond": {
+            "sum": 1518836501.0,
+            "sum_square": 5.832070039296888e+16,
+            "avg": 2932116.7973,
+            "res_sum": 5.386729437603853e+16,
+            "cnt": 518
+        },
+        "avg_tdc": {
+            "sum": 11730367514.66,
+            "sum_square": 4.2307340694545894e+17,
+            "avg": 22645497.1325,
+            "res_sum": 1.5743340302848835e+17,
+            "cnt": 518
+        },
+        "avg_leverage": {
+            "sum": 8161770393.66,
+            "sum_square": 2.1273722268629328e+17,
+            "avg": 15756313.5013,
+            "res_sum": 8.41378096383686e+16,
+            "cnt": 518
+        },
+        "avg_project_total_units": {
+            "sum": 46784.0,
+            "sum_square": 6488493.0,
+            "avg": 90.3166,
+            "res_sum": 2263121.0772,
+            "cnt": 518
+        },
+        "avg_site_units": {
+            "sum": 29573.833333333332,
+            "sum_square": 2937033.027777778,
+            "avg": 57.0923,
+            "res_sum": 1248593.6107,
+            "cnt": 518
+        },
+        "avg_site_cd": {
+            "sum": 1009.0,
+            "sum_square": 5638.5,
+            "avg": 1.9479,
+            "res_sum": 3673.0927,
+            "cnt": 518
+        },
+        "avg_apn": {
+            "sum": 2536371762836.75,
+            "sum_square": 1.3126532039717977e+22,
+            "avg": 4896470584.6269,
+            "res_sum": 7.072623113094781e+20,
+            "cnt": 518
+        },
+        "count": {
+            "sum": 568.0,
+            "sum_square": 726.0,
+            "avg": 1.0965,
+            "res_sum": 103.1737,
+            "cnt": 518
+        }
+    },
+    "8spw-3fhx_lat_lon_3": {
+        "count": {
+            "sum": 17692.0,
+            "sum_square": 5324362.0,
+            "avg": 24.038,
+            "res_sum": 4899080.9348,
+            "cnt": 736
+        }
+    },
+    "29cn-rph9_location_1_3": {
+        "count": {
+            "sum": 19.0,
+            "sum_square": 19.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 19
+        }
+    },
+    "qf8m-dzta_location_1_3": {
+        "avg_index": {
+            "sum": 136.0,
+            "sum_square": 1496.0,
+            "avg": 8.5,
+            "res_sum": 340.0,
+            "cnt": 16
+        },
+        "count": {
+            "sum": 16.0,
+            "sum_square": 16.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 16
+        }
+    },
+    "bsvt-chkv_location_1_3": {
+        "count": {
+            "sum": 1180.0,
+            "sum_square": 5880.0,
+            "avg": 2.5431,
+            "res_sum": 2879.1379,
+            "cnt": 464
+        }
+    },
+    "sii9-rjps_ending_lat_long_3": {
+        "avg_plan_duration": {
+            "sum": 1148.207028432096,
+            "sum_square": 49679.40003992582,
+            "avg": 42.5262,
+            "res_sum": 850.5341,
+            "cnt": 27
+        },
+        "avg_duration": {
+            "sum": 50587.21909177776,
+            "sum_square": 157376280.87925008,
+            "avg": 1873.6007,
+            "res_sum": 62596031.4185,
+            "cnt": 27
+        },
+        "count": {
+            "sum": 131328.0,
+            "sum_square": 1128743372.0,
+            "avg": 4864.0,
+            "res_sum": 489963980.0,
+            "cnt": 27
+        }
+    },
+    "vxhy-r447_location_1_3": {
+        "avg_rate_of_occupied_units": {
+            "sum": 1671.4999999999998,
+            "sum_square": 164409.33000000002,
+            "avg": 98.3235,
+            "res_sum": 61.5506,
+            "cnt": 17
+        },
+        "avg_actual_units": {
+            "sum": 5811.0,
+            "sum_square": 2812011.0,
+            "avg": 387.4,
+            "res_sum": 640948.1143,
+            "cnt": 17
+        },
+        "avg_acres": {
+            "sum": 456.36,
+            "sum_square": 16956.461600000002,
+            "avg": 28.5225,
+            "res_sum": 4202.5957,
+            "cnt": 17
+        },
+        "avg_occupied_units": {
+            "sum": 6758.0,
+            "sum_square": 3795554.0,
+            "avg": 422.375,
+            "res_sum": 1003886.6667,
+            "cnt": 17
+        },
+        "count": {
+            "sum": 17.0,
+            "sum_square": 17.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 17
+        }
+    },
+    "8m62-bye6_location_1_3": {
+        "avg_site_eui_kbtu_ft": {
+            "sum": 19405.13416666667,
+            "sum_square": 6693400.42512847,
+            "avg": 108.4086,
+            "res_sum": 4589717.5646,
+            "cnt": 179
+        },
+        "avg_source_eui_kbtu_ft": {
+            "sum": 47860.845000000016,
+            "sum_square": 30247469.50626946,
+            "avg": 267.379,
+            "res_sum": 17450483.5615,
+            "cnt": 179
+        },
+        "avg_total_ghg_emissions_intensity_kgco2e_ft": {
+            "sum": 1473.0283333333332,
+            "sum_square": 32017.934587500004,
+            "avg": 8.2292,
+            "res_sum": 19896.0772,
+            "cnt": 179
+        },
+        "avg_direct_ghg_emissions_metric_tons_co2e": {
+            "sum": 6601.126666666664,
+            "sum_square": 1248646.6275666666,
+            "avg": 36.8778,
+            "res_sum": 1005211.5814,
+            "cnt": 179
+        },
+        "avg_indirect_ghg_emissions_metric_tons_co2e": {
+            "sum": 30298.23666666667,
+            "sum_square": 21993126.997065265,
+            "avg": 169.2639,
+            "res_sum": 16864729.5384,
+            "cnt": 179
+        },
+        "avg_property_gfa___self_reported_ft": {
+            "sum": 7510735.783333333,
+            "sum_square": 2649495076309.986,
+            "avg": 41959.4178,
+            "res_sum": 2334348975711.976,
+            "cnt": 179
+        },
+        "avg_water_use_all_water_sources_kgal": {
+            "sum": 158713.13000000006,
+            "sum_square": 724132480.7378685,
+            "avg": 886.6655,
+            "res_sum": 583407019.0932,
+            "cnt": 179
+        },
+        "avg_total_ghg_emissions_metric_tons_co2e": {
+            "sum": 36899.760833333305,
+            "sum_square": 31112869.0437007,
+            "avg": 206.1439,
+            "res_sum": 23506207.873,
+            "cnt": 179
+        },
+        "avg_energy_star_score": {
+            "sum": 570.9166666666666,
+            "sum_square": 35231.809166666666,
+            "avg": 3.1895,
+            "res_sum": 33410.8827,
+            "cnt": 179
+        },
+        "avg_indoor_water_use_all_water_sources_kgal": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 179
+        },
+        "count": {
+            "sum": 468.0,
+            "sum_square": 1732.0,
+            "avg": 2.6145,
+            "res_sum": 508.4022,
+            "cnt": 179
+        }
+    },
+    "msv5-mj8x_datecompletedp_3": {
+        "count": {
+            "sum": 60.0,
+            "sum_square": 678.0,
+            "avg": 7.5,
+            "res_sum": 228.0,
+            "cnt": 8
+        }
+    },
+    "msv5-mj8x_intersection_3": {
+        "count": {
+            "sum": 137.0,
+            "sum_square": 337.0,
+            "avg": 1.4574,
+            "res_sum": 137.3298,
+            "cnt": 94
+        }
+    },
+    "msv5-mj8x_datecompletedp_3_intersection_3": {
+        "count": {
+            "sum": 60.0,
+            "sum_square": 78.0,
+            "avg": 1.1111,
+            "res_sum": 11.3333,
+            "cnt": 54
+        }
+    },
+    "rsxb-x48z_registered_date_3": {
+        "avg_apn": {
+            "sum": 48259222890.31252,
+            "sum_square": 1.9426960488020263e+20,
+            "avg": 4021601907.526,
+            "res_sum": 1.902220487972585e+17,
+            "cnt": 12
+        },
+        "avg_propertyzip": {
+            "sum": 1087265.0683229824,
+            "sum_square": 98513074466.78958,
+            "avg": 90605.4224,
+            "res_sum": 963733.8413,
+            "cnt": 12
+        },
+        "count": {
+            "sum": 3317.0,
+            "sum_square": 1757923.0,
+            "avg": 276.4167,
+            "res_sum": 841048.9167,
+            "cnt": 12
+        }
+    },
+    "rsxb-x48z_geocoded_column_3": {
+        "avg_apn": {
+            "sum": 3418779877838.4507,
+            "sum_square": 1.6292780088225083e+22,
+            "avg": 4154046024.105,
+            "res_sum": 2.0910111293999423e+21,
+            "cnt": 823
+        },
+        "avg_propertyzip": {
+            "sum": 74602644.82174537,
+            "sum_square": 6762992549557.0205,
+            "avg": 90647.1991,
+            "res_sum": 471754417.9077,
+            "cnt": 823
+        },
+        "count": {
+            "sum": 3312.0,
+            "sum_square": 21562.0,
+            "avg": 4.0243,
+            "res_sum": 8233.514,
+            "cnt": 823
+        }
+    },
+    "rsxb-x48z_registered_date_3_geocoded_column_3": {
+        "avg_apn": {
+            "sum": 9663001366288.965,
+            "sum_square": 4.531455722994977e+22,
+            "avg": 4032972189.6031,
+            "res_sum": 6.34394145160986e+21,
+            "cnt": 2396
+        },
+        "avg_propertyzip": {
+            "sum": 217293208.95,
+            "sum_square": 19716248113868.324,
+            "avg": 90689.987,
+            "res_sum": 9929810116.9204,
+            "cnt": 2396
+        },
+        "count": {
+            "sum": 3312.0,
+            "sum_square": 6328.0,
+            "avg": 1.3823,
+            "res_sum": 1749.8097,
+            "cnt": 2396
+        }
+    },
+    "8qjh-sbs9_latitude_longitude_3": {
+        "count": {
+            "sum": 279536.0,
+            "sum_square": 101178848.0,
+            "avg": 250.7049,
+            "res_sum": 31097793.9229,
+            "cnt": 1115
+        }
+    },
+    "4sbs-dcfn_registereddate_3": {
+        "avg_apn": {
+            "sum": 48542448661.32738,
+            "sum_square": 1.9656699038731973e+20,
+            "avg": 4045204055.1106,
+            "res_sum": 2.0288021751939114e+17,
+            "cnt": 12
+        },
+        "count": {
+            "sum": 7638.0,
+            "sum_square": 14995294.0,
+            "avg": 636.5,
+            "res_sum": 10133707.0,
+            "cnt": 12
+        }
+    },
+    "4sbs-dcfn_propertyaddress_3": {
+        "avg_apn": {
+            "sum": 4175972914816.391,
+            "sum_square": 2.0034148852238842e+22,
+            "avg": 4213897996.7875,
+            "res_sum": 2.437024951855284e+21,
+            "cnt": 991
+        },
+        "count": {
+            "sum": 7125.0,
+            "sum_square": 87637.0,
+            "avg": 7.1897,
+            "res_sum": 36410.335,
+            "cnt": 991
+        }
+    },
+    "4sbs-dcfn_registereddate_3_propertyaddress_3": {
+        "avg_apn": {
+            "sum": 15522700321476.094,
+            "sum_square": 7.380735370770724e+22,
+            "avg": 4122895171.7068,
+            "res_sum": 9.80888750044189e+21,
+            "cnt": 3765
+        },
+        "count": {
+            "sum": 7125.0,
+            "sum_square": 26899.0,
+            "avg": 1.8924,
+            "res_sum": 13415.4343,
+            "cnt": 3765
+        }
+    },
+    "acy8-72w9_event_location_3": {
+        "count": {
+            "sum": 12.0,
+            "sum_square": 44.0,
+            "avg": 2.0,
+            "res_sum": 20.0,
+            "cnt": 6
+        }
+    },
+    "vt5t-mscf_inv_date_3": {
+        "avg_blsd": {
+            "sum": 3161.5734628352334,
+            "sum_square": 560218.5535651365,
+            "avg": 158.0787,
+            "res_sum": 130425.7809,
+            "cnt": 42
+        },
+        "avg_grow": {
+            "sum": 1792.9133757285692,
+            "sum_square": 170253.2383039157,
+            "avg": 94.3639,
+            "res_sum": 2430.4075,
+            "cnt": 42
+        },
+        "avg_tg_pg": {
+            "sum": 15103.525628096162,
+            "sum_square": 8623917.477401998,
+            "avg": 359.6078,
+            "res_sum": 3192572.5632,
+            "cnt": 42
+        },
+        "avg_cd": {
+            "sum": 351.66201538466464,
+            "sum_square": 3375.0447901242405,
+            "avg": 8.3729,
+            "res_sum": 430.6121,
+            "cnt": 42
+        },
+        "avg_y_original": {
+            "sum": 1232758466767.1873,
+            "sum_square": 1.5184405325271437e+24,
+            "avg": 58702784131.7708,
+            "res_sum": 2.964452065650087e+24,
+            "cnt": 42
+        },
+        "avg_x_original": {
+            "sum": 1842421037.8938694,
+            "sum_square": 2.0886179872404432e+17,
+            "avg": 87734335.1378,
+            "res_sum": 9.679733853707461e+16,
+            "cnt": 42
+        },
+        "avg_drgycoord": {
+            "sum": 33896977.67503634,
+            "sum_square": 55289653204334.93,
+            "avg": 807070.897,
+            "res_sum": 27932389025717.992,
+            "cnt": 42
+        },
+        "avg_spp": {
+            "sum": 10033.791521463447,
+            "sum_square": 2636654.5332483873,
+            "avg": 238.8998,
+            "res_sum": 239583.7643,
+            "cnt": 42
+        },
+        "avg_locunit": {
+            "sum": 271736.16599317634,
+            "sum_square": 2629056076.254775,
+            "avg": 6469.9087,
+            "res_sum": 870947887.9531,
+            "cnt": 42
+        },
+        "avg_blsdval": {
+            "sum": 3153.9649846226444,
+            "sum_square": 557965.3477568415,
+            "avg": 150.1888,
+            "res_sum": 172763.9627,
+            "cnt": 42
+        },
+        "avg_un": {
+            "sum": 650.6360422154812,
+            "sum_square": 24245.662049048962,
+            "avg": 32.5318,
+            "res_sum": 6644.8033,
+            "cnt": 42
+        },
+        "avg_des_spp1": {
+            "sum": 0.015200653206622446,
+            "sum_square": 0.00019496965365899867,
+            "avg": 0.0007,
+            "res_sum": 0.0004,
+            "cnt": 42
+        },
+        "avg_drgxcoord": {
+            "sum": 119920067.18181786,
+            "sum_square": 691339042262243.0,
+            "avg": 2855239.6948,
+            "res_sum": 348938506241011.8,
+            "cnt": 42
+        },
+        "avg_gisno": {
+            "sum": 4433666.182786073,
+            "sum_square": 1326428051671.2158,
+            "avg": 211126.9611,
+            "res_sum": 800241247269.7697,
+            "cnt": 42
+        },
+        "avg_locsite": {
+            "sum": 112.58528957602338,
+            "sum_square": 465.18534661418926,
+            "avg": 2.6806,
+            "res_sum": 163.389,
+            "cnt": 42
+        },
+        "avg_tr_rec": {
+            "sum": 8390030.28480523,
+            "sum_square": 2310288267134.0195,
+            "avg": 199762.6258,
+            "res_sum": 634273786659.0446,
+            "cnt": 42
+        },
+        "count": {
+            "sum": 499963.0,
+            "sum_square": 13116937779.0,
+            "avg": 11903.881,
+            "res_sum": 7165437746.4048,
+            "cnt": 42
+        }
+    },
+    "vt5t-mscf_location_1_3": {
+        "avg_blsd": {
+            "sum": 120797.72543313714,
+            "sum_square": 30296268.236479443,
+            "avg": 182.4739,
+            "res_sum": 13735581.018,
+            "cnt": 1101
+        },
+        "avg_grow": {
+            "sum": 61937.601284470795,
+            "sum_square": 5999705.858118715,
+            "avg": 94.9963,
+            "res_sum": 195772.2976,
+            "cnt": 1101
+        },
+        "avg_tg_pg": {
+            "sum": 264270.8195108997,
+            "sum_square": 145925028.966909,
+            "avg": 280.8404,
+            "res_sum": 83912570.1881,
+            "cnt": 1101
+        },
+        "avg_cd": {
+            "sum": 8858.31544629253,
+            "sum_square": 89131.02247808389,
+            "avg": 8.0457,
+            "res_sum": 17859.6759,
+            "cnt": 1101
+        },
+        "avg_y_original": {
+            "sum": 19192738868.629894,
+            "sum_square": 6.549862659143849e+17,
+            "avg": 28904727.2118,
+            "res_sum": 1.66286459904114e+17,
+            "cnt": 1101
+        },
+        "avg_x_original": {
+            "sum": 66490948939.015335,
+            "sum_square": 7.861055161575479e+18,
+            "avg": 100136971.2937,
+            "res_sum": 1.99568357166882e+18,
+            "cnt": 1101
+        },
+        "avg_drgycoord": {
+            "sum": 810476649.1235864,
+            "sum_square": 1304786921945234.2,
+            "avg": 736127.7467,
+            "res_sum": 708172572467852.8,
+            "cnt": 1101
+        },
+        "avg_spp": {
+            "sum": 250002.5220636517,
+            "sum_square": 66467126.24606329,
+            "avg": 227.0686,
+            "res_sum": 9699405.0488,
+            "cnt": 1101
+        },
+        "avg_locunit": {
+            "sum": 7678397.227616608,
+            "sum_square": 79085035876.38518,
+            "avg": 6974.0211,
+            "res_sum": 25535731621.0987,
+            "cnt": 1101
+        },
+        "avg_blsdval": {
+            "sum": 121070.37975511933,
+            "sum_square": 30357585.598106064,
+            "avg": 182.3349,
+            "res_sum": 13741254.569,
+            "cnt": 1101
+        },
+        "avg_un": {
+            "sum": 18881.11816467829,
+            "sum_square": 718120.2740184434,
+            "avg": 28.4354,
+            "res_sum": 300679.5569,
+            "cnt": 1101
+        },
+        "avg_des_spp1": {
+            "sum": 2.326389549618143,
+            "sum_square": 2.963649245421931,
+            "avg": 0.0035,
+            "res_sum": 4.9035,
+            "cnt": 1101
+        },
+        "avg_drgxcoord": {
+            "sum": 2873329282.646452,
+            "sum_square": 1.6441162658765724e+16,
+            "avg": 2609745.0342,
+            "res_sum": 8942505831777925.0,
+            "cnt": 1101
+        },
+        "avg_gisno": {
+            "sum": 147849312.74445307,
+            "sum_square": 42078518216493.46,
+            "avg": 222664.6276,
+            "res_sum": 15193780775634.12,
+            "cnt": 1101
+        },
+        "avg_locsite": {
+            "sum": 2771.76607715229,
+            "sum_square": 17373.283993064506,
+            "avg": 2.5175,
+            "res_sum": 10395.3665,
+            "cnt": 1101
+        },
+        "avg_tr_rec": {
+            "sum": 212134957.02025446,
+            "sum_square": 52655230736978.72,
+            "avg": 192674.802,
+            "res_sum": 11782169892305.508,
+            "cnt": 1101
+        },
+        "count": {
+            "sum": 417788.0,
+            "sum_square": 414646252.0,
+            "avg": 379.4623,
+            "res_sum": 256111453.6857,
+            "cnt": 1101
+        }
+    },
+    "vt5t-mscf_inv_date_3_location_1_3": {
+        "avg_blsd": {
+            "sum": 253751.11621161498,
+            "sum_square": 65197665.008952074,
+            "avg": 178.3212,
+            "res_sum": 34004957.5093,
+            "cnt": 2425
+        },
+        "avg_grow": {
+            "sum": 133501.76208019268,
+            "sum_square": 13514019.203760756,
+            "avg": 97.3755,
+            "res_sum": 909837.0501,
+            "cnt": 2425
+        },
+        "avg_tg_pg": {
+            "sum": 467975.8521762934,
+            "sum_square": 251830370.42918128,
+            "avg": 237.0698,
+            "res_sum": 173092290.3188,
+            "cnt": 2425
+        },
+        "avg_cd": {
+            "sum": 18929.860960786038,
+            "sum_square": 191097.14360020845,
+            "avg": 7.8061,
+            "res_sum": 43328.2215,
+            "cnt": 2425
+        },
+        "avg_y_original": {
+            "sum": 40341612291.89857,
+            "sum_square": 1.3788016354567606e+18,
+            "avg": 28073494.9839,
+            "res_sum": 4.157119236570084e+17,
+            "cnt": 2425
+        },
+        "avg_x_original": {
+            "sum": 139739581986.437,
+            "sum_square": 1.6543704374650503e+19,
+            "avg": 97243967.9794,
+            "res_sum": 4.987891366943598e+18,
+            "cnt": 2425
+        },
+        "avg_drgycoord": {
+            "sum": 1525830866.3953648,
+            "sum_square": 2693187313671301.5,
+            "avg": 629208.6047,
+            "res_sum": 1733121403219828.8,
+            "cnt": 2425
+        },
+        "avg_spp": {
+            "sum": 563523.954178799,
+            "sum_square": 164611359.90447626,
+            "avg": 232.381,
+            "res_sum": 33659093.1279,
+            "cnt": 2425
+        },
+        "avg_locunit": {
+            "sum": 17392007.83241745,
+            "sum_square": 179389178781.8694,
+            "avg": 7171.962,
+            "res_sum": 54654359630.1704,
+            "cnt": 2425
+        },
+        "avg_blsdval": {
+            "sum": 255468.13858423353,
+            "sum_square": 65466671.19983797,
+            "avg": 177.7788,
+            "res_sum": 33844596.2158,
+            "cnt": 2425
+        },
+        "avg_un": {
+            "sum": 41859.00302591738,
+            "sum_square": 1611853.7374422094,
+            "avg": 29.1497,
+            "res_sum": 661617.4907,
+            "cnt": 2425
+        },
+        "avg_des_spp1": {
+            "sum": 2.4477192749613934,
+            "sum_square": 3.2598408276398017,
+            "avg": 0.0017,
+            "res_sum": 5.4956,
+            "cnt": 2425
+        },
+        "avg_drgxcoord": {
+            "sum": 5381223264.950674,
+            "sum_square": 3.3484397527488476e+16,
+            "avg": 2219061.1402,
+            "res_sum": 2.154313409357245e+16,
+            "cnt": 2425
+        },
+        "avg_gisno": {
+            "sum": 313444987.01076066,
+            "sum_square": 87110143432768.7,
+            "avg": 218124.556,
+            "res_sum": 31633697632625.94,
+            "cnt": 2425
+        },
+        "avg_locsite": {
+            "sum": 6565.013707925325,
+            "sum_square": 59552.59202841766,
+            "avg": 2.7072,
+            "res_sum": 41779.6415,
+            "cnt": 2425
+        },
+        "avg_tr_rec": {
+            "sum": 525233642.7335901,
+            "sum_square": 142541436718995.53,
+            "avg": 216591.1929,
+            "res_sum": 28780455498708.266,
+            "cnt": 2425
+        },
+        "count": {
+            "sum": 417752.0,
+            "sum_square": 294621050.0,
+            "avg": 172.2689,
+            "res_sum": 222655386.6994,
+            "cnt": 2425
+        }
+    },
+    "f37w-ye7d_registereddate_3": {
+        "avg_propertyzip": {
+            "sum": 1088213.478536948,
+            "sum_square": 98684063548.34007,
+            "avg": 90684.4565,
+            "res_sum": 15642.5497,
+            "cnt": 12
+        },
+        "avg_apn": {
+            "sum": 49196007245.59147,
+            "sum_square": 2.0179238031234607e+20,
+            "avg": 4099667270.466,
+            "res_sum": 1.0511956998871898e+17,
+            "cnt": 12
+        },
+        "count": {
+            "sum": 8255.0,
+            "sum_square": 20035753.0,
+            "avg": 687.9167,
+            "res_sum": 14357000.9167,
+            "cnt": 12
+        }
+    },
+    "f37w-ye7d_propertyaddress_3": {
+        "avg_propertyzip": {
+            "sum": 91764399.48545043,
+            "sum_square": 8313073705584.712,
+            "avg": 90586.7715,
+            "res_sum": 433021551.8033,
+            "cnt": 1013
+        },
+        "avg_apn": {
+            "sum": 4281146968300.606,
+            "sum_square": 2.054267667510223e+22,
+            "avg": 4226206286.5751,
+            "res_sum": 2.44966644391815e+21,
+            "cnt": 1013
+        },
+        "count": {
+            "sum": 7906.0,
+            "sum_square": 101796.0,
+            "avg": 7.8045,
+            "res_sum": 40093.2991,
+            "cnt": 1013
+        }
+    },
+    "f37w-ye7d_registereddate_3_propertyaddress_3": {
+        "avg_propertyzip": {
+            "sum": 345099202.14104456,
+            "sum_square": 31284593655947.758,
+            "avg": 90648.5953,
+            "res_sum": 1835757764.0042,
+            "cnt": 3807
+        },
+        "avg_apn": {
+            "sum": 15703695836895.309,
+            "sum_square": 7.462905870114212e+22,
+            "avg": 4124952938.5068,
+            "res_sum": 9.852052413324145e+21,
+            "cnt": 3807
+        },
+        "count": {
+            "sum": 7906.0,
+            "sum_square": 35314.0,
+            "avg": 2.0767,
+            "res_sum": 18895.6034,
+            "cnt": 3807
+        }
+    },
+    "vdjf-if28_address_3": {
+        "count": {
+            "sum": 30.0,
+            "sum_square": 84.0,
+            "avg": 1.5789,
+            "res_sum": 36.6316,
+            "cnt": 19
+        }
+    },
+    "aeva-nfqz_polling_place_address_3": {
+        "avg_ballot_group": {
+            "sum": 108.0,
+            "sum_square": 108.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 108
+        },
+        "count": {
+            "sum": 2085.0,
+            "sum_square": 64681.0,
+            "avg": 19.3056,
+            "res_sum": 24428.9167,
+            "cnt": 108
+        }
+    },
+    "hkig-2qjq_polling_place_address_3": {
+        "avg_council_distrct": {
+            "sum": 5715.9643223773555,
+            "sum_square": 59080.65563548988,
+            "avg": 6.8701,
+            "res_sum": 19811.1266,
+            "cnt": 832
+        },
+        "avg_ballot_group": {
+            "sum": 24280.777188335396,
+            "sum_square": 932665.5421219366,
+            "avg": 29.1836,
+            "res_sum": 224064.4113,
+            "cnt": 832
+        },
+        "count": {
+            "sum": 14498.0,
+            "sum_square": 425816.0,
+            "avg": 17.4255,
+            "res_sum": 173181.3798,
+            "cnt": 832
+        }
+    },
+    "e6cg-sqdy_registereddate_3": {
+        "avg_apn": {
+            "sum": 48613568827.90328,
+            "sum_square": 1.9722828399782203e+20,
+            "avg": 4051130735.6586,
+            "res_sum": 2.8836114904787386e+17,
+            "cnt": 12
+        },
+        "avg_propertyzip": {
+            "sum": 1088114.3953531783,
+            "sum_square": 98666119702.0859,
+            "avg": 90676.1996,
+            "res_sum": 41587.5182,
+            "cnt": 12
+        },
+        "count": {
+            "sum": 3112.0,
+            "sum_square": 2491302.0,
+            "avg": 259.3333,
+            "res_sum": 1684256.6667,
+            "cnt": 12
+        }
+    },
+    "e6cg-sqdy_geocoded_column_3": {
+        "avg_apn": {
+            "sum": 3373863056211.7334,
+            "sum_square": 1.612310078788202e+22,
+            "avg": 4144794909.351,
+            "res_sum": 2.1391303676481385e+21,
+            "cnt": 814
+        },
+        "avg_propertyzip": {
+            "sum": 72790310.55432224,
+            "sum_square": 6598640914966.822,
+            "avg": 90647.9583,
+            "res_sum": 352646982.4154,
+            "cnt": 814
+        },
+        "count": {
+            "sum": 3096.0,
+            "sum_square": 19292.0,
+            "avg": 3.8034,
+            "res_sum": 7516.5504,
+            "cnt": 814
+        }
+    },
+    "e6cg-sqdy_registereddate_3_geocoded_column_3": {
+        "avg_apn": {
+            "sum": 8378467567426.574,
+            "sum_square": 3.953695845926003e+22,
+            "avg": 4061302747.1772,
+            "res_sum": 5.509465110535371e+21,
+            "cnt": 2063
+        },
+        "avg_propertyzip": {
+            "sum": 184164213.3404762,
+            "sum_square": 16700357262899.229,
+            "avg": 90676.6191,
+            "res_sum": 984318204.0409,
+            "cnt": 2063
+        },
+        "count": {
+            "sum": 3096.0,
+            "sum_square": 7172.0,
+            "avg": 1.5007,
+            "res_sum": 2525.7489,
+            "cnt": 2063
+        }
+    },
+    "cu97-7vhd_mid_block_alley_date_completed_3": {
+        "avg_ne_quantity_constructed": {
+            "sum": 0.3333333333333333,
+            "sum_square": 0.1111111111111111,
+            "avg": 0.037,
+            "res_sum": 0.0988,
+            "cnt": 9
+        },
+        "avg_se_quantity_constructed": {
+            "sum": 0.5,
+            "sum_square": 0.25,
+            "avg": 0.0556,
+            "res_sum": 0.2222,
+            "cnt": 9
+        },
+        "avg_nw_quantity_constructed": {
+            "sum": 0.5,
+            "sum_square": 0.25,
+            "avg": 0.0556,
+            "res_sum": 0.2222,
+            "cnt": 9
+        },
+        "avg_sw_quantity_constructed": {
+            "sum": 1.0333333333333334,
+            "sum_square": 0.4011111111111111,
+            "avg": 0.1148,
+            "res_sum": 0.2825,
+            "cnt": 9
+        },
+        "count": {
+            "sum": 25.0,
+            "sum_square": 89.0,
+            "avg": 2.7778,
+            "res_sum": 19.5556,
+            "cnt": 9
+        }
+    },
+    "cu97-7vhd_to_latlon_3": {
+        "avg_ne_quantity_constructed": {
+            "sum": 93.33928571428571,
+            "sum_square": 79.80780187074829,
+            "avg": 0.4575,
+            "res_sum": 37.1008,
+            "cnt": 204
+        },
+        "avg_se_quantity_constructed": {
+            "sum": 101.0111111111111,
+            "sum_square": 86.03446963970774,
+            "avg": 0.4952,
+            "res_sum": 36.0186,
+            "cnt": 204
+        },
+        "avg_nw_quantity_constructed": {
+            "sum": 94.1138888888889,
+            "sum_square": 81.45961466994206,
+            "avg": 0.4613,
+            "res_sum": 38.0409,
+            "cnt": 204
+        },
+        "avg_sw_quantity_constructed": {
+            "sum": 111.1015873015873,
+            "sum_square": 97.84968505920887,
+            "avg": 0.5446,
+            "res_sum": 37.342,
+            "cnt": 204
+        },
+        "count": {
+            "sum": 475.0,
+            "sum_square": 1903.0,
+            "avg": 2.3284,
+            "res_sum": 796.9951,
+            "cnt": 204
+        }
+    },
+    "cu97-7vhd_mid_block_alley_date_completed_3_to_latlon_3": {
+        "avg_ne_quantity_constructed": {
+            "sum": 1.0,
+            "sum_square": 1.0,
+            "avg": 0.0588,
+            "res_sum": 0.9412,
+            "cnt": 17
+        },
+        "avg_se_quantity_constructed": {
+            "sum": 1.0,
+            "sum_square": 1.0,
+            "avg": 0.0588,
+            "res_sum": 0.9412,
+            "cnt": 17
+        },
+        "avg_nw_quantity_constructed": {
+            "sum": 1.0,
+            "sum_square": 1.0,
+            "avg": 0.0588,
+            "res_sum": 0.9412,
+            "cnt": 17
+        },
+        "avg_sw_quantity_constructed": {
+            "sum": 3.0,
+            "sum_square": 3.0,
+            "avg": 0.1765,
+            "res_sum": 2.4706,
+            "cnt": 17
+        },
+        "count": {
+            "sum": 22.0,
+            "sum_square": 38.0,
+            "avg": 1.2941,
+            "res_sum": 9.5294,
+            "cnt": 17
+        }
+    },
+    "t8kf-2y96_location_1_3": {
+        "count": {
+            "sum": 7.0,
+            "sum_square": 7.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 7
+        }
+    },
+    "kde4-k7yx_registered_date_3": {
+        "avg_propertyzip": {
+            "sum": 1088008.4992988338,
+            "sum_square": 98646940821.95306,
+            "avg": 90667.3749,
+            "res_sum": 66276.4114,
+            "cnt": 12
+        },
+        "avg_apn": {
+            "sum": 49053438780.227615,
+            "sum_square": 2.008187999954763e+20,
+            "avg": 4087786565.019,
+            "res_sum": 2.988119816814652e+17,
+            "cnt": 12
+        },
+        "count": {
+            "sum": 3005.0,
+            "sum_square": 2667143.0,
+            "avg": 250.4167,
+            "res_sum": 1914640.9167,
+            "cnt": 12
+        }
+    },
+    "kde4-k7yx_geocoded_column_3": {
+        "avg_propertyzip": {
+            "sum": 74423108.23750298,
+            "sum_square": 6746889435382.112,
+            "avg": 90649.3401,
+            "res_sum": 483784065.3234,
+            "cnt": 821
+        },
+        "avg_apn": {
+            "sum": 3438944933652.437,
+            "sum_square": 1.6505163802438021e+22,
+            "avg": 4188727081.1845,
+            "res_sum": 2.1003620281459813e+21,
+            "cnt": 821
+        },
+        "count": {
+            "sum": 3005.0,
+            "sum_square": 18437.0,
+            "avg": 3.6602,
+            "res_sum": 7438.1876,
+            "cnt": 821
+        }
+    },
+    "kde4-k7yx_registered_date_3_geocoded_column_3": {
+        "avg_propertyzip": {
+            "sum": 175556165.375,
+            "sum_square": 15920611074514.344,
+            "avg": 90679.8375,
+            "res_sum": 1206528453.2134,
+            "cnt": 1936
+        },
+        "avg_apn": {
+            "sum": 7909989378358.718,
+            "sum_square": 3.7234874350118432e+22,
+            "avg": 4085738315.2679,
+            "res_sum": 4.916727673595844e+21,
+            "cnt": 1936
+        },
+        "count": {
+            "sum": 3005.0,
+            "sum_square": 7509.0,
+            "avg": 1.5522,
+            "res_sum": 2844.7309,
+            "cnt": 1936
+        }
+    },
+    "spg4-9ux7_registered_date_3": {
+        "avg_propertyzip": {
+            "sum": 1087637.089663781,
+            "sum_square": 98579645349.0649,
+            "avg": 90636.4241,
+            "res_sum": 108781.3733,
+            "cnt": 12
+        },
+        "avg_apn": {
+            "sum": 49027330635.37457,
+            "sum_square": 2.0079037494805882e+20,
+            "avg": 4085610886.2812,
+            "res_sum": 4.837791788639722e+17,
+            "cnt": 12
+        },
+        "count": {
+            "sum": 2134.0,
+            "sum_square": 1390820.0,
+            "avg": 177.8333,
+            "res_sum": 1011323.6667,
+            "cnt": 12
+        }
+    },
+    "spg4-9ux7_property_on_map_3": {
+        "avg_propertyzip": {
+            "sum": 69986567.87160894,
+            "sum_square": 6345108016182.192,
+            "avg": 90656.176,
+            "res_sum": 393401613.1173,
+            "cnt": 772
+        },
+        "avg_apn": {
+            "sum": 3202329022465.644,
+            "sum_square": 1.5266289460844054e+22,
+            "avg": 4148094588.6861,
+            "res_sum": 1.9827257715619736e+21,
+            "cnt": 772
+        },
+        "count": {
+            "sum": 2133.0,
+            "sum_square": 9817.0,
+            "avg": 2.763,
+            "res_sum": 3923.6205,
+            "cnt": 772
+        }
+    },
+    "spg4-9ux7_registered_date_3_property_on_map_3": {
+        "avg_propertyzip": {
+            "sum": 135255216.32460317,
+            "sum_square": 12262191548357.236,
+            "avg": 90653.6302,
+            "res_sum": 815179044.0984,
+            "cnt": 1492
+        },
+        "avg_apn": {
+            "sum": 6128450723972.067,
+            "sum_square": 2.893133445135615e+22,
+            "avg": 4107540699.7132,
+            "res_sum": 3.758473676454166e+21,
+            "cnt": 1492
+        },
+        "count": {
+            "sum": 2133.0,
+            "sum_square": 4351.0,
+            "avg": 1.4296,
+            "res_sum": 1301.6106,
+            "cnt": 1492
+        }
+    },
+    "mbz9-j2zk_date_3": {
+        "avg_bike_count": {
+            "sum": 9.272727272727273,
+            "sum_square": 85.98347107438016,
+            "avg": 9.2727,
+            "res_sum": null,
+            "cnt": 1
+        },
+        "avg_ped_count": {
+            "sum": 73.36363636363636,
+            "sum_square": 5382.2231404958675,
+            "avg": 73.3636,
+            "res_sum": null,
+            "cnt": 1
+        },
+        "count": {
+            "sum": 33.0,
+            "sum_square": 1089.0,
+            "avg": 33.0,
+            "res_sum": null,
+            "cnt": 1
+        }
+    },
+    "mbz9-j2zk_location_1_3": {
+        "avg_bike_count": {
+            "sum": 26.083333333333332,
+            "sum_square": 361.00694444444446,
+            "avg": 8.6944,
+            "res_sum": 134.2269,
+            "cnt": 3
+        },
+        "avg_ped_count": {
+            "sum": 202.8846153846154,
+            "sum_square": 35821.55177514793,
+            "avg": 67.6282,
+            "res_sum": 22100.8294,
+            "cnt": 3
+        },
+        "count": {
+            "sum": 33.0,
+            "sum_square": 377.0,
+            "avg": 11.0,
+            "res_sum": 14.0,
+            "cnt": 3
+        }
+    },
+    "mbz9-j2zk_date_3_location_1_3": {
+        "avg_bike_count": {
+            "sum": 26.083333333333332,
+            "sum_square": 361.00694444444446,
+            "avg": 8.6944,
+            "res_sum": 134.2269,
+            "cnt": 3
+        },
+        "avg_ped_count": {
+            "sum": 202.8846153846154,
+            "sum_square": 35821.55177514793,
+            "avg": 67.6282,
+            "res_sum": 22100.8294,
+            "cnt": 3
+        },
+        "count": {
+            "sum": 33.0,
+            "sum_square": 377.0,
+            "avg": 11.0,
+            "res_sum": 14.0,
+            "cnt": 3
+        }
+    },
+    "rnxp-tz2v_polling_place_address_3": {
+        "avg_voters": {
+            "sum": 150868.34754336614,
+            "sum_square": 28647691.285443634,
+            "avg": 169.8968,
+            "res_sum": 3015643.661,
+            "cnt": 888
+        },
+        "avg_sample_ballot_group": {
+            "sum": 130699.94414783602,
+            "sum_square": 24760205.949655127,
+            "avg": 147.1846,
+            "res_sum": 5523184.1025,
+            "cnt": 888
+        },
+        "avg_ballot_group": {
+            "sum": 23463.824146135445,
+            "sum_square": 872974.9684820868,
+            "avg": 26.4232,
+            "res_sum": 252985.0546,
+            "cnt": 888
+        },
+        "count": {
+            "sum": 15302.0,
+            "sum_square": 382792.0,
+            "avg": 17.232,
+            "res_sum": 119108.2117,
+            "cnt": 888
+        }
+    },
+    "r53k-qp8f_registered_date_3": {
+        "avg_propertyzip": {
+            "sum": 1088562.8280251827,
+            "sum_square": 98747572503.44374,
+            "avg": 90713.569,
+            "res_sum": 153290.2618,
+            "cnt": 12
+        },
+        "avg_apn": {
+            "sum": 48084242806.10907,
+            "sum_square": 1.934242006226739e+20,
+            "avg": 4007020233.8424,
+            "res_sum": 7.496667696028774e+17,
+            "cnt": 12
+        },
+        "count": {
+            "sum": 1754.0,
+            "sum_square": 876024.0,
+            "avg": 146.1667,
+            "res_sum": 619647.6667,
+            "cnt": 12
+        }
+    },
+    "r53k-qp8f_propertyonmap_3": {
+        "avg_propertyzip": {
+            "sum": 62383291.73585859,
+            "sum_square": 5656914673011.8,
+            "avg": 90673.3892,
+            "res_sum": 410184928.599,
+            "cnt": 688
+        },
+        "avg_apn": {
+            "sum": 2850172780058.925,
+            "sum_square": 1.3616450286767621e+22,
+            "avg": 4142692994.2717,
+            "res_sum": 1.809059478353637e+21,
+            "cnt": 688
+        },
+        "count": {
+            "sum": 1754.0,
+            "sum_square": 6952.0,
+            "avg": 2.5494,
+            "res_sum": 2480.3198,
+            "cnt": 688
+        }
+    },
+    "r53k-qp8f_registered_date_3_propertyonmap_3": {
+        "avg_propertyzip": {
+            "sum": 119751166.95,
+            "sum_square": 10864744574216.88,
+            "avg": 90720.581,
+            "res_sum": 849130363.2649,
+            "cnt": 1320
+        },
+        "avg_apn": {
+            "sum": 5300030875873.352,
+            "sum_square": 2.4772083585361455e+22,
+            "avg": 4015174905.9647,
+            "res_sum": 3.4915326117168687e+21,
+            "cnt": 1320
+        },
+        "count": {
+            "sum": 1754.0,
+            "sum_square": 3174.0,
+            "avg": 1.3288,
+            "res_sum": 843.3061,
+            "cnt": 1320
+        }
+    },
+    "dw2y-59sj_location_1_3": {
+        "count": {
+            "sum": 44.0,
+            "sum_square": 54.0,
+            "avg": 1.1282,
+            "res_sum": 4.359,
+            "cnt": 39
+        }
+    },
+    "cq4z-inke_week_registered_3": {
+        "avg_expected_attendees": {
+            "sum": 1248.0844155844156,
+            "sum_square": 574363.825307809,
+            "avg": 416.0281,
+            "res_sum": 55125.5892,
+            "cnt": 3
+        },
+        "avg__": {
+            "sum": 280.0,
+            "sum_square": 39835.5,
+            "avg": 93.3333,
+            "res_sum": 13702.1667,
+            "cnt": 3
+        },
+        "count": {
+            "sum": 177.0,
+            "sum_square": 24065.0,
+            "avg": 59.0,
+            "res_sum": 13622.0,
+            "cnt": 3
+        }
+    },
+    "cq4z-inke_location_1_3": {
+        "avg_expected_attendees": {
+            "sum": 54396.333333333336,
+            "sum_square": 33833457.05555555,
+            "avg": 350.9441,
+            "res_sum": 14743385.571,
+            "cnt": 155
+        },
+        "avg__": {
+            "sum": 13735.25,
+            "sum_square": 1619834.0347222222,
+            "avg": 88.6145,
+            "res_sum": 402691.5021,
+            "cnt": 155
+        },
+        "count": {
+            "sum": 175.0,
+            "sum_square": 227.0,
+            "avg": 1.129,
+            "res_sum": 29.4194,
+            "cnt": 155
+        }
+    },
+    "cq4z-inke_week_registered_3_location_1_3": {
+        "avg_expected_attendees": {
+            "sum": 55551.333333333336,
+            "sum_square": 34787932.05555555,
+            "avg": 351.5907,
+            "res_sum": 15256598.9219,
+            "cnt": 158
+        },
+        "avg__": {
+            "sum": 14066.75,
+            "sum_square": 1669389.7847222222,
+            "avg": 89.0301,
+            "res_sum": 417026.1419,
+            "cnt": 158
+        },
+        "count": {
+            "sum": 175.0,
+            "sum_square": 221.0,
+            "avg": 1.1076,
+            "res_sum": 27.1709,
+            "cnt": 158
+        }
+    },
+    "6hte-wqh2_registered_date_3": {
+        "count": {
+            "sum": 2437.0,
+            "sum_square": 868817.0,
+            "avg": 203.0833,
+            "res_sum": 373902.9167,
+            "cnt": 12
+        }
+    },
+    "6hte-wqh2_property_on_map_3": {
+        "count": {
+            "sum": 2436.0,
+            "sum_square": 12014.0,
+            "avg": 3.1032,
+            "res_sum": 4454.642,
+            "cnt": 785
+        }
+    },
+    "6hte-wqh2_registered_date_3_property_on_map_3": {
+        "count": {
+            "sum": 2436.0,
+            "sum_square": 3882.0,
+            "avg": 1.2505,
+            "res_sum": 835.7495,
+            "cnt": 1948
+        }
+    },
+    "bkfc-yqhx_dateapproved_3": {
+        "avg_initialapprovalamount": {
+            "sum": 592211.7183906912,
+            "sum_square": 51563519400.022095,
+            "avg": 53837.4289,
+            "res_sum": 19680363090.9989,
+            "cnt": 11
+        },
+        "avg_loannumber": {
+            "sum": 55120996747.07873,
+            "sum_square": 2.965017371289814e+20,
+            "avg": 5010999704.2799,
+            "res_sum": 2.029043872975744e+19,
+            "cnt": 11
+        },
+        "avg_rent_proceed": {
+            "sum": 73622.89914644105,
+            "sum_square": 1257042428.253398,
+            "avg": 12270.4832,
+            "res_sum": 707307763.5978,
+            "cnt": 11
+        },
+        "avg_payroll_proceed": {
+            "sum": 573471.3435717316,
+            "sum_square": 47344293767.39474,
+            "avg": 52133.7585,
+            "res_sum": 17447077231.2159,
+            "cnt": 11
+        },
+        "avg_jobsreported": {
+            "sum": 64.58379982300916,
+            "sum_square": 547.9035826814671,
+            "avg": 5.8713,
+            "res_sum": 168.7157,
+            "cnt": 11
+        },
+        "avg_currentapprovalamount": {
+            "sum": 587650.4056899211,
+            "sum_square": 50605003533.74945,
+            "avg": 53422.7642,
+            "res_sum": 19211094505.7923,
+            "cnt": 11
+        },
+        "avg_sbaguarantypercentage": {
+            "sum": 1100.0,
+            "sum_square": 110000.0,
+            "avg": 100.0,
+            "res_sum": 0.0,
+            "cnt": 11
+        },
+        "avg_naicscode": {
+            "sum": 637.4128241678632,
+            "sum_square": 36952.76729368616,
+            "avg": 57.9466,
+            "res_sum": 16.8483,
+            "cnt": 11
+        },
+        "avg_undisbursedamount": {
+            "sum": 8.40558201344908,
+            "sum_square": 51.20575947480048,
+            "avg": 0.7641,
+            "res_sum": 44.7827,
+            "cnt": 11
+        },
+        "count": {
+            "sum": 106432.0,
+            "sum_square": 1480435400.0,
+            "avg": 9675.6364,
+            "res_sum": 450638070.5455,
+            "cnt": 11
+        }
+    },
+    "bkfc-yqhx_location_3": {
+        "avg_initialapprovalamount": {
+            "sum": 52828325.01454002,
+            "sum_square": 6154600891801.142,
+            "avg": 47084.0686,
+            "res_sum": 3667228410658.6377,
+            "cnt": 1122
+        },
+        "avg_loannumber": {
+            "sum": 6126415702097.166,
+            "sum_square": 3.4499882404913623e+22,
+            "avg": 5460263549.1062,
+            "res_sum": 1.0480380600805504e+21,
+            "cnt": 1122
+        },
+        "avg_rent_proceed": {
+            "sum": 8415740.799557291,
+            "sum_square": 271172780268.34628,
+            "avg": 10612.5357,
+            "res_sum": 257405988406.6213,
+            "cnt": 1122
+        },
+        "avg_payroll_proceed": {
+            "sum": 50476187.763015844,
+            "sum_square": 5560359938758.929,
+            "avg": 44987.6896,
+            "res_sum": 3289552870053.7393,
+            "cnt": 1122
+        },
+        "avg_jobsreported": {
+            "sum": 5665.390895800905,
+            "sum_square": 60620.04170006302,
+            "avg": 5.0494,
+            "res_sum": 32013.3982,
+            "cnt": 1122
+        },
+        "avg_currentapprovalamount": {
+            "sum": 52262484.89993233,
+            "sum_square": 6011737918940.894,
+            "avg": 46579.7548,
+            "res_sum": 3577364186395.7417,
+            "cnt": 1122
+        },
+        "avg_sbaguarantypercentage": {
+            "sum": 112200.0,
+            "sum_square": 11220000.0,
+            "avg": 100.0,
+            "res_sum": 0.0,
+            "cnt": 1122
+        },
+        "avg_naicscode": {
+            "sum": 65760.46449829578,
+            "sum_square": 3915461.46527476,
+            "avg": 58.61,
+            "res_sum": 61238.033,
+            "cnt": 1122
+        },
+        "avg_undisbursedamount": {
+            "sum": 1144.2934771240734,
+            "sum_square": 310713.1004053747,
+            "avg": 1.0199,
+            "res_sum": 309546.0705,
+            "cnt": 1122
+        },
+        "count": {
+            "sum": 102632.0,
+            "sum_square": 36066670.0,
+            "avg": 91.4724,
+            "res_sum": 26678677.6435,
+            "cnt": 1122
+        }
+    },
+    "bkfc-yqhx_dateapproved_3_location_3": {
+        "avg_initialapprovalamount": {
+            "sum": 357450045.31489253,
+            "sum_square": 93536797002829.73,
+            "avg": 46404.0043,
+            "res_sum": 76949683554093.75,
+            "cnt": 7703
+        },
+        "avg_loannumber": {
+            "sum": 41738479301776.89,
+            "sum_square": 2.4364938534482197e+23,
+            "avg": 5418470635.0483,
+            "res_sum": 1.7490660896573544e+22,
+            "cnt": 7703
+        },
+        "avg_rent_proceed": {
+            "sum": 17842078.062863655,
+            "sum_square": 1018443581378.3027,
+            "avg": 10385.3772,
+            "res_sum": 3737272682114.4277,
+            "cnt": 7703
+        },
+        "avg_payroll_proceed": {
+            "sum": 345099031.32813704,
+            "sum_square": 88043298306924.36,
+            "avg": 44812.2362,
+            "res_sum": 72597490581427.31,
+            "cnt": 7703
+        },
+        "avg_jobsreported": {
+            "sum": 39846.5858077361,
+            "sum_square": 931685.9371582196,
+            "avg": 5.1729,
+            "res_sum": 725564.8933,
+            "cnt": 7703
+        },
+        "avg_currentapprovalamount": {
+            "sum": 354727974.8414746,
+            "sum_square": 92325291179177.66,
+            "avg": 46050.6264,
+            "res_sum": 75989845750755.81,
+            "cnt": 7703
+        },
+        "avg_sbaguarantypercentage": {
+            "sum": 770300.0,
+            "sum_square": 77030000.0,
+            "avg": 100.0,
+            "res_sum": 0.0,
+            "cnt": 7703
+        },
+        "avg_naicscode": {
+            "sum": 447944.8638287157,
+            "sum_square": 26813865.173731603,
+            "avg": 58.1671,
+            "res_sum": 758406.8678,
+            "cnt": 7703
+        },
+        "avg_undisbursedamount": {
+            "sum": 9299.977777777778,
+            "sum_square": 16654127.870864198,
+            "avg": 1.2075,
+            "res_sum": 16645059.5085,
+            "cnt": 7703
+        },
+        "count": {
+            "sum": 102632.0,
+            "sum_square": 6176630.0,
+            "avg": 13.3236,
+            "res_sum": 4809198.1651,
+            "cnt": 7703
+        }
+    },
+    "hxr7-rjig_registered_date_3": {
+        "count": {
+            "sum": 2027.0,
+            "sum_square": 838639.0,
+            "avg": 225.2222,
+            "res_sum": 382113.5556,
+            "cnt": 9
+        }
+    },
+    "hxr7-rjig_property_on_map_3": {
+        "count": {
+            "sum": 2027.0,
+            "sum_square": 8551.0,
+            "avg": 2.7466,
+            "res_sum": 2983.6165,
+            "cnt": 738
+        }
+    },
+    "hxr7-rjig_registered_date_3_property_on_map_3": {
+        "count": {
+            "sum": 2027.0,
+            "sum_square": 3499.0,
+            "avg": 1.2919,
+            "res_sum": 880.3072,
+            "cnt": 1569
+        }
+    }
+}

@@ -1,0 +1,5051 @@
+{
+    "kwxv-fwze": {
+        "domain": "data.ny.gov",
+        "name": "Lottery Cash 4 Life Winning Numbers: Beginning 2014",
+        "t_attrs": [
+            "draw_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "hsys-3def": {
+        "domain": "data.ny.gov",
+        "name": "Lottery Daily Numbers/Win-4 Winning Numbers: Beginning 1980",
+        "t_attrs": [
+            "draw_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "evening_win_4_sum",
+            "evening_daily_sum"
+        ]
+    },
+    "dg63-4siq": {
+        "domain": "data.ny.gov",
+        "name": "Lottery Take 5 Winning Numbers",
+        "t_attrs": [
+            "draw_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "evening_bonus"
+        ]
+    },
+    "5xaw-6ayf": {
+        "domain": "data.ny.gov",
+        "name": "Lottery Mega Millions Winning Numbers: Beginning 2002",
+        "t_attrs": [
+            "draw_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "d6yy-54nr": {
+        "domain": "data.ny.gov",
+        "name": "Lottery Powerball Winning Numbers: Beginning 2010",
+        "t_attrs": [
+            "draw_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "multiplier"
+        ]
+    },
+    "3x8r-34rs": {
+        "domain": "data.ny.gov",
+        "name": "Solar Electric Programs Reported by NYSERDA: Beginning 2000",
+        "t_attrs": [
+            "date_install"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "expected_kwh_annual_production",
+            "inclusive_community_solar_adder",
+            "totalnameplatekwdc",
+            "brownfield_landfill_adder",
+            "affordable_multifamily_housing_incentive",
+            "canopy_adder",
+            "expanded_solar_for_all_adder",
+            "community_adder",
+            "total_nyserda_incentive",
+            "project_cost",
+            "pv_module_quantity",
+            "inverter_quantity",
+            "prevailing_wage_adder"
+        ]
+    },
+    "6nbc-h7bj": {
+        "domain": "data.ny.gov",
+        "name": "Lottery NY Lotto Winning Numbers: Beginning 2001",
+        "t_attrs": [
+            "draw_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "extra",
+            "bonus"
+        ]
+    },
+    "yg7h-zjbf": {
+        "domain": "data.ny.gov",
+        "name": "Active Real Estate Salespersons and Brokers",
+        "t_attrs": [
+            "license_expiration_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "7sqk-ycpk": {
+        "domain": "data.ny.gov",
+        "name": "Lottery Quick Draw Winning Numbers: Beginning 2013",
+        "t_attrs": [
+            "draw_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "nhjr-rpi2": {
+        "domain": "data.ny.gov",
+        "name": "Facilities Licensed by the Department of Motor Vehicles (DMV)",
+        "t_attrs": [
+            "last_renewal_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "facility"
+        ]
+    },
+    "9a8c-vfzj": {
+        "domain": "data.ny.gov",
+        "name": "Retail Food Stores",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "square_footage"
+        ]
+    },
+    "n9v6-gdp6": {
+        "domain": "data.ny.gov",
+        "name": "Active Corporations:  Beginning 1800",
+        "t_attrs": [
+            "initial_dos_filing_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "y59h-w6v4": {
+        "domain": "data.ny.gov",
+        "name": "E-ZPass Retailers Locations",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "b7jj-bh4g": {
+        "domain": "data.ny.gov",
+        "name": "New York State Registered Tax Return Preparers and Facilitators",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "n2k2-wzfz": {
+        "domain": "data.ny.gov",
+        "name": "OpenNY Press Releases",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "q6ts-kwhk": {
+        "domain": "data.ny.gov",
+        "name": "Equine Death and Breakdown",
+        "t_attrs": [
+            "incident_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "bycu-cw7c": {
+        "domain": "data.ny.gov",
+        "name": "Lottery Pick 10 Winning Numbers: Beginning 1987",
+        "t_attrs": [
+            "draw_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "juva-r6g2": {
+        "domain": "data.ny.gov",
+        "name": "New York State ZIP Codes-County FIPS Cross-Reference",
+        "t_attrs": [
+            "file_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "qq4h-8p86": {
+        "domain": "data.ny.gov",
+        "name": "Farmers' Markets in New York State",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference_1"
+        ],
+        "num_columns": []
+    },
+    "w4pv-hbkt": {
+        "domain": "data.ny.gov",
+        "name": "Vehicle, Snowmobile, and Boat Registrations",
+        "t_attrs": [
+            "reg_expiration_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "unladen_weight",
+            "maximum_gross_weight",
+            "passengers"
+        ]
+    },
+    "rwbv-mz6z": {
+        "domain": "data.ny.gov",
+        "name": "Commissioned NYS Notaries Public",
+        "t_attrs": [
+            "term_issue_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "i9wp-a4ja": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Subway Entrances and Exits: 2015",
+        "t_attrs": [],
+        "s_attrs": [
+            "station_georeference"
+        ],
+        "num_columns": []
+    },
+    "iisn-hnyv": {
+        "domain": "data.ny.gov",
+        "name": "National Register of Historic Places",
+        "t_attrs": [
+            "national_register_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "vxuj-8kew": {
+        "domain": "data.ny.gov",
+        "name": "MTA Daily Ridership Data: Beginning 2020",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "t3vp-5tka": {
+        "domain": "data.ny.gov",
+        "name": "Title and Salary Listing",
+        "t_attrs": [
+            "effective_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "filled_positions",
+            "jurisdictional_classification"
+        ]
+    },
+    "cb42-qumz": {
+        "domain": "data.ny.gov",
+        "name": "Child Care Regulated Programs",
+        "t_attrs": [
+            "license_expiration_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "toddler_capacity",
+            "school_age_capacity",
+            "preschool_capacity",
+            "total_capacity",
+            "infant_capacity"
+        ]
+    },
+    "2fni-raj8": {
+        "domain": "data.ny.gov",
+        "name": "Solid Waste Management Facilities",
+        "t_attrs": [
+            "expiration_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "region"
+        ]
+    },
+    "jabi-xxkk": {
+        "domain": "data.ny.gov",
+        "name": "OpenNY Reports",
+        "t_attrs": [
+            "report_year"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "qke7-n4w8": {
+        "domain": "data.ny.gov",
+        "name": "Nursery Growers and Greenhouse",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "3cij-nwhw": {
+        "domain": "data.ny.gov",
+        "name": "State University of New York (SUNY) Campus Locations with Websites, Enrollment and Select Program Offerings",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "undergrad_enrollment",
+            "long1",
+            "lat1",
+            "graduate_enrollment"
+        ]
+    },
+    "wcwd-s5vt": {
+        "domain": "data.ny.gov",
+        "name": "Agricultural Fairs in New York State",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "6nvr-tbv8": {
+        "domain": "data.ny.gov",
+        "name": "Local Mental Health Programs",
+        "t_attrs": [
+            "row_created_date_time"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "program_tier",
+            "operating_certificate_duration"
+        ]
+    },
+    "jcxg-7gnm": {
+        "domain": "data.ny.gov",
+        "name": "Recommended Fishing Rivers And Streams",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "point_x",
+            "point_y"
+        ]
+    },
+    "civu-giic": {
+        "domain": "data.ny.gov",
+        "name": "Active Code Official Certifications",
+        "t_attrs": [
+            "issued_on"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "22ew-dxez": {
+        "domain": "data.ny.gov",
+        "name": "State of New York Mortgage Agency (SONYMA) Loans Purchased: Beginning 2004",
+        "t_attrs": [
+            "loan_purchase_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "original_ltv",
+            "household_size",
+            "original_loan_amount",
+            "sonyma_dpal_ccal_amount",
+            "original_term"
+        ]
+    },
+    "7nbx-apd3": {
+        "domain": "data.ny.gov",
+        "name": "Canal System Boat Launches Across New York State",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "mile"
+        ]
+    },
+    "ah74-pg4w": {
+        "domain": "data.ny.gov",
+        "name": "511 NY Events: Beginning 2010",
+        "t_attrs": [
+            "close_time"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "vud8-75x8": {
+        "domain": "data.ny.gov",
+        "name": "Brownfield Redevelopment Credit: Beginning Calendar Year 2005",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "total_credit",
+            "onsite_groundwater_remediation_credit",
+            "onsite_groundwater_remediation_cost",
+            "tangible_property_component_credit",
+            "tangible_property_component_costs",
+            "site_preparation_component_credit",
+            "dec_region",
+            "total_cost",
+            "site_preparation_component_costs"
+        ]
+    },
+    "vsmx-hgi8": {
+        "domain": "data.ny.gov",
+        "name": "Enforcement Actions by NYS Joint Commission on Public Ethics and Predecessor Agencies",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "c3dv-qqzw": {
+        "domain": "data.ny.gov",
+        "name": "Texting Zone Locations",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "n5iq-rskv": {
+        "domain": "data.ny.gov",
+        "name": "Capital Projects, NYS Thruway Authority Capital Programs: Beginning 2005",
+        "t_attrs": [
+            "letting_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "approved_construction_amount",
+            "construction_amount"
+        ]
+    },
+    "2ssy-s6ns": {
+        "domain": "data.ny.gov",
+        "name": "Certified Plant Dealers",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "635g-4qx7": {
+        "domain": "data.ny.gov",
+        "name": "Brownfield Real Property Tax Credit and Environmental Remediated Insurance Credit: Beginning Calendar Year 2005",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "credit_claimed",
+            "dec_region"
+        ]
+    },
+    "nqur-w4p7": {
+        "domain": "data.ny.gov",
+        "name": "Gasoline Retail Prices Weekly Average by Region: Beginning 2007",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "ithaca_average_gal",
+            "watertown_average_gal",
+            "syracuse_average_gal",
+            "new_york_city_average_gal",
+            "nassau_average_gal",
+            "kingston_average_gal",
+            "batavia_average_gal",
+            "new_york_state_average_gal",
+            "rochester_average_gal",
+            "utica_average_gal",
+            "elmira_average_gal",
+            "dutchess_average_gal",
+            "buffalo_average_gal",
+            "binghamton_average_gal",
+            "albany_average_gal",
+            "white_plains_average_gal",
+            "glens_falls_average_gal"
+        ]
+    },
+    "ndex-ad5r": {
+        "domain": "data.ny.gov",
+        "name": "Bank-Owned ATM Locations in New York State",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "bpkx-gmh7": {
+        "domain": "data.ny.gov",
+        "name": "Alternative Fuel Stations in New York",
+        "t_attrs": [
+            "date_last_confirmed"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "cng_total_compression_capacity",
+            "ev_level2_evse_num",
+            "ev_dc_fast_count",
+            "cng_dispenser_num",
+            "cng_storage_capacity",
+            "ev_level1_evse_num"
+        ]
+    },
+    "d6dy-3h7r": {
+        "domain": "data.ny.gov",
+        "name": "Food Safety Inspections \u2013 Current Ratings",
+        "t_attrs": [
+            "inspection_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "y3u4-jbgh": {
+        "domain": "data.ny.gov",
+        "name": "Active Appearance Enhancement and Barber Business and Area Renter Licensees",
+        "t_attrs": [
+            "license_expiration_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "3nr4-s9yt": {
+        "domain": "data.ny.gov",
+        "name": "Currently Licensed Real Estate Appraisers",
+        "t_attrs": [
+            "org_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "7jkf-259w": {
+        "domain": "data.ny.gov",
+        "name": "Thruway Interchanges and Exits",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "milepost"
+        ]
+    },
+    "mj5h-8ei4": {
+        "domain": "data.ny.gov",
+        "name": "Thruway Travel Plazas and Parking/Rest Areas",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "milepost",
+            "icon_anchor"
+        ]
+    },
+    "7hs3-2njf": {
+        "domain": "data.ny.gov",
+        "name": "SPDES Multi-Sector General Permit (MSGP) Facilities",
+        "t_attrs": [
+            "effective_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "dec_region"
+        ]
+    },
+    "4dbf-24u2": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: Latest Full Week",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "9upz-c7xg": {
+        "domain": "data.ny.gov",
+        "name": "Department of Motor Vehicle (DMV) Office Locations",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "ug6q-shqc": {
+        "domain": "data.ny.gov",
+        "name": "Turnstile Usage Data: 2015",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "exits",
+            "entries"
+        ]
+    },
+    "ekwu-khcy": {
+        "domain": "data.ny.gov",
+        "name": "Turnstile Usage Data: 2016",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "exits",
+            "entries"
+        ]
+    },
+    "6j6c-aqy9": {
+        "domain": "data.ny.gov",
+        "name": "NYSDOT Highway Record Plans: Beginning 1900",
+        "t_attrs": [
+            "executed"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "est_total",
+            "region",
+            "numbersheets",
+            "length"
+        ]
+    },
+    "ir93-7qzi": {
+        "domain": "data.ny.gov",
+        "name": "Brownfield Cleanup Program, Certificates of Completion",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "years_from_application_to_coc",
+            "year_coc_issued",
+            "acreage"
+        ]
+    },
+    "qfsu-zcpv": {
+        "domain": "data.ny.gov",
+        "name": "Fire Department Directory for New York State",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "ehig-g5x3": {
+        "domain": "data.ny.gov",
+        "name": "Procurement Report for State Authorities",
+        "t_attrs": [
+            "begin_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "current_or_outstanding_balance",
+            "contract_amount",
+            "number_of_mwbe_proposals"
+        ]
+    },
+    "9rtk-3fkw": {
+        "domain": "data.ny.gov",
+        "name": "Industrial Development Agencies' Project Data",
+        "t_attrs": [
+            "date_ida_took_title_to_property"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "estimated_average_annual_salary_of_jobs_to_be_retained",
+            "original_estimate_of_jobs_to_be_retained",
+            "maximum_salary_of_jobs_to_be_created",
+            "estimated_average_annual_salary_of_jobs_to_be_created",
+            "net_exemptions",
+            "total_pilot_made",
+            "total_pilot_payments_due",
+            "amt_pilot_school_due",
+            "county_pilot_made",
+            "county_pilot_due",
+            "total_exemptions_net_of_rptl_section_485_b_exemptions",
+            "total_exemptions",
+            "mortgage_recording_tax_exemption_amount",
+            "school_property_tax_exemption_amount",
+            "local_property_tax_exemption_amount",
+            "county_real_property_tax_exemption_amount",
+            "local_sales_tax_exemption_amount",
+            "benefited_project_amount",
+            "total_project_amount",
+            "net_employment_change",
+            "minimum_salary_of_jobs_to_be_created",
+            "local_pilot_due",
+            "current_of_ftes",
+            "annual_lease_payment",
+            "original_estimate_of_jobs_to_be_created",
+            "state_sales_tax_exemption_amount",
+            "local_pilot_made"
+        ]
+    },
+    "dprp-55ye": {
+        "domain": "data.ny.gov",
+        "name": "Large-scale Renewable Projects Reported by NYSERDA: Beginning 2004",
+        "t_attrs": [
+            "data_through_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "new_renewable_capacity_mw",
+            "energy_storage_power_capacity_mwac",
+            "fixed_rec_price",
+            "max_annual_contract_quantity",
+            "contract_duration",
+            "index_rec_strike_price",
+            "transmission_capacity_hvdc_",
+            "p10_annual_orec_exceedance",
+            "energy_storage_energy_capacity_mwh"
+        ]
+    },
+    "9bc8-mx4a": {
+        "domain": "data.ny.gov",
+        "name": "County Agricultural Districts Profile",
+        "t_attrs": [
+            "anniversary_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_acres"
+        ]
+    },
+    "8w5p-k45m": {
+        "domain": "data.ny.gov",
+        "name": "Procurement Report for Local Authorities",
+        "t_attrs": [
+            "award_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "contract_amount"
+        ]
+    },
+    "d84c-dk28": {
+        "domain": "data.ny.gov",
+        "name": "Procurement Report for Local Development Corporations",
+        "t_attrs": [
+            "award_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "contract_amount"
+        ]
+    },
+    "p3p6-xqr5": {
+        "domain": "data.ny.gov",
+        "name": "Procurement Report for Industrial Development Agencies",
+        "t_attrs": [
+            "award_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "contract_amount"
+        ]
+    },
+    "t7uh-5ac8": {
+        "domain": "data.ny.gov",
+        "name": "Real Property Transactions of State Authorities",
+        "t_attrs": [
+            "transaction_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "lease_period",
+            "lease_rate",
+            "market_rate",
+            "purchase_sale_price",
+            "estimated_fair_market_value"
+        ]
+    },
+    "j5ab-5nj2": {
+        "domain": "data.ny.gov",
+        "name": "Local Development Corporations Grants Dataset",
+        "t_attrs": [
+            "date_grant_awarded"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "jobs_created",
+            "jobs_planned",
+            "grant_amount"
+        ]
+    },
+    "dixy-n3q7": {
+        "domain": "data.ny.gov",
+        "name": "Real Property Transactions of Industrial Development Agencies",
+        "t_attrs": [
+            "transaction_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "purchase_sale_price",
+            "lease_rate",
+            "market_rate",
+            "estimated_fair_market_value",
+            "lease_period"
+        ]
+    },
+    "ajgp-mddq": {
+        "domain": "data.ny.gov",
+        "name": "Real Property Transactions of Local Development Corporations",
+        "t_attrs": [
+            "transaction_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "lease_rate",
+            "estimated_fair_market_value",
+            "lease_period",
+            "market_rate",
+            "purchase_sale_price"
+        ]
+    },
+    "kmkz-x3aa": {
+        "domain": "data.ny.gov",
+        "name": "Real Property Transactions of Local Authorities",
+        "t_attrs": [
+            "transaction_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "purchase_sale_price",
+            "lease_period",
+            "market_rate",
+            "estimated_fair_market_value",
+            "lease_rate"
+        ]
+    },
+    "vp83-gfyz": {
+        "domain": "data.ny.gov",
+        "name": "Local Development Corporations Loans",
+        "t_attrs": [
+            "date_loan_awarded"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "original_loan_amount",
+            "interest_rate",
+            "loan_length",
+            "jobs_planned",
+            "jobs_created"
+        ]
+    },
+    "2vvn-pdyi": {
+        "domain": "data.ny.gov",
+        "name": "NYS Lottery Retailers",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "9kfh-uzu3": {
+        "domain": "data.ny.gov",
+        "name": "Local Development Corporations Bonds",
+        "t_attrs": [
+            "date_issued"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "jobs_created",
+            "jobs_planned",
+            "amount_outstanding",
+            "interest_rate",
+            "amount_issued"
+        ]
+    },
+    "u44d-k5fk": {
+        "domain": "data.ny.gov",
+        "name": "Spill Incidents",
+        "t_attrs": [
+            "received_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "dec_region",
+            "quantity",
+            "recovered"
+        ]
+    },
+    "c7db-kwpj": {
+        "domain": "data.ny.gov",
+        "name": "Current Certified Pesticide Applicators",
+        "t_attrs": [
+            "renewal_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "region"
+        ]
+    },
+    "qzve-kjga": {
+        "domain": "data.ny.gov",
+        "name": "Hourly Traffic on Metropolitan Transportation Authority (MTA) Bridges and Tunnels: Beginning 2010",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicles_vtoll",
+            "vehicles_e_zpass"
+        ]
+    },
+    "xjtd-9p3n": {
+        "domain": "data.ny.gov",
+        "name": "Lottery Sweet Million Winning Numbers: 2009 - 2014 (Retired Game)",
+        "t_attrs": [
+            "draw_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "wujg-7c2s": {
+        "domain": "data.ny.gov",
+        "name": "MTA Subway Hourly Ridership: Beginning February 2022",
+        "t_attrs": [
+            "transit_timestamp"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "transfers"
+        ]
+    },
+    "e8ky-4vqe": {
+        "domain": "data.ny.gov",
+        "name": "Motor Vehicle Crashes - Case Information: Three Year Window",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "number_of_vehicles_involved"
+        ]
+    },
+    "7ttn-4nwr": {
+        "domain": "data.ny.gov",
+        "name": "Current Licensed Real Estate Appraisal Management Companies",
+        "t_attrs": [
+            "license_expiration_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "nvxe-b625": {
+        "domain": "data.ny.gov",
+        "name": "Thruway Commuter Park and Ride Lots",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "spaces"
+        ]
+    },
+    "6ivk-p4gh": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 1 Hour Intervals: 2015",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "dapt-ejhb": {
+        "domain": "data.ny.gov",
+        "name": "Waste Tire Abatement Sites",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "dec_region"
+        ]
+    },
+    "93qk-wjz6": {
+        "domain": "data.ny.gov",
+        "name": "Security Guard Schools Approved by the Division of Criminal Justice Services",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "jshw-gkgu": {
+        "domain": "data.ny.gov",
+        "name": "Assembled Workers' Compensation Claims:  Beginning 2000",
+        "t_attrs": [
+            "section_32_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "ime4_count",
+            "hearing_count",
+            "closed_count",
+            "average_weekly_wage",
+            "age_at_injury",
+            "interval_assembled_to_ancr"
+        ]
+    },
+    "43kr-jb2c": {
+        "domain": "data.ny.gov",
+        "name": "State of New York Mortgage Agency (SONYMA) Target Areas by Census Tract",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "fips"
+        ]
+    },
+    "2v6p-juki": {
+        "domain": "data.ny.gov",
+        "name": "Wastewater Treatment Plants",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "avg_design_hydraulic_flow"
+        ]
+    },
+    "i55r-43gk": {
+        "domain": "data.ny.gov",
+        "name": "Turnstile Usage Data: 2014",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "exits",
+            "entries"
+        ]
+    },
+    "v7qc-gwpn": {
+        "domain": "data.ny.gov",
+        "name": "Fare Card History for Metropolitan Transportation Authority (MTA): Beginning 2010",
+        "t_attrs": [
+            "to_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "path_2_trip",
+            "transit_check_metrocard_annual_metrocard",
+            "lib_special_senior",
+            "senior_citizen_disabled",
+            "airtrain_full_fare",
+            "full_fare",
+            "airtrain_10_trip",
+            "joint_rail_road_ticket",
+            "transit_check_metrocard"
+        ]
+    },
+    "wgsj-jt5f": {
+        "domain": "data.ny.gov",
+        "name": "Statewide Solar Projects: Beginning 2000",
+        "t_attrs": [
+            "interconnection_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "number_of_projects",
+            "energy_storage_system_size_kwac",
+            "estimated_annual_pv_energy_production",
+            "pv_system_size_kwac",
+            "estimated_pv_system_size"
+        ]
+    },
+    "tt84-bydt": {
+        "domain": "data.ny.gov",
+        "name": "License Event Notification Service (LENS) Customers",
+        "t_attrs": [
+            "latest_driver_add_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "drivers_monitored",
+            "lens_internet_interface_users"
+        ]
+    },
+    "mxu7-dpdx": {
+        "domain": "data.ny.gov",
+        "name": "Local Data Index",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "rows"
+        ]
+    },
+    "kb9s-4gzd": {
+        "domain": "data.ny.gov",
+        "name": "City of Albany Building Permits Issued:  2009-2013",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "fee",
+            "estimated_cost"
+        ]
+    },
+    "pwa9-tmie": {
+        "domain": "data.ny.gov",
+        "name": "MTA Wi-Fi Locations",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "jwkb-x5v6": {
+        "domain": "data.ny.gov",
+        "name": "County Emergency Management Offices",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "lattitude"
+        ]
+    },
+    "ieqx-cqyk": {
+        "domain": "data.ny.gov",
+        "name": "Directory of Developmental Disabilities Service Provider Agencies",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "c6ci-rzpg": {
+        "domain": "data.ny.gov",
+        "name": "Environmental Remediation Sites",
+        "t_attrs": [
+            "project_completion_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "dec_region"
+        ]
+    },
+    "868p-5nmh": {
+        "domain": "data.ny.gov",
+        "name": "Currently Licensed Commercial Nuisance Wildlife Control Operators",
+        "t_attrs": [
+            "licenses_effective_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "business_phone"
+        ]
+    },
+    "23v4-2ycs": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 1 Hour Intervals: 2016",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "6kac-t37t": {
+        "domain": "data.ny.gov",
+        "name": "State Liquor Authority Licenses Currently Operating Under SAPA",
+        "t_attrs": [
+            "lic_eff_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "lic_class"
+        ]
+    },
+    "pteg-c78n": {
+        "domain": "data.ny.gov",
+        "name": "Bulk Storage Facilities in New York State",
+        "t_attrs": [
+            "close_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "percent",
+            "utmy",
+            "nysdec_region",
+            "utmx",
+            "capacity_in_gallons"
+        ]
+    },
+    "4ry5-tfin": {
+        "domain": "data.ny.gov",
+        "name": "Title V Emissions Inventory: Beginning 2010",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "so2",
+            "haps",
+            "pm10",
+            "co",
+            "nox",
+            "voc",
+            "co2",
+            "pm2_5",
+            "particulates"
+        ]
+    },
+    "q9d5-zxbn": {
+        "domain": "data.ny.gov",
+        "name": "Guides Currently Licensed in New York State",
+        "t_attrs": [
+            "expiration_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "28gk-bu58": {
+        "domain": "data.ny.gov",
+        "name": "City University of New York (CUNY) Programs: Beginning Fall 2008",
+        "t_attrs": [
+            "date_closed"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "count"
+        ]
+    },
+    "xgig-n5ch": {
+        "domain": "data.ny.gov",
+        "name": "County Mental Health Profiles: 2006-2016",
+        "t_attrs": [
+            "row_created_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "units_total",
+            "recipient_count_by_county"
+        ]
+    },
+    "p5wx-nivw": {
+        "domain": "data.ny.gov",
+        "name": "Currently Licensed Wildlife Rehabilitators",
+        "t_attrs": [
+            "license_expiration_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "business_phone"
+        ]
+    },
+    "cg7p-tdy5": {
+        "domain": "data.ny.gov",
+        "name": "New York's Great Appliance Swap Out",
+        "t_attrs": [
+            "rebate_application_date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "rebate_amount",
+            "estimated_age_of_recycled_appliance"
+        ]
+    },
+    "nv2j-hmda": {
+        "domain": "data.ny.gov",
+        "name": "City of Albany Vacant Building Inventory: 2013",
+        "t_attrs": [
+            "initial_registration_date2"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "no_of_dwelling_office_units",
+            "current_registration_fee",
+            "amount_of_bond"
+        ]
+    },
+    "igam-2tkj": {
+        "domain": "data.ny.gov",
+        "name": "Horse Racing Rulings: Beginning 1985",
+        "t_attrs": [
+            "suspension_start"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fine_amount"
+        ]
+    },
+    "55xf-9jat": {
+        "domain": "data.ny.gov",
+        "name": "Registered Retail Dealers of Cigarettes and Tobacco Products and Vapor Products",
+        "t_attrs": [
+            "susp_beg_dt"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "cor_seq_nmbr"
+        ]
+    },
+    "ta83-js48": {
+        "domain": "data.ny.gov",
+        "name": "Canal System Locks",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "mile"
+        ]
+    },
+    "wpyb-cjy8": {
+        "domain": "data.ny.gov",
+        "name": "Bridge Conditions, NYS Department of Transportation",
+        "t_attrs": [
+            "date_of_last_inspection"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "year_built_or_replaced",
+            "region"
+        ]
+    },
+    "tb54-h6gg": {
+        "domain": "data.ny.gov",
+        "name": "NYSERDA New York Offshore Wind Supply Chain Dataset",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "vdat-cgbe": {
+        "domain": "data.ny.gov",
+        "name": "NYS School Tax Relief (STAR) Reimbursement by County: Beginning Levy Year 1998",
+        "t_attrs": [
+            "data_preparation_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_amount_of_reimbursement",
+            "amount_of_enhanced_reimbursement",
+            "number_of_enhanced_exemptions",
+            "amount_of_basic_reimbursement",
+            "number_of_basic_exemptions"
+        ]
+    },
+    "szye-wmt3": {
+        "domain": "data.ny.gov",
+        "name": "Oil, Gas, & Other Regulated Wells: Beginning 1860",
+        "t_attrs": [
+            "date_well_plugged"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "permit_fee",
+            "proposed_depth_ft",
+            "depth_fee",
+            "elevation_ft",
+            "spacing_acres",
+            "measured_depth_ft",
+            "kickoff_ft",
+            "drilled_depth_ft",
+            "true_vertical_depth_ft",
+            "region",
+            "completion"
+        ]
+    },
+    "assk-vu73": {
+        "domain": "data.ny.gov",
+        "name": "Residential Existing Homes (One to Four Units) Energy Efficiency Projects with Income-based Incentives by Customer Type: Beginning 2010",
+        "t_attrs": [
+            "project_completion_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "estimated_annual_mmbtu_savings",
+            "estimated_annual_kwh_savings",
+            "amount_financed_through_program",
+            "total_incentives",
+            "total_project_cost",
+            "number_of_units"
+        ]
+    },
+    "2ig8-yxf8": {
+        "domain": "data.ny.gov",
+        "name": "Current Active Clinical Trials - Roswell Park Cancer Institute",
+        "t_attrs": [
+            "date_closed"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "m3xm-q3dw": {
+        "domain": "data.ny.gov",
+        "name": "Utility Energy Registry Monthly Community Energy Use: 2016-2021",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "value",
+            "full_fips",
+            "number_of_accounts"
+        ]
+    },
+    "cfjm-ii27": {
+        "domain": "data.ny.gov",
+        "name": "State University Construction Fund (SUCF) Contracts: Beginning 1995",
+        "t_attrs": [
+            "contract_award_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "expended_amount_ltd",
+            "expended_amount_ytd",
+            "mwbe_proposals",
+            "contract_amount",
+            "remaining_balance"
+        ]
+    },
+    "tzb9-c2c6": {
+        "domain": "data.ny.gov",
+        "name": "Utility Energy Registry Monthly ZIP Code Energy Use: 2016-2021",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "number_of_accounts",
+            "value"
+        ]
+    },
+    "4sut-q3dt": {
+        "domain": "data.ny.gov",
+        "name": "Real Property Assessment Equity Statistics By Municipality: Beginning 2004",
+        "t_attrs": [
+            "report_or_data_preparation_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "all_property_coefficient_of_dispersion",
+            "all_property_price_related_differential",
+            "municipality_stated_uniform_percentage",
+            "population_per_square_mile",
+            "equalization_rate"
+        ]
+    },
+    "ekci-x6aq": {
+        "domain": "data.ny.gov",
+        "name": "Active Construction Projects",
+        "t_attrs": [
+            "snapshotdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "project_budget"
+        ]
+    },
+    "9uuk-x7vh": {
+        "domain": "data.ny.gov",
+        "name": "State Park Facility Points",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "region"
+        ]
+    },
+    "64ar-ackz": {
+        "domain": "data.ny.gov",
+        "name": "State University of New York (SUNY) - NYS High School Attended by First Time Undergraduate Students: Beginning Fall 2010",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "high_school_ceeb"
+        ]
+    },
+    "aa3i-eamx": {
+        "domain": "data.ny.gov",
+        "name": "NYS School Tax Relief (STAR) Reimbursement by School District: Beginning Levy Year 1998",
+        "t_attrs": [
+            "data_preparation_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_amount_of_reimbursement",
+            "amount_of_enhanced_reimbursement",
+            "number_of_enhanced_exemptions",
+            "amount_of_basic_reimbursement",
+            "number_of_basic_exemptions"
+        ]
+    },
+    "ugya-enpy": {
+        "domain": "data.ny.gov",
+        "name": "Retail and Bulk Energy Storage Incentive Programs Reported by NYSERDA: Beginning 2019",
+        "t_attrs": [
+            "date_completed"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "energy_storage_power_capacity",
+            "installed_energy_storage",
+            "nyserda_funding_amount"
+        ]
+    },
+    "j7t6-d8a8": {
+        "domain": "data.ny.gov",
+        "name": "Continuously Operating Reference Stations (CORS) Network",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "dpke-svni": {
+        "domain": "data.ny.gov",
+        "name": "NYSERDA-Supported Air Source Heat Pump Projects: 2017-2019",
+        "t_attrs": [
+            "application_approval_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_nyserda_incentive_usd",
+            "total_project_cost_usd",
+            "percentage_of_sq_ft"
+        ]
+    },
+    "h8u2-6ejg": {
+        "domain": "data.ny.gov",
+        "name": "Currently Registered Pesticide Businesses and Agencies",
+        "t_attrs": [
+            "registration_effective_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "dec_region"
+        ]
+    },
+    "8y5c-ebxg": {
+        "domain": "data.ny.gov",
+        "name": "Oil and Gas Summary Production Data: 1967-1999",
+        "t_attrs": [
+            "production_date_entered"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "inactive_gas_wells",
+            "inactive_oil_wells",
+            "active_gas_wells",
+            "gas_produced_mcf",
+            "disposal_wells",
+            "active_oil_wells",
+            "taxable_gas_mcf",
+            "injection_wells"
+        ]
+    },
+    "cz9u-yj7m": {
+        "domain": "data.ny.gov",
+        "name": "Horse Racing Licensing",
+        "t_attrs": [
+            "expires"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "vgue-bamz": {
+        "domain": "data.ny.gov",
+        "name": "Orphaned Wells",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "region"
+        ]
+    },
+    "pe3j-9bkg": {
+        "domain": "data.ny.gov",
+        "name": "Canal System Lift Bridges",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "mile"
+        ]
+    },
+    "7y2e-49j8": {
+        "domain": "data.ny.gov",
+        "name": "Weigh-In-Motion Station Vehicle Traffic Counts: 2013",
+        "t_attrs": [
+            "count_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "class13",
+            "class9",
+            "class8",
+            "class5",
+            "class3",
+            "class1",
+            "lanes",
+            "class12",
+            "station",
+            "class2",
+            "class4",
+            "class6",
+            "class7",
+            "class10",
+            "class11"
+        ]
+    },
+    "rz8t-4kmq": {
+        "domain": "data.ny.gov",
+        "name": "Transportation Projects in Your Neighborhood",
+        "t_attrs": [
+            "estimated_or_actual_completed_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "approved_cost_changes",
+            "construction_amount"
+        ]
+    },
+    "gugp-n5ip": {
+        "domain": "data.ny.gov",
+        "name": "Directory of Criminal Justice Agencies",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "va8e-9s3h": {
+        "domain": "data.ny.gov",
+        "name": "Mined Land Permits: Beginning 1974",
+        "t_attrs": [
+            "date_of_last_inspection"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "acres_affected",
+            "acres_life_of_mine",
+            "acres_bb",
+            "acres_controlled",
+            "acresbb_range",
+            "acres_reclaimed",
+            "financial_security_amount"
+        ]
+    },
+    "erjw-j2zx": {
+        "domain": "data.ny.gov",
+        "name": "Energy Efficiency Completed Projects: Beginning 1987",
+        "t_attrs": [
+            "date_completed"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "reduction_in_greenhouse_gas_emissions_tons",
+            "equivalent_barrels_of_oil_saved",
+            "oil_savings_gallons",
+            "electric_energy_reduction_kwh",
+            "demand_reduction_kw",
+            "total_project_cost",
+            "number_of_facilities",
+            "year_completed",
+            "renewable_energy_kw",
+            "coal_savings_tons",
+            "digester_gas_savings_ccf",
+            "gas_savings_therms",
+            "steam_savings_m_lbs"
+        ]
+    },
+    "daiv-97a8": {
+        "domain": "data.ny.gov",
+        "name": "Canal System Guard Gates",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "mile"
+        ]
+    },
+    "6y52-j6td": {
+        "domain": "data.ny.gov",
+        "name": "Marinas And Public Docks Near NYS Canal System",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "vhf_monitored",
+            "mile"
+        ]
+    },
+    "66qd-rvmy": {
+        "domain": "data.ny.gov",
+        "name": "Active Sporting License Issuing Agents",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "2xud-cuua": {
+        "domain": "data.ny.gov",
+        "name": "Lodging Near NYS Canal System",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "mile"
+        ]
+    },
+    "ibtm-q4dj": {
+        "domain": "data.ny.gov",
+        "name": "Boats For Hire Near NYS Canal System",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "vqmi-95p7": {
+        "domain": "data.ny.gov",
+        "name": "Energy Efficiency Portfolio Standard (EEPS) Program Estimated Energy Savings Data",
+        "t_attrs": [
+            "savings_as_of_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_electricity_savings_mwh"
+        ]
+    },
+    "dtfv-pchi": {
+        "domain": "data.ny.gov",
+        "name": "Diesel Retail Price Weekly Average by Region: Beginning 2007",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "kingston_average_gal",
+            "rochester_average_gal",
+            "new_york_city_average_gal",
+            "nassau_average_gal",
+            "elmira_average_gal",
+            "batavia_average_gal",
+            "albany_average_gal",
+            "new_york_state_average_gal",
+            "white_plains_average_gal",
+            "syracuse_average_gal",
+            "ithaca_average_gal",
+            "glens_falls_average_gal",
+            "buffalo_average_gal",
+            "binghamton_average_gal",
+            "watertown_average_gal",
+            "dutchess_average_gal",
+            "utica_average_gal"
+        ]
+    },
+    "5wzh-jq4n": {
+        "domain": "data.ny.gov",
+        "name": "Public Cemetery Corporations",
+        "t_attrs": [
+            "abandonedormergedon"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "crematory",
+            "nontraditional",
+            "communitymausoleum"
+        ]
+    },
+    "mw8j-wduf": {
+        "domain": "data.ny.gov",
+        "name": "Recommended Fishing Lakes and Ponds",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "acres_mile",
+            "point_x",
+            "point_y"
+        ]
+    },
+    "id6x-swrj": {
+        "domain": "data.ny.gov",
+        "name": "Case-Specific Beneficial Use Determinations: Beginning 1988",
+        "t_attrs": [
+            "effective_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "i57x-udiw": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 1 Hour Intervals: October 2014 - December 2014",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "ae9a-zs4q": {
+        "domain": "data.ny.gov",
+        "name": "Advantage After School Program",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "mada_for_site",
+            "contract_amount"
+        ]
+    },
+    "7xmz-2ur8": {
+        "domain": "data.ny.gov",
+        "name": "State University Construction Fund (SUCF) Projects: Beginning 1989",
+        "t_attrs": [
+            "target_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "ephi-ffu6": {
+        "domain": "data.ny.gov",
+        "name": "Combined Sewer Overflows (CSOs): Beginning 2013",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "dec_region",
+            "number_of_permitted_outfalls",
+            "longtitude",
+            "data_as_of"
+        ]
+    },
+    "sgz6-5fuh": {
+        "domain": "data.ny.gov",
+        "name": "NYSERDA-Supported Ground Source Heat Pump Projects: 2017-2019",
+        "t_attrs": [
+            "completed_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_nyserda_incentive_usd",
+            "home_conditioned_area_sqft",
+            "total_project_cost_usd",
+            "total_system_size_tons",
+            "heating_load_btu_hr"
+        ]
+    },
+    "jsnj-ehv9": {
+        "domain": "data.ny.gov",
+        "name": "Artificial Reefs Managed by New York State Department of Environmental Conservation",
+        "t_attrs": [],
+        "s_attrs": [
+            "location1"
+        ],
+        "num_columns": []
+    },
+    "t4ba-giyx": {
+        "domain": "data.ny.gov",
+        "name": "Directory of Multi-Purpose Senior Centers",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "4rf4-x6zt": {
+        "domain": "data.ny.gov",
+        "name": "Synthesis of Environmental Mercury Loads in New York State (1969-2017): Biotic Samples",
+        "t_attrs": [
+            "bdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "comp_avglen_cm",
+            "comp_maxlen_cm",
+            "comp_minlen_cm",
+            "comp_avgwt_g",
+            "comp_minwt_g",
+            "mass_g",
+            "composite_size",
+            "n",
+            "comp_maxwt_g"
+        ]
+    },
+    "su4y-g8iz": {
+        "domain": "data.ny.gov",
+        "name": "Synthesis of Environmental Mercury Loads in New York State (1969-2017): Abiotic Samples",
+        "t_attrs": [
+            "bdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "hole_depth_m",
+            "well_depth_m"
+        ]
+    },
+    "py8k-a8wg": {
+        "domain": "data.ny.gov",
+        "name": "Turnstile Usage Data: 2020",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "exits",
+            "entries"
+        ]
+    },
+    "2ei4-24ka": {
+        "domain": "data.ny.gov",
+        "name": "Synthesis of Environmental Mercury Loads in New York State (1969-2017): Chemical Data",
+        "t_attrs": [
+            "bdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "duplicate1",
+            "limit",
+            "final_chem_standardized",
+            "chem_value",
+            "analysis_tissue_wgt_g",
+            "convert_chem_value_fishadj",
+            "analysis_tissue_moist"
+        ]
+    },
+    "r8tn-bjyq": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 1 Hour Intervals: 2020",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "d8tb-8zub": {
+        "domain": "data.ny.gov",
+        "name": "Synthesis of Environmental Mercury Loads in New York State (1969-2017): Sites",
+        "t_attrs": [],
+        "s_attrs": [
+            "georefence"
+        ],
+        "num_columns": []
+    },
+    "mv7x-gitd": {
+        "domain": "data.ny.gov",
+        "name": "Synthesis of Environmental Mercury Loads in New York State (1969-2017): Deposition Model",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "chem_value"
+        ]
+    },
+    "mbk7-f2r2": {
+        "domain": "data.ny.gov",
+        "name": "DART (Department Application Review and Tracking) on the Web: Beginning 1988",
+        "t_attrs": [
+            "permit_expration_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "7whc-b5e4": {
+        "domain": "data.ny.gov",
+        "name": "Security Level and Facility by Crime Group, Under Custody",
+        "t_attrs": [
+            "snapshot_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "youth_juv_offender",
+            "property_other",
+            "drug_felony",
+            "violentfelony",
+            "total",
+            "other_coercive"
+        ]
+    },
+    "fc8g-rgwz": {
+        "domain": "data.ny.gov",
+        "name": "Local Government Efficiency Program Grants:  Beginning 2005",
+        "t_attrs": [
+            "completion_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "iyue-ijfp": {
+        "domain": "data.ny.gov",
+        "name": "DASNY (Dormitory Authority of the State of New York) Bonds and Notes: Beginning 1957",
+        "t_attrs": [
+            "dated_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "bond_series_par_amount_outstanding",
+            "bond_series_par_amount"
+        ]
+    },
+    "thd2-fu8y": {
+        "domain": "data.ny.gov",
+        "name": "NYSERDA Electric Vehicle Drive Clean Rebate Data: Beginning 2017",
+        "t_attrs": [
+            "data_through_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "annual_ghg_emissions",
+            "rebate_amount_usd",
+            "annual_petroleum_reductions"
+        ]
+    },
+    "cgck-srxx": {
+        "domain": "data.ny.gov",
+        "name": "Golf Courses",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "region"
+        ]
+    },
+    "m4ux-3xxj": {
+        "domain": "data.ny.gov",
+        "name": "Offices of the Inspector General Investigative Complaints: Beginning 2022",
+        "t_attrs": [
+            "sort_order"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "7rev-x3j5": {
+        "domain": "data.ny.gov",
+        "name": "Transportation Fuels Inventory: Beginning 2004",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "u_s_crude_oil_stocks_thousand_barrels",
+            "east_coast_jet_fuels_stocks_thousand_barrels",
+            "east_coast_ethanol_stocks_thousand_barrels",
+            "east_coast_gasoline_stocks_thousand_barrels",
+            "u_s_gasoline_stocks_thousand_barrels"
+        ]
+    },
+    "atwy-2trf": {
+        "domain": "data.ny.gov",
+        "name": "Transportation Fuels Production and Demand: Beginning 1993",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "2wgt-bc53": {
+        "domain": "data.ny.gov",
+        "name": "Issued State Facility Air Permits",
+        "t_attrs": [
+            "expire_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "xcnj-3h3u": {
+        "domain": "data.ny.gov",
+        "name": "DMV Fatal Hearings: 5 Year Window",
+        "t_attrs": [
+            "disposition_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "jwv3-3scj": {
+        "domain": "data.ny.gov",
+        "name": "Directory of Aging and Disability Community Resources",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "c6pb-n7gq": {
+        "domain": "data.ny.gov",
+        "name": "Typical Utility Bill Information Gas: Beginning 2011",
+        "t_attrs": [
+            "effective_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_bill",
+            "usage"
+        ]
+    },
+    "bybh-67nt": {
+        "domain": "data.ny.gov",
+        "name": "Onondaga County Public Facilities and Services",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "ahjq-dbec": {
+        "domain": "data.ny.gov",
+        "name": "Child Welfare and Community Services Funded Programs",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "funding_level"
+        ]
+    },
+    "qcpj-zdb6": {
+        "domain": "data.ny.gov",
+        "name": "Air Monitoring Station Locations & Attributes",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "region"
+        ]
+    },
+    "mxea-iw3u": {
+        "domain": "data.ny.gov",
+        "name": "Oil and Gas Annual Production: Beginning 2001",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "water",
+            "api_wellno",
+            "production",
+            "oilprod",
+            "gas"
+        ]
+    },
+    "w7m2-v3g2": {
+        "domain": "data.ny.gov",
+        "name": "Public Events at the Empire State Plaza:  Beginning 1999",
+        "t_attrs": [
+            "eventdate"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "pt2v-9a3h": {
+        "domain": "data.ny.gov",
+        "name": "Accessible Outdoor Recreation Destinations",
+        "t_attrs": [
+            "dateinspc"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "reg",
+            "point_x",
+            "point_y"
+        ]
+    },
+    "w2w4-tdxt": {
+        "domain": "data.ny.gov",
+        "name": "Occupations Licensed or Certified by New York State",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "telephone"
+        ]
+    },
+    "94ue-tysy": {
+        "domain": "data.ny.gov",
+        "name": "Water Withdrawals by Facility:  Beginning 2009",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "dec_region"
+        ]
+    },
+    "f8i6-waiy": {
+        "domain": "data.ny.gov",
+        "name": "College Access Challenge Grant Program (CACGP) Subgrantees: 2008-2016",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "cacg_recipient_headcount"
+        ]
+    },
+    "k7gz-mn77": {
+        "domain": "data.ny.gov",
+        "name": "Transportation Fuels Spot Prices: Beginning 2006",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "ny_jet_fuel_price_gal",
+            "ny_ultra_low_sulfur_diesel_spot_price_gal",
+            "ny_conventional_gasoline_spot_price_gal",
+            "brent_crude_oil_spot_price_barrel",
+            "wti_crude_oil_spot_price_barrel"
+        ]
+    },
+    "irqs-74ez": {
+        "domain": "data.ny.gov",
+        "name": "City University of New York (CUNY) University Campus Locations",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "r4sv-k333": {
+        "domain": "data.ny.gov",
+        "name": "AOT (Assisted Outpatient Treatment) Court Orders",
+        "t_attrs": [
+            "row_created_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_of_orders_renewed",
+            "currently_under_court_order",
+            "court_ordered_since_1999",
+            "percent_of_petitions_granted",
+            "number_of_petitions_granted",
+            "eligible_for_court_order_renewel",
+            "renewed_court_orders",
+            "number_of_petitions_filed"
+        ]
+    },
+    "6gke-uhe4": {
+        "domain": "data.ny.gov",
+        "name": "Water Wells: Beginning 2000",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "dec_region",
+            "yield_test_average_discharge",
+            "depth_to_groundwater_feet",
+            "depth_to_bedrock_feet_bgs",
+            "well_depth_feet_bgs",
+            "cased_depth_feet_bgs"
+        ]
+    },
+    "vtxv-3j2b": {
+        "domain": "data.ny.gov",
+        "name": "State University Construction Fund (SUCF) Advertised Procurements: Beginning 2000",
+        "t_attrs": [
+            "contract_advertise_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "e9ss-239a": {
+        "domain": "data.ny.gov",
+        "name": "Campaign Finance Disclosure Reports Data: Beginning 1999",
+        "t_attrs": [
+            "org_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "org_amt",
+            "owed_amt"
+        ]
+    },
+    "m384-u5q6": {
+        "domain": "data.ny.gov",
+        "name": "State Historic Sites",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "region"
+        ]
+    },
+    "4n3a-en4b": {
+        "domain": "data.ny.gov",
+        "name": "Issued Title V Facility Permits",
+        "t_attrs": [
+            "issue_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "c6c2-n3if": {
+        "domain": "data.ny.gov",
+        "name": "State University Construction Fund (SUCF) Request for Qualifications (RFQs) Responders: Beginning 2000",
+        "t_attrs": [
+            "contract_advertise_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "ku8b-uzf5": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 1 Hour Intervals: 2018",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "qebf-4fd8": {
+        "domain": "data.ny.gov",
+        "name": "Rest Areas Across NY",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "public_phone",
+            "vending_machine",
+            "picnictable",
+            "car_spaces",
+            "handicapped_spaces",
+            "bus_spaces",
+            "truck_spaces"
+        ]
+    },
+    "ss7k-76ub": {
+        "domain": "data.ny.gov",
+        "name": "Governor\u2019s Office of Storm Recovery (GOSR) Quarterly Contract Reporting",
+        "t_attrs": [
+            "contract_execution_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "amount_of_cdbg_dr_funds",
+            "total_contract_amount"
+        ]
+    },
+    "wgnh-hpq9": {
+        "domain": "data.ny.gov",
+        "name": "Capital District Bus Stops",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "4xc7-bukh": {
+        "domain": "data.ny.gov",
+        "name": "County Seats",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "zip5"
+        ]
+    },
+    "dwy2-ckb3": {
+        "domain": "data.ny.gov",
+        "name": "Neighborhood and Rural Preservation Companies Directory",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "5sdk-z637": {
+        "domain": "data.ny.gov",
+        "name": "Tourism Information Centers",
+        "t_attrs": [],
+        "s_attrs": [
+            "mapping_location"
+        ],
+        "num_columns": []
+    },
+    "9vef-6whi": {
+        "domain": "data.ny.gov",
+        "name": "Public Fishing Rights Parking Areas",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "dec_region"
+        ]
+    },
+    "chzq-388p": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 1 Hour Intervals: 2019",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "b6x3-58ht": {
+        "domain": "data.ny.gov",
+        "name": "Citizen Statewide Lake Monitoring Assessment Program (CSLAP) Lakes",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "area_acres",
+            "depth_feet",
+            "mean_depth_meters",
+            "watershed_area_hectares",
+            "area_hectares",
+            "elevation_meters"
+        ]
+    },
+    "9yjx-h3yi": {
+        "domain": "data.ny.gov",
+        "name": "Bird Conservation Areas",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "2vv4-9c5e": {
+        "domain": "data.ny.gov",
+        "name": "Community Multi-Service Office (CMSO), Intake, and Evening Reporting Center (ERC) Offices",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "q88j-j2mi": {
+        "domain": "data.ny.gov",
+        "name": "Runaway And Homeless Youth Programs",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "wykp-id5i": {
+        "domain": "data.ny.gov",
+        "name": "Victim Assistance Program (VAP) Business Offices",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "w1",
+            "w1_extension",
+            "hotline_ext",
+            "hotline"
+        ]
+    },
+    "qcf2-zajk": {
+        "domain": "data.ny.gov",
+        "name": "Oil and Gas Annual Production: 1985 - 2000",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "gas_mcf",
+            "county",
+            "completion",
+            "months_in_production"
+        ]
+    },
+    "wcsa-vkhf": {
+        "domain": "data.ny.gov",
+        "name": "Metropolitan Transportation Authority (MTA) Capital Dashboard Project Locations",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "plan_series"
+        ]
+    },
+    "g8h7-98zz": {
+        "domain": "data.ny.gov",
+        "name": "New York State Career Centers",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "5zxz-z3ci": {
+        "domain": "data.ny.gov",
+        "name": "Campgrounds by County Outside Adirondack & Catskill Forest Preserve",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "region"
+        ]
+    },
+    "r4tg-z3mz": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 1 Hour Intervals: 2017",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "absp-7rbm": {
+        "domain": "data.ny.gov",
+        "name": "Aquatic Biological Monitoring Sampling Locations: Beginning 1980",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "dec_region"
+        ]
+    },
+    "icvg-v8xr": {
+        "domain": "data.ny.gov",
+        "name": "Boat Launch Sites by Waterbody",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "point_y",
+            "trail",
+            "point_x",
+            "car"
+        ]
+    },
+    "ddrw-g9a6": {
+        "domain": "data.ny.gov",
+        "name": "Utility Base Rate Change  - Delivery Rates Beginning 1998",
+        "t_attrs": [
+            "date_effective"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "change_percent",
+            "change_millions_of_dollars"
+        ]
+    },
+    "hg7a-5ssi": {
+        "domain": "data.ny.gov",
+        "name": "Watchable Wildlife Sites",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "booknum",
+            "point_y",
+            "point_x"
+        ]
+    },
+    "u7ah-kmax": {
+        "domain": "data.ny.gov",
+        "name": "Weatherization Assistance Program Provider Directory",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "kbn3-a3jv": {
+        "domain": "data.ny.gov",
+        "name": "State University Construction Fund (SUCF) Short-Listed Firms: Beginning 2000",
+        "t_attrs": [
+            "contract_advertise_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "gthh-7nri": {
+        "domain": "data.ny.gov",
+        "name": "New York State Commission for the Blind (NYSCB) Comprehensive Service Contractors",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "yvkb-z58x": {
+        "domain": "data.ny.gov",
+        "name": "Points of Interest on Department of Environmental Conservation Lands",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "3pjx-bgty": {
+        "domain": "data.ny.gov",
+        "name": "US SBA COVID-19 Relief to NYS Business \u2013 Restaurant Revitalization Fund",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "grantamount",
+            "loannumber"
+        ]
+    },
+    "tekz-xrvb": {
+        "domain": "data.ny.gov",
+        "name": "Political Consultant Filings: Beginning 2016",
+        "t_attrs": [
+            "filing_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "u56z-mms2": {
+        "domain": "data.ny.gov",
+        "name": "Labor Market Analysts",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "tnqf-vydw": {
+        "domain": "data.ny.gov",
+        "name": "Campgrounds by County Within Adirondack & Catskill Forest Preserve",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "jhdq-vgnr": {
+        "domain": "data.ny.gov",
+        "name": "US Patents Issued to Health Research Inc on Behalf of Roswell Park Cancer Institute",
+        "t_attrs": [
+            "issue_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "9hk7-xgkb": {
+        "domain": "data.ny.gov",
+        "name": "Draft State Facility Permits",
+        "t_attrs": [
+            "comment_begin_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "mod"
+        ]
+    },
+    "jn2j-7x6a": {
+        "domain": "data.ny.gov",
+        "name": "Residential Juvenile Justice Facilities",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "v5y5-mwpb": {
+        "domain": "data.ny.gov",
+        "name": "Turnstile Usage Data: 2017",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "exits",
+            "entries"
+        ]
+    },
+    "9s3h-dpkz": {
+        "domain": "data.ny.gov",
+        "name": "Current Liquor Authority Active Licenses",
+        "t_attrs": [
+            "expirationdate"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "type"
+        ]
+    },
+    "cc9j-4ujx": {
+        "domain": "data.ny.gov",
+        "name": "BHO Medication Fill Data: 2010-2014",
+        "t_attrs": [
+            "row_created_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "rate",
+            "numerator",
+            "denominator"
+        ]
+    },
+    "4zrh-mycb": {
+        "domain": "data.ny.gov",
+        "name": "Clean Energy Fund Agriculture Audits: Beginning 2016",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "nyserda_clean_energy_fund"
+        ]
+    },
+    "udn2-m26a": {
+        "domain": "data.ny.gov",
+        "name": "Historical Auction Data, NYS Thruway Surplus Property: 2010-2013",
+        "t_attrs": [
+            "sale_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "sale_yr",
+            "sale_price"
+        ]
+    },
+    "hmbc-hni2": {
+        "domain": "data.ny.gov",
+        "name": "Curb Ramps on NYS-Owned Highways",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "milepoint",
+            "region"
+        ]
+    },
+    "2gcg-hikh": {
+        "domain": "data.ny.gov",
+        "name": "Boat Launch Sites by State Parks or Marine Facility",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "region"
+        ]
+    },
+    "inhb-jgj2": {
+        "domain": "data.ny.gov",
+        "name": "BHO MH Readmission: 2010-2014",
+        "t_attrs": [
+            "row_created_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "numerator",
+            "rate",
+            "denominator"
+        ]
+    },
+    "v7kc-2mp5": {
+        "domain": "data.ny.gov",
+        "name": "Business Service Representatives",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "kvh8-m9d4": {
+        "domain": "data.ny.gov",
+        "name": "Bond Series Sold: Beginning Fiscal Year 1999-2000",
+        "t_attrs": [
+            "bond_series_closing_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "initial_interest_rate",
+            "true_interest_cost",
+            "bond_series_par_amount"
+        ]
+    },
+    "inze-5yed": {
+        "domain": "data.ny.gov",
+        "name": "State University Construction Fund (SUCF) Request for Qualifications (RFQs) Distributed: Beginning 2000",
+        "t_attrs": [
+            "contract_advertise_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "7gdv-fq7n": {
+        "domain": "data.ny.gov",
+        "name": "State Nature Centers",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "region"
+        ]
+    },
+    "698j-9a6e": {
+        "domain": "data.ny.gov",
+        "name": "State Highway Work Permits Issued:  Beginning 2010",
+        "t_attrs": [
+            "expiration_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "mki6-ies9": {
+        "domain": "data.ny.gov",
+        "name": "BHO SUD Readmission: 2010-2014",
+        "t_attrs": [
+            "row_created_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "denominator",
+            "numerator",
+            "rate"
+        ]
+    },
+    "6u2t-cy73": {
+        "domain": "data.ny.gov",
+        "name": "Selected Scholarship Programs by Metric Type: Beginning 2014",
+        "t_attrs": [
+            "processing_snapshot_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "headcount"
+        ]
+    },
+    "bjcb-yee3": {
+        "domain": "data.ny.gov",
+        "name": "Turnstile Usage Data: 2018",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "entries",
+            "exits"
+        ]
+    },
+    "9evn-drxk": {
+        "domain": "data.ny.gov",
+        "name": "Green Jobs - Green New York (GJGNY) Residential Loan Portfolio:  Beginning November 2010",
+        "t_attrs": [
+            "account_code_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "months_since_origination",
+            "payment_amount",
+            "unapplied_cash",
+            "current_balance",
+            "days_delinquent",
+            "last_payment_amount",
+            "debt_to_income",
+            "credit_score_name_2",
+            "credit_score",
+            "credit_score_current_high",
+            "original_loan_amount",
+            "payments_made",
+            "payments_remaining",
+            "original_term",
+            "interest_rate",
+            "delinquent_amount"
+        ]
+    },
+    "eygy-n4is": {
+        "domain": "data.ny.gov",
+        "name": "Private and Commercial Fish Hatcheries",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "st5x-jaqq": {
+        "domain": "data.ny.gov",
+        "name": "Hudson River Park Flora - Plantings:  1997 - 2015",
+        "t_attrs": [
+            "installation_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "wkig-nkxe": {
+        "domain": "data.ny.gov",
+        "name": "Hudson River Valley Greenway Water Trail Designated Sites",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "kayak_storage_racks",
+            "statute_mile"
+        ]
+    },
+    "sqdh-nqzk": {
+        "domain": "data.ny.gov",
+        "name": "Draft Title V Facility Permits",
+        "t_attrs": [
+            "comment_begin_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "mod"
+        ]
+    },
+    "vmn3-7znf": {
+        "domain": "data.ny.gov",
+        "name": "Public Employment Relations Board Decisions:  Beginning 1974",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "869e-5zik": {
+        "domain": "data.ny.gov",
+        "name": "Surplus Properties Sold: Beginning 2009",
+        "t_attrs": [
+            "closing_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "dot_region",
+            "sale_price",
+            "area_acres"
+        ]
+    },
+    "83a4-b7r2": {
+        "domain": "data.ny.gov",
+        "name": "BHO MH Engagement in Care: 2010-2014",
+        "t_attrs": [
+            "row_created_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "rate",
+            "numerator",
+            "denominator"
+        ]
+    },
+    "si2e-g6pa": {
+        "domain": "data.ny.gov",
+        "name": "American Recovery and Reinvestment Act (ARRA) Employment Numbers: 2009 - 2013",
+        "t_attrs": [
+            "beginning_dates"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_ftes_per_quarter",
+            "fra_high_speed_intercity_passenger_rail_grants",
+            "fhwa_ycip_grant",
+            "fhwa_ferry_boat_grants",
+            "calendar_quarter",
+            "epa_clean_diesel_grant"
+        ]
+    },
+    "vv5n-fzij": {
+        "domain": "data.ny.gov",
+        "name": "Hudson River Park Public Facilities & Points of Interest: 2013 - 2015",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "ph8g-y9wj": {
+        "domain": "data.ny.gov",
+        "name": "Environmental Conservation Staff Office Locations",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "longititude"
+        ]
+    },
+    "58ew-qhce": {
+        "domain": "data.ny.gov",
+        "name": "BHO SUD Continuity of Care: 2010-2014",
+        "t_attrs": [
+            "row_created_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "rate",
+            "denominator",
+            "numerator"
+        ]
+    },
+    "jzue-ib4p": {
+        "domain": "data.ny.gov",
+        "name": "BHO MH Continuity of Care: 2010-2014",
+        "t_attrs": [
+            "row_created_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "numerator",
+            "rate",
+            "denominator"
+        ]
+    },
+    "k4vb-judh": {
+        "domain": "data.ny.gov",
+        "name": "Daily Corporation and Other Entity Filing Data",
+        "t_attrs": [
+            "eff_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "y8rt-xmjq": {
+        "domain": "data.ny.gov",
+        "name": "BHO SUD Engagement in Care: 2010-2014",
+        "t_attrs": [
+            "row_created_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "rate",
+            "denominator",
+            "numerator"
+        ]
+    },
+    "kv7t-n8in": {
+        "domain": "data.ny.gov",
+        "name": "MTA Bus Hourly Ridership: Beginning February 2022",
+        "t_attrs": [
+            "transit_timestamp"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "transfers"
+        ]
+    },
+    "rc94-5y2u": {
+        "domain": "data.ny.gov",
+        "name": "Average Home Heating Oil Prices by Region: Beginning 1997",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "north_country_average_gal",
+            "upper_hudson_average_gal",
+            "lower_hudson_average_gal",
+            "new_york_city_average_gal",
+            "central_new_york_average",
+            "long_island_average_gal",
+            "western_new_york_average"
+        ]
+    },
+    "4n7x-kstx": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2016 Q1",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "keug-6vc5": {
+        "domain": "data.ny.gov",
+        "name": "Average Residential Retail Propane Prices by Region: Beginning 1997",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "long_island_average_gal",
+            "western_new_york_average",
+            "north_country_average_gal",
+            "central_new_york_average"
+        ]
+    },
+    "akrs-38uc": {
+        "domain": "data.ny.gov",
+        "name": "Average Residential Retail Kerosene Prices by Region: Beginning 2000",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "western_new_york_average",
+            "north_country_average_gal",
+            "central_new_york_average"
+        ]
+    },
+    "xfn5-qji9": {
+        "domain": "data.ny.gov",
+        "name": "Turnstile Usage Data: 2019",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "exits",
+            "entries"
+        ]
+    },
+    "uu7b-3kff": {
+        "domain": "data.ny.gov",
+        "name": "Turnstile Usage Data: 2021",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "exits",
+            "entries"
+        ]
+    },
+    "2v2y-ewnj": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2016 Q2",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "wwwd-za77": {
+        "domain": "data.ny.gov",
+        "name": "Beach Water Testing: Beginning 2015",
+        "t_attrs": [
+            "date_sample_taken"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "results",
+            "category"
+        ]
+    },
+    "ib6f-ap6m": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2016 Q3",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "qtg2-hjth": {
+        "domain": "data.ny.gov",
+        "name": "Harmful Algal Bloom Statewide Occurrence Summary: 2012-2018",
+        "t_attrs": [
+            "date_of_first_listing"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": []
+    },
+    "63wc-4exh": {
+        "domain": "data.ny.gov",
+        "name": "Corporations and Other Entities: All Filings",
+        "t_attrs": [
+            "approved_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "i77z-w4nh": {
+        "domain": "data.ny.gov",
+        "name": "New York State Fallen Firefighters Memorial Roll of Honor",
+        "t_attrs": [
+            "date_of_death"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "97vn-jxpr": {
+        "domain": "data.ny.gov",
+        "name": "Licensed Cigarette Stamping Agents, Wholesale Dealers of Cigarettes, Distributors of Tobacco Products and Licensed Wholesale Dealers of Tobacco Products",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "2tms-hftb": {
+        "domain": "data.ny.gov",
+        "name": "Corporations and Other Entities: All Filings - Address",
+        "t_attrs": [
+            "date_filed"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "addr_type"
+        ]
+    },
+    "jwv3-emfz": {
+        "domain": "data.ny.gov",
+        "name": "DEC Land Acquisition Annual Reports: Beginning 1990",
+        "t_attrs": [
+            "deed_vesting_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "equivalent_stream_miles",
+            "acres_conservation_easement",
+            "acres_fee",
+            "dec_region"
+        ]
+    },
+    "hspb-4n4p": {
+        "domain": "data.ny.gov",
+        "name": "All Statewide Energy Storage Projects",
+        "t_attrs": [
+            "interconnection_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "energy_storage_system_size"
+        ]
+    },
+    "bh5e-y6pe": {
+        "domain": "data.ny.gov",
+        "name": "ORDA Trails",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "ekwr-p59j": {
+        "domain": "data.ny.gov",
+        "name": "Corporations and Other Entities: All Filings - Name Status History",
+        "t_attrs": [
+            "date_filed"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "u6hu-h7p5": {
+        "domain": "data.ny.gov",
+        "name": "Wildland Search and Rescue Missions by NYS Forest Rangers: Beginning 2012",
+        "t_attrs": [
+            "incident_closed_date_time"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "number_of_rangers_involved",
+            "location_found_elevation",
+            "subject_age"
+        ]
+    },
+    "kfpc-xsws": {
+        "domain": "data.ny.gov",
+        "name": "DMV Office Locations, Hours and Messages",
+        "t_attrs": [
+            "message_begin_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "rc78-7x78": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Subway Elevator and Escalator Availability: Beginning 2015",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pm_peak_availability",
+            "am_peak_availability",
+            "entrapments",
+            "unscheduled_outages",
+            "scheduled_outages",
+            "station_mrn",
+            "station_complex_mrn",
+            "total_outages"
+        ]
+    },
+    "afs9-v7xx": {
+        "domain": "data.ny.gov",
+        "name": "DMV Peer To Peer Car Sharing",
+        "t_attrs": [
+            "group_policy_expiration_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "sknk-et96": {
+        "domain": "data.ny.gov",
+        "name": "Multifamily Residential Existing and New Construction Energy Efficiency Projects Reported By NYSERDA: Beginning 2005",
+        "t_attrs": [
+            "project_completed_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_estimated_electric_demand_reduction_mw",
+            "total_estimated_annual_energy_savings_mmbtu",
+            "total_estimated_electric_savings_mwh",
+            "proposed_install_unit_cost",
+            "funding_amount",
+            "number_of_units",
+            "number_of_buildings"
+        ]
+    },
+    "miub-n5th": {
+        "domain": "data.ny.gov",
+        "name": "New York State Forest Ranger Wildland Fire Reporting Database: Beginning 2008",
+        "t_attrs": [
+            "fire_start_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "other_structures_threatened",
+            "homes_losts",
+            "other_structures_lost",
+            "fatalities",
+            "injuries",
+            "region",
+            "complex_type",
+            "acreage",
+            "total",
+            "homes_threatened"
+        ]
+    },
+    "cxfs-ya8e": {
+        "domain": "data.ny.gov",
+        "name": "Elevator Individual Licenses: New York State Department of Labor",
+        "t_attrs": [
+            "expiration_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "3p6i-cv8y": {
+        "domain": "data.ny.gov",
+        "name": "DMV Driving Schools",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "bhia-729m": {
+        "domain": "data.ny.gov",
+        "name": "Electronic Waste Recycling Facilities List",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "extension"
+        ]
+    },
+    "3gg2-jgnp": {
+        "domain": "data.ny.gov",
+        "name": "Corporations and Other Entities: All Filings \u2013 Entity Status History",
+        "t_attrs": [
+            "date_filed"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "xt6e-eyna": {
+        "domain": "data.ny.gov",
+        "name": "Multifamily Residential Existing and New Construction Energy Efficiency Measures Reported By NYSERDA: Beginning 2005",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "total_estimated_annual_energy_savings_mmbtu_",
+            "est_annual_energy_sav_steam",
+            "est_annual_energy_sav_natgas",
+            "total_est_electric_savings",
+            "percent_installed",
+            "proposed_install_unit_cost",
+            "est_annual_energy_sav_oil",
+            "est_annual_energy_sav_propane",
+            "total_est_electric_demand_reduc",
+            "est_annual_energy_sav_other"
+        ]
+    },
+    "4a2x-yp8g": {
+        "domain": "data.ny.gov",
+        "name": "Residential Existing Homes (One-to-Four Units) Energy Efficiency Projects for Households with Income up to 60% State Median Income: Beginning January 2018",
+        "t_attrs": [
+            "project_completion_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "estimated_annual_kwh_savings",
+            "number_of_units",
+            "total_project_cost",
+            "estimated_annual_mmbtu_savings"
+        ]
+    },
+    "95my-wijm": {
+        "domain": "data.ny.gov",
+        "name": "Harmful Algal Blooms by Waterbody Summary: Beginning 2019",
+        "t_attrs": [
+            "date_first_report"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "number_of_reports"
+        ]
+    },
+    "bq25-wnyk": {
+        "domain": "data.ny.gov",
+        "name": "DMV Vision Registry Providers",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "ikqx-ispy": {
+        "domain": "data.ny.gov",
+        "name": "Mold Contractor Licenses: Four Year Window",
+        "t_attrs": [
+            "issued_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "fccm-griq": {
+        "domain": "data.ny.gov",
+        "name": "MTA Staten Island Railway On-Time Performance: Beginning 2006",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "scheduled_trips",
+            "on_time_performance_with",
+            "on_time_trips_with_boat",
+            "on_time_performance",
+            "on_time_trips",
+            "delayed_trains",
+            "delayed_trains_with_boat"
+        ]
+    },
+    "y496-mkk9": {
+        "domain": "data.ny.gov",
+        "name": "NYSWCB Workers\u2019 Compensation Claim \u2013 Multiple Body Parts",
+        "t_attrs": [
+            "assembly_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "iisb-7u6z": {
+        "domain": "data.ny.gov",
+        "name": "New York Truck Voucher Incentive Program (NYTVIP) Projects Reported By NYSERDA: Beginning 2019",
+        "t_attrs": [
+            "application_approval_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "voucher_amount",
+            "vehicle_count"
+        ]
+    },
+    "k3aj-27se": {
+        "domain": "data.ny.gov",
+        "name": "MTA Staten Island Railway Scheduled Trips: Beginning 2006",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "2c5p-4m2k": {
+        "domain": "data.ny.gov",
+        "name": "Climate Smart Communities List of Participating Local Governments",
+        "t_attrs": [
+            "certification_expiration_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "population_from_2010_census"
+        ]
+    },
+    "2xh4-m2qk": {
+        "domain": "data.ny.gov",
+        "name": "MTA Subway and Bus Employee Assaults and Harassments: Beginning 2019",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "harassment",
+            "harassment_subway",
+            "assault",
+            "assault_subway",
+            "harassment_bus",
+            "assault_bus"
+        ]
+    },
+    "n2pf-h43s": {
+        "domain": "data.ny.gov",
+        "name": "MTA Staten Island Railway Mean Distance Between Failures: Beginning 2006",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "number_of_failures",
+            "total_miles"
+        ]
+    },
+    "dnbf-xifz": {
+        "domain": "data.ny.gov",
+        "name": "Corporations and Other Entities: All Filings - Constituent",
+        "t_attrs": [
+            "date_filed"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "f8i8-k2gm": {
+        "domain": "data.ny.gov",
+        "name": "Current SLA Pending Licenses",
+        "t_attrs": [
+            "received_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "7xzk-zyk5": {
+        "domain": "data.ny.gov",
+        "name": "NYSERDA Supported Clean Energy Research and Development Projects: Beginning 1991",
+        "t_attrs": [
+            "award_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "kiwr-v7e8": {
+        "domain": "data.ny.gov",
+        "name": "Corporations and Other Entities: All Filings - Stock",
+        "t_attrs": [
+            "date_filed"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "stock_val_shr",
+            "stock_num_shrs"
+        ]
+    },
+    "5vqm-4rpf": {
+        "domain": "data.ny.gov",
+        "name": "Residential Existing Homes (One to Four Units) Energy Efficiency Meter Evaluated Project Data: 2007 \u2013 2012",
+        "t_attrs": [
+            "project_completion_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "evaluated_annual_electric_savings_kwh",
+            "reporting_gas_mmbtu",
+            "reporting_electric_kwh",
+            "baseline_gas_mmbtu",
+            "baseline_electric_kwh",
+            "estimated_annual_electric_savings_kwh",
+            "amount_financed_through_program",
+            "total_incentives",
+            "contractor_incentive",
+            "total_project_cost",
+            "year_home_built",
+            "volume_of_home",
+            "size_of_home",
+            "weather_station",
+            "evaluated_annual_gas_savings_mmbtu",
+            "estimated_annual_gas_savings_mmbtu",
+            "number_of_units"
+        ]
+    },
+    "bvn2-rs8p": {
+        "domain": "data.ny.gov",
+        "name": "Corporations and Other Entities: All Filings - Limited Partnerships",
+        "t_attrs": [
+            "date_filed"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "film_num"
+        ]
+    },
+    "astg-28hp": {
+        "domain": "data.ny.gov",
+        "name": "Construction Fatalities: Beginning 2022",
+        "t_attrs": [
+            "date_death_occurred"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "23fs-vfbd": {
+        "domain": "data.ny.gov",
+        "name": "MTA Subway and Bus Vandalism: Beginning 2021",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "train_glass",
+            "graffiti_subways",
+            "lcd_screen",
+            "bus_glass",
+            "graffiti_buses",
+            "mvm",
+            "omny"
+        ]
+    },
+    "ys8p-aqus": {
+        "domain": "data.ny.gov",
+        "name": "New York Hazardous Waste Manifest Data: 2006 - 2018",
+        "t_attrs": [
+            "tsdf_sign_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "waste_qty",
+            "num_of_containers",
+            "line_item_num",
+            "page_num",
+            "specific_gravity"
+        ]
+    },
+    "39hk-dx4f": {
+        "domain": "data.ny.gov",
+        "name": "MTA Subway Stations",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "98mr-pebg": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Paratransit Customer Complaints: Beginning 2016",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "48yz-n8mx": {
+        "domain": "data.ny.gov",
+        "name": "Water Furnace Geothermal Heat Pumps: Symphony Time Series: April 2015 - November 2016",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "room_air_temp",
+            "primary_heating_coil_runtime",
+            "operating_mode",
+            "ambient_outdoor_temp",
+            "loop_flow_rate",
+            "loop_pump_speed",
+            "total_unit_power",
+            "pump_power",
+            "leaving_loop_field_water_temp",
+            "leaving_air_temperature",
+            "heat_of_extraction_and_rejection",
+            "fan_power",
+            "entering_loop_filed_water_temp",
+            "compressor_power",
+            "aux_power_supplied_heating_coil",
+            "fan",
+            "secondary_heating_coil_runtime",
+            "secondary_compressor_runtime",
+            "primary_compressor_runtime",
+            "hot_water_pump_runtime",
+            "fan_speed",
+            "compressor_speed"
+        ]
+    },
+    "gppk-4zzn": {
+        "domain": "data.ny.gov",
+        "name": "PSYCKES Antipsychotic Polypharmacy Quality Indicators: Beginning 2012",
+        "t_attrs": [
+            "row_created_dtm"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_of_population",
+            "with_qi_flag",
+            "eligible_population",
+            "region_percent"
+        ]
+    },
+    "rube-svnv": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Paratransit Pickup On-Time Performance: Beginning 2016",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pickups_within_standards",
+            "total_pickups",
+            "hour_of_promise_time"
+        ]
+    },
+    "k7j9-jnct": {
+        "domain": "data.ny.gov",
+        "name": "Turnstile Usage Data: 2022",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "exits",
+            "entries"
+        ]
+    },
+    "4xir-miej": {
+        "domain": "data.ny.gov",
+        "name": "NYS Forest Ranger Wildfires for FireFamily Plus 4.1: 1975-2007",
+        "t_attrs": [
+            "discovery"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "latmm",
+            "state",
+            "firenumber",
+            "generalcause",
+            "wildnum",
+            "county",
+            "total_acres",
+            "statisticalcause",
+            "specificcause",
+            "latss",
+            "lonss",
+            "latdd",
+            "londd",
+            "class_people",
+            "section",
+            "lonmm"
+        ]
+    },
+    "x64c-i76x": {
+        "domain": "data.ny.gov",
+        "name": "MTA LIRR Service Reliability: Beginning 2015",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "lirrlowadhesiondelays",
+            "noofshorttrains",
+            "avgdelayperlatetrain",
+            "nooftrainsover15minslate",
+            "_4mto6mtraindelays"
+        ]
+    },
+    "5e2x-mz3d": {
+        "domain": "data.ny.gov",
+        "name": "Pilot Pharmaceutical Take-Back Program Medication Collection Boxes",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "6kq9-5ikh": {
+        "domain": "data.ny.gov",
+        "name": "MTA LIRR On-Time Performance: Beginning 2015",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "otp",
+            "off_peak",
+            "pm_peak",
+            "am_peak"
+        ]
+    },
+    "3te2-xtd4": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Paratransit Max Ride Time Performance: Beginning 2018",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "perfomance"
+        ]
+    },
+    "7mt2-y7ip": {
+        "domain": "data.ny.gov",
+        "name": "MTA Bus Mean Distance Between Failures: Beginning 2015",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "monthly_miles",
+            "monthly_mdbf",
+            "monthly_road_call_count"
+        ]
+    },
+    "h6jr-vxqt": {
+        "domain": "data.ny.gov",
+        "name": "Mold Individual Licenses: Four Year Window",
+        "t_attrs": [
+            "issued_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "vxtc-b4mv": {
+        "domain": "data.ny.gov",
+        "name": "New York State RGGI Auction Proceeds",
+        "t_attrs": [
+            "auction_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "new_york_state_allowances",
+            "new_york_state_auction",
+            "clearing_price"
+        ]
+    },
+    "6r5t-chrj": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Paratransit Call Center Performance: Beginning 2016",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "number_of_calls_received",
+            "number_of_calls_picked_up"
+        ]
+    },
+    "wtm4-vjm7": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Paratransit Ride Time: Beginning 2017",
+        "t_attrs": [
+            "trip_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_trips"
+        ]
+    },
+    "nxai-wcbd": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Paratransit Drop-off On-Time Performance: Beginning 2018",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "hour_of_promise_time",
+            "total_appointment_trips",
+            "trips_within_arrival_time"
+        ]
+    },
+    "bvve-d2q8": {
+        "domain": "data.ny.gov",
+        "name": "Public Cemetery Locations",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "pfuu-4nqq": {
+        "domain": "data.ny.gov",
+        "name": "Thruway Toll Gantries",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "milepost"
+        ]
+    },
+    "e6z5-r6zp": {
+        "domain": "data.ny.gov",
+        "name": "Artificial Reef Aerial Survey Boat Count: Beginning 1995",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "number_of_boats"
+        ]
+    },
+    "jrac-r9vc": {
+        "domain": "data.ny.gov",
+        "name": "Elevator Contractor License: New York State Department of Labor",
+        "t_attrs": [
+            "expiration_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "vbt5-m68g": {
+        "domain": "data.ny.gov",
+        "name": "Substance Use Disorder Continuity of Medication",
+        "t_attrs": [
+            "row_created_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "numerator",
+            "denominator",
+            "rate",
+            "ytd_denominator",
+            "grouping_level",
+            "ytd_rate",
+            "ytd_numerator"
+        ]
+    },
+    "hrau-ksig": {
+        "domain": "data.ny.gov",
+        "name": "MTA Customer Feedback Performance Metrics: Beginning 2017",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "commendations_rate",
+            "total_commendations",
+            "complaints_rate",
+            "total_complaints"
+        ]
+    },
+    "twsw-2mqa": {
+        "domain": "data.ny.gov",
+        "name": "MTA Procurements: Beginning 2018",
+        "t_attrs": [
+            "renewal_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fair_market_value",
+            "number_of_mwbe_proposals",
+            "current_or_outstanding_balance",
+            "contract_amount"
+        ]
+    },
+    "cpjs-d6ua": {
+        "domain": "data.ny.gov",
+        "name": "MTA LIRR Mean Distance Between Failures: Beginning 2015",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fleet_owned",
+            "mdbf_goal",
+            "no_of_primary_failures",
+            "mdbfvalue"
+        ]
+    },
+    "9hjt-526f": {
+        "domain": "data.ny.gov",
+        "name": "MTA LIRR Elevator and Escalator Availability: Beginning 2019",
+        "t_attrs": [
+            "rundate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "escalator_availability",
+            "elevator_availability"
+        ]
+    },
+    "u2sw-7hnm": {
+        "domain": "data.ny.gov",
+        "name": "Substance Use Disorder Ambulatory Follow-up",
+        "t_attrs": [
+            "row_created_date_time"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "ytd_rate",
+            "rate",
+            "ytd_denominator",
+            "numerator",
+            "denominator",
+            "grouping_level",
+            "ytd_numerator"
+        ]
+    },
+    "em4e-ui5w": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2018 Q4",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "rd33-n4tx": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2020 Q3",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "ka57-re2h": {
+        "domain": "data.ny.gov",
+        "name": "MTA LIRR Lost Time Rates: Beginning 2019",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "train_collisions",
+            "train_derailments",
+            "lost_time_injury_rate"
+        ]
+    },
+    "cci8-aavx": {
+        "domain": "data.ny.gov",
+        "name": "New Debt Issuance for Industrial Development Agencies",
+        "t_attrs": [
+            "bond_closing_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "refunding_amount",
+            "cost_of_issuance",
+            "true_interest_cost",
+            "total_amount",
+            "new_amount"
+        ]
+    },
+    "t9kf-dqbc": {
+        "domain": "data.ny.gov",
+        "name": "Lobbyist Bi-Monthly Reports: Beginning 2019",
+        "t_attrs": [
+            "expense_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "compensation",
+            "expenses_less_than_75",
+            "reimbursed_expenses",
+            "itemized_expenses"
+        ]
+    },
+    "hpua-e653": {
+        "domain": "data.ny.gov",
+        "name": "MTA LIRR Service Delivered: Beginning 2019",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "scheduled",
+            "cancelled",
+            "actual",
+            "terminated"
+        ]
+    },
+    "47iu-idvc": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Paratransit Provider No-Shows: Beginning 2016",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "dbvb-arac": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2019 Q1",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "gmgn-7c6j": {
+        "domain": "data.ny.gov",
+        "name": "Daily Admissions at Olympic Regional Development Authority Sites: Beginning 2013",
+        "t_attrs": [
+            "visitdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "visits"
+        ]
+    },
+    "8vjt-4zv4": {
+        "domain": "data.ny.gov",
+        "name": "MTA Subway and Bus Lost Time Accidents: Beginning 2021",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "employees"
+        ]
+    },
+    "qcq2-54zs": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2017 Q2",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "cenn-een2": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2017 Q4",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "qbd7-9grw": {
+        "domain": "data.ny.gov",
+        "name": "New Debt Issuance for Local Authorities",
+        "t_attrs": [
+            "bond_closing_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "refunding_amount",
+            "cost_of_issuance",
+            "new_amount",
+            "total_amount",
+            "true_interest_cost"
+        ]
+    },
+    "qr57-4xwt": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2019 Q2",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "4cm6-mt65": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2017 Q1",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "6pyz-s495": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2018 Q1",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "u86z-3xmg": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2018 Q2",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "ppqs-ie7i": {
+        "domain": "data.ny.gov",
+        "name": "ACT Baseline Characteristics Summary: 5 Year Window",
+        "t_attrs": [
+            "date_created"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "forensic_involvement",
+            "diagnosis_bipolar_disorder",
+            "diagnosis_schizophrenia",
+            "education_unknown",
+            "education_other",
+            "education_some_college",
+            "education_high_school",
+            "education_less_than_high",
+            "living_situation_unknown",
+            "living_situation_other",
+            "living_situation_institution",
+            "living_situation_unstably",
+            "living_situation_supported",
+            "living_situation_private",
+            "ethnicity_unknown",
+            "ethnicity_hispanic",
+            "race_unknown",
+            "race_other",
+            "race_white",
+            "gender_male",
+            "length_of_stay_more_than",
+            "property_damage",
+            "any_substance_use",
+            "psychiatric_hospitalization",
+            "gender_female",
+            "diagnosis_other",
+            "psychiatric_medication",
+            "race_black",
+            "employed",
+            "psychiatric_er",
+            "living_situation_homeless",
+            "diagnosis_depression",
+            "harm_to_self",
+            "harm_to_others"
+        ]
+    },
+    "sxc9-62bc": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2017 Q3",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "n6g4-x6f5": {
+        "domain": "data.ny.gov",
+        "name": "DMV Road Test Sites",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    "wvrx-ifa3": {
+        "domain": "data.ny.gov",
+        "name": "US SBA COVID 19 Relief to NYS Business - Shuttered Venue Operator Grant Program",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "svog_total_amount"
+        ]
+    },
+    "fs34-eajg": {
+        "domain": "data.ny.gov",
+        "name": "ACT Admission to Discharge Outcomes: 5 Year Window",
+        "t_attrs": [
+            "date_created"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "forensic_involvement_at",
+            "forensic_involvement_at_1",
+            "harm_to_self_at_admission",
+            "harm_to_self_at_discharge",
+            "harm_to_others_at_admission",
+            "living_situation_homeless",
+            "education_enrollment_at",
+            "education_enrollment_at_1",
+            "employed_at_discharge",
+            "active_aot_status_at_discharge",
+            "psychiatric_hospitalization",
+            "psychiatric_er_visit_at",
+            "psychiatric_er_visit_at_1",
+            "living_situation_institution_1",
+            "living_situation_institution",
+            "living_situation_supported_1",
+            "living_situation_supported",
+            "living_situation_private_1",
+            "living_situation_private",
+            "denominator",
+            "property_damage_at_admission",
+            "harm_to_others_at_discharge",
+            "substance_use_disorder_at_1",
+            "psychiatric_hospitalization_1",
+            "employed_at_admission",
+            "living_situation_homeless_1",
+            "living_situation_unstably_1",
+            "substance_use_disorder_at",
+            "living_situation_unstably",
+            "active_aot_status_at_admission",
+            "homeless_at_discharge",
+            "homeless_at_admission",
+            "any_substance_use_at_discharge",
+            "any_substance_use_at_admission",
+            "property_damage_at_discharge"
+        ]
+    },
+    "ef6i-49uj": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2016 Q4",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "iye6-nvrn": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2019 Q3",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "awza-4vgu": {
+        "domain": "data.ny.gov",
+        "name": "NYS Electric Utility Service Territories",
+        "t_attrs": [
+            "datemod"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "97i4-p3k5": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2020 Q2",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "c8rz-crzu": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2018 Q3",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "7wmq-pqff": {
+        "domain": "data.ny.gov",
+        "name": "MTA LIRR Systemwide Delays: Beginning 2015",
+        "t_attrs": [
+            "servicedate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "nooftrains"
+        ]
+    },
+    "83xh-6x8i": {
+        "domain": "data.ny.gov",
+        "name": "New Debt Issuance for State Authorities",
+        "t_attrs": [
+            "bond_closing_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cost_of_issuance",
+            "new_amount",
+            "refunding_amount",
+            "true_interest_cost",
+            "total_amount"
+        ]
+    },
+    "kvw9-79kv": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2020 Q1",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "2gh5-69b8": {
+        "domain": "data.ny.gov",
+        "name": "NYS Thruway Origin and Destination Points for All Vehicles - 15 Minute Intervals: 2019 Q4",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "vehicle_count"
+        ]
+    },
+    "sh2f-cc7d": {
+        "domain": "data.ny.gov",
+        "name": "New Debt Issuance for Local Development Corporations",
+        "t_attrs": [
+            "bond_closing_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cost_of_issuance",
+            "true_interest_cost",
+            "total_amount",
+            "refunding_amount",
+            "new_amount"
+        ]
+    },
+    "qu52-5ejz": {
+        "domain": "data.ny.gov",
+        "name": "MTA Access-A-Ride Customer Experience: 2018 to 2020",
+        "t_attrs": [
+            "servicedate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "experiencepercentage"
+        ]
+    },
+    "qwti-3ybe": {
+        "domain": "data.ny.gov",
+        "name": "DMV Driver Sanctions: Four Year Window",
+        "t_attrs": [
+            "effective_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pseudonym"
+        ]
+    },
+    "83hw-i6xw": {
+        "domain": "data.ny.gov",
+        "name": "MTA Metro-North On-Time Performance: Beginning 2020",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "off_peak",
+            "otp"
+        ]
+    },
+    "dtj7-qync": {
+        "domain": "data.ny.gov",
+        "name": "MTA Bridges & Tunnels Monthly Traffic Rates: Beginning 2005",
+        "t_attrs": [
+            "collection_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total",
+            "class_21",
+            "class_20",
+            "class_14",
+            "class_12",
+            "class_10",
+            "class_8",
+            "class_4",
+            "class_15",
+            "class_2",
+            "class_13",
+            "class_11",
+            "class_7",
+            "class_19",
+            "class_18",
+            "class_17",
+            "class_16",
+            "class_9",
+            "class_6",
+            "class_5",
+            "class_3",
+            "class_1",
+            "plaza"
+        ]
+    },
+    "cdm6-cd46": {
+        "domain": "data.ny.gov",
+        "name": "MTA LIRR Chargebacks: Beginning 2015",
+        "t_attrs": [
+            "servicedate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "chargebackamt",
+            "chargebackpercentage"
+        ]
+    },
+    "6dg3-2z7i": {
+        "domain": "data.ny.gov",
+        "name": "Current SLA Inactive Licenses",
+        "t_attrs": [
+            "expiration_date"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "class",
+            "type"
+        ]
+    },
+    "6fc5-5xk2": {
+        "domain": "data.ny.gov",
+        "name": "MTA LIRR Fare Collection Failure Rates: Beginning 2015",
+        "t_attrs": [
+            "servicedate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "collectionsuccesspercentage",
+            "collectionfailurepercentage",
+            "incorrectsuccesspercentage",
+            "incorrectfailurepercentage",
+            "incorrectfarecollected",
+            "farenotcollected",
+            "conductornotseen"
+        ]
+    },
+    "sguy-yhj4": {
+        "domain": "data.ny.gov",
+        "name": "MTA Metro-North Service Reliability: Beginning 2020",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "noofshorttrains",
+            "avgdelayperlatetrain",
+            "_4mto6mtraindelays",
+            "nooftrainsover15minslate"
+        ]
+    },
+    "uf7t-sfzu": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Safety Data: Beginning 2019",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "value"
+        ]
+    },
+    "jt9p-47ua": {
+        "domain": "data.ny.gov",
+        "name": "MTA Metro-North Service Delivered: Beginning January 2019",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "terminated",
+            "actual",
+            "scheduled",
+            "cancelled"
+        ]
+    },
+    "6xy8-yzzu": {
+        "domain": "data.ny.gov",
+        "name": "MTA Customer Engagement Statistics: 2017-2022",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "written_feedback_received",
+            "social_media_responses_sent",
+            "social_media_mentions",
+            "help_point_total_wait_time",
+            "help_point_activations",
+            "avg_time_to_answer_s",
+            "total_wait_time_min",
+            "calls_answered",
+            "social_media_customer",
+            "help_point_avg_time_to_answer",
+            "calls_answered_rate",
+            "total_incoming_calls",
+            "written_responses_sent"
+        ]
+    },
+    "4qd6-ptxx": {
+        "domain": "data.ny.gov",
+        "name": "MTA Metro-North Mean Distance Between Failures: Beginning 2018",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fleet_owned",
+            "no_of_primary_failures",
+            "mdbf_goal",
+            "no_of_primary_failures_goal",
+            "mdbf_value"
+        ]
+    },
+    "cxps-6wkq": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Paratransit Registrants: Beginning 2018",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "registrants"
+        ]
+    },
+    "v7rp-a6ru": {
+        "domain": "data.ny.gov",
+        "name": "MTA Metro-North Lost Time Rates: Beginning 2019",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "employee_lost_time_injury",
+            "train_collisions",
+            "train_derailments"
+        ]
+    },
+    "4tpr-3bvc": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Express Bus Capacity: Beginning 2023",
+        "t_attrs": [
+            "week"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "trips_with_apc",
+            "load_percentage"
+        ]
+    },
+    "b5mc-nrji": {
+        "domain": "data.ny.gov",
+        "name": "MTA Bus Mean Distance Between Service Interruptions: Beginning 2015",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "monthly_road_call_count",
+            "monthly_mdbsi",
+            "monthly_miles"
+        ]
+    },
+    "kf6s-w5a7": {
+        "domain": "data.ny.gov",
+        "name": "MTA Bus System Fleet Age: Beginning 2015",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_of_buses",
+            "fleet_age"
+        ]
+    },
+    "7nhx-5bmg": {
+        "domain": "data.ny.gov",
+        "name": "MTA Bus Weekday Pull Out Performance: Beginning 2015",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "monthly_pull_out",
+            "scheduled_buses",
+            "operating_buses"
+        ]
+    },
+    "sze3-m8qh": {
+        "domain": "data.ny.gov",
+        "name": "MTA Debt Outstanding",
+        "t_attrs": [
+            "posted_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "outstanding_fixed_rate_par",
+            "outstanding_variable_rate_par",
+            "outstanding_synthetic_fixed_par",
+            "tic",
+            "total_outstanding_par",
+            "principal_amount_at_issuance"
+        ]
+    },
+    "ax67-8386": {
+        "domain": "data.ny.gov",
+        "name": "MTA Metro-North Elevator and Escalator Availability: Beginning 2021",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "elevator_availability",
+            "escalator_availability"
+        ]
+    },
+    "d763-dxxz": {
+        "domain": "data.ny.gov",
+        "name": "MTA Department Workforce Positions: Beginning 2017",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "budget",
+            "actuals"
+        ]
+    },
+    "jm7j-e7gc": {
+        "domain": "data.ny.gov",
+        "name": "MTA LIRR Major Incidents Beginning 2020",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "off_peak_terminated",
+            "off_peak_canceled",
+            "off_peak_late",
+            "pm_peak_canceled",
+            "pm_peak_late",
+            "am_peak_terminated",
+            "am_peak_canceled",
+            "am_peak_late",
+            "pm_peak_terminated"
+        ]
+    },
+    "vf6y-3my4": {
+        "domain": "data.ny.gov",
+        "name": "MTA Bridges & Tunnels Monthly E-ZPass Usage Rates: Beginning 2005",
+        "t_attrs": [
+            "collection_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "class_16",
+            "class_14",
+            "class_10",
+            "class_9",
+            "class_8",
+            "class_7",
+            "class_6",
+            "plaza",
+            "class_19",
+            "class_11",
+            "class_5",
+            "total",
+            "class_20",
+            "class_18",
+            "class_13",
+            "class_15",
+            "class_3",
+            "class_2",
+            "class_21",
+            "class_17",
+            "class_12",
+            "class_4",
+            "class_1"
+        ]
+    },
+    "qym9-xzj6": {
+        "domain": "data.ny.gov",
+        "name": "Client Semi-Annual Report: Beginning 2019",
+        "t_attrs": [
+            "itemized_expense_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "itemized_expense_amount",
+            "lobbying_expenses_less_than_75",
+            "current_period_reimbursement",
+            "current_period_compensation"
+        ]
+    },
+    "i7nm-ih89": {
+        "domain": "data.ny.gov",
+        "name": "NYS Gas Utility Service Territories",
+        "t_attrs": [
+            "datemod"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "d3jr-hyjf": {
+        "domain": "data.ny.gov",
+        "name": "MTA Occupational Group Workforce Positions: Beginning 2017",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "actuals",
+            "budget"
+        ]
+    },
+    "dpe3-6uw2": {
+        "domain": "data.ny.gov",
+        "name": "Birding Trail Locations",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "dec_region"
+        ]
+    },
+    "s3yp-8c47": {
+        "domain": "data.ny.gov",
+        "name": "MTA Metro-North Major Incidents: Beginning 2022",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "off_peak_terminated",
+            "off_peak_late",
+            "pm_peak_canceled",
+            "pm_peak_late",
+            "am_peak_late",
+            "off_peak_canceled",
+            "pm_peak_terminated",
+            "am_peak_canceled",
+            "am_peak_terminated"
+        ]
+    },
+    "dips-jfpb": {
+        "domain": "data.ny.gov",
+        "name": "MTA Fuel Hedging",
+        "t_attrs": [
+            "posted_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_of_expected_ulsd_gallons_purchased",
+            "current_adopted_budget_forecasted_commodity_price",
+            "ulsd_gallons_hedged"
+        ]
+    },
+    "rmfq-74ji": {
+        "domain": "data.ny.gov",
+        "name": "MTA NYCT Paratransit Drop-off On-Time Performance: 2016 - 2019 (Archived Methodology)",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "dropoffs_within_standard",
+            "total_appointment_trips",
+            "hour_of_promise_time"
+        ]
+    },
+    "ffd8-nyat": {
+        "domain": "data.ny.gov",
+        "name": "Public Corporation Bi-Monthly Report: Beginning 2019",
+        "t_attrs": [
+            "expense_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_contribution_amount_incl_members_contribution",
+            "itemized_expense",
+            "expenses_less_than_75",
+            "non_lobbying_expenses",
+            "itemized_expense_details_amount",
+            "retained_lobbyist_current"
+        ]
+    },
+    "yeek-jhmu": {
+        "domain": "data.ny.gov",
+        "name": "MTA Major Felonies",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "felony_count"
+        ]
+    }
+}

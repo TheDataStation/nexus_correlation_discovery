@@ -1,0 +1,3229 @@
+{
+    "dik5-hwp6": {},
+    "2nrs-mtv8": {
+        "avg_part_1_2_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_part_1_2_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_premis_cd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_premis_cd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "63jg-8b9z": {
+        "avg_part_1_2_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_part_1_2_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "q3ak-s5hy": {},
+    "wjz9-h9np": {
+        "avg_fine_amount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_fine_amount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_agency_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_agency_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_issue_time_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_issue_time_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "hf3r-utnq": {},
+    "94wu-3ps3": {
+        "avg_s_b_t1": {
+            "missing_ratio": 0.12,
+            "zero_ratio": 0.39
+        },
+        "avg_s_b_t2": {
+            "missing_ratio": 0.12,
+            "zero_ratio": 0.39
+        },
+        "avg_w_b_t1": {
+            "missing_ratio": 0.14,
+            "zero_ratio": 0.38
+        },
+        "avg_w_b_t2": {
+            "missing_ratio": 0.14,
+            "zero_ratio": 0.38
+        },
+        "avg_n_b_t1": {
+            "missing_ratio": 0.12,
+            "zero_ratio": 0.39
+        },
+        "avg_n_b_t2": {
+            "missing_ratio": 0.12,
+            "zero_ratio": 0.39
+        },
+        "avg_total_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_e_b_t1": {
+            "missing_ratio": 0.14,
+            "zero_ratio": 0.39
+        },
+        "avg_e_b_t2": {
+            "missing_ratio": 0.14,
+            "zero_ratio": 0.39
+        }
+    },
+    "84iq-i2r6": {},
+    "g3qu-7q2u": {
+        "avg_passenger_count_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_passenger_count_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "r4ka-x5je": {},
+    "ci25-wgt7": {},
+    "e7h6-4a3e": {},
+    "8cmr-fbcu": {},
+    "qyvz-diiw": {
+        "avg_recycled_water_of_total_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.49
+        },
+        "avg_recycled_water_of_total_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.49
+        },
+        "avg_recycled_water_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.47
+        },
+        "avg_recycled_water_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.47
+        },
+        "avg_local_groundwater_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_local_groundwater_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_local_groundwater_of_total_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_local_groundwater_of_total_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_la_aqueduct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_la_aqueduct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_mwd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_mwd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_la_aqueduct_of_total_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_la_aqueduct_of_total_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_mwd_of_toal_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_mwd_of_toal_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_acre_feet_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_acre_feet_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "mgue-vbsx": {},
+    "j4zm-9kqu": {},
+    "nayp-w2tw": {},
+    "j7mw-thyc": {
+        "avg_refno_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_refno_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "bpyg-ytsg": {
+        "avg__311_avg_call_wait_time_change_yoy_seconds_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.0
+        },
+        "avg__311_avg_call_wait_time_change_yoy_seconds_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.0
+        },
+        "avg__311_avg_call_wait_times_seconds_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg__311_avg_call_wait_times_seconds_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_of_311_requests_by_app_web_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.12
+        },
+        "avg_of_311_requests_by_app_web_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.12
+        },
+        "avg_total_311_contacts_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_311_contacts_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_311_requests_using_app_web_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.12
+        },
+        "avg_total_311_requests_using_app_web_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.12
+        }
+    },
+    "jsff-uc6b": {
+        "avg_state_deaths_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_state_deaths_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_deaths_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_deaths_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_new_state_cases_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.1
+        },
+        "avg_new_state_cases_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.1
+        },
+        "avg_new_state_deaths_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.46
+        },
+        "avg_new_state_deaths_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.46
+        },
+        "avg_new_cases_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.54
+        },
+        "avg_new_cases_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.54
+        },
+        "avg_cases_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cases_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_new_deaths_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.59
+        },
+        "avg_new_deaths_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.59
+        },
+        "avg_state_cases_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_state_cases_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "trxm-jn3c": {
+        "avg_biscailuz_gallery_t1": {
+            "missing_ratio": 0.39,
+            "zero_ratio": 0.29
+        },
+        "avg_biscailuz_gallery_t2": {
+            "missing_ratio": 0.39,
+            "zero_ratio": 0.29
+        },
+        "avg_visitor_center_avila_adobe_t1": {
+            "missing_ratio": 0.38,
+            "zero_ratio": 0.27
+        },
+        "avg_visitor_center_avila_adobe_t2": {
+            "missing_ratio": 0.38,
+            "zero_ratio": 0.27
+        },
+        "avg_gateway_to_nature_center_t1": {
+            "missing_ratio": 0.45,
+            "zero_ratio": 0.35
+        },
+        "avg_gateway_to_nature_center_t2": {
+            "missing_ratio": 0.45,
+            "zero_ratio": 0.35
+        },
+        "avg_avila_adobe_t1": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.12
+        },
+        "avg_avila_adobe_t2": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.12
+        },
+        "avg_firehouse_museum_t1": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.12
+        },
+        "avg_firehouse_museum_t2": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.12
+        },
+        "avg_pico_house_t1": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.38
+        },
+        "avg_pico_house_t2": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.38
+        },
+        "avg_iamla_t1": {
+            "missing_ratio": 0.32,
+            "zero_ratio": 0.12
+        },
+        "avg_iamla_t2": {
+            "missing_ratio": 0.32,
+            "zero_ratio": 0.12
+        },
+        "avg_chinese_american_museum_t1": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.15
+        },
+        "avg_chinese_american_museum_t2": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.15
+        },
+        "avg_museum_of_social_justice_t1": {
+            "missing_ratio": 0.47,
+            "zero_ratio": 0.11
+        },
+        "avg_museum_of_social_justice_t2": {
+            "missing_ratio": 0.47,
+            "zero_ratio": 0.11
+        },
+        "avg_hellman_quon_t1": {
+            "missing_ratio": 0.55,
+            "zero_ratio": 0.25
+        },
+        "avg_hellman_quon_t2": {
+            "missing_ratio": 0.55,
+            "zero_ratio": 0.25
+        },
+        "avg_america_tropical_interpretive_center_t1": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.13
+        },
+        "avg_america_tropical_interpretive_center_t2": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.13
+        }
+    },
+    "ryvm-a59m": {},
+    "t6kt-2yic": {
+        "avg_non_emergency_calls_answered_within_20_seconds_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_non_emergency_calls_answered_within_20_seconds_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg__911_calls_answered_within_10_seconds_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg__911_calls_answered_within_10_seconds_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_gang_crimes_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_gang_crimes_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_part_1_crimes_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_part_1_crimes_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_collisions_t1": {
+            "missing_ratio": 0.33,
+            "zero_ratio": 0.0
+        },
+        "avg_collisions_t2": {
+            "missing_ratio": 0.33,
+            "zero_ratio": 0.0
+        },
+        "avg_sworn_officers_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_sworn_officers_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "29fd-3paw": {
+        "avg_score_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_score_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_program_element_pe_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_program_element_pe_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "xwgr-xw5q": {},
+    "m4ev-cuzz": {
+        "avg_of_attendees_at_children_s_and_teen_programming_t1": {
+            "missing_ratio": 0.51,
+            "zero_ratio": 0.0
+        },
+        "avg_of_attendees_at_children_s_and_teen_programming_t2": {
+            "missing_ratio": 0.51,
+            "zero_ratio": 0.0
+        },
+        "avg_total_computer_usage_wireless_pc_sessions_t1": {
+            "missing_ratio": 0.18,
+            "zero_ratio": 0.0
+        },
+        "avg_total_computer_usage_wireless_pc_sessions_t2": {
+            "missing_ratio": 0.18,
+            "zero_ratio": 0.0
+        },
+        "avg_total_cardholders_t1": {
+            "missing_ratio": 0.1,
+            "zero_ratio": 0.0
+        },
+        "avg_total_cardholders_t2": {
+            "missing_ratio": 0.1,
+            "zero_ratio": 0.0
+        },
+        "avg_total_emedia_circulation_t1": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.0
+        },
+        "avg_total_emedia_circulation_t2": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.0
+        },
+        "avg_total_program_attendees_t1": {
+            "missing_ratio": 0.05,
+            "zero_ratio": 0.0
+        },
+        "avg_total_program_attendees_t2": {
+            "missing_ratio": 0.05,
+            "zero_ratio": 0.0
+        },
+        "avg_new_cardholders_t1": {
+            "missing_ratio": 0.18,
+            "zero_ratio": 0.0
+        },
+        "avg_new_cardholders_t2": {
+            "missing_ratio": 0.18,
+            "zero_ratio": 0.0
+        },
+        "avg_total_library_visitors_t1": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.01
+        },
+        "avg_total_library_visitors_t2": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.01
+        }
+    },
+    "9z5d-hgrh": {},
+    "u6ri-98iw": {},
+    "cibt-wiru": {},
+    "d3a2-7j6v": {
+        "avg_passenger_count_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_passenger_count_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        }
+    },
+    "tss8-455b": {},
+    "2yrw-q8tw": {
+        "avg_netenergymetering_installed_capacity_kw_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_netenergymetering_installed_capacity_kw_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "ckya-qgys": {
+        "avg_score_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_score_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_points_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_points_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_program_element_pe_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_program_element_pe_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "6xuk-a67v": {
+        "avg_meetings_held_t1": {
+            "missing_ratio": 0.82,
+            "zero_ratio": 0.0
+        },
+        "avg_meetings_held_t2": {
+            "missing_ratio": 0.82,
+            "zero_ratio": 0.0
+        },
+        "avg_materials_distributed_t1": {
+            "missing_ratio": 0.48,
+            "zero_ratio": 0.0
+        },
+        "avg_materials_distributed_t2": {
+            "missing_ratio": 0.48,
+            "zero_ratio": 0.0
+        },
+        "avg_antendees_t1": {
+            "missing_ratio": 0.42,
+            "zero_ratio": 0.0
+        },
+        "avg_antendees_t2": {
+            "missing_ratio": 0.42,
+            "zero_ratio": 0.0
+        }
+    },
+    "j6u4-c4yh": {
+        "avg_secuirtycheckpoint_t1": {
+            "missing_ratio": 0.47,
+            "zero_ratio": 0.2
+        },
+        "avg_secuirtycheckpoint_t2": {
+            "missing_ratio": 0.47,
+            "zero_ratio": 0.2
+        }
+    },
+    "ajiv-uc63": {
+        "avg_flightopscount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_flightopscount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        }
+    },
+    "97ra-aqza": {},
+    "mbhz-6it5": {
+        "avg_antendees_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_antendees_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "4k67-bwgi": {
+        "avg_antendees_t1": {
+            "missing_ratio": 0.39,
+            "zero_ratio": 0.0
+        },
+        "avg_antendees_t2": {
+            "missing_ratio": 0.39,
+            "zero_ratio": 0.0
+        },
+        "avg_materials_distributed_t1": {
+            "missing_ratio": 0.36,
+            "zero_ratio": 0.02
+        },
+        "avg_materials_distributed_t2": {
+            "missing_ratio": 0.36,
+            "zero_ratio": 0.02
+        },
+        "avg_meetings_held_t1": {
+            "missing_ratio": 0.64,
+            "zero_ratio": 0.0
+        },
+        "avg_meetings_held_t2": {
+            "missing_ratio": 0.64,
+            "zero_ratio": 0.0
+        }
+    },
+    "iv7a-6rrq": {
+        "avg_total_partially_vaccinated_t1": {
+            "missing_ratio": 0.08,
+            "zero_ratio": 0.03
+        },
+        "avg_total_partially_vaccinated_t2": {
+            "missing_ratio": 0.08,
+            "zero_ratio": 0.03
+        },
+        "avg_cumulative_unvax_5plus_pop_t1": {
+            "missing_ratio": 0.32,
+            "zero_ratio": 0.08
+        },
+        "avg_cumulative_unvax_5plus_pop_t2": {
+            "missing_ratio": 0.32,
+            "zero_ratio": 0.08
+        },
+        "avg_partially_vaccinated_t1": {
+            "missing_ratio": 0.08,
+            "zero_ratio": 0.53
+        },
+        "avg_partially_vaccinated_t2": {
+            "missing_ratio": 0.08,
+            "zero_ratio": 0.53
+        },
+        "avg_cumulative_bivalent_booster_recip_count_t1": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_bivalent_booster_recip_count_t2": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_unvax_12plus_pop_t1": {
+            "missing_ratio": 0.32,
+            "zero_ratio": 0.16
+        },
+        "avg_cumulative_unvax_12plus_pop_t2": {
+            "missing_ratio": 0.32,
+            "zero_ratio": 0.16
+        },
+        "avg_cumulative_unvax_total_pop_t1": {
+            "missing_ratio": 0.19,
+            "zero_ratio": 0.05
+        },
+        "avg_cumulative_unvax_total_pop_t2": {
+            "missing_ratio": 0.19,
+            "zero_ratio": 0.05
+        },
+        "avg_at_least_one_dose_t1": {
+            "missing_ratio": 0.08,
+            "zero_ratio": 0.53
+        },
+        "avg_at_least_one_dose_t2": {
+            "missing_ratio": 0.08,
+            "zero_ratio": 0.53
+        },
+        "avg_fully_vaccinated_t1": {
+            "missing_ratio": 0.08,
+            "zero_ratio": 0.75
+        },
+        "avg_fully_vaccinated_t2": {
+            "missing_ratio": 0.08,
+            "zero_ratio": 0.75
+        },
+        "avg_est_age_5plus_pop_t1": {
+            "missing_ratio": 0.28,
+            "zero_ratio": 0.04
+        },
+        "avg_est_age_5plus_pop_t2": {
+            "missing_ratio": 0.28,
+            "zero_ratio": 0.04
+        },
+        "avg_cumulative_booster_recip_count_t1": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_booster_recip_count_t2": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_est_population_t1": {
+            "missing_ratio": 0.15,
+            "zero_ratio": 0.0
+        },
+        "avg_est_population_t2": {
+            "missing_ratio": 0.15,
+            "zero_ratio": 0.0
+        },
+        "avg_bivalent_booster_recip_count_t1": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_bivalent_booster_recip_count_t2": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_bivalent_booster_eligible_population_t1": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_bivalent_booster_eligible_population_t2": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_fully_vaccinated_t1": {
+            "missing_ratio": 0.08,
+            "zero_ratio": 0.03
+        },
+        "avg_cumulative_fully_vaccinated_t2": {
+            "missing_ratio": 0.08,
+            "zero_ratio": 0.03
+        },
+        "avg_cumulative_at_least_one_dose_t1": {
+            "missing_ratio": 0.08,
+            "zero_ratio": 0.03
+        },
+        "avg_cumulative_at_least_one_dose_t2": {
+            "missing_ratio": 0.08,
+            "zero_ratio": 0.03
+        }
+    },
+    "822f-gjp4": {
+        "avg_sessions_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_sessions_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_bounce_rate_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.13
+        },
+        "avg_bounce_rate_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.13
+        },
+        "avg_users_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_users_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "iz9s-qc6r": {
+        "avg_meetings_held_t1": {
+            "missing_ratio": 0.32,
+            "zero_ratio": 0.0
+        },
+        "avg_meetings_held_t2": {
+            "missing_ratio": 0.32,
+            "zero_ratio": 0.0
+        },
+        "avg_antendees_t1": {
+            "missing_ratio": 0.24,
+            "zero_ratio": 0.08
+        },
+        "avg_antendees_t2": {
+            "missing_ratio": 0.24,
+            "zero_ratio": 0.08
+        },
+        "avg_materials_distributed_t1": {
+            "missing_ratio": 0.52,
+            "zero_ratio": 0.0
+        },
+        "avg_materials_distributed_t2": {
+            "missing_ratio": 0.52,
+            "zero_ratio": 0.0
+        }
+    },
+    "rjdk-rz7f": {
+        "avg_percentage_of_calls_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_percentage_of_calls_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "pi9x-tg5x": {
+        "avg_cd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "bwdf-y5fe": {},
+    "f232-7zb7": {
+        "avg_est_fte_rec_t1": {
+            "missing_ratio": 0.9,
+            "zero_ratio": 0.04
+        },
+        "avg_est_fte_rec_t2": {
+            "missing_ratio": 0.9,
+            "zero_ratio": 0.04
+        },
+        "avg_esm_fte_rec_t1": {
+            "missing_ratio": 0.74,
+            "zero_ratio": 0.06
+        },
+        "avg_esm_fte_rec_t2": {
+            "missing_ratio": 0.74,
+            "zero_ratio": 0.06
+        },
+        "avg_cde_12th_grade_media_arts_1_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_cde_12th_grade_media_arts_1_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_cde_11th_grade_media_arts_1_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_cde_11th_grade_media_arts_1_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_cde_10th_grade_media_arts_1_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.91
+        },
+        "avg_cde_10th_grade_media_arts_1_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.91
+        },
+        "avg_cde_9th_grade_media_arts_1_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_cde_9th_grade_media_arts_1_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_cde_12th_grade_visual_arts_1_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_cde_12th_grade_visual_arts_1_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_cde_11th_grade_visual_arts_1_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_cde_11th_grade_visual_arts_1_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_cde_10th_grade_visual_arts_1_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.82
+        },
+        "avg_cde_10th_grade_visual_arts_1_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.82
+        },
+        "avg_cde_11th_grade_drama_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.89
+        },
+        "avg_cde_11th_grade_drama_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.89
+        },
+        "avg_cde_10th_grade_drama_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_cde_10th_grade_drama_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_cde_12th_grade_music_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_cde_12th_grade_music_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_cde_11th_grade_music_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_cde_11th_grade_music_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_cde_10th_grade_music_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_cde_10th_grade_music_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_cde_9th_grade_music_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.89
+        },
+        "avg_cde_9th_grade_music_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.89
+        },
+        "avg_cde_11th_grade_dance_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_cde_11th_grade_dance_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_cde_10th_grade_dance_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_cde_10th_grade_dance_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_cde_12th_grade_media_arts_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.16
+        },
+        "avg_cde_12th_grade_media_arts_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.16
+        },
+        "avg_cde_11th_grade_media_arts_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.16
+        },
+        "avg_cde_11th_grade_media_arts_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.16
+        },
+        "avg_cde_10th_grade_media_arts_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.17
+        },
+        "avg_cde_10th_grade_media_arts_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.17
+        },
+        "avg_cde_12th_grade_visual_arts_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.05
+        },
+        "avg_cde_12th_grade_visual_arts_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.05
+        },
+        "avg_cde_11th_grade_visual_arts_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.06
+        },
+        "avg_cde_11th_grade_visual_arts_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.06
+        },
+        "avg_cde_10th_grade_visual_arts_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.07
+        },
+        "avg_cde_10th_grade_visual_arts_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.07
+        },
+        "avg_cde_9th_grade_visual_arts_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.09
+        },
+        "avg_cde_9th_grade_visual_arts_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.09
+        },
+        "avg_cde_12th_grade_drama_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.14
+        },
+        "avg_cde_12th_grade_drama_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.14
+        },
+        "avg_cde_11th_grade_drama_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.15
+        },
+        "avg_cde_11th_grade_drama_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.15
+        },
+        "avg_cde_10th_grade_drama_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.16
+        },
+        "avg_cde_10th_grade_drama_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.16
+        },
+        "avg_cde_9th_grade_drama_enrollment_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.16
+        },
+        "avg_cde_9th_grade_drama_enrollment_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.16
+        },
+        "avg_cde_12th_grade_music_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.13
+        },
+        "avg_cde_12th_grade_music_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.13
+        },
+        "avg_cde_11th_grade_music_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.14
+        },
+        "avg_cde_11th_grade_music_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.14
+        },
+        "avg_cde_10th_grade_music_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.14
+        },
+        "avg_cde_10th_grade_music_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.14
+        },
+        "avg_cde_12th_grade_dance_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.21
+        },
+        "avg_cde_12th_grade_dance_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.21
+        },
+        "avg_cde_11th_grade_dance_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.21
+        },
+        "avg_cde_11th_grade_dance_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.21
+        },
+        "avg_cde_10th_grade_dance_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.21
+        },
+        "avg_cde_10th_grade_dance_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.21
+        },
+        "avg_cde_estimatedfte_sum_mediaarts_t1": {
+            "missing_ratio": 0.2,
+            "zero_ratio": 0.7
+        },
+        "avg_cde_estimatedfte_sum_mediaarts_t2": {
+            "missing_ratio": 0.2,
+            "zero_ratio": 0.7
+        },
+        "avg_cde_estimatedfte_sum_drama_t1": {
+            "missing_ratio": 0.2,
+            "zero_ratio": 0.66
+        },
+        "avg_cde_estimatedfte_sum_drama_t2": {
+            "missing_ratio": 0.2,
+            "zero_ratio": 0.66
+        },
+        "avg_cde_estimatedfte_sum_dance_t1": {
+            "missing_ratio": 0.2,
+            "zero_ratio": 0.74
+        },
+        "avg_cde_estimatedfte_sum_dance_t2": {
+            "missing_ratio": 0.2,
+            "zero_ratio": 0.74
+        },
+        "avg_cde_media_arts_course_count_t1": {
+            "missing_ratio": 0.56,
+            "zero_ratio": 0.33
+        },
+        "avg_cde_media_arts_course_count_t2": {
+            "missing_ratio": 0.56,
+            "zero_ratio": 0.33
+        },
+        "avg_cde_visual_arts_course_count_t1": {
+            "missing_ratio": 0.56,
+            "zero_ratio": 0.09
+        },
+        "avg_cde_visual_arts_course_count_t2": {
+            "missing_ratio": 0.56,
+            "zero_ratio": 0.09
+        },
+        "avg_cde_drama_course_count_t1": {
+            "missing_ratio": 0.56,
+            "zero_ratio": 0.27
+        },
+        "avg_cde_drama_course_count_t2": {
+            "missing_ratio": 0.56,
+            "zero_ratio": 0.27
+        },
+        "avg_cde_music_course_count_t1": {
+            "missing_ratio": 0.56,
+            "zero_ratio": 0.16
+        },
+        "avg_cde_music_course_count_t2": {
+            "missing_ratio": 0.56,
+            "zero_ratio": 0.16
+        },
+        "avg_cde_dance_course_count_t1": {
+            "missing_ratio": 0.56,
+            "zero_ratio": 0.37
+        },
+        "avg_cde_dance_course_count_t2": {
+            "missing_ratio": 0.56,
+            "zero_ratio": 0.37
+        },
+        "avg_cde_twoormore_pct_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.21
+        },
+        "avg_cde_twoormore_pct_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.21
+        },
+        "avg_cde_whitenh_pct_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.06
+        },
+        "avg_cde_whitenh_pct_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.06
+        },
+        "avg_cde_afamnh_pct_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.06
+        },
+        "avg_cde_afamnh_pct_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.06
+        },
+        "avg_cde_latino_pct_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        },
+        "avg_cde_latino_pct_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        },
+        "avg_cde_filipino_pct_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.24
+        },
+        "avg_cde_filipino_pct_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.24
+        },
+        "avg_cde_pi_pct_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.48
+        },
+        "avg_cde_pi_pct_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.48
+        },
+        "avg_cde_asian_pct_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.19
+        },
+        "avg_cde_asian_pct_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.19
+        },
+        "avg_cde_aioran_pct_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.45
+        },
+        "avg_cde_aioran_pct_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.45
+        },
+        "avg_cde_freereducedmealsschool_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        },
+        "avg_cde_freereducedmealsschool_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        },
+        "avg_cde_englishlearnersschool_t1": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.0
+        },
+        "avg_cde_englishlearnersschool_t2": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.0
+        },
+        "avg_schoolenrollment_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        },
+        "avg_schoolenrollment_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        },
+        "avg_esma_fte_rec_t1": {
+            "missing_ratio": 0.94,
+            "zero_ratio": 0.03
+        },
+        "avg_esma_fte_rec_t2": {
+            "missing_ratio": 0.94,
+            "zero_ratio": 0.03
+        },
+        "avg_cde_9th_grade_music_enrollment_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.14
+        },
+        "avg_cde_9th_grade_music_enrollment_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.14
+        },
+        "avg_esd_fte_rec_t1": {
+            "missing_ratio": 0.89,
+            "zero_ratio": 0.06
+        },
+        "avg_esd_fte_rec_t2": {
+            "missing_ratio": 0.89,
+            "zero_ratio": 0.06
+        },
+        "avg_cde_12th_grade_drama_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.89
+        },
+        "avg_cde_12th_grade_drama_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.89
+        },
+        "avg_cde_9th_grade_media_arts_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.18
+        },
+        "avg_cde_9th_grade_media_arts_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.18
+        },
+        "avg_cde_maxgrade_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cde_maxgrade_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cde_9th_grade_dance_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_cde_9th_grade_dance_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_cde_9th_grade_dance_enrollment_t1": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.21
+        },
+        "avg_cde_9th_grade_dance_enrollment_t2": {
+            "missing_ratio": 0.75,
+            "zero_ratio": 0.21
+        },
+        "avg_cde_9th_grade_visual_arts_1_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_cde_9th_grade_visual_arts_1_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_cde_12th_grade_dance_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_cde_12th_grade_dance_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_cde_9th_grade_drama_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.91
+        },
+        "avg_cde_9th_grade_drama_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.91
+        },
+        "avg_esva_fte_rec_t1": {
+            "missing_ratio": 0.76,
+            "zero_ratio": 0.13
+        },
+        "avg_esva_fte_rec_t2": {
+            "missing_ratio": 0.76,
+            "zero_ratio": 0.13
+        }
+    },
+    "diev-46hg": {},
+    "4g57-9wbx": {
+        "avg_total_cumulative_in_basin_solar_kw_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_cumulative_in_basin_solar_kw_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_quarterly_in_basin_solar_installed_kw_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_quarterly_in_basin_solar_installed_kw_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "tx7r-x3hp": {
+        "avg_aircargotons_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_aircargotons_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "iy4q-t9vr": {},
+    "uj6a-ab47": {
+        "avg_enjoyed_the_visit_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_enjoyed_the_visit_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_purchased_an_item_on_olvera_st_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.23
+        },
+        "avg_purchased_an_item_on_olvera_st_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.23
+        },
+        "avg_came_for_a_specific_event_exhibit_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_came_for_a_specific_event_exhibit_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_knew_that_el_pueblo_offers_free_tours_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_knew_that_el_pueblo_offers_free_tours_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_visited_a_restaurant_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_visited_a_restaurant_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_out_of_state_visitors_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_out_of_state_visitors_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_would_recommend_el_pueblo_to_a_friend_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_would_recommend_el_pueblo_to_a_friend_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        }
+    },
+    "fvye-93wd": {
+        "avg_cases_per100k_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cases_per100k_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_new_cases_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_new_cases_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_deaths_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_deaths_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_cases_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cases_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_population_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_population_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cases_per100k_avg7_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cases_per100k_avg7_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_new_deaths_avg7_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.47
+        },
+        "avg_new_deaths_avg7_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.47
+        },
+        "avg_new_cases_avg7_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_new_cases_avg7_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_new_deaths_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_new_deaths_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_cases_avg7_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cases_avg7_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_deaths_per100k_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_deaths_per100k_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_deaths_per100k_avg7_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_deaths_per100k_avg7_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_deaths_avg7_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_deaths_avg7_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        }
+    },
+    "xe35-4wsy": {
+        "avg_rain_in_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_rain_in_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_green_streets_and_alleys_capture_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_green_streets_and_alleys_capture_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_barrels_and_cisterns_capture_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.38
+        },
+        "avg_barrels_and_cisterns_capture_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.38
+        },
+        "avg_total_capture_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_capture_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_gi_capture_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_gi_capture_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_spreading_capture_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_spreading_capture_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "5y5q-d9ew": {
+        "avg_of_streetlights_operating_annual_fy_t1": {
+            "missing_ratio": 0.91,
+            "zero_ratio": 0.0
+        },
+        "avg_of_streetlights_operating_annual_fy_t2": {
+            "missing_ratio": 0.91,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_of_street_lights_converted_to_led_annual_fy_t1": {
+            "missing_ratio": 0.9,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_of_street_lights_converted_to_led_annual_fy_t2": {
+            "missing_ratio": 0.9,
+            "zero_ratio": 0.0
+        },
+        "avg_projected_of_streetlights_operating_annual_fy_t1": {
+            "missing_ratio": 0.94,
+            "zero_ratio": 0.0
+        },
+        "avg_projected_of_streetlights_operating_annual_fy_t2": {
+            "missing_ratio": 0.94,
+            "zero_ratio": 0.0
+        }
+    },
+    "rpp7-mevy": {
+        "avg_partially_vaccinated_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.05
+        },
+        "avg_partially_vaccinated_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.05
+        },
+        "avg_jj_doses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.18
+        },
+        "avg_jj_doses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.18
+        },
+        "avg_cumulative_total_doses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_total_doses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_pfizer_doses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_pfizer_doses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_jj_doses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_cumulative_jj_doses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_cumulative_fully_vaccinated_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_fully_vaccinated_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_booster_recip_count_t1": {
+            "missing_ratio": 0.29,
+            "zero_ratio": 0.04
+        },
+        "avg_booster_recip_count_t2": {
+            "missing_ratio": 0.29,
+            "zero_ratio": 0.04
+        },
+        "avg_bivalent_booster_recip_count_t1": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_bivalent_booster_recip_count_t2": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_bivalent_booster_eligible_population_t1": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_bivalent_booster_eligible_population_t2": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_county_pop2020_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_county_pop2020_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_bivalent_booster_recip_count_t1": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_bivalent_booster_recip_count_t2": {
+            "missing_ratio": 1.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_booster_recip_count_t1": {
+            "missing_ratio": 0.29,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_booster_recip_count_t2": {
+            "missing_ratio": 0.29,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_at_least_one_dose_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_at_least_one_dose_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_at_least_one_dose_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_at_least_one_dose_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_fully_vaccinated_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.05
+        },
+        "avg_fully_vaccinated_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.05
+        },
+        "avg_total_partially_vaccinated_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_partially_vaccinated_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_moderna_doses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_moderna_doses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_moderna_doses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.05
+        },
+        "avg_moderna_doses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.05
+        },
+        "avg_pfizer_doses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pfizer_doses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_total_doses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_total_doses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        }
+    },
+    "s5jy-jcce": {
+        "avg_appealablecdp_t1": {
+            "missing_ratio": 0.29,
+            "zero_ratio": 0.09
+        },
+        "avg_appealablecdp_t2": {
+            "missing_ratio": 0.29,
+            "zero_ratio": 0.09
+        },
+        "avg_riskanalysis_t1": {
+            "missing_ratio": 0.42,
+            "zero_ratio": 0.26
+        },
+        "avg_riskanalysis_t2": {
+            "missing_ratio": 0.42,
+            "zero_ratio": 0.26
+        }
+    },
+    "tsuv-4rgh": {
+        "avg_change_total_teus_cytd_t1": {
+            "missing_ratio": 0.44,
+            "zero_ratio": 0.0
+        },
+        "avg_change_total_teus_cytd_t2": {
+            "missing_ratio": 0.44,
+            "zero_ratio": 0.0
+        },
+        "avg_cytd_total_teus_t1": {
+            "missing_ratio": 0.29,
+            "zero_ratio": 0.0
+        },
+        "avg_cytd_total_teus_t2": {
+            "missing_ratio": 0.29,
+            "zero_ratio": 0.0
+        },
+        "avg_monthly_total_teus_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_monthly_total_teus_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "uq7m-rynj": {},
+    "8sbu-dvfy": {},
+    "pnat-cnpj": {
+        "avg_total_miles_of_bicycle_lanes_and_paths_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_miles_of_bicycle_lanes_and_paths_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "d4kt-8j3n": {
+        "avg_geohub_bounce_rate_t1": {
+            "missing_ratio": 0.39,
+            "zero_ratio": 0.0
+        },
+        "avg_geohub_bounce_rate_t2": {
+            "missing_ratio": 0.39,
+            "zero_ratio": 0.0
+        },
+        "avg_geohub_sessions_t1": {
+            "missing_ratio": 0.39,
+            "zero_ratio": 0.0
+        },
+        "avg_geohub_sessions_t2": {
+            "missing_ratio": 0.39,
+            "zero_ratio": 0.0
+        },
+        "avg_geohub_users_t1": {
+            "missing_ratio": 0.39,
+            "zero_ratio": 0.0
+        },
+        "avg_geohub_users_t2": {
+            "missing_ratio": 0.39,
+            "zero_ratio": 0.0
+        },
+        "avg_socrata_bounce_rate_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.09
+        },
+        "avg_socrata_bounce_rate_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.09
+        },
+        "avg_socrata_sessions_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_socrata_sessions_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_socrata_users_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_socrata_users_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_combined_users_t1": {
+            "missing_ratio": 0.39,
+            "zero_ratio": 0.0
+        },
+        "avg_combined_users_t2": {
+            "missing_ratio": 0.39,
+            "zero_ratio": 0.0
+        }
+    },
+    "ybqa-gmkn": {
+        "avg_pay_amt_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pay_amt_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        }
+    },
+    "ubph-b4it": {},
+    "i7pm-cnmm": {},
+    "xuce-e6ip": {
+        "avg_la_s_share_of_gwh_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_la_s_share_of_gwh_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_la_s_share_of_mw_t1": {
+            "missing_ratio": 0.05,
+            "zero_ratio": 0.0
+        },
+        "avg_la_s_share_of_mw_t2": {
+            "missing_ratio": 0.05,
+            "zero_ratio": 0.0
+        }
+    },
+    "5gp9-8nrb": {},
+    "urhh-yf63": {},
+    "nsdh-74d5": {
+        "avg_work_orders_completed_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.09
+        },
+        "avg_work_orders_completed_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.09
+        },
+        "avg_work_order_submitted_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.09
+        },
+        "avg_work_order_submitted_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.09
+        }
+    },
+    "6yv9-t9gq": {},
+    "gwh9-jnip": {
+        "avg_cd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "a5vt-xsyi": {
+        "avg_small_cisterns_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.57
+        },
+        "avg_small_cisterns_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.57
+        },
+        "avg_rain_barrels_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.21
+        },
+        "avg_rain_barrels_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.21
+        },
+        "avg_large_cisterns_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_large_cisterns_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_medium_cisterns_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_medium_cisterns_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        }
+    },
+    "fc3u-86zh": {},
+    "4a8d-4327": {
+        "avg_inches_water_content_t1": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.0
+        },
+        "avg_inches_water_content_t2": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.0
+        }
+    },
+    "svt7-r3ww": {},
+    "t5zm-4d79": {
+        "avg_total_contracts_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_total_contracts_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        }
+    },
+    "m6g2-gc6c": {
+        "avg_con_amount_pd_forgiven_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_con_amount_pd_forgiven_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_con_amount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.06
+        },
+        "avg_con_amount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.06
+        }
+    },
+    "k98w-s24w": {
+        "avg_nox_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_nox_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_dpm_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_dpm_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_sox_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_sox_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "pwhu-m93q": {
+        "avg_cumulative_of_streetlights_converted_to_led_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cumulative_of_streetlights_converted_to_led_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "4tmc-7r6g": {},
+    "ysqd-apz7": {},
+    "95j2-9tdv": {
+        "avg_percentage_of_energy_porftolio_from_renewable_sources_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_percentage_of_energy_porftolio_from_renewable_sources_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "tsrc-szkh": {
+        "avg_of_myla311_app_downloads_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.12
+        },
+        "avg_of_myla311_app_downloads_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.12
+        }
+    },
+    "5mrt-4zhe": {
+        "avg_dist_num_t1": {
+            "missing_ratio": 0.33,
+            "zero_ratio": 0.0
+        },
+        "avg_dist_num_t2": {
+            "missing_ratio": 0.33,
+            "zero_ratio": 0.0
+        },
+        "avg_exp_amount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.19
+        },
+        "avg_exp_amount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.19
+        },
+        "avg_amt_outstd_beg_t1": {
+            "missing_ratio": 0.84,
+            "zero_ratio": 0.05
+        },
+        "avg_amt_outstd_beg_t2": {
+            "missing_ratio": 0.84,
+            "zero_ratio": 0.05
+        },
+        "avg_amt_incurred_t1": {
+            "missing_ratio": 0.76,
+            "zero_ratio": 0.18
+        },
+        "avg_amt_incurred_t2": {
+            "missing_ratio": 0.76,
+            "zero_ratio": 0.18
+        },
+        "avg_amt_received_t1": {
+            "missing_ratio": 0.76,
+            "zero_ratio": 0.19
+        },
+        "avg_amt_received_t2": {
+            "missing_ratio": 0.76,
+            "zero_ratio": 0.19
+        },
+        "avg_amt_outstd_end_t1": {
+            "missing_ratio": 0.84,
+            "zero_ratio": 0.05
+        },
+        "avg_amt_outstd_end_t2": {
+            "missing_ratio": 0.84,
+            "zero_ratio": 0.05
+        }
+    },
+    "cy8h-q3bu": {
+        "avg_branford_spreading_basin_441_afy_t1": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.0
+        },
+        "avg_branford_spreading_basin_441_afy_t2": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.0
+        },
+        "avg_lopez_spreading_grounds_564_afy_t1": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.65
+        },
+        "avg_lopez_spreading_grounds_564_afy_t2": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.65
+        },
+        "avg_hansen_spreading_grounds_10_484_afy_t1": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.23
+        },
+        "avg_hansen_spreading_grounds_10_484_afy_t2": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.23
+        },
+        "avg_pacoima_spreading_grounds_5_079_afy_t1": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.38
+        },
+        "avg_pacoima_spreading_grounds_5_079_afy_t2": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.38
+        },
+        "avg_tujunga_spreading_grounds_7_975_afy_t1": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.96
+        },
+        "avg_tujunga_spreading_grounds_7_975_afy_t2": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.96
+        }
+    },
+    "br3a-db9a": {},
+    "4qmh-sz39": {
+        "avg_downloads_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.27
+        },
+        "avg_downloads_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.27
+        },
+        "avg_visits_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_visits_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        }
+    },
+    "w9vh-pj9e": {
+        "avg_county_performed_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_county_performed_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_county_positive_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_county_positive_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        }
+    },
+    "9hxb-dad7": {
+        "avg_of_dwp_power_sourced_from_coal_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_of_dwp_power_sourced_from_coal_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "c8jn-ua56": {
+        "avg_served_in_30_minutes_or_less_services_counter_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_served_in_30_minutes_or_less_services_counter_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "qer2-sxr5": {
+        "avg_small_asphalt_repairs_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_small_asphalt_repairs_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_reconstruction_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_reconstruction_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_centerline_miles_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_centerline_miles_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_slurry_seal_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_slurry_seal_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pavement_preservation_total_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pavement_preservation_total_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_resurfacing_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_resurfacing_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "ni7t-83qi": {
+        "avg_pageviews_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pageviews_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "yaaf-cyfa": {},
+    "3qv2-p4kj": {
+        "avg_amount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_amount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        }
+    },
+    "86ry-dcuc": {},
+    "9aw9-mn4p": {
+        "avg_event_duration_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_event_duration_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        }
+    },
+    "h8mw-iegk": {},
+    "dyxf-7hc4": {
+        "avg_cd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "67is-svtd": {},
+    "bjvp-eqku": {},
+    "9k3p-zrda": {},
+    "e67z-kt2n": {
+        "avg_cd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "n3xg-rixm": {
+        "avg_cd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "4f5p-udkv": {
+        "avg_fine_amount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_fine_amount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_issue_time_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_issue_time_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_loc_lat_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_loc_lat_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_agency_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_agency_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_loc_long_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_loc_long_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "h8me-eag6": {},
+    "9rag-xmmd": {},
+    "b6ii-mhed": {
+        "avg_cd_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        },
+        "avg_cd_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        }
+    },
+    "mcip-sa6g": {},
+    "7ts7-nh4y": {},
+    "9i2c-csvn": {},
+    "vnau-u5ph": {},
+    "5m3t-xjex": {},
+    "u82d-eh7z": {},
+    "rken-a55j": {},
+    "yv23-pmwf": {
+        "avg_valuation_t1": {
+            "missing_ratio": 0.6,
+            "zero_ratio": 0.03
+        },
+        "avg_valuation_t2": {
+            "missing_ratio": 0.6,
+            "zero_ratio": 0.03
+        },
+        "avg__of_accessory_dwelling_units_t1": {
+            "missing_ratio": 0.98,
+            "zero_ratio": 0.0
+        },
+        "avg__of_accessory_dwelling_units_t2": {
+            "missing_ratio": 0.98,
+            "zero_ratio": 0.0
+        },
+        "avg_of_stories_t1": {
+            "missing_ratio": 0.91,
+            "zero_ratio": 0.03
+        },
+        "avg_of_stories_t2": {
+            "missing_ratio": 0.91,
+            "zero_ratio": 0.03
+        }
+    },
+    "6rrh-rzua": {},
+    "fdwe-pgcu": {
+        "avg_cd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "yru6-6re4": {},
+    "d5tf-ez2w": {},
+    "2in3-5b7t": {},
+    "3f9m-afei": {
+        "avg_valuation_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_valuation_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_of_stories_t1": {
+            "missing_ratio": 0.2,
+            "zero_ratio": 0.2
+        },
+        "avg_of_stories_t2": {
+            "missing_ratio": 0.2,
+            "zero_ratio": 0.2
+        }
+    },
+    "r4uk-afju": {
+        "avg_naics_t1": {
+            "missing_ratio": 0.79,
+            "zero_ratio": 0.0
+        },
+        "avg_naics_t2": {
+            "missing_ratio": 0.79,
+            "zero_ratio": 0.0
+        }
+    },
+    "2uz8-3tj3": {},
+    "amvf-fr72": {},
+    "d3th-bqdk": {},
+    "63kx-necw": {},
+    "s49e-q6j2": {},
+    "9w5z-rg2h": {},
+    "ax8j-dhzm": {
+        "avg_geolong_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_geolong_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_geolat_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_geolat_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_stnumber_t1": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.0
+        },
+        "avg_stnumber_t2": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.0
+        }
+    },
+    "q3qu-98vb": {},
+    "a4nt-4gca": {},
+    "mymu-zi3s": {
+        "avg_jobs_t1": {
+            "missing_ratio": 0.27,
+            "zero_ratio": 0.0
+        },
+        "avg_jobs_t2": {
+            "missing_ratio": 0.27,
+            "zero_ratio": 0.0
+        },
+        "avg_sh_units_per_site_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.61
+        },
+        "avg_sh_units_per_site_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.61
+        },
+        "avg_tax_exempt_conduit_bond_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.62
+        },
+        "avg_tax_exempt_conduit_bond_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.62
+        },
+        "avg_tdc_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_tdc_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_leverage_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.08
+        },
+        "avg_leverage_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.08
+        },
+        "avg_project_total_units_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_project_total_units_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_site_units_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.1
+        },
+        "avg_site_units_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.1
+        },
+        "avg_site_cd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_site_cd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "8spw-3fhx": {},
+    "29cn-rph9": {},
+    "qf8m-dzta": {
+        "avg_index_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_index_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "bsvt-chkv": {},
+    "sii9-rjps": {
+        "avg_plan_duration_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.31
+        },
+        "avg_plan_duration_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.31
+        },
+        "avg_duration_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_duration_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "vxhy-r447": {
+        "avg_rate_of_occupied_units_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_rate_of_occupied_units_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_actual_units_t1": {
+            "missing_ratio": 0.12,
+            "zero_ratio": 0.0
+        },
+        "avg_actual_units_t2": {
+            "missing_ratio": 0.12,
+            "zero_ratio": 0.0
+        },
+        "avg_acres_t1": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.0
+        },
+        "avg_acres_t2": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.0
+        },
+        "avg_occupied_units_t1": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.0
+        },
+        "avg_occupied_units_t2": {
+            "missing_ratio": 0.06,
+            "zero_ratio": 0.0
+        }
+    },
+    "8m62-bye6": {
+        "avg_site_eui_kbtu_ft_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_site_eui_kbtu_ft_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_source_eui_kbtu_ft_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_source_eui_kbtu_ft_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_ghg_emissions_intensity_kgco2e_ft_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_ghg_emissions_intensity_kgco2e_ft_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_direct_ghg_emissions_metric_tons_co2e_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_direct_ghg_emissions_metric_tons_co2e_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_indirect_ghg_emissions_metric_tons_co2e_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_indirect_ghg_emissions_metric_tons_co2e_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_property_gfa___self_reported_ft_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_property_gfa___self_reported_ft_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_water_use_all_water_sources_kgal_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.07
+        },
+        "avg_water_use_all_water_sources_kgal_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.07
+        },
+        "avg_total_ghg_emissions_metric_tons_co2e_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_total_ghg_emissions_metric_tons_co2e_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_energy_star_score_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.93
+        },
+        "avg_energy_star_score_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.93
+        },
+        "avg_indoor_water_use_all_water_sources_kgal_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_indoor_water_use_all_water_sources_kgal_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        }
+    },
+    "msv5-mj8x": {},
+    "rsxb-x48z": {
+        "avg_apn_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_propertyzip_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_propertyzip_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "8qjh-sbs9": {},
+    "4sbs-dcfn": {
+        "avg_apn_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "acy8-72w9": {},
+    "vt5t-mscf": {
+        "avg_blsd_t1": {
+            "missing_ratio": 0.27,
+            "zero_ratio": 0.0
+        },
+        "avg_blsd_t2": {
+            "missing_ratio": 0.27,
+            "zero_ratio": 0.0
+        },
+        "avg_grow_t1": {
+            "missing_ratio": 0.36,
+            "zero_ratio": 0.0
+        },
+        "avg_grow_t2": {
+            "missing_ratio": 0.36,
+            "zero_ratio": 0.0
+        },
+        "avg_tg_pg_t1": {
+            "missing_ratio": 0.23,
+            "zero_ratio": 0.0
+        },
+        "avg_tg_pg_t2": {
+            "missing_ratio": 0.23,
+            "zero_ratio": 0.0
+        },
+        "avg_cd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_cd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_y_original_t1": {
+            "missing_ratio": 0.25,
+            "zero_ratio": 0.17
+        },
+        "avg_y_original_t2": {
+            "missing_ratio": 0.25,
+            "zero_ratio": 0.17
+        },
+        "avg_x_original_t1": {
+            "missing_ratio": 0.25,
+            "zero_ratio": 0.17
+        },
+        "avg_x_original_t2": {
+            "missing_ratio": 0.25,
+            "zero_ratio": 0.17
+        },
+        "avg_drgycoord_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_drgycoord_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_spp_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_spp_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_locunit_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_locunit_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_blsdval_t1": {
+            "missing_ratio": 0.25,
+            "zero_ratio": 0.0
+        },
+        "avg_blsdval_t2": {
+            "missing_ratio": 0.25,
+            "zero_ratio": 0.0
+        },
+        "avg_un_t1": {
+            "missing_ratio": 0.25,
+            "zero_ratio": 0.0
+        },
+        "avg_un_t2": {
+            "missing_ratio": 0.25,
+            "zero_ratio": 0.0
+        },
+        "avg_des_spp1_t1": {
+            "missing_ratio": 0.25,
+            "zero_ratio": 0.75
+        },
+        "avg_des_spp1_t2": {
+            "missing_ratio": 0.25,
+            "zero_ratio": 0.75
+        },
+        "avg_drgxcoord_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_drgxcoord_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_gisno_t1": {
+            "missing_ratio": 0.25,
+            "zero_ratio": 0.0
+        },
+        "avg_gisno_t2": {
+            "missing_ratio": 0.25,
+            "zero_ratio": 0.0
+        },
+        "avg_locsite_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_locsite_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_tr_rec_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_tr_rec_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "f37w-ye7d": {
+        "avg_propertyzip_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_propertyzip_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "vdjf-if28": {},
+    "aeva-nfqz": {
+        "avg_ballot_group_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_ballot_group_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "hkig-2qjq": {
+        "avg_council_distrct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.2
+        },
+        "avg_council_distrct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.2
+        },
+        "avg_ballot_group_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_ballot_group_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "e6cg-sqdy": {
+        "avg_apn_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_propertyzip_t1": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.0
+        },
+        "avg_propertyzip_t2": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.0
+        }
+    },
+    "cu97-7vhd": {
+        "avg_ne_quantity_constructed_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.51
+        },
+        "avg_ne_quantity_constructed_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.51
+        },
+        "avg_se_quantity_constructed_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.49
+        },
+        "avg_se_quantity_constructed_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.49
+        },
+        "avg_nw_quantity_constructed_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.48
+        },
+        "avg_nw_quantity_constructed_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.48
+        },
+        "avg_sw_quantity_constructed_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.45
+        },
+        "avg_sw_quantity_constructed_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.45
+        }
+    },
+    "t8kf-2y96": {},
+    "kde4-k7yx": {
+        "avg_propertyzip_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_propertyzip_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "spg4-9ux7": {
+        "avg_propertyzip_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_propertyzip_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "mbz9-j2zk": {
+        "avg_bike_count_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_bike_count_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_ped_count_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_ped_count_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "rnxp-tz2v": {
+        "avg_voters_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_voters_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_sample_ballot_group_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_sample_ballot_group_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_ballot_group_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_ballot_group_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "r53k-qp8f": {
+        "avg_propertyzip_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_propertyzip_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_apn_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "dw2y-59sj": {},
+    "cq4z-inke": {
+        "avg_expected_attendees_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_expected_attendees_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg___t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg___t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "6hte-wqh2": {},
+    "bkfc-yqhx": {
+        "avg_initialapprovalamount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_initialapprovalamount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_loannumber_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_loannumber_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_rent_proceed_t1": {
+            "missing_ratio": 0.94,
+            "zero_ratio": 0.0
+        },
+        "avg_rent_proceed_t2": {
+            "missing_ratio": 0.94,
+            "zero_ratio": 0.0
+        },
+        "avg_payroll_proceed_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_payroll_proceed_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_jobsreported_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_jobsreported_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_currentapprovalamount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_currentapprovalamount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_sbaguarantypercentage_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_sbaguarantypercentage_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_naicscode_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        },
+        "avg_naicscode_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        },
+        "avg_undisbursedamount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_undisbursedamount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        }
+    },
+    "hxr7-rjig": {}
+}

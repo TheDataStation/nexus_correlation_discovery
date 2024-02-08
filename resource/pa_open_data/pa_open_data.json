@@ -1,0 +1,3399 @@
+[
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "2020 General Election Mail Ballot Requests Department of State",
+        "tbl_id": "mcba-yywm",
+        "t_attrs": [
+            "ballotreturneddate",
+            "dateofbirth",
+            "appreturndate",
+            "appissuedate",
+            "ballotsentdate"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Retail Pharmacy Partners Vaccine Allocation Current Health NO FURTHER UPDATES",
+        "tbl_id": "vxbs-jbjq",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "doses"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Aggregate Cases NO FURTHER UPDATES",
+        "tbl_id": "j72v-r42c",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "georeferenced_lat__long"
+        ],
+        "num_columns": [
+            "cases_avg_new",
+            "cases_rate",
+            "cases_avg_new_rate",
+            "cases_cume",
+            "cases",
+            "cases_cume_rate",
+            "population"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Aggregate Hospitalizations Current Weekly County Health NO FURTHER UPDATES",
+        "tbl_id": "kayn-sjhx",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "georeference_latitude__longitude"
+        ],
+        "num_columns": [
+            "pic_avail_mean",
+            "ped_total",
+            "med_avail",
+            "vents_mean",
+            "pic_total",
+            "med_percent",
+            "vents",
+            "ped_total_mean",
+            "med_avail_mean",
+            "icu_total",
+            "pic_percent",
+            "icu_avail",
+            "med_total",
+            "ped_avail_mean",
+            "ped_percent",
+            "icu_avail_mean",
+            "pic_total_mean",
+            "pic_avail",
+            "icu_percent",
+            "vents_use",
+            "vents_use_mean",
+            "med_total_mean",
+            "icu_total_mean",
+            "ped_avail"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Aggregate Death Data Current Monthly County Health",
+        "tbl_id": "fbgu-sqgp",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "georeferenced_latitude__longitude"
+        ],
+        "num_columns": [
+            "deaths_avg_new",
+            "population",
+            "deaths",
+            "deaths_rate",
+            "deaths_cume",
+            "deaths_cume_rate",
+            "deaths_avg_new_rate"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "2020 Primary Election Mail Ballot Requests Department of State",
+        "tbl_id": "853w-ecfz",
+        "t_attrs": [
+            "appreturndate",
+            "dateofbirth",
+            "appissuedate",
+            "ballotreturneddate",
+            "ballotsentdate"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Sales, Use & Hotel Occupancy Tax Licenses and Certificates Current Monthly County Revenue",
+        "tbl_id": "ugeq-ckxd",
+        "t_attrs": [
+            "expiration_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Vaccinations by Day by County of Residence Current Health NO FURTHER UPDATES",
+        "tbl_id": "bicw-3gwi",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "additional_dose_2",
+            "partially_covered",
+            "additional_dose1",
+            "bivalent_booster_1"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 PCR Test Counts March 2020 - Current Statewide Health NO FURTHER UPDATES",
+        "tbl_id": "r6ti-va88",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "newpcrtests"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Child Care Providers including Early Learning Programs Listing Current Monthly Facility County Human Services",
+        "tbl_id": "ajn5-kaxt",
+        "t_attrs": [
+            "star_level_effective_date",
+            "license_exp_date",
+            "license_issue_date"
+        ],
+        "s_attrs": [
+            "geocoded_column_1",
+            "geocoded_column"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Tobacco Products Tax Licenses Current Monthly County Revenue",
+        "tbl_id": "ut72-sft8",
+        "t_attrs": [
+            "expiration_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Overdose Information Network Data CY January 2018 - Current Monthly County State Police",
+        "tbl_id": "hbkk-dwy3",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column_1",
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "victim_county_long",
+            "victim_county_lat",
+            "dose_unit",
+            "dose_count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Medical Assistance Enrollment July 2003 - Current Monthly County & Statewide Human Services",
+        "tbl_id": "2ght-hfn9",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "ma_children"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Crash Incident Details CY 1997 - Current Annual County Transportation",
+        "tbl_id": "dc5b-gebx",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "crn",
+            "chldpas_susp_serious_inj_count",
+            "other_freeway_expressway",
+            "nonmotr_susp_serious_inj_count",
+            "nonmotr_death_count",
+            "horse_buggy",
+            "nonmotr_count",
+            "dec_long",
+            "dec_lat",
+            "comm_veh_count",
+            "ped_maj_inj_count",
+            "ped_count",
+            "bicycle_maj_inj_count",
+            "mcycle_maj_inj_count",
+            "belted_maj_inj_count",
+            "unb_maj_inj_count",
+            "unb_death_count",
+            "driver_count_75plus",
+            "driver_count_50_64yr",
+            "driver_count_17yr",
+            "unk_inj_per_count",
+            "unk_inj_deg_count",
+            "tot_inj_count",
+            "mod_inj_count",
+            "maj_inj_count",
+            "van_count",
+            "suv_count",
+            "heavy_truck_count",
+            "small_truck_count",
+            "bus_count",
+            "automobile_count",
+            "vehicle_count",
+            "snowmobile",
+            "mature_driver",
+            "ramp",
+            "total_units",
+            "person_count",
+            "injury_count",
+            "fatal_count",
+            "young_driver",
+            "child_passenger",
+            "urban",
+            "single_vehicle",
+            "multiple_vehicle",
+            "limit_70mph",
+            "core_network",
+            "atv",
+            "angle_crash",
+            "relation_to_road",
+            "chldpas_death_count",
+            "motorcycle_count",
+            "bicycle_count",
+            "min_inj_count",
+            "driver_count_16yr",
+            "driver_count_18yr",
+            "driver_count_19yr",
+            "driver_count_20yr",
+            "driver_count_65_74yr",
+            "unbelted_occ_count",
+            "belted_death_count",
+            "mcycle_death_count",
+            "bicycle_death_count",
+            "ped_death_count",
+            "horse_buggy_count",
+            "backup_congestion",
+            "backup_prior",
+            "lane_departure",
+            "left_turn",
+            "local_road",
+            "rural"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Pre-K Counts and Head Start Supplemental Assistance Program Funded Slots FY 2014-Current Quarterly County Education",
+        "tbl_id": "pgbt-5wid",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "geocoded_column_1"
+        ],
+        "num_columns": [
+            "total_funded_slots"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "2022 General Election Mail Ballot Requests Department of State",
+        "tbl_id": "uhfm-zhus",
+        "t_attrs": [
+            "appissuedate",
+            "appreturndate",
+            "ballotsentdate",
+            "dateofbirth"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "County Latitude & Longitude Points For Each County Static",
+        "tbl_id": "dvjn-d63b",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Weekly 1st Dose Vaccine Allocated by Pennsylvania to Providers Current Health NO FURTHER UPDATES",
+        "tbl_id": "qsii-pka7",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "total_janssen_ordered",
+            "volume_ordered",
+            "total_pfizer_ordered",
+            "total_moderna_ordered"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Estimated Drug Overdose Deaths CY 2012-Current County Health",
+        "tbl_id": "azzc-q64m",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column_1"
+        ],
+        "num_columns": [
+            "count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Park and Ride Locations Current Transportation",
+        "tbl_id": "b55e-zfp9",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude_2"
+        ],
+        "num_columns": [
+            "parking_space_count",
+            "handicap_space_count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "School Performance Profile SY 2015 Education",
+        "tbl_id": "c2aa-xe5t",
+        "t_attrs": [
+            "school_year_end_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "display_value"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Emergency Medical Services (EMS) Naloxone Dose Administered CY 2018 - Current Quarterly County Health",
+        "tbl_id": "wst4-3int",
+        "t_attrs": [
+            "event_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "state_fips",
+            "record_count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Federal Pharmacy Partners Long Term Care Facility Vaccine Clinics Current Health",
+        "tbl_id": "iwiy-rwzp",
+        "t_attrs": [
+            "_10th_clinic_date",
+            "_5th_clinic_date",
+            "_2nd_clinic_date",
+            "_1st_clinic_date",
+            "_4th_clinic_date",
+            "_6th_clinic_date",
+            "_7th_clinic_date",
+            "_9th_clinic_date",
+            "_8th_clinic_date",
+            "_3rd_clinic_date"
+        ],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "second_doses_adminstered",
+            "first_doses_administered",
+            "total_doses_administered",
+            "total_staff_doses_administered"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Opioid Seizures and Arrests CY 2013 - Current Quarterly County State Police",
+        "tbl_id": "wmgc-6qvd",
+        "t_attrs": [
+            "qtr_start_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "drug_quantity",
+            "arrests"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Uninsured Population Census Data CY 2009-2014 Human Services",
+        "tbl_id": "s782-mpqp",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "ratio_of_income_to_poverty_level_uninsured",
+            "race_one_race_american_indian_and_alaska_native_moe",
+            "ratio_of_income_to_poverty_level_under_1_38_of_poverty_uninsured",
+            "ratio_of_income_to_poverty_level_under_1_38_of_poverty_uninsured_moe",
+            "ratio_of_income_to_poverty_level_1_38_to_1_99_of_poverty",
+            "ratio_of_income_to_poverty_level_1_38_to_1_99_of_poverty_moe",
+            "ratio_of_income_to_poverty_level_1_38_to_1_99_of_poverty_uninsured_pct",
+            "race_one_race_american_indian_and_alaska_native",
+            "race_one_race",
+            "ratio_of_income_to_poverty_level_2_00_of_poverty_and_over",
+            "ratio_of_income_to_poverty_level_2_00_of_poverty_and_over_moe",
+            "household_income_25_000_to_49_999_uninsured_moe",
+            "ratio_of_income_to_poverty_level_2_00_of_poverty_and_over_uninsured_pct",
+            "household_income",
+            "household_income_75_000_to_99_999_uninsured_pct",
+            "uninsured_pct_moe",
+            "household_income_moe",
+            "race_two_or_more_races_uninsured",
+            "race_one_race_american_indian_and_alaska_native_uninsured_moe",
+            "race_one_race_asian_moe",
+            "race_one_race_native_hawaiian_and_other_pacific_islander",
+            "race_one_race_american_indian_and_alaska_native_uninsured_pct_moe",
+            "race_one_race_native_hawaiian_and_other_pacific_islander_moe",
+            "race_one_race_some_other_race_uninsured_pct",
+            "race_one_race_uninsured",
+            "race_one_race_native_hawaiian_and_other_pacific_islander_uninsured_moe",
+            "race_one_race_black_or_african_american_moe",
+            "race_one_race_some_other_race_uninsured_pct_moe",
+            "household_income_100_000_and_over_uninsured_moe",
+            "household_income_uninsured_pct_moe",
+            "household_income_under_25_000_uninsured_moe",
+            "household_income_under_25_000_uninsured_pct_moe",
+            "household_income_25_000_to_49_999",
+            "household_income_50_000_to_74_999_moe",
+            "household_income_50_000_to_74_999_uninsured",
+            "household_income_75_000_to_99_999",
+            "household_income_75_000_to_99_999_moe",
+            "household_income_100_000_and_over_uninsured_pct",
+            "household_income_100_000_and_over_uninsured_pct_moe",
+            "ratio_of_income_to_poverty_level_uninsured_moe",
+            "ratio_of_income_to_poverty_level_uninsured_pct",
+            "ratio_of_income_to_poverty_level_under_1_38_of_poverty_moe",
+            "race_one_race_black_or_african_american_uninsured_moe",
+            "ratio_of_income_to_poverty_level_under_1_38_of_poverty_uninsured_pct",
+            "ratio_of_income_to_poverty_level_under_1_38_of_poverty_uninsured_pct_moe",
+            "race_one_race_some_other_race_moe",
+            "race_one_race_asian_uninsured_pct_moe",
+            "race_one_race_asian_uninsured_pct",
+            "race_one_race_asian_uninsured_moe",
+            "ratio_of_income_to_poverty_level_1_38_to_1_99_of_poverty_uninsured",
+            "race_one_race_uninsured_moe",
+            "race_one_race_uninsured_pct",
+            "race_one_race_uninsured_pct_moe",
+            "race_one_race_white_uninsured_moe",
+            "race_one_race_white_uninsured_pct",
+            "ratio_of_income_to_poverty_level_1_38_to_1_99_of_poverty_uninsured_moe",
+            "ratio_of_income_to_poverty_level_1_38_to_1_99_of_poverty_uninsured_pct_moe",
+            "race_one_race_white_uninsured_pct_moe",
+            "race_two_or_more_races",
+            "race_two_or_more_races_uninsured_moe",
+            "race_one_race_black_or_african_american_uninsured_pct_moe",
+            "race_one_race_moe",
+            "race_one_race_asian_uninsured",
+            "race_one_race_white_moe",
+            "race_one_race_white",
+            "female_uninsured_pct",
+            "race_two_or_more_races_uninsured_pct",
+            "ratio_of_income_to_poverty_level_2_00_of_poverty_and_over_uninsured",
+            "ratio_of_income_to_poverty_level_under_1_38_of_poverty",
+            "ratio_of_income_to_poverty_level",
+            "race_one_race_native_hawaiian_and_other_pacific_islander_uninsured_pct",
+            "race_two_or_more_races_uninsured_pct_moe",
+            "female_moe",
+            "hispanic_or_latino_of_any_race",
+            "hispanic_or_latino_of_any_race_moe",
+            "hispanic_or_latino_of_any_race_uninsured",
+            "hispanic_or_latino_of_any_race_uninsured_moe",
+            "hispanic_or_latino_of_any_race_uninsured_pct",
+            "hispanic_or_latino_of_any_race_uninsured_pct_moe",
+            "household_income_100_000_and_over_uninsured",
+            "household_income_100_000_and_over_moe",
+            "race_one_race_native_hawaiian_and_other_pacific_islander_uninsured_pct_moe",
+            "race_one_race_some_other_race",
+            "household_income_100_000_and_over",
+            "household_income_75_000_to_99_999_uninsured_pct_moe",
+            "household_income_75_000_to_99_999_uninsured_moe",
+            "household_income_75_000_to_99_999_uninsured",
+            "household_income_50_000_to_74_999_uninsured_pct_moe",
+            "household_income_50_000_to_74_999_uninsured_moe",
+            "household_income_25_000_to_49_999_uninsured_pct_moe",
+            "race_one_race_some_other_race_uninsured",
+            "household_income_25_000_to_49_999_uninsured",
+            "race_one_race_some_other_race_uninsured_moe",
+            "household_income_under_25_000_uninsured",
+            "household_income_under_25_000",
+            "female",
+            "male_uninsured_pct_moe",
+            "household_income_50_000_to_74_999",
+            "household_income_under_25_000_uninsured_pct",
+            "race_one_race_black_or_african_american",
+            "race_one_race_black_or_african_american_uninsured",
+            "race_one_race_native_hawaiian_and_other_pacific_islander_uninsured",
+            "race_one_race_asian",
+            "race_two_or_more_races_moe",
+            "household_income_uninsured",
+            "uninsured_pct",
+            "uninsured_moe",
+            "population_moe",
+            "population",
+            "ratio_of_income_to_poverty_level_2_00_of_poverty_and_over_uninsured_pct_moe",
+            "race_one_race_black_or_african_american_uninsured_pct",
+            "race_one_race_white_uninsured",
+            "female_uninsured_pct_moe",
+            "female_uninsured_moe",
+            "female_uninsured",
+            "male_uninsured_pct",
+            "male_uninsured_moe",
+            "male_uninsured",
+            "male_moe",
+            "ratio_of_income_to_poverty_level_uninsured_pct_moe",
+            "household_income_uninsured_pct",
+            "race_one_race_american_indian_and_alaska_native_uninsured_pct",
+            "household_income_25_000_to_49_999_uninsured_pct",
+            "household_income_50_000_to_74_999_uninsured_pct",
+            "male",
+            "uninsured",
+            "ratio_of_income_to_poverty_level_2_00_of_poverty_and_over_uninsured_moe",
+            "household_income_25_000_to_49_999_moe",
+            "household_income_uninsured_moe",
+            "household_income_under_25_000_moe",
+            "race_one_race_american_indian_and_alaska_native_uninsured",
+            "ratio_of_income_to_poverty_level_moe"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Total Expenditures Current Statewide Governor's Budget Office",
+        "tbl_id": "89u9-g8cy",
+        "t_attrs": [
+            "funds_started_march_2020"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "actual_expends_in_1_000"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "State Correction Population June 2015 - Current Monthly County Corrections",
+        "tbl_id": "a8qx-qnix",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "corrections_population"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Vaccinations by Zip Code by Coverage Current Health NO FURTHER UPDATES",
+        "tbl_id": "d63n-ygar",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "fullycovered",
+            "partiallycovered"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Single County Authority (SCA) Locations Current Drug and Alcohol Programs",
+        "tbl_id": "tccg-xqsp",
+        "t_attrs": [],
+        "s_attrs": [
+            "geo"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Lottery Sales, Prizes, Commissions SFY 2010 - Current Annual County Revenue",
+        "tbl_id": "hymg-bws9",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "ticket_sales",
+            "retailer_commissions"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Pennsylvania Historical Markers, Historical and Museum Commission",
+        "tbl_id": "xt8f-pzzz",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "categorycounter"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "New Well Inspections FY 2015-2020 Environmental Protection",
+        "tbl_id": "f8fx-8zip",
+        "t_attrs": [
+            "inspection_date",
+            "spud_date",
+            "year_end_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Supplemental Nutrition Assistance Program Individuals And Dollars 2004 - Current Monthly County & Statewide Human Services",
+        "tbl_id": "kd9x-cq7y",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "geocoded_column_1"
+        ],
+        "num_columns": [
+            "snap_dollars"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Fire Department Listing Current State Fire Commission",
+        "tbl_id": "kjqj-2ht5",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Registered Businesses in PA Current by County",
+        "tbl_id": "xvd7-5r2c",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude__longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Industry Partnership Wage Program PY 2013-2017 Labor And Industry",
+        "tbl_id": "gqf2-rjtp",
+        "t_attrs": [
+            "year_end"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Cases by Zip Code Current Health NO FURTHER UPDATES",
+        "tbl_id": "tsf6-pnaf",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_zip_code"
+        ],
+        "num_columns": [
+            "probable",
+            "positive"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Workforce Development Training through Agency Partnerships/Programs FY 2015-2018 Community and Economic Development",
+        "tbl_id": "n3sn-qwrn",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "count_of_trainings"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Dispensation Data without Buprenorphine Quarter 3 2016 - Current Quarterly County Health",
+        "tbl_id": "rr54-ur6z",
+        "t_attrs": [
+            "quarter_date_start"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "rate_or_count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Drug and Alcohol Treatment Facilities May 2018 County Drug and Alcohol Programs",
+        "tbl_id": "eswt-bam9",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Fine Wine & Good Spirits Retail Stores Sales by County, Annual, FY 2016-17 to Current, Liquor Control Board",
+        "tbl_id": "fhz7-8ncd",
+        "t_attrs": [],
+        "s_attrs": [
+            "new_georeferenced_column"
+        ],
+        "num_columns": [
+            "sales"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Local Area Unemployment Statistics (LAUS) CY 2016 - Current Annual County Labor and Industry",
+        "tbl_id": "rqq6-7e5m",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "unemployment_rate",
+            "unemployed",
+            "employed",
+            "labor_force"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Pennsylvania Vaccine Providers 2nd Dose Vaccine Allocation Current Health",
+        "tbl_id": "8jae-5d8i",
+        "t_attrs": [
+            "most_recent_order_date"
+        ],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "total_volume_ordered",
+            "total_janssen_ordered",
+            "total_pfizer_ordered",
+            "total_moderna_ordered"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Percentage of Persons with an Intellectual Disability and Autism served in Home and Community base program (Waiver) CY 2015 - Current Annual County Human Services",
+        "tbl_id": "qnyf-edkf",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Estimated Number of Individuals with Drug Use Disorder Year 2016 - Current Quarterly County & Statewide Health",
+        "tbl_id": "krjw-t48p",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "drug_use_disorder_estimate"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Quarterly Census of Employment and Wages (QCEW) 2016-2018 County Labor and Industry",
+        "tbl_id": "342b-rkgt",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "establishments",
+            "employment",
+            "weekly_wages"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Successful Naloxone Reversals by Law Enforcement Years 2014 - June 2018 County Drug and Alcohol Program",
+        "tbl_id": "e9n3-x87d",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "number_of_successful_reversals"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Educational Attainment by Age Range and Gender 2009-2016 County Annual Education",
+        "tbl_id": "xwn6-8rmw",
+        "t_attrs": [
+            "census_year"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "total_population",
+            "graduate_or_professional",
+            "total_post_secondary",
+            "high_school_diploma_or",
+            "associate_s_degree",
+            "bachelor_s_degree",
+            "no_high_school_diploma"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Pennsylvania Board of Probation and Parole Reentrant Employment Status CY 2018 - Current Monthly County Corrections",
+        "tbl_id": "j9yv-64vc",
+        "t_attrs": [
+            "mn_yr"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "total",
+            "unknown",
+            "unemployed_but_able_to_work",
+            "unable_to_work",
+            "full_time",
+            "student",
+            "unemployed_with_unearned",
+            "part_time"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Pennsylvania Professional Licensee Data County State",
+        "tbl_id": "fwj2-whnj",
+        "t_attrs": [],
+        "s_attrs": [
+            "latitude"
+        ],
+        "num_columns": [
+            "active_count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Inmate Admissions with Substance Use Year 2016 - Current Quarterly County Corrections",
+        "tbl_id": "bvin-4fk2",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "admits",
+            "average_tcu_score",
+            "of_admits_w_diagnosed_substance_abuse",
+            "admits_w_diagnosed_substance_abuse_problem"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Rate of Dependent Children Removed from their Home Where Parental Drug Use was Factor FFY 2017 - Current Human Services",
+        "tbl_id": "ekf9-na9n",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "removal_rate",
+            "number_of_removals"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Child Care Waiting List SFY 2019 - Current Statewide Human Services",
+        "tbl_id": "rz3v-i9kh",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "county_cde",
+            "waitlist_count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Public Transit Services and Reduced-fare Programs by County, Current, Transportation",
+        "tbl_id": "wgkx-3uws",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column",
+            "generic_county_location"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Public Food Inspections last 24 months County Agriculture",
+        "tbl_id": "etb6-jzdg",
+        "t_attrs": [
+            "inspection_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Prescription Drug Take-Back Box Locations County Drug and Alcohol Programs",
+        "tbl_id": "vjk8-em4w",
+        "t_attrs": [],
+        "s_attrs": [
+            "geo",
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Dangerous Dogs 1996-Current County Agriculture",
+        "tbl_id": "3fcn-e5dk",
+        "t_attrs": [
+            "file_date",
+            "hearing_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "county_key"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "2022 Primary Election Mail Ballot Requests Department of State",
+        "tbl_id": "8qup-ffkc",
+        "t_attrs": [
+            "dateofbirth",
+            "appissuedate",
+            "ballotreturneddate",
+            "appreturndate",
+            "ballotsentdate"
+        ],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Safe Schools Drug and Alcohol Use SY 2012 - Current County Education",
+        "tbl_id": "umiz-nsja",
+        "t_attrs": [
+            "school_year_end_data"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "sale_possession_use_or_under",
+            "sale_distribution_of_a",
+            "possession_use_or_sale_of",
+            "possession_use_of_a_controlled"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Percentage of Individuals with Disabilities and Seniors served by Office of Long Term Living (OLTL) in Home and Community base setting CY 2015 - Current  Annual County Human Services",
+        "tbl_id": "9ya4-xrda",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Individuals Under Medical Assistance Diagnosed with Opioid Use Disorder CY 2015-Current Annual County Human Services",
+        "tbl_id": "3gj5-t7ah",
+        "t_attrs": [
+            "beginning_year_date",
+            "date_revised"
+        ],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "count",
+            "number_of_records"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Unusable Vaccine Current County Health NO FURTHER UPDATES",
+        "tbl_id": "r5v4-zbqw",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "other",
+            "broken_vial_syringe",
+            "spoilage",
+            "lost_or_unaccounted_for"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Lottery & Tax Services Related Locations Statewide Current Various PA Agencies",
+        "tbl_id": "373d-qjbe",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "USDA Summer Meals Sites 2020",
+        "tbl_id": "9758-pn7m",
+        "t_attrs": [
+            "created",
+            "startdate",
+            "enddate"
+        ],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": [
+            "cyclenumber",
+            "ext",
+            "season"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Reported Patient Impact and Hospital Capacity by Facility US Federal Health and Human Services (HHS)",
+        "tbl_id": "c7w7-maff",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_hospital_address"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Employment & Social Services Related Locations Statewide Current Various PA Agencies",
+        "tbl_id": "et8z-r5sr",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Safety & Transportation Related Locations Statewide Current Various PA Agencies",
+        "tbl_id": "xm6j-3r29",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "statepolice_troop_hq"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Individuals with Medical Assistance (MA) receiving Medication-Assisted Treatment (MAT) CY 2015-Current Annual County Human Services",
+        "tbl_id": "unzz-dvz6",
+        "t_attrs": [
+            "beginning_of_the_year",
+            "date_revised"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "count",
+            "number_of_records"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Emergency Department (ED) Visits for Drug Overdose Identified Through Syndromic Surveillance SFY Quarter 3 2016 - Current Quarterly County Health",
+        "tbl_id": "svnp-capx",
+        "t_attrs": [
+            "quarter_date_start"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": [
+            "rate"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Individuals under Medical Assistance (Newly Eligible) Diagnosed with Opioid Use Disorder CY 2015-Current Annual County Human Services",
+        "tbl_id": "k4fb-62ju",
+        "t_attrs": [
+            "beginning_of_the_year",
+            "year",
+            "date_revised"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "number_of_records",
+            "count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Workforce Innovation and Opportunity Act (WIOA) Title I Performance Accountability Metrics PY 2017-2018 - Current Annual County Area & Statewide Labor and Industry",
+        "tbl_id": "kfaa-g3rs",
+        "t_attrs": [
+            "enddate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "metricresult_wages",
+            "metricresult_rates"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Health & Education Related Locations Statewide Current Various PA Agencies",
+        "tbl_id": "da8t-93kj",
+        "t_attrs": [
+            "child_care_provider_license_issue_date",
+            "child_care_provider_license_expiration_date",
+            "child_care_provider_star_level_effective_date"
+        ],
+        "s_attrs": [
+            "the_geom",
+            "child_care_provider_legal_entity_location"
+        ],
+        "num_columns": [
+            "licensed_personal_care_home_total_capacity"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Risky Prescribing Measures Quarter 3 2016 - Current Quarterly County & Statewide Health",
+        "tbl_id": "7m4f-4k58",
+        "t_attrs": [
+            "quarter_date_start"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "rate_or_count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Hospitalization Count and Rate of Hospitalization for Opioid Use Disorder Related Diseases 2016 - Current Quarterly County Pennsylvania Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "ns2a-t87x",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "oud_estimate",
+            "hospitalization_rate",
+            "hospitalization_count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Quarterly Census of Employment and Wages (QCEW) 2019 - Current County Labor and Industry",
+        "tbl_id": "bm6e-y9xf",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "establishments",
+            "employment",
+            "weekly_wages"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Rate of Neonatal Abstinence Syndrome per 1,000 Newborn Stays by County of Residence FYs 2016-2017 Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "2ats-ttun",
+        "t_attrs": [
+            "time_period_date_end",
+            "time_period_date_start"
+        ],
+        "s_attrs": [
+            "latitude_longitude"
+        ],
+        "num_columns": [
+            "rate_of_newborn_nas_stays",
+            "count_of_newborn_nas_stays"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "2021 General Election Mail Ballot Requests Department of State",
+        "tbl_id": "mksf-6xzy",
+        "t_attrs": [
+            "dateofbirth",
+            "appreturndate",
+            "ballotsentdate",
+            "appissuedate",
+            "ballotreturneddate"
+        ],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Drug and Alcohol Treatment Get Help Now Intake Hotline November 2016 - Current Statewide Drug and Alcohol Programs",
+        "tbl_id": "7mj7-q4j6",
+        "t_attrs": [
+            "week_begin_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "callers_using_stimulants",
+            "callers_using_methadone",
+            "callers_using_suboxone",
+            "callers_using_dissociative",
+            "callers_receiving_at_least",
+            "callers_referred_for",
+            "callers_referred_to_outpatient",
+            "callers_referred_to_medication",
+            "callers_referred_for_detox",
+            "callers_referred_to_inpatient",
+            "callers_referred_to_the",
+            "callers_referred_to_social",
+            "callers_using_hallucinogens",
+            "callers_using_opiates",
+            "callers_using_benzodiazepine",
+            "callers_using_heroin",
+            "total_calls",
+            "callers_referred_to_their",
+            "callers_referred_for_recovery",
+            "callers_referred_to_intensive",
+            "callers_using_depressants",
+            "callers_using_cannabis",
+            "callers_receiving_information",
+            "female_callers",
+            "total_intakes",
+            "caller_receiving_warm_line",
+            "male_callers",
+            "callers_using_alcohol"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Inmate Vocational Training Status CY 2018 - Current Monthly County Corrections",
+        "tbl_id": "xpkf-94wz",
+        "t_attrs": [
+            "mn_yr"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "avg_hrs",
+            "num_of_inmates",
+            "num_of_inmates_with"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Vaccinations by Zip Code by Race Current Health NO FURTHER UPDATES",
+        "tbl_id": "g743-p9su",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "fullycovered_multiple_other",
+            "partiallycovered_asian",
+            "fullycovered_nativeamerican",
+            "partiallycovered_multiple",
+            "fullycovered_white",
+            "fullycovered_pacificislander",
+            "partiallycovered_white",
+            "fullycovered_africanamerican",
+            "fullycovered_asian",
+            "partiallycovered_unknown",
+            "partiallycovered_2",
+            "fullycovered_unknown",
+            "partiallycovered",
+            "partiallycovered_1"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Workforce Innovation Opportunity Act (WIOA) Title III Performance Accountability Metrics PY 2017-2018 - Current Annual Labor and Industry",
+        "tbl_id": "ym92-gwt3",
+        "t_attrs": [
+            "enddate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "metricresult_wages",
+            "metricresult_rates"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Recreation & History Related Locations Statewide Current Various PA Agencies",
+        "tbl_id": "8p7f-3pj5",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "state_park_gis_acres"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Vaccinations by Zip Code by Age Group Current Health NO FURTHER UPDATES",
+        "tbl_id": "23vq-vzvj",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "fullycovered_25_29",
+            "fullycovered_50_54",
+            "fullycovered_70_74",
+            "fullycovered_75_79",
+            "fullycovered_80_84",
+            "fullycovered_90_94",
+            "fullycovered_95_99",
+            "fullycovered_100_104",
+            "fullycovered_45_49",
+            "fullycovered_105_plus",
+            "fullycovered_40_44",
+            "fullycovered_35_39",
+            "fullycovered_30_34",
+            "fullycovered_20_24",
+            "fullycovered_15_19",
+            "fullycovered_10_14",
+            "partiallycovered_105_plus",
+            "partiallycovered_95_99",
+            "partiallycovered_90_94",
+            "partiallycovered_85_89",
+            "partiallycovered_80_84",
+            "partiallycovered_70_74",
+            "partiallycovered_65_69",
+            "partiallycovered_60_64",
+            "partiallycovered_55_59",
+            "partiallycovered_50_54",
+            "partiallycovered_45_49",
+            "partiallycovered_40_44",
+            "partiallycovered_30_34",
+            "partiallycovered_25_29",
+            "partiallycovered_20_24",
+            "partiallycovered_15_19",
+            "partiallycovered_10_14",
+            "fullycovered_85_89",
+            "fullycovered_65_69",
+            "fullycovered_55_59",
+            "partiallycovered_100_104",
+            "fullycovered_60_64",
+            "partiallycovered_35_39",
+            "partiallycovered_75_79"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Rate of Hospitalizations for Opioid Overdose per 100,000 Residents County Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "3f26-q827",
+        "t_attrs": [
+            "time_period_date_end",
+            "time_period_date_start"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "rate_of_hospitalizations"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Vaccine Dose Allocation Dec 2020 - Current Health NO FURTHER UPDATES",
+        "tbl_id": "n4pp-7kc5",
+        "t_attrs": [
+            "date_of_order"
+        ],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "total_pfizer_ordered",
+            "total_moderna_ordered",
+            "total_janssen_ordered"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Rate of Newborns on Medical Assistance (MA) with Neonatal Abstinence Syndrome (NAS) Withdrawal Symptoms or Affected by Maternal Addictive Drug Use  CY 2016 - Current Human Services",
+        "tbl_id": "jw44-tcq8",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "rate_of_neonates_with",
+            "number_of_neonates_with"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Uninsured Population Census Data 5-year estimates for release years 2017-Current County Human Services and Insurance",
+        "tbl_id": "neqb-cw4e",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_county_centroid"
+        ],
+        "num_columns": [
+            "population_one_race_white_1",
+            "population_one_race_white",
+            "population_male_uninsured",
+            "household_income_margin_of",
+            "household_income_25_000_to_3",
+            "household_income_75_000_to_2",
+            "household_income_75_000_to_5",
+            "household_income_100_000_2",
+            "household_income_100_000_5",
+            "ratio_of_income_to_poverty_1",
+            "ratio_of_income_to_poverty_2",
+            "household_income_100_000_1",
+            "ratio_of_income_to_poverty_11",
+            "ratio_of_income_to_poverty_10",
+            "ratio_of_income_to_poverty_9",
+            "ratio_of_income_to_poverty_8",
+            "ratio_of_income_to_poverty_7",
+            "household_income_75_000_to",
+            "household_income_25_000_to",
+            "population",
+            "uninsured",
+            "population_one_race_asian_2",
+            "uninsured_percent_margin",
+            "household_income_50_000_to_5",
+            "household_income_50_000_to_3",
+            "household_income_50_000_to_2",
+            "household_income_50_000_to_1",
+            "household_income_50_000_to",
+            "household_income_25_000_to_5",
+            "household_income_25_000_to_4",
+            "household_income_25_000_to_2",
+            "household_income_25_000_to_1",
+            "household_income_under_25_5",
+            "household_income_under_25_4",
+            "household_income_under_25_3",
+            "household_income_under_25",
+            "household_income_uninsured_3",
+            "household_income_uninsured_1",
+            "household_income_uninsured",
+            "household_income",
+            "population_hispanic_or_latino_4",
+            "population_hispanic_or_latino_3",
+            "population_hispanic_or_latino_2",
+            "population_hispanic_or_latino_1",
+            "population_two_or_more_races_5",
+            "population_two_or_more_races_3",
+            "population_male_margin_of",
+            "population_male_uninsured_2",
+            "population_male_uninsured_3",
+            "population_female",
+            "population_female_margin",
+            "population_female_uninsured_1",
+            "population_female_uninsured_2",
+            "population_female_uninsured_3",
+            "population_one_race_white_2",
+            "population_one_race_white_3",
+            "population_one_race_white_5",
+            "population_one_race_black_1",
+            "population_one_race_black_2",
+            "population_one_race_black_4",
+            "population_one_race_black_5",
+            "population_one_race_american",
+            "population_one_race_american_3",
+            "population_one_race_american_4",
+            "population_one_race_asian",
+            "population_one_race_asian_1",
+            "population_one_race_asian_3",
+            "population_one_race_asian_5",
+            "population_one_race_native_2",
+            "population_one_race_native_3",
+            "population_one_race_native_4",
+            "population_one_race_native_5",
+            "population_one_race_some_2",
+            "population_one_race_some_4",
+            "population_one_race_some_5",
+            "population_two_or_more_races_1",
+            "population_two_or_more_races",
+            "ratio_of_income_to_poverty_12",
+            "population_hispanic_or_latino_5",
+            "population_hispanic_or_latino",
+            "population_one_race_some_3",
+            "population_one_race_native_1",
+            "population_one_race_asian_4",
+            "population_one_race_american_1",
+            "population_one_race_black",
+            "population_one_race_white_4",
+            "population_female_uninsured",
+            "ratio_of_income_to_poverty_6",
+            "ratio_of_income_to_poverty_5",
+            "ratio_of_income_to_poverty_3",
+            "ratio_of_income_to_poverty",
+            "household_income_100_000_4",
+            "household_income_100_000_3",
+            "household_income_100_000",
+            "ratio_of_income_to_poverty_14",
+            "household_income_75_000_to_4",
+            "household_income_75_000_to_3",
+            "household_income_75_000_to_1",
+            "population_male_uninsured_1",
+            "uninsured_margin_of_error",
+            "uninsured_percent",
+            "population_margin_of_error",
+            "ratio_of_income_to_poverty_4",
+            "household_income_50_000_to_4",
+            "household_income_under_25_2",
+            "household_income_under_25_1",
+            "household_income_uninsured_2",
+            "population_two_or_more_races_4",
+            "population_two_or_more_races_2",
+            "population_one_race_some_1",
+            "population_one_race_some",
+            "ratio_of_income_to_poverty_15",
+            "ratio_of_income_to_poverty_16",
+            "ratio_of_income_to_poverty_17",
+            "ratio_of_income_to_poverty_13",
+            "population_one_race_native",
+            "population_one_race_american_2",
+            "population_male",
+            "population_one_race_american_5",
+            "population_one_race_black_3"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Family Support Programs Current Quarterly County Human Services",
+        "tbl_id": "yaq8-ek94",
+        "t_attrs": [
+            "quarter_end_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "quarter",
+            "total_funded_family_slots",
+            "cumulative_children_served",
+            "cumulative_families_served"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Number of Hospitalizations for Opioid Overdose Statewide Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "dcug-prfh",
+        "t_attrs": [
+            "time_period_date_start",
+            "time_period_date_end"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "number_of_hospitalizations"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Air Quality Continuous Emission Monitoring System (CEMS) 1986 -Current Quarterly Environmental Protection",
+        "tbl_id": "5s9f-3bq4",
+        "t_attrs": [
+            "report_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "amount"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Safe Drinking Water Facilities Information System for Pennsylvania 2018 - Current Environmental Protection",
+        "tbl_id": "afhy-him4",
+        "t_attrs": [
+            "pwsdeactivationdate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "retailserviceconnectionsvalue",
+            "retailpopulationservedvalue"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Waste Management & Hazardous Waste Manifest Information 1990 - Current Statewide Environmental Protection",
+        "tbl_id": "xswt-4vsm",
+        "t_attrs": [
+            "date_shipped",
+            "date_certified",
+            "date_received",
+            "date_created"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "waste_quantity",
+            "brinfo_density"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Federated Water Quality Monitoring Station Data January 1998 - Current Annual County Environmental Protection",
+        "tbl_id": "vna2-gb3x",
+        "t_attrs": [
+            "activity_start_date"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "detection_quantitation_limit_measure",
+            "result_measure_value"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Estimated Accidental and Undetermined Drug Overdose Deaths with Demographics CY 2012-Current Statewide Health",
+        "tbl_id": "jkby-9mqm",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "percent"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Number Of Individuals on Medical Assistance (MA) Filling Naloxone Prescription CY 2015 - Current Annual County Human Services",
+        "tbl_id": "dh73-3axc",
+        "t_attrs": [
+            "beginning_year_date",
+            "date_revised"
+        ],
+        "s_attrs": [
+            "geocoded_column",
+            "latitude_longitude"
+        ],
+        "num_columns": [
+            "count",
+            "number_of_records"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Counts and Rates of New HIV Diagnoses Among Individuals Using Injection Drugs January 2016 - Current Monthly County & Statewide Health",
+        "tbl_id": "sckz-9pzz",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "newly_diagnosed_hiv_count",
+            "population_estimate"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Estimated Prevalence and New Diagnoses of HIV and HIV among Injection Drug Users 2012 - Current County Annual Health",
+        "tbl_id": "buk2-94cb",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "prevalence_hiv_disease_count",
+            "new_diagnoses_hiv_disease_count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Buprenorphine Dispensation Data Quarter 3 2016 - Current Quarterly Statewide Health",
+        "tbl_id": "6js5-2mjf",
+        "t_attrs": [
+            "quarter_date_start"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "rate_or_count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Newly Identified Confirmed Chronic Hepatitis C Age 15-34 Year 2007-2016 Health",
+        "tbl_id": "xsm2-kreq",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "hcvcounts"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Emissions Inventory System (EIS) Emissions 2017 - Current Semi-Annual County Environmental Protection",
+        "tbl_id": "p7sf-rbb5",
+        "t_attrs": [
+            "period_enddate",
+            "period_startdate",
+            "unitoperationdate",
+            "unit_effectivedate",
+            "effectivedate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "percentspringactivity",
+            "averagepercentemissions",
+            "emissionfactor",
+            "totalemissions",
+            "percentfallactivity",
+            "percentwinteractivity",
+            "averageweeksperperiod",
+            "actualhoursperperiod",
+            "sp_cl_parametervalue",
+            "unitdesigncapacity",
+            "calculationparametervalue",
+            "locationcountycode",
+            "averagedaysperweek",
+            "percentsummeractivity",
+            "averagehoursperday"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "PA County Boundaries Spatial Data Current Transportation",
+        "tbl_id": "2axz-wupj",
+        "t_attrs": [
+            "gis_geomet",
+            "gis_update"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "mslink",
+            "county_n_1",
+            "area_sq_mi",
+            "shape_leng",
+            "shape_area",
+            "numeric_la",
+            "county_per",
+            "county_are"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Trails Simple Geometry",
+        "tbl_id": "hguq-h588",
+        "t_attrs": [
+            "update"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "difficulty",
+            "maxsimptol",
+            "simlnflag",
+            "status",
+            "rort",
+            "railine",
+            "ada_access",
+            "water_trail",
+            "shape_stlength",
+            "miles",
+            "minsimptol",
+            "method"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Rate of Women Diagnosed with Opioid Use Disorder (OUD) during Pregnancy CY 2016 - Current Statewide Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "4y4s-y2hd",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "number_of_women_with_a",
+            "deliveries_with_oud_diagnosis"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Workforce Development Training Through Industry Partnerships PY 2014-2017 Labor And Industry",
+        "tbl_id": "j5ns-2acb",
+        "t_attrs": [
+            "year_end"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "index",
+            "count"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Count and Rate of Court Cases and Drug Court Participants Specifying Opioids in Pennsylvania CY 2016 - Current County Administrative Office of Pennsylvania Courts (AOPC)",
+        "tbl_id": "e4tx-vmn6",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "court_of_common_pleas_cases",
+            "percent_of_drug_court_cases_2",
+            "successfully_completed_drug",
+            "percent_of_drug_court_cases",
+            "rate_of_court_of_common_pleas",
+            "percent_of_court_of_common",
+            "drug_court_cases",
+            "percent_of_drug_court_cases_4"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Kennel Inspections 2003-Current Agriculture",
+        "tbl_id": "6kvs-ck8u",
+        "t_attrs": [
+            "inspection_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Count and Rate of Newly Diagnosed Cases of Hepatitis C per 1,000 Individuals with Drug Use Disorder January 2016 - Current Annual County Health",
+        "tbl_id": "yki4-w5xm",
+        "t_attrs": [],
+        "s_attrs": [
+            "geo_2"
+        ],
+        "num_columns": [
+            "oud_estimate",
+            "hepatitis_c_count",
+            "hepatitis_c_rate"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Vaccinations by Zip Code by Ethnicity Current Health NO FURTHER UPDATES",
+        "tbl_id": "r2jr-ys6g",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference_latitude_longitude"
+        ],
+        "num_columns": [
+            "partiallycovered_unknown",
+            "fullycovered_unknown",
+            "fullycovered_hispanic",
+            "partiallycovered_hispanic"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Income & Poverty (US Census: ACS 5 Year Estimates) County",
+        "tbl_id": "6npu-erdk",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "nonfam_households_income12mntsbelowpoverty",
+            "family_households",
+            "pop_belowpoverty_85plus",
+            "pop_belowpoverty_75to84",
+            "pop_belowpoverty_60to74",
+            "pop_belowpoverty_18to59",
+            "fam_households_income12mntsbelowpoverty",
+            "nonfamily_households",
+            "median_household_income",
+            "pop_abovepoverty_18to59",
+            "pop_abovepoverty_12to17",
+            "pop_belowpoverty_12to17",
+            "pop_belowpoverty_6to11",
+            "pop_belowpoverty",
+            "pop_abovepoverty",
+            "pop_belowpoverty_lt6",
+            "population",
+            "per_capita_income",
+            "pop_abovepoverty_85plus",
+            "pop_abovepoverty_75to84",
+            "pop_abovepoverty_60to74",
+            "pop_abovepoverty_6to11",
+            "pop_abovepoverty_lt6"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Dog Bites Final 1999-Current Agriculture",
+        "tbl_id": "w8eh-ckw7",
+        "t_attrs": [
+            "bite_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "victim_type_key",
+            "entity_type_key"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "COVID-19 Vaccinations by Zip Code by Gender Current Health NO FURTHER UPDATES",
+        "tbl_id": "x2ja-pwvy",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_point"
+        ],
+        "num_columns": [
+            "partiallycovered_male",
+            "fullycovered_male",
+            "fullycovered_unknown",
+            "partiallycovered_unknown",
+            "partiallycovered_female",
+            "fullycovered_female"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Rate of Newborn Hospital Stays with Withdrawal Symptoms from Maternal Use of Drugs of Addiction or Maternal Substance Exposure CY 2016-Current County Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "knvi-p79i",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "number_of_neonatal_hospital",
+            "rate_of_neonatal_hospital"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Juvenile Out-of-Home Placements 2018 By County as Reported by the Juvenile Court Judges' Commission",
+        "tbl_id": "u65u-4bvw",
+        "t_attrs": [
+            "report_end_date",
+            "report_begin_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "commitments",
+            "total_cases_closed"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Radon Mitigation System Year 1987 - Current Annual County Environmental Protection",
+        "tbl_id": "vm4e-6nir",
+        "t_attrs": [
+            "teststopdate"
+        ],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "testmethodtypecode",
+            "systemcost",
+            "measurevalue"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Naloxone First Responder Program 2017 - Current County Commission on Crime and Delinquency",
+        "tbl_id": "xqrx-inrr",
+        "t_attrs": [
+            "reporting_period_begin",
+            "reporting_period"
+        ],
+        "s_attrs": [
+            "georeferenced_location"
+        ],
+        "num_columns": [
+            "cumulative_doses_used",
+            "cumulative_doses_left_behind",
+            "cumulative_overdose_reversals",
+            "reversals_law_enfocement",
+            "reversals_other_eligible",
+            "reversals_ems",
+            "reversals_fire_department"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "2021 Primary Election Mail Ballot Requests Department of State",
+        "tbl_id": "acp7-d2w4",
+        "t_attrs": [
+            "appissuedate",
+            "appreturndate",
+            "ballotsentdate",
+            "dateofbirth",
+            "ballotreturneddate"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Percent of Women on Medical Assistance (MA) Diagnosed with Opioid Use Disorder (OUD) during Pregnancy and Receiving Medication-Assisted Treatment (MAT) CY 2016 - Current Statewide Department of Human Services (DHS)",
+        "tbl_id": "ig6a-8jqi",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "number_of_women_with_a_3",
+            "deliveries_with_oud_diagnosis_receiving_mat_percent",
+            "number_of_women_with_a",
+            "deliveries_with_oud_diagnosis"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Rate of Women on Medical Assistance (MA) Diagnosed with Opioid Use Disorder (OUD) during Pregnancy CY 2016-Current Statewide Department of Human Services (DHS)",
+        "tbl_id": "mmps-kc6p",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "number_of_women_with_a",
+            "deliveries_with_oud_diagnosis"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Delinquency Dispositions CY 2014 - Current By County as Reported by the Juvenile Court Judges' Commission",
+        "tbl_id": "5tr7-8c7n",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "dispositions_per_juvenile",
+            "age_10_17_population",
+            "dispositions_as_a_percentage",
+            "delinquency_dispositions",
+            "delinquent_juveniles"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Campaign Finance Disclosure Contributions Data 2017 State",
+        "tbl_id": "wb79-wsa4",
+        "t_attrs": [],
+        "s_attrs": [
+            "employer_location_2",
+            "employer_location_1",
+            "contributor_location_2",
+            "contributor_location_1"
+        ],
+        "num_columns": [
+            "contribution_amount",
+            "cycle"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Drug and Alcohol Treatment Get Help Now Intake Hotline November 2016 - Current County Drug and Alcohol Programs",
+        "tbl_id": "46ti-pw3n",
+        "t_attrs": [
+            "week_begin_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "total_intakes"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Lobbying Disclosure Data 2017 State",
+        "tbl_id": "wbm6-mh8t",
+        "t_attrs": [
+            "date_of_expense"
+        ],
+        "s_attrs": [
+            "registration_location"
+        ],
+        "num_columns": [
+            "quarter_of_expense",
+            "total_direct_costs",
+            "total_indirect_cost",
+            "total_costs"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "PA Labor Force Participation Rates of People with Disabilities July 2019 - Current Statewide Labor & Industry",
+        "tbl_id": "g7n5-s9zk",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "people_with_disabilities",
+            "people_with_disabilities_1",
+            "total_pa_labor_force",
+            "total_pa_labor_force_1",
+            "pa_labor_force_for_people",
+            "pa_labor_force_for_people_1"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Average Length of Hospital Stay for Newborns with and without Neonatal Abstinence Syndrome Statewide Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "qhgq-8spn",
+        "t_attrs": [
+            "time_period_date_start",
+            "time_period_date_end"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Waste Management, Resource Conservation and Recovery Act (RCRAInfo)",
+        "tbl_id": "8aqs-mzku",
+        "t_attrs": [
+            "new_closure_date",
+            "date_ended_current",
+            "expected_closure_date",
+            "receive_date",
+            "acknowledge_date",
+            "tsd_date",
+            "effc_date",
+            "cert_signed_date",
+            "date_closed",
+            "date_became_current"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "owner_op_seq",
+            "naics_seq",
+            "est_qnty",
+            "cert_seq"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Newborn Hospital Stays with Neonatal Abstinence Syndrome Percent Paid by Medicaid Statewide Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "mudu-k28b",
+        "t_attrs": [
+            "time_period_date_end",
+            "time_period_date_start"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Estimated Lost Wages Due to Hospitalizations for Opioid Use CY 2016 - Current Quarterly County Health Care Cost Containment Council (PHC4) United States Department of Labor",
+        "tbl_id": "w7cq-ufkw",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "estimated_lost_state_income_tax",
+            "estimated_lost_wages"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Campaign Finance Disclosure Expense Data Current State",
+        "tbl_id": "btk5-mx6k",
+        "t_attrs": [],
+        "s_attrs": [
+            "expense_location_2",
+            "expense_location_1"
+        ],
+        "num_columns": [
+            "election_cycle",
+            "expense_amount"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Estimated Total Lost Wages Due to Opioid Use CY 2016-2017 County Annual US Department of Health and Human Services, US Department of Labor",
+        "tbl_id": "xzsj-mqqr",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "estimated_lost_wages",
+            "estimated_lost_state_income_tax",
+            "drug_use_disorder_estimate"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Public and Private Education Institutions 2017 - Current Statewide Education",
+        "tbl_id": "a5nq-sy2w",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "lea_school_key"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Percent of Hospitalizations for Opioid Overdose by Anticipated Payer Statewide Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "e67c-nheg",
+        "t_attrs": [
+            "time_period_date_end",
+            "time_period_date_start"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_of_hospitalizations"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Maternal Opioid  Use Hospital Stays 2016-2017 County Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "r2n4-n2i4",
+        "t_attrs": [
+            "time_period_date_start",
+            "time_period_date_end"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "rate_of_maternal_stays_with",
+            "count_of_maternal_stays_with"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "State Health Centers Current Statewide Health",
+        "tbl_id": "f2sm-2bn6",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Rate of Neonatal Abstinence Syndrome per 1,000 Newborn Stays FYs 2000-2001 to FYs 2016-2017 Statewide Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "rjgw-ydfd",
+        "t_attrs": [
+            "time_period_date_start",
+            "time_period_date_end"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "rate_of_newborn_nas_stays"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "PA Municipality Boundaries",
+        "tbl_id": "ednf-5bi6",
+        "t_attrs": [
+            "gis_geomet",
+            "gis_update"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fips_sq_mi",
+            "fips_mun_p",
+            "geometry_l",
+            "mslink",
+            "geometry_a"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Digital Literacy Program Organization Types",
+        "tbl_id": "6udd-g8ir",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference_1"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "PA School District Boundaries",
+        "tbl_id": "dzyk-hhe6",
+        "t_attrs": [
+            "gis_update",
+            "gis_geomet"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "geometry_a",
+            "geometry_l"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "American Community Survey (ACS) Computer, Internet and Population Census Tract",
+        "tbl_id": "suq7-awmm",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "b28002_013e",
+            "b28001_005e",
+            "b28002_006e",
+            "state",
+            "total_population",
+            "b28001_007e",
+            "b28001_008e",
+            "b28001_006e",
+            "b28002_003e",
+            "b28002_011e",
+            "b28002_012e",
+            "b28001_001e",
+            "b28001_002e",
+            "b28002_008e",
+            "b28001_011e",
+            "b28002_007e",
+            "b28002_009e",
+            "b28002_010e",
+            "censustractstigerfile_total",
+            "percent_of_household_without",
+            "b28001_003e",
+            "b28001_004e",
+            "b28001_009e",
+            "b28001_010e",
+            "b28002_002e",
+            "b28002_004e",
+            "b28002_005e",
+            "population_per_total_square_miles"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Campaign Finance Disclosure Filer Data Current State",
+        "tbl_id": "53wp-ib3s",
+        "t_attrs": [],
+        "s_attrs": [
+            "filer_location_1",
+            "filer_location_2"
+        ],
+        "num_columns": [
+            "beginning_balance",
+            "monetary",
+            "in_kind",
+            "election_cycle"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Case Closing without a New Offense CY 2018 By County as Reported by the Juvenile Court Judges' Commission",
+        "tbl_id": "sbd3-dcfc",
+        "t_attrs": [
+            "report_begin_date",
+            "report_end_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "success_comp",
+            "total_cases_closed",
+            "new_off"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Licensed Personal Care Homes Current Statewide Human Services",
+        "tbl_id": "pqf4-d4xn",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "totcapcty"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Emissions Inventory System (EIS) Facilities 2017 - Current County Environmental Protection",
+        "tbl_id": "e7ip-7qrs",
+        "t_attrs": [
+            "datacollectiondate",
+            "effectivedate",
+            "affl_effectivedate",
+            "rpi_effectivedate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "rp_fugitiveheightmeasure",
+            "rp_exitgasflowratemeasure",
+            "rp_exitgastemperaturemeasure",
+            "rp_stackheightmeasure",
+            "rp_exitgasvelocitymeasure",
+            "rp_stackdiametermeasure"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Estimated Lost Lifetime Wages Due to Premature Opioid-Related Mortality CY 2016 - 2017 County Annual Centers for Disease Control and Prevention (CDC) United States Department of Labor",
+        "tbl_id": "8rwb-e4pv",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "lost_tax_revenue",
+            "estimated_lost_lifetime_wages"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Find Naloxone at a Pharmacy Near Me Current Statewide Department of State and Health",
+        "tbl_id": "ysdx-4vmi",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_column"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Population By Race and Ethnicity (US Census: ACS 5 Year Estimates) County",
+        "tbl_id": "4aye-6822",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pop_hispanic_latino",
+            "pop_two_races_ormore",
+            "population_racetotal",
+            "pop_indian_alaskannative_alone",
+            "pop_other_alone",
+            "pop_white_alone",
+            "pop_asian_alone",
+            "pop_hawaiian_pacificislander_alone",
+            "pop_black_alone",
+            "pop_ethnicitytotal"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Campaign Finance Disclosure Receipt Data Current State",
+        "tbl_id": "w5um-i7zu",
+        "t_attrs": [],
+        "s_attrs": [
+            "receipt_location_1",
+            "receipt_location_2"
+        ],
+        "num_columns": [
+            "election_cycle",
+            "receipt_amount"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Rate of Hospitalizations for Opioid Overdose per 100,000 Residents by Demographics CY 2016- 2017 Statewide Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "kdjs-fpiw",
+        "t_attrs": [
+            "time_period_date_start",
+            "time_period_date_end"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "rate_of_hospitalizations"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Education & Library Name, Address & GIS (EdNA) Current Statewide Education",
+        "tbl_id": "knsp-q7fv",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Statewide Maternal Hospital Stays Opioid Use Rates 2000 to present, PA Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "snh2-smit",
+        "t_attrs": [
+            "time_period_date_start",
+            "time_period_date_end"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "rate_of_maternal_stays_with"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Safe Drinking Water Sample Results Information Systems Pennsylvania 2010 - Current Environmental Protection",
+        "tbl_id": "f6wi-njzk",
+        "t_attrs": [
+            "analysis_date",
+            "date_sample_collected",
+            "sample_received_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Census ACS Educational Attainment Working Age",
+        "tbl_id": "32q3-hhqg",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "b15001_075e",
+            "b15001_031e",
+            "b15001_071e",
+            "b15001_029e",
+            "b15001_025e",
+            "b15001_023e",
+            "b15001_018e",
+            "associate_s_degree",
+            "b15001_069e",
+            "b15001_066e",
+            "b15001_053e",
+            "b15001_034e",
+            "b15001_033e",
+            "b15001_021e",
+            "b15001_012e",
+            "b15001_067e",
+            "b15001_063e",
+            "b15001_014e",
+            "bachelor_s_degree",
+            "b15001_055e",
+            "b15001_054e",
+            "b15001_032e",
+            "b15001_030e",
+            "b15001_028e",
+            "b15001_026e",
+            "b15001_022e",
+            "b15001_020e",
+            "b15001_017e",
+            "b15001_016e",
+            "b15001_057e",
+            "b15001_072e",
+            "b15001_070e",
+            "b15001_015e",
+            "high_school_diploma_or_equivalent",
+            "percentage_of_working_age_with_a_post_secondary_degree",
+            "graduate_or_professional_degree",
+            "b15001_074e",
+            "b15001_064e",
+            "b15001_062e",
+            "b15001_024e",
+            "b15001_065e",
+            "b15001_061e",
+            "no_high_school_diploma",
+            "b15001_056e",
+            "b15001_073e",
+            "b15001_058e",
+            "b15001_013e",
+            "b15001_059e"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Drug Interdiction Measures 2017-Current Monthly Corrections",
+        "tbl_id": "eius-xt4t",
+        "t_attrs": [
+            "month_year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "drug_exposure_er_trips_for",
+            "of_positive_drug_tests",
+            "inmate_overdoses_1_000",
+            "inmate_drug_finds_1_000",
+            "inmate_er_trips_due_to_drugs",
+            "inmate_on_staff_assaults",
+            "violence_1_000",
+            "inmate_on_inmate_assaults",
+            "of_written_drug_misconduct"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Feeding Sites Philadelphia Philabundance",
+        "tbl_id": "kp97-c26b",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "lng"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "2023 Primary Election Mail Ballot Requests Department of State",
+        "tbl_id": "ee4s-c5cp",
+        "t_attrs": [
+            "appreturndate",
+            "appissuedate",
+            "ballotreturneddate",
+            "ballotsentdate"
+        ],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Rate of Neonatal Hospital Stays with Withdrawal Symptoms from Maternal Use of Drugs of Addiction CY 2016-Current County Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "39ba-sync",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "rate_of_neonatal_hospital",
+            "number_of_neonatal_hospital"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Campaign Finance Disclosure Debt Data Current State",
+        "tbl_id": "8bef-t5zg",
+        "t_attrs": [],
+        "s_attrs": [
+            "debt_reporting_location_1",
+            "debt_reporting_location_2"
+        ],
+        "num_columns": [
+            "debt_amount",
+            "cycle"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "State Parks",
+        "tbl_id": "7wkw-sb9y",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "park_region",
+            "icsorg",
+            "gis_acres"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "2023 Municipal Election Mail Ballot Requests Department of State",
+        "tbl_id": "gvuf-mt9b",
+        "t_attrs": [
+            "appissuedate",
+            "appreturndate"
+        ],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Broadband Access to Cable/Fiber Internet by PREP Region By Date (December 2019) Community and Economic Development",
+        "tbl_id": "csp4-33hw",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percentage_of_broadband_access"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Population Estimates Statewide & County Current (Census)",
+        "tbl_id": "hv5f-e4e3",
+        "t_attrs": [
+            "as_of_date"
+        ],
+        "s_attrs": [
+            "georeferenced_latitude"
+        ],
+        "num_columns": [
+            "vintage",
+            "population"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Rate of Hospitalizations for Opioid Overdose per 100,000 Residents by Category Principle Diagnosis CY 2016-2017 County Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "yitu-pit9",
+        "t_attrs": [
+            "time_period_date_end",
+            "time_period_date_start"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "rate_of_hospitalizations"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Housing Tenure & Costs (US Census: ACS 5 Year Estimates) County",
+        "tbl_id": "k32h-bnp7",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "b25003_001e",
+            "b25003_003e",
+            "b25027_010e",
+            "b25106_002e",
+            "b25106_036e",
+            "b25106_040e",
+            "b25001_001e",
+            "b25002_001e",
+            "b25002_002e",
+            "b25002_003e",
+            "b25003_002e",
+            "b25027_002e",
+            "b25092_002e",
+            "b25092_003e",
+            "b25106_006e",
+            "b25106_010e",
+            "b25106_014e",
+            "b25106_018e",
+            "b25106_022e",
+            "b25106_024e",
+            "b25106_028e",
+            "b25106_032e",
+            "b25106_044e"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Trail Accesses",
+        "tbl_id": "jwr7-3xy6",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "ada_access",
+            "cross_country_skiing",
+            "off_road_motorcycle",
+            "railine",
+            "rort",
+            "snowmobile",
+            "hiking",
+            "equestrian",
+            "interpretive_education",
+            "four_wheel_drive",
+            "biking",
+            "atv"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Revenue and Lottery Regional Office Public Locations Current Statewide Revenue",
+        "tbl_id": "rkqx-wvad",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "State Police Station Locations Current Statewide State Police",
+        "tbl_id": "h7yt-5cbq",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "troop_hq"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Game Commission Hunting Agents",
+        "tbl_id": "sdrz-sgcq",
+        "t_attrs": [],
+        "s_attrs": [
+            "point"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Permit Decision Guarantee Policy Performance SFY 2012 - Current Environmental Protection",
+        "tbl_id": "ycdi-b9y3",
+        "t_attrs": [
+            "fiscal_year_end_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "received",
+            "withdrawn",
+            "disposed_on_time",
+            "issued",
+            "disposed",
+            "returned_or_denied"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "transportationprojectslines",
+        "tbl_id": "78mi-e7tw",
+        "t_attrs": [
+            "doi_date",
+            "open_to_traffic_date",
+            "gis_geometry_update_date",
+            "project_creation_date",
+            "estimated_let_date",
+            "gis_update_date",
+            "potential_committed_date",
+            "created_date",
+            "last_edited_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "nlf_cntl_end",
+            "seg_lngth_feet",
+            "nlf_cntl_bgn",
+            "cum_offset_end",
+            "offset_end",
+            "geometry_len",
+            "original_contract_amount",
+            "primary_contract_amount",
+            "project_total_length",
+            "current_contract_amount",
+            "geom_length_ft",
+            "cum_offset_bgn",
+            "est_constr_phase_cost_amount",
+            "offset_bgn"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Non-Depository Licensee Information Current Banking and Securities",
+        "tbl_id": "tyxc-jyug",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Population By Gender and Age (US Census: ACS 5 Year Estimates) County",
+        "tbl_id": "ib65-r5ts",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "male_pop_22to24",
+            "female_pop_21",
+            "female_pop_20",
+            "female_pop_40to44",
+            "male_pop_35to39",
+            "male_pop_45to49",
+            "male_pop_55to59",
+            "male_pop_60to61",
+            "male_pop_62to64",
+            "male_pop_70to74",
+            "female_pop",
+            "female_pop_67to69",
+            "male_pop_5to9",
+            "male_pop_15to17",
+            "female_pop_5to9",
+            "male_pop_30to34",
+            "male_pop_40to44",
+            "male_pop_50to54",
+            "male_pop_65to66",
+            "female_pop_10to14",
+            "male_pop_75to79",
+            "female_pop_62to64",
+            "female_pop_15to17",
+            "female_pop_45to49",
+            "male_pop_18to19",
+            "female_pop_60to61",
+            "female_pop_35to39",
+            "female_pop_18to19",
+            "female_pop_65to66",
+            "female_pop_55to59",
+            "female_pop_50to54",
+            "male_pop_85over",
+            "male_pop_25to29",
+            "male_pop",
+            "male_pop_10to14",
+            "female_pop_75to79",
+            "female_pop_85over",
+            "female_pop_30to34",
+            "female_pop_under5",
+            "male_pop_67to69",
+            "male_pop_80to84",
+            "population",
+            "male_pop_under5",
+            "male_pop_20",
+            "male_pop_21",
+            "female_pop_80to84",
+            "female_pop_70to74",
+            "female_pop_25to29",
+            "female_pop_22to24"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "PA Turnpike Service Plazas Current Statewide Transportation",
+        "tbl_id": "hxyb-rhri",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "route",
+            "milepost"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Nursing Homes Current Statewide Health",
+        "tbl_id": "xgn8-z9eg",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "PALS_Sales_Outlets",
+        "tbl_id": "ukas-wke8",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "key",
+            "status",
+            "agent_key"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Statewide Maternal Stays percent Medicaid with or without Opioid Use 2016-2017 PA Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "cexm-i5s6",
+        "t_attrs": [
+            "time_period_date_end",
+            "time_period_date_start"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_of_maternal_records"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "County Assistance Office Current Statewide Human Services",
+        "tbl_id": "ytxr-yigf",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": [
+            "outlatitud",
+            "outlongitu"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Statewide Delivery Stays Percent Readmitted with or without Opioid Use 2016-2017 PA Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "idye-ecjy",
+        "t_attrs": [
+            "time_period_date_end",
+            "time_period_date_start"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_of_delivery_records"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "PA Venture Capital Firms Top Ten Firms by Number of Investments By Year (2021) Community and Economic Development",
+        "tbl_id": "74mc-w993",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "number_of_investments"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Reproductive Services Site Information",
+        "tbl_id": "vq6y-7vt5",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_lat_long"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "transportationprojectspoints",
+        "tbl_id": "xgpy-4h3q",
+        "t_attrs": [
+            "potential_committed_date",
+            "project_creation_date",
+            "open_to_traffic_date",
+            "estimated_let_date",
+            "doi_date",
+            "created_date",
+            "last_edited_date"
+        ],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": [
+            "project_total_length",
+            "est_constr_phase_cost_amount",
+            "original_contract_amount",
+            "current_contract_amount",
+            "primary_contract_amount",
+            "offset_bgn",
+            "offset_end",
+            "seg_lngth_feet",
+            "nlf_cntl_bgn",
+            "nlf_cntl_end",
+            "cum_offset_bgn",
+            "cum_offset_end",
+            "geom_length_ft"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Area Agencies on Aging Current Statewide Aging",
+        "tbl_id": "fx26-jtki",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Early Learning Resource Centers Current Statewide Human Services",
+        "tbl_id": "fn8n-rgds",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocode"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Statewide Delivery Stays Percent of Gestation Stages with or without Opioid Use 2016-2017 PA Health Care Cost Containment Council (PHC4)",
+        "tbl_id": "3pn6-bews",
+        "t_attrs": [
+            "time_period_date_start",
+            "time_period_date_end"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_of_delivery_records"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Venture Capital Firms - Top Ten States By Year (2021) Community and Economic Development",
+        "tbl_id": "rj54-eeen",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "number_of_vc"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "CareerLink Locations Current Statewide Labor & Industry",
+        "tbl_id": "6p38-7dgx",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Percentage of Access to Broadband for Different Types of Connections By Date (December 2019) Community and Economic Development",
+        "tbl_id": "brvt-7azd",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percentage_of_broadband_access"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Test for enroll",
+        "tbl_id": "4ad5-nbd4",
+        "t_attrs": [
+            "date_received",
+            "date_certified",
+            "date_shipped",
+            "date_created"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "waste_quantity"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Population & Mobility (US Census: ACS 5 Year Estimates) Statewide",
+        "tbl_id": "qx8v-wk3k",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "group_quarters_pop",
+            "abroad",
+            "population",
+            "institutionalized_pop",
+            "correctional_fac_pop",
+            "nursing_fac_pop",
+            "college_housing_pop",
+            "same_city",
+            "same_state",
+            "pop_for_mobility",
+            "same_house",
+            "same_county",
+            "different_state",
+            "noninstitutionalized_pop"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "DEP_OFFICES",
+        "tbl_id": "52yc-xrse",
+        "t_attrs": [],
+        "s_attrs": [
+            "the_geom"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Veteran Homes Current Statewide Military and Veteran Affairs",
+        "tbl_id": "x268-9sbe",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude_longitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Medical Marijuana Dispensaries Current State Health Monthly",
+        "tbl_id": "4uxb-pw5i",
+        "t_attrs": [
+            "marijuana_available_beginning"
+        ],
+        "s_attrs": [
+            "georeference"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Population Median Age by Gender (US Census: ACS 5 Year Estimates) County",
+        "tbl_id": "d7bw-m8fj",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "male_pop_median_age",
+            "female_pop_median_age",
+            "pop_median_age"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Percent of Households with Broadband by PREP Region By Year (2019) Department of Community and Economic Development",
+        "tbl_id": "9ehm-dkmq",
+        "t_attrs": [
+            "year"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "broadband_subscription_rate"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "US House Districts for PA 2019 Health",
+        "tbl_id": "yk2h-22sr",
+        "t_attrs": [],
+        "s_attrs": [
+            "ushousecentroid"
+        ],
+        "num_columns": [
+            "name",
+            "aland",
+            "awater"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "PA State House Districts 2016 Health",
+        "tbl_id": "k2e7-g5di",
+        "t_attrs": [],
+        "s_attrs": [
+            "pahousecentroid"
+        ],
+        "num_columns": [
+            "aland",
+            "awater"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "PA State Senate Districts 2016 Health",
+        "tbl_id": "umvt-b8sr",
+        "t_attrs": [],
+        "s_attrs": [
+            "pasenatecentroid"
+        ],
+        "num_columns": [
+            "aland",
+            "awater"
+        ]
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Driver Vehicle Services Locations Current Statewide Transportation",
+        "tbl_id": "n97p-rhqz",
+        "t_attrs": [],
+        "s_attrs": [
+            "georeferenced_latitude"
+        ],
+        "num_columns": []
+    },
+    {
+        "domain": "data.pa.gov",
+        "tbl_name": "Pa School Districts 2023_10",
+        "tbl_id": "sken-zr26",
+        "t_attrs": [
+            "gis_update",
+            "gis_geomet"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "shape_area",
+            "mslink",
+            "len",
+            "shape_leng",
+            "shape_length"
+        ]
+    }
+]

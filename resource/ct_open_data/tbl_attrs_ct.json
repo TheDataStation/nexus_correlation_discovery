@@ -1,0 +1,2900 @@
+{
+    "bqve-e8um": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 DPH Reports Library - Archive",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "rf3k-f8fg": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Tests, Cases, Hospitalizations, and Deaths (Statewide) - ARCHIVE",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cases_age80_older",
+            "cases_age50_59",
+            "cases_age40_49",
+            "cases_age20_29",
+            "cases_age10_19",
+            "confirmeddeaths",
+            "probablecases",
+            "confirmedcases",
+            "totalcases",
+            "cases_age70_79",
+            "cases_age60_69",
+            "cases_age30_39",
+            "totaldeaths",
+            "cases_age0_9",
+            "hospitalizedcases",
+            "probabledeaths"
+        ]
+    },
+    "virr-yb6n": {
+        "domain": "data.ct.gov",
+        "name": "State Employee Payroll Data Calendar Year 2015 through Present",
+        "t_attrs": [
+            "orig_hire"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "judges_amount",
+            "arp_amount",
+            "salaries_wages",
+            "overtime",
+            "fringe",
+            "other",
+            "check",
+            "teachers_amount",
+            "annual_rate",
+            "tot_gross",
+            "bi_weekly_comp_rate",
+            "pyrl_fiscal_yr",
+            "sers_amount"
+        ]
+    },
+    "egd5-wb6r": {
+        "domain": "data.ct.gov",
+        "name": "Medical Marijuana Brand Registry",
+        "t_attrs": [
+            "approval_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "n8x6-s299": {
+        "domain": "data.ct.gov",
+        "name": "Correctional Facility Daily Population Count By Facility",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_facility_population_count",
+            "sentenced_status_count",
+            "accused_other_status_count"
+        ]
+    },
+    "hree-nys2": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 case rate per 100,000 population and percent test positivity in the last 14 days by town - ARCHIVE",
+        "t_attrs": [
+            "reportperiodenddate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "casesweek1",
+            "totaltests",
+            "totalcases",
+            "percentpositive",
+            "caserate",
+            "casesweek2",
+            "pop"
+        ]
+    },
+    "qmgw-5kp6": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 State Level Data - Archive",
+        "t_attrs": [
+            "report_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cumulative_deaths_hisp_race_5",
+            "cumulative_deaths_hisp_race_4",
+            "cumulative_deaths_hisp_race_3",
+            "cumulative_deaths_agegroup_7",
+            "cumulative_cases_gender_na",
+            "cumulative_cases_gender_other",
+            "cumulative_cases_hisp_race_6",
+            "cumulative_cases_hisp_race_5",
+            "cumulative_cases_hisp_race_4",
+            "cumulative_cases_hisp_race_1",
+            "cases_hisp_race_unknown_7days",
+            "cases_hisp_race_nh_multiracial",
+            "cases_hisp_race_nh_asian_or_pacific",
+            "cases_age_group_80_7days",
+            "cases_age_group_10_19_7days",
+            "census_7days_ago",
+            "nonvax_today",
+            "partialvax_today",
+            "fullyvax_today",
+            "cumulative_tests_naat",
+            "probable_cases_7days",
+            "cumulative_deaths_hisp_race_6",
+            "cumulative_cases_hisp_race",
+            "cumulative_cases_agegroup",
+            "cases_age_group_20_29_7days",
+            "cumulative_cases_gender",
+            "cumulative_cases_hisp_race_2",
+            "cases_hisp_race_nh_white_7days",
+            "cumulative_cases_agegroup_6",
+            "cumulative_cases_agegroup_5",
+            "cumulative_cases_agegroup_2",
+            "cases_age_group_50_59_7days",
+            "census_change",
+            "census_today",
+            "newly_reported_deaths",
+            "cases_7days",
+            "cumulative_cases_probable",
+            "cumulative_cases_confirmed",
+            "cumulative_deaths_agegroup_6",
+            "case_rate_weekly",
+            "positive_ag_7days",
+            "tests_reportable_7days",
+            "cumulative_deaths_gender_1",
+            "cumulative_cases_gender_male",
+            "cases_age_group_0_9_7days",
+            "cumulative_deaths",
+            "cumulative_deaths_gender_3",
+            "cumulative_deaths_hisp_race",
+            "cumulative_deaths_agegroup_8",
+            "cumulative_cases_gender_female",
+            "cumulative_cases_agegroup_8",
+            "cases_age_group_70_79_7days",
+            "cases_age_group_60_69_7days",
+            "tests_naat_7days",
+            "cumulative_cases_agegroup_7",
+            "cumulative_deaths_agegroup_5",
+            "cases_gender_male_7days",
+            "cases_hisp_race_hispanic_7days",
+            "cases_age_group_40_49_7days",
+            "adddose_today",
+            "positive_naat_7days",
+            "cumulative_cases_agegroup_1",
+            "cumulative_positive_naat",
+            "cumulative_deaths_agegroup_4",
+            "cumulative_cases_agegroup_4",
+            "naat_positivity_7days",
+            "cumulative_deaths_agegroup_3",
+            "cumulative_deaths_agegroup_1",
+            "cases_gender_unknown_7days",
+            "cumulative_cases_agegroup_9",
+            "cases_age_group_30_39_7days",
+            "cases_hisp_race_nh_american_indian",
+            "confirmed_cases_7days",
+            "cases_gender_female_7days",
+            "cases_hisp_race_nh_black_7days",
+            "cumulative_deaths_agegroup",
+            "cumulative_cases_agegroup_3",
+            "cumulative_tests_reportable",
+            "cumulative_cases_hisp_race_3",
+            "cumulative_cases",
+            "state_population",
+            "cumulative_deaths_gender",
+            "cumulative_deaths_agegroup_2",
+            "cases_gender_other_7days",
+            "cumulative_deaths_gender_2",
+            "cases_age_group_unknown_7days",
+            "cumulative_deaths_hisp_race_1",
+            "cumulative_deaths_hisp_race_2",
+            "fips",
+            "cumulative_deaths_agegroup_9"
+        ]
+    },
+    "rybz-nyjw": {
+        "domain": "data.ct.gov",
+        "name": "Accidental Drug Related Deaths 2012-2022",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [
+            "deathcitygeo"
+        ],
+        "num_columns": [
+            "age"
+        ]
+    },
+    "icxw-cada": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Town Level Data - Archive",
+        "t_attrs": [
+            "report_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "positive_ag_7days",
+            "cumulative_deaths",
+            "case_rate_weekly",
+            "positive_naat_7days",
+            "cumulative_tests_reportable",
+            "naat_positivity_7days",
+            "cumulative_positive_naat",
+            "cases_7days",
+            "cumulative_cases",
+            "tests_naat_7days",
+            "tests_reportable_7days",
+            "cumulative_tests_naat",
+            "city_population"
+        ]
+    },
+    "9k2y-kqxn": {
+        "domain": "data.ct.gov",
+        "name": "Education Directory",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": []
+    },
+    "ngch-56tr": {
+        "domain": "data.ct.gov",
+        "name": "State Licenses and Credentials",
+        "t_attrs": [
+            "issuedate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "active"
+        ]
+    },
+    "t64r-mt64": {
+        "domain": "data.ct.gov",
+        "name": "Insurance Company Complaints, Resolutions, Status, and Recoveries",
+        "t_attrs": [
+            "opened"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "recovery"
+        ]
+    },
+    "h6d8-qiar": {
+        "domain": "data.ct.gov",
+        "name": "Hazardous Waste Manifest Data (CT) 1984 \u2013 2008",
+        "t_attrs": [
+            "recdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "qty",
+            "wasteoccr"
+        ]
+    },
+    "s22x-83rd": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 case rate per 100,000 population and percent test positivity in the last 7 days by town - ARCHIVE",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "newtests",
+            "dailyratecases",
+            "pctpos"
+        ]
+    },
+    "wr2a-rnsg": {
+        "domain": "data.ct.gov",
+        "name": "Spill Incidents from January 1, 1996 to June 30, 2022",
+        "t_attrs": [
+            "releasedatetime"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "caseno"
+        ]
+    },
+    "8d4q-hwjx": {
+        "domain": "data.ct.gov",
+        "name": "CT DPH Influenza and COVID-19 Syndromic Surveillance by Week",
+        "t_attrs": [
+            "currentreportperiodend"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percli_2021_2022",
+            "perili_2022_2023",
+            "perili_2019_2020",
+            "percli_2020_2021",
+            "perili_2021_2022",
+            "perili_2020_2021",
+            "percli_2022_2023",
+            "fips",
+            "displayweek",
+            "percli_2019_2020",
+            "admitweek",
+            "currentfluseasonstart",
+            "currentfluseasonend"
+        ]
+    },
+    "utni-rddb": {
+        "domain": "data.ct.gov",
+        "name": "Underground Storage Tanks (USTs) - Facility and Tank Details",
+        "t_attrs": [
+            "installationdt"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "capacitygalsnum",
+            "tanklon",
+            "tanklat"
+        ]
+    },
+    "ujiq-dy22": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 County Level Data - Archive",
+        "t_attrs": [
+            "report_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "case_rate_weekly",
+            "adddose_today",
+            "census_7days_ago",
+            "positive_naat_7days",
+            "cases_7days",
+            "cumulative_tests_reportable",
+            "census_change",
+            "cumulative_deaths",
+            "county_population",
+            "tests_naat_7days",
+            "cumulative_cases",
+            "positive_ag_7days",
+            "cumulative_positive_naat",
+            "partialvax_today",
+            "census_today",
+            "cumulative_tests_naat",
+            "fullyvax_today",
+            "tests_reportable_7days",
+            "naat_positivity_7days",
+            "nonvax_today",
+            "fips"
+        ]
+    },
+    "vjim-iz5e": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Vaccinations by Age Group - ARCHIVED",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fully_vaccinated_percent",
+            "initiated_vaccination_percent",
+            "additional_dose_1_received_count",
+            "initiated_vaccination",
+            "additional_dose_1_received_percent",
+            "fully_vaccinated",
+            "population"
+        ]
+    },
+    "5mzw-sjtu": {
+        "domain": "data.ct.gov",
+        "name": "Real Estate Sales 2001-2020 GL",
+        "t_attrs": [
+            "daterecorded"
+        ],
+        "s_attrs": [
+            "geo_coordinates"
+        ],
+        "num_columns": [
+            "listyear",
+            "serialnumber",
+            "saleamount",
+            "assessedvalue"
+        ]
+    },
+    "qfkt-uahj": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Test Results by Date of Specimen Collection (By County) - ARCHIVE",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "number_of_ag_indeterminates",
+            "number_of_ag_negatives",
+            "number_of_ag_positives",
+            "number_of_ag_tests",
+            "number_of_pcr_positives",
+            "number_of_pcr_indeterminates",
+            "number_of_pcr_tests",
+            "number_of_pcr_negatives"
+        ]
+    },
+    "e4bh-ax24": {
+        "domain": "data.ct.gov",
+        "name": "CT School Learning Model Indicators by County (14-day metrics) - ARCHIVE",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_test_positivity"
+        ]
+    },
+    "n7gp-d28j": {
+        "domain": "data.ct.gov",
+        "name": "Connecticut Business Registry - Business Master",
+        "t_attrs": [
+            "began_transacting_in_ct"
+        ],
+        "s_attrs": [
+            "geo_location"
+        ],
+        "num_columns": [
+            "total_authorized_shares"
+        ]
+    },
+    "b674-jy6w": {
+        "domain": "data.ct.gov",
+        "name": "Accused Pre-Trial Inmates in Correctional Facilities",
+        "t_attrs": [
+            "download_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "bond_amount",
+            "age"
+        ]
+    },
+    "xnw3-nytd": {
+        "domain": "data.ct.gov",
+        "name": "Department of Economic and Community Development (DECD) \u2013 Business Assistance Portfolio",
+        "t_attrs": [
+            "contract_execution_date"
+        ],
+        "s_attrs": [
+            "geocoded_location"
+        ],
+        "num_columns": [
+            "amount_leveraged",
+            "total_project_cost",
+            "total_assistance",
+            "loan_amount",
+            "grant_amount",
+            "part_time_ct_employment_at_6_30_18"
+        ]
+    },
+    "jk32-cd4i": {
+        "domain": "data.ct.gov",
+        "name": "WIC Authorized Vendors",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "rpph-4ysy": {
+        "domain": "data.ct.gov",
+        "name": "CT School Learning Model Indicators by County (7-day metrics) - ARCHIVE",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percent_test_positivity"
+        ]
+    },
+    "xz44-6swc": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Cases by Date of First Positive Specimen - ARCHIVE",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "probable",
+            "confirmed",
+            "total"
+        ]
+    },
+    "xfev-8smz": {
+        "domain": "data.ct.gov",
+        "name": "Uniform Commercial Code (UCC) Lien Filings 4.0 Revised 7.2021",
+        "t_attrs": [
+            "dt_lapse"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "qt_pages",
+            "cd_volume",
+            "cd_start_page"
+        ]
+    },
+    "ehua-hw73": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Cases in CT Schools (Statewide), 2020-2021 School Year - Archive",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "studentcases",
+            "staffcases"
+        ]
+    },
+    "kt63-kssz": {
+        "domain": "data.ct.gov",
+        "name": "PPP Loans to Connecticut Businesses",
+        "t_attrs": [
+            "dateapproved"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "jobsreported",
+            "loanamount"
+        ]
+    },
+    "rm6f-b9qj": {
+        "domain": "data.ct.gov",
+        "name": "Nursing Facility Registry",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "ccrc_life_care",
+            "medicare_managed_care",
+            "medicare_fee_for_service_traditional",
+            "asian_or_pacific_islander",
+            "african_american",
+            "unknown_marital_status",
+            "divorced",
+            "separated",
+            "never_married",
+            "married",
+            "unknown_age",
+            "_75_84",
+            "_65_74",
+            "_55_64",
+            "_45_54",
+            "_35_44",
+            "rhns_room_rate_semi_private_2_beds",
+            "rhns_room_rate_private_1_bed",
+            "ccnh_room_rate_3_4_beds",
+            "licensed_rhns_beds_occupied",
+            "licensed_rhns_beds",
+            "licensed_ccnh_beds_occupied",
+            "licensed_ccnh_beds",
+            "total_licensed_beds",
+            "veterans_administration",
+            "female",
+            "_95_and_older",
+            "_85_94",
+            "_18_24",
+            "ccnh_room_rate_semi_private_2_beds",
+            "ccnh_room_rate_private_1_bed",
+            "unknown_payment_source",
+            "other_or_unknown",
+            "white",
+            "male",
+            "_25_34",
+            "unknown_gender",
+            "rhns_room_rate_3_4_beds",
+            "hispanic_or_latino_origin",
+            "_18",
+            "american_indian_or_alaskan_native"
+        ]
+    },
+    "rmqj-976w": {
+        "domain": "data.ct.gov",
+        "name": "State of Connecticut: Open Pension 2014 \u2013 Present",
+        "t_attrs": [
+            "check_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pension_wage"
+        ]
+    },
+    "yc6z-jrb5": {
+        "domain": "data.ct.gov",
+        "name": "Releases from Federally Regulated Underground Storage Tank Systems",
+        "t_attrs": [
+            "releasedate"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "abag-bjkj": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19-Associated Deaths by Date of Death - ARCHIVE",
+        "t_attrs": [
+            "dateofdeath"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "probabledeaths",
+            "confirmeddeaths",
+            "totaldeaths"
+        ]
+    },
+    "g9vi-2ahj": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Cases, Deaths, and Tests by Day - Archived",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_deaths",
+            "total_cases",
+            "total_tests",
+            "probable_cases",
+            "confirmed_cases"
+        ]
+    },
+    "5d7h-at3x": {
+        "domain": "data.ct.gov",
+        "name": "Correctional Community Program Daily Population Count By Community Program",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "female_count",
+            "male_count",
+            "total_count"
+        ]
+    },
+    "5q7h-u2ac": {
+        "domain": "data.ct.gov",
+        "name": "Learning Model by School District, 2020-2021",
+        "t_attrs": [
+            "school_start_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "u76p-weqj": {
+        "domain": "data.ct.gov",
+        "name": "List of Contaminated or Potentially Contaminated Sites - Remediation Division",
+        "t_attrs": [
+            "remediationstarted"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "ihra-gwrn": {
+        "domain": "data.ct.gov",
+        "name": "Department of Economic and Community Development- Tax Credit Portfolio",
+        "t_attrs": [
+            "contract_requirement_target_date"
+        ],
+        "s_attrs": [
+            "project_location"
+        ],
+        "num_columns": [
+            "total_qualified_expenditures",
+            "total_vocational_rehab_jobs_created",
+            "contract_requirement_jobs_to_be_retained",
+            "total_military_jobs_created",
+            "total_jobs_created",
+            "total_tax_credit_allocation",
+            "contract_requirement_jobs_to_be_created"
+        ]
+    },
+    "h8mr-dn95": {
+        "domain": "data.ct.gov",
+        "name": "Child Care & Youth Camp Licensing Program Data",
+        "t_attrs": [
+            "effectivedate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "regularcapacity",
+            "maximumcapacity",
+            "capacityunder3",
+            "schoolagecapacity"
+        ]
+    },
+    "72vp-djx5": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Cases in CT Schools (Statewide), 2021-2022 School Year - Archive",
+        "t_attrs": [
+            "week_start"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "noinfostud",
+            "novaxstud",
+            "novaxstaff",
+            "vaxstaff",
+            "numberofstudents",
+            "numberofstaff",
+            "noinfostaff",
+            "vaxstud"
+        ]
+    },
+    "nahi-zqrt": {
+        "domain": "data.ct.gov",
+        "name": "Traffic Stops - Racial Profiling Prohibition Project",
+        "t_attrs": [
+            "interventiondatetime"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "subjectage",
+            "recordcount",
+            "profileno",
+            "interventiondura"
+        ]
+    },
+    "t2xi-dmhg": {
+        "domain": "data.ct.gov",
+        "name": "Department of Economic and Community Development - Brownfield Portfolio",
+        "t_attrs": [
+            "contract_execution_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "count"
+        ]
+    },
+    "meyk-xprb": {
+        "domain": "data.ct.gov",
+        "name": "State Real Property",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "opm_assessment",
+            "building_assessment",
+            "land_assessment",
+            "acres",
+            "total_assessment"
+        ]
+    },
+    "um73-fxm4": {
+        "domain": "data.ct.gov",
+        "name": "Sentenced Inmates in Correctional Facilities",
+        "t_attrs": [
+            "latest_admission_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "age"
+        ]
+    },
+    "5g42-tpzq": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Vaccinations by County - ARCHIVED",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "additional_dose_1_received",
+            "initiated_vaccination_percent",
+            "initiated_vaccination",
+            "additional_dose_1_received_percent",
+            "fully_vaccinated",
+            "population",
+            "fully_vaccinated_percent"
+        ]
+    },
+    "r4ta-b48e": {
+        "domain": "data.ct.gov",
+        "name": "Connecticut Acute Care Hospitals",
+        "t_attrs": [],
+        "s_attrs": [
+            "address"
+        ],
+        "num_columns": []
+    },
+    "jz5u-r6jf": {
+        "domain": "data.ct.gov",
+        "name": "State of CT: Open Expenditures - Ledger",
+        "t_attrs": [
+            "invoice_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ]
+    },
+    "apne-w8c6": {
+        "domain": "data.ct.gov",
+        "name": "Licensed Automobile Dealers And Repairers",
+        "t_attrs": [
+            "license_expiration"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": []
+    },
+    "kbx6-3an2": {
+        "domain": "data.ct.gov",
+        "name": "Listing of Senior Centers",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "jfhb-ebu6": {
+        "domain": "data.ct.gov",
+        "name": "Electric Vehicle Charging Stations",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": []
+    },
+    "dsrn-u9nm": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Agents for the Elderly Listing",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "region"
+        ]
+    },
+    "9uci-nvcw": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 case rate per 100,000 population and percent test positivity in the last 14 days by town - ARCHIVE",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "newtests",
+            "dailyratecases",
+            "pctpos"
+        ]
+    },
+    "rfjk-ajfm": {
+        "domain": "data.ct.gov",
+        "name": "Monthly Casino Slot Revenue for Current Year",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "payout",
+            "weighted_average_of_machines",
+            "handle",
+            "win_9",
+            "hold",
+            "ebonus_credits_redeemed_at",
+            "ebonus_contribution_3",
+            "slot_machine_contributions",
+            "total_contributions_1"
+        ]
+    },
+    "xkga-ifz3": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Vaccinations by Race/Ethnicity - ARCHIVE",
+        "t_attrs": [
+            "date_reported"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fully_vaccinated_percent",
+            "fully_vaccinated_count",
+            "initiated_vaccination_count",
+            "population",
+            "initiated_vaccination_percent"
+        ]
+    },
+    "fv3p-tf5m": {
+        "domain": "data.ct.gov",
+        "name": "Grocery Stores",
+        "t_attrs": [
+            "issuedate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "credentialnumber",
+            "active"
+        ]
+    },
+    "2rnd-twzt": {
+        "domain": "data.ct.gov",
+        "name": "Pharmacies",
+        "t_attrs": [
+            "issuedate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "credentialnumber",
+            "active"
+        ]
+    },
+    "7quf-krzf": {
+        "domain": "data.ct.gov",
+        "name": "Plumbing Continuing Education Courses",
+        "t_attrs": [
+            "course_expiration_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "jis9-5rj9": {
+        "domain": "data.ct.gov",
+        "name": "Underground Storage Tanks (USTs) - Compliance Details",
+        "t_attrs": [
+            "inspectiondt"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "it4j-andf": {
+        "domain": "data.ct.gov",
+        "name": "Assisted Living Service Agencies",
+        "t_attrs": [
+            "effectivedate"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "active"
+        ]
+    },
+    "vvtn-9xef": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Reported Patient Impact and Hospital Capacity by Facility",
+        "t_attrs": [
+            "collection_week"
+        ],
+        "s_attrs": [
+            "hospital_location"
+        ],
+        "num_columns": []
+    },
+    "krqq-6qhc": {
+        "domain": "data.ct.gov",
+        "name": "Tax Exempt Organizations (Extracted from the Internal Revenue Service)",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "group",
+            "subsection",
+            "affiliation",
+            "classification",
+            "ruling",
+            "deductibility",
+            "foundation",
+            "activity",
+            "organization",
+            "status",
+            "tax_period",
+            "asset_cd",
+            "income_cd",
+            "filing_req_cd",
+            "pf_filing_req_cd",
+            "acct_pd",
+            "asset_amt",
+            "income_amt",
+            "revenue_amt"
+        ]
+    },
+    "ah3s-bes7": {
+        "domain": "data.ct.gov",
+        "name": "Connecticut Business Registry - Business Filing History",
+        "t_attrs": [
+            "effective_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "start_page",
+            "volume",
+            "pages"
+        ]
+    },
+    "i6ts-ib7c": {
+        "domain": "data.ct.gov",
+        "name": "Selected Video Facsimile/Slot Machine Data from Foxwoods and Mohegan Sun Casinos",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "win_9",
+            "hold",
+            "ebonus_credits",
+            "ebonus_contribution",
+            "total_contributions",
+            "handle",
+            "slot_machine",
+            "payout",
+            "weighted_average"
+        ]
+    },
+    "77ya-7twa": {
+        "domain": "data.ct.gov",
+        "name": "List of Contaminated or Potentially Contaminated Sites - SASU Case Management System",
+        "t_attrs": [
+            "date_condition_first"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "me6n-3yhp": {
+        "domain": "data.ct.gov",
+        "name": "DAS Procurement Supplier Diversity Certifications",
+        "t_attrs": [
+            "expirationdate"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "6rnk-h6iy": {
+        "domain": "data.ct.gov",
+        "name": "Child Care & Youth Camp Licensing Inspections",
+        "t_attrs": [
+            "visitdate"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "wphv-ux6v": {
+        "domain": "data.ct.gov",
+        "name": "Wells in Connecticut",
+        "t_attrs": [
+            "date_of_boringabandonment"
+        ],
+        "s_attrs": [
+            "geolocation"
+        ],
+        "num_columns": [
+            "casing_diameter",
+            "depth_of_well",
+            "yield_test_result",
+            "water_depth_from_surface",
+            "water_during_test"
+        ]
+    },
+    "nhvj-awym": {
+        "domain": "data.ct.gov",
+        "name": "CT Department of Children and Families Offices and Facilities",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "jpi8-zeza": {
+        "domain": "data.ct.gov",
+        "name": "Monthly Sale Price of Single Family Homes in CT",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "average_sale_price",
+            "median_sale_price"
+        ]
+    },
+    "u6ds-fzyp": {
+        "domain": "data.ct.gov",
+        "name": "Liquor Brands",
+        "t_attrs": [
+            "effective"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "5dch-cm68": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 daily and cumulative cases, deaths, and tests - ARCHIVE",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "test_cum",
+            "death_cum",
+            "spec_cum",
+            "tests",
+            "deaths",
+            "speccollected"
+        ]
+    },
+    "hips-b95a": {
+        "domain": "data.ct.gov",
+        "name": "State Licensing and Credentialing Organizations",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "qem9-rt8k": {
+        "domain": "data.ct.gov",
+        "name": "Connecticut Fire Department Incidents (2012-2021)",
+        "t_attrs": [
+            "incident_controlled_date_and_time"
+        ],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "contents_loss",
+            "propery_loss",
+            "property_value",
+            "number_of_suppression_personnel",
+            "other_fire_injuries",
+            "fire_service_injuries",
+            "number_of_ems_apparatus",
+            "number_of_suppression_apparatus",
+            "number_of_ems_personnel",
+            "other_fire_deaths",
+            "number_of_other_personnel",
+            "number_of_other_apparatus",
+            "contents_value",
+            "fire_service_deaths"
+        ]
+    },
+    "4wf4-3kiv": {
+        "domain": "data.ct.gov",
+        "name": "CT Partnership Plan -- Enrolled Groups",
+        "t_attrs": [
+            "plan_effective_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_members_inc_deps",
+            "approx_employee_count"
+        ]
+    },
+    "iksq-gc7z": {
+        "domain": "data.ct.gov",
+        "name": "Gas Stations with Emergency Generators",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": []
+    },
+    "qhtt-czu2": {
+        "domain": "data.ct.gov",
+        "name": "Connecticut Reportable Disease Case List",
+        "t_attrs": [
+            "reportperiodend"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fips"
+        ]
+    },
+    "ddp2-c9uu": {
+        "domain": "data.ct.gov",
+        "name": "Underground Storage Tanks (USTs) - Active Facilities",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": []
+    },
+    "9hvs-7j2k": {
+        "domain": "data.ct.gov",
+        "name": "Environmental Monitoring Results for Radioactivity: Air Samples",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "state_err_iodine",
+            "state_iodine",
+            "state_err_beta",
+            "state_beta"
+        ]
+    },
+    "ccit-2ev8": {
+        "domain": "data.ct.gov",
+        "name": "Child Care & Youth Camp Licensing Violations",
+        "t_attrs": [
+            "visitdate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "casetype"
+        ]
+    },
+    "f3ic-b924": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Vaccinations by Gender - ARCHIVED",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "initiated_vaccination_percent",
+            "population",
+            "fully_vaccinated_percent",
+            "additional_dose_1_received",
+            "initiated_vaccination",
+            "fully_vaccinated",
+            "additional_dose_1_received_percent"
+        ]
+    },
+    "kiw5-nux8": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Cases in CT Schools (Statewide), 2022-2023 School Year - Archive",
+        "t_attrs": [
+            "week_start"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "student_cases",
+            "student_cases_vax_unknown",
+            "staff_cases",
+            "staff_cases_vax_unknown"
+        ]
+    },
+    "tett-bw6q": {
+        "domain": "data.ct.gov",
+        "name": "Child Care & Youth Camp Licensing Investigations",
+        "t_attrs": [
+            "dateclosed"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "utsd-duk5": {
+        "domain": "data.ct.gov",
+        "name": "DCF Monthly Child Entries and Exits to Placement",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "ucaf-96h6": {
+        "domain": "data.ct.gov",
+        "name": "Cannabis Retail Sales by Week Ending",
+        "t_attrs": [
+            "unnamed_column"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "adult_use_cannabis_average_product_price",
+            "adult_use",
+            "medical_products_sold",
+            "adult_use_products_sold",
+            "total_products_sold",
+            "medical",
+            "total",
+            "medical_marijuana_average_product_price"
+        ]
+    },
+    "xpjq-6wxn": {
+        "domain": "data.ct.gov",
+        "name": "Percent Change in Consumer Spending",
+        "t_attrs": [
+            "date_day"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "hcs",
+            "grf",
+            "acf",
+            "all",
+            "tws",
+            "apg",
+            "retail",
+            "aer",
+            "statefips"
+        ]
+    },
+    "ffju-s5c5": {
+        "domain": "data.ct.gov",
+        "name": "Spill Incidents from July 1, 2022 to Recent for Download",
+        "t_attrs": [
+            "incident_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "demhs_region"
+        ]
+    },
+    "enwv-52we": {
+        "domain": "data.ct.gov",
+        "name": "Connecticut Business Registry - Name Change History",
+        "t_attrs": [
+            "name_change_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "6htq-gj2r": {
+        "domain": "data.ct.gov",
+        "name": "State Owned Buildings",
+        "t_attrs": [],
+        "s_attrs": [
+            "location"
+        ],
+        "num_columns": [
+            "net_usable_square_feet",
+            "gross_square_feet"
+        ]
+    },
+    "b9hx-6k7a": {
+        "domain": "data.ct.gov",
+        "name": "Local Capital Improvement Program Payment List",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "reimbursement_amount",
+            "code",
+            "list"
+        ]
+    },
+    "kjsu-mdny": {
+        "domain": "data.ct.gov",
+        "name": "DECD Film, TV and Digital Media Tax Credit Activity",
+        "t_attrs": [
+            "date_issued"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "ct_expenditures",
+            "amount"
+        ]
+    },
+    "9ky9-v9uu": {
+        "domain": "data.ct.gov",
+        "name": "Real Estate Decisions",
+        "t_attrs": [
+            "decision_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "pmna-639e": {
+        "domain": "data.ct.gov",
+        "name": "Daily DSS Application Activity Before and During COVID-19 Emergency",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cash_assistance_applications",
+            "medical_applications_husky",
+            "snap_applications",
+            "total_applications_received"
+        ]
+    },
+    "t4hx-jd4c": {
+        "domain": "data.ct.gov",
+        "name": "School Attendance by Student Group and District, 2021-2022",
+        "t_attrs": [
+            "reportingperiod"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "studentcount_201920",
+            "attrate_202021",
+            "attrate_ytd",
+            "attrate_201920",
+            "studentcount_202021",
+            "studentcount_current"
+        ]
+    },
+    "c78t-hiax": {
+        "domain": "data.ct.gov",
+        "name": "Pharmacies Offering Naloxone",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": []
+    },
+    "c4dk-8f27": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Contact Tracing: COVID Alert CT Summary by Week - ARCHIVE",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "actionable_adult_cases",
+            "codes_issued",
+            "ios_cumulative",
+            "cumulative",
+            "enx_percent",
+            "percent",
+            "codes_claimed",
+            "ios_activations",
+            "activations"
+        ]
+    },
+    "qcgq-9p42": {
+        "domain": "data.ct.gov",
+        "name": "2014 OPM Nonprofit Grant Program Awards",
+        "t_attrs": [],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": [
+            "committee_recommended_amount"
+        ]
+    },
+    "kqjv-vikd": {
+        "domain": "data.ct.gov",
+        "name": "Environmental Monitoring Results for Radioactivity:  Milk Samples",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "state_err_140ba",
+            "state_140ba",
+            "state_err_137cs",
+            "state_err_134cs",
+            "state_134cs",
+            "state_131i",
+            "state_90sr",
+            "state_89sr",
+            "state_err_40k",
+            "state_40k",
+            "state_13cs",
+            "state_err_131i",
+            "state_err_90sr",
+            "state_err_89sr"
+        ]
+    },
+    "3pxu-4d3n": {
+        "domain": "data.ct.gov",
+        "name": "Public assets on data.ct.gov",
+        "t_attrs": [
+            "creation_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "downloads",
+            "column_count",
+            "row_count",
+            "visits"
+        ]
+    },
+    "j5dt-tcp7": {
+        "domain": "data.ct.gov",
+        "name": "Connecticut Weekly Evictions by Census Tract",
+        "t_attrs": [
+            "week_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "filings_avg",
+            "filings_2020",
+            "week"
+        ]
+    },
+    "q7ik-wjxx": {
+        "domain": "data.ct.gov",
+        "name": "Monthly Single-Family Home Sales in CT",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "sales"
+        ]
+    },
+    "tnyk-6fv7": {
+        "domain": "data.ct.gov",
+        "name": "DCF Children in Placement:  Annual Point-in-Time Trend By Race/Ethnicity",
+        "t_attrs": [
+            "month_in_care"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "dcf_highmeadows",
+            "special_study",
+            "total_cip",
+            "pdc_safe_home",
+            "independent_living",
+            "shelter",
+            "therapeutic_foster_care",
+            "relative_care",
+            "group_home",
+            "foster_care",
+            "dcf_solnit",
+            "dcf_cjts",
+            "medical"
+        ]
+    },
+    "bqd5-4jgh": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Updated (Bivalent) Vaccination Coverage By Town and Age Group - ARCHIVED",
+        "t_attrs": [
+            "reportperiodstart"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percentage",
+            "population",
+            "count",
+            "fips"
+        ]
+    },
+    "a4ya-h6eq": {
+        "domain": "data.ct.gov",
+        "name": "School Attendance by District, 2020-2021",
+        "t_attrs": [
+            "reporting_period"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "attendance_rate_19_20_high",
+            "attendance_rate_ytd_high",
+            "attendance_rate_19_20_overall",
+            "attendance_rate_ytd_overall"
+        ]
+    },
+    "jfkq-xawu": {
+        "domain": "data.ct.gov",
+        "name": "Monthly Foreclosures in CT",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "foreclosures"
+        ]
+    },
+    "yhjn-x67g": {
+        "domain": "data.ct.gov",
+        "name": "Child Care & Youth Camp Licensing Enforcement Actions New",
+        "t_attrs": [
+            "dateclosed"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "jpn6-58uh": {
+        "domain": "data.ct.gov",
+        "name": "Quarterly Real GDP Connecticut",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "ctrqgsp"
+        ]
+    },
+    "agib-7xfs": {
+        "domain": "data.ct.gov",
+        "name": "DCF Children in Placement:  Annual Point-in-Time Trend By Gender",
+        "t_attrs": [
+            "month_in_care"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "medical",
+            "group_home",
+            "pdc_safe_home",
+            "therapeutic_foster_care",
+            "relative_care",
+            "foster_care",
+            "total_cip",
+            "dcf_cjts",
+            "independent_living",
+            "dcf_solnit",
+            "shelter",
+            "special_study",
+            "dcf_highmeadows"
+        ]
+    },
+    "i9r5-65tv": {
+        "domain": "data.ct.gov",
+        "name": "Assets retired from data.ct.gov",
+        "t_attrs": [
+            "date_set_private"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "kf98-j89e": {
+        "domain": "data.ct.gov",
+        "name": "All-Transactions House Price Index for Connecticut",
+        "t_attrs": [
+            "observation_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "ctsthpi"
+        ]
+    },
+    "trxr-sntv": {
+        "domain": "data.ct.gov",
+        "name": "Department of Economic and Community Development (DECD) - Dry Cleaning Establishment Remediation Portfolio",
+        "t_attrs": [
+            "contract_execution_date"
+        ],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": [
+            "count",
+            "total_project_cost",
+            "other_project_funds",
+            "grant_assistance"
+        ]
+    },
+    "5jrt-794p": {
+        "domain": "data.ct.gov",
+        "name": "DECD Capital Projects Portfolio",
+        "t_attrs": [
+            "closing_date"
+        ],
+        "s_attrs": [
+            "location_1"
+        ],
+        "num_columns": []
+    },
+    "3vh2-vbmk": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Coronavirus Relief Fund (CRF) Expenditures by Town, March 1 - June 30, 2020",
+        "t_attrs": [
+            "date_of_actual"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "crf_requested_amount",
+            "fema_approved_amount",
+            "crf_requested_percentage",
+            "fema_approved_percentage",
+            "total_amount"
+        ]
+    },
+    "6372-bb8s": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Drug Drop Boxes",
+        "t_attrs": [],
+        "s_attrs": [
+            "geocoded_column"
+        ],
+        "num_columns": []
+    },
+    "v6zb-h5e2": {
+        "domain": "data.ct.gov",
+        "name": "DCF Children in Placement: Annual Point-in-Time Trend By Age Group",
+        "t_attrs": [
+            "month_in_care"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "relative_care",
+            "independent_living",
+            "shelter",
+            "foster_care",
+            "total_cip",
+            "hospital",
+            "dcf_solnit",
+            "dcf_cjts",
+            "dcf_highmeadows",
+            "therapeutic_foster_care",
+            "group_home",
+            "pdc_safe_home",
+            "special_study"
+        ]
+    },
+    "he33-brru": {
+        "domain": "data.ct.gov",
+        "name": "Tax Levy by Town, FY 2019-2024",
+        "t_attrs": [
+            "date_received"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "supplemental_mv",
+            "total_tax_levy",
+            "net_personal_prop_tax_levy",
+            "net_real_property_tax_levy",
+            "net_motor_vehicle_tax_levy"
+        ]
+    },
+    "2yp7-5vqj": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Contact Tracing: Attempted and Successful Interviews by Week - ARCHIVE",
+        "t_attrs": [
+            "date_reported"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "contact_successful_interviews",
+            "case_successful_interviews",
+            "case_attempted_interviews",
+            "contact_attempted_interviews"
+        ]
+    },
+    "yc2b-u9b4": {
+        "domain": "data.ct.gov",
+        "name": "Environmental Monitoring Results for Radioactivity:  Water Samples",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "state_err_3h",
+            "state_3h",
+            "state_err_137cs",
+            "state_err_134cs",
+            "state_134cs",
+            "state_err_131i",
+            "state_err_95zr",
+            "state_95zr",
+            "state_65zn",
+            "state_err_59fe",
+            "state_59fe",
+            "state_err_58co",
+            "state_err_40k",
+            "state_40k",
+            "state_err_54mn",
+            "state_err_65zn",
+            "state_err_60co",
+            "state_60co",
+            "state_58co",
+            "state_54mn",
+            "state_137cs",
+            "state_131i"
+        ]
+    },
+    "qj95-a29y": {
+        "domain": "data.ct.gov",
+        "name": "Substance Abuse Care Facilities",
+        "t_attrs": [
+            "issuedate"
+        ],
+        "s_attrs": [
+            "geocode"
+        ],
+        "num_columns": [
+            "active"
+        ]
+    },
+    "4rss-apm8": {
+        "domain": "data.ct.gov",
+        "name": "Connecticut Reportable Disease Case List with the County of Residence",
+        "t_attrs": [
+            "reportperiodend"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "countyfips",
+            "fips"
+        ]
+    },
+    "dkdr-ktky": {
+        "domain": "data.ct.gov",
+        "name": "Number of Active Employees by Industry",
+        "t_attrs": [
+            "date_day"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "emp_ss40",
+            "emp_ss65",
+            "emp_ss60",
+            "emp_ss70",
+            "statefips"
+        ]
+    },
+    "3w9d-7jbi": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators: Bond Ratings, 2019",
+        "t_attrs": [
+            "rating_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "v3ff-a9fz": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators, 2016",
+        "t_attrs": [
+            "date_of_latest_moody"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "unrestricted_net",
+            "unrestricted_fund",
+            "unassigned_fund_bal",
+            "town_bonded_long",
+            "total_trans_to_genl",
+            "total_trans_from",
+            "total_taxes",
+            "total_revenue",
+            "total_net_position",
+            "total_net_pension",
+            "total_fund_bal",
+            "total_expenditures",
+            "total_bonded_long",
+            "total_adjusted_taxes",
+            "tax_rev",
+            "tanf16_recipients",
+            "special",
+            "rsd_debt",
+            "restricted_fund_bal",
+            "prior_yr_op_surplus",
+            "overal_total_tax",
+            "other_financing_uses",
+            "other_financing",
+            "operating_surplus_1",
+            "operating_surplus",
+            "numbered",
+            "nonspendable_fund",
+            "net_investment_in",
+            "largest_deficit_1",
+            "largest_deficit",
+            "inter_gov_rev",
+            "enrollmt",
+            "empl",
+            "egl",
+            "education",
+            "debt_service",
+            "comptroller_town",
+            "committed_fund_bal",
+            "change_in_net",
+            "assigned_fund_bal",
+            "area_lmt",
+            "acmr",
+            "acglfy16",
+            "_2016_population"
+        ]
+    },
+    "5vjm-esav": {
+        "domain": "data.ct.gov",
+        "name": "Monthly Building Permits Issued by Units in Structure",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "_3_units",
+            "_5_units",
+            "_2_units",
+            "_1_unit"
+        ]
+    },
+    "rr3p-v2e8": {
+        "domain": "data.ct.gov",
+        "name": "Environmental Monitoring Results for Radioactivity:  Other Samples",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "state_err_134cs",
+            "state_131i",
+            "state_err_95zr",
+            "state_60co",
+            "state_err_59fe",
+            "state_59fe",
+            "state_err_58co",
+            "state_err_54mn",
+            "state_54mn",
+            "state_err_40k",
+            "state_134cs",
+            "state_err_131i",
+            "state_65zn",
+            "state_40k",
+            "state_err_137cs",
+            "state_137cs",
+            "state_95zr",
+            "state_err_65zn",
+            "state_err_60co",
+            "state_58co"
+        ]
+    },
+    "j2me-7k56": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Updated (Bivalent) Vaccine Coverage By Age Group - ARCHIVED",
+        "t_attrs": [
+            "reportperiodend"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percentage",
+            "population",
+            "count",
+            "fips"
+        ]
+    },
+    "anen-a5ei": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Spending Cap Report",
+        "t_attrs": [
+            "certification_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "net_percent_change",
+            "net_population_percent_change",
+            "net_population_change",
+            "net_dollar_change"
+        ]
+    },
+    "9anp-ffh6": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Vaccine Allocation - ARCHIVE",
+        "t_attrs": [
+            "week_starting"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fqhc_pfizer",
+            "pharmacy_moderna",
+            "state_moderna",
+            "state_pfizer",
+            "total_allocation",
+            "fqhc_j_j",
+            "pharmacy_pfizer",
+            "fqhc_moderna",
+            "pharmacy_j_j",
+            "state_j_j"
+        ]
+    },
+    "kypk-e3qu": {
+        "domain": "data.ct.gov",
+        "name": "Womply State-level Business Revenue",
+        "t_attrs": [
+            "date_day"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "revenue_ss70",
+            "revenue_ss65",
+            "revenue_ss60",
+            "revenue_all",
+            "statefips",
+            "revenue_inclow",
+            "revenue_inchigh",
+            "revenue_ss40"
+        ]
+    },
+    "x7e5-mdri": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Contact Tracing: ContaCT Summary - ARCHIVE",
+        "t_attrs": [
+            "date_reported"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "value"
+        ]
+    },
+    "k4mh-b7t8": {
+        "domain": "data.ct.gov",
+        "name": "Alcoholic Beverages Tax Revenue",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_alcoholic_beverages",
+            "alcohol_tax_on_proof_gallons",
+            "liquor_cooler_of_gallons",
+            "distilled_liquor_tax_on",
+            "distilled_liquor_of_gallons",
+            "wines_total_tax",
+            "wines_over_21_alcohol_1",
+            "wines_over_21_alcohol",
+            "wines_under_21_alcohol_from_3",
+            "wines_under_21_alcohol_from_1",
+            "wines_under_21_alcohol_from",
+            "malt_beverages_tax_on_gallons",
+            "malt_beverages_of_gallons",
+            "malt_beverages_tax_on_barrels",
+            "malt_beverages_of_barrels",
+            "liquor_cooler_tax_on_gallons",
+            "wines_under_21_alcohol_from_2",
+            "malt_beverages_total_tax",
+            "distilled_spirits_total_tax",
+            "alcohol_of_proof_gallons"
+        ]
+    },
+    "5kak-hfji": {
+        "domain": "data.ct.gov",
+        "name": "Department of Economic and Community Development- Connecticut Recovery Bridge Loan Program",
+        "t_attrs": [
+            "funding_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "loan_amt",
+            "woman_owned",
+            "minority_owned",
+            "veteran_owned"
+        ]
+    },
+    "vpbj-j9a4": {
+        "domain": "data.ct.gov",
+        "name": "School Attendance by School, 2022-2023",
+        "t_attrs": [
+            "reportingperiod"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "attrate_202021",
+            "studentcount_202021",
+            "studentcount_202122",
+            "attrate_202122",
+            "attrate_current",
+            "studentcount_current"
+        ]
+    },
+    "q4e6-uyfb": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators: Economic and Grand List Data, 2020",
+        "t_attrs": [
+            "next_revaluation_as_of_2020"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "other_2020_glyr",
+            "total_net_grand_list_2020",
+            "total_pers_prop_2020_glyr",
+            "mv_exemptions_2020_glyr",
+            "real_exemptions_2020_glyr",
+            "apartment_2020_glyr",
+            "public_utility_2020_glyr",
+            "industrial_2020_glyr",
+            "commercial_2020_glyr",
+            "gl_yr_2020_tax_exempt_property",
+            "mill_rate_real_and_personal",
+            "mill_rate_motor_vehicles",
+            "net_current_education_1",
+            "net_current_education",
+            "school_enrollment_2018_19",
+            "median_household_income_2020_estimate",
+            "median_values_owner_occupied_homes_2020_estimates",
+            "total_grand_list_2020_glyr",
+            "pers_prop_exemptions_2020",
+            "total_net_mv_2020_glyr",
+            "total_mv_2020_glyr",
+            "total_net_real_2020_glyr",
+            "total_real_2020_glyr",
+            "gl_yr_2020_total_exempt_and",
+            "equalized_net_grand_list",
+            "school_enrollment_2019_20",
+            "per_capita_income_2020_estimate",
+            "population",
+            "area_in_sq_miles_2020_census",
+            "total_net_pers_prop_2020"
+        ]
+    },
+    "m9b6-s72b": {
+        "domain": "data.ct.gov",
+        "name": "Connecticut Reportable Disease Case List Reported as Hospitalized",
+        "t_attrs": [
+            "reportperiodend"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "agegroupdisplayorder",
+            "fips"
+        ]
+    },
+    "i3d2-i4bi": {
+        "domain": "data.ct.gov",
+        "name": "Unemployment Claims by Type",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "initclaims_rate_combined",
+            "initclaims_rate_pua",
+            "contclaims_rate_combined",
+            "contclaims_rate_peuc",
+            "contclaims_count_peuc",
+            "day_endofweek",
+            "initclaims_count_pua",
+            "initclaims_count_regular",
+            "contclaims_count_regular",
+            "initclaims_count_combined",
+            "contclaims_rate_pua",
+            "contclaims_count_combined",
+            "initclaims_rate_regular",
+            "contclaims_rate_regular",
+            "contclaims_count_pua",
+            "statefips"
+        ]
+    },
+    "g72c-cphb": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Cases and Deaths in Nursing Homes by Week - ARCHIVE",
+        "t_attrs": [
+            "admit_week"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "staff_deaths",
+            "admit_week_num",
+            "current_census",
+            "confirmedstaffcases"
+        ]
+    },
+    "uens-qvfe": {
+        "domain": "data.ct.gov",
+        "name": "OSE 2023-2024 Lobbyist Communicators",
+        "t_attrs": [
+            "register_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "vuew-f23a": {
+        "domain": "data.ct.gov",
+        "name": "Access to public assets on data.ct.gov",
+        "t_attrs": [
+            "timestamp"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "value"
+        ]
+    },
+    "epxf-giiy": {
+        "domain": "data.ct.gov",
+        "name": "Unemployment Rate in Northeast Census Region",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cnerurn"
+        ]
+    },
+    "6urm-da9a": {
+        "domain": "data.ct.gov",
+        "name": "Governor's Report on Housing Development",
+        "t_attrs": [
+            "attorney_general_approval"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "rehab_units",
+            "supportive_housing_units",
+            "lihtc_qualified_units",
+            "doh_supported_units",
+            "total_project_units",
+            "doh_investment",
+            "total_project_cost",
+            "percentage_complete",
+            "new_units"
+        ]
+    },
+    "efwc-ht6a": {
+        "domain": "data.ct.gov",
+        "name": "Juvenile Justice Policy and Oversight Committee Equity Metrics - Delinquent Referrals",
+        "t_attrs": [
+            "fltr_dt"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "rate_per",
+            "referrals",
+            "yth_est"
+        ]
+    },
+    "8267-bg4w": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Updated (Bivalent) Vaccination Coverage By Race/Ethnicity and Age Group - ARCHIVED",
+        "t_attrs": [
+            "reportperiodstart"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "percentage",
+            "population",
+            "count",
+            "fips"
+        ]
+    },
+    "3jtg-br3h": {
+        "domain": "data.ct.gov",
+        "name": "UConn -- Checkbook FY2019",
+        "t_attrs": [
+            "disbursement_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "payment_accounting_net_amount",
+            "payment_detail_purchase_order"
+        ]
+    },
+    "qh93-7j6n": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Updated (Bivalent) Vaccinations By Week and Age Group - ARCHIVED",
+        "t_attrs": [
+            "reportperiodstart"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "count",
+            "fips"
+        ]
+    },
+    "wciz-qw35": {
+        "domain": "data.ct.gov",
+        "name": "School Attendance by Town, 2021-2022",
+        "t_attrs": [
+            "reportingperiod"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "highneeds_difference_yty",
+            "highneeds_attrate_ytd",
+            "attrate_ytd",
+            "attrate_202021",
+            "highneeds_attrate_202021",
+            "all_difference_yty"
+        ]
+    },
+    "v8zu-wxrr": {
+        "domain": "data.ct.gov",
+        "name": "School Attendance by School, 2021-2022",
+        "t_attrs": [
+            "reportingperiod"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "studentcount_202021",
+            "attrate_202021",
+            "attrate_ytd",
+            "studentcount_current"
+        ]
+    },
+    "hybi-s5kq": {
+        "domain": "data.ct.gov",
+        "name": "COVID-19 Cases in Child Care Centers and Group Child Care Homes by Week - Archive",
+        "t_attrs": [
+            "enddate"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "number_of_child_care_centers_reporting"
+        ]
+    },
+    "4595-8pf6": {
+        "domain": "data.ct.gov",
+        "name": "State Historic Preservation Office- Tax Credit Activity",
+        "t_attrs": [
+            "contract_date_allocation"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_qualified_expenditures",
+            "total_tax_credit_allocation",
+            "total_tax_credits_issued"
+        ]
+    },
+    "6rq7-6x2s": {
+        "domain": "data.ct.gov",
+        "name": "Number of Medical Marijuana Registrants by Month",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "caregivers",
+            "patients",
+            "certifiers"
+        ]
+    },
+    "jyg4-yu7v": {
+        "domain": "data.ct.gov",
+        "name": "Cannabis Retail Products Sold by Product Type",
+        "t_attrs": [
+            "_month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "_sales_amount"
+        ]
+    },
+    "iikp-c8gx": {
+        "domain": "data.ct.gov",
+        "name": "School Attendance by District, 2021-2022",
+        "t_attrs": [
+            "reportingperiod"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "highneeds_attrate_202021",
+            "highneeds_attrate_ytd",
+            "attrate_202021",
+            "attrate_ytd"
+        ]
+    },
+    "f964-jieq": {
+        "domain": "data.ct.gov",
+        "name": "UConn Health Center -- Checkbook FY2019",
+        "t_attrs": [
+            "pymnt_id"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "tot_monetary_amt"
+        ]
+    },
+    "civu-w22d": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators: Pension Funding Information For Defined Benefit Pension Plans, 2019",
+        "t_attrs": [
+            "valuation_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "money_weighted_rate_of_return",
+            "covered_employee_payroll",
+            "discount_rate",
+            "number_of_members",
+            "emplyr_contribution",
+            "emplyr_required_adc",
+            "total_pension_liability",
+            "investment_rate_of_return",
+            "inflation"
+        ]
+    },
+    "ifrb-kp2b": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators: Grand List Components, 2019",
+        "t_attrs": [
+            "gl_assessment_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "total_grand_list",
+            "personal",
+            "motor_vehicle",
+            "apartment",
+            "public_utility",
+            "industrial",
+            "commercial",
+            "other"
+        ]
+    },
+    "st5h-zzhe": {
+        "domain": "data.ct.gov",
+        "name": "Motor Vehicle Fuels Gallons Sold",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "gasohol_of_gallons",
+            "diesel_fuel_of_gallons",
+            "alternative_fuels_of_gallons",
+            "total_motor_fuel_of_gallons"
+        ]
+    },
+    "v6mn-bu4d": {
+        "domain": "data.ct.gov",
+        "name": "Mpox Vaccine Doses Administered By Week",
+        "t_attrs": [
+            "reportperiodend"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "seconddoseadministered",
+            "firstdoseadministered",
+            "fips"
+        ]
+    },
+    "udsn-sgpn": {
+        "domain": "data.ct.gov",
+        "name": "School Attendance by District, 2022-2023",
+        "t_attrs": [
+            "reportingperiod"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "attrate_ytd",
+            "highneeds_attrate_ytd",
+            "highneeds_attrate_202122",
+            "attrate_202122"
+        ]
+    },
+    "he4h-bgqh": {
+        "domain": "data.ct.gov",
+        "name": "School Attendance by Student Group and District, 2022-2023",
+        "t_attrs": [
+            "reporting_period"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "studentcount_current",
+            "attrate_202021",
+            "studentcount_201920",
+            "studentcount_202122",
+            "attrate_ytd",
+            "attrate_201920",
+            "studentcount_202021",
+            "attrate_202122"
+        ]
+    },
+    "2jh6-p828": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Coronavirus Relief Fund (CRF) Expenditures by Town, July 1, 2020 - December 31, 2021 - Invoice Transactions",
+        "t_attrs": [
+            "invoice_date_of_grantee"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "fema_amount",
+            "total_amount",
+            "fema_percentage",
+            "crf_percentage",
+            "crf_amount"
+        ]
+    },
+    "sa26-46h8": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators: Other Post-Employment Benefits (OPEB), 2019",
+        "t_attrs": [
+            "date_of_actuarial_valuation"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "investment_rate_of_return",
+            "projected_healthcare_trend",
+            "money_weight_of_return",
+            "adec",
+            "total_opeb_liability",
+            "covered_payroll",
+            "no_of_members",
+            "discount_rate",
+            "employer_contribution"
+        ]
+    },
+    "cugp-2za3": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators: Unemployment, 2019",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "value"
+        ]
+    },
+    "wijb-dc4k": {
+        "domain": "data.ct.gov",
+        "name": "Connecticut Quasi-Public Organization Financial Data, FY 2015-2018",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ]
+    },
+    "2vzz-uqws": {
+        "domain": "data.ct.gov",
+        "name": "Juvenile Justice Policy and Oversight Committee Equity Metrics - First Felony Dispositions",
+        "t_attrs": [
+            "fltr_dt"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "relative_rate_index",
+            "rate_per_100",
+            "dispositions",
+            "denom",
+            "period_type"
+        ]
+    },
+    "24pv-55ix": {
+        "domain": "data.ct.gov",
+        "name": "Deleted Mobile Inspections",
+        "t_attrs": [
+            "datedeleted"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "huqw-chzi": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Coronavirus Relief Fund (CRF) Expenditures by Town, July 1, 2020 - December 31, 2021 - Payroll",
+        "t_attrs": [
+            "pay_period_payroll_period"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "pay_roll_gross_pay",
+            "pay_roll_disbursement_amount"
+        ]
+    },
+    "uuj5-gemt": {
+        "domain": "data.ct.gov",
+        "name": "School Attendance by Town, 2022-2023",
+        "t_attrs": [
+            "reportingperiod"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "all_difference_yty",
+            "highneeds_attrate_ytd",
+            "attrate_202122",
+            "highneeds_difference_yty",
+            "highneeds_attrate_202122",
+            "attrate_ytd"
+        ]
+    },
+    "5c5g-mddb": {
+        "domain": "data.ct.gov",
+        "name": "CT Municipalities",
+        "t_attrs": [
+            "last_edited_date"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "shape_length",
+            "shape_area",
+            "squaremiles",
+            "municipalitynumber",
+            "dotmunicipalitynumber"
+        ]
+    },
+    "u6w3-tea4": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators: Other Post-Employment Benefits (OPEB), 2020",
+        "t_attrs": [
+            "l_2_date_of_opeb_valuation"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "l_22_contribution_shortfall",
+            "l_20_employer_contribution",
+            "l_18_actuarial_determined",
+            "l_16_covered_payroll",
+            "l_12_funded_ratio",
+            "l_10_net_opeb_liability",
+            "j_6_money_weight_of_return",
+            "j_4_long_term_investment",
+            "j_2_discount_rate",
+            "l_8_net_position_of_the_plan",
+            "l_6_total_opeb_liability"
+        ]
+    },
+    "iqsu-irmt": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Monitoring Program: Prescription Dispensations",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "naloxone_prescriptions",
+            "gabapentin_prescriptions",
+            "benzodiazepine_prescriptions",
+            "non_controlled_substances",
+            "controlled_substances",
+            "stimulant_prescriptions"
+        ]
+    },
+    "8n4z-7dtx": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators: Bond Ratings, 2020",
+        "t_attrs": [
+            "rating_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "5xsg-8hur": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators: Pension Funding Information For Defined Benefit Pension Plans, 2020",
+        "t_attrs": [
+            "j_2_date_of_pension_valuation"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "j_20_employer_contribution",
+            "j_12_funded_ratio",
+            "h_6_money_weight_of_return",
+            "h_2_discount_rate",
+            "j_18_actuarial_determined",
+            "j_6_total_pension_liability",
+            "j_16_covered_payroll",
+            "j_22_contribution_shortfall",
+            "j_10_net_pension_liability",
+            "h_4_long_term_investment"
+        ]
+    },
+    "i2yq-278d": {
+        "domain": "data.ct.gov",
+        "name": "Liquor Control Suspensions",
+        "t_attrs": [
+            "suspended_through_and_including"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "uwzw-z5cm": {
+        "domain": "data.ct.gov",
+        "name": "Updated 2023-2024 COVID-19 Vaccine Coverage By Age Group",
+        "t_attrs": [
+            "weekend"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cumpercentage",
+            "population",
+            "cumcount"
+        ]
+    },
+    "t2bf-45ba": {
+        "domain": "data.ct.gov",
+        "name": "Formal Enforcement Case Summaries 2021-Present",
+        "t_attrs": [
+            "date_issued"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "penalty_amount"
+        ]
+    },
+    "yis9-za25": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Monitoring Program: CT Prescription Monitoring & Reporting System (CPMRS) Gateway Connections and Usage",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "authorized_ct_licensees",
+            "out_of_state_licensee_requests",
+            "authorized_out_of_state_licensees",
+            "out_of_state_licensees",
+            "ct_licensees",
+            "ct_licensee_requests"
+        ]
+    },
+    "6ynn-uiqx": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Monitoring Program: Controlled Substance Prescriptions by Drug Schedule",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "schedule_v",
+            "schedule_iii",
+            "schedule_ii",
+            "schedule_iv"
+        ]
+    },
+    "tvbr-6b6t": {
+        "domain": "data.ct.gov",
+        "name": "Formal Enforcement Case Summaries 1999-2021",
+        "t_attrs": [
+            "date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "4t4v-dqr9": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Monitoring Program: Opioid, Benzodiazepine, Stimulant, Naloxone, and Gabapentin Prescription Count & Rate by Patient Residence",
+        "t_attrs": [],
+        "s_attrs": [
+            "geolocation"
+        ],
+        "num_columns": [
+            "stimulant_prescription_count",
+            "benzodiazepine_prescription",
+            "opiate_partial_agonist_rate",
+            "opiate_partial_agonist",
+            "naloxone_prescription_count",
+            "stimulant_rate_per_1_000",
+            "benzodiazepine_rate_per_1",
+            "opiate_agonist_rate_per_1",
+            "opiate_agonist_prescription",
+            "naloxone_rate_per_1_000",
+            "gabapentin_rate_per_1_000",
+            "gabapentin_prescription_count"
+        ]
+    },
+    "n65y-rz9m": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators: Bond Ratings, 2021",
+        "t_attrs": [
+            "rating_date"
+        ],
+        "s_attrs": [],
+        "num_columns": []
+    },
+    "9bmy-iafh": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Monitoring Program: Schedule II Drug Prescriptions Dispensed",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "unspecified",
+            "antitussives",
+            "respiratory_and_cns_stimulants",
+            "opiate_agonists",
+            "antiemetics_miscellaneous"
+        ]
+    },
+    "fg6r-aem5": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators: Pension Funding Information For Defined Benefit Pension Plans, 2021",
+        "t_attrs": [
+            "j_2_date_of_pension_valuation"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "j_18_actuarial_determined",
+            "j_10_net_pension_liability",
+            "j_16_covered_payroll",
+            "h_6_money_weight_of_return",
+            "h_4_long_term_investment",
+            "h_2_discount_rate",
+            "j_22_contribution_shortfall",
+            "j_20_employer_contribution",
+            "j_12_funded_ratio",
+            "j_6_total_pension_liability"
+        ]
+    },
+    "jzq2-jhv4": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Monitoring Program: Proportion of Opioid Agonists per Morphine Milligram Equivalent (MME) Category",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "less_than_50_mme",
+            "_50_90_mme",
+            "greater_than_90_mme"
+        ]
+    },
+    "9atc-gz9i": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Monitoring Program: Schedule III Drug Prescriptions Dispensed",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "prescription_count"
+        ]
+    },
+    "y92t-jatn": {
+        "domain": "data.ct.gov",
+        "name": "Updated 2023-2024 COVID-19 Vaccine Doses by Week and Age Group",
+        "t_attrs": [
+            "weekend"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "cumcount",
+            "count"
+        ]
+    },
+    "nx73-nbqf": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Monitoring Program: Schedule V Drug Prescriptions Dispensed",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "unspecified",
+            "opiate_agonists",
+            "anticonvulsants_miscellaneous",
+            "selective_serotonin_agonists",
+            "analgesics_and_antipyretics_misc_",
+            "antitussives"
+        ]
+    },
+    "pps5-eye2": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Monitoring Program: CT Prescription Monitoring & Reporting System (CPMRS) Users and Searches",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "users_who_conducted_a_search",
+            "number_of_registered_users",
+            "number_of_searches"
+        ]
+    },
+    "fcx4-cjvr": {
+        "domain": "data.ct.gov",
+        "name": "Municipal Fiscal Indicators: Other Post-Employment Benefits (OPEB), 2021",
+        "t_attrs": [
+            "l_2_date_of_opeb_valuation"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "l_22_contribution_shortfall",
+            "l_20_employer_contribution",
+            "l_18_actuarial_determined",
+            "l_16_covered_payroll",
+            "l_12_funded_ratio",
+            "l_10_net_opeb_liability",
+            "l_8_net_position_of_the_plan",
+            "l_6_total_opeb_liability",
+            "j_6_money_weight_of_return",
+            "j_4_long_term_investment",
+            "j_2_discount_rate"
+        ]
+    },
+    "izkh-zk6p": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Monitoring Program: Average Days Supply and Daily Morphine Milligram Equivalent (MME)",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "average_daily_mme"
+        ]
+    },
+    "r6ge-6tdq": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Monitoring Program: Schedule IV Drug Prescriptions Dispensed",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "prescription_count"
+        ]
+    },
+    "bt8z-mbps": {
+        "domain": "data.ct.gov",
+        "name": "Aging and Disability Services Office Locations",
+        "t_attrs": [],
+        "s_attrs": [
+            "geolocation"
+        ],
+        "num_columns": []
+    },
+    "h67k-89a6": {
+        "domain": "data.ct.gov",
+        "name": "Prescription Monitoring Program: CT Prescribers who Prescribed Controlled Substances II - V",
+        "t_attrs": [
+            "month"
+        ],
+        "s_attrs": [],
+        "num_columns": [
+            "ct_prescribers"
+        ]
+    }
+}
