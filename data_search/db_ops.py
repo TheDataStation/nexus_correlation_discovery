@@ -1,10 +1,11 @@
 from typing import List
-from data_search.data_model import Unit, Variable, AggFunc, ST_Schema, SchemaType
+from data_search.data_model import Unit, Variable, Var, ST_Schema, SchemaType
 from psycopg2 import sql
 import pandas as pd
 from data_ingestion.db_ops import select_columns
 import shelve
 from collections import Counter
+import collections
 
 """
 Intersection Query
@@ -355,10 +356,80 @@ def join_two_agg_tables(
     df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
     return df
 
-def read_agg_tbl(cur, agg_tbl: str, vars: List[Variable]):
-    sql_str = """
-        SELECT val, {agg_vars} FROM {agg_tbl};
+
+def join_two_agg_tables_api(
+    cur,
+    agg_tbl1: str,
+    var1: List[str],
+    agg_tbl2: str,
+    var2: List[str],
+    outer=False,
+):
+    agg_join_sql = """
+        SELECT a1.val, {agg_vars} FROM
+        {agg_tbl1} a1 JOIN {agg_tbl2} a2
+        ON a1.val = a2.val
+        """
+    if outer:
+        agg_join_sql = """
+        SELECT a1.val as key1, a2.val as key2, {agg_vars} FROM
+        {agg_tbl1} a1 FULL JOIN {agg_tbl2} a2
+        ON a1.val = a2.val
+        """
+    query = sql.SQL(agg_join_sql).format(
+        agg_vars=sql.SQL(",").join(
+            [
+                sql.SQL("{} AS {}").format(
+                    sql.Identifier("a1", var1),
+                    sql.Identifier(var1),
+                )
+            ]
+            + [
+                sql.SQL("{} AS {}").format(
+                    sql.Identifier("a2", var2),
+                    sql.Identifier(var2),
+                )
+            ]
+        ),
+        agg_tbl1=sql.Identifier(agg_tbl1),
+        agg_tbl2=sql.Identifier(agg_tbl2),
+    )
+
+    cur.execute(query)
+
+    df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
+    return df
+
+def join_agg_tbls(cur, vars: List[Var]):
+    tbl_cols = collections.defaultdict(list)
+    for var in vars:
+        tbl_cols[var.tbl_id].append(var.attr_name)
+    # join tbls and project attr names 
+    tbls = list(tbl_cols.keys())
+    sql_str = "SELECT {attrs} FROM {base_tbl} {join_clauses}"
+    query = sql.SQL(sql_str).format(
+        attrs = sql.SQL(",").join([
+            sql.SQL("{}").format(sql.Identifier(tbl, col))
+            for tbl, cols in tbl_cols.items() for col in cols
+        ]),
+        base_tbl=sql.Identifier(tbls[0]),
+        join_clauses=sql.SQL(" ").join(
+            [sql.SQL("INNER JOIN {next_tbl} ON {tbl}.val = {next_tbl}.val").format(tbl=sql.Identifier(tbls[0]), next_tbl=sql.Identifier(tbl)) for tbl in tbls[1:]]
+        )
+        )
+    cur.execute(query)
+    df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
+    return df
+
+def read_agg_tbl(cur, agg_tbl: str, vars: List[Variable]=[]):
+    if len(vars) == 0:
+        sql_str = """
+        SELECT * FROM {agg_tbl};
     """
+    else:
+        sql_str = """
+            SELECT val, {agg_vars} FROM {agg_tbl};
+        """
 
     query = sql.SQL(sql_str).format(
         agg_vars=sql.SQL(",").join(

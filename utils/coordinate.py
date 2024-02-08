@@ -14,6 +14,7 @@ class S_GRANU(Enum):
     TRACT = 3
     COUNTY = 4
     STATE = 5
+    ZIPCODE = 6
 
 
 # a dictionary from spatial scales to its names in the shape file

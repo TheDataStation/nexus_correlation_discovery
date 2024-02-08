@@ -10,10 +10,11 @@ Tables that contain spatial or temporal attributes
 
 
 class STTable:
-    def __init__(self, domain: str, tbl_name: str, tbl_id: str):
+    def __init__(self, domain: str, tbl_name: str, tbl_id: str, link: str):
         self.domain = domain
         self.tbl_name = tbl_name
         self.tbl_id = tbl_id
+        self.link = link
         self.t_attrs = []
         self.s_attrs = []
         self.num_columns = []
@@ -65,7 +66,7 @@ class STTableDetector:
         ]  # column tags representing locations
 
         self.temporal_cnt, self.spatial_cnt = 0, 0
-        self.st_tables = []
+        self.st_tables = {}
 
     def detect(self):
         for domain in self.domains:
@@ -77,11 +78,12 @@ class STTableDetector:
             print("total number of datasets:", len(data))
             for obj in data:
                 resource = obj["resource"]
+                link = obj["link"]
                 tbl_name = resource["name"]
                 tbl_id = resource["id"]
                 column_types = resource["columns_datatype"]
                 column_names = resource["columns_field_name"]
-                tbl_obj = STTable(domain, tbl_name, tbl_id)
+                tbl_obj = STTable(domain, tbl_name, tbl_id, link)
 
                 for i, column_type in enumerate(column_types):
                     if column_type in self.date_types:
@@ -104,7 +106,7 @@ class STTableDetector:
                 if tbl_obj.is_valid():
                     if "cdc_case_earliest_dt" in tbl_obj.t_attrs:
                         tbl_obj.t_attrs = ["cdc_case_earliest_dt"]
-                    self.st_tables.append(tbl_obj.__dict__)
+                    self.st_tables[tbl_id] = tbl_obj.__dict__
             return len(self.st_tables)
             # client.close()
             print("detected {} st_tables in total".format(len(self.st_tables)))
@@ -117,31 +119,36 @@ class STTableDetector:
 if __name__ == "__main__":
     config = io_utils.load_config("data_prep")
     root_dir, app_token = config["root_dir"], config["app_token"]
-    # output_path = "resource/nyc_open_data/nyc_open_data.json"
+    output_path = "resource/chicago_1m_zipcode/chicago_open_data_linked.json"
+    domain = "data.cityofchicago.org"
+    st_table_detector = STTableDetector([domain], app_token)
+    st_tbls_cnt = st_table_detector.detect()
+    st_table_detector.serialize(output_path)
+
     # output_path = None
 # domains = ["data.cityofchicago.org", "data.cityofnewyork.us", "data.lacity.org",
     #            "www.dallasopendata.com", "data.ny.gov", "data.wa.gov", "data.nj.gov",
     #            "data.sfgov.org", "data.texas.gov", "opendata.maryland.gov",
     #            "data.pa.gov", "data.cambridgema.gov", "data.ct.gov"]
-    domains = {
-                "ny": "data.ny.gov", 
-                "texas": "data.texas.gov", 
-                "sf": "data.sfgov.org",
-                "wa": 'data.wa.gov',
-                "ct": 'data.ct.gov', 
-                "pa": 'data.pa.gov', 
-                "maryland": 'opendata.maryland.gov',
-                "la": 'data.lacity.org'
-                }
+    # domains = {
+    #             "ny": "data.ny.gov", 
+    #             "texas": "data.texas.gov", 
+    #             "sf": "data.sfgov.org",
+    #             "wa": 'data.wa.gov',
+    #             "ct": 'data.ct.gov', 
+    #             "pa": 'data.pa.gov', 
+    #             "maryland": 'opendata.maryland.gov',
+    #             "la": 'data.lacity.org'
+    #             }
    
-    # print(output_path)
-    domain_cnt = []
-    for key, domain in domains.items():
-        output_path = f'resource/{key}_open_data/{key}_open_data.json'
-        st_table_detector = STTableDetector([domain], app_token)
-        st_tbls_cnt = st_table_detector.detect()
-        domain_cnt.append((domain, st_tbls_cnt))
-        st_table_detector.serialize(output_path)
+    # # print(output_path)
+    # domain_cnt = []
+    # for key, domain in domains.items():
+    #     output_path = f'resource/{key}_open_data/{key}_open_data.json'
+    #     st_table_detector = STTableDetector([domain], app_token)
+    #     st_tbls_cnt = st_table_detector.detect()
+    #     domain_cnt.append((domain, st_tbls_cnt))
+    #     st_table_detector.serialize(output_path)
     # domain_cnt.sort(key=lambda x: x[1], reverse=True)
     # print(domain_cnt)
     # st_table_detector.serialize(output_path)

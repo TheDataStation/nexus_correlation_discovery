@@ -55,3 +55,37 @@ def load_config(source):
 def create_dir(dir_path):
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)    
+
+def load_corrs_to_df(data):
+    df = pd.DataFrame(
+        [corr.to_list() for corr in data],
+        columns=[
+            "domain1",
+            "tbl_id1",
+            "tbl_name1",
+            "agg_tbl1",
+            "agg_attr1",
+            "missing_ratio1",
+            "zero_ratio1",
+            "missing_ratio_o1",
+            "zero_ratio_o1",
+            "cv1",
+            "domain2",
+            "tbl_id2",
+            "tbl_name2",
+            "agg_tbl2",
+            "agg_attr2",
+            "missing_ratio2",
+            "zero_ratio2",
+            "missing_ratio_o2",
+            "zero_ratio_o2",
+            "cv2",
+            "r_val",
+            "r_impute_avg_val",
+            "r_impute_zero_val",
+            "p_val",
+            "samples",
+            "align_type",
+        ],
+    )
+    return df
