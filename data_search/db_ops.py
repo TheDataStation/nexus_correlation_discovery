@@ -400,26 +400,40 @@ def join_two_agg_tables_api(
     df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
     return df
 
-def join_agg_tbls(cur, vars: List[Var]):
+def join_agg_tbls(cur, vars: List[Var], constraints=None):
     tbl_cols = collections.defaultdict(list)
     for var in vars:
         tbl_cols[var.tbl_id].append(var.attr_name)
     # join tbls and project attr names 
     tbls = list(tbl_cols.keys())
-    sql_str = "SELECT {attrs} FROM {base_tbl} {join_clauses}"
+    constaint_tbls = []
+    constaint_vals = []
+    if not constraints:
+        sql_str = "SELECT {attrs} FROM {base_tbl} {join_clauses}"
+    else:
+        for tbl, threshold in constraints.items():
+            constaint_tbls.append(tbl)
+            constaint_vals.append(threshold)
+        sql_str = "SELECT {attrs} FROM {base_tbl} {join_clauses} WHERE {filter}"
     query = sql.SQL(sql_str).format(
         attrs = sql.SQL(",").join([
             sql.SQL("{}").format(sql.Identifier(tbl, col))
             for tbl, cols in tbl_cols.items() for col in cols
-        ]),
+        ]+[sql.SQL("{} AS {}").format(sql.Identifier(tbl, 'count'), sql.Identifier(f'{tbl}_samples')) for tbl in tbl_cols.keys()]),
         base_tbl=sql.Identifier(tbls[0]),
         join_clauses=sql.SQL(" ").join(
             [sql.SQL("INNER JOIN {next_tbl} ON {tbl}.val = {next_tbl}.val").format(tbl=sql.Identifier(tbls[0]), next_tbl=sql.Identifier(tbl)) for tbl in tbls[1:]]
+        ),
+        filter=sql.SQL(" AND ").join(
+            [sql.SQL("{col} >= %s").format(col=sql.Identifier(tbl, 'count')) for tbl in constaint_tbls]
         )
         )
-    cur.execute(query)
+    if not constraints:
+        cur.execute(query)
+    else:
+        cur.execute(query, constaint_vals)
     df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
-    return df
+    return df, cur.mogrify(query, constaint_vals)
 
 def read_agg_tbl(cur, agg_tbl: str, vars: List[Variable]=[]):
     if len(vars) == 0:

@@ -23,11 +23,12 @@ class API:
         self.impute_options = impute_options
 
         self.catalog = {}
-
+        self.data_path_map = {}
         for data_source in data_sources:
             config = io_utils.load_config(data_source)
             attr_path = config["attr_path"]
             self.catalog.update(io_utils.load_json(attr_path))
+            self.data_path_map[data_source] = config["data_path"]
           
         self.disp_attrs = [
             "tbl_id1",
@@ -56,6 +57,8 @@ class API:
         corr_search.set_join_cost(t_granu, s_granu, overlap_t)
         corr_search.find_all_corr_for_a_tbl(dataset, [t_granu, s_granu], overlap_t, r_t, p_t=0.05, fill_zero=True, corr_type=corr_type)
         corrs = load_corrs_to_df(corr_search.data)
+        corrs['agg_attr1'] = corrs['agg_attr1'].str[:-3]
+        corrs['agg_attr2'] = corrs['agg_attr2'].str[:-3]
         print(f"total number of correlations: {len(corrs)}")
         return corrs[self.disp_attrs]
 
@@ -72,17 +75,23 @@ class API:
         corr_search.set_join_cost(t_granu, s_granu, overlap_t)
         corr_search.find_all_corr_for_all_tbls([t_granu, s_granu], overlap_t, r_t, p_t=0.05, corr_type=corr_type, fill_zero=True, dir_path=persist_path)
         corrs = load_corrs_to_df(corr_search.all_corrs)
+        corrs['agg_attr1'] = corrs['agg_attr1'].str[:-3]
+        corrs['agg_attr2'] = corrs['agg_attr2'].str[:-3]
         print(f"total number of correlations: {len(corrs)}")
         return corrs[self.disp_attrs]
 
     def regress(self, target_var: Var, covariates: List[Var], reg):
-        df = join_agg_tbls(self.cur, [target_var]+covariates)
+        df, _ = join_agg_tbls(self.cur, [target_var]+covariates)
         x = df[[var.attr_name for var in covariates]]
         y = df[target_var.attr_name]
         model = reg.fit(x, y)
         r_sq = model.score(x, y)
         return model, r_sq, df
 
+    def assemble(self, vars: List[Var], constraints=None):
+        df = join_agg_tbls(self.cur, vars, constraints=constraints)
+        return df
+    
     def get_aligned_data(self, row):
         agg_name1=row['agg_tbl1']
         agg_attr1 = row['agg_attr1']
@@ -105,15 +114,29 @@ class API:
         if provenance:
             json.dump(provenance, open(f'{path}/{name}_prov.json', 'w'))
     
+    def show_catalog(self):
+        data = []
+        # create a dataframe from catalog
+        for id, info in self.catalog.items():
+            if "link" in info:
+                data.append([id, info['name'], info['link']])
+        df = pd.DataFrame(data, columns=['id', 'name', 'link'])
+
+        return df
+    
     def show_raw_dataset(self, id):
+        # todo: map data source to data path
+        data_path = "/home/cc/resolution_aware_spatial_temporal_alignment/data/chicago_open_data_1m/"
+        df = pd.read_csv(f"{data_path}/{id}.csv")
         link = self.catalog[id]['link']
-        return link
+        return df, link
 
     def show_agg_dataset(self, agg_tbl_name):
         df = read_agg_tbl(self.cur, agg_tbl_name)
         return df
 
 if __name__ == '__main__':
+    # todo: clean this and move tests to test folder
     conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
     nexus_api = API(conn_str)
     dataset = 'asthma'
@@ -122,18 +145,22 @@ if __name__ == '__main__':
     r_t = 0.5
     # df = nexus_api.find_correlations_from(dataset, t_granu, s_granu, overlap_t, r_t, corr_type="pearson")
     # print(len(df))
+    # print(nexus_api.show_agg_dataset('kf7e-cur8_se_location_6'))
+    # vars = [Var('divg-mhqk_location_6', 'count'), Var('4u6w-irs9_location_6', 'avg_square_feet')]
+    # constraints = {'divg-mhqk_location_6': 2, '4u6w-irs9_location_6': 2}
+    # df, prov = nexus_api.assemble(vars, constraints)
+    # print(df, prov)
     # print(df.loc[0])
     # aligned = nexus_api.get_aligned_data(df.loc[0])
 
     # test find all correlations
-    df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, corr_type="pearson")
-    print(len(df))
+    # df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, corr_type="pearson")
+    # print(len(df))
 
     # test regress
-    # target_var = Var('asthma_Zip5_6', 'avg_enc_asthma')
-    # covariates = [Var('ijzp-q8t2_location_6', 'count'), Var('n26f-ihde_pickup_centroid_location_6', 'avg_tip')]
-    # reg_model = linear_model.LinearRegression() # OLS regression
-    # model, rsq, merged = nexus_api.regress(target_var, covariates, reg_model)
-    # print(model.coef_)
-    # print(rsq)
-    # print(merged)
+    target_var = Var('asthma_Zip5_6', 'avg_enc_asthma')
+    covariates = [Var('ijzp-q8t2_location_6', 'count'), Var('n26f-ihde_pickup_centroid_location_6', 'avg_tip')]
+    reg_model = linear_model.LinearRegression() # OLS regression
+    model, rsq, merged = nexus_api.regress(target_var, covariates, reg_model)
+    print(model.coef_)
+    print(rsq)

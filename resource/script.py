@@ -8,6 +8,16 @@ def add_domain(path, domain, out_path):
         tbl_attrs[tbl_id] = info
     io_utils.dump_json(out_path, tbl_attrs)
 
+def remove_datasets(path, out_path):
+    # remove datasets that are not in the list
+    tbl_attrs = io_utils.load_json(path)
+    new_tbl_attrs = {}
+    for id, info in tbl_attrs.items():
+        if len(info["t_attrs"]) == 0 and len(info["s_attrs"]) == 0:
+            continue
+        new_tbl_attrs[id] = info
+    io_utils.dump_json(out_path, new_tbl_attrs)
+
 def add_link(path, ref_path, out_path):
     tbl_attrs = io_utils.load_json(path)
     ref = io_utils.load_json(ref_path)
@@ -31,7 +41,8 @@ def check_ny_and_nyc():
 
 
 if __name__ == '__main__':
-    add_link("resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk.json", 'resource/chicago_1m_zipcode/chicago_open_data_linked.json', "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json")
+    remove_datasets("resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk2.json",  "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json")
+    # add_link("resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk.json", 'resource/chicago_1m_zipcode/chicago_open_data_linked.json', "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json")
     # add_domain("resource/chicago_open_data/tbl_attrs_chicago_bk.json", 'data.cityofchicago.org', "resource/chicago_open_data/tbl_attrs_chicago_bk.json")
     # add_domain("resource/nyc_open_data/tbl_attrs_nyc_bk.json", 'data.cityofnewyork.us', "resource/nyc_open_data/tbl_attrs_nyc_bk.json")
     # add_domain("resource/chicago_1m/tbl_attrs_chicago_1m.json", 'data.cityofchicago.org', "resource/chicago_1m/tbl_attrs_chicago_1m_new.json")

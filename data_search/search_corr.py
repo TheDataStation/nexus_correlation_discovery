@@ -742,13 +742,13 @@ class CorrSearch:
         Begin to align and compute correlations
         """
         tbl_schema_corrs = []
-        print(method)
+        # print(method)
         if self.find_join_only and method == FIND_JOIN_METHOD.INDEX_SEARCH:
             print('Find_Join', len(aligned_schemas))
             self.perf_profile["num_joins"]["total"] += len(aligned_schemas)
             self.perf_profile["num_joins"][flag] += len(aligned_schemas)
             return
-        print(len(aligned_schemas))
+        # print(len(aligned_schemas))
         for tbl2, agg_name2 in aligned_schemas:
             if self.find_join_only:
                 start = time.time()
@@ -868,14 +868,14 @@ class CorrSearch:
             time_used = time.time() - start
             self.perf_profile["time_correlation"]["total"] += time_used
             self.perf_profile["time_correlation"][flag] += time_used
-        print("corrs", len(tbl_schema_corrs))
+      
         """
         Perform multiple-comparison correction
         """
         start = time.time()
         if self.correct_method == "FDR":
             tbl_schema_corrs = self.bh_correction(tbl_schema_corrs, r_t)
-        print("corr after", len(tbl_schema_corrs))
+       
         self.perf_profile["corr_counts"]["after"] += len(tbl_schema_corrs)
         self.perf_profile["time_correction"]["total"] += time.time() - start
         self.data.extend(tbl_schema_corrs)
@@ -1056,12 +1056,12 @@ class CorrSearch:
                     continue 
             # for fdr correction, we need to include all correlations regardless of the p value
             agg_col1 = AggColumn(
-                self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, row[:-3], df1[row]
+                self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, row, df1[row]
             )
             if self.correct_method is None or self.correct_method == "":
                 agg_col1.set_profile(df1[row], self.column_profiles[tbl1])
             agg_col2 = AggColumn(
-                self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col[:-3], df2[col]
+                self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col, df2[col]
             )
             if self.correct_method is None or self.correct_method == "":
                 agg_col2.set_profile(df2[col], self.column_profiles[tbl2])
@@ -1120,12 +1120,12 @@ class CorrSearch:
                         continue
               
                 agg_col1 = AggColumn(
-                    self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, col_name1[:-3], col1
+                    self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, col_name1, col1
                     )
                 if self.correct_method is None or self.correct_method == "":
                     agg_col1.set_profile(col1, self.column_profiles[tbl1])
                 agg_col2 = AggColumn(
-                    self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col_name2[:-3], col2
+                    self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col_name2, col2
                 )
                 if self.correct_method is None or self.correct_method == "":
                     agg_col2.set_profile(col2, self.column_profiles[tbl2])

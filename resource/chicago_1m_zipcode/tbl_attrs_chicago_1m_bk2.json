@@ -127,6 +127,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Community-Economic-Development/Business-Licenses/r5kz-chrr"
     },
+    "97wa-y6ff": {
+        "name": "Public Chauffeurs",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Community-Economic-Development/Public-Chauffeurs/97wa-y6ff"
+    },
     "9xs2-f89t": {
         "name": "Chicago Public Schools - Progress Report Cards (2011-2012)",
         "t_attrs": [],
@@ -148,6 +156,14 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Chicago-Public-Schools-Progress-Report-Cards-2011-/9xs2-f89t"
+    },
+    "ygr5-vcbg": {
+        "name": "Towed Vehicles",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/Towed-Vehicles/ygr5-vcbg"
     },
     "28km-gtjn": {
         "name": "Fire Stations",
@@ -178,6 +194,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/Taxi-Trips/wrvz-psew"
     },
+    "rsxa-ify5": {
+        "name": "Contracts",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Contracts/rsxa-ify5"
+    },
     "x8fc-8rcq": {
         "name": "Libraries - Locations,  Contact Information, and Usual Hours of Operation",
         "t_attrs": [],
@@ -207,6 +231,60 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Vacant-and-Abandoned-Building/7nii-7srd"
+    },
+    "naz8-j4nc": {
+        "name": "COVID-19 Daily Cases, Deaths, and Hospitalizations",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "deaths_unknown_race_eth",
+            "cases_male",
+            "hospitalizations_female",
+            "hospitalizations_age_80_",
+            "hospitalizations_male",
+            "deaths_70_79_yrs",
+            "cases_age_30_39",
+            "deaths_60_69_yrs",
+            "hospitalizations_age_60_69",
+            "cases_age_70_79",
+            "deaths_latinx",
+            "cases_age_50_59",
+            "cases_female",
+            "deaths_18_29_yrs",
+            "cases_age_0_17",
+            "deaths_total",
+            "hospitalizations_age_50_59",
+            "hospitalizations_age_0_17",
+            "deaths_80_yrs",
+            "hospitalizations_age_unknown",
+            "deaths_40_49_yrs",
+            "cases_age_80_",
+            "cases_total",
+            "hospitalizations_unknown_race_ethnicity",
+            "deaths_0_17_yrs",
+            "hospitalizations_age_18_29",
+            "hospitalizations_age_30_39",
+            "deaths_50_59_yrs",
+            "cases_age_18_29",
+            "hospitalizations_age_40_49",
+            "cases_age_unknown",
+            "hospitalizations_age_70_79",
+            "hospitalizations_latinx",
+            "deaths_female",
+            "hospitalizations_total",
+            "deaths_30_39_yrs",
+            "hospitalizations_unknown_gender",
+            "cases_age_60_69",
+            "deaths_male",
+            "deaths_unknown_gender",
+            "cases_latinx",
+            "deaths_unknown_age",
+            "cases_unknown_race_eth",
+            "cases_age_40_49",
+            "cases_unknown_gender"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-19-Daily-Cases-Deaths-and-Hospitalizations/naz8-j4nc"
     },
     "a9u4-3dwb": {
         "name": "CDPH Environmental Records Lookup Table",
@@ -304,6 +382,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Buildings/Vacant-and-Abandoned-Buildings-Violations/kc9i-wq85"
     },
+    "hwmb-iu8j": {
+        "name": "Public Right-of-Way Use Permits - Historical",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/Public-Right-of-Way-Use-Permits-Historical/hwmb-iu8j"
+    },
     "3c9v-pnva": {
         "name": "311 Service Requests - Abandoned Vehicles - Historical",
         "t_attrs": [],
@@ -346,6 +432,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/Speed-Camera-Locations/4i42-qv3h"
     },
+    "dpt3-jri9": {
+        "name": "Arrests",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Public-Safety/Arrests/dpt3-jri9"
+    },
     "7as2-ds3y": {
         "name": "311 Service Requests - Pot Holes Reported - Historical",
         "t_attrs": [],
@@ -369,6 +463,22 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/Average-Daily-Traffic-Counts/pfsx-4n4m"
+    },
+    "y93d-d9e3": {
+        "name": "Debarred Firms and Individuals",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Debarred-Firms-and-Individuals/y93d-d9e3"
+    },
+    "wjkc-agnm": {
+        "name": "FOIA Request Log - Police",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Police/wjkc-agnm"
     },
     "me59-5fac": {
         "name": "311 Service Requests - Sanitation Code Complaints - Historical",
@@ -405,6 +515,21 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Garbage-Carts-Historical/9ksk-na4q"
     },
+    "68nd-jvt3": {
+        "name": "Traffic Crashes - Vehicles",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "num_passengers",
+            "axle_cnt",
+            "trailer1_length",
+            "occupant_cnt",
+            "trailer2_length",
+            "total_vehicle_length"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/Traffic-Crashes-Vehicles/68nd-jvt3"
+    },
     "sxs8-h27x": {
         "name": "Chicago Traffic Tracker - Historical Congestion Estimates by Segment - 2018-Current",
         "t_attrs": [],
@@ -419,6 +544,22 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/Chicago-Traffic-Tracker-Historical-Congestion-Esti/sxs8-h27x"
+    },
+    "un3c-ixb7": {
+        "name": "FOIA Request Log - Fire",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Fire/un3c-ixb7"
+    },
+    "mft5-nfa8": {
+        "name": "COPA Cases - Summary",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Public-Safety/COPA-Cases-Summary/mft5-nfa8"
     },
     "7bzs-jsyj": {
         "name": "House Share Prohibited Buildings List",
@@ -447,6 +588,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/Chicago-Traffic-Tracker-Historical-Congestion-Esti/kf7e-cur8"
     },
+    "5neh-572f": {
+        "name": "CTA - Ridership - 'L' Station Entries - Daily Totals",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/CTA-Ridership-L-Station-Entries-Daily-Totals/5neh-572f"
+    },
     "5k2z-suxx": {
         "name": "Relocated Vehicles",
         "t_attrs": [],
@@ -471,6 +620,25 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Rodent-Baiting-Historical/97t6-zrhs"
     },
+    "ucsz-xe6d": {
+        "name": "FOIA Request Log - Buildings",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Buildings/ucsz-xe6d"
+    },
+    "6iiy-9s97": {
+        "name": "CTA - Ridership - Daily Boarding Totals",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "bus",
+            "rail_boardings"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/CTA-Ridership-Daily-Boarding-Totals/6iiy-9s97"
+    },
     "mw69-m6xi": {
         "name": "Neighborhood Health Clinics - Historical",
         "t_attrs": [],
@@ -480,6 +648,17 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/Neighborhood-Health-Clinics-Historical/mw69-m6xi"
+    },
+    "u6pd-qa9d": {
+        "name": "Traffic Crashes - People",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "age",
+            "bac_result_value"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/Traffic-Crashes-People/u6pd-qa9d"
     },
     "hhkd-xvj4": {
         "name": "Speed Camera Violations",
@@ -533,6 +712,20 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/Condom-Distribution-Sites-Historical/azpf-uc4s"
     },
+    "qmqz-2xku": {
+        "name": "Beach Water Quality - Automated Sensors",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "wave_period",
+            "water_temperature",
+            "transducer_depth",
+            "wave_height",
+            "battery_life"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Parks-Recreation/Beach-Water-Quality-Automated-Sensors/qmqz-2xku"
+    },
     "mab8-y9h3": {
         "name": "311 Service Requests - Tree Debris - Historical",
         "t_attrs": [],
@@ -543,6 +736,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Tree-Debris-Historical/mab8-y9h3"
     },
+    "ndbz-vy4e": {
+        "name": "Roadway Construction Moratoriums",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/Roadway-Construction-Moratoriums/ndbz-vy4e"
+    },
     "kcki-hnch": {
         "name": "Chicago Department of Public Health Clinic Locations",
         "t_attrs": [],
@@ -552,6 +753,16 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/Chicago-Department-of-Public-Health-Clinic-Locatio/kcki-hnch"
+    },
+    "ypez-j3yg": {
+        "name": "Lobbyist Data - Lobbyist Registry - 2012 to present (Deprecated October 2015)",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "registration_version"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Lobbyist-Registry-2012-to-present-De/ypez-j3yg"
     },
     "4aki-r3np": {
         "name": "Strategic Subject List - Historical",
@@ -577,6 +788,14 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Public-Safety/Strategic-Subject-List-Historical/4aki-r3np"
+    },
+    "7zkx-3pp7": {
+        "name": "FOIA Request Log - Human Resources",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Human-Resources/7zkx-3pp7"
     },
     "bspy-6mw8": {
         "name": "Community Service Centers",
@@ -631,6 +850,29 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Street-Lights-One-Out-Histori/3aav-uy2v"
     },
+    "pk66-w54g": {
+        "name": "Chicago Park District - Event Permits",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org"
+    },
+    "jyb9-n7fm": {
+        "name": "CTA - Ridership - Bus Routes - Daily Totals by Route",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/CTA-Ridership-Bus-Routes-Daily-Totals-by-Route/jyb9-n7fm"
+    },
+    "bcyv-67qk": {
+        "name": "FOIA Request Log - Procurement Services",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Procurement-Services/bcyv-67qk"
+    },
     "htai-wnw4": {
         "name": "Ward Offices",
         "t_attrs": [],
@@ -640,6 +882,22 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Ward-Offices/htai-wnw4"
+    },
+    "qqqh-hgyw": {
+        "name": "Life Safety Evaluations (Deprecated 2015)",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Buildings/Life-Safety-Evaluations-Deprecated-2015-/qqqh-hgyw"
+    },
+    "7avf-ek45": {
+        "name": "FOIA Request Log - Finance",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Finance/7avf-ek45"
     },
     "8pix-ypme": {
         "name": "CTA - System Information - List of 'L' Stops",
@@ -664,6 +922,36 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/Transportation-Department-Permits/pubx-yq2d"
     },
+    "ycd5-punx": {
+        "name": "TIF District Programming - 2017-2021",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Community-Economic-Development/TIF-District-Programming-2017-2021/ycd5-punx"
+    },
+    "k7hf-8y75": {
+        "name": "Beach Weather Stations - Automated Sensors",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "solar_radiation",
+            "rain_intensity",
+            "maximum_wind_speed",
+            "wind_speed",
+            "wet_bulb_temperature",
+            "air_temperature",
+            "total_rain",
+            "battery_life",
+            "barometric_pressure",
+            "precipitation_type",
+            "interval_rain"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Parks-Recreation/Beach-Weather-Stations-Automated-Sensors/k7hf-8y75"
+    },
     "fg6s-gzvg": {
         "name": "Divvy Trips",
         "t_attrs": [],
@@ -687,6 +975,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Environment-Sustainable-Development/CDPH-Environmental-Inspections/i9rk-duva"
     },
+    "zidz-sdfj": {
+        "name": "Landmark Districts",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Historic-Preservation/Landmark-Districts/zidz-sdfj"
+    },
     "cbyb-69xx": {
         "name": "Bike Racks",
         "t_attrs": [],
@@ -699,6 +995,22 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/Bike-Racks-Historical/cbyb-69xx"
+    },
+    "t58s-ja5s": {
+        "name": "FOIA Request Log - Administrative Hearings",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Administrative-Hearings/t58s-ja5s"
+    },
+    "b989-387c": {
+        "name": "FOIA Request Log - Animal Care and Control",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Animal-Care-and-Control/b989-387c"
     },
     "fypr-ksnz": {
         "name": "CDPH Environmental Complaints",
@@ -720,6 +1032,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/Flu-Shot-Clinic-Locations-2012/4jy7-7m68"
     },
+    "5ztz-espx": {
+        "name": "FOIA Request Log - Planning and Development",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Planning-and-Development/5ztz-espx"
+    },
     "t28b-ys7j": {
         "name": "311 Service Requests - Alley Lights Out - Historical",
         "t_attrs": [],
@@ -729,6 +1049,32 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Alley-Lights-Out-Historical/t28b-ys7j"
+    },
+    "t2rn-p8d7": {
+        "name": "CTA - Ridership - 'L' Station Entries - Monthly Day-Type Averages & Totals",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "monthtotal"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/CTA-Ridership-L-Station-Entries-Monthly-Day-Type-A/t2rn-p8d7"
+    },
+    "zpd8-zq4w": {
+        "name": "FOIA Request Log - Streets & Sanitation",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Streets-Sanitation/zpd8-zq4w"
+    },
+    "j2p9-gdf5": {
+        "name": "FOIA Request Log - 311",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-311/j2p9-gdf5"
     },
     "bbyy-e7gq": {
         "name": "Divvy Bicycle Stations",
@@ -756,6 +1102,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/CTA-Ridership-Avg-Weekday-Bus-Stop-Boardings-in-Oc/mq3i-nnqe"
     },
+    "srzw-dcvg": {
+        "name": "FOIA Request Log - Office of the Mayor",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Office-of-the-Mayor/srzw-dcvg"
+    },
     "xvsz-3xcj": {
         "name": "Beach E. coli Predictions",
         "t_attrs": [],
@@ -767,6 +1121,55 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Parks-Recreation/Beach-E-coli-Predictions/xvsz-3xcj"
+    },
+    "g5h3-jkgt": {
+        "name": "Employee Reimbursements",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Employee-Reimbursements/g5h3-jkgt"
+    },
+    "u9qt-tv7d": {
+        "name": "FOIA Request Log - Transportation",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Transportation/u9qt-tv7d"
+    },
+    "n5zj-r44u": {
+        "name": "Problem Landlord List - Deprecated",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org"
+    },
+    "ybhx-inqb": {
+        "name": "FOIA Request Log - Business Affairs & Consumer Protection",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Business-Affairs-Consumer-Protect/ybhx-inqb"
+    },
+    "8pxc-mzcv": {
+        "name": "FOIA Request Log - OEMC",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-OEMC/8pxc-mzcv"
+    },
+    "9pd8-s9t4": {
+        "name": "FOIA Request Log - Chicago Police Board",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Chicago-Police-Board/9pd8-s9t4"
     },
     "ir7v-8mc8": {
         "name": "CDPH Environmental Permits",
@@ -840,6 +1243,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/Red-Light-Camera-Locations/thvf-6diy"
     },
+    "44bx-ncpi": {
+        "name": "FOIA Request Log - Law",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Law/44bx-ncpi"
+    },
     "qhb4-qx8k": {
         "name": "CDPH Asbestos and Demolition Notification",
         "t_attrs": [],
@@ -849,6 +1260,87 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Environment-Sustainable-Development/CDPH-Asbestos-and-Demolition-Notification/qhb4-qx8k"
+    },
+    "e68t-c7fv": {
+        "name": "COVID-19 Daily Rolling Average Case, Death, and Hospitalization Rates",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "cases_rate_age_18_29",
+            "deaths_rate_male",
+            "deaths_rate_age_40_49",
+            "deaths_rate_age_60_69",
+            "hospitalizations_female",
+            "deaths_age_40_49",
+            "cases_male",
+            "deaths_age_0_17",
+            "hospitalizations_age_80_",
+            "hospitalizations_male",
+            "cases_rate_age_60_69",
+            "deaths_age_60_69",
+            "cases_age_30_39",
+            "cases_rate_total",
+            "hospitalizations_rate_age_40_49",
+            "deaths_age_30_39",
+            "hospitalizations_age_60_69",
+            "cases_rate_age_40_49",
+            "cases_age_70_79",
+            "deaths_latinx",
+            "deaths_age_18_29",
+            "deaths_rate_total",
+            "cases_age_50_59",
+            "hospitalizations_rate_age_70_79",
+            "cases_female",
+            "hospitalizations_rate_total",
+            "cases_age_80",
+            "deaths_rate_age_70_79",
+            "deaths_age_70_79",
+            "cases_age_0_17",
+            "deaths_rate_age_50_59",
+            "cases_rate_age_50_59",
+            "cases_rate_age_80",
+            "deaths_age_50_59",
+            "cases_rate_male",
+            "cases_rate_latinx",
+            "deaths_total",
+            "deaths_rate_latinx",
+            "hospitalizations_rate_age_18_29",
+            "deaths_age_80",
+            "hospitalizations_age_50_59",
+            "hospitalizations_rate_age_60_69",
+            "hospitalizations_age_0_17",
+            "cases_rate_age_0_17",
+            "cases_rate_age_70_79",
+            "hospitalizations_rate_age_80_",
+            "cases_total",
+            "hospitalizations_age_30_39",
+            "cases_rate_age_30_39",
+            "hospitalizations_age_18_29",
+            "hospitalizations_rate_latinx",
+            "hospitalizations_rate_female",
+            "cases_age_18_29",
+            "hospitalizations_age_40_49",
+            "hospitalizations_rate_age_50_59",
+            "hospitalizations_age_70_79",
+            "deaths_rate_age_80",
+            "hospitalizations_rate_age_30_39",
+            "hospitalizations_latinx",
+            "deaths_female",
+            "deaths_rate_age_0_17",
+            "hospitalizations_total",
+            "cases_age_60_69",
+            "hospitalizations_rate_age_0_17",
+            "deaths_male",
+            "deaths_rate_age_18_29",
+            "deaths_rate_age_30_39",
+            "cases_latinx",
+            "hospitalizations_rate_male",
+            "cases_age_40_49",
+            "cases_rate_female",
+            "deaths_rate_female"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-19-Daily-Rolling-Average-Case-Death-and-Hosp/e68t-c7fv"
     },
     "8i6r-et8s": {
         "name": "Chicago Public Schools - School Profile Information SY1617",
@@ -941,6 +1433,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-19-Vaccinations-by-ZIP-Code-Historical/553k-3xzc"
     },
+    "fhb6-wwuu": {
+        "name": "FOIA Request Log - Ethics",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Ethics/fhb6-wwuu"
+    },
     "2ivx-z93u": {
         "name": "Beach Lab Data",
         "t_attrs": [],
@@ -958,6 +1458,175 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Parks-Recreation/Beach-Lab-Data/2ivx-z93u"
+    },
+    "f3he-c6sv": {
+        "name": "COVID-19 Hospital Capacity Metrics - Historical",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "icu_beds_available_pediatric",
+            "icu_beds_surge_capacity_adult",
+            "icu_beds_total_capacity",
+            "ventilators_in_use_total",
+            "icu_beds_available_total",
+            "icu_beds_surge_capacity_pediatric",
+            "icu_beds_available_adult",
+            "icu_beds_adult",
+            "ventilators_available_eamc_cache",
+            "icu_beds_pediatric",
+            "icu_beds_in_use_total",
+            "ventilators_available_total",
+            "ventilator_surge_capacity",
+            "ventilators_total_capacity",
+            "ventilators_available_hospital"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-19-Hospital-Capacity-Metrics-Historical/f3he-c6sv"
+    },
+    "2vhs-cf6b": {
+        "name": "COVID-19 Daily Vaccinations - Chicago Residents",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "_1st_dose_daily_gender_unknown",
+            "_1st_dose_daily_age_0_17",
+            "_1st_dose_daily_age_60_69",
+            "total_doses_daily_age_70_79",
+            "_1st_dose_daily_age_18_29",
+            "booster_daily_age_30_39",
+            "vaccine_series_completed_daily_male",
+            "booster_daily_age_0_17",
+            "total_doses_daily_age_75_plus",
+            "vaccine_series_completed_daily",
+            "total_doses_daily_male",
+            "booster_daily_age_80_plus",
+            "booster_daily_unknown_age",
+            "_1st_dose_daily_age_65_plus",
+            "_1st_dose_daily_age_5_plus",
+            "booster_daily_unknown_gender",
+            "_1st_dose_daily_age_12_plus",
+            "booster_daily_female",
+            "_1st_dose_daily",
+            "_1st_dose_daily_age_80_",
+            "vaccine_series_completed_percent_population",
+            "bivalent_daily_unknown_age",
+            "bivalent_percent_population",
+            "vaccine_series_completed_daily_age_30_39",
+            "booster_daily_male",
+            "total_doses_daily_female",
+            "vaccine_series_completed_daily_female",
+            "_1st_dose_daily_female",
+            "bivalent_daily_age_75_plus",
+            "total_doses_daily_age_18_plus",
+            "_1st_dose_daily_latinx",
+            "vaccine_series_completed_daily_age_60_69",
+            "total_doses_daily_age_0_4",
+            "_1st_dose_daily_male",
+            "bivalent_daily_age_18_29",
+            "bivalent_daily_age_60_69",
+            "booster_daily_unknown_race_ethnicity",
+            "booster_daily_age_0_4",
+            "vaccine_series_completed_daily_age_50_59",
+            "vaccine_series_completed_daily_unknown_gender",
+            "total_doses_daily_age_30_39",
+            "total_doses_daily_age_5_plus",
+            "booster_daily_age_12_plus",
+            "total_doses_daily_age_unknown",
+            "total_doses_daily_age_50_59",
+            "bivalent_daily_age_18_plus",
+            "booster_daily_age_65_plus",
+            "vaccine_series_completed_daily_age_65_plus",
+            "total_doses_daily_age_12_plus",
+            "_1st_dose_daily_age_12_17",
+            "booster_daily_age_75_plus",
+            "total_doses_daily_age_12_17",
+            "booster_daily_age_5_plus",
+            "vaccine_series_completed_daily_age_12_17",
+            "_1st_dose_daily_age_40_49",
+            "booster_daily_age_18_plus",
+            "total_doses_daily_age_0_17",
+            "bivalent_daily_age_12_plus",
+            "bivalent_daily_age_5_plus",
+            "bivalent_daily_age_70_79",
+            "total_doses_daily_age_80_plus",
+            "bivalent_daily_unknown_gender",
+            "booster_daily_age_40_49",
+            "total_doses_daily_age_18_29",
+            "bivalent_daily",
+            "bivalent_daily_age_50_59",
+            "bivalent_daily_female",
+            "_1st_dose_daily_age_18_plus",
+            "_1st_dose_daily_age_0_4",
+            "total_doses_daily_age_5_11",
+            "vaccine_series_completed_daily_age_5_11",
+            "_1st_dose_daily_age_50_59",
+            "vaccine_series_completed_daily_age_5_plus",
+            "vaccine_series_completed_daily_latinx",
+            "total_doses_daily_age_40_49",
+            "total_doses_daily_latinx",
+            "vaccine_series_completed_daily_age_unknown_age",
+            "bivalent_daily_age_30_39",
+            "booster_daily_latinx",
+            "vaccine_series_completed_daily_age_75_plus",
+            "booster_daily",
+            "vaccine_series_completed_daily_age_18_29",
+            "vaccine_series_completed_daily_age_18_plus",
+            "_1st_dose_daily_age_70_79",
+            "total_doses_daily_unknown_race_ethnicity",
+            "bivalent_daily_age_0_17",
+            "booster_daily_age_18_29",
+            "vaccine_series_completed_daily_age_70_79",
+            "booster_daily_age_50_59",
+            "total_doses_daily",
+            "bivalent_daily_age_40_49",
+            "_1st_dose_percent_population",
+            "_1st_dose_daily_age_75_plus",
+            "booster_percent_population",
+            "vaccine_series_completed_daily_age_12_plus",
+            "total_doses_daily_age_60_69",
+            "_1st_dose_daily_age_30_39",
+            "booster_daily_age_5_11",
+            "_1st_dose_daily_age_unknown",
+            "bivalent_daily_age_65_plus",
+            "vaccine_series_completed_daily_age_0_17",
+            "booster_daily_age_70_79",
+            "bivalent_daily_age_5_11",
+            "bivalent_daily_unknown_race_ethnicity",
+            "bivalent_daily_age_80_plus",
+            "vaccine_series_completed_daily_age_40_49",
+            "bivalent_daily_latinx",
+            "vaccine_series_completed_daily_age_0_4",
+            "bivalent_daily_age_0_4",
+            "booster_daily_age_12_17",
+            "_1st_dose_daily_age_5_11",
+            "total_doses_daily_unknown_gender",
+            "vaccine_series_completed_daily_age_80_plus",
+            "booster_daily_age_60_69",
+            "total_doses_daily_age_65_plus",
+            "_1st_dose_daily_unknown_race_ethnicity",
+            "bivalent_daily_age_12_17",
+            "bivalent_daily_male"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-19-Daily-Vaccinations-Chicago-Residents-Hist/2vhs-cf6b"
+    },
+    "bynn-gwxy": {
+        "name": "CTA - Ridership - Bus Routes - Monthly Day-Type Averages & Totals",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "monthtotal"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/CTA-Ridership-Bus-Routes-Monthly-Day-Type-Averages/bynn-gwxy"
+    },
+    "ufxy-tgry": {
+        "name": "COPA Cases - By Involved Officer",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Public-Safety/COPA-Cases-By-Involved-Officer/ufxy-tgry"
     },
     "3h7q-7mdb": {
         "name": "Violence Reduction - Shotspotter Alerts",
@@ -980,6 +1649,18 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Connect-Chicago-Locations-Historical/bmus-hp7e"
+    },
+    "emtn-qqdi": {
+        "name": "Chicago Traffic Tracker - Historical Congestion Estimates by Region - 2013-2018",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "speed",
+            "number_of_reads",
+            "bus_count"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/Chicago-Traffic-Tracker-Historical-Congestion-Esti/emtn-qqdi"
     },
     "2m8w-izji": {
         "name": "Chicago Public Schools - High School Progress Report (2013-2014)",
@@ -1053,6 +1734,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Chicago-Public-Schools-High-School-Progress-Report/2m8w-izji"
     },
+    "vnz2-rmie": {
+        "name": "COPA Cases - By Complainant or Subject",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Public-Safety/COPA-Cases-By-Complainant-or-Subject/vnz2-rmie"
+    },
     "ag7u-gr9m": {
         "name": "CTA - List of Fare Media Sales Outlets (deprecated August 2014)",
         "t_attrs": [],
@@ -1063,6 +1752,41 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/CTA-List-of-Fare-Media-Sales-Outlets-deprecated-Au/ag7u-gr9m"
     },
+    "jbth-h7cm": {
+        "name": "FOIA Request Log - Aviation",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Aviation/jbth-h7cm"
+    },
+    "4h87-zdcp": {
+        "name": "FOIA Request Log - Health",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Health/4h87-zdcp"
+    },
+    "t62e-8nvc": {
+        "name": "Beach Swim Advisories",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "predicted_level",
+            "probability"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Parks-Recreation/Beach-Swim-Advisories/t62e-8nvc"
+    },
+    "tq3e-t5yq": {
+        "name": "Lobbyist Data - Lobbyists",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Lobbyists/tq3e-t5yq"
+    },
     "tdab-kixi": {
         "name": "Individual Landmarks",
         "t_attrs": [],
@@ -1072,6 +1796,14 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Historic-Preservation/Individual-Landmarks/tdab-kixi"
+    },
+    "g8p5-y4m5": {
+        "name": "Lobbyist Data - Clients",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Clients/g8p5-y4m5"
     },
     "2kfw-zvte": {
         "name": "E-Scooter Trips - 2019 Pilot",
@@ -1114,6 +1846,22 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Community-Economic-Development/Financial-Incentive-Projects-Small-Business-Improv/etqr-sz5x"
     },
+    "ikdf-ernx": {
+        "name": "FOIA Request Log - Cultural Affairs & Special Events",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Cultural-Affairs-Special-Events/ikdf-ernx"
+    },
+    "zrv6-shhf": {
+        "name": "FOIA Request Log - Revenue",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Revenue/zrv6-shhf"
+    },
     "jmw7-ijg5": {
         "name": "Family and Support Services Delegate Agencies",
         "t_attrs": [],
@@ -1124,6 +1872,120 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/Family-and-Support-Services-Delegate-Agencies/jmw7-ijg5"
     },
+    "t4hh-4ku9": {
+        "name": "COVID-19 Daily Testing - By Person - Historical",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "people_positive_latinx",
+            "people_tested_age_50_59",
+            "people_tested_age_0_17",
+            "people_tested_age_40_49",
+            "people_positive_age_18_29",
+            "people_tested_age_60_69",
+            "people_positive_age_50_59",
+            "people_tested_age_80_",
+            "people_tested_age_70_79",
+            "people_tested_female",
+            "people_positive_age_40_49",
+            "people_positive_unknown_race_ethnicity",
+            "people_positive_female",
+            "people_positive_age_70_79",
+            "people_tested_unknown_race_ethnicity",
+            "people_positive_age_60_69",
+            "people_tested_male",
+            "people_tested_age_unknown",
+            "people_positive_gender_unknown",
+            "people_tested_gender_unknown",
+            "people_positive_age_0_17",
+            "people_tested_total",
+            "people_positive_age_unknown",
+            "people_tested_age_30_39",
+            "people_positive_age_30_39",
+            "people_tested_age_18_29",
+            "people_positive_total",
+            "people_positive_male",
+            "people_tested_latinx",
+            "people_positive_age_80_"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-19-Daily-Testing-By-Person-Historical/t4hh-4ku9"
+    },
+    "pasx-mnuv": {
+        "name": "Employee Indebtedness to the City of Chicago",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "dept_size",
+            "employees",
+            "due",
+            "_employees_w_debt"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Employee-Indebtedness-to-the-City-of-Chicago/pasx-mnuv"
+    },
+    "gzxp-vdqf": {
+        "name": "FOIA Request Log - Independent Police Review Authority",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Independent-Police-Review-Authori/gzxp-vdqf"
+    },
+    "gkdw-2tgv": {
+        "name": "COVID-19 Daily Testing - By Test",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "not_positive_tests_latinx",
+            "not_positive_tests_gender_unknown",
+            "positive_tests_age_80_",
+            "not_positive_tests_age_60_69",
+            "not_positive_tests_age_80_",
+            "not_positive_tests_female",
+            "positive_tests",
+            "positive_tests_age_0_17",
+            "tests_age_18_29",
+            "not_positive_tests_age_50_59",
+            "tests_age_0_17",
+            "tests_age_30_39",
+            "positive_tests_age_40_49",
+            "not_positive_tests_age_0_17",
+            "not_positive_tests_age_40_49",
+            "tests_age_50_59",
+            "not_positive_tests_age_70_79",
+            "tests_gender_unknown",
+            "not_positive_tests_age_unknown",
+            "positive_tests_age_30_39",
+            "tests_female",
+            "positive_tests_age_unknown",
+            "not_positive_tests_male",
+            "tests_male",
+            "positive_tests_female",
+            "positive_tests_male",
+            "tests_latinx",
+            "tests_age_60_69",
+            "positive_tests_age_18_29",
+            "tests_age_80_",
+            "tests_unknown_race_ethnicity",
+            "not_positive_tests_age_18_29",
+            "tests_age_unknown",
+            "positive_tests_age_60_69",
+            "tests_age_40_49",
+            "positive_tests_latinx",
+            "total_tests",
+            "tests_age_70_79",
+            "positive_tests_unknown_race_ethnicity",
+            "not_positive_tests",
+            "positive_tests_unknown_gender",
+            "positive_tests_age_50_59",
+            "not_positive_tests_age_30_39",
+            "not_positive_tests_unknown_race_ethnicity",
+            "positive_tests_age_70_79"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-19-Daily-Testing-By-Test/gkdw-2tgv"
+    },
     "h243-v2q5": {
         "name": "Warming Centers",
         "t_attrs": [],
@@ -1133,6 +1995,14 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/Warming-Centers/h243-v2q5"
+    },
+    "pahz-egmi": {
+        "name": "Lobbyist Data - Lobbying Activity",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Lobbying-Activity/pahz-egmi"
     },
     "jqe8-8r6s": {
         "name": "West Nile Virus (WNV) Mosquito Test Results",
@@ -1173,6 +2043,14 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Community-Economic-Development/Tax-Increment-Financing-TIF-Funded-RDA-and-IGA-Pro/mex4-ppfc"
+    },
+    "72qm-3bwf": {
+        "name": "FOIA Request Log - City Clerk",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-City-Clerk/72qm-3bwf"
     },
     "ggws-77ih": {
         "name": "Smart Green Infrastructure Monitoring Sensors - Historical",
@@ -1344,6 +2222,22 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-19-Testing-Sites-Historical/thdn-3grx"
     },
+    "c323-fb2i": {
+        "name": "FOIA Request Log - Budget & Management",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Budget-Management/c323-fb2i"
+    },
+    "nd4p-ckx9": {
+        "name": "FOIA Request Log - Fleet & Facility Management",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Fleet-Facility-Management/nd4p-ckx9"
+    },
     "cp7s-7gxg": {
         "name": "Chicago Public Schools - School Progress Reports SY1617",
         "t_attrs": [],
@@ -1396,6 +2290,30 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Chicago-Public-Schools-School-Progress-Reports-SY1/cp7s-7gxg"
     },
+    "n379-5uzu": {
+        "name": "FOIA Request Log - Chicago Public Library",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Chicago-Public-Library/n379-5uzu"
+    },
+    "5wce-bks2": {
+        "name": "Restricted Flavored Tobacco Products",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/Restricted-Flavored-Tobacco-Products/5wce-bks2"
+    },
+    "dmeb-2zra": {
+        "name": "Lobbyist Data - Employers",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Employers/dmeb-2zra"
+    },
     "g3ip-u8rb": {
         "name": "Beach Water and Weather Sensor Locations",
         "t_attrs": [],
@@ -1405,6 +2323,14 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Parks-Recreation/Beach-Water-and-Weather-Sensor-Locations/g3ip-u8rb"
+    },
+    "4nng-j9hd": {
+        "name": "FOIA Request Log - Innovation and Technology",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Innovation-and-Technology/4nng-j9hd"
     },
     "q3z3-udcz": {
         "name": "Green Roofs",
@@ -1467,6 +2393,40 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Chicago-Public-Schools-High-School-Progress-Report/qemx-3d9f"
     },
+    "yfhi-bd8g": {
+        "name": "FOIA Request Log - Family and Support Services",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Family-and-Support-Services/yfhi-bd8g"
+    },
+    "dw2f-w78u": {
+        "name": "Lobbyist Data - Compensation",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "compensation_amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Compensation/dw2f-w78u"
+    },
+    "2nra-kpzu": {
+        "name": "FOIA Request Log - Zoning and Land Use Planning - Historical",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Zoning-and-Land-Use-Planning-Hist/2nra-kpzu"
+    },
+    "fazv-a8mb": {
+        "name": "FOIA Request Log - Mayor's Office for People with Disabilities",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Mayor-s-Office-for-People-with-Di/fazv-a8mb"
+    },
     "xhc6-88s9": {
         "name": "Chicago COVID-19 Community Vulnerability Index (CCVI)",
         "t_attrs": [],
@@ -1492,6 +2452,14 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/Public-Health-Services-Chicago-Primary-Care-Commun/cjg8-dbka"
+    },
+    "ngnv-dvxx": {
+        "name": "FOIA Request Log - Public Building Commission",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Public-Building-Commission/ngnv-dvxx"
     },
     "nm3d-wkdd": {
         "name": "Tax Increment Financing (TIF) Investment Committee Decisions",
@@ -1539,6 +2507,16 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Community-Economic-Development/Micro-Market-Recovery-Program-Cases/gm9b-bwv5"
+    },
+    "gj7a-742p": {
+        "name": "Violence Reduction - Victim Demographics - Aggregated",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "number_of_victims"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Public-Safety/Violence-Reduction-Victim-Demographics-Aggregated/gj7a-742p"
     },
     "czzw-ymcb": {
         "name": "Veteran Owned Businesses",
@@ -1662,6 +2640,17 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Public-Technology-Resources/nen3-vcxj"
     },
+    "p293-wvbd": {
+        "name": "Boundaries - Wards (2023-)",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "st_length_",
+            "st_area_sh"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Wards-2023-/p293-wvbd"
+    },
     "6rq2-yx28": {
         "name": "Array of Things Locations",
         "t_attrs": [],
@@ -1671,6 +2660,22 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Environment-Sustainable-Development/Array-of-Things-Locations/6rq2-yx28"
+    },
+    "p4j4-pzyn": {
+        "name": "FOIA Request Log - Water",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Water/p4j4-pzyn"
+    },
+    "s7ek-ru5b": {
+        "name": "FOIA Request Log - Environment - Historical",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Environment-Historical/s7ek-ru5b"
     },
     "cf2f-mmzv": {
         "name": "Micro-Market Recovery Program - Addresses",
@@ -1692,6 +2697,24 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/Cooling-Centers/msrk-w9ih"
     },
+    "52q7-yupi": {
+        "name": "FOIA Request Log - Human Relations",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Human-Relations/52q7-yupi"
+    },
+    "eaff-5ff2": {
+        "name": "Performance Metrics - Transportation",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "total_completed_requests"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Performance-Metrics-Transportation/eaff-5ff2"
+    },
     "sj6t-9cju": {
         "name": "Parks - Public Art",
         "t_attrs": [],
@@ -1701,6 +2724,16 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Parks-Recreation/Parks-Public-Art/sj6t-9cju"
+    },
+    "4kht-kuvx": {
+        "name": "TIF District Programming - 2018-2022",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Community-Economic-Development/TIF-District-Programming-2018-2022/4kht-kuvx"
     },
     "dpkg-upyz": {
         "name": "Chicago Microlending Institute (CMI) Microloans",
@@ -1712,6 +2745,32 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Community-Economic-Development/Chicago-Microlending-Institute-CMI-Microloans/dpkg-upyz"
     },
+    "kh4r-387c": {
+        "name": "Chicago Public Schools - School Profile Information SY1819",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "student_count_white",
+            "student_count_asian_pacific",
+            "college_enrollment_rate_mean",
+            "college_enrollment_rate_school",
+            "student_count_low_income",
+            "student_count_total",
+            "student_count_hispanic",
+            "student_count_asian",
+            "student_count_multi",
+            "student_count_native_american",
+            "student_count_hawaiian_pacific",
+            "graduation_rate_school",
+            "student_count_special_ed",
+            "student_count_black",
+            "student_count_other_ethnicity",
+            "student_count_english_learners",
+            "graduation_rate_mean"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Education/Chicago-Public-Schools-School-Profile-Information-/kh4r-387c"
+    },
     "6q3z-9maq": {
         "name": "COVID-19 Vaccination Locations",
         "t_attrs": [],
@@ -1721,6 +2780,24 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-19-Vaccination-Locations/6q3z-9maq"
+    },
+    "8eww-pamb": {
+        "name": "House Share Restricted Residential Zone Precincts",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "precinct"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Buildings/House-Share-Restricted-Residential-Zone-Precincts/8eww-pamb"
+    },
+    "4nkr-n688": {
+        "name": "FOIA Request Log - License Appeal Commission",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-License-Appeal-Commission/4nkr-n688"
     },
     "divg-mhqk": {
         "name": "Produce Carts",
@@ -1745,6 +2822,28 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/E-Scooter-Trips-2020/3rse-fbp6"
     },
+    "6u8z-aubf": {
+        "name": "Taxi Medallion Transfers",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "sale_price"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/Taxi-Medallion-Transfers/6u8z-aubf"
+    },
+    "qwib-edaw": {
+        "name": "COVID-Like Illness (CLI) and COVID-19 Diagnosis Emergency Department Visits",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "total_cli_daily",
+            "total_ed_visits_daily",
+            "cli_percent_daily"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-Like-Illness-CLI-and-COVID-19-Diagnosis-Emer/qwib-edaw"
+    },
     "hu6v-hsqb": {
         "name": "Farmers Markets - 2012",
         "t_attrs": [],
@@ -1755,6 +2854,24 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Environment-Sustainable-Development/Farmers-Markets-2012/hu6v-hsqb"
     },
+    "p9p7-vfqc": {
+        "name": "Lobbyist Data - Contributions",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Contributions/p9p7-vfqc"
+    },
+    "rpya-q7ut": {
+        "name": "FOIA Request Log - Community Development - Historical",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Community-Development-Historical/rpya-q7ut"
+    },
     "x5xx-pszi": {
         "name": "Farmers Markets - 2015",
         "t_attrs": [],
@@ -1764,6 +2881,26 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Environment-Sustainable-Development/Farmers-Markets-2015/x5xx-pszi"
+    },
+    "8gyi-fawp": {
+        "name": "FOIA Request Log - Chicago Treasurer's Office",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Chicago-Treasurer-s-Office/8gyi-fawp"
+    },
+    "4564-ixr2": {
+        "name": "COVID-19 Daily Vaccinations - Administered in Chicago",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "_2nd_dose_daily",
+            "_1st_dose_daily",
+            "total_doses_daily"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-19-Daily-Vaccinations-Administered-in-Chicag/4564-ixr2"
     },
     "kukh-c9wt": {
         "name": "Annual Taxpayer Location Address List 2014",
@@ -1784,6 +2921,14 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/Dig-Ticket-Notifications/cygx-ui4j"
+    },
+    "knv6-r5ad": {
+        "name": "Public Building Commission - Event Permits",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Events/Public-Building-Commission-Event-Permits/knv6-r5ad"
     },
     "2u2y-n6dm": {
         "name": "Parks - Buildings (deprecated November 2016)",
@@ -1837,6 +2982,26 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Events/Chicago-Park-District-Movies-in-the-Parks-2018/e2v8-k3us"
+    },
+    "5d79-9xqr": {
+        "name": "Lobbyist Data - Gifts",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "value"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Gifts/5d79-9xqr"
+    },
+    "xika-473c": {
+        "name": "Lobbyist Data - Expenditures - Large",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Expenditures-Large/xika-473c"
     },
     "fvrx-esxp": {
         "name": "Chicago Public Schools - School Progress Reports SY1516",
@@ -1934,6 +3099,91 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/E-Scooter-Trips-Census-Tract-Summary-2020/3srm-twg4"
     },
+    "3qsz-jemf": {
+        "name": "TIF Status and Eligibility",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Community-Economic-Development/TIF-Status-and-Eligibility/3qsz-jemf"
+    },
+    "28me-84fj": {
+        "name": "Police Sentiment Scores",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "s_income_low",
+            "t_education_high",
+            "t_education_low",
+            "t_age_high",
+            "t_respect_income_low",
+            "t_listen",
+            "t_listen_education_low",
+            "sector",
+            "s_age_low",
+            "trust",
+            "t_listen_education_high",
+            "t_respect_age_high",
+            "t_race_white",
+            "t_respect_education_medium",
+            "t_respect_income_medium",
+            "t_listen_income_high",
+            "t_respect_race_asian_american",
+            "t_age_low",
+            "t_listen_age_medium",
+            "t_race_asian_american",
+            "s_income_medium",
+            "s_age_medium",
+            "safety",
+            "s_race_african_american",
+            "t_income_medium",
+            "s_race_white",
+            "t_listen_race_african_american",
+            "t_respect_race_hispanic",
+            "t_respect_race_other",
+            "t_respect_sex_female",
+            "t_respect_sex_male",
+            "t_listen_race_other",
+            "t_age_medium",
+            "t_respect_income_high",
+            "s_sex_male",
+            "s_education_medium",
+            "t_sex_female",
+            "t_listen_sex_male",
+            "t_sex_male",
+            "s_age_high",
+            "t_listen_race_white",
+            "s_race_other",
+            "t_race_hispanic",
+            "t_respect_education_high",
+            "t_education_medium",
+            "t_respect_race_white",
+            "s_education_high",
+            "t_respect_race_african_american",
+            "t_listen_income_low",
+            "t_listen_sex_female",
+            "t_income_high",
+            "t_race_other",
+            "s_race_asian_american",
+            "s_race_hispanic",
+            "t_listen_age_high",
+            "t_listen_race_hispanic",
+            "s_income_high",
+            "s_sex_female",
+            "t_listen_income_medium",
+            "t_respect_education_low",
+            "t_listen_age_low",
+            "t_income_low",
+            "t_race_african_american",
+            "t_listen_education_medium",
+            "t_respect",
+            "t_respect_age_medium",
+            "t_respect_age_low",
+            "s_education_low",
+            "t_listen_race_asian_american"
+        ],
+        "domain": "data.cityofchicago.org"
+    },
     "xbwc-ntpx": {
         "name": "Additional Dwelling Unit Preapproval Applications",
         "t_attrs": [],
@@ -1961,6 +3211,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Events/Public-Health-Department-Events/38sz-xyf4"
     },
+    "ten5-q8vs": {
+        "name": "FOIA Request Log - Fleet Management - Historical",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Fleet-Management-Historical/ten5-q8vs"
+    },
     "gzaz-isa6": {
         "name": "Traffic Crashes - Vision Zero Chicago Traffic Fatalities",
         "t_attrs": [],
@@ -1982,6 +3240,44 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Community-Economic-Development/Grocery-Stores-2011/4u6w-irs9"
+    },
+    "drbg-ny73": {
+        "name": "Budget Survey 2020",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "_1000_assignment_other_public_safety",
+            "_1000_assignment_libraries",
+            "_1000_assignment_regulatory",
+            "_1000_assignment_police",
+            "_1000_assignment_cultural_affairs_and_special_events",
+            "_1000_assignment_infrastructure_services",
+            "_1000_assignment_city_development",
+            "counter_column",
+            "_1000_assignment_community",
+            "_1000_assignment_streets_and_sanitation",
+            "_1000_assignment_total"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Budget-Survey-2020/drbg-ny73"
+    },
+    "pv55-neb6": {
+        "name": "FOIA Request Log - Compliance",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Compliance/pv55-neb6"
+    },
+    "txma-ntnk": {
+        "name": "Lobbyist Data - Lobbyist Major Expenditures Report (Deprecated October 2015)",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Lobbyist-Major-Expenditures-Report-D/txma-ntnk"
     },
     "8i46-4b7w": {
         "name": "Libraries - 2021 Visitors by Location",
@@ -2007,6 +3303,39 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Libraries-2021-Visitors-by-Location/8i46-4b7w"
     },
+    "jw8c-w7m3": {
+        "name": "TIF District Programming - 2019-2023",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Community-Economic-Development/TIF-District-Programming-2019-2023/jw8c-w7m3"
+    },
+    "eqdx-4qxd": {
+        "name": "Lobbyist Data - Expenditures - Small",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "personal_sustenance_expense",
+            "office_expense",
+            "total_expenses",
+            "compensation_to_others_expense",
+            "other_expenses",
+            "public_education_expense"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Expenditures-Small/eqdx-4qxd"
+    },
+    "kpzx-wx3r": {
+        "name": "FOIA Request Log - Special Events - Historical",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Special-Events-Historical/kpzx-wx3r"
+    },
     "spxm-tnai": {
         "name": "Christmas Tree Recycling Locations 2013",
         "t_attrs": [],
@@ -2027,6 +3356,24 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Events/Chicago-Park-District-Movies-in-the-Parks-2019/7piw-z6r6"
     },
+    "7gvq-8q3x": {
+        "name": "43rd Ward Resident Survey - 2022",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "climate_and_sustainability_priority",
+            "equity_and_inclusion_priority",
+            "economic_business_development_priority",
+            "other_priority",
+            "public_safety_priority",
+            "pedestrian_and_traffic_safety_priority",
+            "public_transportation_improvements_priority",
+            "infrastructure_improvements_priority",
+            "affordable_housing_priority"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/43rd-Ward-Resident-Survey-2022/7gvq-8q3x"
+    },
     "w22p-bfyb": {
         "name": "My CHI. My Future. Programs",
         "t_attrs": [],
@@ -2040,6 +3387,24 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Events/My-CHI-My-Future-Programs/w22p-bfyb"
+    },
+    "dqw9-xyre": {
+        "name": "Lobbyist Data - Historical - Lobbyist Major Expenditures Report - 2010",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Historical-Lobbyist-Major-Expenditur/dqw9-xyre"
+    },
+    "npw8-6cq9": {
+        "name": "FOIA Request Log - Cultural Affairs - Historical",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Cultural-Affairs-Historical/npw8-6cq9"
     },
     "i8y3-ytj4": {
         "name": "Farmers Markets - 2013",
@@ -2125,6 +3490,16 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Chicago-Public-Schools-School-Profile-Information-/2dem-8rq7"
     },
+    "tnbd-5zz7": {
+        "name": "Employee Reimbursements Through Payroll System",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Employee-Reimbursements-Through-Payroll-System/tnbd-5zz7"
+    },
     "9a5f-2r4p": {
         "name": "Chicago Public Schools - School Profile Information SY2223",
         "t_attrs": [],
@@ -2176,6 +3551,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Chicago-Public-Schools-School-Admissions-Informati/2i3t-vn5b"
     },
+    "57s6-wkzs": {
+        "name": "FOIA Request Log - Graphics and Reproduction Center - Historical",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Graphics-and-Reproduction-Center-/57s6-wkzs"
+    },
     "cyqk-tzjs": {
         "name": "Chicago Park District: Movies in the Parks 2014",
         "t_attrs": [],
@@ -2204,6 +3587,16 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Community-Economic-Development/Financial-Incentive-Projects-Neighborhood-Opportun/j7ew-b73u"
+    },
+    "ijdy-a94t": {
+        "name": "Performance Metrics - Buildings - Time to Issue Developer Services Permits",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "target"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Performance-Metrics-Buildings-Time-to-Issue-Develo/ijdy-a94t"
     },
     "w4qj-h7bg": {
         "name": "Chicago Public Schools - School Profile Information SY1718",
@@ -2248,6 +3641,16 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Libraries-2011-Children-s-Summer-Reading-Program/vuf2-qfik"
     },
+    "4ygs-9x34": {
+        "name": "Performance Metrics - Buildings - Time to Issue Standard Plan Review Program Permits",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "target"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Performance-Metrics-Buildings-Time-to-Issue-Standa/4ygs-9x34"
+    },
     "83yd-jxxw": {
         "name": "Chicago Public Schools - School Profile Information SY2021",
         "t_attrs": [],
@@ -2275,6 +3678,16 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Chicago-Public-Schools-School-Profile-Information-/83yd-jxxw"
+    },
+    "7ray-xvet": {
+        "name": "Performance Metrics - Buildings - Time to Issue Easy Permits",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "target"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Performance-Metrics-Buildings-Time-to-Issue-Easy-P/7ray-xvet"
     },
     "tz49-n8ze": {
         "name": "Chicago Public Schools - School Locations SY1920",
@@ -2308,6 +3721,26 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Public-Safety/Safe-Chicago-Bleeding-Control-Kit-Locations/mrzc-49gi"
     },
+    "z2qz-687z": {
+        "name": "Performance Metrics - Buildings - Time To Issue Green Permits",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "target"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Performance-Metrics-Buildings-Time-To-Issue-Green-/z2qz-687z"
+    },
+    "scch-wiyn": {
+        "name": "TIF District Programming - 2021-2025",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Community-Economic-Development/TIF-District-Programming-2021-2025/scch-wiyn"
+    },
     "syk7-tkvr": {
         "name": "Financial Incentive Projects - Property Tax Abatement",
         "t_attrs": [],
@@ -2325,6 +3758,33 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Community-Economic-Development/Financial-Incentive-Projects-Property-Tax-Abatemen/syk7-tkvr"
+    },
+    "ddxq-pdr6": {
+        "name": "Nearby Independent Cook County Grocery Stores",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "registers"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Community-Economic-Development/Nearby-Independent-Cook-County-Grocery-Stores/ddxq-pdr6"
+    },
+    "b77m-uuhb": {
+        "name": "Lending Equity - Residential Lending",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "combined_loan_value_ratio",
+            "down_payment_amount",
+            "interest_rate",
+            "total_units",
+            "property_value",
+            "total_points_and_fees",
+            "loan_amount",
+            "purchase_price"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Lending-Equity-Residential-Lending/b77m-uuhb"
     },
     "hcqe-be23": {
         "name": "Libraries - 2021 Computer Sessions by Location",
@@ -2416,6 +3876,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/Flu-Shot-Clinic-Locations-2013/g5vx-5vqf"
     },
+    "2mtu-ysnw": {
+        "name": "Lobbyist Data - Historical - Lobbyist Termination Report - 2010",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Historical-Lobbyist-Termination-Repo/2mtu-ysnw"
+    },
     "v2a6-nxhe": {
         "name": "Chicago Park District: Movies in the Parks 2015",
         "t_attrs": [],
@@ -2477,6 +3945,22 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Community-Economic-Development/Financial-Incentive-Projects-Neighborhood-Opportun/rym7-49n8"
     },
+    "yhcw-iu53": {
+        "name": "Foreclosed Rental Property",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Community-Economic-Development/Foreclosed-Rental-Property/yhcw-iu53"
+    },
+    "jpfu-k3rv": {
+        "name": "Snow Alerts",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Environment-Sustainable-Development/Snow-Alerts/jpfu-k3rv"
+    },
     "n26f-ihde": {
         "name": "Transportation Network Providers - Trips (2023-)",
         "t_attrs": [],
@@ -2517,6 +4001,47 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Libraries-2021-Holds-Placed-by-Location/hyj3-cie4"
+    },
+    "k89j-m7yz": {
+        "name": "Boundaries - Tax Increment Financing Districts (Deprecated January 2021)",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "shape_leng",
+            "show",
+            "shape_area"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Community-Economic-Development/Boundaries-Tax-Increment-Financing-Districts-Depre/k89j-m7yz"
+    },
+    "fa8m-mqz6": {
+        "name": "Minority and Women Business Payments",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "non_construction_wbe_payments",
+            "non_construction_mbe_wbe_payments",
+            "total_mbe_wbe_payments",
+            "non_construction_wbe_percentage",
+            "construction_mbe_payments",
+            "total_wbe_payments",
+            "construction_mbe_percentage",
+            "construction_mbe_wbe_payments",
+            "total_mbe_percentage",
+            "total_payments",
+            "construction_wbe_percentage",
+            "construction_mbe_wbe_percentage",
+            "non_construction_payments",
+            "non_construction_mbe_payments",
+            "construction_wbe_payments",
+            "total_wbe_percentage",
+            "total_mbe_payments",
+            "non_construction_mbe_wbe_percentage",
+            "non_construction_mbe_percentage",
+            "construction_payments",
+            "total_mbe_wbe_percentage"
+        ],
+        "domain": "data.cityofchicago.org"
     },
     "tiw4-68h5": {
         "name": "Chicago Public Schools - School Admissions Information SY2021",
@@ -2640,6 +4165,16 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Environment-Sustainable-Development/Christmas-Tree-Recycling-Locations-2016-current-/drnp-neza"
     },
+    "xda6-squu": {
+        "name": "COVID-19 Vaccine Delivery - Historical",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "total_doses_daily"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-19-Vaccine-Delivery-Historical/xda6-squu"
+    },
     "p83k-txqt": {
         "name": "Chicago Public Schools - School Locations SY2021",
         "t_attrs": [],
@@ -2650,6 +4185,16 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Chicago-Public-Schools-School-Locations-SY2021/p83k-txqt"
     },
+    "pvm2-bd2i": {
+        "name": "Lobbyist Data - Expenditures - Hosting",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Ethics/Lobbyist-Data-Expenditures-Hosting/pvm2-bd2i"
+    },
     "k5us-juc5": {
         "name": "Halloweek On the Block 2022",
         "t_attrs": [],
@@ -2659,6 +4204,36 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Events/Halloweek-On-the-Block-Events/k5us-juc5"
+    },
+    "h6r6-h5c9": {
+        "name": "Budget Survey 2021",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "_1000_assignment_police",
+            "rank_other_public_safety",
+            "rank_community",
+            "rank_infrastructure",
+            "rank_libraries",
+            "rank_streets_and_sanitation",
+            "rank_city_development",
+            "rank_cultural_affairs_and_special_events",
+            "_1000_assignment_streets_and_sanitation",
+            "_1000_assignment_public_health",
+            "rank_regulatory",
+            "_1000_assignment_regulatory",
+            "_1000_assignment_community",
+            "_1000_assignment_other_public_safety",
+            "_1000_assignment_libraries",
+            "_1000_assignment_cultural_affairs_and_special_events",
+            "_1000_assignment_infrastructure_services",
+            "rank_police",
+            "_1000_assignment_city_development",
+            "counter_column",
+            "rank_public_health"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Budget-Survey-2021/h6r6-h5c9"
     },
     "g5wi-brhg": {
         "name": "Lending Equity - Depository Locations",
@@ -2719,6 +4294,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Chicago-Public-Schools-School-Admissions-Informati/dis9-7yan"
     },
+    "5n77-2d6a": {
+        "name": "12th Ward Aldermanic Selection Survey - 2022",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/12th-Ward-Aldermanic-Selection-Survey-2022/5n77-2d6a"
+    },
     "28nh-39r3": {
         "name": "Christmas Tree Recycling Locations 2014",
         "t_attrs": [],
@@ -2728,6 +4311,30 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Environment-Sustainable-Development/Christmas-Tree-Recycling-Locations-2014/28nh-39r3"
+    },
+    "6xmk-qk57": {
+        "name": "Influenza Surveillance Weekly",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "ili_lab_tot_ili_ilinet",
+            "lab_flu_positive",
+            "lab_tot_h3n2_positive",
+            "lab_flu_pct_positive",
+            "pediatric_deaths",
+            "lab_tot_h1n1_positive",
+            "ili_pct_positive_essence",
+            "lab_tot_a_positive",
+            "ili_lab_tot_seen_ilinet",
+            "hosp_flu_icu_weekly",
+            "ili_tot_seen_essence",
+            "ili_tot_ili_essence",
+            "lab_flu_tested",
+            "lab_tot_b_positive",
+            "ili_pct_positive_ilinet"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/Influenza-Surveillance-Weekly/6xmk-qk57"
     },
     "er3q-e4ek": {
         "name": "Libraries - 2022 Circulation by Location",
@@ -2810,6 +4417,16 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Libraries-2023-Holds-Filled-by-Location/44p2-jazj"
+    },
+    "imgn-2suh": {
+        "name": "TIF District Programming - 2022-2026",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Community-Economic-Development/TIF-District-Programming-2022-2026/imgn-2suh"
     },
     "26kv-zc52": {
         "name": "Libraries - 2022 Computer Sessions by Location",
@@ -2919,6 +4536,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Libraries-2023-Holds-Placed-by-Location/826i-g5qe"
     },
+    "kxfh-a6zz": {
+        "name": "Public Passenger Vehicle Inspection Schedule",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Community-Economic-Development/Public-Passenger-Vehicle-Inspection-Schedule/kxfh-a6zz"
+    },
     "q6gh-3miy": {
         "name": "Meningitis Vaccine Locations",
         "t_attrs": [],
@@ -2948,6 +4573,16 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Health-Human-Services/Special-Vaccine-Locations/9a77-69d3"
+    },
+    "9up3-ycip": {
+        "name": "TIF District Programming - 2020-2024",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "amount"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Community-Economic-Development/TIF-District-Programming-2020-2024/9up3-ycip"
     },
     "bjzx-pwx7": {
         "name": "COVID-19 - Businesses Requiring Proof of Vaccination - Historical",
@@ -3005,6 +4640,14 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Libraries-2020-Holds-Placed-by-Location/uw9m-377y"
     },
+    "xitm-ttzb": {
+        "name": "20180621 Daily FOIA Report",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/dataset/20180621-Daily-FOIA-Report/xitm-ttzb"
+    },
     "xc8g-xha7": {
         "name": "Chicago Public Schools - School Admissions Information SY1718",
         "t_attrs": [],
@@ -3014,6 +4657,14 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Chicago-Public-Schools-School-Admissions-Informati/xc8g-xha7"
+    },
+    "yfns-6ztj": {
+        "name": "Health Alert Network Alerts",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/Health-Alert-Network-Alerts/yfns-6ztj"
     },
     "cjy2-75rw": {
         "name": "Libraries - 2020 Holds Filled by Location",
@@ -3039,6 +4690,67 @@
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Libraries-2020-Holds-Filled-by-Location/cjy2-75rw"
     },
+    "4c4i-t7dw": {
+        "name": "Influenza ICU Cases by Week and Demographic/Medical Category",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "ah1n1_pct",
+            "age_0_4_count",
+            "age_0_4_pct",
+            "age_65_over_count",
+            "female_count",
+            "age_unknown_pct",
+            "ah3n2_pct",
+            "age_25_49_pct",
+            "age_65_over_pct",
+            "age_25_49_count",
+            "flushot_count",
+            "ah1n1_count",
+            "aian_count",
+            "anotsub_pct",
+            "anotsub_count",
+            "cases",
+            "deaths_pct",
+            "unknown_race_ethnicity_pct",
+            "b_count",
+            "b_pct",
+            "aian_pct",
+            "flushot_pct",
+            "nhpi_pct",
+            "age_5_17_count",
+            "age_18_24_count",
+            "male_count",
+            "latinx_count",
+            "age_50_64_pct",
+            "female_pct",
+            "unknown_race_ethnicity_count",
+            "latinx_pct",
+            "age_5_17_pct",
+            "age_50_64_count",
+            "male_pct",
+            "flushot_reported",
+            "nhpi_count",
+            "ah3n2_count",
+            "deaths_count",
+            "age_18_24_pct",
+            "age_unknown_count"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/Influenza-ICU-Cases-by-Week-and-Demographic-Medica/4c4i-t7dw"
+    },
+    "urdi-w8wq": {
+        "name": "COVID-19 Wastewater Detection",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [
+            "n1_copies_l",
+            "normalized_n1",
+            "pmmov_copies_l"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Health-Human-Services/COVID-19-Wastewater-Detection/urdi-w8wq"
+    },
     "ip6w-ws46": {
         "name": "Tax Increment Financing (TIF) Annual Report - Properties Acquired/Sold by City",
         "t_attrs": [],
@@ -3048,6 +4760,14 @@
         "num_columns": [],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Community-Economic-Development/Tax-Increment-Financing-TIF-Annual-Report-Properti/ip6w-ws46"
+    },
+    "mmws-fang": {
+        "name": "FOIA Request Log - Assets, Information & Services",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/FOIA/FOIA-Request-Log-Assets-Information-Services/mmws-fang"
     },
     "nphj-5zur": {
         "name": "811 Chicago Utility Hit Tickets",
@@ -3060,6 +4780,22 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Transportation/811-Chicago-Utility-Hit-Tickets/nphj-5zur"
+    },
+    "sf3d-hpu4": {
+        "name": "FOIA Request Log - Streets And Sanitation UPDATE THIS VERSION(1)",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/dataset/FOIA-Request-Log-Streets-And-Sanitation-UPDATE-THI/sf3d-hpu4"
+    },
+    "uk68-3rjc": {
+        "name": "Public Passenger Vehicle Chauffeur Survey - 2021",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Transportation/Public-Passenger-Vehicle-Chauffeur-Survey-2021/uk68-3rjc"
     },
     "gqgn-ekwj": {
         "name": "Chicago Public Schools - School Locations SY2223",
@@ -3117,5 +4853,13 @@
         ],
         "domain": "data.cityofchicago.org",
         "link": "https://data.cityofchicago.org/Education/Libraries-2022-Holds-Placed-by-Location/mqwh-r23c"
+    },
+    "a5x7-5y4m": {
+        "name": "Contractor Business Diversity Program Submissions",
+        "t_attrs": [],
+        "s_attrs": [],
+        "num_columns": [],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Administration-Finance/Contractor-Business-Diversity-Program-Submissions/a5x7-5y4m"
     }
 }

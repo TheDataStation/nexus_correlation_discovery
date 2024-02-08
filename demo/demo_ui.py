@@ -17,7 +17,7 @@ def show_df(df, name, prov=None, use_qgrid=False):
     else: 
         display(df)
     if prov:
-      
+        print("provenance:")
         display(prov)
 
     def download_data(b):
