@@ -240,6 +240,7 @@ class CorrSearch:
 
         self.joinable_pairs = []
         self.overhead = 0
+        self.all_corrs = []
         self.perf_profile = {
             "num_joins": {"total": 0, "temporal": 0, "spatial": 0, "st": 0},
             "time_find_joins": {"total": 0, "temporal": 0, "spatial": 0, "st": 0},
@@ -290,7 +291,7 @@ class CorrSearch:
         df.to_csv("{}/corr_{}.csv".format(dir_path, schema_id))
 
     def find_all_corr_for_all_tbls(
-        self, granu_list, o_t, r_t, p_t, fill_zero=False, dir_path=None, st_type=None
+        self, granu_list, o_t, r_t, p_t, corr_type='pearson', fill_zero=False, dir_path=None, st_type=None
     ):
         t_granu, s_granu = granu_list[0], granu_list[1]
         # profiler = Profiler(self.data_source, [t_granu], [s_granu])
@@ -306,14 +307,10 @@ class CorrSearch:
         sorted_st_schemas = sorted(sorted_st_schemas, key=lambda x: x[2], reverse=False)
         cur_idx = 0
         for tbl, st_schema, cnt in tqdm(sorted_st_schemas):
-            # if cur_idx < 692:
-            #     cur_idx += 1
-            #     continue
-            # print(tbl)
             if st_type == 'time_space':
                 if st_schema.get_type() != SchemaType.TIME and st_schema.get_type() != SchemaType.SPACE:
                     continue
-            self.find_all_corr_for_a_tbl_schema(tbl, st_schema, o_t, r_t, p_t, fill_zero)
+            self.find_all_corr_for_a_tbl_schema(tbl, st_schema, o_t, r_t, p_t, fill_zero, corr_type=corr_type)
             start = time.time()
             if dir_path:
                 if self.mode == 'data_polygamy':
@@ -322,23 +319,11 @@ class CorrSearch:
                     self.dump_corrs_to_csv(self.data, dir_path, st_schema.get_agg_tbl_name(tbl))
             # after a table is done, clear the data
             self.perf_profile["corr_count"]["total"] += len(self.data)
+            self.all_corrs.extend(self.data)
             self.data.clear()
             time_used = time.time() - start
             self.perf_profile["time_dump_csv"]["total"] += time_used
-
-        # for tbl in tqdm(self.tbl_attrs.keys()):
-        #     print(tbl)
-        #     self.find_all_corr_for_a_tbl(tbl, granu_list, o_t, r_t, p_t, fill_zero)
-
-        #     start = time.time()
-        #     if dir_path:
-        #         self.dump_corrs_to_csv(self.data, dir_path, tbl)
-        #     # after a table is done, clear the data
-        #     self.perf_profile["corr_count"]["total"] += len(self.data)
-        #     self.data.clear()
-        #     time_used = time.time() - start
-        #     self.perf_profile["time_dump_csv"]["total"] += time_used
-
+        
     def find_all_corr_for_a_tbl(self, tbl, granu_list, o_t, r_t, p_t, fill_zero, corr_type='pearson'):
         st_schema_list = []
         t_attrs, s_attrs = (
@@ -883,14 +868,14 @@ class CorrSearch:
             time_used = time.time() - start
             self.perf_profile["time_correlation"]["total"] += time_used
             self.perf_profile["time_correlation"][flag] += time_used
-
-
+        print("corrs", len(tbl_schema_corrs))
         """
         Perform multiple-comparison correction
         """
         start = time.time()
         if self.correct_method == "FDR":
             tbl_schema_corrs = self.bh_correction(tbl_schema_corrs, r_t)
+        print("corr after", len(tbl_schema_corrs))
         self.perf_profile["corr_counts"]["after"] += len(tbl_schema_corrs)
         self.perf_profile["time_correction"]["total"] += time.time() - start
         self.data.extend(tbl_schema_corrs)
@@ -1071,12 +1056,12 @@ class CorrSearch:
                     continue 
             # for fdr correction, we need to include all correlations regardless of the p value
             agg_col1 = AggColumn(
-                self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, row, df1[row]
+                self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, row[:-3], df1[row]
             )
             if self.correct_method is None or self.correct_method == "":
                 agg_col1.set_profile(df1[row], self.column_profiles[tbl1])
             agg_col2 = AggColumn(
-                self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col, df2[col]
+                self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col[:-3], df2[col]
             )
             if self.correct_method is None or self.correct_method == "":
                 agg_col2.set_profile(df2[col], self.column_profiles[tbl2])
@@ -1135,12 +1120,12 @@ class CorrSearch:
                         continue
               
                 agg_col1 = AggColumn(
-                    self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, col_name1, col1
+                    self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, col_name1[:-3], col1
                     )
                 if self.correct_method is None or self.correct_method == "":
                     agg_col1.set_profile(col1, self.column_profiles[tbl1])
                 agg_col2 = AggColumn(
-                    self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col_name2, col2
+                    self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col_name2[:-3], col2
                 )
                 if self.correct_method is None or self.correct_method == "":
                     agg_col2.set_profile(col2, self.column_profiles[tbl2])

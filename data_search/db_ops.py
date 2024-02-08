@@ -1,10 +1,11 @@
 from typing import List
-from data_search.data_model import Unit, Variable, AggFunc, ST_Schema, SchemaType
+from data_search.data_model import Unit, Variable, Var, ST_Schema, SchemaType
 from psycopg2 import sql
 import pandas as pd
 from data_ingestion.db_ops import select_columns
 import shelve
 from collections import Counter
+import collections
 
 """
 Intersection Query
@@ -396,6 +397,27 @@ def join_two_agg_tables_api(
 
     cur.execute(query)
 
+    df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
+    return df
+
+def join_agg_tbls(cur, vars: List[Var]):
+    tbl_cols = collections.defaultdict(list)
+    for var in vars:
+        tbl_cols[var.tbl_id].append(var.attr_name)
+    # join tbls and project attr names 
+    tbls = list(tbl_cols.keys())
+    sql_str = "SELECT {attrs} FROM {base_tbl} {join_clauses}"
+    query = sql.SQL(sql_str).format(
+        attrs = sql.SQL(",").join([
+            sql.SQL("{}").format(sql.Identifier(tbl, col))
+            for tbl, cols in tbl_cols.items() for col in cols
+        ]),
+        base_tbl=sql.Identifier(tbls[0]),
+        join_clauses=sql.SQL(" ").join(
+            [sql.SQL("INNER JOIN {next_tbl} ON {tbl}.val = {next_tbl}.val").format(tbl=sql.Identifier(tbls[0]), next_tbl=sql.Identifier(tbl)) for tbl in tbls[1:]]
+        )
+        )
+    cur.execute(query)
     df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
     return df
 

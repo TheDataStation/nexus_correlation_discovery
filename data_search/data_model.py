@@ -29,6 +29,12 @@ class Variable:
         self.attr_name = attr_name
         self.agg_func = agg_func
         self.var_name = var_name
+    
+
+class Var:
+    def __init__(self, tbl_id, attr_name):
+        self.tbl_id = tbl_id   
+        self.attr_name = attr_name
 
 
 class Unit:

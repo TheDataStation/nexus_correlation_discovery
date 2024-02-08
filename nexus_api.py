@@ -4,11 +4,14 @@ import pandas as pd
 from utils.time_point import T_GRANU
 from utils.coordinate import S_GRANU
 from utils.io_utils import load_corrs_to_df
-from data_search.db_ops import join_two_agg_tables_api, read_agg_tbl
+from data_search.db_ops import join_two_agg_tables_api, read_agg_tbl, join_agg_tbls
 import psycopg2
 import os
 import json
 import utils.io_utils as io_utils
+from data_search.data_model import Var
+from typing import List
+from sklearn import linear_model
 
 class API:
     def __init__(self, conn_str, data_sources=['chicago_1m_zipcode'], impute_options=[], correction=''):
@@ -53,10 +56,32 @@ class API:
         corr_search.set_join_cost(t_granu, s_granu, overlap_t)
         corr_search.find_all_corr_for_a_tbl(dataset, [t_granu, s_granu], overlap_t, r_t, p_t=0.05, fill_zero=True, corr_type=corr_type)
         corrs = load_corrs_to_df(corr_search.data)
-        corrs['agg_attr1'] = corrs['agg_attr1'].str[:-3]
-        corrs['agg_attr2'] = corrs['agg_attr2'].str[:-3]
         print(f"total number of correlations: {len(corrs)}")
         return corrs[self.disp_attrs]
+
+    def find_all_correlations(self, t_granu, s_granu, overlap_t, r_t, persist_path=None, corr_type="pearson", control_vars=[]):
+        corr_search = CorrSearch(
+            self.conn_str,
+            self.data_sources,
+            FIND_JOIN_METHOD.JOIN_ALL,
+            impute_methods=self.impute_options,
+            explicit_outer_join=False,
+            correct_method='FDR',
+            q_val=0.05,
+        )
+        corr_search.set_join_cost(t_granu, s_granu, overlap_t)
+        corr_search.find_all_corr_for_all_tbls([t_granu, s_granu], overlap_t, r_t, p_t=0.05, corr_type=corr_type, fill_zero=True, dir_path=persist_path)
+        corrs = load_corrs_to_df(corr_search.all_corrs)
+        print(f"total number of correlations: {len(corrs)}")
+        return corrs[self.disp_attrs]
+
+    def regress(self, target_var: Var, covariates: List[Var], reg):
+        df = join_agg_tbls(self.cur, [target_var]+covariates)
+        x = df[[var.attr_name for var in covariates]]
+        y = df[target_var.attr_name]
+        model = reg.fit(x, y)
+        r_sq = model.score(x, y)
+        return model, r_sq, df
 
     def get_aligned_data(self, row):
         agg_name1=row['agg_tbl1']
@@ -95,7 +120,20 @@ if __name__ == '__main__':
     t_granu, s_granu = None, S_GRANU.ZIPCODE
     overlap_t = 5
     r_t = 0.5
-    df = nexus_api.find_correlations_from(dataset, t_granu, s_granu, overlap_t, r_t, corr_type="pearson")
+    # df = nexus_api.find_correlations_from(dataset, t_granu, s_granu, overlap_t, r_t, corr_type="pearson")
+    # print(len(df))
+    # print(df.loc[0])
+    # aligned = nexus_api.get_aligned_data(df.loc[0])
+
+    # test find all correlations
+    df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, corr_type="pearson")
     print(len(df))
-    print(df.loc[0])
-    aligned = nexus_api.get_aligned_data(df.loc[0])
+
+    # test regress
+    # target_var = Var('asthma_Zip5_6', 'avg_enc_asthma')
+    # covariates = [Var('ijzp-q8t2_location_6', 'count'), Var('n26f-ihde_pickup_centroid_location_6', 'avg_tip')]
+    # reg_model = linear_model.LinearRegression() # OLS regression
+    # model, rsq, merged = nexus_api.regress(target_var, covariates, reg_model)
+    # print(model.coef_)
+    # print(rsq)
+    # print(merged)
