@@ -126,7 +126,7 @@ class API:
     
     def show_raw_dataset(self, id):
         # todo: map data source to data path
-        data_path = "/home/cc/resolution_aware_spatial_temporal_alignment/data/chicago_open_data_1m/"
+        data_path = "/home/cc/nexus_correlation_discovery/data/chicago_open_data_1m/"
         df = pd.read_csv(f"{data_path}/{id}.csv")
         link = self.catalog[id]['link']
         return df, link
