@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 data_source = "chicago_1m"
-root_path = "/home/cc/resolution_aware_spatial_temporal_alignment"
+root_path = "/home/cc/nexus_correlation_discovery"
 vars = [Stages.CORRELATION]
 labels = ["10", "100", "1000"]
 o_t_l = [10, 100, 1000]

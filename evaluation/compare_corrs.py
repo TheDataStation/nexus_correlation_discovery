@@ -112,10 +112,10 @@ if __name__ == "__main__":
     # baseline = 'lazo'
     t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
     # t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
-    # dir1 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/correlations12_29/nexus_0.0/chicago_1m_{t_granu}_{s_granu}/'
-    # # dir2 =  f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/{storage_dir}/corr_sketch_0.0_256/chicago_1m_{t_granu}_{s_granu}/'
-    # # dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment//evaluation/{storage_dir}/data_polygmay/chicago_1m_{t_granu}_{s_granu}/'
-    # # dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/correlations12_30/data_polygmay_full_4_new/chicago_1m_T_GRANU.DAY_S_GRANU.BLOCK/'
+    # dir1 = f'/home/cc/nexus_correlation_discovery/evaluation/correlations12_29/nexus_0.0/chicago_1m_{t_granu}_{s_granu}/'
+    # # dir2 =  f'/home/cc/nexus_correlation_discovery/evaluation/{storage_dir}/corr_sketch_0.0_256/chicago_1m_{t_granu}_{s_granu}/'
+    # # dir2 = f'/home/cc/nexus_correlation_discovery//evaluation/{storage_dir}/data_polygmay/chicago_1m_{t_granu}_{s_granu}/'
+    # # dir2 = f'/home/cc/nexus_correlation_discovery/evaluation/correlations12_30/data_polygmay_full_4_new/chicago_1m_T_GRANU.DAY_S_GRANU.BLOCK/'
     # # plot_distribution(dir1, dir2, 0)
     # r_t_l = [0]
     # # all_corrs_baseline = load_all_corrs(dir2, 0, 'inner', polygamy=True, st_type='space')
@@ -123,7 +123,7 @@ if __name__ == "__main__":
     # for r_t in r_t_l:
     #     # compare_corrs(dir1, dir2, r_t, type=None, output_path=f'evaluation/{dump_dir}/correlation_comparison__{r_t}_{baseline}_{t_granu}_{s_granu}_all.json')
     #     for jc in [0]:
-    #         dir2 = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/{storage_dir}/lazo_jc_{jc}_{r_t}/chicago_1m_{t_granu}_{s_granu}/'
+    #         dir2 = f'/home/cc/nexus_correlation_discovery/evaluation/{storage_dir}/lazo_jc_{jc}_{r_t}/chicago_1m_{t_granu}_{s_granu}/'
     #         compare_corrs(dir1, dir2, r_t, type=None)
         # for type in ['inner', 'impute_zero', 'impute_avg']:
         #     # print(f"r_t: {r_t}; jc: {jc}")

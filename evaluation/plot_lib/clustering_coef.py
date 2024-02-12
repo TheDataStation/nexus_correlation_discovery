@@ -45,7 +45,7 @@ def plot(result_path, thresholds, save_path):
     )
 
 if __name__ == '__main__':
-    root_path = "/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/"
+    root_path = "/home/cc/nexus_correlation_discovery/evaluation/"
     corr_dirs = ["chicago_1m_T_GRANU.DAY_S_GRANU.BLOCK", "chicago_1m_T_GRANU.MONTH_S_GRANU.TRACT"]
     for corr_dir in corr_dirs:
         result_path = f"{root_path}/graph_results4/{corr_dir}/"

@@ -21,7 +21,7 @@ if __name__ == '__main__':
     # baseline = 'polygamy'
     # t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
     t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
-    dir_nexus = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/correlations12_29/nexus_0.0/chicago_1m_{t_granu}_{s_granu}/'
-    dir_sampling = f'/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/correlations12_29/nexus_time_sampling/chicago_1m_time_sampling_{t_granu}_{s_granu}/'
+    dir_nexus = f'/home/cc/nexus_correlation_discovery/evaluation/correlations12_29/nexus_0.0/chicago_1m_{t_granu}_{s_granu}/'
+    dir_sampling = f'/home/cc/nexus_correlation_discovery/evaluation/correlations12_29/nexus_time_sampling/chicago_1m_time_sampling_{t_granu}_{s_granu}/'
     get_mod_score(dir_nexus)
     get_mod_score(dir_sampling)

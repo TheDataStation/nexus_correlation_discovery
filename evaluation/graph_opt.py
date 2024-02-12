@@ -64,7 +64,7 @@ def run(corr_path, result_path, cov_ratio):
     # print(f"found {searcher.count} valid thresholds")
 
 if __name__ == '__main__':
-    root_path = "/home/cc/resolution_aware_spatial_temporal_alignment/"
+    root_path = "/home/cc/nexus_correlation_discovery/"
     # corr_dir_name = "chicago_1m_T_GRANU.DAY_S_GRANU.BLOCK"
     # corr_dir_name = "chicago_1m_T_GRANU.MONTH_S_GRANU.TRACT"
     corr_dir_names = ["chicago_1m_T_GRANU.MONTH_S_GRANU.TRACT"]

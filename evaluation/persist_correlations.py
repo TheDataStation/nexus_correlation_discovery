@@ -9,7 +9,7 @@ from tqdm import tqdm
 from data_search.commons import FIND_JOIN_METHOD
 from data_ingestion.profile_datasets import Profiler
 
-root_path = "/home/cc/resolution_aware_spatial_temporal_alignment/"
+root_path = "/home/cc/nexus_correlation_discovery/"
 
 def load_lazo_join_res(data_sources, jc_l, t_granu, s_granu, validate=True):
     jc_joinable_tbls = {}

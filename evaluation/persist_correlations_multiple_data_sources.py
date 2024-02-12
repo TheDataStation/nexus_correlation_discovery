@@ -10,7 +10,7 @@ from data_search.commons import FIND_JOIN_METHOD
 from data_ingestion.profile_datasets import Profiler
 from evaluation.persist_correlations import load_lazo_join_res, load_gt_join_res
 
-root_path = "/home/cc/resolution_aware_spatial_temporal_alignment/"
+root_path = "/home/cc/nexus_correlation_discovery/"
 
 def lazo_open_data(data_sources, granu_list, o_t, r_t, jc_threshold, persist, persist_dir, validate):
     conn_str = 'postgresql://yuegong@localhost/opendata'

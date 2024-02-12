@@ -65,14 +65,14 @@ def get_corr_in_cluster_i_vars(i, corrs, comps):
 
 def case_study_incentive_amounts_victims():
     tbl1 = "etqr-sz5x"
-    df1 = pd.read_csv(f"/home/cc/resolution_aware_spatial_temporal_alignment/data/chicago_open_data_1m/{tbl1}.csv")
+    df1 = pd.read_csv(f"/home/cc/nexus_correlation_discovery/data/chicago_open_data_1m/{tbl1}.csv")
     df1 = df1[['completion_date', 'incentive_amount']]
     df1['completion_date'] = pd.to_datetime(df1['completion_date'])
     df1 = df1.set_index('completion_date')
     df1 = df1.resample('M').mean()
    
     tbl2 = "gj7a-742p"
-    df2 = pd.read_csv(f"/home/cc/resolution_aware_spatial_temporal_alignment/data/chicago_open_data_1m/{tbl2}.csv")
+    df2 = pd.read_csv(f"/home/cc/nexus_correlation_discovery/data/chicago_open_data_1m/{tbl2}.csv")
     df2 = df2[['time_period_start', 'number_of_victims']]
     df2['time_period_start'] = pd.to_datetime(df2['time_period_start'])
     df2 = df2.set_index('time_period_start')

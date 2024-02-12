@@ -8,7 +8,7 @@ from causaltestdata import variable
 import numpy as np
 
 # global output path
-out_p = "/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/synthetic_eval/data/"
+out_p = "/home/cc/nexus_correlation_discovery/evaluation/synthetic_eval/data/"
 
 class Weights(str, Enum):
     Uniform = "uniform"

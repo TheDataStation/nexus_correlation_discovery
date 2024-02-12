@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 data_source = "chicago_1m"
-root_path = "/home/cc/resolution_aware_spatial_temporal_alignment"
+root_path = "/home/cc/nexus_correlation_discovery"
 vars = [Stages.TOTAL, Stages.MATERIALIZATION, Stages.CORRELATION]
 o_t = 100
 input = 'full_st_schemas'

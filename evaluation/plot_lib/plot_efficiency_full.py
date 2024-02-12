@@ -9,7 +9,7 @@ plt.rcParams["font.family"] = "Times New Roman"
 plt.rcParams["font.size"] = 12
 
 data_source = "chicago_1m"
-input_path = "/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/run_time/chicago_1m/full_st_schemas/"
+input_path = "/home/cc/nexus_correlation_discovery/evaluation/run_time/chicago_1m/full_st_schemas/"
 overlap_ts = [10, 100, 1000]
 # Define the label locations and the width of the bars
 labels = ['10', '100', '1000']
@@ -64,4 +64,4 @@ autolabel(rects1)
 autolabel(rects2)
 
 fig.tight_layout()
-plt.savefig(f"/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/plots/{data_source}_run_time_full_comp.png")
+plt.savefig(f"/home/cc/nexus_correlation_discovery/evaluation/plots/{data_source}_run_time_full_comp.png")

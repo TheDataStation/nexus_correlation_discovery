@@ -1,7 +1,7 @@
 from utils.io_utils import load_json
 import matplotlib.pyplot as plt
 
-path = '/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/run_time/chicago_1m/100_st_schemas/cnt_ratio.json'
+path = '/home/cc/nexus_correlation_discovery/evaluation/run_time/chicago_1m/100_st_schemas/cnt_ratio.json'
 
 data = load_json(path)
 

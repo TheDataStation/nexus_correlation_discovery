@@ -87,7 +87,7 @@ python lazo_eval/dump_data_script.py
 first zip the directory, and then scp 
 
 ```
- scp -r cc@129.114.109.175:/home/cc/resolution_aware_spatial_temporal_alignment/join_key_data/nyc_chicago.zip .
+ scp -r cc@129.114.109.175:/home/cc/nexus_correlation_discovery/join_key_data/nyc_chicago.zip .
 ```
 
 3. Run Lazo. Move the result back to Nexus

@@ -42,8 +42,8 @@ def build_spatial_graph(shapefile_path):
 
 
 if __name__ == "__main__":
-    # shapefile_path = '/home/cc/resolution_aware_spatial_temporal_alignment/data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp'
-    # graph = load_json('/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/adjacency_list_T_GRANU.DAY_S_GRANU.BLOCK.json')
+    # shapefile_path = '/home/cc/nexus_correlation_discovery/data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp'
+    # graph = load_json('/home/cc/nexus_correlation_discovery/evaluation/adjacency_list_T_GRANU.DAY_S_GRANU.BLOCK.json')
     # for k, v in graph.items():
     #     graph[k] = list(set(v))
     t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT

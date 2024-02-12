@@ -227,7 +227,7 @@ if __name__ == "__main__":
     # corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/cdc_10k/corr_T_GRANU.DAY_S_GRANU.STATE_fdr/"
     # corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/chicago_10k/corr_T_GRANU.DAY_S_GRANU.BLOCK_fdr/"
     # corr_path = "/Users/yuegong/Documents/spatio_temporal_alignment/result/chicago_10k/day_block/"
-    corr_path = "/home/cc/resolution_aware_spatial_temporal_alignment/evaluation/correlations/chicago_1m_T_GRANU.DAY_S_GRANU.BLOCK/"
+    corr_path = "/home/cc/nexus_correlation_discovery/evaluation/correlations/chicago_1m_T_GRANU.DAY_S_GRANU.BLOCK/"
     result_path = "/Users/yuegong/Documents/spatio_temporal_alignment/evaluation/graph_result/chicago/"
     signal_names = [
         "missing_ratio",
