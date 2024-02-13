@@ -27,7 +27,7 @@ from utils.coordinate import S_GRANU
 from utils.time_point import T_GRANU
 from scipy.stats import pearsonr, spearmanr, kendalltau
 from utils.profile_utils import is_num_column_valid
-import ast
+import pingouin as pg
 # import warnings
 # warnings.filterwarnings('error')
 
@@ -63,7 +63,7 @@ class AggColumn:
         self.agg_attr = agg_attr
         self.col_data = col_data
 
-    def set_profile(self, col_data, tbl_profiles):
+    def set_profile(self, tbl_profiles):
         # missing_ratio = col_data.isnull().sum() / len(col_data)
         # zero_ratio = (col_data == 0).sum() / len(col_data)
         # if the agg attr is using avg, calculate original missing and zero ratio
@@ -324,11 +324,11 @@ class CorrSearch:
             time_used = time.time() - start
             self.perf_profile["time_dump_csv"]["total"] += time_used
         
-    def find_all_corr_for_a_tbl(self, tbl, granu_list, o_t, r_t, p_t, fill_zero, corr_type='pearson'):
+    def find_all_corr_for_a_tbl(self, tbl, granu_list, o_t, r_t, p_t, fill_zero, corr_type='pearson', control_vars=[]):
         st_schema_list = []
         t_attrs, s_attrs = (
-            self.tbl_attrs[tbl]["t_attrs"],
-            self.tbl_attrs[tbl]["s_attrs"],
+            [t_attr['name'] for t_attr in self.tbl_attrs[tbl]["t_attrs"]],
+            [s_attr['name'] for s_attr in self.tbl_attrs[tbl]["s_attrs"]]
         )
         t_granu, s_granu = granu_list[0], granu_list[1]
         if not self.st_schemas_dict:
@@ -345,7 +345,7 @@ class CorrSearch:
 
         for st_schema in st_schema_list:
             self.find_all_corr_for_a_tbl_schema(
-                tbl, st_schema, o_t, r_t, p_t, fill_zero, corr_type
+                tbl, st_schema, o_t, r_t, p_t, fill_zero, corr_type, control_vars
             )
 
     def find_corr_in_a_tbl(self, tbl, granu_list, r_t, p_t):
@@ -365,36 +365,24 @@ class CorrSearch:
             corrs.extend(res)
         return corrs
     
+    def get_vars_for_tbl(self, tbl, suffix):
+        tbl_agg_cols = self.tbl_attrs[tbl]["num_columns"]
+        vars = []
+        for agg_col in tbl_agg_cols:
+            if len(agg_col) > 56:
+                continue
+            if is_num_column_valid(agg_col):
+                vars.append(Variable(agg_col, AggFunc.AVG, "avg_{}".format(agg_col), suffix=suffix))
+        if len(vars) == 0 or tbl == '85ca-t3if':
+            vars.append(Variable("*", AggFunc.COUNT, "count", suffix=suffix))
+        return vars
     
     def align_two_st_schemas(self, tbl1, agg_name1, tbl2, agg_name2, o_t, outer, sketch=False, k=0):
-        tbl1_agg_cols = self.tbl_attrs[tbl1]["num_columns"]
-        tbl2_agg_cols = self.tbl_attrs[tbl2]["num_columns"]
-
-        vars1 = []
-        vars2 = []
-        for agg_col in tbl1_agg_cols:
-            if len(agg_col) > 56:
-                continue
-            if is_num_column_valid(agg_col):
-                vars1.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t1".format(agg_col)))
-        if len(vars1) == 0 or tbl1 == '85ca-t3if':
-            vars1.append(Variable("*", AggFunc.COUNT, "count_t1"))
-        for agg_col in tbl2_agg_cols:
-            if len(agg_col) > 56:
-                continue
-            if is_num_column_valid(agg_col):
-                vars2.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t2".format(agg_col)))
-        if len(vars2) == 0 or tbl2 == '85ca-t3if':
-            vars2.append(Variable("*", AggFunc.COUNT, "count_t2"))
-
-        # if len(vars1) == 0 or len(vars2) == 0:
-        #     if not self.outer_join:
-        #         return None, None
-        #     else:
-        #         return None, None, None, None
-        # column names in postgres are at most 63-character long
-        names1 = [var.var_name[:63] for var in vars1]
-        names2 = [var.var_name[:63] for var in vars2]
+        vars1 = self.get_vars_for_tbl(tbl1, suffix='t1')
+        vars2 = self.get_vars_for_tbl(tbl2, suffix='t2')
+      
+        names1 = [var.proj_name[:63] for var in vars1]
+        names2 = [var.proj_name[:63] for var in vars2]
 
         merged = None
 
@@ -596,11 +584,9 @@ class CorrSearch:
                         agg_col2 = AggColumn(tbl, self.tbl_attrs[tbl]["name"], st_schema, col2, df[col2])
                         corr = Correlation(agg_col1, agg_col2, r_v, p_v, len(df), flag)
                         corr.agg_col1.set_profile(
-                            corr.agg_col1.col_data,
                             self.column_profiles[corr.agg_col1.tbl_id],
                         )
                         corr.agg_col2.set_profile(
-                            corr.agg_col2.col_data,
                             self.column_profiles[corr.agg_col2.tbl_id],
                         )
                         corrs.append(corr)
@@ -679,7 +665,7 @@ class CorrSearch:
         return res
 
     def find_all_corr_for_a_tbl_schema(
-        self, tbl1, st_schema: ST_Schema, o_t, r_t, p_t, fill_zero, corr_type='pearson'
+        self, tbl1, st_schema: ST_Schema, o_t, r_t, p_t, fill_zero, corr_type='pearson', control_vars=[]
     ):
         self.join_all_cost = 0
         self.cur_join_time = 0
@@ -692,7 +678,7 @@ class CorrSearch:
         start = time.time()
         self.visited_tbls.add(tbl1)
         agg_name1 = st_schema.get_agg_tbl_name(tbl1)
-      
+        print(agg_name1)
         self.visited_schemas.add(agg_name1)
         if agg_name1 not in self.join_costs:
             print("skip because this table does not have enough keys")
@@ -808,14 +794,27 @@ class CorrSearch:
             start = time.time()
             df1_outer, df2_outer = None, None
 
-            if not self.outer_join:
+            if not self.outer_join and len(control_vars) == 0:
                 df1, df2 = self.align_two_st_schemas(
                     tbl1, agg_name1, tbl2, agg_name2, o_t, outer=False, sketch=self.sketch, k=self.sketch_size
                 )
-            else:
+            elif self.outer_join and len(control_vars) == 0:
                 df1, df2, df1_outer, df2_outer = self.align_two_st_schemas(
                     tbl1, agg_name1, tbl2, agg_name2, o_t, outer=True, sketch=self.sketch, k=self.sketch_size
                 )
+            elif len(control_vars) > 0:
+                # need to join table1, table2 and the control variables together
+                tbl_cols = defaultdict(list)
+                tbl_cols[agg_name1] = self.get_vars_for_tbl(tbl1, suffix='t1')
+                names1 = [var.proj_name[:63] for var in tbl_cols[agg_name1]]
+                tbl_cols[agg_name2] = self.get_vars_for_tbl(tbl2, suffix='t2')
+                names2 = [var.proj_name[:63] for var in tbl_cols[agg_name2]]
+                for var in control_vars:
+                    tbl_cols[var.tbl_id].append(Variable(var.attr_name, None, var.attr_name))
+                control_var_names = [var.attr_name for var in control_vars]
+                df = db_ops.join_multi_agg_tbls(self.cur, tbl_cols)
+                if len(df) < o_t:
+                    continue
             time_used = time.time() - start
             self.cur_join_time += time_used
             self.perf_profile["time_join"]["total"] += time_used
@@ -825,7 +824,11 @@ class CorrSearch:
                 if (tbl2, agg_name2) not in aligned_schemas_lazo:
                     print("not in lazo")
                     continue
-            if df1 is None or df2 is None:
+
+            if len(control_vars) == 0 and (df1 is None or df2 is None):
+                continue
+
+            if len(control_vars) > 0 and df is None:
                 continue
            
             self.perf_profile["num_joins"]["total"] += 1
@@ -834,7 +837,7 @@ class CorrSearch:
             # Calculate correlation
             start = time.time()
             res = []
-            if self.corr_method == "MATRIX" and corr_type == 'pearson':
+            if self.corr_method == "MATRIX" and corr_type == 'pearson' and len(control_vars) == 0:
                 res = self.get_corr_opt(
                     df1,
                     df2,
@@ -849,7 +852,7 @@ class CorrSearch:
                     fill_zero,
                     flag,
                 )
-            elif self.corr_method == 'FOR_PAIR' or corr_type != 'pearson':
+            elif (self.corr_method == 'FOR_PAIR' or corr_type != 'pearson') and len(control_vars) == 0:
                 res = self.get_corr_pairwise(
                     df1,
                     df2,
@@ -862,6 +865,15 @@ class CorrSearch:
                     corr_type,
                     fill_zero,
                     flag,
+                )
+            elif len(control_vars) > 0:
+                res = self.get_corrs_with_control_vars(
+                    df,
+                    tbl1, agg_name1, names1,  
+                    tbl2, agg_name2, names2,
+                    control_var_names,
+                    r_t, p_t,
+                    fill_zero=fill_zero, flag=flag, corr_type=corr_type
                 )
             if res is not None:
                 tbl_schema_corrs.extend(res)
@@ -1059,12 +1071,12 @@ class CorrSearch:
                 self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, row, df1[row]
             )
             if self.correct_method is None or self.correct_method == "":
-                agg_col1.set_profile(df1[row], self.column_profiles[tbl1])
+                agg_col1.set_profile(self.column_profiles[tbl1])
             agg_col2 = AggColumn(
                 self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col, df2[col]
             )
             if self.correct_method is None or self.correct_method == "":
-                agg_col2.set_profile(df2[col], self.column_profiles[tbl2])
+                agg_col2.set_profile(self.column_profiles[tbl2])
             new_corr = Correlation(agg_col1, agg_col2, r_val, p_val, overlap, flag)
             if "impute_avg" in self.r_methods and not self.outer_join:
                 new_corr.set_impute_avg_r(res_sum_val)
@@ -1075,6 +1087,46 @@ class CorrSearch:
             if "impute_zero" in self.r_methods and self.outer_join:
                 new_corr.r_val_impute_zero = corr_impute_zero.loc[row][col]
             res.append(new_corr)
+        return res
+
+    def get_corrs_with_control_vars(self, df, tbl1, agg_name1, var1_l, tbl2, agg_name2, var2_l, control_vars, r_t, p_t, fill_zero, flag, corr_type='pearson'):
+        res = []
+        if fill_zero:
+            df = df.fillna(0)
+        # drop columns where all values are the same
+        nunique = df.nunique()
+        cols_to_drop = nunique[nunique == 1].index
+        df = df.drop(cols_to_drop, axis=1)
+ 
+        for var1 in var1_l:
+            if var1 not in df.columns:
+                continue
+            for var2 in var2_l:
+                if var2 not in df.columns:
+                    continue
+                # print(var1, var2, control_vars)
+                partial_corr = pg.partial_corr(data=df, x=var1, y=var2, covar=control_vars, method=corr_type).round(3)
+                r_val, p_val = partial_corr['r'].iloc[0], partial_corr['p-val'].iloc[0]
+                
+                if not r_val or np.isnan(r_val):
+                    # meaning undefined correlation coefficient such as constant array 
+                    continue
+                if self.correct_method == "" or self.correct_method is None:
+                    if abs(r_val) < r_t or p_val > p_t:
+                        continue
+           
+                agg_col1 = AggColumn(
+                    self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, var1
+                    )
+                if self.correct_method is None or self.correct_method == "":
+                    agg_col1.set_profile(self.column_profiles[tbl1])
+                agg_col2 = AggColumn(
+                    self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, var2
+                )
+                if self.correct_method is None or self.correct_method == "":
+                    agg_col2.set_profile(self.column_profiles[tbl2])
+                new_corr = Correlation(agg_col1, agg_col2, r_val, p_val, len(df), flag)
+                res.append(new_corr)
         return res
 
     def get_corr_pairwise(
@@ -1123,12 +1175,12 @@ class CorrSearch:
                     self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, col_name1, col1
                     )
                 if self.correct_method is None or self.correct_method == "":
-                    agg_col1.set_profile(col1, self.column_profiles[tbl1])
+                    agg_col1.set_profile(self.column_profiles[tbl1])
                 agg_col2 = AggColumn(
                     self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col_name2, col2
                 )
                 if self.correct_method is None or self.correct_method == "":
-                    agg_col2.set_profile(col2, self.column_profiles[tbl2])
+                    agg_col2.set_profile(self.column_profiles[tbl2])
                 new_corr = Correlation(agg_col1, agg_col2, r_val, p_val, len(df1), flag)
                 res.append(new_corr)
         return res    

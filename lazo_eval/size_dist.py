@@ -18,7 +18,7 @@ def load():
     for category in ["temporal", "spatial", "st"]:
         # load each json file from a directory
         set_size = {}
-        dir = f"/home/cc/resolution_aware_spatial_temporal_alignment/join_key_data/chicago_1m/time_2_space_1/{category}"
+        dir = f"/home/cc/nexus_correlation_discovery/join_key_data/chicago_1m/time_2_space_1/{category}"
         for filename in os.listdir(dir):
             if filename.endswith(".json"):
                 filepath = os.path.join(dir, filename)

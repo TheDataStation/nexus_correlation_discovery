@@ -25,11 +25,15 @@ class SchemaType(Enum):
 
 
 class Variable:
-    def __init__(self, attr_name: str, agg_func: AggFunc, var_name: str) -> None:
+    def __init__(self, attr_name: str, agg_func: AggFunc, var_name: str, suffix=None) -> None:
         self.attr_name = attr_name
-        self.agg_func = agg_func
         self.var_name = var_name
-    
+        self.agg_func = agg_func
+        self.suffix = suffix
+        if self.suffix:
+            self.proj_name = "{}_{}".format(self.var_name, self.suffix)
+        else:
+            self.proj_name = self.var_name
 
 class Var:
     def __init__(self, tbl_id, attr_name):

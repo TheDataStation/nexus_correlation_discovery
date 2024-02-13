@@ -1,0 +1,19 @@
+{
+    "asthma": {
+        "domain": "uchicago medical school",
+        "name": "asthma",
+        "t_attrs": [],
+        "s_attrs": [
+            {
+                "name": "Zip5",
+                "granu": "ZIPCODE"
+            }
+        ],
+        "num_columns": [
+            "encAsthmaExac",
+            "AttackPer",
+            "enc_asthma"
+        ],
+        "link": "unknown"
+    }
+}

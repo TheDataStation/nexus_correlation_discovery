@@ -40,8 +40,8 @@ class Profiler:
         for tbl in tqdm(self.tbl_attrs.keys()):
             print(tbl)
             t_attrs, s_attrs, num_columns = (
-                self.tbl_attrs[tbl]["t_attrs"],
-                self.tbl_attrs[tbl]["s_attrs"],
+                [t_attr["name"] for t_attr in self.tbl_attrs[tbl]["t_attrs"]],
+                [s_attr["name"] for s_attr in self.tbl_attrs[tbl]["s_attrs"]],
                 self.tbl_attrs[tbl]["num_columns"],
             )
             self.profile_tbl(
@@ -58,8 +58,8 @@ class Profiler:
             st_schema_dict = {SchemaType.TIME: [], SchemaType.SPACE: [], SchemaType.TS: []}
         for tbl in all_tbls:
             t_attrs, s_attrs = (
-                tbl_attrs[tbl]["t_attrs"],
-                tbl_attrs[tbl]["s_attrs"],
+                [t_attr['name'] for t_attr in tbl_attrs[tbl]["t_attrs"]],
+                [s_attr['name'] for s_attr in tbl_attrs[tbl]["s_attrs"]],
             )
 
             for t in t_attrs:
@@ -151,7 +151,6 @@ class Profiler:
             agg_name = st_schema.get_agg_tbl_name(tbl)
             st_type = st_schema.get_type()
             row_cnt = Profiler.get_row_cnt(cur, tbl, st_schema)
-
             if row_cnt >= threshold:
                 cnts_list = all_cnts[st_type]
                 cnts_list.append((tbl, agg_name, row_cnt))
@@ -174,8 +173,6 @@ class Profiler:
                 cost = i / n * cnt + (1 - i / n) * avg_cnt
                 Stats = namedtuple("Stats", ["cost", "cnt"])
                 res[agg_tbl] = Stats(round(cost, 2), cnt)
-        # for tbl, val in res.items():
-        #     print(tbl, val)
         return res
 
     @staticmethod

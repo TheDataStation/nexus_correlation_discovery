@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 from data_search.data_model import Unit, Variable, Var, ST_Schema, SchemaType
 from psycopg2 import sql
 import pandas as pd
@@ -314,11 +314,8 @@ def join_two_agg_tables(
     tbl2: str,
     agg_tbl2: str,
     vars2: List[Variable],
-    outer,
+    outer: bool = False,
 ):
-    # agg_tbl1 = st_schema1.get_agg_tbl_name(tbl1)
-    # agg_tbl2 = st_schema2.get_agg_tbl_name(tbl2)
-
     agg_join_sql = """
         SELECT a1.val, {agg_vars} FROM
         {agg_tbl1} a1 JOIN {agg_tbl2} a2
@@ -334,15 +331,15 @@ def join_two_agg_tables(
         agg_vars=sql.SQL(",").join(
             [
                 sql.SQL("{} AS {}").format(
-                    sql.Identifier("a1", var.var_name[:-3]),
-                    sql.Identifier(var.var_name),
+                    sql.Identifier("a1", var.var_name),
+                    sql.Identifier(var.proj_name),
                 )
                 for var in vars1
             ]
             + [
                 sql.SQL("{} AS {}").format(
-                    sql.Identifier("a2", var.var_name[:-3]),
-                    sql.Identifier(var.var_name),
+                    sql.Identifier("a2", var.var_name),
+                    sql.Identifier(var.proj_name),
                 )
                 for var in vars2
             ]
@@ -400,7 +397,24 @@ def join_two_agg_tables_api(
     df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
     return df
 
-def join_agg_tbls(cur, vars: List[Var], constraints=None):
+def join_multi_agg_tbls(cur, tbl_cols: Dict[str, List[Variable]]):
+    tbls = list(tbl_cols.keys())
+    sql_str = "SELECT {attrs} FROM {base_tbl} {join_clauses}"
+    query = sql.SQL(sql_str).format(
+            attrs = sql.SQL(",").join([
+                sql.SQL("{} AS {}").format(sql.Identifier(tbl, col.var_name), sql.Identifier(col.proj_name))
+                for tbl, cols in tbl_cols.items() for col in cols
+            ]),
+            base_tbl=sql.Identifier(tbls[0]),
+            join_clauses=sql.SQL(" ").join(
+                [sql.SQL("INNER JOIN {next_tbl} ON {tbl}.val = {next_tbl}.val").format(tbl=sql.Identifier(tbls[0]), next_tbl=sql.Identifier(tbl)) for tbl in tbls[1:]]
+            ),
+        )
+    cur.execute(query)
+    df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
+    return df.astype(float)
+    
+def join_multi_vars(cur, vars: List[Var], constraints=None):
     tbl_cols = collections.defaultdict(list)
     for var in vars:
         tbl_cols[var.tbl_id].append(var.attr_name)

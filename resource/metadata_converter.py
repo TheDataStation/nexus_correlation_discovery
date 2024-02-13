@@ -39,9 +39,45 @@ def check_ny_and_nyc():
         nyc_tbl_ids.append(tbl["tbl_id"]) 
     print(set(ny_tbl_ids).intersection(set(nyc_tbl_ids)))
 
+def convert_old_metadata_to_new_format(in_p, out_p):
+    old_metadata = io_utils.load_json(in_p)
+    new_metadata = {}
+    for info in old_metadata:
+        t_attr_names = info["t_attrs"]
+        s_attrs_names = info["s_attrs"]
+        t_attrs, s_attrs = [], []
+        for attr in t_attr_names:
+            t_attrs.append({"name": attr, "granu": "DateTime"})
+        for attr in s_attrs_names:
+            s_attrs.append({"name": attr, "granu": "Point"})
+        info['t_attrs'] = t_attrs
+        info['s_attrs'] = s_attrs
+        new_metadata[info["tbl_id"]] = info
+    io_utils.dump_json(out_p, new_metadata)
+
+def convert_old_tbl_attrs_to_new_format(in_p, out_p):
+    old_metadata = io_utils.load_json(in_p)
+    new_metadata = {}
+    for tbl_id, info in old_metadata.items():
+        t_attr_names = info["t_attrs"]
+        s_attrs_names = info["s_attrs"]
+        t_attrs, s_attrs = [], []
+        for attr in t_attr_names:
+            t_attrs.append({"name": attr, "granu": "DateTime"})
+        for attr in s_attrs_names:
+            if tbl_id == 'asthma':
+                s_attrs.append({"name": attr, "granu": "ZIPCODE"})
+            else:
+                s_attrs.append({"name": attr, "granu": "Point"})
+        info['t_attrs'] = t_attrs
+        info['s_attrs'] = s_attrs
+        new_metadata[tbl_id] = info
+    io_utils.dump_json(out_p, new_metadata)
 
 if __name__ == '__main__':
-    remove_datasets("resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk2.json",  "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json")
+    # convert_old_metadata_to_new_format('resource/chicago_1m/chicago_open_data_bk.json', 'resource/chicago_1m/chicago_open_data.json')
+    convert_old_tbl_attrs_to_new_format('resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk3.json', 'resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json')
+    # remove_datasets("resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk2.json",  "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json")
     # add_link("resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk.json", 'resource/chicago_1m_zipcode/chicago_open_data_linked.json', "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json")
     # add_domain("resource/chicago_open_data/tbl_attrs_chicago_bk.json", 'data.cityofchicago.org', "resource/chicago_open_data/tbl_attrs_chicago_bk.json")
     # add_domain("resource/nyc_open_data/tbl_attrs_nyc_bk.json", 'data.cityofnewyork.us', "resource/nyc_open_data/tbl_attrs_nyc_bk.json")

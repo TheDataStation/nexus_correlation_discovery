@@ -1,0 +1,34 @@
+{
+    "chicago_zipcode_population_zipcode_6": {
+        "avg_population": {
+            "sum": 2773813.0,
+            "sum_square": 171489644247.0,
+            "avg": 47013.7797,
+            "res_sum": 41082211044.1356,
+            "cnt": 59
+        },
+        "count": {
+            "sum": 59.0,
+            "sum_square": 59.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 59
+        }
+    },
+    "chicago_income_by_zipcode_zipcode_6": {
+        "avg_income_household_median": {
+            "sum": 4509226.0,
+            "sum_square": 422221351120.0,
+            "avg": 75153.7667,
+            "res_sum": 83336032468.7333,
+            "cnt": 60
+        },
+        "count": {
+            "sum": 60.0,
+            "sum_square": 60.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 60
+        }
+    }
+}

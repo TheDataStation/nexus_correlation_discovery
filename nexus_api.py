@@ -4,7 +4,7 @@ import pandas as pd
 from utils.time_point import T_GRANU
 from utils.coordinate import S_GRANU
 from utils.io_utils import load_corrs_to_df
-from data_search.db_ops import join_two_agg_tables_api, read_agg_tbl, join_agg_tbls
+from data_search.db_ops import join_two_agg_tables_api, read_agg_tbl, join_multi_vars
 import psycopg2
 import os
 import json
@@ -14,7 +14,7 @@ from typing import List
 from sklearn import linear_model
 
 class API:
-    def __init__(self, conn_str, data_sources=['chicago_1m_zipcode'], impute_options=[], correction=''):
+    def __init__(self, conn_str, data_sources=['chicago_1m_zipcode', 'chicago_factors'], impute_options=[], correction=''):
         self.conn_str = conn_str
         conn_copg2 = psycopg2.connect(self.conn_str)
         self.cur = conn_copg2.cursor()
@@ -55,7 +55,7 @@ class API:
             q_val=0.05,
         )
         corr_search.set_join_cost(t_granu, s_granu, overlap_t)
-        corr_search.find_all_corr_for_a_tbl(dataset, [t_granu, s_granu], overlap_t, r_t, p_t=0.05, fill_zero=True, corr_type=corr_type)
+        corr_search.find_all_corr_for_a_tbl(dataset, [t_granu, s_granu], overlap_t, r_t, p_t=0.05, fill_zero=True, corr_type=corr_type, control_vars=control_vars)
         corrs = load_corrs_to_df(corr_search.data)
         corrs['agg_attr1'] = corrs['agg_attr1'].str[:-3]
         corrs['agg_attr2'] = corrs['agg_attr2'].str[:-3]
@@ -81,7 +81,7 @@ class API:
         return corrs[self.disp_attrs]
 
     def regress(self, target_var: Var, covariates: List[Var], reg):
-        df, _ = join_agg_tbls(self.cur, [target_var]+covariates)
+        df, _ = join_multi_vars(self.cur, [target_var]+covariates)
         x = df[[var.attr_name for var in covariates]]
         y = df[target_var.attr_name]
         model = reg.fit(x, y)
@@ -89,7 +89,7 @@ class API:
         return model, r_sq, df
 
     def assemble(self, vars: List[Var], constraints=None):
-        df = join_agg_tbls(self.cur, vars, constraints=constraints)
+        df = join_multi_vars(self.cur, vars, constraints=constraints)
         return df
     
     def get_aligned_data(self, row):
@@ -136,26 +136,12 @@ class API:
         return df
 
 if __name__ == '__main__':
-    # todo: clean this and move tests to test folder
     conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
     nexus_api = API(conn_str)
     dataset = 'asthma'
     t_granu, s_granu = None, S_GRANU.ZIPCODE
     overlap_t = 5
     r_t = 0.5
-    # df = nexus_api.find_correlations_from(dataset, t_granu, s_granu, overlap_t, r_t, corr_type="pearson")
-    # print(len(df))
-    # print(nexus_api.show_agg_dataset('kf7e-cur8_se_location_6'))
-    # vars = [Var('divg-mhqk_location_6', 'count'), Var('4u6w-irs9_location_6', 'avg_square_feet')]
-    # constraints = {'divg-mhqk_location_6': 2, '4u6w-irs9_location_6': 2}
-    # df, prov = nexus_api.assemble(vars, constraints)
-    # print(df, prov)
-    # print(df.loc[0])
-    # aligned = nexus_api.get_aligned_data(df.loc[0])
-
-    # test find all correlations
-    # df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, corr_type="pearson")
-    # print(len(df))
 
     # test regress
     target_var = Var('asthma_Zip5_6', 'avg_enc_asthma')

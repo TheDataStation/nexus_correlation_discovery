@@ -1,0 +1,20 @@
+{
+    "asthma": {
+        "tbl_id": "asthma",
+        "tbl_name": "asthma",
+        "t_attrs": [],
+        "s_attrs": [
+            {
+                "name": "Zip5",
+                "granu": "ZIPCODE"
+            }
+        ],
+        "num_columns": [
+            "enc_asthma",
+            "encAsthmaExac",
+            "AttackPer"
+        ],
+        "domain": "uchicago medical school",
+        "link": "unknown"
+    }
+}

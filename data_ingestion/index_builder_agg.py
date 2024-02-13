@@ -11,7 +11,8 @@ import psycopg2
 from data_search.search_db import DBSearch
 import numpy as np
 from sqlalchemy.types import *
-from data_ingestion.table import Table
+from data_ingestion.table import Table, Attr
+from data_ingestion.profile_datasets import Profiler
 import time
 from tqdm import tqdm
 from data_search.data_model import (
@@ -84,13 +85,13 @@ class DBIngestorAgg:
         return valid_num_columns
 
     @staticmethod
-    def select_valid_attrs(attrs, max_limit=0):
+    def select_valid_attrs(attrs: List[Attr], max_limit=0):
         valid_attrs = []
         for attr in attrs:
-            if len(attr) > 48:
+            if len(attr.name) > 48:
                 continue
             if any(
-                keyword in attr
+                keyword in attr.name
                 for keyword in ["update", "modified", "_end", "end_", "status", "_notified"]
             ):
                 continue
@@ -107,10 +108,10 @@ class DBIngestorAgg:
         if clean:
             self.clean_aggregated_idx_tbls()
 
-        for obj in tqdm(meta_data):
-            t_attrs, s_attrs = self.select_valid_attrs(
-                obj["t_attrs"], max_limit
-            ), self.select_valid_attrs(obj["s_attrs"], max_limit)
+        for _, obj in tqdm(meta_data.items()):
+            t_attrs = [Attr(attr["name"], attr["granu"]) for attr in obj["t_attrs"]]
+            s_attrs = [Attr(attr["name"], attr["granu"]) for attr in obj["s_attrs"]]
+            t_attrs, s_attrs = self.select_valid_attrs(t_attrs, max_limit), self.select_valid_attrs(s_attrs, max_limit)
             # print(t_attrs, s_attrs)
             if len(t_attrs) == 0 and len(s_attrs) == 0:
                 continue
@@ -122,8 +123,9 @@ class DBIngestorAgg:
                 t_attrs=t_attrs,
                 s_attrs=s_attrs,
                 num_columns=obj["num_columns"],
+                link=obj["link"] if "link" in obj else "",
             )
-            # print(tbl.t_attrs, tbl.s_attrs)
+           
             print(tbl.tbl_id)
             if retry_list is not None:
                 if tbl.tbl_id not in retry_list:
@@ -233,9 +235,10 @@ class DBIngestorAgg:
         all_columns = list(df.select_dtypes(include=[np.number]).columns.values)
         numerical_columns = self.get_numerical_columns(all_columns, tbl)
         numerical_columns = [x for x in numerical_columns if len(x) <= 56]
-        print(df.columns)
-        print(tbl.t_attrs, tbl.s_attrs, numerical_columns)
-        df = df[tbl.t_attrs + tbl.s_attrs + numerical_columns]
+        
+        t_attr_names = [attr.name for attr in tbl.t_attrs]
+        s_attr_names = [attr.name for attr in tbl.s_attrs]
+        df = df[t_attr_names + s_attr_names + numerical_columns]
 
         print("begin expanding dataframe")
         # expand dataframe
@@ -252,9 +255,10 @@ class DBIngestorAgg:
         self.tbls[tbl.tbl_id] = {
             "domain": tbl.domain,
             "name": tbl.tbl_name,
-            "t_attrs": t_attrs_success,
-            "s_attrs": s_attrs_success,
+            "t_attrs": [t_attr.__dict__ for t_attr in t_attrs_success],
+            "s_attrs": [s_attr.__dict__ for s_attr in s_attrs_success],
             "num_columns": numerical_columns,
+            "link": tbl.link
         }
         print("begin ingesting")
         start = time.time()
@@ -268,8 +272,8 @@ class DBIngestorAgg:
         # create aggregated tables
         self.create_agg_tbl(
             tbl.tbl_id,
-            t_attrs_success,
-            s_attrs_success,
+            [t_attr.name for t_attr in t_attrs_success],
+            [s_attr.name for s_attr in s_attrs_success],
             self.t_scales,
             self.s_scales,
             numerical_columns,
@@ -415,36 +419,34 @@ class DBIngestorAgg:
                     "time_{}_space_{}_inv".format(t_granu.value, s_granu.value),
                 )
 
-    def expand_df(self, df, t_attrs, s_attrs, temporal_range=False, spatial_range=False):
+    def expand_df(self, df, t_attrs: List[Attr], s_attrs: List[Attr], temporal_range=False, spatial_range=False):
         t_attrs_success = []
         s_attrs_success = []
         df_schema = {}
         for t_attr in t_attrs:
             # parse datetime column to datetime class
-            df[t_attr] = pd.to_datetime(df[t_attr], utc=False, errors="coerce").replace(
+            df[t_attr.name] = pd.to_datetime(df[t_attr.name], utc=False, errors="coerce").replace(
                 {np.NaN: None}
             )
             if temporal_range:
                 # if temporal_range is specified, we only ingest data within a certain range
-                print(f"df len before: {len(df)}")
-                print(df[t_attr].dtype)
-                # print(df[t_attr].head())
-                is_datetime64_utc = df[t_attr].dtype == "datetime64[ns, UTC]"
+              
+                is_datetime64_utc = df[t_attr.name].dtype == "datetime64[ns, UTC]"
                 try:
                     if is_datetime64_utc:
-                        df = df.loc[(df[t_attr] >= pd.to_datetime(temporal_range[0], utc=True)) & (df[t_attr] < pd.to_datetime(temporal_range[1], utc=True))]
+                        df = df.loc[(df[t_attr.name] >= pd.to_datetime(temporal_range[0], utc=True)) & (df[t_attr.name] < pd.to_datetime(temporal_range[1], utc=True))]
                     else:   
-                        df = df.loc[(df[t_attr] >= temporal_range[0]) & (df[t_attr] < temporal_range[1])]
+                        df = df.loc[(df[t_attr.name] >= temporal_range[0]) & (df[t_attr.name] < temporal_range[1])]
                 except TypeError:
-                    df = df.loc[(df[t_attr] >= pd.to_datetime(temporal_range[0], utc=True)) & (df[t_attr] < pd.to_datetime(temporal_range[1], utc=True))]
-                print(f"df len after: {len(df)}")
+                    df = df.loc[(df[t_attr.name] >= pd.to_datetime(temporal_range[0], utc=True)) & (df[t_attr.name] < pd.to_datetime(temporal_range[1], utc=True))]
+             
                 if len(df) == 0:
                     return None, None, [], []
-            df_dts = df[t_attr].apply(parse_datetime).dropna()
+            df_dts = df[t_attr.name].apply(parse_datetime).dropna()
             # df_dts = np.vectorize(parse_datetime)(df[t_attr])
             if len(df_dts):
                 for t_granu in self.t_scales:
-                    new_attr = "{}_{}".format(t_attr, t_granu.value)
+                    new_attr = "{}_{}".format(t_attr.name, t_granu.value)
                     df[new_attr] = df_dts.apply(set_temporal_granu, args=(t_granu,))
 
                     # df[new_attr] = np.vectorize(set_temporal_granu, otypes=[object])(
@@ -454,27 +456,32 @@ class DBIngestorAgg:
                     df_schema[new_attr] = Integer()
                 t_attrs_success.append(t_attr)
         for s_attr in s_attrs:
-            # parse (long, lat) pairs to point
-            df_points = df[s_attr].apply(coordinate.parse_coordinate)
+            if s_attr.granu == 'Point':
+                # parse (long, lat) pairs to point
+                df_points = df[s_attr.name].apply(coordinate.parse_coordinate)
 
-            # create a geopandas dataframe using points
-            gdf = (
-                gpd.GeoDataFrame(geometry=df_points)
-                .dropna()
-                .set_crs(epsg=4326, inplace=True)
-            )
+                # create a geopandas dataframe using points
+                gdf = (
+                    gpd.GeoDataFrame(geometry=df_points)
+                    .dropna()
+                    .set_crs(epsg=4326, inplace=True)
+                )
 
-            df_resolved = resolve_spatial_hierarchy(self.shape_path, gdf)
+                df_resolved = resolve_spatial_hierarchy(self.shape_path, gdf)
 
-            # df_resolved can be none meaning there is no point falling into the shape file
-            if df_resolved is None:
-                continue
-            for s_granu in self.s_scales:
-                new_attr = "{}_{}".format(s_attr, s_granu.value)
-                df[new_attr] = df_resolved.apply(set_spatial_granu, args=(s_granu,))
-                df_schema[new_attr] = Integer()
+                # df_resolved can be none meaning there is no point falling into the shape file
+                if df_resolved is None:
+                    continue
+                for s_granu in self.s_scales:
+                    new_attr = "{}_{}".format(s_attr.name, s_granu.value)
+                    df[new_attr] = df_resolved.apply(set_spatial_granu, args=(s_granu,))
+                    df_schema[new_attr] = Integer()
+            else:
+                for s_granu in self.s_scales:
+                    if s_granu.name == s_attr.granu:
+                        new_attr = "{}_{}".format(s_attr.name, s_granu.value)
+                        df[new_attr] = df[s_attr.name]
             s_attrs_success.append(s_attr)
-
         return df, df_schema, t_attrs_success, s_attrs_success
 
     def create_tbl(self, tbl_name, df):
@@ -502,24 +509,67 @@ class DBIngestorAgg:
 
 
 if __name__ == "__main__":
-    start_time = time.time()
-    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
-    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
-    data_source = "chicago_10k"
-    config = io_utils.load_config(data_source)
-    conn_string = config["db_path"]
-    ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
-    # tbl = Table(
-    #     domain="",
-    #     tbl_id="qqqh-hgyw",
-    #     tbl_name="",
-    #     t_attrs=[
-    #         "lse_report_reviewed_on_date",
-    #         # "scheduled_inspection_date",
-    #         # "rescheduled_inspection_date",
-    #     ],
-    #     s_attrs=[],
-    #     num_columns=[],
-    # )
-    # ingestor.ingest_tbl(tbl)
-    ingestor.ingest_data_source(clean=True, persist=True)
+    # ingest asthma dataset
+    data_sources = ['chicago_factors']
+    conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
+    t_scales = []
+    s_scales = [S_GRANU.ZIPCODE]
+
+    # ingest tables
+    for data_source in data_sources:
+        print(data_source)
+        start_time = time.time()
+        conn_string = "postgresql://yuegong@localhost/chicago_1m_zipcode"
+        ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
+        ingestor.ingest_data_source(clean=False, persist=True, max_limit=1)
+        print(f"ingesting data finished in {time.time() - start_time} s")
+
+    # create count tables for inverted index tables
+    idx_tbls = ["space_6_inv"]
+    DBIngestorAgg.create_cnt_tbls_for_inv_index_tbls(conn_str, idx_tbls) 
+
+    # create count tables for individual tables
+    for data_source in data_sources:
+        ingestor = DBIngestorAgg(conn_str, data_source, t_scales, s_scales)
+        config = io_utils.load_config(data_source)
+        print(config["attr_path"])
+        tbl_attrs = io_utils.load_json(config["attr_path"])
+        for tbl_id, info in tbl_attrs.items():
+            print(data_source, tbl_id)
+            ingestor.create_cnt_tbl(
+                tbl_id,
+                [t_attr['name'] for t_attr in info["t_attrs"]],
+                [s_attr['name'] for s_attr in info["s_attrs"]],
+                t_scales,
+                s_scales,
+            )
+    # create profiles
+    for data_source in data_sources:
+        profiler = Profiler(data_source, t_scales, s_scales, conn_str)
+        profiler.set_mode('no_cross')
+        print("begin collecting agg stats")
+        profiler.collect_agg_tbl_col_stats()
+        print("begin profiling original data")
+        profiler.profile_original_data()
+    
+    # start_time = time.time()
+    # t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
+    # s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
+    # data_source = "chicago_10k"
+    # config = io_utils.load_config(data_source)
+    # conn_string = config["db_path"]
+    # ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
+    # # tbl = Table(
+    # #     domain="",
+    # #     tbl_id="qqqh-hgyw",
+    # #     tbl_name="",
+    # #     t_attrs=[
+    # #         "lse_report_reviewed_on_date",
+    # #         # "scheduled_inspection_date",
+    # #         # "rescheduled_inspection_date",
+    # #     ],
+    # #     s_attrs=[],
+    # #     num_columns=[],
+    # # )
+    # # ingestor.ingest_tbl(tbl)
+    # ingestor.ingest_data_source(clean=True, persist=True)

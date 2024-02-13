@@ -3,10 +3,7 @@
         "name": "asthma",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "Zip5",
-                "granu": "ZIPCODE"
-            }
+            "Zip5"
         ],
         "num_columns": [
             "enc_asthma",
@@ -20,10 +17,7 @@
         "name": "Crimes - 2001 to Present",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -33,10 +27,7 @@
         "name": "Building Permits",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "zoning_fee_waived",
@@ -54,10 +45,7 @@
         "name": "Affordable Rental Housing Developments",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "units"
@@ -69,10 +57,7 @@
         "name": "Food Inspections",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -82,10 +67,7 @@
         "name": "Police Stations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -95,10 +77,7 @@
         "name": "Traffic Crashes - Crashes",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "injuries_unknown",
@@ -116,10 +95,7 @@
         "name": "City-Owned Land Inventory",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "land_value",
@@ -133,10 +109,7 @@
         "name": "Building Violations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -146,10 +119,7 @@
         "name": "Business Licenses",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "precinct"
@@ -161,10 +131,7 @@
         "name": "Chicago Public Schools - Progress Report Cards (2011-2012)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "average_teacher_attendance",
@@ -186,10 +153,7 @@
         "name": "Fire Stations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -199,14 +163,8 @@
         "name": "Taxi Trips",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "dropoff_centroid_location",
-                "granu": "Point"
-            },
-            {
-                "name": "pickup_centroid_location",
-                "granu": "Point"
-            }
+            "dropoff_centroid_location",
+            "pickup_centroid_location"
         ],
         "num_columns": [
             "tolls",
@@ -224,10 +182,7 @@
         "name": "Libraries - Locations,  Contact Information, and Usual Hours of Operation",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -237,10 +192,7 @@
         "name": "Crimes - One year prior to present",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -250,10 +202,7 @@
         "name": "311 Service Requests - Vacant and Abandoned Buildings Reported - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -263,10 +212,7 @@
         "name": "CDPH Environmental Records Lookup Table",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -276,10 +222,7 @@
         "name": "COVID-19 Cases, Tests, and Deaths by ZIP Code",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "zip_code_location",
-                "granu": "Point"
-            }
+            "zip_code_location"
         ],
         "num_columns": [
             "cases_weekly",
@@ -298,10 +241,7 @@
         "name": "Senior Centers",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -311,10 +251,7 @@
         "name": "Workforce Centers",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -324,14 +261,8 @@
         "name": "Transportation Network Providers - Trips (2018 - 2022)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "pickup_centroid_location",
-                "granu": "Point"
-            },
-            {
-                "name": "dropoff_centroid_location",
-                "granu": "Point"
-            }
+            "pickup_centroid_location",
+            "dropoff_centroid_location"
         ],
         "num_columns": [
             "trips_pooled",
@@ -349,10 +280,7 @@
         "name": "311 Service Requests - Graffiti Removal - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -362,10 +290,7 @@
         "name": "Vacant and Abandoned Buildings - Violations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "total_fines",
@@ -383,10 +308,7 @@
         "name": "311 Service Requests - Abandoned Vehicles - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -396,10 +318,7 @@
         "name": "Red Light Camera Violations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "violations"
@@ -411,10 +330,7 @@
         "name": "311 Service Requests - Tree Trims - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -424,10 +340,7 @@
         "name": "Speed Camera Locations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -437,10 +350,7 @@
         "name": "311 Service Requests - Pot Holes Reported - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "number_of_potholes_filled_on_block"
@@ -452,10 +362,7 @@
         "name": "Average Daily Traffic Counts",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "total_passing_vehicle_volume"
@@ -467,10 +374,7 @@
         "name": "311 Service Requests - Sanitation Code Complaints - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -480,10 +384,7 @@
         "name": "Elevation Benchmarks",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "estimated_location",
-                "granu": "Point"
-            }
+            "estimated_location"
         ],
         "num_columns": [
             "elevation",
@@ -496,10 +397,7 @@
         "name": "311 Service Requests - Garbage Carts - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "number_of_black_carts_delivered"
@@ -511,10 +409,7 @@
         "name": "Chicago Traffic Tracker - Historical Congestion Estimates by Segment - 2018-Current",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "start_location",
-                "granu": "Point"
-            }
+            "start_location"
         ],
         "num_columns": [
             "length",
@@ -529,10 +424,7 @@
         "name": "House Share Prohibited Buildings List",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "number_of_units"
@@ -544,14 +436,8 @@
         "name": "Chicago Traffic Tracker - Historical Congestion Estimates by Region - 2018-Current",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "nw_location",
-                "granu": "Point"
-            },
-            {
-                "name": "se_location",
-                "granu": "Point"
-            }
+            "nw_location",
+            "se_location"
         ],
         "num_columns": [
             "num_reads",
@@ -565,10 +451,7 @@
         "name": "Relocated Vehicles",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "relocated_from_location",
-                "granu": "Point"
-            }
+            "relocated_from_location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -578,10 +461,7 @@
         "name": "311 Service Requests - Rodent Baiting - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "number_of_premises_baited",
@@ -595,10 +475,7 @@
         "name": "Neighborhood Health Clinics - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -608,10 +485,7 @@
         "name": "Speed Camera Violations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "violations"
@@ -623,10 +497,7 @@
         "name": "311 Service Requests",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -636,10 +507,7 @@
         "name": "Violence Reduction - Victims of Homicides and Non-Fatal Shootings",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -649,10 +517,7 @@
         "name": "311 Service Requests - Street Lights - All Out - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -662,10 +527,7 @@
         "name": "Condom Distribution Sites - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -675,10 +537,7 @@
         "name": "311 Service Requests - Tree Debris - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -688,10 +547,7 @@
         "name": "Chicago Department of Public Health Clinic Locations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -701,10 +557,7 @@
         "name": "Strategic Subject List - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "predictor_rat_victim_battery_or_assault",
@@ -729,10 +582,7 @@
         "name": "Community Service Centers",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -742,10 +592,7 @@
         "name": "CDPH Storage Tanks",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -755,10 +602,7 @@
         "name": "Ordinance Violations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "admin_costs",
@@ -771,10 +615,7 @@
         "name": "Chicago Energy Benchmarking - Covered Buildings",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -784,10 +625,7 @@
         "name": "311 Service Requests - Street Lights - One Out - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -797,10 +635,7 @@
         "name": "Ward Offices",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -810,10 +645,7 @@
         "name": "CTA - System Information - List of 'L' Stops",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -823,10 +655,7 @@
         "name": "Transportation Department Permits",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "waivedfees",
@@ -839,14 +668,8 @@
         "name": "Divvy Trips",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "from_location",
-                "granu": "Point"
-            },
-            {
-                "name": "to_location",
-                "granu": "Point"
-            }
+            "from_location",
+            "to_location"
         ],
         "num_columns": [
             "trip_duration"
@@ -858,10 +681,7 @@
         "name": "CDPH Environmental Inspections",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -871,10 +691,7 @@
         "name": "Bike Racks",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "historical",
@@ -887,10 +704,7 @@
         "name": "CDPH Environmental Complaints",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -900,10 +714,7 @@
         "name": "Flu Shot Clinic Locations - 2012",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -913,10 +724,7 @@
         "name": "311 Service Requests - Alley Lights Out - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -926,10 +734,7 @@
         "name": "Divvy Bicycle Stations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "docks_in_service",
@@ -942,10 +747,7 @@
         "name": "CTA - Ridership - Avg. Weekday Bus Stop Boardings in October 2012",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "alightings",
@@ -958,10 +760,7 @@
         "name": "Beach E. coli Predictions",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "predicted_level"
@@ -973,10 +772,7 @@
         "name": "CDPH Environmental Permits",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -986,10 +782,7 @@
         "name": "Divvy Bicycle Stations - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "available_docks",
@@ -1005,10 +798,7 @@
         "name": "Chicago Energy Benchmarking",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "site_eui_kbtu_sq_ft",
@@ -1032,10 +822,7 @@
         "name": "Micro-Market Recovery Program - Violations and Inspections",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "post_direction"
@@ -1047,10 +834,7 @@
         "name": "Red Light Camera Locations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1060,10 +844,7 @@
         "name": "CDPH Asbestos and Demolition Notification",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1073,10 +854,7 @@
         "name": "Chicago Public Schools - School Profile Information SY1617",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "student_count_hawaiian_pacific_islander",
@@ -1106,10 +884,7 @@
         "name": "Grocery Stores - 2013",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "square_feet"
@@ -1121,10 +896,7 @@
         "name": "Building Code Scofflaw List",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1134,10 +906,7 @@
         "name": "COVID-19 Vaccinations by ZIP Code",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "zip_code_location",
-                "granu": "Point"
-            }
+            "zip_code_location"
         ],
         "num_columns": [
             "_1st_dose_daily_age_0_17",
@@ -1176,10 +945,7 @@
         "name": "Beach Lab Data",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "dna_sample_2_reading",
@@ -1197,10 +963,7 @@
         "name": "Violence Reduction - Shotspotter Alerts",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "rounds"
@@ -1212,10 +975,7 @@
         "name": "Connect Chicago Locations - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1225,10 +985,7 @@
         "name": "Chicago Public Schools - High School Progress Report (2013-2014)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "college_enrollment_rate_percentage_2012",
@@ -1300,10 +1057,7 @@
         "name": "CTA - List of Fare Media Sales Outlets (deprecated August 2014)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1313,10 +1067,7 @@
         "name": "Individual Landmarks",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1326,10 +1077,7 @@
         "name": "E-Scooter Trips - 2019 Pilot",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "start_centroid_location",
-                "granu": "Point"
-            }
+            "start_centroid_location"
         ],
         "num_columns": [
             "accuracy",
@@ -1343,10 +1091,7 @@
         "name": "CDPH Environmental Enforcement",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "fine_amount"
@@ -1358,10 +1103,7 @@
         "name": "Financial Incentive Projects - Small Business Improvement Fund (SBIF)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "jobs_created_aspirational",
@@ -1376,10 +1118,7 @@
         "name": "Family and Support Services Delegate Agencies",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1389,10 +1128,7 @@
         "name": "Warming Centers",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1402,10 +1138,7 @@
         "name": "West Nile Virus (WNV) Mosquito Test Results",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "number_of_mosquitoes"
@@ -1417,10 +1150,7 @@
         "name": "Alternative Fuel Locations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "ev_level1_evse_num",
@@ -1434,10 +1164,7 @@
         "name": "Tax Increment Financing (TIF) Funded RDA and IGA Projects",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "approved_amount",
@@ -1451,10 +1178,7 @@
         "name": "Smart Green Infrastructure Monitoring Sensors - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "measurement_value"
@@ -1466,10 +1190,7 @@
         "name": "Micro-Market Recovery Program - Permits",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "post_direction"
@@ -1481,10 +1202,7 @@
         "name": "Chicago Public Schools - Elementary School Progress Report (2013-2014)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "nwea_math_growth_percentile_grade_5",
@@ -1539,10 +1257,7 @@
         "name": "Parks - Locations (deprecated November 2016)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "pavillion",
@@ -1613,10 +1328,7 @@
         "name": "Mural Registry",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1626,10 +1338,7 @@
         "name": "COVID-19 Testing Sites - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1639,10 +1348,7 @@
         "name": "Chicago Public Schools - School Progress Reports SY1617",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "student_attendance_avg_pct",
@@ -1694,10 +1400,7 @@
         "name": "Beach Water and Weather Sensor Locations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1707,10 +1410,7 @@
         "name": "Green Roofs",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "total_roof_sqft",
@@ -1723,10 +1423,7 @@
         "name": "Chicago Early Learning Programs",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "key"
@@ -1738,10 +1435,7 @@
         "name": "Chicago Public Schools \u2013 High School Progress Report Card (2012-2013)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "student_attendance_2012_percent",
@@ -1777,10 +1471,7 @@
         "name": "Chicago COVID-19 Community Vulnerability Index (CCVI)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "ccvi_score",
@@ -1796,10 +1487,7 @@
         "name": "Public Health Services- Chicago Primary Care Community Health Centers",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location_1",
-                "granu": "Point"
-            }
+            "location_1"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1809,10 +1497,7 @@
         "name": "Tax Increment Financing (TIF) Investment Committee Decisions",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "tif_request",
@@ -1826,10 +1511,7 @@
         "name": "Parks - Facilities & Features (deprecated November 2016)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1839,10 +1521,7 @@
         "name": "Sidewalk Cafe Permits",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1852,10 +1531,7 @@
         "name": "Micro-Market Recovery Program - Cases",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "post_direction",
@@ -1868,10 +1544,7 @@
         "name": "Veteran Owned Businesses",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1881,10 +1554,7 @@
         "name": "CTA - System Information - Bus Stop Locations in Digital Sign Project",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1894,10 +1564,7 @@
         "name": "Urban Farms",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1907,10 +1574,7 @@
         "name": "CDPH Environmental Hold on City-Issued Permits and LUST NFR",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -1920,10 +1584,7 @@
         "name": "CPS Schools 2013-2014 Academic Year",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "cps_unit"
@@ -1935,10 +1596,7 @@
         "name": "Chicago Public Schools \u2013 Elementary School Progress Report Card (2012-2013)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "student_performance_reading_and_math",
@@ -1998,10 +1656,7 @@
         "name": "Public Technology Resources",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2011,10 +1666,7 @@
         "name": "Array of Things Locations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2024,10 +1676,7 @@
         "name": "Micro-Market Recovery Program - Addresses",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2037,10 +1686,7 @@
         "name": "Cooling Centers",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2050,10 +1696,7 @@
         "name": "Parks - Public Art",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2063,10 +1706,7 @@
         "name": "Chicago Microlending Institute (CMI) Microloans",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2076,10 +1716,7 @@
         "name": "COVID-19 Vaccination Locations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2089,10 +1726,7 @@
         "name": "Produce Carts",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2102,10 +1736,7 @@
         "name": "E-Scooter Trips - 2020",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "start_centroid_location",
-                "granu": "Point"
-            }
+            "start_centroid_location"
         ],
         "num_columns": [
             "trip_duration",
@@ -2118,10 +1749,7 @@
         "name": "Farmers Markets - 2012",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "map",
-                "granu": "Point"
-            }
+            "map"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2131,10 +1759,7 @@
         "name": "Farmers Markets - 2015",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "map",
-                "granu": "Point"
-            }
+            "map"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2144,10 +1769,7 @@
         "name": "Annual Taxpayer Location Address List 2014",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2157,10 +1779,7 @@
         "name": "Dig Ticket Notifications",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2170,10 +1789,7 @@
         "name": "Parks - Buildings (deprecated November 2016)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location_1",
-                "granu": "Point"
-            }
+            "location_1"
         ],
         "num_columns": [
             "demolished",
@@ -2186,10 +1802,7 @@
         "name": "EZ Pay Kiosks",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2199,10 +1812,7 @@
         "name": "Nearby Cook County Grocery Store Chains",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2212,10 +1822,7 @@
         "name": "Flu Shot Locations - 2014 - Present",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2225,10 +1832,7 @@
         "name": "Chicago Park District: Movies in the Parks 2018",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2238,10 +1842,7 @@
         "name": "Chicago Public Schools - School Progress Reports SY1516",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "student_attendance_avg_pct",
@@ -2293,10 +1894,7 @@
         "name": "Potholes Patched",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "number_of_potholes_filled_on_block"
@@ -2308,10 +1906,7 @@
         "name": "Public Health Services - Licensed Substance Abuse Treatment Providers in Chicago, 2011",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "physical_address",
-                "granu": "Point"
-            }
+            "physical_address"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2321,10 +1916,7 @@
         "name": "Grocery Store Status",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2334,10 +1926,7 @@
         "name": "E-Scooter Trips - Census Tract Summary - 2020",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "start_centroid_location",
-                "granu": "Point"
-            }
+            "start_centroid_location"
         ],
         "num_columns": [
             "trip_count"
@@ -2349,10 +1938,7 @@
         "name": "Additional Dwelling Unit Preapproval Applications",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "max_adus",
@@ -2369,10 +1955,7 @@
         "name": "Public Health Department Events",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2382,10 +1965,7 @@
         "name": "Traffic Crashes - Vision Zero Chicago Traffic Fatalities",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "geocoded_column",
-                "granu": "Point"
-            }
+            "geocoded_column"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2395,10 +1975,7 @@
         "name": "Grocery Stores - 2011",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "square_feet"
@@ -2410,10 +1987,7 @@
         "name": "Libraries - 2021 Visitors by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "april",
@@ -2437,10 +2011,7 @@
         "name": "Christmas Tree Recycling Locations 2013",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2450,10 +2021,7 @@
         "name": "Chicago Park District: Movies in the Parks 2019",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2463,10 +2031,7 @@
         "name": "My CHI. My Future. Programs",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "max_age",
@@ -2480,10 +2045,7 @@
         "name": "Farmers Markets - 2013",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "map",
-                "granu": "Point"
-            }
+            "map"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2493,10 +2055,7 @@
         "name": "Libraries - 2021 Circulation by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "april",
@@ -2520,10 +2079,7 @@
         "name": "Libraries - 2020 Visitors by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "april",
@@ -2545,10 +2101,7 @@
         "name": "Chicago Public Schools - School Profile Information SY2122",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "student_count_white",
@@ -2576,10 +2129,7 @@
         "name": "Chicago Public Schools - School Profile Information SY2223",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "student_count_asian_pacific",
@@ -2610,10 +2160,7 @@
         "name": "Chicago Park District: Movies in the Parks 2017",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2623,10 +2170,7 @@
         "name": "Chicago Public Schools - School Admissions Information SY1617",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2636,10 +2180,7 @@
         "name": "Chicago Park District: Movies in the Parks 2014",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location_1",
-                "granu": "Point"
-            }
+            "location_1"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2649,10 +2190,7 @@
         "name": "Financial Incentive Projects - Neighborhood Opportunity Fund (NOF) Large",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "jobs_retained_aspirational",
@@ -2671,10 +2209,7 @@
         "name": "Chicago Public Schools - School Profile Information SY1718",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "student_count_hawaiian_pacific_islander",
@@ -2704,10 +2239,7 @@
         "name": "Libraries - 2011 Children's Summer Reading Program",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "map_location",
-                "granu": "Point"
-            }
+            "map_location"
         ],
         "num_columns": [
             "books_read",
@@ -2720,10 +2252,7 @@
         "name": "Chicago Public Schools - School Profile Information SY2021",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "student_count_white",
@@ -2751,10 +2280,7 @@
         "name": "Chicago Public Schools - School Locations SY1920",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "the_geom",
-                "granu": "Point"
-            }
+            "the_geom"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2764,10 +2290,7 @@
         "name": "Chicago Public Schools - School Admissions Information SY2122",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2777,10 +2300,7 @@
         "name": "Safe Chicago Bleeding Control Kit Locations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "number_of_kits"
@@ -2792,10 +2312,7 @@
         "name": "Financial Incentive Projects - Property Tax Abatement",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "jobs_retained_aspirational",
@@ -2813,10 +2330,7 @@
         "name": "Libraries - 2021 Computer Sessions by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "april",
@@ -2839,10 +2353,7 @@
         "name": "Chicago Public Schools - School Progress Reports SY1718",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "student_attendance_avg_pct",
@@ -2899,10 +2410,7 @@
         "name": "Flu Shot Clinic Locations - 2013",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2912,10 +2420,7 @@
         "name": "Chicago Park District: Movies in the Parks 2015",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location_1",
-                "granu": "Point"
-            }
+            "location_1"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2925,10 +2430,7 @@
         "name": "Chicago Public Schools - School Admissions Information SY1819",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "geocoded_column",
-                "granu": "Point"
-            }
+            "geocoded_column"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -2938,10 +2440,7 @@
         "name": "Libraries - 2022 Visitors by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "march",
@@ -2965,10 +2464,7 @@
         "name": "Financial Incentive Projects - Neighborhood Opportunity Fund (NOF) Small",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "jobs_retained_aspirational",
@@ -2985,14 +2481,8 @@
         "name": "Transportation Network Providers - Trips (2023-)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "pickup_centroid_location",
-                "granu": "Point"
-            },
-            {
-                "name": "dropoff_centroid_location",
-                "granu": "Point"
-            }
+            "pickup_centroid_location",
+            "dropoff_centroid_location"
         ],
         "num_columns": [
             "trips_pooled",
@@ -3012,10 +2502,7 @@
         "name": "Libraries - 2021 Holds Placed by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "march",
@@ -3035,10 +2522,7 @@
         "name": "Chicago Public Schools - School Admissions Information SY2021",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3048,10 +2532,7 @@
         "name": "Chicago Park District: Movies in the Parks 2016",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location_1",
-                "granu": "Point"
-            }
+            "location_1"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3061,10 +2542,7 @@
         "name": "Financial Incentive Projects - (TIF-Funded) Economic Development",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "jobs_retained_aspirational",
@@ -3085,10 +2563,7 @@
         "name": "Libraries - 2020 Circulation by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "april",
@@ -3112,10 +2587,7 @@
         "name": "Libraries - 2021 Holds Filled by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "march",
@@ -3138,10 +2610,7 @@
         "name": "Libraries - 2023 Computer Sessions by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "april",
@@ -3165,10 +2634,7 @@
         "name": "Christmas Tree Recycling Locations (2016 - current)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3178,10 +2644,7 @@
         "name": "Chicago Public Schools - School Locations SY2021",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "the_geom",
-                "granu": "Point"
-            }
+            "the_geom"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3191,10 +2654,7 @@
         "name": "Halloweek On the Block 2022",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3204,10 +2664,7 @@
         "name": "Lending Equity - Depository Locations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3217,10 +2674,7 @@
         "name": "Libraries - 2023 Visitors by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "april",
@@ -3244,10 +2698,7 @@
         "name": "Financial Incentive Projects - TIF Works",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "jobs_created_aspirational",
@@ -3262,10 +2713,7 @@
         "name": "Chicago Public Schools - School Admissions Information SY2223",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3275,10 +2723,7 @@
         "name": "Christmas Tree Recycling Locations 2014",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3288,10 +2733,7 @@
         "name": "Libraries - 2022 Circulation by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "april",
@@ -3315,10 +2757,7 @@
         "name": "Ward Offices (Deprecated May 2015)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3328,10 +2767,7 @@
         "name": "Libraries - 2020 Computer Sessions by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "april",
@@ -3355,10 +2791,7 @@
         "name": "Libraries - 2023 Holds Filled by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "march",
@@ -3382,10 +2815,7 @@
         "name": "Libraries - 2022 Computer Sessions by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "january"
@@ -3397,10 +2827,7 @@
         "name": "Pharmacy Status",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "geocoded_column",
-                "granu": "Point"
-            }
+            "geocoded_column"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3410,10 +2837,7 @@
         "name": "Police ANOV/Misdemeanor Report - ANOVs",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3423,10 +2847,7 @@
         "name": "Libraries - 2023 Circulation by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "april",
@@ -3450,10 +2871,7 @@
         "name": "Financial Incentive Projects - Property Assessed Clean Energy (PACE)",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "jobs_retained_aspirational",
@@ -3471,10 +2889,7 @@
         "name": "CDPH Mental Health Resources",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3484,10 +2899,7 @@
         "name": "Libraries - 2023 Holds Placed by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "march",
@@ -3511,10 +2923,7 @@
         "name": "Meningitis Vaccine Locations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location_1",
-                "granu": "Point"
-            }
+            "location_1"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3524,10 +2933,7 @@
         "name": "Chicago Public Schools - School Locations SY2122",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "the_geom",
-                "granu": "Point"
-            }
+            "the_geom"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3537,10 +2943,7 @@
         "name": "Special Vaccine Locations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3550,10 +2953,7 @@
         "name": "COVID-19 - Businesses Requiring Proof of Vaccination - Historical",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3563,10 +2963,7 @@
         "name": "Back To School Immunization Locations",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location_1",
-                "granu": "Point"
-            }
+            "location_1"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3576,10 +2973,7 @@
         "name": "Influenza Risk Level by ZIP Code",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "zip_code_location",
-                "granu": "Point"
-            }
+            "zip_code_location"
         ],
         "num_columns": [
             "ili_activity_level"
@@ -3591,10 +2985,7 @@
         "name": "Libraries - 2020 Holds Placed by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "march",
@@ -3618,10 +3009,7 @@
         "name": "Chicago Public Schools - School Admissions Information SY1718",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3631,10 +3019,7 @@
         "name": "Libraries - 2020 Holds Filled by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "march",
@@ -3658,10 +3043,7 @@
         "name": "Tax Increment Financing (TIF) Annual Report - Properties Acquired/Sold by City",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3671,10 +3053,7 @@
         "name": "811 Chicago Utility Hit Tickets",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "related_dig_ticket"
@@ -3686,10 +3065,7 @@
         "name": "Chicago Public Schools - School Locations SY2223",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "the_geom",
-                "granu": "Point"
-            }
+            "the_geom"
         ],
         "num_columns": [],
         "domain": "data.cityofchicago.org",
@@ -3699,10 +3075,7 @@
         "name": "Libraries - 2022 Holds Filled by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "march",
@@ -3726,10 +3099,7 @@
         "name": "Libraries - 2022 Holds Placed by Location",
         "t_attrs": [],
         "s_attrs": [
-            {
-                "name": "location",
-                "granu": "Point"
-            }
+            "location"
         ],
         "num_columns": [
             "march",
