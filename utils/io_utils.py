@@ -4,9 +4,12 @@ import dill as pickle
 import yaml
 import os
 from utils.coordinate import S_GRANU
-
 from utils.time_point import T_GRANU
 
+stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom", "census_block", 
+            "stnoto", "stnofrom", "lon", "lat", "northing", "easting", "property_group", "insepctnumber", 'primarykey','beat_',
+            "north", "south", "west", "east", "beat_of_occurrence", "lastinspectionnumber", "fax", "latest_dist_res", "majority_dist", "latest_dist",
+            "f12", "f13", "bin"]
 
 def dump_json(path: str, obj):
     dir = os.path.dirname(path)
@@ -89,3 +92,44 @@ def load_corrs_to_df(data):
         ],
     )
     return df
+
+def remove_bad_cols(stop_words, corrs):
+    for stop_word in stop_words:
+        corrs = corrs[~((corrs['agg_attr1'] == f'avg_{stop_word}_t1') | (corrs['agg_attr2'] == f'avg_{stop_word}_t2'))]
+    return corrs
+
+# def load_corrs_from_dir(path):
+#     all_corr = None
+#     for filename in os.listdir(path):
+#         if filename.endswith(".csv"):
+#             df = pd.read_csv(path + filename)
+#             df = remove_bad_cols(stop_words, df)
+#             if all_corr is None:
+#                 all_corr = df
+#             else:
+#                 all_corr = pd.concat([all_corr, df])
+#     return all_corr
+
+def load_corrs_from_dir(path, index='name', remove_perfect_corrs=False):
+    all_corr = None
+    to_include = ['ijzp-q8t2', '85ca-t3if', 'x2n5-8w5q'] 
+    corr_map = {}
+    for filename in os.listdir(path):
+        if filename.endswith(".csv"):
+            df = pd.read_csv(path + filename)
+            if all_corr is None:
+                all_corr = df
+            else:
+                all_corr = pd.concat([all_corr, df])
+    all_corr = all_corr[~(((all_corr['agg_attr1'] == 'count_t1') & (~all_corr['tbl_id1'].isin(to_include))) | (((all_corr['agg_attr2'] == 'count_t2') & (~all_corr['tbl_id2'].isin(to_include)))))]
+    all_corr = remove_bad_cols(stop_words, all_corr)
+    if remove_perfect_corrs:
+        all_corr = all_corr[~(abs(all_corr['r_val'])==1)]
+    all_corr['agg_attr1'] = all_corr['agg_attr1'].str[:-3]
+    all_corr['agg_attr2'] = all_corr['agg_attr2'].str[:-3]
+    for _, row in all_corr.iterrows():
+        if index == 'id':
+            corr_map[tuple(sorted(["{}--{}".format(row['tbl_id1'], row['agg_attr1']), "{}--{}".format(row['tbl_id2'], row['agg_attr2'])]))] = row['r_val']
+        elif index == 'name':
+            corr_map[tuple(sorted(["{}--{}".format(row['tbl_name1'], row['agg_attr1']), "{}--{}".format(row['tbl_name2'], row['agg_attr2'])]))] = row['r_val']
+    return all_corr, corr_map

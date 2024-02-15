@@ -1,0 +1,32 @@
+{
+    "chicago_zipcode_population": {
+        "domain": "healthdata.gov",
+        "name": "chicago_zipcode_population",
+        "t_attrs": [],
+        "s_attrs": [
+            {
+                "name": "zipcode",
+                "granu": "ZIPCODE"
+            }
+        ],
+        "num_columns": [
+            "population"
+        ],
+        "link": "https://healthdata.gov/dataset/Chicago-Population-Counts/byg3-wj4e/about_data"
+    },
+    "chicago_income_by_zipcode": {
+        "domain": "simplemaps.com",
+        "name": "chicago_income_by_zipcode",
+        "t_attrs": [],
+        "s_attrs": [
+            {
+                "name": "zipcode",
+                "granu": "ZIPCODE"
+            }
+        ],
+        "num_columns": [
+            "income_household_median"
+        ],
+        "link": "https://simplemaps.com/city/chicago/zips/income-household-median"
+    }
+}

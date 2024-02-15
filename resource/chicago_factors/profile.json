@@ -1,0 +1,22 @@
+{
+    "chicago_zipcode_population": {
+        "avg_population_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_population_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        }
+    },
+    "chicago_income_by_zipcode": {
+        "avg_income_household_median_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_income_household_median_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    }
+}

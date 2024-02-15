@@ -678,7 +678,6 @@ class CorrSearch:
         start = time.time()
         self.visited_tbls.add(tbl1)
         agg_name1 = st_schema.get_agg_tbl_name(tbl1)
-        print(agg_name1)
         self.visited_schemas.add(agg_name1)
         if agg_name1 not in self.join_costs:
             print("skip because this table does not have enough keys")

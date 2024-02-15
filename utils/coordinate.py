@@ -33,6 +33,7 @@ name_to_granu = {
     "county": S_GRANU.COUNTY,
     "tract": S_GRANU.TRACT,
     "state": S_GRANU.STATE,
+    "zipcode": S_GRANU.ZIPCODE
 }
 
 

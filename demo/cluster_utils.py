@@ -2,6 +2,16 @@ import networkx as nx
 import pandas as pd
 from collections import defaultdict
 
+def get_clusters_fa(factor_clusters):
+    all_communities = {}
+    for i, comp in enumerate(factor_clusters):
+        community = defaultdict(list)
+        for tbl_var in comp:
+            x = tbl_var.split("--")
+            tbl, var = x[0], x[1]
+            community[tbl].append(var)
+        all_communities[f"Cluster {i}"] = community
+    return all_communities
 
 def get_clusters(G):
     # print(
@@ -114,7 +124,7 @@ Functions to retrieve correlations
 
 
 class CorrCommunity:
-    def __init__(self, corrs, name):
+    def __init__(self, corrs, name, clusters=None, comps=None):
         self.name = name
         self.corrs = corrs
         if self.name == "chicago":
@@ -133,6 +143,16 @@ class CorrCommunity:
             ]
         elif self.name == "un":
             self.display_attrs = ["tbl1", "attr1", "tbl2", "attr2", "r_val", "samples"]
+        if clusters:
+            self.all_communities = clusters
+            self.comps = defaultdict(list)
+            for cluster, comp in self.all_communities.items():
+                for tbl_name, var_list in comp.items():
+                    for var_name in var_list:
+                        self.comps[cluster].append("{}--{}".format(tbl_name, var_name))
+            self.comps = list(self.comps.values())
+        self.filtered_corr = corrs
+      
 
     def get_correlation_communities_chicago(self, signal_thresholds):
         self.filtered_corr = filter_on_signals(self.corrs, None, signal_thresholds)
@@ -144,12 +164,12 @@ class CorrCommunity:
         ).nunique()
         self.G = build_graph_on_vars(self.filtered_corr, 0, False)
         self.all_communities = self.get_communities(self.G)
-#         print(
-#             f"covered #tbls: {covered_tbls}, original #tbls: {original_tbls}, coverage ratio: {covered_tbls/original_tbls}, modularity score: {nx.community.modularity(self.G, self.comps)}"
-#         )
-#         print(
-#             f"covered #correlations: {len(self.filtered_corr)}, original #correlations: {len(self.corrs)}"
-#         )
+        print(
+            f"covered #tbls: {covered_tbls}, original #tbls: {original_tbls}, coverage ratio: {covered_tbls/original_tbls}, modularity score: {nx.community.modularity(self.G, self.comps)}"
+        )
+        print(
+            f"covered #correlations: {len(self.filtered_corr)}, original #correlations: {len(self.corrs)}"
+        )
 
     def get_correlation_communities_un(self, signal_thresholds):
         self.filtered_corr = self.corrs[
@@ -171,7 +191,7 @@ class CorrCommunity:
         )
 
     def get_communities(self, G):
-        # sort components by the number of correlations in the cluster
+        # sort components by the number of variables in the cluster
         self.comps = nx.community.louvain_communities(G)
         tmp = []
         for i, comp in enumerate(self.comps):
@@ -204,6 +224,11 @@ class CorrCommunity:
                 df["tbl_id2"] + "--" + df["agg_attr2"]
             ).isin(tbls)
             res = df[mask]
+            if len(res) == 0:
+                mask = (df["tbl_name1"] + "--" + df["agg_attr1"]).isin(tbls) & (
+                df["tbl_name2"] + "--" + df["agg_attr2"]
+                ).isin(tbls)
+                res = df[mask]
         elif self.name == "un":
             mask = (df["tbl1"] + "--" + df["attr1"]).isin(tbls) & (
                 df["tbl2"] + "--" + df["attr2"]

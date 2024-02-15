@@ -28,7 +28,7 @@ def show_df(df, name, prov=None, use_qgrid=False):
     download_button.on_click(download_data)
     display(download_button)
         
-def show_communities(corr_community: CorrCommunity, show_corr_in_same_tbl):
+def show_communities(corr_community: CorrCommunity, show_corr_in_same_tbl, use_qgrid=False):
     clusters = corr_community.all_communities
     # Function to be triggered when the dropdown value changes
     def on_dropdown_change(change):
@@ -82,12 +82,14 @@ def show_communities(corr_community: CorrCommunity, show_corr_in_same_tbl):
                 cluster_id, show_corr_in_same_tbl
             )
             display(f"{cluster_name} has {len(res)} correlations")
-
-            qgrid_widget = qgrid.show_grid(
-                res,
-                precision=2,
-                grid_options={"forceFitColumns": False, "defaultColumnWidth": 150},
-            )
+            if use_qgrid:
+                qgrid_widget = qgrid.show_grid(
+                    res,
+                    precision=2,
+                    grid_options={"forceFitColumns": False, "defaultColumnWidth": 150},
+                )
+            else:
+                display(res)
 
             def handle_selection_change(change):
                 selected_rows = qgrid_widget.get_changed_df()

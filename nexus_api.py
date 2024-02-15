@@ -3,7 +3,7 @@ from data_search.commons import FIND_JOIN_METHOD
 import pandas as pd
 from utils.time_point import T_GRANU
 from utils.coordinate import S_GRANU
-from utils.io_utils import load_corrs_to_df
+from utils.io_utils import load_corrs_to_df, load_corrs_from_dir
 from data_search.db_ops import join_two_agg_tables_api, read_agg_tbl, join_multi_vars
 import psycopg2
 import os
@@ -12,6 +12,9 @@ import utils.io_utils as io_utils
 from data_search.data_model import Var
 from typing import List
 from sklearn import linear_model
+from corr_analysis.factor_analysis.factor_analysis import factor_analysis, build_factor_clusters
+from factor_analyzer import FactorAnalyzer
+import pickle
 
 class API:
     def __init__(self, conn_str, data_sources=['chicago_1m_zipcode', 'chicago_factors'], impute_options=[], correction=''):
@@ -135,6 +138,15 @@ class API:
         df = read_agg_tbl(self.cur, agg_tbl_name)
         return df
 
+    def load_corrs_from_dir(self, corr_path):
+        return load_corrs_from_dir(corr_path)
+    
+    def factor_analysis(self, corrs, corrs_map, n_factors=3, save_path=None):
+        return factor_analysis(corrs, corrs_map, n_factors, save_path=save_path)
+    
+    def build_factor_clusters(self, fa, corrs, corr_map, n_factors, threshold=0.5):
+        return build_factor_clusters(fa, corrs, corr_map, n_factors, threshold)
+    
 if __name__ == '__main__':
     conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
     nexus_api = API(conn_str)
