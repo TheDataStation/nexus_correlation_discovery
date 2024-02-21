@@ -49,7 +49,7 @@ def convert_old_metadata_to_new_format(in_p, out_p):
         for attr in t_attr_names:
             t_attrs.append({"name": attr, "granu": "DateTime"})
         for attr in s_attrs_names:
-            s_attrs.append({"name": attr, "granu": "Point"})
+            s_attrs.append({"name": attr, "granu": "POINT"})
         info['t_attrs'] = t_attrs
         info['s_attrs'] = s_attrs
         new_metadata[info["tbl_id"]] = info
@@ -68,14 +68,14 @@ def convert_old_tbl_attrs_to_new_format(in_p, out_p):
             if tbl_id == 'asthma':
                 s_attrs.append({"name": attr, "granu": "ZIPCODE"})
             else:
-                s_attrs.append({"name": attr, "granu": "Point"})
+                s_attrs.append({"name": attr, "granu": "POINT"})
         info['t_attrs'] = t_attrs
         info['s_attrs'] = s_attrs
         new_metadata[tbl_id] = info
     io_utils.dump_json(out_p, new_metadata)
 
 if __name__ == '__main__':
-    # convert_old_metadata_to_new_format('resource/chicago_1m/chicago_open_data_bk.json', 'resource/chicago_1m/chicago_open_data.json')
+    # convert_old_tbl_attrs_to_new_format('resource/chicago_1m/tbl_attrs_chicago_1m_new.json', 'resource/chicago_1m/tbl_attrs_chicago_1m_latest.json')
     convert_old_tbl_attrs_to_new_format('resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk3.json', 'resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json')
     # remove_datasets("resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk2.json",  "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json")
     # add_link("resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk.json", 'resource/chicago_1m_zipcode/chicago_open_data_linked.json', "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json")

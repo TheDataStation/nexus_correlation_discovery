@@ -1,0 +1,28 @@
+{
+    "asthma": {
+        "avg_encAsthmaExac_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_encAsthmaExac_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_AttackPer_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_AttackPer_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_enc_asthma_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_enc_asthma_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    }
+}

@@ -204,24 +204,30 @@ class DBIngestorAgg:
         st_schema_list = []
         for t in t_attrs:
             for t_scale in t_scales:
-                st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t, t_scale))))
+                st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t["name"], t_scale))))
 
         for s in s_attrs:
             for s_scale in s_scales:
-                st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s, s_scale))))
+                if s["granu"] != 'POINT' and s["granu"] != s_scale.name:
+                    continue
+                st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s["name"], s_scale))))
 
         for t in t_attrs:
             for s in s_attrs:
                 if self.mode == 'cross':
                     for t_scale in t_scales:
                         for s_scale in s_scales:
+                            if s["granu"] != 'POINT' and s["granu"] != s_scale.name:
+                                continue
                             st_schema_list.append(
-                                (tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
+                                (tbl, ST_Schema(Unit(t["name"], t_scale), Unit(s["name"], s_scale)))
                             )
                 elif self.mode == 'no_cross':
                     for i in range(len(t_scales)):
+                        if s.granu != 'POINT' and s["granu"] != s_scales[i].name:
+                            continue
                         st_schema_list.append(
-                            (tbl, ST_Schema(Unit(t, t_scales[i]), Unit(s, s_scales[i])))
+                            (tbl, ST_Schema(Unit(t["name"], t_scales[i]), Unit(s["name"], s_scales[i])))
                         )
         for schema in st_schema_list:
             db_ops.create_cnt_tbl_for_agg_tbl(self.cur, schema[0], schema[1])
@@ -272,8 +278,8 @@ class DBIngestorAgg:
         # create aggregated tables
         self.create_agg_tbl(
             tbl.tbl_id,
-            [t_attr.name for t_attr in t_attrs_success],
-            [s_attr.name for s_attr in s_attrs_success],
+            t_attrs_success,
+            s_attrs_success,
             self.t_scales,
             self.s_scales,
             numerical_columns,
@@ -290,24 +296,30 @@ class DBIngestorAgg:
         st_schema_list = []
         for t in t_attrs:
             for scale in t_scales:
-                st_schema_list.append(ST_Schema(t_unit=Unit(t, scale)))
+                st_schema_list.append(ST_Schema(t_unit=Unit(t.name, scale)))
 
         for s in s_attrs:
             for scale in s_scales:
-                st_schema_list.append(ST_Schema(s_unit=Unit(s, scale)))
+                if s.granu != 'POINT' and s.granu != scale.name:
+                    continue
+                st_schema_list.append(ST_Schema(s_unit=Unit(s.name, scale)))
 
         for t in t_attrs:
             for s in s_attrs:
                 if self.mode == 'no_cross':
                     for i in range(len(t_scales)):
+                        if s.granu != 'POINT' and s.granu != s_scales[i].name:
+                            continue
                         st_schema_list.append(
-                            ST_Schema(Unit(t, t_scales[i]), Unit(s, s_scales[i]))
+                            ST_Schema(Unit(t.name, t_scales[i]), Unit(s.name, s_scales[i]))
                         )
                 elif self.mode == 'cross':
                     for t_scale in t_scales:
                         for s_scale in s_scales:
+                            if s.granu != 'POINT' and s.granu != s_scale.name:
+                                continue
                             st_schema_list.append(
-                                ST_Schema(Unit(t, t_scale), Unit(s, s_scale))
+                                ST_Schema(Unit(t.name, t_scale), Unit(s.name, s_scale))
                             )
 
         for st_schema in st_schema_list:
@@ -510,39 +522,43 @@ class DBIngestorAgg:
 
 if __name__ == "__main__":
     # ingest asthma dataset
-    data_sources = ['chicago_factors']
+    # data_sources = ['chicago_factors']
+    # # conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
+    # conn_str = "postgresql://yuegong@localhost/chicago_1m_new"
+    # t_scales = []
+    # s_scales = [S_GRANU.TRACT, S_GRANU.ZIPCODE]
+
+    # # ingest tables
+    # for data_source in data_sources:
+    #     print(data_source)
+    #     start_time = time.time()
+    #     ingestor = DBIngestorAgg(conn_str, data_source, t_scales, s_scales)
+    #     ingestor.ingest_data_source(clean=False, persist=True, max_limit=1)
+    #     print(f"ingesting data finished in {time.time() - start_time} s")
+
+    # # create count tables for inverted index tables
+    # idx_tbls = ["space_3_inv", "space_6_inv"]
+    # DBIngestorAgg.create_cnt_tbls_for_inv_index_tbls(conn_str, idx_tbls) 
+
+    # # create count tables for individual tables
+    # for data_source in data_sources:
+    #     ingestor = DBIngestorAgg(conn_str, data_source, t_scales, s_scales)
+    #     config = io_utils.load_config(data_source)
+    #     print(config["attr_path"])
+    #     tbl_attrs = io_utils.load_json(config["attr_path"])
+    #     for tbl_id, info in tbl_attrs.items():
+    #         print(data_source, tbl_id)
+    #         ingestor.create_cnt_tbl(
+    #             tbl_id,
+    #             info["t_attrs"],
+    #             info["s_attrs"],
+    #             t_scales,
+    #             s_scales,
+    #         )
+
+    data_sources = ['asthma']
+    t_scales, s_scales = [], [S_GRANU.ZIPCODE]
     conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
-    t_scales = []
-    s_scales = [S_GRANU.ZIPCODE]
-
-    # ingest tables
-    for data_source in data_sources:
-        print(data_source)
-        start_time = time.time()
-        conn_string = "postgresql://yuegong@localhost/chicago_1m_zipcode"
-        ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
-        ingestor.ingest_data_source(clean=False, persist=True, max_limit=1)
-        print(f"ingesting data finished in {time.time() - start_time} s")
-
-    # create count tables for inverted index tables
-    idx_tbls = ["space_6_inv"]
-    DBIngestorAgg.create_cnt_tbls_for_inv_index_tbls(conn_str, idx_tbls) 
-
-    # create count tables for individual tables
-    for data_source in data_sources:
-        ingestor = DBIngestorAgg(conn_str, data_source, t_scales, s_scales)
-        config = io_utils.load_config(data_source)
-        print(config["attr_path"])
-        tbl_attrs = io_utils.load_json(config["attr_path"])
-        for tbl_id, info in tbl_attrs.items():
-            print(data_source, tbl_id)
-            ingestor.create_cnt_tbl(
-                tbl_id,
-                [t_attr['name'] for t_attr in info["t_attrs"]],
-                [s_attr['name'] for s_attr in info["s_attrs"]],
-                t_scales,
-                s_scales,
-            )
     # create profiles
     for data_source in data_sources:
         profiler = Profiler(data_source, t_scales, s_scales, conn_str)

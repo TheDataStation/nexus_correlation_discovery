@@ -3,7 +3,7 @@ from data_search.commons import FIND_JOIN_METHOD
 import pandas as pd
 from utils.time_point import T_GRANU
 from utils.coordinate import S_GRANU
-from utils.io_utils import load_corrs_to_df, load_corrs_from_dir
+from utils.io_utils import load_corrs_to_df, load_corrs_from_dir, dump_json
 from data_search.db_ops import join_two_agg_tables_api, read_agg_tbl, join_multi_vars
 import psycopg2
 import os
@@ -13,11 +13,11 @@ from data_search.data_model import Var
 from typing import List
 from sklearn import linear_model
 from corr_analysis.factor_analysis.factor_analysis import factor_analysis, build_factor_clusters
-from factor_analyzer import FactorAnalyzer
-import pickle
+import time
+from datetime import datetime
 
 class API:
-    def __init__(self, conn_str, data_sources=['chicago_1m_zipcode', 'chicago_factors'], impute_options=[], correction=''):
+    def __init__(self, conn_str, data_sources=['chicago_1m_zipcode', 'asthma', 'chicago_factors'], impute_options=[], correction=''):
         self.conn_str = conn_str
         conn_copg2 = psycopg2.connect(self.conn_str)
         self.cur = conn_copg2.cursor()
@@ -69,14 +69,22 @@ class API:
         corr_search = CorrSearch(
             self.conn_str,
             self.data_sources,
-            FIND_JOIN_METHOD.JOIN_ALL,
+            FIND_JOIN_METHOD.COST_MODEL,
             impute_methods=self.impute_options,
             explicit_outer_join=False,
             correct_method='FDR',
             q_val=0.05,
         )
         corr_search.set_join_cost(t_granu, s_granu, overlap_t)
-        corr_search.find_all_corr_for_all_tbls([t_granu, s_granu], overlap_t, r_t, p_t=0.05, corr_type=corr_type, fill_zero=True, dir_path=persist_path)
+        start = time.time()
+        corr_search.find_all_corr_for_all_tbls([t_granu, s_granu], overlap_t, r_t, p_t=0.05, corr_type=corr_type, fill_zero=True, dir_path=persist_path, control_vars=control_vars)
+        total_time = time.time() - start
+        corr_search.perf_profile["total_time"] = total_time
+        corr_search.perf_profile["cost_model_overhead"] = corr_search.overhead
+        dump_json(
+            f"tmp/perf_profile_{'_'.join(self.data_sources)}_{overlap_t}_{r_t}_{t_granu}_{s_granu}_{'_'.join([var.to_str() for var in control_vars])}.json",
+            corr_search.perf_profile,
+        )
         corrs = load_corrs_to_df(corr_search.all_corrs)
         corrs['agg_attr1'] = corrs['agg_attr1'].str[:-3]
         corrs['agg_attr2'] = corrs['agg_attr2'].str[:-3]
@@ -137,6 +145,15 @@ class API:
     def show_agg_dataset(self, agg_tbl_name):
         df = read_agg_tbl(self.cur, agg_tbl_name)
         return df
+
+    def get_total_number_of_vars(self):
+        total_num = 0
+        for tbl, info in self.catalog.items():
+            vars = info['num_columns']
+            total_num += len(vars)
+            if len(vars) == 0 or tbl == '85ca-t3if':
+                total_num += 1
+        return total_num
 
     def load_corrs_from_dir(self, corr_path):
         return load_corrs_from_dir(corr_path)

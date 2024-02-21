@@ -40,8 +40,8 @@ class Profiler:
         for tbl in tqdm(self.tbl_attrs.keys()):
             print(tbl)
             t_attrs, s_attrs, num_columns = (
-                [t_attr["name"] for t_attr in self.tbl_attrs[tbl]["t_attrs"]],
-                [s_attr["name"] for s_attr in self.tbl_attrs[tbl]["s_attrs"]],
+                self.tbl_attrs[tbl]["t_attrs"],
+                self.tbl_attrs[tbl]["s_attrs"],
                 self.tbl_attrs[tbl]["num_columns"],
             )
             self.profile_tbl(
@@ -49,6 +49,34 @@ class Profiler:
             )
         io_utils.dump_json(self.config["col_stats_path"], self.stats_dict)
 
+    @staticmethod
+    def load_st_schemas_for_a_tbl(tbl_attrs, tbl, t_scale, s_scale):
+        st_schema_list = []
+        t_attrs, s_attrs = (
+            tbl_attrs[tbl]["t_attrs"],
+            tbl_attrs[tbl]["s_attrs"],
+        )
+
+        if t_scale:
+            for t in t_attrs:
+                st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t['name'], t_scale))))
+              
+        if s_scale:
+            for s in s_attrs:
+                if s['granu'] != 'POINT' and s['granu'] != s_scale.name:
+                    continue
+                st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s['name'], s_scale))))
+           
+        if t_scale and s_scale:
+            for t in t_attrs:
+                for s in s_attrs:
+                    if s['granu'] != 'POINT' and s['granu'] != s_scale.name:
+                        continue
+                    st_schema_list.append(
+                        (tbl, ST_Schema(Unit(t['name'], t_scale), Unit(s['name'], s_scale)))
+                    )
+        return st_schema_list
+                
     @staticmethod
     def load_all_st_schemas(tbl_attrs, t_scale, s_scale, type_aware=False):
         st_schema_list = []
@@ -58,29 +86,34 @@ class Profiler:
             st_schema_dict = {SchemaType.TIME: [], SchemaType.SPACE: [], SchemaType.TS: []}
         for tbl in all_tbls:
             t_attrs, s_attrs = (
-                [t_attr['name'] for t_attr in tbl_attrs[tbl]["t_attrs"]],
-                [s_attr['name'] for s_attr in tbl_attrs[tbl]["s_attrs"]],
+                tbl_attrs[tbl]["t_attrs"],
+                tbl_attrs[tbl]["s_attrs"],
             )
 
-            for t in t_attrs:
-                # if t == 'claimdate' or t == 'claim_date' or 'report' in t or 'created' in t or t == 'modified_date' or "expiration" in t:
-                #     continue
-                st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t, t_scale))))
-                if type_aware:
-                    st_schema_dict[SchemaType.TIME].append((tbl, ST_Schema(t_unit=Unit(t, t_scale))))
-
-            for s in s_attrs:
-                st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s, s_scale))))
-                if type_aware:
-                    st_schema_dict[SchemaType.SPACE].append((tbl, ST_Schema(s_unit=Unit(s, s_scale))))
-
-            for t in t_attrs:
-                for s in s_attrs:
-                    st_schema_list.append(
-                        (tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
-                    )
+            if t_scale:
+                for t in t_attrs:
+                    st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t['name'], t_scale))))
                     if type_aware:
-                        st_schema_dict[SchemaType.TS].append((tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale))))
+                        st_schema_dict[SchemaType.TIME].append((tbl, ST_Schema(t_unit=Unit(t['name'], t_scale))))
+
+            if s_scale:
+                for s in s_attrs:
+                    if s['granu'] != 'POINT' and s['granu'] != s_scale.name:
+                        continue
+                    st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s['name'], s_scale))))
+                if type_aware:
+                        st_schema_dict[SchemaType.SPACE].append((tbl, ST_Schema(s_unit=Unit(s['name'], s_scale))))
+
+            if t_scale and s_scale:
+                for t in t_attrs:
+                    for s in s_attrs:
+                        if s['granu'] != 'POINT' and s['granu'] != s_scale.name:
+                            continue
+                        st_schema_list.append(
+                            (tbl, ST_Schema(Unit(t['name'], t_scale), Unit(s['name'], s_scale)))
+                        )
+                        if type_aware:
+                            st_schema_dict[SchemaType.TS].append((tbl, ST_Schema(Unit(t['name'], t_scale), Unit(s['name'], s_scale))))
         if type_aware:
             return st_schema_dict
         else:
@@ -190,23 +223,29 @@ class Profiler:
         st_schema_list = []
         for t in t_attrs:
             for scale in t_scales:
-                st_schema_list.append(ST_Schema(t_unit=Unit(t, scale)))
+                st_schema_list.append(ST_Schema(t_unit=Unit(t["name"], scale)))
 
         for s in s_attrs:
             for scale in s_scales:
-                st_schema_list.append(ST_Schema(s_unit=Unit(s, scale)))
+                if s["granu"] != 'POINT' and s["granu"] != scale.name:
+                    continue
+                st_schema_list.append(ST_Schema(s_unit=Unit(s["name"], scale)))
 
         for t in t_attrs:
             for s in s_attrs:
                 if mode == 'cross':
                     for t_scale in t_scales:
                         for s_scale in s_scales:
+                            if s["granu"] != 'POINT' and s["granu"] != s_scale.name:
+                                continue
                             st_schema_list.append(
-                                ST_Schema(Unit(t, t_scale), Unit(s, s_scale))
+                                ST_Schema(Unit(t["name"], t_scale), Unit(s['name'], s_scale))
                             )
                 elif mode == 'no_cross':
                     for i in range(len(t_scales)):
-                        st_schema_list.append(ST_Schema(Unit(t, t_scales[i]), Unit(s, s_scales[i])))
+                        if s["granu"] != 'POINT' and s["granu"] != s_scales[i].name:
+                            continue    
+                        st_schema_list.append(ST_Schema(Unit(t["name"], t_scales[i]), Unit(s["name"], s_scales[i])))
 
         for st_schema in st_schema_list:
             self.profile_st_schema(tbl, st_schema, num_columns)

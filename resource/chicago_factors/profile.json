@@ -18,5 +18,15 @@
             "missing_ratio": 0.0,
             "zero_ratio": 0.0
         }
+    },
+    "chicago_census_tract_population": {
+        "avg_population_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_population_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        }
     }
 }

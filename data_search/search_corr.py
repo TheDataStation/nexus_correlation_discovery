@@ -291,7 +291,7 @@ class CorrSearch:
         df.to_csv("{}/corr_{}.csv".format(dir_path, schema_id))
 
     def find_all_corr_for_all_tbls(
-        self, granu_list, o_t, r_t, p_t, corr_type='pearson', fill_zero=False, dir_path=None, st_type=None
+        self, granu_list, o_t, r_t, p_t, corr_type='pearson', fill_zero=False, dir_path=None, st_type=None, control_vars=[]
     ):
         t_granu, s_granu = granu_list[0], granu_list[1]
         # profiler = Profiler(self.data_source, [t_granu], [s_granu])
@@ -310,7 +310,7 @@ class CorrSearch:
             if st_type == 'time_space':
                 if st_schema.get_type() != SchemaType.TIME and st_schema.get_type() != SchemaType.SPACE:
                     continue
-            self.find_all_corr_for_a_tbl_schema(tbl, st_schema, o_t, r_t, p_t, fill_zero, corr_type=corr_type)
+            self.find_all_corr_for_a_tbl_schema(tbl, st_schema, o_t, r_t, p_t, fill_zero, corr_type=corr_type, control_vars=control_vars)
             start = time.time()
             if dir_path:
                 if self.mode == 'data_polygamy':
@@ -325,25 +325,13 @@ class CorrSearch:
             self.perf_profile["time_dump_csv"]["total"] += time_used
         
     def find_all_corr_for_a_tbl(self, tbl, granu_list, o_t, r_t, p_t, fill_zero, corr_type='pearson', control_vars=[]):
-        st_schema_list = []
-        t_attrs, s_attrs = (
-            [t_attr['name'] for t_attr in self.tbl_attrs[tbl]["t_attrs"]],
-            [s_attr['name'] for s_attr in self.tbl_attrs[tbl]["s_attrs"]]
-        )
         t_granu, s_granu = granu_list[0], granu_list[1]
+        
         if not self.st_schemas_dict:
             self.st_schemas_dict = Profiler.load_all_st_schemas(self.tbl_attrs, t_granu, s_granu, type_aware=True)
-        for t in t_attrs:
-            st_schema_list.append(ST_Schema(t_unit=Unit(t, t_granu)))
 
-        for s in s_attrs:
-            st_schema_list.append(ST_Schema(s_unit=Unit(s, s_granu)))
-
-        for t in t_attrs:
-            for s in s_attrs:
-                st_schema_list.append(ST_Schema(Unit(t, t_granu), Unit(s, s_granu)))
-
-        for st_schema in st_schema_list:
+        st_schema_list = Profiler.load_st_schemas_for_a_tbl(self.tbl_attrs, tbl, t_granu, s_granu)
+        for _, st_schema in st_schema_list:
             self.find_all_corr_for_a_tbl_schema(
                 tbl, st_schema, o_t, r_t, p_t, fill_zero, corr_type, control_vars
             )
@@ -427,11 +415,11 @@ class CorrSearch:
             else:
                 return None, None, None, None
 
-        df1, df2 = merged[names1].astype(float), merged[names2].astype(float)
+        df1, df2 = merged[names1].astype(float).round(3), merged[names2].astype(float).round(3)
+        df1, df2 = self.drop_constant_columns(df1), self.drop_constant_columns(df2)
         if outer:
-            df1_outer, df2_outer = merged_outer[names1].astype(float), merged_outer[
-                names2
-            ].astype(float)
+            df1_outer, df2_outer = merged_outer[names1].astype(float).round(3), merged_outer[names2].astype(float).round(3)
+            df1_outer, df2_outer = self.drop_constant_columns(df1_outer), self.drop_constant_columns(df2_outer)
             return df1, df2, df1_outer, df2_outer
         return df1, df2
 
@@ -735,6 +723,8 @@ class CorrSearch:
             return
         # print(len(aligned_schemas))
         for tbl2, agg_name2 in aligned_schemas:
+            if tbl2 not in self.tbl_attrs:
+                continue
             if self.find_join_only:
                 start = time.time()
                 overlap = db_ops.get_intersection(self.cur, agg_name1, agg_name2)
@@ -914,11 +904,9 @@ class CorrSearch:
                 for corr in corr_group[0 : largest_i + 1]:
                     if abs(corr.r_val) >= r_t:
                         corr.agg_col1.set_profile(
-                            corr.agg_col1.col_data,
                             self.column_profiles[corr.agg_col1.tbl_id],
                         )
                         corr.agg_col2.set_profile(
-                            corr.agg_col2.col_data,
                             self.column_profiles[corr.agg_col2.tbl_id],
                         )
                         corrected_corr_group.append(corr)
@@ -1088,14 +1076,18 @@ class CorrSearch:
             res.append(new_corr)
         return res
 
-    def get_corrs_with_control_vars(self, df, tbl1, agg_name1, var1_l, tbl2, agg_name2, var2_l, control_vars, r_t, p_t, fill_zero, flag, corr_type='pearson'):
-        res = []
-        if fill_zero:
-            df = df.fillna(0)
+    def drop_constant_columns(self, df):
         # drop columns where all values are the same
         nunique = df.nunique()
         cols_to_drop = nunique[nunique == 1].index
         df = df.drop(cols_to_drop, axis=1)
+        return df
+    
+    def get_corrs_with_control_vars(self, df, tbl1, agg_name1, var1_l, tbl2, agg_name2, var2_l, control_vars, r_t, p_t, fill_zero, flag, corr_type='pearson'):
+        res = []
+        if fill_zero:
+            df = df.fillna(0)
+        df = self.drop_constant_columns(df)
  
         for var1 in var1_l:
             if var1 not in df.columns:
@@ -1103,8 +1095,21 @@ class CorrSearch:
             for var2 in var2_l:
                 if var2 not in df.columns:
                     continue
-                # print(var1, var2, control_vars)
+                if var1[:-3] in control_vars or var2[:-3] in control_vars:
+                    # print(var1, var2, control_vars)
+                    continue
+                # import warnings
+                # warnings.filterwarnings("error")
+                # try:
                 partial_corr = pg.partial_corr(data=df, x=var1, y=var2, covar=control_vars, method=corr_type).round(3)
+                # except Warning as e:
+                #     print(e)
+                #     import traceback
+                #     print(traceback.format_exc())
+                #     print([var1, var2, *control_vars])
+                #     print(df[[var1, var2, *control_vars]].columns)
+                #     print(df[[var1, var2, *control_vars]].to_csv('debug.csv', index=False))
+                #     break
                 r_val, p_val = partial_corr['r'].iloc[0], partial_corr['p-val'].iloc[0]
                 
                 if not r_val or np.isnan(r_val):
@@ -1113,7 +1118,8 @@ class CorrSearch:
                 if self.correct_method == "" or self.correct_method is None:
                     if abs(r_val) < r_t or p_val > p_t:
                         continue
-           
+                if abs(r_val) >= r_t:
+                    self.perf_profile["corr_counts"]["before"] += 1
                 agg_col1 = AggColumn(
                     self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, var1
                     )

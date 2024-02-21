@@ -1,28 +1,11 @@
 {
-    "asthma": {
-        "name": "asthma",
-        "t_attrs": [],
-        "s_attrs": [
-            {
-                "name": "Zip5",
-                "granu": "ZIPCODE"
-            }
-        ],
-        "num_columns": [
-            "enc_asthma",
-            "encAsthmaExac",
-            "AttackPer"
-        ],
-        "domain": "uchicago medical school",
-        "link": "unknown"
-    },
     "ijzp-q8t2": {
         "name": "Crimes - 2001 to Present",
         "t_attrs": [],
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -35,7 +18,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -56,7 +39,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -71,7 +54,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -84,7 +67,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -97,7 +80,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -118,7 +101,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -135,7 +118,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -148,7 +131,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -163,7 +146,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -188,7 +171,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -201,11 +184,11 @@
         "s_attrs": [
             {
                 "name": "dropoff_centroid_location",
-                "granu": "Point"
+                "granu": "POINT"
             },
             {
                 "name": "pickup_centroid_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -226,7 +209,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -239,7 +222,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -252,7 +235,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -265,7 +248,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -278,7 +261,7 @@
         "s_attrs": [
             {
                 "name": "zip_code_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -300,7 +283,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -313,7 +296,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -326,11 +309,11 @@
         "s_attrs": [
             {
                 "name": "pickup_centroid_location",
-                "granu": "Point"
+                "granu": "POINT"
             },
             {
                 "name": "dropoff_centroid_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -351,7 +334,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -364,7 +347,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -385,7 +368,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -398,7 +381,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -413,7 +396,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -426,7 +409,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -439,7 +422,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -454,7 +437,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -469,7 +452,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -482,7 +465,7 @@
         "s_attrs": [
             {
                 "name": "estimated_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -498,7 +481,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -513,7 +496,7 @@
         "s_attrs": [
             {
                 "name": "start_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -531,7 +514,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -546,11 +529,11 @@
         "s_attrs": [
             {
                 "name": "nw_location",
-                "granu": "Point"
+                "granu": "POINT"
             },
             {
                 "name": "se_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -567,7 +550,7 @@
         "s_attrs": [
             {
                 "name": "relocated_from_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -580,7 +563,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -597,7 +580,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -610,7 +593,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -625,7 +608,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -638,7 +621,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -651,7 +634,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -664,7 +647,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -677,7 +660,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -690,7 +673,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -703,7 +686,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -731,7 +714,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -744,7 +727,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -757,7 +740,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -773,7 +756,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -786,7 +769,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -799,7 +782,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -812,7 +795,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -825,7 +808,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -841,11 +824,11 @@
         "s_attrs": [
             {
                 "name": "from_location",
-                "granu": "Point"
+                "granu": "POINT"
             },
             {
                 "name": "to_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -860,7 +843,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -873,7 +856,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -889,7 +872,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -902,7 +885,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -915,7 +898,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -928,7 +911,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -944,7 +927,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -960,7 +943,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -975,7 +958,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -988,7 +971,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1007,7 +990,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1034,7 +1017,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1049,7 +1032,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1062,7 +1045,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1075,7 +1058,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1108,7 +1091,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1123,7 +1106,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1136,7 +1119,7 @@
         "s_attrs": [
             {
                 "name": "zip_code_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1178,7 +1161,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1199,7 +1182,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1214,7 +1197,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1227,7 +1210,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1302,7 +1285,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1315,7 +1298,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1328,7 +1311,7 @@
         "s_attrs": [
             {
                 "name": "start_centroid_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1345,7 +1328,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1360,7 +1343,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1378,7 +1361,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1391,7 +1374,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1404,7 +1387,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1419,7 +1402,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1436,7 +1419,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1453,7 +1436,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1468,7 +1451,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1483,7 +1466,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1541,7 +1524,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1615,7 +1598,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1628,7 +1611,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1641,7 +1624,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1696,7 +1679,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1709,7 +1692,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1725,7 +1708,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1740,7 +1723,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1779,7 +1762,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1798,7 +1781,7 @@
         "s_attrs": [
             {
                 "name": "location_1",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1811,7 +1794,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1828,7 +1811,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1841,7 +1824,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1854,7 +1837,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1870,7 +1853,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1883,7 +1866,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1896,7 +1879,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1909,7 +1892,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -1922,7 +1905,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -1937,7 +1920,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2000,7 +1983,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2013,7 +1996,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2026,7 +2009,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2039,7 +2022,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2052,7 +2035,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2065,7 +2048,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2078,7 +2061,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2091,7 +2074,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2104,7 +2087,7 @@
         "s_attrs": [
             {
                 "name": "start_centroid_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2120,7 +2103,7 @@
         "s_attrs": [
             {
                 "name": "map",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2133,7 +2116,7 @@
         "s_attrs": [
             {
                 "name": "map",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2146,7 +2129,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2159,7 +2142,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2172,7 +2155,7 @@
         "s_attrs": [
             {
                 "name": "location_1",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2188,7 +2171,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2201,7 +2184,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2214,7 +2197,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2227,7 +2210,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2240,7 +2223,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2295,7 +2278,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2310,7 +2293,7 @@
         "s_attrs": [
             {
                 "name": "physical_address",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2323,7 +2306,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2336,7 +2319,7 @@
         "s_attrs": [
             {
                 "name": "start_centroid_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2351,7 +2334,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2371,7 +2354,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2384,7 +2367,7 @@
         "s_attrs": [
             {
                 "name": "geocoded_column",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2397,7 +2380,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2412,7 +2395,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2439,7 +2422,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2452,7 +2435,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2465,7 +2448,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2482,7 +2465,7 @@
         "s_attrs": [
             {
                 "name": "map",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2495,7 +2478,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2522,7 +2505,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2547,7 +2530,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2578,7 +2561,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2612,7 +2595,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2625,7 +2608,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2638,7 +2621,7 @@
         "s_attrs": [
             {
                 "name": "location_1",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2651,7 +2634,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2673,7 +2656,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2706,7 +2689,7 @@
         "s_attrs": [
             {
                 "name": "map_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2722,7 +2705,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2753,7 +2736,7 @@
         "s_attrs": [
             {
                 "name": "the_geom",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2766,7 +2749,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2779,7 +2762,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2794,7 +2777,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2815,7 +2798,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2841,7 +2824,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2901,7 +2884,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2914,7 +2897,7 @@
         "s_attrs": [
             {
                 "name": "location_1",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2927,7 +2910,7 @@
         "s_attrs": [
             {
                 "name": "geocoded_column",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -2940,7 +2923,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2967,7 +2950,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -2987,11 +2970,11 @@
         "s_attrs": [
             {
                 "name": "pickup_centroid_location",
-                "granu": "Point"
+                "granu": "POINT"
             },
             {
                 "name": "dropoff_centroid_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3014,7 +2997,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3037,7 +3020,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3050,7 +3033,7 @@
         "s_attrs": [
             {
                 "name": "location_1",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3063,7 +3046,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3087,7 +3070,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3114,7 +3097,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3140,7 +3123,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3167,7 +3150,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3180,7 +3163,7 @@
         "s_attrs": [
             {
                 "name": "the_geom",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3193,7 +3176,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3206,7 +3189,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3219,7 +3202,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3246,7 +3229,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3264,7 +3247,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3277,7 +3260,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3290,7 +3273,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3317,7 +3300,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3330,7 +3313,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3357,7 +3340,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3384,7 +3367,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3399,7 +3382,7 @@
         "s_attrs": [
             {
                 "name": "geocoded_column",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3412,7 +3395,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3425,7 +3408,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3452,7 +3435,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3473,7 +3456,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3486,7 +3469,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3513,7 +3496,7 @@
         "s_attrs": [
             {
                 "name": "location_1",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3526,7 +3509,7 @@
         "s_attrs": [
             {
                 "name": "the_geom",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3539,7 +3522,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3552,7 +3535,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3565,7 +3548,7 @@
         "s_attrs": [
             {
                 "name": "location_1",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3578,7 +3561,7 @@
         "s_attrs": [
             {
                 "name": "zip_code_location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3593,7 +3576,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3620,7 +3603,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3633,7 +3616,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3660,7 +3643,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3673,7 +3656,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3688,7 +3671,7 @@
         "s_attrs": [
             {
                 "name": "the_geom",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [],
@@ -3701,7 +3684,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [
@@ -3728,7 +3711,7 @@
         "s_attrs": [
             {
                 "name": "location",
-                "granu": "Point"
+                "granu": "POINT"
             }
         ],
         "num_columns": [

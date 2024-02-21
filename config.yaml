@@ -17,7 +17,7 @@ chicago_1m:
     geo_chain: "block, tract, county, state"
     geo_keys: "blockce10, tractce10, countyfp10, statefp10"
     meta_path: "resource/chicago_1m/chicago_open_data.json"
-    attr_path: "resource/chicago_1m/tbl_attrs_chicago_1m_new.json"
+    attr_path: "resource/chicago_1m/tbl_attrs_chicago_1m_latest.json"
     profile_path: "resource/chicago_1m/profile_chicago_1m.json"
     col_stats_path: "resource/chicago_1m/col_stats_chicago_1m.json"
     idx_tbl_path: "resource/chicago_1m/idx_tbl_names.json"

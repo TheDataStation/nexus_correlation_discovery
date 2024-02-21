@@ -412,7 +412,7 @@ def join_multi_agg_tbls(cur, tbl_cols: Dict[str, List[Variable]]):
         )
     cur.execute(query)
     df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
-    return df.astype(float)
+    return df.astype(float).round(3)
     
 def join_multi_vars(cur, vars: List[Var], constraints=None):
     tbl_cols = collections.defaultdict(list)

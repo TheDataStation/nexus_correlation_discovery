@@ -28,5 +28,20 @@
             "income_household_median"
         ],
         "link": "https://simplemaps.com/city/chicago/zips/income-household-median"
+    },
+    "chicago_census_tract_population": {
+        "domain": "data.cityofchicago.org",
+        "name": "chicago_census_tract_population",
+        "t_attrs": [],
+        "s_attrs": [
+            {
+                "name": "census_tract",
+                "granu": "TRACT"
+            }
+        ],
+        "num_columns": [
+            "population"
+        ],
+        "link": "https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Population-by-2010-Census-Block/5yjb-v3mj/about_data"
     }
 }

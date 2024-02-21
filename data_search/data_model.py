@@ -39,6 +39,8 @@ class Var:
     def __init__(self, tbl_id, attr_name):
         self.tbl_id = tbl_id   
         self.attr_name = attr_name
+    def to_str(self):
+        return "{}-{}".format(self.tbl_id, self.attr_name)
 
 
 class Unit:

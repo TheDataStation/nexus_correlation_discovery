@@ -30,5 +30,21 @@
             "res_sum": 0.0,
             "cnt": 60
         }
+    },
+    "chicago_census_tract_population_census_tract_3": {
+        "avg_population": {
+            "sum": 2695598.0,
+            "sum_square": 11567268518.0,
+            "avg": 3340.2701,
+            "res_sum": 2563243019.1103,
+            "cnt": 807
+        },
+        "count": {
+            "sum": 807.0,
+            "sum_square": 807.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 807
+        }
     }
 }

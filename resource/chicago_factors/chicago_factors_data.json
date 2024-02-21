@@ -15,7 +15,7 @@
         "domain": "healthdata.gov",
         "link": "https://healthdata.gov/dataset/Chicago-Population-Counts/byg3-wj4e/about_data"
     },
-    "chicago_zipcode_income": {
+    "chicago_income_by_zipcode": {
         "tbl_id": "chicago_income_by_zipcode",
         "tbl_name": "chicago_income_by_zipcode",
         "t_attrs": [],
@@ -30,5 +30,21 @@
         ],
         "domain": "simplemaps.com",
         "link": "https://simplemaps.com/city/chicago/zips/income-household-median"
+    },
+    "chicago_census_tract_population": {
+        "tbl_id": "chicago_census_tract_population",
+        "tbl_name": "chicago_census_tract_population",
+        "t_attrs": [],
+        "s_attrs": [
+            {
+                "name": "census_tract",
+                "granu": "TRACT"
+            }
+        ],
+        "num_columns": [
+            "population"
+        ],
+        "domain": "data.cityofchicago.org",
+        "link": "https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Population-by-2010-Census-Block/5yjb-v3mj/about_data"
     }
 }
