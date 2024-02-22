@@ -473,4 +473,4 @@ def read_agg_tbl(cur, agg_tbl: str, vars: List[Variable]=[]):
     cur.execute(query)
 
     df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
-    return df
+    return df.astype(float).round(3)

@@ -15,6 +15,7 @@ from sklearn import linear_model
 from corr_analysis.factor_analysis.factor_analysis import factor_analysis, build_factor_clusters
 import time
 from datetime import datetime
+from data_ingestion.profile_datasets import Profiler
 
 class API:
     def __init__(self, conn_str, data_sources=['chicago_1m_zipcode', 'asthma', 'chicago_factors'], impute_options=[], correction=''):
@@ -146,13 +147,21 @@ class API:
         df = read_agg_tbl(self.cur, agg_tbl_name)
         return df
 
-    def get_total_number_of_vars(self):
+    def get_total_number_of_vars(self, t_granu, s_granu):
         total_num = 0
-        for tbl, info in self.catalog.items():
-            vars = info['num_columns']
-            total_num += len(vars)
-            if len(vars) == 0 or tbl == '85ca-t3if':
-                total_num += 1
+        st_schema_list = Profiler.load_all_st_schemas(self.catalog, t_granu, s_granu)
+        for tbl, st_schema in st_schema_list:
+            agg_tbl = st_schema.get_agg_tbl_name(tbl)
+            df = read_agg_tbl(self.cur, agg_tbl)
+            # drop columns where all values are the same
+            nunique = df.nunique()
+            cols_to_drop = nunique[nunique == 1].index
+            df = df.drop(cols_to_drop, axis=1)
+            num_valid_columns = len(df.columns) - 1
+            if num_valid_columns == 1 or tbl == '85ca-t3if':
+                total_num += num_valid_columns
+            else:
+                total_num += num_valid_columns - 1
         return total_num
 
     def load_corrs_from_dir(self, corr_path):
