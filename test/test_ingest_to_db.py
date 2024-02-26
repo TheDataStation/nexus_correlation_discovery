@@ -7,6 +7,7 @@ import time
 from utils.coordinate import S_GRANU
 import utils.coordinate as coordinate
 from utils.time_point import T_GRANU
+from data_ingestion.table import Table, Attr
 
 # conn_string = "postgresql://yuegong@localhost/cdc_open_data"
 # conn_string = "postgresql://yuegong@localhost/st_tables"
@@ -116,17 +117,44 @@ def test_create_sketch_tbl():
     k = 256
     ingestor.create_correlation_sketch(agg_tbl, k)
 
-if __name__ == '__main__':
-    test_create_sketch_tbl()
-    # ingesting all tables in chicago open data 10k takes about 6.5 minutes
-    # test_ingest_all_tables()
-    # print("ingestion finished in {} s".format(duration))
-    # start = time.time()
-    # test_ingest_tbl_e2e()
-    # print("time took:", time.time() - start)
+def test_ingest_a_tbl(tbl_id, engine):
+    # ingest asthma dataset
+    data_sources = ['chicago_1m']
+    conn_str = "postgresql://yuegong@localhost/test"
+    t_scales = [T_GRANU.MONTH]
+    s_scales = [S_GRANU.TRACT]
 
-    # start = time.time()
-    # test_create_index_on_agg_idx_table()
-    # print("time took:", time.time() - start)
-    # test_correct_num_columns()
-    # test_expand_table()
+    # ingest tables
+    for data_source in data_sources:
+        print(data_source)
+        start_time = time.time()
+        if engine == 'postgres':
+            ingestor = DBIngestorAgg(conn_str, data_source, t_scales, s_scales)
+        else:
+            ingestor = DBIngestorAgg('data/test.db', data_source, t_scales, s_scales, engine='duckdb')
+        meta_path = ingestor.config["meta_path"]
+        meta_data = io_utils.load_json(meta_path)
+        obj = meta_data[tbl_id]
+        t_attrs = [Attr(attr["name"], attr["granu"]) for attr in obj["t_attrs"]]
+        s_attrs = [Attr(attr["name"], attr["granu"]) for attr in obj["s_attrs"]]
+        t_attrs, s_attrs = ingestor.select_valid_attrs(t_attrs, 1), ingestor.select_valid_attrs(s_attrs, 1)
+        # print(t_attrs, s_attrs)
+        if len(t_attrs) == 0 and len(s_attrs) == 0:
+            continue
+    
+        tbl = Table(
+            domain=obj["domain"],
+            tbl_id=obj["tbl_id"],
+            tbl_name=obj["tbl_name"],
+            t_attrs=t_attrs,
+            s_attrs=s_attrs,
+            num_columns=obj["num_columns"],
+            link=obj["link"] if "link" in obj else "",
+        )
+           
+        ingestor.ingest_tbl(tbl)
+        print(f"ingesting data finished in {time.time() - start_time} s")
+
+
+if __name__ == '__main__':
+    test_ingest_a_tbl("4jy7-7m68", "postgres")
