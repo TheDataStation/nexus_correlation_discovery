@@ -1,5 +1,5 @@
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from data_search.search_corr import CorrSearch
 import time
 from utils.io_utils import dump_json
@@ -19,7 +19,7 @@ def run(data_source, method):
     overlaps = [100]
     input = "full_st_schemas"
     st_schemas = io_utils.load_pickle(f"evaluation/input/{data_source}/{input}.json")
-    granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
+    granu_lists = [[TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK]]
     for granu_list in granu_lists:
         profiler = Profiler(data_source, granu_list[0], granu_list[1])
         # sort st_schemas

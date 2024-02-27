@@ -1,11 +1,10 @@
 import time
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
-import pandas as pd
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from data_search.search_corr import CorrSearch
 from data_search.search_db import DBSearch
 from utils.io_utils import dump_json, load_config
-from data_search.data_model import Unit, Variable, AggFunc
+from utils.data_model import Attr
 import pandas as pd
 import os
 import utils
@@ -20,7 +19,7 @@ db_search = DBSearch("postgresql://yuegong@localhost/st_tables")
 def test_find_corr_for_a_single_tbl():
     start = time.time()
     tbl = "yhhz-zm2v"
-    granu_list = [T_GRANU.DAY, S_GRANU.BLOCK]
+    granu_list = [TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK]
     conn_str = "postgresql://yuegong@localhost/st_tables"
     data_source = "chicago_10k"
     corr_search = CorrSearch(
@@ -44,10 +43,10 @@ def test_find_corr_for_a_tbl_schema():
     conn_str = "postgresql://yuegong@localhost/st_tables"
     db_search = DBSearch(conn_str)
     tbl1 = "i86k-y6er"
-    units1 = [Unit("location", S_GRANU.BLOCK)]
+    units1 = [Attr("location", SPATIAL_GRANU.BLOCK)]
     data_source = "chicago_10k"
     corr_search = CorrSearch(conn_str, data_source, "TMP", "MATRIX")
-    corr_search.create_tmp_agg_tbls([T_GRANU.DAY, S_GRANU.BLOCK])
+    corr_search.create_tmp_agg_tbls([TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK])
 
     start1 = time.time()
     corr_search.find_all_corr_for_a_tbl_schema(tbl1, units1, r_t=0.6, p_t=0.01)
@@ -72,7 +71,7 @@ def test_find_corr_for_a_tbl_schema():
 
 def test_find_corr_for_all_tbl():
     # granu_lists = [[T_GRANU.DAY, S_GRANU.STATE]]
-    granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
+    granu_lists = [[TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK]]
     conn_str = "postgresql://yuegong@localhost/st_tables"
     data_source = "chicago_10k"
     config = load_config(data_source)

@@ -1,23 +1,11 @@
 import utils.io_utils as io_utils
-import numpy as np
-import pandas as pd
-from data_search.data_model import Unit, T_GRANU, S_GRANU, ST_Schema
-from tqdm import tqdm
-import time
-import pandas as pd
-from data_search.search_db import DBSearch
-import os
-from utils import corr_utils
-from collections import defaultdict
-from dataclasses import dataclass
-from typing import List
-import data_search.db_ops as db_ops
+from utils.data_model import Attr, TEMPORAL_GRANU, SPATIAL_GRANU, SpatioTemporalKey
 import random
 
 # data_source = "chicago_1m"
 # t_scale, s_scale = T_GRANU.DAY, S_GRANU.BLOCK
 data_source = "cdc_1m"
-t_scale, s_scale = T_GRANU.DAY, S_GRANU.STATE
+t_scale, s_scale = TEMPORAL_GRANU.DAY, SPATIAL_GRANU.STATE
 config = io_utils.load_config(data_source)
 attr_path = config["attr_path"]
 tbl_attrs = io_utils.load_json(attr_path)
@@ -31,14 +19,14 @@ for tbl in all_tbls:
     )
 
     for t in t_attrs:
-        st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t, t_scale))))
+        st_schema_list.append((tbl, SpatioTemporalKey(temporal_attr=Attr(t, t_scale))))
 
     for s in s_attrs:
-        st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s, s_scale))))
+        st_schema_list.append((tbl, SpatioTemporalKey(spatial_attr=Attr(s, s_scale))))
 
     for t in t_attrs:
         for s in s_attrs:
-            st_schema_list.append((tbl, ST_Schema(Unit(t, t_scale), Unit(s, s_scale))))
+            st_schema_list.append((tbl, SpatioTemporalKey(Attr(t, t_scale), Attr(s, s_scale))))
 
 sample_num = 0
 # print(len(st_schema_list))

@@ -1,8 +1,8 @@
 from matplotlib import pyplot as plt, ticker
 from data_ingestion.profile_datasets import Profiler
 from utils import io_utils
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 import matplotlib as mpl
 import pandas as pd
 from evaluation.plot_lib.plot_utils import Stages, load_data, grouped_bar_plot
@@ -250,7 +250,7 @@ def find_dist_false_nagetive_joins(t_granu, s_granu):
     joinable_dict = load_lazo_join_res(['chicago_1m'], [0.2], t_granu, s_granu, validate=True)
     lookup = joinable_dict[0.2]
     lazo_pairs = set()
-    t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
+    t_granu, s_granu = TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK
     profiler = Profiler('chicago_1m', t_granu, s_granu)
     join_costs = profiler._get_join_cost(t_granu, s_granu, o_t)
     fn_join_costs = []
@@ -301,7 +301,7 @@ def find_dist_false_nagetive_joins(t_granu, s_granu):
     # plt.savefig('lazo_eval/figure/fn_joins.png')
 
 if __name__ == "__main__":
-    t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
+    t_granu, s_granu = TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK
     # t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
     lazo_joinable_run_time('chicago_1m', t_granu, s_granu)
     join_discovery_recall(['chicago_1m'], 10, [0.0, 0.2, 0.4, 0.6], True)

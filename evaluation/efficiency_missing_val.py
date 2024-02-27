@@ -3,8 +3,8 @@ from data_search.search_corr import CorrSearch
 import time
 from tqdm import tqdm
 from data_search.commons import FIND_JOIN_METHOD
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from data_ingestion.profile_datasets import Profiler
 
 """
@@ -21,7 +21,7 @@ In this experiment, we aim to run different baselines and compare their runtimes
 """
 
 data_source = "chicago_1m"
-granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
+granu_lists = [[TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK]]
 
 # data_source = "cdc_1m"
 # granu_lists = [[T_GRANU.DAY, S_GRANU.STATE]]

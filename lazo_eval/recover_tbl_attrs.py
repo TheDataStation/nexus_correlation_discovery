@@ -1,12 +1,7 @@
-from data_ingestion.profile_datasets import Profiler
 from data_ingestion.index_builder_agg import DBIngestorAgg
-from data_search.search_db import DBSearch
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
 from utils import io_utils
-from psycopg2 import sql
 import os
-from data_ingestion.table import Table
+from utils.data_model import Table
 import numpy as np
 import pandas as pd
 ## recover tbl_attrs for chicago 1m

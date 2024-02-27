@@ -1,27 +1,24 @@
 import pandas as pd
 import utils.coordinate as coordinate
-from utils.time_point import set_temporal_granu, parse_datetime, T_GRANU
+from utils.time_point import set_temporal_granu, parse_datetime
 from utils.profile_utils import is_num_column_valid
 import geopandas as gpd
 import os
 import utils.io_utils as io_utils
 from sqlalchemy import create_engine
-from utils.coordinate import resolve_spatial_hierarchy, set_spatial_granu, S_GRANU
+from utils.coordinate import resolve_spatial_hierarchy, set_spatial_granu, SPATIAL_GRANU
 import psycopg2
 from data_search.search_db import DBSearch
 import numpy as np
 from sqlalchemy.types import *
-from data_ingestion.table import Table, Attr
 from data_ingestion.profile_datasets import Profiler
 import time
 from tqdm import tqdm
-from data_search.data_model import (
-    Unit,
+from utils.data_model import (
+    Attr,
     Variable,
     AggFunc,
-    UnitType,
-    ST_Schema,
-    SchemaType,
+    SpatioTemporalKey, Attr, Table,
 )
 import data_ingestion.db_ops as db_ops
 from data_ingestion.db_ops import IndexType
@@ -212,13 +209,13 @@ class DBIngestorAgg:
         st_schema_list = []
         for t in t_attrs:
             for t_scale in t_scales:
-                st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t["name"], t_scale))))
+                st_schema_list.append((tbl, SpatioTemporalKey(temporal_attr=Attr(t["name"], t_scale))))
 
         for s in s_attrs:
             for s_scale in s_scales:
                 if s["granu"] != 'POINT' and s["granu"] != s_scale.name:
                     continue
-                st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s["name"], s_scale))))
+                st_schema_list.append((tbl, SpatioTemporalKey(spatial_attr=Attr(s["name"], s_scale))))
 
         for t in t_attrs:
             for s in s_attrs:
@@ -228,14 +225,14 @@ class DBIngestorAgg:
                             if s["granu"] != 'POINT' and s["granu"] != s_scale.name:
                                 continue
                             st_schema_list.append(
-                                (tbl, ST_Schema(Unit(t["name"], t_scale), Unit(s["name"], s_scale)))
+                                (tbl, SpatioTemporalKey(Attr(t["name"], t_scale), Attr(s["name"], s_scale)))
                             )
                 elif self.mode == 'no_cross':
                     for i in range(len(t_scales)):
                         if s.granu != 'POINT' and s["granu"] != s_scales[i].name:
                             continue
                         st_schema_list.append(
-                            (tbl, ST_Schema(Unit(t["name"], t_scales[i]), Unit(s["name"], s_scales[i])))
+                            (tbl, SpatioTemporalKey(Attr(t["name"], t_scales[i]), Attr(s["name"], s_scales[i])))
                         )
         for schema in st_schema_list:
             db_ops.create_cnt_tbl_for_agg_tbl(self.cur, schema[0], schema[1])
@@ -305,13 +302,13 @@ class DBIngestorAgg:
         st_schema_list = []
         for t in t_attrs:
             for scale in t_scales:
-                st_schema_list.append(ST_Schema(t_unit=Unit(t.name, scale)))
+                st_schema_list.append(SpatioTemporalKey(temporal_attr=Attr(t.name, scale)))
 
         for s in s_attrs:
             for scale in s_scales:
                 if s.granu != 'POINT' and s.granu != scale.name:
                     continue
-                st_schema_list.append(ST_Schema(s_unit=Unit(s.name, scale)))
+                st_schema_list.append(SpatioTemporalKey(spatial_attr=Attr(s.name, scale)))
 
         for t in t_attrs:
             for s in s_attrs:
@@ -320,7 +317,7 @@ class DBIngestorAgg:
                         if s.granu != 'POINT' and s.granu != s_scales[i].name:
                             continue
                         st_schema_list.append(
-                            ST_Schema(Unit(t.name, t_scales[i]), Unit(s.name, s_scales[i]))
+                            SpatioTemporalKey(Attr(t.name, t_scales[i]), Attr(s.name, s_scales[i]))
                         )
                 elif self.mode == 'cross':
                     for t_scale in t_scales:
@@ -328,20 +325,20 @@ class DBIngestorAgg:
                             if s.granu != 'POINT' and s.granu != s_scale.name:
                                 continue
                             st_schema_list.append(
-                                ST_Schema(Unit(t.name, t_scale), Unit(s.name, s_scale))
+                                SpatioTemporalKey(Attr(t.name, t_scale), Attr(s.name, s_scale))
                             )
 
         for st_schema in st_schema_list:
-            vars = []
+            variables = []
             for agg_col in num_columns:
                 if len(agg_col) > 56:
                     continue
-                vars.append(Variable(agg_col, AggFunc.AVG, "avg_{}".format(agg_col)))
-            vars.append(Variable("*", AggFunc.COUNT, "count"))
+                variables.append(Variable(tbl, agg_col, AggFunc.AVG, "avg_{}".format(agg_col)))
+            variables.append(Variable(tbl, "*", AggFunc.COUNT, "count"))
 
             start = time.time()
             # transform data and also create an index on the key val column
-            agg_tbl_name = db_ops.create_agg_tbl(self.cur, tbl, st_schema, vars)
+            agg_tbl_name = db_ops.create_agg_tbl(self.cur, tbl, st_schema, variables)
             print(agg_tbl_name)
             print(f"finish aggregating table in {time.time()-start} s")
             # ingest spatio-temporal values to an index table
@@ -377,18 +374,18 @@ class DBIngestorAgg:
         st_schema_list = []
         for t in t_attrs:
             for scale in t_scales:
-                st_schema_list.append(ST_Schema(t_unit=Unit(t, scale)))
+                st_schema_list.append(SpatioTemporalKey(temporal_attr=Attr(t, scale)))
 
         for s in s_attrs:
             for scale in s_scales:
-                st_schema_list.append(ST_Schema(s_unit=Unit(s, scale)))
+                st_schema_list.append(SpatioTemporalKey(spatial_attr=Attr(s, scale)))
 
         for t in t_attrs:
             for s in s_attrs:
                 for t_scale in t_scales:
                     for s_scale in s_scales:
                         st_schema_list.append(
-                            ST_Schema(Unit(t, t_scale), Unit(s, s_scale))
+                            SpatioTemporalKey(Attr(t, t_scale), Attr(s, s_scale))
                         )
 
         for st_schema in st_schema_list:
@@ -410,7 +407,7 @@ class DBIngestorAgg:
                     col_names,
                 )
 
-    def ingest_agg_tbl_to_idx_tbl(self, tbl, agg_tbl, st_schema: ST_Schema):
+    def ingest_agg_tbl_to_idx_tbl(self, tbl, agg_tbl, st_schema: SpatioTemporalKey):
         # decide which index table to ingest the agg_tbl values
         idx_tbl_name = st_schema.get_idx_tbl_name() + "_inv"
         print(idx_tbl_name)
@@ -567,7 +564,7 @@ if __name__ == "__main__":
     #         )
 
     data_sources = ['asthma']
-    t_scales, s_scales = [], [S_GRANU.ZIPCODE]
+    t_scales, s_scales = [], [SPATIAL_GRANU.ZIPCODE]
     conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
     # create profiles
     for data_source in data_sources:

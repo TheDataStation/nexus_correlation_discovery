@@ -1,6 +1,6 @@
 from utils import io_utils
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 
@@ -61,7 +61,7 @@ def box_plot(ax, data_i, jc_value):
 
 if __name__ == "__main__":
     # t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
-    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    t_granu, s_granu = TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT
     o_t_l = [10]
     jc_values = [0.0, 0.2, 0.4, 0.6]
     jc_values = [0.2]

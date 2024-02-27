@@ -1,13 +1,13 @@
 ## find ground truth for all pairs of joinable tables
 from tqdm import tqdm
 
-from data_search.data_model import ST_Schema, Unit
+from utils.data_model import SpatioTemporalKey, Attr
 from utils import io_utils
 from data_search.search_db import DBSearch
 from collections import defaultdict
-from utils.coordinate import S_GRANU
+from utils.coordinate import SPATIAL_GRANU
 
-from utils.time_point import T_GRANU
+from utils.time_point import TEMPORAL_GRANU
 import time
 
 def generate_ground_truth(data_sources, t_granu, s_granu, o_t, persist):
@@ -25,14 +25,14 @@ def generate_ground_truth(data_sources, t_granu, s_granu, o_t, persist):
                 tbl_attrs[tbl]["s_attrs"],
             )
             for t in t_attrs:
-                st_schema_list.append(ST_Schema(t_unit=Unit(t, t_granu)))
+                st_schema_list.append(SpatioTemporalKey(temporal_attr=Attr(t, t_granu)))
 
             for s in s_attrs:
-                st_schema_list.append(ST_Schema(s_unit=Unit(s, s_granu)))
+                st_schema_list.append(SpatioTemporalKey(spatial_attr=Attr(s, s_granu)))
 
             for t in t_attrs:
                 for s in s_attrs:
-                    st_schema_list.append(ST_Schema(Unit(t, t_granu), Unit(s, s_granu)))
+                    st_schema_list.append(SpatioTemporalKey(Attr(t, t_granu), Attr(s, s_granu)))
 
             for st_schema in st_schema_list:
                 aligned_schemas = db_search.find_augmentable_st_schemas(tbl, st_schema, o_t, mode="inv_idx")
@@ -49,7 +49,7 @@ def generate_ground_truth(data_sources, t_granu, s_granu, o_t, persist):
 if __name__ == "__main__":
     # data_source = "chicago_1m" 
     data_sources = ['nyc_open_data', 'chicago_open_data']
-    granu_lists = [(T_GRANU.MONTH, S_GRANU.TRACT)]
+    granu_lists = [(TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT)]
     # t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
     o_t = 10
     persist = True

@@ -1,16 +1,14 @@
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from data_search.search_db import DBSearch
 from data_ingestion.db_ops import select_columns
-from data_search.db_ops import get_intersection_agg_idx, get_intersection_inv_idx
+from data_search.db_ops import get_intersection_inv_idx
 import psycopg2
 import numpy as np
 import pandas as pd
 from config import DATA_PATH
-from data_search.data_model import Unit, Variable, AggFunc, ST_Schema
+from utils.data_model import Attr, Variable, AggFunc, SpatioTemporalKey
 import time
-import shelve
-from collections import Counter
 
 
 def test_select_columns():
@@ -30,8 +28,8 @@ def search_joinable():
     conn = psycopg2.connect("postgresql://yuegong@localhost/st_tables")
     cur = conn.cursor()
     tbl = "22u3-xenr"
-    st_schema = ST_Schema(
-        Unit("violation_date", T_GRANU.DAY), Unit("location", S_GRANU.BLOCK)
+    st_schema = SpatioTemporalKey(
+        Attr("violation_date", TEMPORAL_GRANU.DAY), Attr("location", SPATIAL_GRANU.BLOCK)
     )
     # res1 = get_intersection_agg_idx(cur, tbl, st_schema, None, 4)
     # print(res1)
@@ -49,7 +47,7 @@ def test_search_intersection_between_two_tables():
     attrs1 = ["updated", "location"]
     tbl2 = "wqdh-9gek"
     attrs2 = ["request_date", "location"]
-    granu_list = [T_GRANU.MONTH, S_GRANU.TRACT]
+    granu_list = [TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT]
     get_intersection_between_two_ts_schema(tbl1, attrs1, tbl2, attrs2, granu_list, cur)
 
 
@@ -57,7 +55,7 @@ def test_find_joinable_tables():
     conn_str = "postgresql://yuegong@localhost/st_tables"
     db_search = DBSearch(conn_str)
     tbl = "ijzp-q8t2"
-    units = [Unit("date", T_GRANU.DAY), Unit("location", S_GRANU.BLOCK)]
+    units = [Attr("date", TEMPORAL_GRANU.DAY), Attr("location", SPATIAL_GRANU.BLOCK)]
     aligned_tbls = db_search.find_augmentable_st_schemas(tbl, units, 4, mode="agg_idx")
 
 
@@ -67,7 +65,7 @@ def test_search_tbl():
     cur = conn_copg2.cursor()
     tbl1 = "gumc-mgzr"
     attrs1 = ["updated", "location"]
-    granu_list = [T_GRANU.MONTH, S_GRANU.TRACT]
+    granu_list = [TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT]
     res = search(tbl1, attrs1, granu_list, cur)
     print(res)
 
@@ -76,11 +74,11 @@ def test_agg_join_count():
     conn_str = "postgresql://yuegong@localhost/st_tables"
     db_search = DBSearch(conn_str)
     tbl1 = "ijzp-q8t2"
-    units1 = [Unit("date", T_GRANU.DAY), Unit("location", S_GRANU.BLOCK)]
+    units1 = [Attr("date", TEMPORAL_GRANU.DAY), Attr("location", SPATIAL_GRANU.BLOCK)]
     tbl2 = "85ca-t3if"
-    units2 = [Unit("crash_date", T_GRANU.DAY), Unit("location", S_GRANU.BLOCK)]
-    vars1 = [Variable("*", AggFunc.COUNT, "count1")]
-    vars2 = [Variable("*", AggFunc.COUNT, "count2")]
+    units2 = [Attr("crash_date", TEMPORAL_GRANU.DAY), Attr("location", SPATIAL_GRANU.BLOCK)]
+    vars1 = [Variable(tbl1, "*", AggFunc.COUNT, "count1")]
+    vars2 = [Variable(tbl2, "*", AggFunc.COUNT, "count2")]
     start = time.time()
     # join method
     merged = db_search.aggregate_join_two_tables(
@@ -132,7 +130,7 @@ def test_agg_join_avg():
     tbl1, attrs1 = "yhhz-zm2v", ["week_start", "zip_code_location"]
     tbl2, attrs2 = "8vvr-jv2g", ["week_start", "zip_code_location"]
     agg_attr1, agg_attr2 = "cases_weekly", "ili_activity_level"
-    granu_list = [T_GRANU.MONTH, S_GRANU.TRACT]
+    granu_list = [TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT]
     df = db_search.aggregate_join_two_tables_avg(
         tbl1, attrs1, agg_attr1, tbl2, attrs2, agg_attr2, granu_list
     )

@@ -2,8 +2,8 @@
 
 from data_ingestion.profile_datasets import Profiler
 from data_search.search_db import DBSearch
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from utils import io_utils
 from psycopg2 import sql
 import os
@@ -27,7 +27,7 @@ def get_key_values(cur, agg_tbl):
     cur.execute(query)
     return [r[0] for r in cur.fetchall()]
 
-def retrive(data_sources, t_granu: T_GRANU, s_granu: S_GRANU):
+def retrive(data_sources, t_granu: TEMPORAL_GRANU, s_granu: SPATIAL_GRANU):
     storage_dir = f'join_key_data/{"_".join(data_sources)}/time_{t_granu.value}_space_{s_granu.value}'
     io_utils.create_dir(storage_dir)
     for data_source in data_sources:
@@ -49,4 +49,4 @@ def retrive(data_sources, t_granu: T_GRANU, s_granu: S_GRANU):
 
 if __name__ == "__main__":
     # retrive('chicago_1m', T_GRANU.MONTH, S_GRANU.TRACT)
-    retrive(['nyc_open_data', 'chicago_open_data'], T_GRANU.MONTH, S_GRANU.TRACT)
+    retrive(['nyc_open_data', 'chicago_open_data'], TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT)

@@ -1,8 +1,8 @@
 import utils.io_utils as io_utils
 from config import META_PATH, DATA_PATH
 import pandas as pd
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 import pandas as pd
 from data_search.search_db import DBSearch
 from typing import List
@@ -83,7 +83,7 @@ class API:
         #     st_schema.append(([s], [S_GRANU.TRACT]))
         for t in t_attrs:
             for s in s_attrs:
-                st_schema.append(([t, s], [T_GRANU.MONTH, S_GRANU.TRACT]))
+                st_schema.append(([t, s], [TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT]))
 
         tbl1_agg_cols = self.get_numerical_columns(tbl1)
         for st1, granu_list in st_schema:
@@ -173,7 +173,7 @@ class API:
                 for t_attr in t_attrs:
                     for s_attr in s_attrs:
                         aligned_tbls = self.db_search.search(
-                            tbl_id, [t_attr, s_attr], [T_GRANU.MONTH, S_GRANU.TRACT]
+                            tbl_id, [t_attr, s_attr], [TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT]
                         )
                         for tbl in aligned_tbls:
                             tbl_id2, t_attr2, s_attr2, overlap = (
@@ -191,8 +191,8 @@ class API:
                                     tbl_id2,
                                     t_attr2,
                                     s_attr2,
-                                    T_GRANU.MONTH,
-                                    S_GRANU.TRACT,
+                                    TEMPORAL_GRANU.MONTH,
+                                    SPATIAL_GRANU.TRACT,
                                 )
                                 if corr > 0.5:
                                     tbl_name, tbl_name2 = (

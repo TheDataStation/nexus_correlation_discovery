@@ -4,7 +4,8 @@ import pandas as pd
 from typing import List
 
 
-class T_GRANU(Enum):
+class TEMPORAL_GRANU(Enum):
+    ALL = 0
     HOUR = 1
     DAY = 2
     MONTH = 3
@@ -13,11 +14,11 @@ class T_GRANU(Enum):
 
 
 scale_dict = {
-    T_GRANU.HOUR: "hour",
-    T_GRANU.DAY: "day",
-    T_GRANU.MONTH: "month",
-    T_GRANU.QUARTER: "quarter",
-    T_GRANU.YEAR: "year",
+    TEMPORAL_GRANU.HOUR: "hour",
+    TEMPORAL_GRANU.DAY: "day",
+    TEMPORAL_GRANU.MONTH: "month",
+    TEMPORAL_GRANU.QUARTER: "quarter",
+    TEMPORAL_GRANU.YEAR: "year",
 }
 
 
@@ -51,19 +52,19 @@ class Datetime:
         #     str(self.year).zfill(4),
         # ]
 
-    def transform(self, granu: T_GRANU):
-        if granu == T_GRANU.HOUR:
+    def transform(self, granu: TEMPORAL_GRANU):
+        if granu == TEMPORAL_GRANU.HOUR:
             return [self.year, self.month, self.day, self.hour]
-        elif granu == T_GRANU.DAY:
+        elif granu == TEMPORAL_GRANU.DAY:
             return [self.year, self.month, self.day]
-        elif granu == T_GRANU.MONTH:
+        elif granu == TEMPORAL_GRANU.MONTH:
             return [self.year, self.month]
-        elif granu == T_GRANU.QUARTER:
+        elif granu == TEMPORAL_GRANU.QUARTER:
             return [self.year, self.quarter]
-        elif granu == T_GRANU.YEAR:
+        elif granu == TEMPORAL_GRANU.YEAR:
             return [self.year]
 
-    def __transform(self, granu: T_GRANU):
+    def __transform(self, granu: TEMPORAL_GRANU):
         idx = granu - self.chain[0].value
         return list(reversed(self.full_resolution[idx:]))
 
@@ -73,7 +74,7 @@ class Datetime:
     def to_int(self, repr):
         return int("".join([x for x in repr]))
 
-    def transform_to_key(self, granu: T_GRANU):
+    def transform_to_key(self, granu: TEMPORAL_GRANU):
         repr = self.full_resolution[granu - 1 :]
         return str(repr)
 
@@ -84,11 +85,11 @@ def parse_datetime(dt: Timestamp):
     return Datetime(dt)
 
 
-def transform(dt: Datetime, granu: T_GRANU):
+def transform(dt: Datetime, granu: TEMPORAL_GRANU):
     return dt.full_resolution[granu - 1 :]
 
 
-def set_temporal_granu(dt: Datetime, granu: T_GRANU):
+def set_temporal_granu(dt: Datetime, granu: TEMPORAL_GRANU):
     if dt is None:
         return None
     return dt.to_str(dt.transform(granu))

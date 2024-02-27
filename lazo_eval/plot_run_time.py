@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 from utils import io_utils
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 import matplotlib as mpl
 import pandas as pd
 
@@ -47,5 +47,5 @@ def lazo_joinable_run_time(data_source, t_granu, s_granu):
 
 if __name__ == "__main__":
     # t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
-    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    t_granu, s_granu = TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT
     lazo_joinable_run_time(t_granu, s_granu)

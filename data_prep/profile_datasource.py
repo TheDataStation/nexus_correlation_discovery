@@ -1,9 +1,8 @@
-from data_search.data_model import SchemaType
+from utils.data_model import KeyType
 from utils import io_utils
-import os
 from data_ingestion.profile_datasets import Profiler
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 
 def profile_data_sources(data_sources, t_granu, s_granu):
     tbl_cnt_total, key_cnt_total, time_total, space_total, ts_total, var_total = 0, 0, 0, 0, 0, 0
@@ -38,12 +37,12 @@ def profile_data_source(data_source, t_granu, s_granu):
             num_var += 1
     all_st_schemas = Profiler.load_all_st_schemas(tbl_attrs, t_granu, s_granu, type_aware=True)
     # profile["key_cnt"] = len(all_st_schemas)
-    time = len(all_st_schemas[SchemaType.TIME])
-    tbl_cnt_time = set([x[0] for x in all_st_schemas[SchemaType.TIME]])
-    space = len(all_st_schemas[SchemaType.SPACE])
-    tbl_cnt_space = set([x[0] for x in all_st_schemas[SchemaType.SPACE]])
-    time_space = len(all_st_schemas[SchemaType.TS])
-    tbl_cnt_st = set([x[0] for x in all_st_schemas[SchemaType.TS]])
+    time = len(all_st_schemas[KeyType.TIME])
+    tbl_cnt_time = set([x[0] for x in all_st_schemas[KeyType.TIME]])
+    space = len(all_st_schemas[KeyType.SPACE])
+    tbl_cnt_space = set([x[0] for x in all_st_schemas[KeyType.SPACE]])
+    time_space = len(all_st_schemas[KeyType.TIME_SPACE])
+    tbl_cnt_st = set([x[0] for x in all_st_schemas[KeyType.TIME_SPACE]])
     return len(tbl_cnt_time.union(tbl_cnt_space).union(tbl_cnt_st)), time, space, time_space, time + space + time_space, num_var
 
 if __name__ == "__main__":
@@ -54,4 +53,4 @@ if __name__ == "__main__":
                     'nyc_open_data', 'chicago_open_data'
     ]
     # data_sources = ['nyc_open_data', 'chicago_open_data']
-    print(profile_data_sources(data_sources, T_GRANU.MONTH, S_GRANU.TRACT))
+    print(profile_data_sources(data_sources, TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT))

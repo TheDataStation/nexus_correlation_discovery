@@ -1,11 +1,8 @@
-import time
-from data_ingestion.table import Table
 import utils.io_utils as io_utils
 import time
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from data_ingestion.index_builder_agg import DBIngestorAgg
-from tqdm import tqdm
 import pandas as pd
 
 def ingest_chicago_time_sampling():
@@ -14,8 +11,8 @@ def ingest_chicago_time_sampling():
     config = io_utils.load_config(data_source)
     conn_string = config["db_path"]
     conn_string = "postgresql://yuegong@localhost/chicago_1m_time_2021_2023"
-    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
-    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
+    t_scales = [TEMPORAL_GRANU.DAY, TEMPORAL_GRANU.MONTH]
+    s_scales = [SPATIAL_GRANU.BLOCK, SPATIAL_GRANU.TRACT]
     ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
     ingestor.set_time_range([pd.to_datetime('2021-01-01 00:00:00'), pd.to_datetime('2023-01-01 00:00:00')])
     ingestor.ingest_data_source(clean=True, persist=True)
@@ -27,8 +24,8 @@ def ingest_chicago():
     config = io_utils.load_config(data_source)
     conn_string = config["db_path"]
     conn_string = "postgresql://yuegong@localhost/chicago_1m_new"
-    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
-    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
+    t_scales = [TEMPORAL_GRANU.DAY, TEMPORAL_GRANU.MONTH]
+    s_scales = [SPATIAL_GRANU.BLOCK, SPATIAL_GRANU.TRACT]
 
     ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
     # attr_path = config["attr_path"]
@@ -50,8 +47,8 @@ def ingest_open_data():
                     'ny_open_data', 'ct_open_data', 'maryland_open_data', 'pa_open_data',
                     'texas_open_data', 'wa_open_data', 'sf_open_data', 'la_open_data', 'nyc_open_data', 'chicago_open_data'
                     ]
-    t_scales = [T_GRANU.MONTH]
-    s_scales = [S_GRANU.TRACT]
+    t_scales = [TEMPORAL_GRANU.MONTH]
+    s_scales = [SPATIAL_GRANU.TRACT]
     for data_source in data_sources:
         print(data_source)
         start_time = time.time()
@@ -64,8 +61,8 @@ def ingest_open_data():
         print(f"ingesting data finished in {time.time() - start_time} s")
 
 def create_cnt_tbls(data_sources, conn_str):
-    t_scales = [T_GRANU.MONTH]
-    s_scales = [S_GRANU.TRACT]
+    t_scales = [TEMPORAL_GRANU.MONTH]
+    s_scales = [SPATIAL_GRANU.TRACT]
     idx_tbls = ["time_3_space_3_inv", "space_3_inv", "time_3_inv"]
     DBIngestorAgg.create_cnt_tbls_for_inv_index_tbls(conn_str, idx_tbls)
     for data_source in data_sources:
@@ -96,8 +93,8 @@ def retry_failed_tbls(data_source):
     failed_tbls = io_utils.load_json(config["failed_tbl_path"])
     print(failed_tbls)
     conn_string = "postgresql://yuegong@localhost/opendata_large"
-    t_scales = [T_GRANU.MONTH]
-    s_scales = [S_GRANU.TRACT]
+    t_scales = [TEMPORAL_GRANU.MONTH]
+    s_scales = [SPATIAL_GRANU.TRACT]
     ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
     if data_source == 'chicago_open_data':
         ingestor.ingest_data_source(clean=False, persist=True, max_limit=2, retry_list=['uk68-3rjc'])

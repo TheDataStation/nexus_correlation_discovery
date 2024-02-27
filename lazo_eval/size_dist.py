@@ -3,8 +3,8 @@ import json
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from utils import io_utils
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from joinable_accuracy import calculate_precision_recall
 import seaborn as sns
 

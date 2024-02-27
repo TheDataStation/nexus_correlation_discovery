@@ -1,8 +1,8 @@
 """
 In this experiment, we aim to run different baselines and compare their runtimes.
 """
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from data_search.search_corr import CorrSearch
 import time
 from utils.io_utils import dump_json
@@ -15,7 +15,7 @@ from collections import namedtuple
 data_source = "chicago_1m"
 config = io_utils.load_config(data_source)
 conn_str = config["db_path"]
-granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
+granu_lists = [[TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK]]
 overlaps = [10]
 st_schema_list_path = "100_st_schemas"
 st_schemas = io_utils.load_pickle(f"evaluation/input/{data_source}/{st_schema_list_path}.json")

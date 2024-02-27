@@ -1,6 +1,6 @@
 import psycopg2
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from data_search.search_corr import CorrSearch
 import time
 from utils.io_utils import dump_json
@@ -243,7 +243,7 @@ if __name__ == "__main__":
     # data_source = "chicago_1m_time_sampling"
     # data_sources = ['nyc_open_data', 'chicago_open_data']
     # granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK], [T_GRANU.MONTH, S_GRANU.TRACT]]
-    granu_lists = [[T_GRANU.MONTH, S_GRANU.TRACT]]
+    granu_lists = [[TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT]]
     o_t, r_t = 10, 0.0
     # jc_threshold = 0.2
     jc_threshold_l = [0.0, 0.2, 0.4, 0.6]

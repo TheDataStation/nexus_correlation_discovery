@@ -1,7 +1,6 @@
 from typing import List
-from data_search.data_model import Unit, Variable, AggFunc, ST_Schema, SchemaType
+from utils.data_model import Variable, SpatioTemporalKey
 from psycopg2 import sql
-from psycopg2.extras import execute_batch
 import sys
 from io import StringIO
 import pandas as pd
@@ -58,7 +57,7 @@ def create_idx_tbl(cur, idx_tbl):
     cur.execute(query)
 
 
-def create_cnt_tbl_for_agg_tbl(cur, tbl, st_schema: ST_Schema):
+def create_cnt_tbl_for_agg_tbl(cur, tbl, st_schema: SpatioTemporalKey):
     idx_cnt_name = "{}_inv_cnt".format(st_schema.get_idx_tbl_name())
     agg_tbl = st_schema.get_agg_tbl_name(tbl)
     if len(agg_tbl) >= 63:
@@ -100,8 +99,8 @@ def insert_to_idx_tbl(cur, idx_tbl, id, agg_tbl):
 def create_agg_tbl(
     cur,
     tbl: str,
-    st_schema: ST_Schema,
-    vars: List[Variable],
+    st_schema: SpatioTemporalKey,
+    variables: List[Variable],
 ):
     col_names = st_schema.get_col_names_with_granu()
     agg_tbl_name = "{}_{}".format(tbl, "_".join([col for col in col_names]))
@@ -127,7 +126,7 @@ def create_agg_tbl(
                     sql.Identifier(var.attr_name),
                     sql.Identifier(var.var_name),
                 )
-                for var in vars
+                for var in variables
             ]
         ),
         tbl=sql.Identifier(tbl),

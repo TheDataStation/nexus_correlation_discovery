@@ -1,13 +1,12 @@
-import utils.io_utils as io_utils
 import pandas as pd
 from typing import List
 from psycopg2 import sql
 import itertools
 import psycopg2
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
-from data_search.data_model import Unit, Variable, ST_Schema
-from data_search.db_ops import get_intersection_inv_idx, get_inv_idx_cnt
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
+from utils.data_model import Attr, Variable, SpatioTemporalKey
+from data_search.db_ops import get_intersection_inv_idx
 
 
 class DBSearch:
@@ -50,7 +49,7 @@ class DBSearch:
             }
 
     def find_augmentable_st_schemas(
-        self, tbl: str, st_schema: ST_Schema, threshold, mode
+        self, tbl: str, st_schema: SpatioTemporalKey, threshold, mode
     ):
         if mode == "inv_idx":
             return get_intersection_inv_idx(self.cur, tbl, st_schema, threshold)
@@ -59,15 +58,15 @@ class DBSearch:
         elif mode == "multi_idx":
             return self.find_augmentable_tables_multi_idx(tbl, units, threshold)
 
-    def find_augmentable_tables_agg_idx(self, tbl: str, units: List[Unit], threshold):
+    def find_augmentable_tables_agg_idx(self, tbl: str, units: List[Attr], threshold):
         return self.get_intersection_agg_idx(tbl, units, threshold)
 
-    def find_augmentable_tables_multi_idx(self, tbl: str, units: List[Unit], threshold):
+    def find_augmentable_tables_multi_idx(self, tbl: str, units: List[Attr], threshold):
         t_granu, s_granu = None, None
         for unit in units:
-            if unit.granu in T_GRANU:
+            if unit.granu in TEMPORAL_GRANU:
                 t_granu = unit.granu
-            elif unit.granu in S_GRANU:
+            elif unit.granu in SPATIAL_GRANU:
                 s_granu = unit.granu
 
         result = []
@@ -79,16 +78,16 @@ class DBSearch:
             units2_list = []
             if len(units) == 2:
                 units2_list = [
-                    [Unit(attrs[0], t_granu), Unit(attrs[1], s_granu)]
+                    [Attr(attrs[0], t_granu), Attr(attrs[1], s_granu)]
                     for attrs in align_schemas["ts"]
                 ]
-            elif units[0].granu in T_GRANU:
+            elif units[0].granu in TEMPORAL_GRANU:
                 units2_list = [
-                    [Unit(attrs[0], t_granu)] for attrs in align_schemas["t"]
+                    [Attr(attrs[0], t_granu)] for attrs in align_schemas["t"]
                 ]
             else:
                 units2_list = [
-                    [Unit(attrs[0], s_granu)] for attrs in align_schemas["s"]
+                    [Attr(attrs[0], s_granu)] for attrs in align_schemas["s"]
                 ]
 
             for units2 in units2_list:
@@ -109,9 +108,9 @@ class DBSearch:
     def get_intersection_agg_idx(self, tbl, units, threshold):
         # query aggregated index tables to find joinable tables
         if len(units) == 1:
-            if units[0].granu in T_GRANU:
+            if units[0].granu in TEMPORAL_GRANU:
                 idx_tbl = "time_{}".format(units[0].granu.value)
-            elif units[0].granu in S_GRANU:
+            elif units[0].granu in SPATIAL_GRANU:
                 idx_tbl = "space_{}".format(units[0].granu.value)
         else:
             idx_tbl = "time_space_" + "_".join(
@@ -151,14 +150,14 @@ class DBSearch:
         # )
         self.cur.execute(
             query,
-            [tbl] + [tbl] + [unit.attr_name for unit in units] + [threshold],
+            [tbl] + [tbl] + [unit.name for unit in units] + [threshold],
         )
         query_res = self.cur.fetchall()
         result = []
         for row in query_res:
             tbl2_id = row[0]
             tbl2_name = self.tbl_names[tbl2_id]
-            units2 = [Unit(attr, units[i].granu) for i, attr in enumerate(row[1:-1])]
+            units2 = [Attr(attr, units[i].granu) for i, attr in enumerate(row[1:-1])]
             overlap = int(row[-1])
             result.append([tbl2_id, tbl2_name, units2, overlap])
         return result
@@ -214,10 +213,10 @@ class DBSearch:
 
         return col_names1, col_names2
 
-    def get_col_names_with_granu(self, units: List[Unit]):
+    def get_col_names_with_granu(self, units: List[Attr]):
         return [unit.to_int_name() for unit in units]
 
-    def transform(self, tbl: str, units: List[Unit], vars: List[Variable]):
+    def transform(self, tbl: str, units: List[Attr], vars: List[Variable]):
         sql_str = """
         SELECT {fields}, {agg_stmts} FROM {tbl} GROUP BY {fields}
         """
@@ -250,10 +249,10 @@ class DBSearch:
     def align_two_two_tables(
         self,
         tbl1: str,
-        units1: List[Unit],
+        units1: List[Attr],
         vars1: List[Variable],
         tbl2: str,
-        units2: List[Unit],
+        units2: List[Attr],
         vars2: List[Variable],
     ):
         # calculate intersecting units and store them in a temp table
@@ -364,8 +363,8 @@ class DBSearch:
     def create_tmp_agg_tbl(
         self,
         tbl: str,
-        units: List[Unit],
-        vars: List[Variable],
+        units: List[Attr],
+        variables: List[Variable],
     ):
         sql_str = """
         CREATE TEMPORARY TABLE {tmp_tbl} AS
@@ -388,7 +387,7 @@ class DBSearch:
                         sql.Identifier(var.attr_name),
                         sql.Identifier(var.var_name),
                     )
-                    for var in vars
+                    for var in variables
                 ]
             ),
             tbl=sql.Identifier(tbl),
@@ -407,10 +406,10 @@ class DBSearch:
     def aggregate_join_two_tables_using_tmp(
         self,
         tbl1: str,
-        units1: List[Unit],
+        units1: List[Attr],
         vars1: List[Variable],
         tbl2: str,
-        units2: List[Unit],
+        units2: List[Attr],
         vars2: List[Variable],
     ):
         col_names1 = self.get_col_names_with_granu(units1)
@@ -471,10 +470,10 @@ class DBSearch:
     def aggregate_join_two_tables(
         self,
         tbl1: str,
-        units1: List[Unit],
+        units1: List[Attr],
         vars1: List[Variable],
         tbl2: str,
-        units2: List[Unit],
+        units2: List[Attr],
         vars2: List[Variable],
     ):
         col_names1 = self.get_col_names_with_granu(units1)

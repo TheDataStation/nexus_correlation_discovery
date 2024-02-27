@@ -1,12 +1,12 @@
 from utils import io_utils
-from data_search.data_model import ST_Schema, Unit, T_GRANU, S_GRANU, SchemaType
+from utils.data_model import SpatioTemporalKey, Attr, KeyType
 import pandas as pd
 from tqdm import tqdm
 import psycopg2
 from psycopg2 import sql
 from sqlalchemy import create_engine
 import numpy as np
-from collections import defaultdict, namedtuple
+from collections import namedtuple
 
 """
 Collect the following stats for each aggregated table
@@ -59,13 +59,13 @@ class Profiler:
 
         if t_scale:
             for t in t_attrs:
-                st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t['name'], t_scale))))
+                st_schema_list.append((tbl, SpatioTemporalKey(temporal_attr=Attr(t['name'], t_scale))))
               
         if s_scale:
             for s in s_attrs:
                 if s['granu'] != 'POINT' and s['granu'] != s_scale.name:
                     continue
-                st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s['name'], s_scale))))
+                st_schema_list.append((tbl, SpatioTemporalKey(spatial_attr=Attr(s['name'], s_scale))))
            
         if t_scale and s_scale:
             for t in t_attrs:
@@ -73,7 +73,7 @@ class Profiler:
                     if s['granu'] != 'POINT' and s['granu'] != s_scale.name:
                         continue
                     st_schema_list.append(
-                        (tbl, ST_Schema(Unit(t['name'], t_scale), Unit(s['name'], s_scale)))
+                        (tbl, SpatioTemporalKey(Attr(t['name'], t_scale), Attr(s['name'], s_scale)))
                     )
         return st_schema_list
                 
@@ -83,7 +83,7 @@ class Profiler:
        
         all_tbls = list(tbl_attrs.keys())
         if type_aware:
-            st_schema_dict = {SchemaType.TIME: [], SchemaType.SPACE: [], SchemaType.TS: []}
+            st_schema_dict = {KeyType.TIME: [], KeyType.SPACE: [], KeyType.TIME_SPACE: []}
         for tbl in all_tbls:
             t_attrs, s_attrs = (
                 tbl_attrs[tbl]["t_attrs"],
@@ -92,17 +92,19 @@ class Profiler:
 
             if t_scale:
                 for t in t_attrs:
-                    st_schema_list.append((tbl, ST_Schema(t_unit=Unit(t['name'], t_scale))))
+                    st_schema_list.append((tbl, SpatioTemporalKey(temporal_attr=Attr(t['name'], t_scale))))
                     if type_aware:
-                        st_schema_dict[SchemaType.TIME].append((tbl, ST_Schema(t_unit=Unit(t['name'], t_scale))))
+                        st_schema_dict[KeyType.TIME].append((tbl, SpatioTemporalKey(
+                            temporal_attr=Attr(t['name'], t_scale))))
 
             if s_scale:
                 for s in s_attrs:
                     if s['granu'] != 'POINT' and s['granu'] != s_scale.name:
                         continue
-                    st_schema_list.append((tbl, ST_Schema(s_unit=Unit(s['name'], s_scale))))
+                    st_schema_list.append((tbl, SpatioTemporalKey(spatial_attr=Attr(s['name'], s_scale))))
                 if type_aware:
-                        st_schema_dict[SchemaType.SPACE].append((tbl, ST_Schema(s_unit=Unit(s['name'], s_scale))))
+                        st_schema_dict[KeyType.SPACE].append((tbl, SpatioTemporalKey(
+                            spatial_attr=Attr(s['name'], s_scale))))
 
             if t_scale and s_scale:
                 for t in t_attrs:
@@ -110,10 +112,10 @@ class Profiler:
                         if s['granu'] != 'POINT' and s['granu'] != s_scale.name:
                             continue
                         st_schema_list.append(
-                            (tbl, ST_Schema(Unit(t['name'], t_scale), Unit(s['name'], s_scale)))
+                            (tbl, SpatioTemporalKey(Attr(t['name'], t_scale), Attr(s['name'], s_scale)))
                         )
                         if type_aware:
-                            st_schema_dict[SchemaType.TS].append((tbl, ST_Schema(Unit(t['name'], t_scale), Unit(s['name'], s_scale))))
+                            st_schema_dict[KeyType.TIME_SPACE].append((tbl, SpatioTemporalKey(Attr(t['name'], t_scale), Attr(s['name'], s_scale))))
         if type_aware:
             return st_schema_dict
         else:
@@ -137,8 +139,8 @@ class Profiler:
         total_cnt = 0
         # group tbls by their schema types since only tbls with the same schema types can join with each other
         # schemas in the same tbl can not join
-        all_cnts = {SchemaType.TIME: [], SchemaType.SPACE: [], SchemaType.TS: []}
-        total_cnts = {SchemaType.TIME: 0, SchemaType.SPACE: 0, SchemaType.TS: 0}
+        all_cnts = {KeyType.TIME: [], KeyType.SPACE: [], KeyType.TIME_SPACE: []}
+        total_cnts = {KeyType.TIME: 0, KeyType.SPACE: 0, KeyType.TIME_SPACE: 0}
 
         for tbl, st_schema in all_schemas:
             agg_name = st_schema.get_agg_tbl_name(tbl)
@@ -151,7 +153,7 @@ class Profiler:
                 total_cnts[st_type] += row_cnt
         # print(total_cnts)
         res = {}
-        for st_type in [SchemaType.TIME, SchemaType.SPACE, SchemaType.TS]:
+        for st_type in [KeyType.TIME, KeyType.SPACE, KeyType.TIME_SPACE]:
             cnts_list = all_cnts[st_type]
             cnts_list = sorted(cnts_list, key=lambda x: x[2], reverse=True)
             total_cnt = total_cnts[st_type]
@@ -177,8 +179,8 @@ class Profiler:
         total_cnt = 0
         # group tbls by their schema types since only tbls with the same schema types can join with each other
         # schemas in the same tbl can not join
-        all_cnts = {SchemaType.TIME: [], SchemaType.SPACE: [], SchemaType.TS: []}
-        total_cnts = {SchemaType.TIME: 0, SchemaType.SPACE: 0, SchemaType.TS: 0}
+        all_cnts = {KeyType.TIME: [], KeyType.SPACE: [], KeyType.TIME_SPACE: []}
+        total_cnts = {KeyType.TIME: 0, KeyType.SPACE: 0, KeyType.TIME_SPACE: 0}
 
         for tbl, st_schema in all_schemas:
             agg_name = st_schema.get_agg_tbl_name(tbl)
@@ -190,7 +192,7 @@ class Profiler:
                 total_cnts[st_type] += row_cnt
         # print(total_cnts)
         res = {}
-        for st_type in [SchemaType.TIME, SchemaType.SPACE, SchemaType.TS]:
+        for st_type in [KeyType.TIME, KeyType.SPACE, KeyType.TIME_SPACE]:
             cnts_list = all_cnts[st_type]
             cnts_list = sorted(cnts_list, key=lambda x: x[2], reverse=True)
             total_cnt = total_cnts[st_type]
@@ -209,7 +211,7 @@ class Profiler:
         return res
 
     @staticmethod
-    def get_row_cnt(cur, tbl: str, st_schema: ST_Schema):
+    def get_row_cnt(cur, tbl: str, st_schema: SpatioTemporalKey):
         sql_str = """
          SELECT count(*) from {tbl};
         """
@@ -223,13 +225,13 @@ class Profiler:
         st_schema_list = []
         for t in t_attrs:
             for scale in t_scales:
-                st_schema_list.append(ST_Schema(t_unit=Unit(t["name"], scale)))
+                st_schema_list.append(SpatioTemporalKey(temporal_attr=Attr(t["name"], scale)))
 
         for s in s_attrs:
             for scale in s_scales:
                 if s["granu"] != 'POINT' and s["granu"] != scale.name:
                     continue
-                st_schema_list.append(ST_Schema(s_unit=Unit(s["name"], scale)))
+                st_schema_list.append(SpatioTemporalKey(spatial_attr=Attr(s["name"], scale)))
 
         for t in t_attrs:
             for s in s_attrs:
@@ -239,18 +241,18 @@ class Profiler:
                             if s["granu"] != 'POINT' and s["granu"] != s_scale.name:
                                 continue
                             st_schema_list.append(
-                                ST_Schema(Unit(t["name"], t_scale), Unit(s['name'], s_scale))
+                                SpatioTemporalKey(Attr(t["name"], t_scale), Attr(s['name'], s_scale))
                             )
                 elif mode == 'no_cross':
                     for i in range(len(t_scales)):
                         if s["granu"] != 'POINT' and s["granu"] != s_scales[i].name:
                             continue    
-                        st_schema_list.append(ST_Schema(Unit(t["name"], t_scales[i]), Unit(s["name"], s_scales[i])))
+                        st_schema_list.append(SpatioTemporalKey(Attr(t["name"], t_scales[i]), Attr(s["name"], s_scales[i])))
 
         for st_schema in st_schema_list:
             self.profile_st_schema(tbl, st_schema, num_columns)
 
-    def profile_st_schema(self, tbl, st_schema: ST_Schema, num_columns):
+    def profile_st_schema(self, tbl, st_schema: SpatioTemporalKey, num_columns):
         vars = []
         for agg_col in num_columns:
             if len(agg_col) > 59:
