@@ -25,20 +25,19 @@ class SchemaType(Enum):
 
 
 class Variable:
-    def __init__(self, attr_name: str, agg_func: AggFunc, var_name: str, suffix=None) -> None:
+    def __init__(self, tbl_id: str, attr_name: str, agg_func: AggFunc = None, var_name: str = None,
+                 suffix=None) -> None:
+        self.tbl_id = tbl_id
         self.attr_name = attr_name
-        self.var_name = var_name
         self.agg_func = agg_func
+        self.var_name = var_name
+
         self.suffix = suffix
         if self.suffix:
             self.proj_name = "{}_{}".format(self.var_name, self.suffix)
         else:
             self.proj_name = self.var_name
 
-class Var:
-    def __init__(self, tbl_id, attr_name):
-        self.tbl_id = tbl_id   
-        self.attr_name = attr_name
     def to_str(self):
         return "{}-{}".format(self.tbl_id, self.attr_name)
 
@@ -70,7 +69,7 @@ class Unit:
             return "s_val"
 
 
-class ST_Schema:
+class SpatioTemporalKey:
     def __init__(self, t_unit: Unit = None, s_unit: Unit = None):
         self.t_unit = t_unit
         self.s_unit = s_unit
@@ -152,29 +151,29 @@ class ST_Schema:
 
 
 def get_st_schema_list_for_tbl(
-    t_attrs: List[str],
-    s_attrs: List[str],
-    t_unit: Unit,
-    s_unit: Unit,
-    st_types: List[SchemaType],
+        t_attrs: List[str],
+        s_attrs: List[str],
+        t_unit: Unit,
+        s_unit: Unit,
+        st_types: List[SchemaType],
 ):
     st_schema_list = []
     if SchemaType.TIME in st_types:
         t_scale = t_unit.granu
         for t in t_attrs:
-            st_schema_list.append(ST_Schema(t_unit=Unit(t, t_scale)))
+            st_schema_list.append(SpatioTemporalKey(t_unit=Unit(t, t_scale)))
 
     if SchemaType.SPACE in st_types:
         s_scale = s_unit.granu
         for s in s_attrs:
-            st_schema_list.append(ST_Schema(s_unit=Unit(s, s_scale)))
+            st_schema_list.append(SpatioTemporalKey(s_unit=Unit(s, s_scale)))
 
     if SchemaType.TS in st_types:
         t_scale = t_unit.granu
         s_scale = s_unit.granu
         for t in t_attrs:
             for s in s_attrs:
-                st_schema_list.append(ST_Schema(Unit(t, t_scale), Unit(s, s_scale)))
+                st_schema_list.append(SpatioTemporalKey(Unit(t, t_scale), Unit(s, s_scale)))
     return st_schema_list
 
 
@@ -202,18 +201,18 @@ def get_st_schema_list_for_tbl(
 def new_st_schema_from_units(units: List[Unit]):
     if len(units) == 2:
         t_unit, s_unit = units[0], units[1]
-        st_schema = ST_Schema(
+        st_schema = SpatioTemporalKey(
             t_unit=Unit(t_unit, t_unit.granu),
             s_unit=Unit(s_unit, s_unit.granu),
         )
     elif len(units) == 1:
         unit = units[0]
         if unit.get_type() == UnitType.TIME:
-            st_schema = ST_Schema(
+            st_schema = SpatioTemporalKey(
                 t_unit=Unit(unit, unit.granu),
             )
         else:
-            st_schema = ST_Schema(
+            st_schema = SpatioTemporalKey(
                 s_unit=Unit(unit, unit.granu),
             )
     return st_schema
