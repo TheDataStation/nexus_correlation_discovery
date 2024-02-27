@@ -1,5 +1,5 @@
 from typing import List, Dict
-from data_search.data_model import Unit, Variable, Var, ST_Schema, SchemaType
+from utils.data_model import Attr, Variable, SpatioTemporalKey, KeyType
 from psycopg2 import sql
 import pandas as pd
 from data_ingestion.db_ops import select_columns
@@ -31,7 +31,7 @@ def get_intersection(cur, agg_name1, agg_name2):
     return res
 
 
-def __get_intersection_inv_idx(cur, tbl, st_schema: ST_Schema, threshold):
+def __get_intersection_inv_idx(cur, tbl, st_schema: SpatioTemporalKey, threshold):
     agg_tbl = st_schema.get_agg_tbl_name(tbl)
     col_names = st_schema.get_col_names_with_granu()
     val_list = select_columns(cur, agg_tbl, col_names, format="RAW")
@@ -65,7 +65,7 @@ def get_inv_idx_cnt(cur, inv_idx_names):
     return res
 
 
-def get_inv_cnt(cur, tbl, st_schema: ST_Schema, threshold: int):
+def get_inv_cnt(cur, tbl, st_schema: SpatioTemporalKey, threshold: int):
     agg_name = st_schema.get_agg_tbl_name(tbl)
     if len(agg_name) >= 63:
         agg_cnt_tbl = agg_name[:59] + "_cnt"
@@ -94,7 +94,7 @@ def get_inv_cnt(cur, tbl, st_schema: ST_Schema, threshold: int):
     return total_elements, max_joinable_tbls
 
 
-def get_val_cnt(cur, tbl, st_schema: ST_Schema):
+def get_val_cnt(cur, tbl, st_schema: SpatioTemporalKey):
     sql_str = """
         SELECT count(*) from {agg_tbl};
     """
@@ -107,7 +107,7 @@ def get_val_cnt(cur, tbl, st_schema: ST_Schema):
 
 
 def get_intersection_inv_idx(
-    cur, tbl, st_schema: ST_Schema, threshold: int, sample_ratio: int = 0
+    cur, tbl, st_schema: SpatioTemporalKey, threshold: int, sample_ratio: int = 0
 ):
     inv_idx_name = "{}_inv".format(st_schema.get_idx_tbl_name())
     agg_tbl = st_schema.get_agg_tbl_name(tbl)
@@ -166,18 +166,18 @@ def get_intersection_inv_idx(
         if sample_ratio == 0 and overlap < threshold:
             continue
 
-        if st_schema.type == SchemaType.TS:
-            st_schema2 = ST_Schema(
-                t_unit=Unit(cand[1], st_schema.t_unit.granu),
-                s_unit=Unit(cand[2], st_schema.s_unit.granu),
+        if st_schema.type == KeyType.TIME_SPACE:
+            st_schema2 = SpatioTemporalKey(
+                temporal_attr=Attr(cand[1], st_schema.temporal_attr.granu),
+                spatial_attr=Attr(cand[2], st_schema.spatial_attr.granu),
             )
-        elif st_schema.type == SchemaType.TIME:
-            st_schema2 = ST_Schema(
-                t_unit=Unit(cand[1], st_schema.t_unit.granu),
+        elif st_schema.type == KeyType.TIME:
+            st_schema2 = SpatioTemporalKey(
+                temporal_attr=Attr(cand[1], st_schema.temporal_attr.granu),
             )
         else:
-            st_schema2 = ST_Schema(
-                s_unit=Unit(cand[1], st_schema.s_unit.granu),
+            st_schema2 = SpatioTemporalKey(
+                spatial_attr=Attr(cand[1], st_schema.spatial_attr.granu),
             )
         # parsed_candidates.append([st_schema2.get_agg_tbl_name(tbl2_id), overlap])
         result.append([tbl2_id, st_schema2, overlap])
@@ -186,7 +186,7 @@ def get_intersection_inv_idx(
     return result
 
 
-def get_intersection_agg_idx(cur, tbl, st_schema: ST_Schema, exclude_tbls, threshold):
+def get_intersection_agg_idx(cur, tbl, st_schema: SpatioTemporalKey, exclude_tbls, threshold):
     # query aggregated index tables to find joinable tables
     idx_tbl = st_schema.get_idx_tbl_name()
 
@@ -226,18 +226,18 @@ def get_intersection_agg_idx(cur, tbl, st_schema: ST_Schema, exclude_tbls, thres
     result = []
     for row in query_res:
         tbl2_id = row[0]
-        if st_schema.type == SchemaType.TS:
-            st_schema2 = ST_Schema(
-                t_unit=Unit(row[1], st_schema.t_unit.granu),
-                s_unit=Unit(row[2], st_schema.s_unit.granu),
+        if st_schema.type == KeyType.TIME_SPACE:
+            st_schema2 = SpatioTemporalKey(
+                temporal_attr=Attr(row[1], st_schema.temporal_attr.granu),
+                spatial_attr=Attr(row[2], st_schema.spatial_attr.granu),
             )
-        elif st_schema.type == SchemaType.TIME:
-            st_schema2 = ST_Schema(
-                t_unit=Unit(row[1], st_schema.t_unit.granu),
+        elif st_schema.type == KeyType.TIME:
+            st_schema2 = SpatioTemporalKey(
+                temporal_attr=Attr(row[1], st_schema.temporal_attr.granu),
             )
         else:
-            st_schema2 = ST_Schema(
-                t_unit=Unit(row[1], st_schema.s_unit.granu),
+            st_schema2 = SpatioTemporalKey(
+                temporal_attr=Attr(row[1], st_schema.spatial_attr.granu),
             )
         overlap = int(row[-1])
         result.append([tbl2_id, st_schema2, overlap])
@@ -248,10 +248,10 @@ def get_intersection_agg_idx(cur, tbl, st_schema: ST_Schema, exclude_tbls, thres
 def _join_two_agg_tables(
     cur,
     tbl1: str,
-    st_schema1: ST_Schema,
+    st_schema1: SpatioTemporalKey,
     vars1: List[Variable],
     tbl2: str,
-    st_schema2: ST_Schema,
+    st_schema2: SpatioTemporalKey,
     vars2: List[Variable],
 ):
     col_names1 = st_schema1.get_col_names_with_granu()
@@ -414,9 +414,10 @@ def join_multi_agg_tbls(cur, tbl_cols: Dict[str, List[Variable]]):
     df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
     return df.astype(float).round(3)
     
-def join_multi_vars(cur, vars: List[Var], constraints=None):
+
+def join_multi_vars(cur, variables: List[Variable], constraints=None):
     tbl_cols = collections.defaultdict(list)
-    for var in vars:
+    for var in variables:
         tbl_cols[var.tbl_id].append(var.attr_name)
     # join tbls and project attr names 
     tbls = list(tbl_cols.keys())
@@ -448,6 +449,7 @@ def join_multi_vars(cur, vars: List[Var], constraints=None):
         cur.execute(query, constaint_vals)
     df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
     return df, cur.mogrify(query, constaint_vals)
+
 
 def read_agg_tbl(cur, agg_tbl: str, vars: List[Variable]=[]):
     if len(vars) == 0:

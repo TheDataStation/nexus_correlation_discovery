@@ -3,13 +3,17 @@ import pandas as pd
 import dill as pickle
 import yaml
 import os
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 
-stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom", "census_block", 
-            "stnoto", "stnofrom", "lon", "lat", "northing", "easting", "property_group", "insepctnumber", 'primarykey','beat_',
-            "north", "south", "west", "east", "beat_of_occurrence", "lastinspectionnumber", "fax", "latest_dist_res", "majority_dist", "latest_dist",
-            "f12", "f13", "bin"]
+stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom",
+              "census_block",
+              "stnoto", "stnofrom", "lon", "lat", "northing", "easting", "property_group", "insepctnumber",
+              'primarykey', 'beat_',
+              "north", "south", "west", "east", "beat_of_occurrence", "lastinspectionnumber", "fax", "latest_dist_res",
+              "majority_dist", "latest_dist",
+              "f12", "f13", "bin"]
+
 
 def dump_json(path: str, obj):
     dir = os.path.dirname(path)
@@ -55,48 +59,54 @@ def load_config(source):
         config = yaml_data[source]
         return config
 
+
 def create_dir(dir_path):
     if not os.path.exists(dir_path):
-        os.makedirs(dir_path)    
+        os.makedirs(dir_path)
 
-def load_corrs_to_df(data):
+
+def load_corrs_to_df(data: object) -> object:
     df = pd.DataFrame(
         [corr.to_list() for corr in data],
         columns=[
             "domain1",
-            "tbl_id1",
-            "tbl_name1",
-            "agg_tbl1",
+            "table_id1",
+            "table_name1",
+            "agg_table1",
             "agg_attr1",
-            "missing_ratio1",
-            "zero_ratio1",
-            "missing_ratio_o1",
-            "zero_ratio_o1",
+            "agg_attr1_missing_ratio",
+            "agg_attr1_zero_ratio",
+            "original_attr1_missing_ratio",
+            "original_attr1_zero_ratio",
             "cv1",
             "domain2",
-            "tbl_id2",
-            "tbl_name2",
-            "agg_tbl2",
+            "table_id2",
+            "table_name2",
+            "agg_table2",
             "agg_attr2",
-            "missing_ratio2",
-            "zero_ratio2",
-            "missing_ratio_o2",
-            "zero_ratio_o2",
+            "agg_attr2_missing_ratio",
+            "agg_attr2_zero_ratio",
+            "original_attr2_missing_ratio",
+            "original_attr2_zero_ratio",
             "cv2",
-            "r_val",
-            "r_impute_avg_val",
-            "r_impute_zero_val",
-            "p_val",
-            "samples",
-            "align_type",
+            "correlation coefficient",
+            "correlation coefficient after imputing avg",
+            "correlation coefficient after imputing zero",
+            "p value",
+            "number of samples",
+            "spatio-temporal key type",
         ],
     )
+    df['agg_attr1'] = df['agg_attr1'].str[:-3]
+    df['agg_attr2'] = df['agg_attr2'].str[:-3]
     return df
+
 
 def remove_bad_cols(stop_words, corrs):
     for stop_word in stop_words:
         corrs = corrs[~((corrs['agg_attr1'] == f'avg_{stop_word}_t1') | (corrs['agg_attr2'] == f'avg_{stop_word}_t2'))]
     return corrs
+
 
 # def load_corrs_from_dir(path):
 #     all_corr = None
@@ -112,7 +122,7 @@ def remove_bad_cols(stop_words, corrs):
 
 def load_corrs_from_dir(path, index='name', remove_perfect_corrs=False):
     all_corr = None
-    to_include = ['ijzp-q8t2', '85ca-t3if', 'x2n5-8w5q'] 
+    to_include = ['ijzp-q8t2', '85ca-t3if', 'x2n5-8w5q']
     corr_map = {}
     for filename in os.listdir(path):
         if filename.endswith(".csv"):
@@ -124,12 +134,14 @@ def load_corrs_from_dir(path, index='name', remove_perfect_corrs=False):
     # all_corr = all_corr[~(((all_corr['agg_attr1'] == 'count_t1') & (~all_corr['tbl_id1'].isin(to_include))) | (((all_corr['agg_attr2'] == 'count_t2') & (~all_corr['tbl_id2'].isin(to_include)))))]
     all_corr = remove_bad_cols(stop_words, all_corr)
     if remove_perfect_corrs:
-        all_corr = all_corr[~(abs(all_corr['r_val'])==1)]
+        all_corr = all_corr[~(abs(all_corr['r_val']) == 1)]
     all_corr['agg_attr1'] = all_corr['agg_attr1'].str[:-3]
     all_corr['agg_attr2'] = all_corr['agg_attr2'].str[:-3]
     for _, row in all_corr.iterrows():
         if index == 'id':
-            corr_map[tuple(sorted(["{}--{}".format(row['tbl_id1'], row['agg_attr1']), "{}--{}".format(row['tbl_id2'], row['agg_attr2'])]))] = row['r_val']
+            corr_map[tuple(sorted(["{}--{}".format(row['tbl_id1'], row['agg_attr1']),
+                                   "{}--{}".format(row['tbl_id2'], row['agg_attr2'])]))] = row['r_val']
         elif index == 'name':
-            corr_map[tuple(sorted(["{}--{}".format(row['tbl_name1'], row['agg_attr1']), "{}--{}".format(row['tbl_name2'], row['agg_attr2'])]))] = row['r_val']
+            corr_map[tuple(sorted(["{}--{}".format(row['tbl_name1'], row['agg_attr1']),
+                                   "{}--{}".format(row['tbl_name2'], row['agg_attr2'])]))] = row['r_val']
     return all_corr, corr_map

@@ -1,9 +1,9 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 from data_search.commons import FIND_JOIN_METHOD
-from utils.coordinate import S_GRANU
+from utils.coordinate import SPATIAL_GRANU
 
-from utils.time_point import T_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from utils.io_utils import load_json
 from evaluation.plot_lib.plot_utils import Stages, load_data
 import matplotlib.pyplot as plt
@@ -15,7 +15,7 @@ mpl.rcParams['font.size'] = 25
 ext = 'pdf'
 
 def nexus_lazo_compare():
-    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    t_granu, s_granu = TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT
     join_method = FIND_JOIN_METHOD.COST_MODEL
     o_t = 10
     validate = "True"
@@ -75,7 +75,7 @@ def load_array(run_time_profile, find_join, validation, materialization, correla
 
 
 def nexus_scalability_plot():
-    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    t_granu, s_granu = TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT
     join_method = FIND_JOIN_METHOD.COST_MODEL
     o_t = 10
     find_join, materialization, correlation, other, total = [], [], [], [], []

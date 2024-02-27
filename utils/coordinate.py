@@ -8,7 +8,8 @@ import geopandas as gpd
 from typing import List
 
 
-class S_GRANU(Enum):
+class SPATIAL_GRANU(Enum):
+    ALL = 0
     BLOCK = 1
     BLG = 2
     TRACT = 3
@@ -19,21 +20,21 @@ class S_GRANU(Enum):
 
 # a dictionary from spatial scales to its names in the shape file
 scale_dict = {
-    S_GRANU.BLOCK: "blockce10",
-    S_GRANU.TRACT: "tractce10",
-    S_GRANU.COUNTY: "COUNTYFP",
-    S_GRANU.STATE: "STATEFP",
+    SPATIAL_GRANU.BLOCK: "blockce10",
+    SPATIAL_GRANU.TRACT: "tractce10",
+    SPATIAL_GRANU.COUNTY: "COUNTYFP",
+    SPATIAL_GRANU.STATE: "STATEFP",
 }
 
 supported_chain = []
 
 name_to_granu = {
-    "block": S_GRANU.BLOCK,
-    "blg": S_GRANU.BLG,
-    "county": S_GRANU.COUNTY,
-    "tract": S_GRANU.TRACT,
-    "state": S_GRANU.STATE,
-    "zipcode": S_GRANU.ZIPCODE
+    "block": SPATIAL_GRANU.BLOCK,
+    "blg": SPATIAL_GRANU.BLG,
+    "county": SPATIAL_GRANU.COUNTY,
+    "tract": SPATIAL_GRANU.TRACT,
+    "state": SPATIAL_GRANU.STATE,
+    "zipcode": SPATIAL_GRANU.ZIPCODE
 }
 
 
@@ -67,34 +68,34 @@ class Coordinate:
             self.lat, other.lat, rel_tol=1e-5
         )
 
-    def transform(self, granu: S_GRANU):
-        if granu == S_GRANU.BLOCK:
+    def transform(self, granu: SPATIAL_GRANU):
+        if granu == SPATIAL_GRANU.BLOCK:
             return [
-                self.full[S_GRANU.STATE],
-                self.full[S_GRANU.COUNTY],
-                self.full[S_GRANU.TRACT],
-                self.full[S_GRANU.BLOCK],
+                self.full[SPATIAL_GRANU.STATE],
+                self.full[SPATIAL_GRANU.COUNTY],
+                self.full[SPATIAL_GRANU.TRACT],
+                self.full[SPATIAL_GRANU.BLOCK],
             ]
-        elif granu == S_GRANU.BLG:
+        elif granu == SPATIAL_GRANU.BLG:
             return [
-                self.full[S_GRANU.STATE],
-                self.full[S_GRANU.COUNTY],
-                self.full[S_GRANU.TRACT],
-                self.full[S_GRANU.BLG],
+                self.full[SPATIAL_GRANU.STATE],
+                self.full[SPATIAL_GRANU.COUNTY],
+                self.full[SPATIAL_GRANU.TRACT],
+                self.full[SPATIAL_GRANU.BLG],
             ]
-        elif granu == S_GRANU.TRACT:
+        elif granu == SPATIAL_GRANU.TRACT:
             return [
-                self.full[S_GRANU.STATE],
-                self.full[S_GRANU.COUNTY],
-                self.full[S_GRANU.TRACT],
+                self.full[SPATIAL_GRANU.STATE],
+                self.full[SPATIAL_GRANU.COUNTY],
+                self.full[SPATIAL_GRANU.TRACT],
             ]
-        elif granu == S_GRANU.COUNTY:
+        elif granu == SPATIAL_GRANU.COUNTY:
             return [
-                self.full[S_GRANU.STATE],
-                self.full[S_GRANU.COUNTY],
+                self.full[SPATIAL_GRANU.STATE],
+                self.full[SPATIAL_GRANU.COUNTY],
             ]
-        elif granu == S_GRANU.STATE:
-            return self.full[S_GRANU.STATE]
+        elif granu == SPATIAL_GRANU.STATE:
+            return self.full[SPATIAL_GRANU.STATE]
 
     # def transform(self, granu: S_GRANU):
     #     idx = granu - self.chain[0].value
@@ -106,12 +107,12 @@ class Coordinate:
     def to_int(self, repr: List[int]):
         return int("".join([str(x) for x in repr]))
 
-    def transform_to_key(self, granu: S_GRANU):
+    def transform_to_key(self, granu: SPATIAL_GRANU):
         repr = self.full_resolution[granu - 1 :]
         return str(repr)
 
 
-def transform(crd: Coordinate, granu: S_GRANU):
+def transform(crd: Coordinate, granu: SPATIAL_GRANU):
     return crd.full_resolution[granu - 1 :]
 
 
@@ -175,7 +176,7 @@ def resolve_spatial_hierarchy(shape_path, points):
         return None
 
 
-def set_spatial_granu(crd: Coordinate, s_granu: S_GRANU):
+def set_spatial_granu(crd: Coordinate, s_granu: SPATIAL_GRANU):
     res = crd.to_str(crd.transform(s_granu))
     # print(s_granu)
     # print(res)

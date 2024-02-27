@@ -2,8 +2,8 @@ import time
 from data_ingestion.profile_datasets import Profiler
 import utils.io_utils as io_utils
 import time
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from data_ingestion.index_builder_agg import DBIngestorAgg
 from tqdm import tqdm
 from utils.io_utils import dump_json
@@ -13,12 +13,12 @@ if __name__ == "__main__":
     config = io_utils.load_config(data_source)
     conn_string = config["db_path"]
     conn_string = "postgresql://yuegong@localhost/chicago_1m_new"
-    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
-    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
+    t_scales = [TEMPORAL_GRANU.DAY, TEMPORAL_GRANU.MONTH]
+    s_scales = [SPATIAL_GRANU.BLOCK, SPATIAL_GRANU.TRACT]
 
     ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
     perf_profile = {}
-    granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK], [T_GRANU.MONTH, S_GRANU.TRACT]]
+    granu_lists = [[TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK], [TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT]]
     for granu_list in granu_lists:
         print(granu_list)
         start =   time.time()

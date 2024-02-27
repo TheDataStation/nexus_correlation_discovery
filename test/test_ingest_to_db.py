@@ -1,13 +1,13 @@
 import utils.io_utils as io_utils
 # from data_ingestion.index_builder_raw import DBIngestor, Table
 from data_ingestion.index_builder_agg import DBIngestorAgg
-from sqlalchemy import create_engine
 from tqdm import tqdm
 import time
-from utils.coordinate import S_GRANU
+from utils.coordinate import SPATIAL_GRANU
 import utils.coordinate as coordinate
-from utils.time_point import T_GRANU
-from data_ingestion.table import Table, Attr
+from utils.time_point import TEMPORAL_GRANU
+from utils.data_model import Attr, Table
+
 
 # conn_string = "postgresql://yuegong@localhost/cdc_open_data"
 # conn_string = "postgresql://yuegong@localhost/st_tables"
@@ -15,8 +15,8 @@ from data_ingestion.table import Table, Attr
 
 
 def test_ingest_tbl_e2e():
-    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
-    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
+    t_scales = [TEMPORAL_GRANU.DAY, TEMPORAL_GRANU.MONTH]
+    s_scales = [SPATIAL_GRANU.BLOCK, SPATIAL_GRANU.TRACT]
     conn_string = "postgresql://yuegong@localhost/test"
     ingestor = DBIngestorAgg(conn_string, t_scales, s_scales)
     data_config = io_utils.load_config("chicago_10k")
@@ -45,9 +45,9 @@ def test_ingest_tbl_e2e():
 def test_ingest_all_tables():
     start_time = time.time()
 
-    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
+    t_scales = [TEMPORAL_GRANU.DAY, TEMPORAL_GRANU.MONTH]
     # s_scales = [S_GRANU.COUNTY, S_GRANU.STATE]
-    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
+    s_scales = [SPATIAL_GRANU.BLOCK, SPATIAL_GRANU.TRACT]
     # ingestor = DBIngestor(conn_string, t_scales, s_scales)
 
     data_source = "chicago_1m"
@@ -56,7 +56,7 @@ def test_ingest_all_tables():
     idx_tbl_path = config["idx_tbl_path"]
     idx_tbls = io_utils.load_json(idx_tbl_path)
     ingestor = DBIngestorAgg(conn_string, t_scales, s_scales)
-    ingestor.create_cnt_tbls(data_source, [T_GRANU.DAY], [S_GRANU.BLOCK])
+    ingestor.create_cnt_tbls(data_source, [TEMPORAL_GRANU.DAY], [SPATIAL_GRANU.BLOCK])
     # ingestor.create_inv_cnt_tbls(idx_tbls)
     # ingestor.ingest_data_source("chicago_10k", clean=True, persist=True)
 
@@ -74,9 +74,9 @@ def test_ingest_all_tables():
 
 
 def test_create_index_on_agg_idx_table():
-    t_scales = [T_GRANU.DAY, T_GRANU.MONTH, T_GRANU.QUARTER, T_GRANU.YEAR]
+    t_scales = [TEMPORAL_GRANU.DAY, TEMPORAL_GRANU.MONTH, TEMPORAL_GRANU.QUARTER, TEMPORAL_GRANU.YEAR]
     # s_scales = [S_GRANU.COUNTY, S_GRANU.STATE]
-    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
+    s_scales = [SPATIAL_GRANU.BLOCK, SPATIAL_GRANU.TRACT]
     ingestor = DBIngestorAgg(conn_string, t_scales, s_scales)
     print("begin creating indices on the aggregated index tables")
     ingestor.create_index_on_agg_idx_table()
@@ -91,11 +91,11 @@ def test_expand_table():
         df, success_t_attrs, success_s_attrs = ingestor.expand_df(df, t_attrs, s_attrs)
         t_attrs_granu, s_attrs_granu = [], []
         for t_attr in success_t_attrs:
-            for t_granu in T_GRANU:
+            for t_granu in TEMPORAL_GRANU:
                 new_attr = "{}_{}".format(t_attr, t_granu.value)
                 t_attrs_granu.append(new_attr)
         for s_attr in success_s_attrs:
-            for s_granu in S_GRANU:
+            for s_granu in SPATIAL_GRANU:
                 new_attr = "{}_{}".format(s_attr, s_granu.value)
                 s_attrs_granu.append(new_attr)
         print(success_t_attrs + t_attrs_granu)
@@ -107,8 +107,8 @@ def test_expand_table():
         print("t_attrs after: {}".format(after_cnt))
 
 def test_create_sketch_tbl():
-    t_scales = [T_GRANU.DAY, T_GRANU.MONTH]
-    s_scales = [S_GRANU.BLOCK, S_GRANU.TRACT]
+    t_scales = [TEMPORAL_GRANU.DAY, TEMPORAL_GRANU.MONTH]
+    s_scales = [SPATIAL_GRANU.BLOCK, SPATIAL_GRANU.TRACT]
     data_source = "chicago_1m"
     config = io_utils.load_config(data_source)
     conn_string = config["db_path"]
@@ -121,8 +121,8 @@ def test_ingest_a_tbl(tbl_id, engine):
     # ingest asthma dataset
     data_sources = ['chicago_1m']
     conn_str = "postgresql://yuegong@localhost/test"
-    t_scales = [T_GRANU.MONTH]
-    s_scales = [S_GRANU.TRACT]
+    t_scales = [TEMPORAL_GRANU.MONTH]
+    s_scales = [SPATIAL_GRANU.TRACT]
 
     # ingest tables
     for data_source in data_sources:

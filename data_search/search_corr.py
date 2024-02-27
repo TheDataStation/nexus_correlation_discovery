@@ -1,14 +1,11 @@
 from data_search.data_polygamy import DataPolygamy
 import utils.io_utils as io_utils
 import numpy as np
-import pandas as pd
-from data_search.data_model import (
-    Unit,
+from utils.data_model import (
     Variable,
     AggFunc,
-    ST_Schema,
-    SchemaType,
-    get_st_schema_list_for_tbl,
+    SpatioTemporalKey,
+    KeyType,
 )
 from data_ingestion.profile_datasets import Profiler
 from tqdm import tqdm
@@ -23,8 +20,8 @@ from typing import List
 import data_search.db_ops as db_ops
 import math
 from data_search.commons import FIND_JOIN_METHOD
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from scipy.stats import pearsonr, spearmanr, kendalltau
 from utils.profile_utils import is_num_column_valid
 import pingouin as pg
@@ -308,7 +305,7 @@ class CorrSearch:
         cur_idx = 0
         for tbl, st_schema, cnt in tqdm(sorted_st_schemas):
             if st_type == 'time_space':
-                if st_schema.get_type() != SchemaType.TIME and st_schema.get_type() != SchemaType.SPACE:
+                if st_schema.get_type() != KeyType.TIME and st_schema.get_type() != KeyType.SPACE:
                     continue
             self.find_all_corr_for_a_tbl_schema(tbl, st_schema, o_t, r_t, p_t, fill_zero, corr_type=corr_type, control_vars=control_vars)
             start = time.time()
@@ -324,34 +321,18 @@ class CorrSearch:
             time_used = time.time() - start
             self.perf_profile["time_dump_csv"]["total"] += time_used
         
-    def find_all_corr_for_a_tbl(self, tbl, granu_list, o_t, r_t, p_t, fill_zero, corr_type='pearson', control_vars=[]):
-        t_granu, s_granu = granu_list[0], granu_list[1]
-        
+    def find_all_corr_for_a_tbl(self, table, temporal_granu, spatial_granu, overlap_t, corr_t, p_t, fill_zero,
+                                corr_type='pearson', control_variables=[]):
         if not self.st_schemas_dict:
-            self.st_schemas_dict = Profiler.load_all_st_schemas(self.tbl_attrs, t_granu, s_granu, type_aware=True)
+            self.st_schemas_dict = Profiler.load_all_st_schemas(self.tbl_attrs, temporal_granu,
+                                                                spatial_granu, type_aware=True)
 
-        st_schema_list = Profiler.load_st_schemas_for_a_tbl(self.tbl_attrs, tbl, t_granu, s_granu)
+        st_schema_list = Profiler.load_st_schemas_for_a_tbl(self.tbl_attrs, table,
+                                                            temporal_granu, spatial_granu)
         for _, st_schema in st_schema_list:
             self.find_all_corr_for_a_tbl_schema(
-                tbl, st_schema, o_t, r_t, p_t, fill_zero, corr_type, control_vars
+                table, st_schema, overlap_t, corr_t, p_t, fill_zero, corr_type, control_variables
             )
-
-    def find_corr_in_a_tbl(self, tbl, granu_list, r_t, p_t):
-        """
-        Find correlations between variables in a table.
-        """
-        t_attrs, s_attrs = (
-            self.tbl_attrs[tbl]["t_attrs"],
-            self.tbl_attrs[tbl]["s_attrs"],
-        )
-        st_schema_list = get_st_schema_list_for_tbl(t_attrs, s_attrs, granu_list[0], granu_list[1], [SchemaType.TIME, SchemaType.SPACE, SchemaType.TS])
-        corrs = []
-        for st_schema in st_schema_list:
-            res = self.find_corr_in_a_tbl_schema(
-                tbl, st_schema, r_t, p_t
-            )
-            corrs.extend(res)
-        return corrs
     
     def get_vars_for_tbl(self, tbl, suffix):
         tbl_agg_cols = self.tbl_attrs[tbl]["num_columns"]
@@ -360,9 +341,9 @@ class CorrSearch:
             if len(agg_col) > 56:
                 continue
             if is_num_column_valid(agg_col):
-                vars.append(Variable(agg_col, AggFunc.AVG, "avg_{}".format(agg_col), suffix=suffix))
+                vars.append(Variable(tbl, agg_col, AggFunc.AVG, "avg_{}".format(agg_col), suffix=suffix))
         if len(vars) == 0 or tbl == '85ca-t3if':
-            vars.append(Variable("*", AggFunc.COUNT, "count", suffix=suffix))
+            vars.append(Variable(tbl, "*", AggFunc.COUNT, "count", suffix=suffix))
         return vars
     
     def align_two_st_schemas(self, tbl1, agg_name1, tbl2, agg_name2, o_t, outer, sketch=False, k=0):
@@ -424,7 +405,7 @@ class CorrSearch:
         return df1, df2
 
     def determine_find_join_method(
-        self, tbl, st_schema: ST_Schema, threshold, v_cnt: int
+        self, tbl, st_schema: SpatioTemporalKey, threshold, v_cnt: int
     ):
         agg_tbl = st_schema.get_agg_tbl_name(tbl)
         print(f"current table: {agg_tbl}")
@@ -550,7 +531,7 @@ class CorrSearch:
             else:
                 return "JOIN_ALL", aligned_schemas
 
-    def find_corr_in_a_tbl_schema(self, tbl, st_schema: ST_Schema, r_t, p_t):
+    def find_corr_in_a_tbl_schema(self, tbl, st_schema: SpatioTemporalKey, r_t, p_t):
         corrs = []
         flag = st_schema.get_type().value
         tbl_agg_cols = self.tbl_attrs[tbl]["num_columns"]
@@ -580,7 +561,7 @@ class CorrSearch:
                         corrs.append(corr)
         return corrs
 
-    def find_joinable_lookup(self, tbl1, st_schema: ST_Schema, o_t):
+    def find_joinable_lookup(self, tbl1, st_schema: SpatioTemporalKey, o_t):
         key = st_schema.get_agg_tbl_name(tbl1)
         if key not in self.joinable_lookup:
             return []
@@ -591,7 +572,7 @@ class CorrSearch:
             res.append((cand[:9], cand))
         return res
     
-    def find_joinable_nexus(self, tbl1, st_schema: ST_Schema, o_t):
+    def find_joinable_nexus(self, tbl1, st_schema: SpatioTemporalKey, o_t):
         v_cnt = self.join_costs[st_schema.get_agg_tbl_name(tbl1)].cnt
 
         if self.find_join_method == FIND_JOIN_METHOD.INDEX_SEARCH:
@@ -653,7 +634,7 @@ class CorrSearch:
         return res
 
     def find_all_corr_for_a_tbl_schema(
-        self, tbl1, st_schema: ST_Schema, o_t, r_t, p_t, fill_zero, corr_type='pearson', control_vars=[]
+        self, tbl1, st_schema: SpatioTemporalKey, o_t, r_t, p_t, fill_zero, corr_type='pearson', control_vars=[]
     ):
         self.join_all_cost = 0
         self.cur_join_time = 0
@@ -679,7 +660,7 @@ class CorrSearch:
                 pos, neg = self.dataPolygamy.load_features(agg_name1, var.var_name)
                 if pos is not None and neg is not None:
                     feature_map[var.var_name] = (pos, neg)
-                    if st_schema.get_type() == SchemaType.TS:
+                    if st_schema.get_type() == KeyType.TIME_SPACE:
                         shuffle_num = self.st_shuffle_num
                     else:
                         shuffle_num = self.shuffle_num
@@ -755,7 +736,7 @@ class CorrSearch:
                         score, strength = self.dataPolygamy.relationships(pos1, neg1, pos2, neg2)
                         if score != 0:
                             significant = True
-                            if st_schema.get_type() == SchemaType.TS:
+                            if st_schema.get_type() == KeyType.TIME_SPACE:
                                 shuffle_num = self.st_shuffle_num
                             else:
                                 shuffle_num = self.shuffle_num
@@ -799,7 +780,7 @@ class CorrSearch:
                 tbl_cols[agg_name2] = self.get_vars_for_tbl(tbl2, suffix='t2')
                 names2 = [var.proj_name[:63] for var in tbl_cols[agg_name2]]
                 for var in control_vars:
-                    tbl_cols[var.tbl_id].append(Variable(var.attr_name, None, var.attr_name))
+                    tbl_cols[var.tbl_id].append(Variable(var.tbl_id, var.attr_name, None, var.attr_name))
                 control_var_names = [var.attr_name for var in control_vars]
                 df = db_ops.join_multi_agg_tbls(self.cur, tbl_cols)
                 if len(df) < o_t:
@@ -1192,7 +1173,7 @@ class CorrSearch:
 
 
 if __name__ == "__main__":
-    granu_lists = [[T_GRANU.DAY, S_GRANU.BLOCK]]
+    granu_lists = [[TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK]]
     conn_str = "postgresql://yuegong@localhost/st_tables"
     data_source = "chicago_10k"
     config = io_utils.load_config(data_source)

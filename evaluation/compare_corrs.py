@@ -1,8 +1,8 @@
 import os
 import pandas as pd
 from graph.graph_utils import remove_bad_cols
-from utils.time_point import T_GRANU
-from utils.coordinate import S_GRANU
+from utils.time_point import TEMPORAL_GRANU
+from utils.coordinate import SPATIAL_GRANU
 from utils.io_utils import dump_json
 stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom", "census_block", 
               "stnoto", "stnofrom", "lon", "lat", "northing", "easting", "property_group", "insepctnumber", 'primarykey','beat_',
@@ -110,7 +110,7 @@ if __name__ == "__main__":
     # dump_dir = 'correlation_quality12_30'
     # baseline = 'polygamy'
     # baseline = 'lazo'
-    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    t_granu, s_granu = TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT
     # t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
     # dir1 = f'/home/cc/nexus_correlation_discovery/evaluation/correlations12_29/nexus_0.0/chicago_1m_{t_granu}_{s_granu}/'
     # # dir2 =  f'/home/cc/nexus_correlation_discovery/evaluation/{storage_dir}/corr_sketch_0.0_256/chicago_1m_{t_granu}_{s_granu}/'

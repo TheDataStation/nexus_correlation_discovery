@@ -1,20 +1,19 @@
-from data_search.search_corr import CorrSearch, Correlation
+from data_search.search_corr import CorrSearch
 from data_search.commons import FIND_JOIN_METHOD
 import pandas as pd
-from utils.time_point import T_GRANU
-from utils.coordinate import S_GRANU
+from utils.time_point import TEMPORAL_GRANU
+from utils.coordinate import SPATIAL_GRANU
 from utils.io_utils import load_corrs_to_df, load_corrs_from_dir, dump_json
 from data_search.db_ops import join_two_agg_tables_api, read_agg_tbl, join_multi_vars
 import psycopg2
 import os
 import json
 import utils.io_utils as io_utils
-from data_search.data_model import Var
+from utils.data_model import Variable
 from typing import List
 from sklearn import linear_model
 from corr_analysis.factor_analysis.factor_analysis import factor_analysis, build_factor_clusters
 import time
-from datetime import datetime
 from data_ingestion.profile_datasets import Profiler
 
 
@@ -36,21 +35,40 @@ class API:
             self.catalog.update(io_utils.load_json(attr_path))
             self.data_path_map[data_source] = config["data_path"]
 
-        self.display_attrs = [
-            "tbl_id1",
-            "tbl_name1",
-            "agg_tbl1",
-            "agg_attr1",
-            "tbl_id2",
-            "tbl_name2",
-            "agg_tbl2",
-            "agg_attr2",
-            "missing_ratio_o2",
-            "r_val",
-            "p_val",
-            "samples"]
+        # self.display_attrs = [
+        #     "tbl_id1",
+        #     "tbl_name1",
+        #     "agg_tbl1",
+        #     "agg_attr1",
+        #     "tbl_id2",
+        #     "tbl_name2",
+        #     "agg_tbl2",
+        #     "agg_attr2",
+        #     "missing_ratio_o2",
+        #     "r_val",
+        #     "p_val",
+        #     "samples"]
 
-    def find_correlations_from(self, dataset, t_granu, s_granu, overlap_t, r_t, corr_type="pearson", control_vars=[]):
+        self.display_attrs = [
+            "table_id1",
+            "table_name1",
+            "agg_table1",
+            "agg_attr1",
+            "original_attr1_missing_ratio",
+            "table_id2",
+            "table_name2",
+            "agg_table2",
+            "agg_attr2",
+            "original_attr2_missing_ratio",
+            "correlation coefficient",
+            "p value",
+            "number of samples",
+            "spatio-temporal key type",
+        ]
+
+    def find_correlations_from(self, dataset: str, temporal_granularity: TEMPORAL_GRANU, spatial_granularity: SPATIAL_GRANU,
+                               overlap_threshold: int, correlation_threshold: float, correlation_type="pearson",
+                               control_variables=[]):
         corr_search = CorrSearch(
             self.conn_str,
             self.data_sources,
@@ -60,17 +78,17 @@ class API:
             correct_method=self.correction,
             q_val=0.05,
         )
-        corr_search.set_join_cost(t_granu, s_granu, overlap_t)
-        corr_search.find_all_corr_for_a_tbl(dataset, [t_granu, s_granu], overlap_t, r_t, p_t=0.05, fill_zero=True,
-                                            corr_type=corr_type, control_vars=control_vars)
-        corrs = load_corrs_to_df(corr_search.data)
-        corrs['agg_attr1'] = corrs['agg_attr1'].str[:-3]
-        corrs['agg_attr2'] = corrs['agg_attr2'].str[:-3]
-        print(f"total number of correlations: {len(corrs)}")
-        return corrs[self.display_attrs]
+        corr_search.set_join_cost(temporal_granularity, spatial_granularity, overlap_threshold)
+        corr_search.find_all_corr_for_a_tbl(dataset, temporal_granularity, spatial_granularity, overlap_threshold,
+                                            correlation_threshold, p_t=0.05, fill_zero=True,
+                                            corr_type=correlation_type, control_variables=control_variables)
+        correlations = load_corrs_to_df(corr_search.data)
+        print(f"total number of correlations: {len(correlations)}")
+        return correlations[self.display_attrs]
 
-    def find_all_correlations(self, t_granu, s_granu, overlap_t, r_t, persist_path=None, corr_type="pearson",
-                              control_vars=[]):
+    def find_all_correlations(self, temporal_granularity, spatial_granularity, overlap_threshold,
+                              correlation_threshold, persist_path=None, correlation_type="pearson",
+                              control_variables=[]):
         corr_search = CorrSearch(
             self.conn_str,
             self.data_sources,
@@ -80,36 +98,35 @@ class API:
             correct_method='FDR',
             q_val=0.05,
         )
-        corr_search.set_join_cost(t_granu, s_granu, overlap_t)
+        corr_search.set_join_cost(temporal_granularity, spatial_granularity, overlap_threshold)
         start = time.time()
-        corr_search.find_all_corr_for_all_tbls([t_granu, s_granu], overlap_t, r_t, p_t=0.05, corr_type=corr_type,
-                                               fill_zero=True, dir_path=persist_path, control_vars=control_vars)
+        corr_search.find_all_corr_for_all_tbls([temporal_granularity, spatial_granularity], overlap_threshold,
+                                               correlation_threshold, p_t=0.05, corr_type=correlation_type,
+                                               fill_zero=True, dir_path=persist_path, control_vars=control_variables)
         total_time = time.time() - start
         corr_search.perf_profile["total_time"] = total_time
         corr_search.perf_profile["cost_model_overhead"] = corr_search.overhead
         dump_json(
-            f"tmp/perf_profile_{'_'.join(self.data_sources)}_{overlap_t}_{r_t}_{t_granu}_{s_granu}_{'_'.join([var.to_str() for var in control_vars])}.json",
+            f"tmp/perf_profile_{'_'.join(self.data_sources)}_{overlap_threshold}_{correlation_threshold}_{temporal_granularity}_{spatial_granularity}_{'_'.join([var.to_str() for var in control_variables])}.json",
             corr_search.perf_profile,
         )
-        corrs = load_corrs_to_df(corr_search.all_corrs)
-        corrs['agg_attr1'] = corrs['agg_attr1'].str[:-3]
-        corrs['agg_attr2'] = corrs['agg_attr2'].str[:-3]
-        print(f"total number of correlations: {len(corrs)}")
-        return corrs[self.display_attrs]
+        correlations = load_corrs_to_df(corr_search.all_corrs)
+        print(f"total number of correlations: {len(correlations)}")
+        return correlations[self.display_attrs]
 
-    def regress(self, target_var: Var, covariates: List[Var], reg):
-        df, _ = join_multi_vars(self.cur, [target_var] + covariates)
-        x = df[[var.attr_name for var in covariates]]
-        y = df[target_var.attr_name]
+    def regress(self, target_variable: Variable, co_variables: List[Variable], reg):
+        df, _ = join_multi_vars(self.cur, [target_variable] + co_variables)
+        x = df[[var.attr_name for var in co_variables]]
+        y = df[target_variable.attr_name]
         model = reg.fit(x, y)
         r_sq = model.score(x, y)
         return model, r_sq, df
 
-    def assemble(self, vars: List[Var], constraints=None):
-        df = join_multi_vars(self.cur, vars, constraints=constraints)
+    def join_and_project(self, variables: List[Variable], constraints=None):
+        df = join_multi_vars(self.cur, variables, constraints=constraints)
         return df
 
-    def get_aligned_data(self, row):
+    def get_joined_data_from_row(self, row):
         agg_name1 = row['agg_tbl1']
         agg_attr1 = row['agg_attr1']
         agg_name2 = row['agg_tbl2']
@@ -169,13 +186,16 @@ class API:
                 total_num += num_valid_columns - 1
         return total_num
 
-    def load_corrs_from_dir(self, corr_path):
+    @staticmethod
+    def load_corrs_from_dir(corr_path):
         return load_corrs_from_dir(corr_path)
 
-    def factor_analysis(self, corrs, corrs_map, n_factors=3, save_path=None):
+    @staticmethod
+    def factor_analysis(corrs, corrs_map, n_factors=3, save_path=None):
         return factor_analysis(corrs, corrs_map, n_factors, save_path=save_path)
 
-    def build_factor_clusters(self, fa, corrs, corr_map, n_factors, threshold=0.5):
+    @staticmethod
+    def build_factor_clusters(fa, corrs, corr_map, n_factors, threshold=0.5):
         return build_factor_clusters(fa, corrs, corr_map, n_factors, threshold)
 
 
@@ -183,13 +203,13 @@ if __name__ == '__main__':
     conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
     nexus_api = API(conn_str)
     dataset = 'asthma'
-    temporal_granu, spatial_granu = None, S_GRANU.ZIPCODE
+    temporal_granu, spatial_granu = None, SPATIAL_GRANU.ZIPCODE
     overlap_t = 5
     r_t = 0.5
 
     # test regress
-    target_var = Var('asthma_Zip5_6', 'avg_enc_asthma')
-    variables = [Var('ijzp-q8t2_location_6', 'count'), Var('n26f-ihde_pickup_centroid_location_6', 'avg_tip')]
+    target_var = Variable('asthma_Zip5_6', 'avg_enc_asthma')
+    variables = [Variable('ijzp-q8t2_location_6', 'count'), Variable('n26f-ihde_pickup_centroid_location_6', 'avg_tip')]
     reg_model = linear_model.LinearRegression()  # OLS regression
     model, rsq, merged = nexus_api.regress(target_var, variables, reg_model)
     print(model.coef_)

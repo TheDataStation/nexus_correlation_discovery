@@ -2,8 +2,8 @@ from data_ingestion.profile_datasets import Profiler
 from data_search.commons import FIND_JOIN_METHOD
 from evaluation.persist_correlations import load_lazo_join_res
 from utils import io_utils
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from evaluation.plot_lib.plot_utils import Stages, load_data, grouped_bar_plot
 import numpy as np
 import matplotlib.pyplot as plt
@@ -39,7 +39,7 @@ def lazo_nexus_runtime_comparison_overall(granu_list, jc_threshold_l, o_t, r_t, 
     )
 
 def lazo_nexus_runtime_comparison():
-    granu_list = [T_GRANU.MONTH, S_GRANU.TRACT]
+    granu_list = [TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT]
     jc_threshold, o_t, r_t = 0.2, 30, 0.2
     find_join_method = FIND_JOIN_METHOD.COST_MODEL
     data_source = "chicago_1m"
@@ -72,7 +72,7 @@ def find_dist_false_nagetive_joins():
     joinable_dict = load_lazo_join_res()
     lookup = joinable_dict[0.2]
     lazo_pairs = set()
-    t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
+    t_granu, s_granu = TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK
     profiler = Profiler('chicago_1m', t_granu, s_granu)
     join_costs = profiler.get_join_cost(t_granu, s_granu, o_t)
     fn_join_costs = []
@@ -105,6 +105,6 @@ def find_dist_false_nagetive_joins():
     plt.savefig('lazo_eval/figure/fn_joins.png')
 
 if __name__ == "__main__":
-    lazo_nexus_runtime_comparison_overall([T_GRANU.MONTH, S_GRANU.TRACT], [0.0, 0.2, 0.4, 0.6], 10, 0.0, 'chicago_1m', 'runtime12_29')
+    lazo_nexus_runtime_comparison_overall([TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT], [0.0, 0.2, 0.4, 0.6], 10, 0.0, 'chicago_1m', 'runtime12_29')
     # lazo_nexus_runtime_comparison()
     # find_dist_false_nagetive_joins()

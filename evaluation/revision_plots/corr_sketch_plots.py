@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 from utils import io_utils
 from evaluation.plot_lib.plot_utils import Stages, load_data, grouped_bar_plot
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 
 mpl.rcParams['font.family'] = 'Times New Roman'
 mpl.rcParams['font.size'] = 29
@@ -111,7 +111,7 @@ def plot_dist_fast():
 Run time stacked plot
 """
 def plot_run_time():
-    t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK 
+    t_granu, s_granu = TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK
     find_join_l = []
     materialize_l = []
     correlation_l = []

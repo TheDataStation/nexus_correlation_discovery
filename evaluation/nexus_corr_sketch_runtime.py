@@ -2,14 +2,14 @@ from data_ingestion.profile_datasets import Profiler
 from data_search.commons import FIND_JOIN_METHOD
 from evaluation.persist_correlations import load_lazo_join_res
 from utils import io_utils
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from evaluation.plot_lib.plot_utils import Stages, load_data, grouped_bar_plot
 import numpy as np
 import matplotlib.pyplot as plt
 
 def lazo_corr_sketch_runtime_comparison():
-    granu_list = [T_GRANU.MONTH, S_GRANU.TRACT]
+    granu_list = [TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT]
     # granu_list = [T_GRANU.MONTH, S_GRANU.TRACT]
     o_t, r_t = 10, 0.0
     find_join_method = FIND_JOIN_METHOD.COST_MODEL

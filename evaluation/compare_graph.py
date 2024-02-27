@@ -1,6 +1,6 @@
 
-from utils.coordinate import S_GRANU
-from utils.time_point import T_GRANU
+from utils.coordinate import SPATIAL_GRANU
+from utils.time_point import TEMPORAL_GRANU
 from graph.graph_utils import load_all_corrs, build_graph_on_vars
 import networkx as nx
 
@@ -20,7 +20,7 @@ if __name__ == '__main__':
     dump_dir = 'correlation_quality12_30'
     # baseline = 'polygamy'
     # t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
-    t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
+    t_granu, s_granu = TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK
     dir_nexus = f'/home/cc/nexus_correlation_discovery/evaluation/correlations12_29/nexus_0.0/chicago_1m_{t_granu}_{s_granu}/'
     dir_sampling = f'/home/cc/nexus_correlation_discovery/evaluation/correlations12_29/nexus_time_sampling/chicago_1m_time_sampling_{t_granu}_{s_granu}/'
     get_mod_score(dir_nexus)

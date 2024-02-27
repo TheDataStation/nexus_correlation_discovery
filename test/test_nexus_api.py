@@ -1,10 +1,5 @@
-from data_search.search_corr import CorrSearch, Correlation
-from data_search.commons import FIND_JOIN_METHOD
-import pandas as pd
-from utils.time_point import T_GRANU
-from utils.coordinate import S_GRANU
-from data_search.data_model import Var
-from demo.demo_ui import show_df
+from utils.coordinate import SPATIAL_GRANU
+from utils.data_model import Var
 from nexus_api import API
 
 # conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
@@ -14,10 +9,10 @@ def test_find_correlations_from():
     conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
     nexus_api = API(conn_str)
     dataset = 'asthma'
-    t_granu, s_granu = None, S_GRANU.ZIPCODE
+    t_granu, s_granu = None, SPATIAL_GRANU.ZIPCODE
     overlap_t = 5
     r_t = 0.5
-    df = nexus_api.find_correlations_from(dataset, t_granu, s_granu, overlap_t, r_t, corr_type="pearson")
+    df = nexus_api.find_correlations_from(dataset, t_granu, s_granu, overlap_t, r_t, correlation_type="pearson")
     print(len(df))
 
 def test_show_catalog():
@@ -27,17 +22,17 @@ def test_show_catalog():
 def test_find_all_correlations():
     conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
     nexus_api = API(conn_str, data_sources=['chicago_1m_zipcode', 'chicago_factors'])
-    t_granu, s_granu = None, S_GRANU.ZIPCODE
+    t_granu, s_granu = None, SPATIAL_GRANU.ZIPCODE
     overlap_t = 10
     r_t = 0.6
     control_vars = [Var('chicago_income_by_zipcode_zipcode_6', 'avg_income_household_median')]
     persist_path = f'tmp/chicago_open_data_zipcode_control_for_income/'
-    df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, persist_path=persist_path, corr_type="pearson", control_vars=control_vars)
+    df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, persist_path=persist_path, correlation_type="pearson", control_variables=control_vars)
     print(len(df))
 
     control_vars = [Var('chicago_zipcode_population_zipcode_6', 'avg_population')]
     persist_path = f'tmp/chicago_open_data_zipcode_control_for_population/'
-    df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, persist_path=persist_path, corr_type="pearson", control_vars=control_vars)
+    df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, persist_path=persist_path, correlation_type="pearson", control_variables=control_vars)
     print(len(df))
 
     # t_granu, s_granu = None, S_GRANU.TRACT
@@ -53,12 +48,12 @@ def test_find_all_correlations():
 
 def test_control_for_variables():
     dataset = 'asthma'
-    t_granu, s_granu = None, S_GRANU.ZIPCODE
+    t_granu, s_granu = None, SPATIAL_GRANU.ZIPCODE
     overlap_t = 5
     r_t = 0.5
     # control_vars = [Var('chicago_zipcode_population_zipcode_6', 'avg_population')]
     control_vars = [Var('chicago_income_by_zipcode_zipcode_6', 'avg_income_household_median')]
-    df = nexus_api.find_correlations_from(dataset, t_granu, s_granu, overlap_t, r_t, corr_type="pearson", control_vars=control_vars)
+    df = nexus_api.find_correlations_from(dataset, t_granu, s_granu, overlap_t, r_t, corr_type="pearson", control_variables=control_vars)
     print(len(df))
 
 def test_load_corrs():

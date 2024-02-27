@@ -1,7 +1,9 @@
+from dataclasses import dataclass
 from enum import Enum
-from utils.time_point import T_GRANU
-from utils.coordinate import S_GRANU
+from utils.time_point import TEMPORAL_GRANU
+from utils.coordinate import SPATIAL_GRANU
 from typing import List
+from typing import Union
 
 
 class AggFunc(Enum):
@@ -13,15 +15,15 @@ class AggFunc(Enum):
     COUNT = "count"
 
 
-class UnitType(Enum):
+class AttrType(Enum):
     TIME = "time"
     SPACE = "space"
 
 
-class SchemaType(Enum):
+class KeyType(Enum):
     TIME = "temporal"
     SPACE = "spatial"
-    TS = "st"
+    TIME_SPACE = "st"
 
 
 class Variable:
@@ -42,104 +44,121 @@ class Variable:
         return "{}-{}".format(self.tbl_id, self.attr_name)
 
 
-class Unit:
-    def __init__(self, attr_name: str, granu) -> None:
-        self.attr_name = attr_name
-        self.granu = granu
+# @dataclass
+# class Attr:
+#     name: str
+#     granu: str
+
+class Attr:
+    def __init__(self, name: str, granularity: Union[TEMPORAL_GRANU, SPATIAL_GRANU]) -> None:
+        self.name = name
+        self.granu = granularity
 
     def to_int_name(self):
-        return "{}_{}".format(self.attr_name, self.granu.value)
+        return "{}_{}".format(self.name, self.granu.value)
 
     def to_readable_name(self):
-        return "{}_{}".format(self.attr_name, self.granu.name)
+        return "{}_{}".format(self.name, self.granu.name)
 
     def get_type(self):
-        if self.granu in T_GRANU:
-            return UnitType.TIME
-        elif self.granu in S_GRANU:
-            return UnitType.SPACE
+        if self.granu in TEMPORAL_GRANU:
+            return AttrType.TIME
+        elif self.granu in SPATIAL_GRANU:
+            return AttrType.SPACE
 
     def get_granu_value(self):
         return self.granu.value
 
     def get_val(self):
-        if self.granu in T_GRANU:
+        if self.granu in TEMPORAL_GRANU:
             return "t_val"
-        elif self.granu in S_GRANU:
+        elif self.granu in SPATIAL_GRANU:
             return "s_val"
 
 
+@dataclass
+class Table:
+    domain: str
+    tbl_id: str
+    tbl_name: str
+    t_attrs: List[Attr]
+    s_attrs: List[Attr]
+    num_columns: List[str]
+    link: str
+
+
 class SpatioTemporalKey:
-    def __init__(self, t_unit: Unit = None, s_unit: Unit = None):
-        self.t_unit = t_unit
-        self.s_unit = s_unit
+    def __init__(self, temporal_attr: Attr = None, spatial_attr: Attr = None):
+        self.temporal_attr = temporal_attr
+        self.spatial_attr = spatial_attr
         self.type = self.get_type()
 
     def get_type(self):
-        if self.t_unit and self.s_unit:
-            return SchemaType.TS
-        elif self.t_unit:
-            return SchemaType.TIME
+        if self.temporal_attr and self.spatial_attr:
+            return KeyType.TIME_SPACE
+        elif self.temporal_attr:
+            return KeyType.TIME
         else:
-            return SchemaType.SPACE
+            return KeyType.SPACE
 
-    def get_scales(self):
-        if self.type == SchemaType.TS:
-            return (self.t_unit.granu, self.s_unit.granu)
-        elif self.type == SchemaType.TIME:
-            return self.t_unit.granu
+    def get_granularity(self):
+        if self.type == KeyType.TIME_SPACE:
+            return (self.temporal_attr.granu,
+                    self.spatial_attr.granu)
+        elif self.type == KeyType.TIME:
+            return self.temporal_attr.granu
         else:
-            return self.s_unit.granu
+            return self.spatial_attr.granu
 
     def get_id(self, tbl_id):
-        if self.type == SchemaType.TS:
-            return ",".join([tbl_id, self.t_unit.attr_name, self.s_unit.attr_name])
-        elif self.type == SchemaType.TIME:
-            return ",".join([tbl_id, self.t_unit.attr_name])
+        if self.type == KeyType.TIME_SPACE:
+            return ",".join([tbl_id, self.temporal_attr.name, self.spatial_attr.name])
+        elif self.type == KeyType.TIME:
+            return ",".join([tbl_id, self.temporal_attr.name])
         else:
-            return ",".join([tbl_id, self.s_unit.attr_name])
+            return ",".join([tbl_id, self.spatial_attr.name])
 
     def get_attrs(self):
-        if self.type == SchemaType.TS:
-            return [self.t_unit.attr_name, self.s_unit.attr_name]
-        elif self.type == SchemaType.TIME:
-            return [self.t_unit.attr_name]
+        if self.type == KeyType.TIME_SPACE:
+            return [self.temporal_attr.name, self.spatial_attr.name]
+        elif self.type == KeyType.TIME:
+            return [self.temporal_attr.name]
         else:
-            return [self.s_unit.attr_name]
+            return [self.spatial_attr.name]
 
     def get_idx_attr_names(self):
-        if self.type == SchemaType.TS:
+        if self.type == KeyType.TIME_SPACE:
             return ["t_attr", "s_attr"]
-        elif self.type == SchemaType.TIME:
+        elif self.type == KeyType.TIME:
             return ["t_attr"]
         else:
             return ["s_attr"]
 
     def get_col_names_with_granu(self):
-        if self.type == SchemaType.TS:
-            return [self.t_unit.to_int_name(), self.s_unit.to_int_name()]
-        elif self.type == SchemaType.TIME:
-            return [self.t_unit.to_int_name()]
+        if self.type == KeyType.TIME_SPACE:
+            return [self.temporal_attr.to_int_name(), self.spatial_attr.to_int_name()]
+        elif self.type == KeyType.TIME:
+            return [self.temporal_attr.to_int_name()]
         else:
-            return [self.s_unit.to_int_name()]
+            return [self.spatial_attr.to_int_name()]
 
     def get_idx_tbl_name(self):
         # determine which index table to ingest the agg_tbl values
-        if self.type == SchemaType.TS:
+        if self.type == KeyType.TIME_SPACE:
             return "time_{}_space_{}".format(
-                self.t_unit.get_granu_value(), self.s_unit.get_granu_value()
+                self.temporal_attr.get_granu_value(), self.spatial_attr.get_granu_value()
             )
 
-        elif self.type == SchemaType.TIME:
-            return "time_{}".format(self.t_unit.get_granu_value())
+        elif self.type == KeyType.TIME:
+            return "time_{}".format(self.temporal_attr.get_granu_value())
         else:
-            return "space_{}".format(self.s_unit.get_granu_value())
+            return "space_{}".format(self.spatial_attr.get_granu_value())
 
     def get_idx_col_names(self):
-        if self.type == SchemaType.TS:
+        if self.type == KeyType.TIME_SPACE:
             return ["t_val", "s_val"]
 
-        elif self.type == SchemaType.TIME:
+        elif self.type == KeyType.TIME:
             return ["t_val"]
         else:
             return ["s_val"]
@@ -150,69 +169,26 @@ class SpatioTemporalKey:
         )
 
 
-def get_st_schema_list_for_tbl(
-        t_attrs: List[str],
-        s_attrs: List[str],
-        t_unit: Unit,
-        s_unit: Unit,
-        st_types: List[SchemaType],
-):
-    st_schema_list = []
-    if SchemaType.TIME in st_types:
-        t_scale = t_unit.granu
-        for t in t_attrs:
-            st_schema_list.append(SpatioTemporalKey(t_unit=Unit(t, t_scale)))
-
-    if SchemaType.SPACE in st_types:
-        s_scale = s_unit.granu
-        for s in s_attrs:
-            st_schema_list.append(SpatioTemporalKey(s_unit=Unit(s, s_scale)))
-
-    if SchemaType.TS in st_types:
-        t_scale = t_unit.granu
-        s_scale = s_unit.granu
-        for t in t_attrs:
-            for s in s_attrs:
-                st_schema_list.append(SpatioTemporalKey(Unit(t, t_scale), Unit(s, s_scale)))
-    return st_schema_list
-
-
-# def get_st_schema_list_for_tbl(t_attrs, s_attrs, st_schema: ST_Schema):
-#     schema_list = []
-#     type = st_schema.get_type()
-#     if type == SchemaType.TIME:
-#         for t_attr in t_attrs:
-#             schema_list.append(ST_Schema(t_unit=Unit(t_attr, st_schema.t_unit.granu)))
-#     elif type == SchemaType.SPACE:
-#         for s_attr in s_attrs:
-#             schema_list.append(ST_Schema(s_unit=Unit(s_attr, st_schema.s_unit.granu)))
-#     else:
-#         for t_attr in t_attrs:
-#             for s_attr in s_attrs:
-#                 schema_list.append(
-#                     ST_Schema(
-#                         t_unit=Unit(t_attr, st_schema.t_unit.granu),
-#                         s_unit=Unit(s_attr, st_schema.s_unit.granu),
-#                     )
-#                 )
-#     return schema_list
-
-
-def new_st_schema_from_units(units: List[Unit]):
+def new_st_schema_from_units(units: List[Attr]):
     if len(units) == 2:
         t_unit, s_unit = units[0], units[1]
         st_schema = SpatioTemporalKey(
-            t_unit=Unit(t_unit, t_unit.granu),
-            s_unit=Unit(s_unit, s_unit.granu),
+            temporal_attr=Attr(t_unit, t_unit.granu),
+            spatial_attr=Attr(s_unit, s_unit.granu),
         )
     elif len(units) == 1:
         unit = units[0]
-        if unit.get_type() == UnitType.TIME:
+        if unit.get_type() == AttrType.TIME:
             st_schema = SpatioTemporalKey(
-                t_unit=Unit(unit, unit.granu),
+                temporal_attr=Attr(unit, unit.granu),
             )
         else:
             st_schema = SpatioTemporalKey(
-                s_unit=Unit(unit, unit.granu),
+                spatial_attr=Attr(unit, unit.granu),
             )
     return st_schema
+
+
+
+
+

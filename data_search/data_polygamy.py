@@ -3,15 +3,12 @@ from data_search.search_db import DBSearch
 import data_search.db_ops as db_ops
 import numpy as np
 from utils import io_utils
-from utils.coordinate import S_GRANU
+from utils.coordinate import SPATIAL_GRANU
 from utils.profile_utils import is_num_column_valid
-from data_search.data_model import (
-    Variable,
-    AggFunc)
 import math
 from data_ingestion.profile_datasets import Profiler
-from utils.time_point import T_GRANU
-from data_search.data_model import Unit, Variable, AggFunc, ST_Schema, SchemaType
+from utils.time_point import TEMPORAL_GRANU
+from utils.data_model import Variable, AggFunc, KeyType
 import time
 import collections
 
@@ -53,7 +50,7 @@ class DataPolygamy:
             first_func = funcs[0][1]
             keys = [x[0] for x in first_func]
             # print(keys[0:10])
-            if st_schema.get_type() == SchemaType.TS:
+            if st_schema.get_type() == KeyType.TIME_SPACE:
                 keys = [tuple(x.split(',')) for x in keys]
                 st_lookup_tbl, graph, t_index = self.create_st_graph(keys)
                 org_bfs_order = self.st_bfs_order(keys, graph, t_index, st_lookup_tbl)
@@ -87,14 +84,14 @@ class DataPolygamy:
                     feature_map = {"pos": list(pos), "neg": list(neg)}
                     threshold_map[f"{agg_name}_{var_name}"] = (theta1, theta2, len(pos), len(neg))
                     io_utils.dump_json(f'{dir_path}/{agg_name}_{var_name}.json', feature_map)
-                    if st_schema.get_type() == SchemaType.TIME:
+                    if st_schema.get_type() == KeyType.TIME:
                         func.sort(key=lambda x: x[0]) # sort by the temporal column
                         for i in range(shuffle_num):
                             offset = np.random.randint(1, len(func))
                             pos, neg = self.find_features(func, theta1, theta2, offset)
                             feature_map = {"pos": list(pos), "neg": list(neg)}
                             io_utils.dump_json(f'{dir_path}/{agg_name}_{var_name}_shift_{i}.json', feature_map)
-                    elif st_schema.get_type() == SchemaType.SPACE:
+                    elif st_schema.get_type() == KeyType.SPACE:
                         keys = [x[0] for x in func]
                         graph = self.get_sub_graph(set(keys))
                         org_bfs_order = self.spatial_bfs_order(keys, graph)
@@ -207,9 +204,9 @@ class DataPolygamy:
         vars = []
         for agg_col in tbl1_agg_cols:
             if is_num_column_valid(agg_col):
-                vars.append(Variable(agg_col, AggFunc.AVG, "avg_{}".format(agg_col)))
+                vars.append(Variable(tbl, agg_col, AggFunc.AVG, "avg_{}".format(agg_col)))
         if len(vars) == 0 or tbl == '85ca-t3if':
-            vars.append(Variable("*", AggFunc.COUNT, "count"))
+            vars.append(Variable(tbl, "*", AggFunc.COUNT, "count"))
         return vars
 
     def get_functions(self, agg_tbl1, vars):
@@ -304,7 +301,7 @@ if __name__ == '__main__':
     config = io_utils.load_config(data_source)
     # conn_str = config["db_path"]
     conn_str = 'postgresql://yuegong@localhost/chicago_1m_new'
-    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    t_granu, s_granu = TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT
     start = time.time()
     data_polygamy = DataPolygamy(conn_str, config['attr_path'])
     data_polygamy.set_path(t_granu, s_granu)

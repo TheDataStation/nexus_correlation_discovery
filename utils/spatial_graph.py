@@ -1,8 +1,8 @@
 import geopandas as gpd
 from tqdm import tqdm
-from utils.coordinate import S_GRANU
+from utils.coordinate import SPATIAL_GRANU
 from utils.io_utils import dump_json, load_json
-from utils.time_point import T_GRANU
+from utils.time_point import TEMPORAL_GRANU
 
 def build_spatial_graph(shapefile_path):
     # Load the shapefile
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     # graph = load_json('/home/cc/nexus_correlation_discovery/evaluation/adjacency_list_T_GRANU.DAY_S_GRANU.BLOCK.json')
     # for k, v in graph.items():
     #     graph[k] = list(set(v))
-    t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
+    t_granu, s_granu = TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT
     # dump_json(f'evaluation/data_polygamy_indices/chicago_1m/spatial_graph_{t_granu}_{s_granu}.json', graph)
     # shapefile_path = "resource/chicago_shapes/shape_chicago_tracts/geo_export_c59e0875-addc-4363-a542-497356e993cf.shp"
     shapefile_path = "resource/chicago_tracts/tl_2010_17031_tract10.shp"
