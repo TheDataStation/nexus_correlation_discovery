@@ -28,6 +28,8 @@ from data_ingestion.db_ops import IndexType
 from typing import List
 from utils.correlation_sketch_utils import murmur3_32, grm, FixedSizeMaxHeap
 import traceback
+from data_ingestion.postgres_connector import PostgresConnector
+from data_ingestion.duckdb_connector import DuckDBConnector
 
 """
 DBIngestor ingests dataframes to a database (current implementation uses postgres)
@@ -41,13 +43,19 @@ Here are the procedure to ingest a spatial-temporal table
 
 
 class DBIngestorAgg:
-    def __init__(self, conn_string: str, source, t_scales, s_scales, mode='no_cross') -> None:
-        db = create_engine(conn_string)
-        self.conn = db.connect()
-        conn_copg2 = psycopg2.connect(conn_string)
-        conn_copg2.autocommit = True
-        self.cur = conn_copg2.cursor()
-        self.db_search = DBSearch(conn_string)
+    def __init__(self, conn_string: str, source, t_scales, s_scales, mode='no_cross', engine='postgres') -> None:
+        if engine == 'postgres':
+            db = create_engine(conn_string)
+            self.conn = db.connect()
+            conn_copg2 = psycopg2.connect(conn_string)
+            conn_copg2.autocommit = True
+            self.cur = conn_copg2.cursor()
+            self.db_engine = PostgresConnector(conn_string)
+            self.db_search = DBSearch(conn_string)
+        elif engine == 'duckdb':
+            self.db_engine = DuckDBConnector(conn_string)
+
+       
         # tables that have been created
         self.created_tbls = set()
         # successfully ingested table information
@@ -97,7 +105,7 @@ class DBIngestorAgg:
                 continue
             valid_attrs.append(attr)
         # limit the max number of spatio/temporal join keys a table can have
-        valid_attrs.sort()
+        valid_attrs.sort(key=lambda x: len(x.name))
         return valid_attrs[:max_limit]
 
     def ingest_data_source(self, clean=False, persist=False, max_limit=2, retry_list=None):
@@ -273,6 +281,7 @@ class DBIngestorAgg:
         self.ingest_df_to_db(df, tbl.tbl_id, mode="replace")
         print("ingesting table used {} s".format(time.time() - start))
 
+        return 
         print("begin creating agg_tbl")
         start = time.time()
         # create aggregated tables
@@ -508,16 +517,17 @@ class DBIngestorAgg:
 
         self.created_tbls.add(tbl_name)
 
-    def ingest_df_to_db(self, df, tbl_name, mode="replace", df_schema=None):
-        if mode == "replace":
-            # drop old tables before ingesting the new dataframe
-            self.create_tbl(tbl_name, df)
-            db_ops.copy_from_dataFile_StringIO(self.cur, df, tbl_name)
+    def ingest_df_to_db(self, df, tbl_name, mode="replace"):
+        self.db_engine.create_tbl(tbl_name, df, mode)
+        # if mode == "replace":
+        #     # drop old tables before ingesting the new dataframe
+        #     self.create_tbl(tbl_name, df)
+        #     db_ops.copy_from_dataFile_StringIO(self.cur, df, tbl_name)
 
-        elif mode == "append":
-            if tbl_name not in self.created_tbls:
-                self.create_tbl(tbl_name, df)
-            db_ops.copy_from_dataFile_StringIO(self.cur, df, tbl_name)
+        # elif mode == "append":
+        #     if tbl_name not in self.created_tbls:
+        #         self.create_tbl(tbl_name, df)
+        #     db_ops.copy_from_dataFile_StringIO(self.cur, df, tbl_name)
 
 
 if __name__ == "__main__":
