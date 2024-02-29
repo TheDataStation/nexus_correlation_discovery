@@ -1,4 +1,4 @@
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 from data_search.commons import FIND_JOIN_METHOD
 from evaluation.persist_correlations import load_lazo_join_res
 from utils import io_utils

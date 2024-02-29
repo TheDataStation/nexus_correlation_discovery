@@ -14,7 +14,7 @@ from typing import List
 from sklearn import linear_model
 from corr_analysis.factor_analysis.factor_analysis import factor_analysis, build_factor_clusters
 import time
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 
 
 class API:
@@ -171,7 +171,7 @@ class API:
 
     def get_total_number_of_vars(self, t_granu, s_granu):
         total_num = 0
-        st_schema_list = Profiler.load_all_st_schemas(self.catalog, t_granu, s_granu)
+        st_schema_list = Profiler.load_all_spatio_temporal_keys(self.catalog, t_granu, s_granu)
         for tbl, st_schema in st_schema_list:
             agg_tbl = st_schema.get_agg_tbl_name(tbl)
             df = read_agg_tbl(self.cur, agg_tbl)

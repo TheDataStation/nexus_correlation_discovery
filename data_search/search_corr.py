@@ -2,12 +2,14 @@ from data_search.data_polygamy import DataPolygamy
 import utils.io_utils as io_utils
 import numpy as np
 from utils.data_model import (
+    Attr,
+    Table,
     Variable,
     AggFunc,
     SpatioTemporalKey,
     KeyType,
 )
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 from tqdm import tqdm
 import time
 import pandas as pd
@@ -25,6 +27,7 @@ from utils.time_point import TEMPORAL_GRANU
 from scipy.stats import pearsonr, spearmanr, kendalltau
 from utils.profile_utils import is_num_column_valid
 import pingouin as pg
+
 # import warnings
 # warnings.filterwarnings('error')
 
@@ -51,7 +54,7 @@ class AggColumnProfile:
 
 class AggColumn:
     def __init__(
-        self, domain, tbl_id, tbl_name, agg_name: str, agg_attr, col_data=None
+            self, domain, tbl_id, tbl_name, agg_name: str, agg_attr, col_data=None
     ) -> None:
         self.domain = domain
         self.tbl_id = tbl_id
@@ -98,13 +101,13 @@ class AggColumn:
 
 class Correlation:
     def __init__(
-        self,
-        agg_col1: AggColumn,
-        agg_col2: AggColumn,
-        r_val: float,
-        p_val: float,
-        overlap: int,
-        align_type,
+            self,
+            agg_col1: AggColumn,
+            agg_col2: AggColumn,
+            r_val: float,
+            p_val: float,
+            overlap: int,
+            align_type,
     ):
         self.agg_col1 = agg_col1
         self.agg_col2 = agg_col2
@@ -131,54 +134,54 @@ class Correlation:
             "sum_square"
         ), self.agg_col2.get_stats("sum_square")
         self.r_val_impute_zero = (n * inner_prod - sum1 * sum2) / (
-            math.sqrt(n * square_sum1 - sum1**2)
-            * math.sqrt(n * square_sum2 - sum2**2)
+                math.sqrt(n * square_sum1 - sum1 ** 2)
+                * math.sqrt(n * square_sum2 - sum2 ** 2)
         )
 
     def to_list(self):
         return (
-            self.agg_col1.to_list()
-            + self.agg_col2.to_list()
-            + [
-                round(self.r_val, 3),
-                round(self.r_val_impute_avg, 3),
-                round(self.r_val_impute_zero, 3),
-                round(self.p_val, 3),
-                self.overlap,
-                self.align_type,
-            ]
+                self.agg_col1.to_list()
+                + self.agg_col2.to_list()
+                + [
+                    round(self.r_val, 3),
+                    round(self.r_val_impute_avg, 3),
+                    round(self.r_val_impute_zero, 3),
+                    round(self.p_val, 3),
+                    self.overlap,
+                    self.align_type,
+                ]
         )
 
     @staticmethod
     def from_list(row):
-        return Correlation(tbl_id1=row['tbl_id1'], 
-            agg_name1=row['agg_tbl1'], 
-            agg_attr1 = row['agg_attr1'],
-            tbl_id2 = row['tbl_id2'],
-            agg_name2=row['agg_tbl2'],
-            agg_attr2 = row['agg_attr2'],
-            type = row['align_type'],
-        )
+        return Correlation(tbl_id1=row['tbl_id1'],
+                           agg_name1=row['agg_tbl1'],
+                           agg_attr1=row['agg_attr1'],
+                           tbl_id2=row['tbl_id2'],
+                           agg_name2=row['agg_tbl2'],
+                           agg_attr2=row['agg_attr2'],
+                           type=row['align_type'],
+                           )
 
 
 class CorrSearch:
     def __init__(
-        self,
-        conn_str: str,
-        data_sources: List[str],
-        find_join_method,
-        join_method="AGG",
-        corr_method="MATRIX",
-        impute_methods=[],
-        explicit_outer_join=False,
-        correct_method="FDR",
-        q_val=None,
-        joinable_lookup = None,
-        mode = None,
-        sketch_size = None,
+            self,
+            conn_str: str,
+            data_sources: List[str],
+            find_join_method,
+            join_method="AGG",
+            corr_method="MATRIX",
+            impute_methods=[],
+            explicit_outer_join=False,
+            correct_method="FDR",
+            q_val=None,
+            joinable_lookup=None,
+            mode=None,
+            sketch_size=None,
     ) -> None:
         # self.data_source = data_source
-        self.tbl_attrs = {}
+        self.data_catalog = {}
         self.all_tbls = set()
         self.column_profiles = {}
         self.st_schemas_dict = None
@@ -189,11 +192,11 @@ class CorrSearch:
             attr_path = config["attr_path"]
             profile_path = config["profile_path"]
             agg_col_profile_path = config["col_stats_path"]
-            self.tbl_attrs.update(io_utils.load_json(attr_path))
-            self.all_tbls = self.all_tbls.union(set(self.tbl_attrs.keys()))
+            self.data_catalog.update(io_utils.load_json(attr_path))
+            self.all_tbls = self.all_tbls.union(set(self.data_catalog.keys()))
             self.column_profiles.update(io_utils.load_json(profile_path))
             agg_col_profiles.update(io_utils.load_json(agg_col_profile_path))
-        
+
             # self.tbl_attrs = io_utils.load_json(attr_path)
             # self.all_tbls = set(self.tbl_attrs.keys())
 
@@ -206,15 +209,15 @@ class CorrSearch:
 
         self.db_search = DBSearch(conn_str)
         self.cur = self.db_search.cur
-        
+
         self.data = []
         self.count = 0
         self.visited_tbls = set()
         self.visited_schemas = set()
-       
+
         self.find_join_method = find_join_method
         # self.join_costs = join_costs
-     
+
         self.join_all_cost = 0
         self.join_method = join_method
         self.corr_method = corr_method
@@ -231,7 +234,7 @@ class CorrSearch:
         else:
             self.sketch = False
             self.sketch_size = 0
-        
+
         if self.mode == 'data_polygamy':
             self.dataPolygamy = DataPolygamy(conn_str, attr_path)
 
@@ -252,12 +255,12 @@ class CorrSearch:
             "not_significant": {"total": 0, "temporal": 0, "spatial": 0, "st": 0},
             "strategy": {"find_join": 0, "join_all": 0, "skip": 0, "sample_times": 0},
         }
-    
+
     def set_find_join_only(self, find_join_only):
         self.find_join_only = find_join_only
 
     def set_join_cost(self, t_granu, s_granu, o_t):
-        self.join_costs = Profiler.get_join_cost(self.cur, self.tbl_attrs, t_granu, s_granu, o_t)
+        self.join_costs = Profiler.get_join_cost(self.cur, self.data_catalog, t_granu, s_granu, o_t)
 
     def dump_polygamy_rel_to_csv(self, data, dir_path, schema_id):
         df = pd.DataFrame(
@@ -277,7 +280,6 @@ class CorrSearch:
 
         df.to_csv("{}/corr_{}.csv".format(dir_path, schema_id))
 
-    
     def dump_corrs_to_csv(self, data: List[Correlation], dir_path, schema_id):
         df = io_utils.load_corrs_to_df(data)
 
@@ -288,15 +290,17 @@ class CorrSearch:
         df.to_csv("{}/corr_{}.csv".format(dir_path, schema_id))
 
     def find_all_corr_for_all_tbls(
-        self, granu_list, o_t, r_t, p_t, corr_type='pearson', fill_zero=False, dir_path=None, st_type=None, control_vars=[]
+            self, granu_list, o_t, r_t, p_t, corr_type='pearson', fill_zero=False, dir_path=None, st_type=None,
+            control_vars=[]
     ):
         t_granu, s_granu = granu_list[0], granu_list[1]
         # profiler = Profiler(self.data_source, [t_granu], [s_granu])
         if self.mode == 'data_polygamy':
             self.dataPolygamy.set_path(t_granu, s_granu)
             print(self.shuffle_num)
-        self.st_schemas_dict = Profiler.load_all_st_schemas(self.tbl_attrs, t_granu, s_granu, type_aware=True)
-        st_schema_list = Profiler.load_all_st_schemas(self.tbl_attrs, t_granu, s_granu)
+        self.st_schemas_dict = Profiler.load_all_spatio_temporal_keys(self.data_catalog, t_granu, s_granu,
+                                                                      type_aware=True)
+        st_schema_list = Profiler.load_all_spatio_temporal_keys(self.data_catalog, t_granu, s_granu)
         sorted_st_schemas = []
         for tbl, st_schema in st_schema_list:
             cnt = Profiler.get_row_cnt(self.cur, tbl, st_schema)
@@ -307,7 +311,8 @@ class CorrSearch:
             if st_type == 'time_space':
                 if st_schema.get_type() != KeyType.TIME and st_schema.get_type() != KeyType.SPACE:
                     continue
-            self.find_all_corr_for_a_tbl_schema(tbl, st_schema, o_t, r_t, p_t, fill_zero, corr_type=corr_type, control_vars=control_vars)
+            self.find_all_corr_for_a_spatio_temporal_key(tbl, st_schema, o_t, r_t, p_t, fill_zero, corr_type=corr_type,
+                                                         control_vars=control_vars)
             start = time.time()
             if dir_path:
                 if self.mode == 'data_polygamy':
@@ -320,22 +325,33 @@ class CorrSearch:
             self.data.clear()
             time_used = time.time() - start
             self.perf_profile["time_dump_csv"]["total"] += time_used
-        
-    def find_all_corr_for_a_tbl(self, table, temporal_granu, spatial_granu, overlap_t, corr_t, p_t, fill_zero,
-                                corr_type='pearson', control_variables=[]):
-        if not self.st_schemas_dict:
-            self.st_schemas_dict = Profiler.load_all_st_schemas(self.tbl_attrs, temporal_granu,
-                                                                spatial_granu, type_aware=True)
 
-        st_schema_list = Profiler.load_st_schemas_for_a_tbl(self.tbl_attrs, table,
-                                                            temporal_granu, spatial_granu)
-        for _, st_schema in st_schema_list:
-            self.find_all_corr_for_a_tbl_schema(
-                table, st_schema, overlap_t, corr_t, p_t, fill_zero, corr_type, control_variables
+    def table_from_tbl_id(self, tbl_id: str):
+        temporal_attrs = [Attr(attr["name"], attr["granu"]) for attr in self.data_catalog[tbl_id]['t_attrs']]
+        spatial_attrs = [Attr(attr["name"], attr["granu"]) for attr in self.data_catalog[tbl_id]['s_attrs']]
+        return Table(tbl_id=tbl_id,
+                     temporal_attrs=temporal_attrs,
+                     spatial_attrs=spatial_attrs)
+
+    def find_all_corr_for_a_tbl(self, tbl_id: str,
+                                temporal_granu: TEMPORAL_GRANU, spatial_granu: SPATIAL_GRANU,
+                                overlap_t, corr_t, p_t, fill_zero,
+                                corr_type='pearson', control_variables=[]):
+
+        if not self.st_schemas_dict:
+            self.st_schemas_dict = Profiler.load_all_spatio_temporal_keys(self.data_catalog, temporal_granu,
+                                                                          spatial_granu, type_aware=True)
+
+        table = self.table_from_tbl_id(tbl_id)
+        spatio_temporal_keys = table.get_spatio_temporal_keys([temporal_granu], [spatial_granu])
+
+        for spatio_temporal_key in spatio_temporal_keys:
+            self.find_all_corr_for_a_spatio_temporal_key(
+                tbl_id, spatio_temporal_key, overlap_t, corr_t, p_t, fill_zero, corr_type, control_variables
             )
-    
+
     def get_vars_for_tbl(self, tbl, suffix):
-        tbl_agg_cols = self.tbl_attrs[tbl]["num_columns"]
+        tbl_agg_cols = self.data_catalog[tbl]["num_columns"]
         vars = []
         for agg_col in tbl_agg_cols:
             if len(agg_col) > 56:
@@ -345,11 +361,11 @@ class CorrSearch:
         if len(vars) == 0 or tbl == '85ca-t3if':
             vars.append(Variable(tbl, "*", AggFunc.COUNT, "count", suffix=suffix))
         return vars
-    
+
     def align_two_st_schemas(self, tbl1, agg_name1, tbl2, agg_name2, o_t, outer, sketch=False, k=0):
         vars1 = self.get_vars_for_tbl(tbl1, suffix='t1')
         vars2 = self.get_vars_for_tbl(tbl2, suffix='t2')
-      
+
         names1 = [var.proj_name[:63] for var in vars1]
         names2 = [var.proj_name[:63] for var in vars2]
 
@@ -371,7 +387,7 @@ class CorrSearch:
                     vars2,
                     outer=True,
                 )
-  
+
                 merged = merged_outer.dropna(subset=["key1", "key2"])
             else:
                 merged = db_ops.join_two_agg_tables(
@@ -389,7 +405,7 @@ class CorrSearch:
                 return None, None
             else:
                 return None, None, None, None
-        
+
         if sketch and len(merged) < 3:
             if not self.outer_join:
                 return None, None
@@ -399,13 +415,14 @@ class CorrSearch:
         df1, df2 = merged[names1].astype(float).round(3), merged[names2].astype(float).round(3)
         df1, df2 = self.drop_constant_columns(df1), self.drop_constant_columns(df2)
         if outer:
-            df1_outer, df2_outer = merged_outer[names1].astype(float).round(3), merged_outer[names2].astype(float).round(3)
+            df1_outer, df2_outer = merged_outer[names1].astype(float).round(3), merged_outer[names2].astype(
+                float).round(3)
             df1_outer, df2_outer = self.drop_constant_columns(df1_outer), self.drop_constant_columns(df2_outer)
             return df1, df2, df1_outer, df2_outer
         return df1, df2
 
     def determine_find_join_method(
-        self, tbl, st_schema: SpatioTemporalKey, threshold, v_cnt: int
+            self, tbl, st_schema: SpatioTemporalKey, threshold, v_cnt: int
     ):
         agg_tbl = st_schema.get_agg_tbl_name(tbl)
         print(f"current table: {agg_tbl}")
@@ -442,14 +459,14 @@ class CorrSearch:
 
             # for st_schema2 in st_schema_list:
             agg_name2 = st_schema2.get_agg_tbl_name(tbl2)
-            
+
             if agg_name2 not in self.join_costs or agg_name2 in self.visited_schemas:
                 continue  # meaning it does not have enough keys
             cnt2 = self.join_costs[agg_name2].cnt
             join_all_cost += min(cnt2, v_cnt)
             aligned_schemas.append((tbl2, st_schema2))
         # join_all_cost = min(len(aligned_schemas) * join_cost, join_all_cost)
-        
+
         # estimate index_search cost
         row_to_read, max_joinable = db_ops.get_inv_cnt(
             self.cur, tbl, st_schema, threshold
@@ -457,10 +474,10 @@ class CorrSearch:
 
         # coef = 3
         if v_cnt >= 100000:
-            coef = 4.2#7
+            coef = 4.2  # 7
         else:
-            coef = 0.1#0.15
-        index_search_overhead = coef*(v_cnt + row_to_read)
+            coef = 0.1  # 0.15
+        index_search_overhead = coef * (v_cnt + row_to_read)
         self.index_search_over_head = row_to_read
         max_joinable = min(max_joinable, len(aligned_schemas))
         # if max_joinable >= len(aligned_schemas):
@@ -479,7 +496,7 @@ class CorrSearch:
         sampled_rows = v_cnt * sample_ratio
         # if v_cnt >= 400000:
         #     return "JOIN_ALL", aligned_schemas
-        sample_cost = index_search_overhead # sampling needs to read the column
+        sample_cost = index_search_overhead  # sampling needs to read the column
         if find_join_cost <= join_all_cost:
             return "FIND_JOIN", None
         elif index_search_overhead >= join_all_cost:
@@ -524,8 +541,8 @@ class CorrSearch:
             )
             print(f"step 5 takes {time.time() - start}")
             if (
-                index_search_overhead + joinable_estimate * avg_join_cost
-                <= join_all_cost
+                    index_search_overhead + joinable_estimate * avg_join_cost
+                    <= join_all_cost
             ):
                 return "FIND_JOIN", None
             else:
@@ -534,23 +551,23 @@ class CorrSearch:
     def find_corr_in_a_tbl_schema(self, tbl, st_schema: SpatioTemporalKey, r_t, p_t):
         corrs = []
         flag = st_schema.get_type().value
-        tbl_agg_cols = self.tbl_attrs[tbl]["num_columns"]
-        
+        tbl_agg_cols = self.data_catalog[tbl]["num_columns"]
+
         vars = []
-      
+
         for agg_col in tbl_agg_cols:
             vars.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t1".format(agg_col)))
         if len(tbl_agg_cols) == 0 or tbl == '85ca-t3if':
             vars.append(Variable("*", AggFunc.COUNT, "count_t1"))
-        
+
         df = db_ops.read_agg_tbl(self.cur, tbl, st_schema, vars)
         for i, col1 in enumerate(df.columns):
             for j, col2 in enumerate(df.columns):
                 if i < j:
                     r_v, p_v = pearsonr(df[col1], df[col2])
                     if r_v >= r_t and p_v <= p_t:
-                        agg_col1 = AggColumn(tbl, self.tbl_attrs[tbl]["name"], st_schema, col1, df[col1])
-                        agg_col2 = AggColumn(tbl, self.tbl_attrs[tbl]["name"], st_schema, col2, df[col2])
+                        agg_col1 = AggColumn(tbl, self.data_catalog[tbl]["name"], st_schema, col1, df[col1])
+                        agg_col2 = AggColumn(tbl, self.data_catalog[tbl]["name"], st_schema, col2, df[col2])
                         corr = Correlation(agg_col1, agg_col2, r_v, p_v, len(df), flag)
                         corr.agg_col1.set_profile(
                             self.column_profiles[corr.agg_col1.tbl_id],
@@ -571,7 +588,7 @@ class CorrSearch:
         for cand in candidates:
             res.append((cand[:9], cand))
         return res
-    
+
     def find_joinable_nexus(self, tbl1, st_schema: SpatioTemporalKey, o_t):
         v_cnt = self.join_costs[st_schema.get_agg_tbl_name(tbl1)].cnt
 
@@ -599,10 +616,10 @@ class CorrSearch:
                 # )
                 # for st_schema2 in st_schema_list:
                 agg_name2 = st_schema2.get_agg_tbl_name(tbl2)
-                
+
                 if (
-                    agg_name2 not in self.join_costs
-                    or agg_name2 in self.visited_schemas 
+                        agg_name2 not in self.join_costs
+                        or agg_name2 in self.visited_schemas
                 ):
                     continue  # meaning it does not have enough keys
                 aligned_schemas.append((tbl2, st_schema2))
@@ -628,17 +645,18 @@ class CorrSearch:
         # print(aligned_schemas)
         for info in aligned_schemas:
             res.append((info[0], info[1].get_agg_tbl_name(info[0])))
-        
+
         if self.find_join_method == FIND_JOIN_METHOD.COST_MODEL:
             return method, res
         return res
 
-    def find_all_corr_for_a_tbl_schema(
-        self, tbl1, st_schema: SpatioTemporalKey, o_t, r_t, p_t, fill_zero, corr_type='pearson', control_vars=[]
+    def find_all_corr_for_a_spatio_temporal_key(
+            self, tbl1, spatio_temporal_key: SpatioTemporalKey, o_t, r_t, p_t, fill_zero, corr_type='pearson',
+            control_vars=[]
     ):
         self.join_all_cost = 0
         self.cur_join_time = 0
-        flag = st_schema.get_type().value
+        flag = spatio_temporal_key.get_type().value
         # join method to be used
         method = self.find_join_method
         """
@@ -646,13 +664,13 @@ class CorrSearch:
         """
         start = time.time()
         self.visited_tbls.add(tbl1)
-        agg_name1 = st_schema.get_agg_tbl_name(tbl1)
+        agg_name1 = spatio_temporal_key.get_agg_tbl_name(tbl1)
         self.visited_schemas.add(agg_name1)
         if agg_name1 not in self.join_costs:
             print("skip because this table does not have enough keys")
             self.perf_profile["strategy"]["skip"] += 1
             return
-        
+
         if self.mode == 'data_polygamy':
             vars1 = self.dataPolygamy.get_vars(tbl1)
             feature_map = {}
@@ -660,32 +678,33 @@ class CorrSearch:
                 pos, neg = self.dataPolygamy.load_features(agg_name1, var.var_name)
                 if pos is not None and neg is not None:
                     feature_map[var.var_name] = (pos, neg)
-                    if st_schema.get_type() == KeyType.TIME_SPACE:
+                    if spatio_temporal_key.get_type() == KeyType.TIME_SPACE:
                         shuffle_num = self.st_shuffle_num
                     else:
                         shuffle_num = self.shuffle_num
                     for i in range(shuffle_num):
-                        feature_map[f"{var.var_name}_{i}"] =  self.dataPolygamy.load_features(agg_name1, var.var_name, shuffle=i)
-        
+                        feature_map[f"{var.var_name}_{i}"] = self.dataPolygamy.load_features(agg_name1, var.var_name,
+                                                                                             shuffle=i)
+
         v_cnt = self.join_costs[agg_name1].cnt
 
         if self.mode == 'sketch' or self.mode == 'data_polygamy':
-            aligned_schemas = self.find_joinable_lookup(tbl1, st_schema, o_t)
+            aligned_schemas = self.find_joinable_lookup(tbl1, spatio_temporal_key, o_t)
         elif self.joinable_lookup and self.mode == 'lazo':
-            aligned_schemas = self.find_joinable_lookup(tbl1, st_schema, o_t)
+            aligned_schemas = self.find_joinable_lookup(tbl1, spatio_temporal_key, o_t)
         elif self.joinable_lookup and self.mode == 'nexus':
             # exlude aligned schema that are not in lazo's result
             if self.find_join_method == FIND_JOIN_METHOD.COST_MODEL:
-                method, aligned_schemas = self.find_joinable_nexus(tbl1, st_schema, o_t)
-            aligned_schemas_lazo = self.find_joinable_lookup(tbl1, st_schema, o_t)
+                method, aligned_schemas = self.find_joinable_nexus(tbl1, spatio_temporal_key, o_t)
+            aligned_schemas_lazo = self.find_joinable_lookup(tbl1, spatio_temporal_key, o_t)
             if method == FIND_JOIN_METHOD.INDEX_SEARCH:
                 print("pruned")
                 aligned_schemas = [x for x in aligned_schemas if x in aligned_schemas_lazo]
         else:
             if self.find_join_method == FIND_JOIN_METHOD.COST_MODEL:
-                method, aligned_schemas = self.find_joinable_nexus(tbl1, st_schema, o_t)
+                method, aligned_schemas = self.find_joinable_nexus(tbl1, spatio_temporal_key, o_t)
             else:
-                aligned_schemas = self.find_joinable_nexus(tbl1, st_schema, o_t)
+                aligned_schemas = self.find_joinable_nexus(tbl1, spatio_temporal_key, o_t)
 
         time_used = time.time() - start
         self.cur_find_join_time = time_used
@@ -704,7 +723,7 @@ class CorrSearch:
             return
         # print(len(aligned_schemas))
         for tbl2, agg_name2 in aligned_schemas:
-            if tbl2 not in self.tbl_attrs:
+            if tbl2 not in self.data_catalog:
                 continue
             if self.find_join_only:
                 start = time.time()
@@ -716,7 +735,7 @@ class CorrSearch:
                 self.perf_profile["time_find_joins"]["total"] += time_used
                 self.perf_profile["time_find_joins"][flag] += time_used
                 continue
-                
+
             # agg_name2 = st_schema2.get_agg_tbl_name(tbl2)
             if tbl2 == tbl1 or agg_name2 in self.visited_schemas or agg_name2 not in agg_col_profiles:
                 continue
@@ -736,14 +755,15 @@ class CorrSearch:
                         score, strength = self.dataPolygamy.relationships(pos1, neg1, pos2, neg2)
                         if score != 0:
                             significant = True
-                            if st_schema.get_type() == KeyType.TIME_SPACE:
+                            if spatio_temporal_key.get_type() == KeyType.TIME_SPACE:
                                 shuffle_num = self.st_shuffle_num
                             else:
                                 shuffle_num = self.shuffle_num
                             for i in range(shuffle_num):
                                 pos1, neg1 = feature_map[f"{var1.var_name}_{i}"]
                                 pos2, neg2 = self.dataPolygamy.load_features(agg_name2, var2.var_name, shuffle=i)
-                                score_shuffle, strength_shuffle = self.dataPolygamy.relationships(pos1, neg1, pos2, neg2)
+                                score_shuffle, strength_shuffle = self.dataPolygamy.relationships(pos1, neg1, pos2,
+                                                                                                  neg2)
                                 if abs(score_shuffle) >= abs(score):
                                     self.perf_profile['not_significant']["total"] += 1
                                     self.perf_profile['not_significant'][flag] += 1
@@ -751,15 +771,16 @@ class CorrSearch:
                                         print("not significant", self.perf_profile['not_significant'])
                                     significant = False
                                     break
-                           # print((agg_name1, var1+'_t1', agg_name2, var2 + '_t2', score, strength))
+                            # print((agg_name1, var1+'_t1', agg_name2, var2 + '_t2', score, strength))
                             if significant:
                                 self.perf_profile['significant']["total"] += 1
                                 self.perf_profile['significant'][flag] += 1
                                 if self.perf_profile['significant']["total"] % 1000 == 0:
                                     print("significant", self.perf_profile['significant'])
-                                self.data.append((agg_name1, var1.var_name+'_t1', agg_name2, var2.var_name + '_t2', score, strength))
+                                self.data.append((agg_name1, var1.var_name + '_t1', agg_name2, var2.var_name + '_t2',
+                                                  score, strength))
                 continue
-                
+
             # Align two schemas
             start = time.time()
             df1_outer, df2_outer = None, None
@@ -800,7 +821,7 @@ class CorrSearch:
 
             if len(control_vars) > 0 and df is None:
                 continue
-           
+
             self.perf_profile["num_joins"]["total"] += 1
             self.perf_profile["num_joins"][flag] += 1
 
@@ -839,7 +860,7 @@ class CorrSearch:
             elif len(control_vars) > 0:
                 res = self.get_corrs_with_control_vars(
                     df,
-                    tbl1, agg_name1, names1,  
+                    tbl1, agg_name1, names1,
                     tbl2, agg_name2, names2,
                     control_var_names,
                     r_t, p_t,
@@ -850,14 +871,14 @@ class CorrSearch:
             time_used = time.time() - start
             self.perf_profile["time_correlation"]["total"] += time_used
             self.perf_profile["time_correlation"][flag] += time_used
-      
+
         """
         Perform multiple-comparison correction
         """
         start = time.time()
         if self.correct_method == "FDR":
             tbl_schema_corrs = self.bh_correction(tbl_schema_corrs, r_t)
-       
+
         self.perf_profile["corr_counts"]["after"] += len(tbl_schema_corrs)
         self.perf_profile["time_correction"]["total"] += time.time() - start
         self.data.extend(tbl_schema_corrs)
@@ -882,7 +903,7 @@ class CorrSearch:
             corrected_corr_group = []
             if largest_i >= 0:
                 # print("largest i", largest_i)
-                for corr in corr_group[0 : largest_i + 1]:
+                for corr in corr_group[0: largest_i + 1]:
                     if abs(corr.r_val) >= r_t:
                         corr.agg_col1.set_profile(
                             self.column_profiles[corr.agg_col1.tbl_id],
@@ -916,19 +937,19 @@ class CorrSearch:
         return df, o_avg_mat, vec_dict
 
     def get_corr_opt(
-        self,
-        df1: pd.DataFrame,
-        df2: pd.DataFrame,
-        df1_outer: pd.DataFrame,
-        df2_outer: pd.DataFrame,
-        tbl1,
-        agg_name1,
-        tbl2,
-        agg_name2,
-        r_threshold,
-        p_threshold,
-        fill_zero,
-        flag,
+            self,
+            df1: pd.DataFrame,
+            df2: pd.DataFrame,
+            df1_outer: pd.DataFrame,
+            df2_outer: pd.DataFrame,
+            tbl1,
+            agg_name1,
+            tbl2,
+            agg_name2,
+            r_threshold,
+            p_threshold,
+            fill_zero,
+            flag,
     ):
         res = []
         if fill_zero:
@@ -1033,15 +1054,15 @@ class CorrSearch:
             # if no correction is needed, prune based on the pval and rval
             if self.correct_method == "" or self.correct_method is None:
                 if p_val > p_threshold or abs(r_val) < r_threshold:
-                    continue 
-            # for fdr correction, we need to include all correlations regardless of the p value
+                    continue
+                    # for fdr correction, we need to include all correlations regardless of the p value
             agg_col1 = AggColumn(
-                self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, row, df1[row]
+                self.data_catalog[tbl1]["domain"], tbl1, self.data_catalog[tbl1]["name"], agg_name1, row, df1[row]
             )
             if self.correct_method is None or self.correct_method == "":
                 agg_col1.set_profile(self.column_profiles[tbl1])
             agg_col2 = AggColumn(
-                self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col, df2[col]
+                self.data_catalog[tbl2]["domain"], tbl2, self.data_catalog[tbl2]["name"], agg_name2, col, df2[col]
             )
             if self.correct_method is None or self.correct_method == "":
                 agg_col2.set_profile(self.column_profiles[tbl2])
@@ -1063,13 +1084,14 @@ class CorrSearch:
         cols_to_drop = nunique[nunique == 1].index
         df = df.drop(cols_to_drop, axis=1)
         return df
-    
-    def get_corrs_with_control_vars(self, df, tbl1, agg_name1, var1_l, tbl2, agg_name2, var2_l, control_vars, r_t, p_t, fill_zero, flag, corr_type='pearson'):
+
+    def get_corrs_with_control_vars(self, df, tbl1, agg_name1, var1_l, tbl2, agg_name2, var2_l, control_vars, r_t, p_t,
+                                    fill_zero, flag, corr_type='pearson'):
         res = []
         if fill_zero:
             df = df.fillna(0)
         df = self.drop_constant_columns(df)
- 
+
         for var1 in var1_l:
             if var1 not in df.columns:
                 continue
@@ -1092,7 +1114,7 @@ class CorrSearch:
                 #     print(df[[var1, var2, *control_vars]].to_csv('debug.csv', index=False))
                 #     break
                 r_val, p_val = partial_corr['r'].iloc[0], partial_corr['p-val'].iloc[0]
-                
+
                 if not r_val or np.isnan(r_val):
                     # meaning undefined correlation coefficient such as constant array 
                     continue
@@ -1102,12 +1124,12 @@ class CorrSearch:
                 if abs(r_val) >= r_t:
                     self.perf_profile["corr_counts"]["before"] += 1
                 agg_col1 = AggColumn(
-                    self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, var1
-                    )
+                    self.data_catalog[tbl1]["domain"], tbl1, self.data_catalog[tbl1]["name"], agg_name1, var1
+                )
                 if self.correct_method is None or self.correct_method == "":
                     agg_col1.set_profile(self.column_profiles[tbl1])
                 agg_col2 = AggColumn(
-                    self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, var2
+                    self.data_catalog[tbl2]["domain"], tbl2, self.data_catalog[tbl2]["name"], agg_name2, var2
                 )
                 if self.correct_method is None or self.correct_method == "":
                     agg_col2.set_profile(self.column_profiles[tbl2])
@@ -1116,18 +1138,18 @@ class CorrSearch:
         return res
 
     def get_corr_pairwise(
-        self,
-        df1: pd.DataFrame,
-        df2: pd.DataFrame,
-        tbl1,
-        agg_name1,
-        tbl2,
-        agg_name2,
-        r_t,
-        p_t,
-        corr_type,
-        fill_zero,
-        flag):
+            self,
+            df1: pd.DataFrame,
+            df2: pd.DataFrame,
+            tbl1,
+            agg_name1,
+            tbl2,
+            agg_name2,
+            r_t,
+            p_t,
+            corr_type,
+            fill_zero,
+            flag):
         res = []
         if fill_zero:
             df1, df2 = df1.fillna(0), df2.fillna(0)
@@ -1136,7 +1158,7 @@ class CorrSearch:
         mat2 = np.transpose(df2.to_numpy())
         for i in range(col_num1):
             col1 = mat1[i]
-            if np.all(col1==col1[0]):
+            if np.all(col1 == col1[0]):
                 continue
             for j in range(col_num2):
                 col2 = mat2[j]
@@ -1156,20 +1178,20 @@ class CorrSearch:
                 if self.correct_method == "" or self.correct_method is None:
                     if abs(r_val) < r_t or p_val > p_t:
                         continue
-              
+
                 agg_col1 = AggColumn(
-                    self.tbl_attrs[tbl1]["domain"], tbl1, self.tbl_attrs[tbl1]["name"], agg_name1, col_name1, col1
-                    )
+                    self.data_catalog[tbl1]["domain"], tbl1, self.data_catalog[tbl1]["name"], agg_name1, col_name1, col1
+                )
                 if self.correct_method is None or self.correct_method == "":
                     agg_col1.set_profile(self.column_profiles[tbl1])
                 agg_col2 = AggColumn(
-                    self.tbl_attrs[tbl2]["domain"], tbl2, self.tbl_attrs[tbl2]["name"], agg_name2, col_name2, col2
+                    self.data_catalog[tbl2]["domain"], tbl2, self.data_catalog[tbl2]["name"], agg_name2, col_name2, col2
                 )
                 if self.correct_method is None or self.correct_method == "":
                     agg_col2.set_profile(self.column_profiles[tbl2])
                 new_corr = Correlation(agg_col1, agg_col2, r_val, p_val, len(df1), flag)
                 res.append(new_corr)
-        return res    
+        return res
 
 
 if __name__ == "__main__":

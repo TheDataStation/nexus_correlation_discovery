@@ -6,7 +6,7 @@ from utils import io_utils
 from utils.coordinate import SPATIAL_GRANU
 from utils.profile_utils import is_num_column_valid
 import math
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 from utils.time_point import TEMPORAL_GRANU
 from utils.data_model import Variable, AggFunc, KeyType
 import time
@@ -39,7 +39,7 @@ class DataPolygamy:
        
     def create_indices(self, data_source, t_granu, s_granu, dir_path, shuffle_num=2, st_shuffle_num=2):
         profiler = Profiler(data_source, [t_granu], [s_granu])
-        st_schema_list = profiler.load_all_st_schemas(profiler.tbl_attrs, t_granu, s_granu)
+        st_schema_list = profiler.load_all_spatio_temporal_keys(profiler.data_catalog, t_granu, s_granu)
         threshold_map = {}
         # print(st_schema_list[0])
         for tbl, st_schema in tqdm(st_schema_list):

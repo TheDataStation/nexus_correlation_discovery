@@ -44,11 +44,6 @@ class Variable:
         return "{}-{}".format(self.tbl_id, self.attr_name)
 
 
-# @dataclass
-# class Attr:
-#     name: str
-#     granu: str
-
 class Attr:
     def __init__(self, name: str, granularity: Union[TEMPORAL_GRANU, SPATIAL_GRANU]) -> None:
         self.name = name
@@ -74,17 +69,6 @@ class Attr:
             return "t_val"
         elif self.granu in SPATIAL_GRANU:
             return "s_val"
-
-
-@dataclass
-class Table:
-    domain: str
-    tbl_id: str
-    tbl_name: str
-    t_attrs: List[Attr]
-    s_attrs: List[Attr]
-    num_columns: List[str]
-    link: str
 
 
 class SpatioTemporalKey:
@@ -169,26 +153,57 @@ class SpatioTemporalKey:
         )
 
 
-def new_st_schema_from_units(units: List[Attr]):
-    if len(units) == 2:
-        t_unit, s_unit = units[0], units[1]
-        st_schema = SpatioTemporalKey(
-            temporal_attr=Attr(t_unit, t_unit.granu),
-            spatial_attr=Attr(s_unit, s_unit.granu),
-        )
-    elif len(units) == 1:
-        unit = units[0]
-        if unit.get_type() == AttrType.TIME:
-            st_schema = SpatioTemporalKey(
-                temporal_attr=Attr(unit, unit.granu),
-            )
-        else:
-            st_schema = SpatioTemporalKey(
-                spatial_attr=Attr(unit, unit.granu),
-            )
-    return st_schema
+class Table:
+    def __init__(self, domain: str = '', tbl_id: str = '', tbl_name: str = '',
+                 temporal_attrs: List[Attr] = [], spatial_attrs: List[Attr] = [],
+                 num_columns: List[str] = [], link: str = ''):
+        self.domain = domain
+        self.tbl_id = tbl_id
+        self.tbl_name = tbl_name
+        self.temporal_attrs = temporal_attrs
+        self.spatial_attrs = spatial_attrs
+        self.num_columns = num_columns
+        self.link = link
 
+    def get_spatio_temporal_keys(self, temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU],
+                                 mode="no_cross") -> List[SpatioTemporalKey]:
+        spatio_temporal_keys = []
+        for temporal_attr in self.temporal_attrs:
+            for cur_granularity in temporal_granu_l:
+                spatio_temporal_keys.append(SpatioTemporalKey(temporal_attr=Attr(temporal_attr.name, cur_granularity)))
 
+        for spatial_attr in self.spatial_attrs:
+            for cur_granularity in spatial_granu_l:
+                if spatial_attr.granu != 'POINT' and spatial_attr.granu != cur_granularity.name:
+                    continue
+                spatio_temporal_keys.append(SpatioTemporalKey(spatial_attr=Attr(spatial_attr.name, cur_granularity)))
 
+        for temporal_attr in self.temporal_attrs:
+            for spatial_attr in self.spatial_attrs:
+                if mode == 'no_cross':
+                    for i in range(len(temporal_granu_l)):
+                        if spatial_attr.granu != 'POINT' and spatial_attr.granu != spatial_granu_l[i].name:
+                            continue
+                        spatio_temporal_keys.append(
+                            SpatioTemporalKey(Attr(temporal_attr.name, temporal_granu_l[i]),
+                                              Attr(spatial_attr.name, spatial_granu_l[i]))
+                        )
+                elif mode == 'cross':
+                    for cur_temporal_granu in temporal_granu_l:
+                        for cur_spatial_granu in spatial_granu_l:
+                            if spatial_attr.granu != 'POINT' and spatial_attr.granu != cur_spatial_granu.name:
+                                continue
+                            spatio_temporal_keys.append(
+                                SpatioTemporalKey(Attr(temporal_attr.name, cur_temporal_granu),
+                                                  Attr(spatial_attr.name, cur_spatial_granu))
+                            )
+        return spatio_temporal_keys
 
-
+    def get_variables(self) -> List[Variable]:
+        variables = []
+        for agg_col in self.num_columns:
+            if len(agg_col) > 56:
+                continue
+            variables.append(Variable(self.tbl_id, agg_col, AggFunc.AVG, "avg_{}".format(agg_col)))
+        variables.append(Variable(self.tbl_id, "*", AggFunc.COUNT, "count"))
+        return variables

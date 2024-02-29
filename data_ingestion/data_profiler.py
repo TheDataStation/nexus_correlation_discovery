@@ -1,12 +1,12 @@
 from utils import io_utils
-from utils.data_model import SpatioTemporalKey, Attr, KeyType
+from utils.data_model import SpatioTemporalKey, Attr, KeyType, TEMPORAL_GRANU, SPATIAL_GRANU, Table
 import pandas as pd
 from tqdm import tqdm
-import psycopg2
 from psycopg2 import sql
-from sqlalchemy import create_engine
 import numpy as np
 from collections import namedtuple
+from data_ingestion.database_connecter import DatabaseConnectorInterface
+from typing import List
 
 """
 Collect the following stats for each aggregated table
@@ -16,113 +16,76 @@ agg_tbl_name -> [col_name->[stat_name->val]]
 
 
 class Profiler:
-    def __init__(self, source: str, t_scales, s_scales, conn_string=None) -> None:
-        self.config = io_utils.load_config(source)
-        attr_path = self.config["attr_path"]
-        self.tbl_attrs = io_utils.load_json(attr_path)
-        if conn_string:
-            self.conn_string = conn_string
-        else:
-            conn_string = self.config["db_path"]
-        db = create_engine(conn_string)
-        self.conn = db.connect()
-        conn_copg2 = psycopg2.connect(conn_string)
-        conn_copg2.autocommit = True
-        self.cur = conn_copg2.cursor()
+    def __init__(self, db_engine: DatabaseConnectorInterface, data_source: str, mode='no_cross') -> None:
+        self.db_engine = db_engine
+        self.mode = mode
         self.stats_dict = {}
-        self.t_scales = t_scales
-        self.s_scales = s_scales
-    
+        self.config = io_utils.load_config(data_source)
+        self.data_catalog = io_utils.load_json(self.config["attr_path"])
+
     def set_mode(self, mode):
         self.mode = mode
 
-    def collect_agg_tbl_col_stats(self):
-        for tbl in tqdm(self.tbl_attrs.keys()):
-            print(tbl)
-            t_attrs, s_attrs, num_columns = (
-                self.tbl_attrs[tbl]["t_attrs"],
-                self.tbl_attrs[tbl]["s_attrs"],
-                self.tbl_attrs[tbl]["num_columns"],
-            )
-            self.profile_tbl(
-                tbl, t_attrs, s_attrs, num_columns, self.t_scales, self.s_scales, self.mode
-            )
-        io_utils.dump_json(self.config["col_stats_path"], self.stats_dict)
+    def collect_agg_tbl_col_stats(self, temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU]):
+        config = io_utils.load_config(data_source)
+        data_catalog = io_utils.load_json(config["attr_path"])
+        for tbl_id in tqdm(self.data_catalog.keys()):
+            print(tbl_id)
+            table = Table(tbl_id=tbl_id,
+                          temporal_attrs=data_catalog[tbl_id]["t_attrs"],
+                          spatial_attrs=data_catalog[tbl_id]["s_attrs"],
+                          num_columns=data_catalog[tbl_id]["num_columns"])
+
+            self.profile_tbl(table, temporal_granu_l, spatial_granu_l, self.mode)
+        io_utils.dump_json(config["col_stats_path"], self.stats_dict)
 
     @staticmethod
-    def load_st_schemas_for_a_tbl(tbl_attrs, tbl, t_scale, s_scale):
-        st_schema_list = []
-        t_attrs, s_attrs = (
-            tbl_attrs[tbl]["t_attrs"],
-            tbl_attrs[tbl]["s_attrs"],
-        )
+    def load_all_spatio_temporal_keys(tbl_attrs, temporal_granu, spatial_granu, type_aware=False):
+        spatio_temporal_keys = []
 
-        if t_scale:
-            for t in t_attrs:
-                st_schema_list.append((tbl, SpatioTemporalKey(temporal_attr=Attr(t['name'], t_scale))))
-              
-        if s_scale:
-            for s in s_attrs:
-                if s['granu'] != 'POINT' and s['granu'] != s_scale.name:
-                    continue
-                st_schema_list.append((tbl, SpatioTemporalKey(spatial_attr=Attr(s['name'], s_scale))))
-           
-        if t_scale and s_scale:
-            for t in t_attrs:
-                for s in s_attrs:
-                    if s['granu'] != 'POINT' and s['granu'] != s_scale.name:
-                        continue
-                    st_schema_list.append(
-                        (tbl, SpatioTemporalKey(Attr(t['name'], t_scale), Attr(s['name'], s_scale)))
-                    )
-        return st_schema_list
-                
-    @staticmethod
-    def load_all_st_schemas(tbl_attrs, t_scale, s_scale, type_aware=False):
-        st_schema_list = []
-       
         all_tbls = list(tbl_attrs.keys())
         if type_aware:
-            st_schema_dict = {KeyType.TIME: [], KeyType.SPACE: [], KeyType.TIME_SPACE: []}
+            spatio_temporal_keys_dict = {KeyType.TIME: [], KeyType.SPACE: [], KeyType.TIME_SPACE: []}
         for tbl in all_tbls:
             t_attrs, s_attrs = (
                 tbl_attrs[tbl]["t_attrs"],
                 tbl_attrs[tbl]["s_attrs"],
             )
 
-            if t_scale:
+            if temporal_granu:
                 for t in t_attrs:
-                    st_schema_list.append((tbl, SpatioTemporalKey(temporal_attr=Attr(t['name'], t_scale))))
+                    spatio_temporal_keys.append((tbl, SpatioTemporalKey(temporal_attr=Attr(t['name'], temporal_granu))))
                     if type_aware:
-                        st_schema_dict[KeyType.TIME].append((tbl, SpatioTemporalKey(
-                            temporal_attr=Attr(t['name'], t_scale))))
+                        spatio_temporal_keys_dict[KeyType.TIME].append((tbl, SpatioTemporalKey(
+                            temporal_attr=Attr(t['name'], temporal_granu))))
 
-            if s_scale:
+            if spatial_granu:
                 for s in s_attrs:
-                    if s['granu'] != 'POINT' and s['granu'] != s_scale.name:
+                    if s['granu'] != 'POINT' and s['granu'] != spatial_granu.name:
                         continue
-                    st_schema_list.append((tbl, SpatioTemporalKey(spatial_attr=Attr(s['name'], s_scale))))
+                    spatio_temporal_keys.append((tbl, SpatioTemporalKey(spatial_attr=Attr(s['name'], spatial_granu))))
                 if type_aware:
-                        st_schema_dict[KeyType.SPACE].append((tbl, SpatioTemporalKey(
-                            spatial_attr=Attr(s['name'], s_scale))))
+                    spatio_temporal_keys_dict[KeyType.SPACE].append((tbl, SpatioTemporalKey(
+                        spatial_attr=Attr(s['name'], spatial_granu))))
 
-            if t_scale and s_scale:
+            if temporal_granu and spatial_granu:
                 for t in t_attrs:
                     for s in s_attrs:
-                        if s['granu'] != 'POINT' and s['granu'] != s_scale.name:
+                        if s['granu'] != 'POINT' and s['granu'] != spatial_granu.name:
                             continue
-                        st_schema_list.append(
-                            (tbl, SpatioTemporalKey(Attr(t['name'], t_scale), Attr(s['name'], s_scale)))
+                        spatio_temporal_keys.append(
+                            (tbl, SpatioTemporalKey(Attr(t['name'], temporal_granu), Attr(s['name'], spatial_granu)))
                         )
                         if type_aware:
-                            st_schema_dict[KeyType.TIME_SPACE].append((tbl, SpatioTemporalKey(Attr(t['name'], t_scale), Attr(s['name'], s_scale))))
+                            spatio_temporal_keys_dict[KeyType.TIME_SPACE].append((tbl, SpatioTemporalKey(
+                                Attr(t['name'], temporal_granu), Attr(s['name'], spatial_granu))))
         if type_aware:
-            return st_schema_dict
+            return spatio_temporal_keys_dict
         else:
-            return st_schema_list
+            return spatio_temporal_keys
 
     def count_avg_rows(self, t_scale, s_scale, threshold=0):
-        all_schemas = self.load_all_st_schemas(self.tbl_attrs, t_scale, s_scale)
+        all_schemas = self.load_all_spatio_temporal_keys(self.data_catalog, t_scale, s_scale)
         total_cnt = 0
         all_cnts = []
         for schema in all_schemas:
@@ -133,9 +96,9 @@ class Profiler:
         print(f"num of all schemas: {len(all_schemas)}")
         print(total_cnt / len(all_schemas))
         print(f"median: {np.median(all_cnts)}")
-    
+
     def _get_join_cost(self, t_scale, s_scale, threshold):
-        all_schemas = Profiler.load_all_st_schemas(self.tbl_attrs, t_scale, s_scale)
+        all_schemas = Profiler.load_all_spatio_temporal_keys(self.data_catalog, t_scale, s_scale)
         total_cnt = 0
         # group tbls by their schema types since only tbls with the same schema types can join with each other
         # schemas in the same tbl can not join
@@ -175,7 +138,7 @@ class Profiler:
 
     @staticmethod
     def get_join_cost(cur, tbl_attrs, t_scale, s_scale, threshold):
-        all_schemas = Profiler.load_all_st_schemas(tbl_attrs, t_scale, s_scale)
+        all_schemas = Profiler.load_all_spatio_temporal_keys(tbl_attrs, t_scale, s_scale)
         total_cnt = 0
         # group tbls by their schema types since only tbls with the same schema types can join with each other
         # schemas in the same tbl can not join
@@ -221,75 +184,23 @@ class Profiler:
         cur.execute(query)
         return cur.fetchall()[0][0]
 
-    def profile_tbl(self, tbl, t_attrs, s_attrs, num_columns, t_scales, s_scales, mode='no_cross'):
-        st_schema_list = []
-        for t in t_attrs:
-            for scale in t_scales:
-                st_schema_list.append(SpatioTemporalKey(temporal_attr=Attr(t["name"], scale)))
+    def profile_tbl(self, table: Table,
+                    temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU], mode='no_cross'):
+        spatio_temporal_keys = table.get_spatio_temporal_keys(temporal_granu_l, spatial_granu_l, mode)
+        for spatio_temporal_key in spatio_temporal_keys:
+            self.profile_spatio_temporal_key(table.tbl_id, spatio_temporal_key, table.num_columns)
 
-        for s in s_attrs:
-            for scale in s_scales:
-                if s["granu"] != 'POINT' and s["granu"] != scale.name:
-                    continue
-                st_schema_list.append(SpatioTemporalKey(spatial_attr=Attr(s["name"], scale)))
-
-        for t in t_attrs:
-            for s in s_attrs:
-                if mode == 'cross':
-                    for t_scale in t_scales:
-                        for s_scale in s_scales:
-                            if s["granu"] != 'POINT' and s["granu"] != s_scale.name:
-                                continue
-                            st_schema_list.append(
-                                SpatioTemporalKey(Attr(t["name"], t_scale), Attr(s['name'], s_scale))
-                            )
-                elif mode == 'no_cross':
-                    for i in range(len(t_scales)):
-                        if s["granu"] != 'POINT' and s["granu"] != s_scales[i].name:
-                            continue    
-                        st_schema_list.append(SpatioTemporalKey(Attr(t["name"], t_scales[i]), Attr(s["name"], s_scales[i])))
-
-        for st_schema in st_schema_list:
-            self.profile_st_schema(tbl, st_schema, num_columns)
-
-    def profile_st_schema(self, tbl, st_schema: SpatioTemporalKey, num_columns):
-        vars = []
-        for agg_col in num_columns:
-            if len(agg_col) > 59:
-                continue
-            vars.append("avg_{}".format(agg_col))
-        vars.append("count")
-        col_names = st_schema.get_col_names_with_granu()
-        # if st_schema.s_unit:
-        #     print(st_schema.s_unit.attr_name, st_schema.s_unit.granu)
-        # print(col_names)
-        agg_tbl_name = "{}_{}".format(tbl, "_".join([col for col in col_names]))
-        self.stats_dict[agg_tbl_name] = {}
-        for var in vars:
-            stats = self.get_stats(agg_tbl_name, var)
-            self.stats_dict[agg_tbl_name][var] = stats
-
-    def get_stats(self, agg_tbl_name, var_name):
-        sql_str = """
-            select sum({var}), sum({var}^2), round(avg({var})::numeric, 4), round((count(*)-1)*var_samp({var})::numeric,4), count(*)from {agg_tbl};
-        """
-        query = sql.SQL(sql_str).format(
-            var=sql.Identifier(var_name), agg_tbl=sql.Identifier(agg_tbl_name)
-        )
-        # print(self.cur.mogrify(query))
-        self.cur.execute(query)
-        query_res = self.cur.fetchall()[0]
-        return {
-            "sum": float(query_res[0]) if query_res[0] != None else None,
-            "sum_square": float(query_res[1]) if query_res[1] != None else None,
-            "avg": float(query_res[2]) if query_res[2] != None else None,
-            "res_sum": float(query_res[3]) if query_res[3] != None else None,
-            "cnt": int(query_res[4]) if query_res[4] != None else None,
-        }
+    def profile_spatio_temporal_key(self, table: Table, tbl_id: str, spatio_temporal_key: SpatioTemporalKey,
+                                    num_columns):
+        variables = table.get_variables()
+        agg_tbl_name = spatio_temporal_key.get_agg_tbl_name(table.tbl_id)
+        for variable in variables:
+            stats = self.db_engine.get_stats(agg_tbl_name, variable.var_name)
+            self.stats_dict[agg_tbl_name][variable] = stats
 
     def profile_original_data(self):
         profiles = {}
-        for tbl_id, info in tqdm(self.tbl_attrs.items()):
+        for tbl_id, info in tqdm(self.data_catalog.items()):
             profile = {}
             f_path = "{}/{}.csv".format(self.config["data_path"], tbl_id)
             df = pd.read_csv(f_path, low_memory=False)
@@ -315,19 +226,18 @@ class Profiler:
             self.config["profile_path"],
             profiles,
         )
-    
+
     @staticmethod
-    def get_total_num_rows_original(data_source):
+    def get_total_num_rows_original(data_source: str):
         config = io_utils.load_config(data_source)
         attr_path = config["attr_path"]
-        tbl_attrs = io_utils.load_json(attr_path) 
+        tbl_attrs = io_utils.load_json(attr_path)
         total_row_cnt = 0
         for tbl_id, info in tqdm(tbl_attrs.items()):
             f_path = "{}/{}.csv".format(config["data_path"], tbl_id)
             df = pd.read_csv(f_path, low_memory=False)
             total_row_cnt += len(df)
         return total_row_cnt
-
 
 
 if __name__ == "__main__":
@@ -337,9 +247,9 @@ if __name__ == "__main__":
     # s_scales = [S_GRANU.TRACT]
     # data_source = 'chicago_1m_time_sampling'
     data_sources = [
-                    'ny_open_data', 'ct_open_data', 'maryland_open_data', 'pa_open_data',
-                    'texas_open_data', 'wa_open_data', 'sf_open_data', 'la_open_data', 
-                    'nyc_open_data', 'chicago_open_data'
+        'ny_open_data', 'ct_open_data', 'maryland_open_data', 'pa_open_data',
+        'texas_open_data', 'wa_open_data', 'sf_open_data', 'la_open_data',
+        'nyc_open_data', 'chicago_open_data'
     ]
     total_rows = 0
     for data_source in data_sources:
@@ -360,4 +270,3 @@ if __name__ == "__main__":
     # profiler = Profiler("cdc_1m", t_scales, s_scales)
     # profiler.collect_agg_tbl_col_stats()
     # profiler.profile_original_data()
-    

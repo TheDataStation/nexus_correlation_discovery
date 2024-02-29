@@ -2,7 +2,7 @@ import utils.io_utils as io_utils
 import time
 from utils.coordinate import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
-from data_ingestion.index_builder_agg import DBIngestorAgg
+from data_ingestion.data_ingestor import DBIngestor
 import pandas as pd
 
 def ingest_chicago_time_sampling():
@@ -13,9 +13,9 @@ def ingest_chicago_time_sampling():
     conn_string = "postgresql://yuegong@localhost/chicago_1m_time_2021_2023"
     t_scales = [TEMPORAL_GRANU.DAY, TEMPORAL_GRANU.MONTH]
     s_scales = [SPATIAL_GRANU.BLOCK, SPATIAL_GRANU.TRACT]
-    ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
+    ingestor = DBIngestor(conn_string, data_source, t_scales, s_scales)
     ingestor.set_time_range([pd.to_datetime('2021-01-01 00:00:00'), pd.to_datetime('2023-01-01 00:00:00')])
-    ingestor.ingest_data_source(clean=True, persist=True)
+    ingestor.ingest_data_source(None, clean=True, persist=True)
     print(f"ingesting data finished in {time.time() - start_time} s")
 
 def ingest_chicago():
@@ -27,7 +27,7 @@ def ingest_chicago():
     t_scales = [TEMPORAL_GRANU.DAY, TEMPORAL_GRANU.MONTH]
     s_scales = [SPATIAL_GRANU.BLOCK, SPATIAL_GRANU.TRACT]
 
-    ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
+    ingestor = DBIngestor(conn_string, data_source, t_scales, s_scales)
     # attr_path = config["attr_path"]
     # tbls = io_utils.load_json(attr_path)
     # for tbl_id, info in tqdm(tbls.items()):
@@ -38,7 +38,7 @@ def ingest_chicago():
     #         t_scales,
     #         s_scales,
     #     )
-    ingestor.ingest_data_source(clean=True, persist=True)
+    ingestor.ingest_data_source(None, clean=True, persist=True)
 
     print(f"ingesting data finished in {time.time() - start_time} s")
 
@@ -53,20 +53,20 @@ def ingest_open_data():
         print(data_source)
         start_time = time.time()
         conn_string = "postgresql://yuegong@localhost/opendata_large"
-        ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
+        ingestor = DBIngestor(conn_string, data_source, t_scales, s_scales)
         if data_source == 'chicago_open_data':
-            ingestor.ingest_data_source(clean=False, persist=True, max_limit=2)
+            ingestor.ingest_data_source(None, clean=False, persist=True, max_limit=2)
         else:
-            ingestor.ingest_data_source(clean=False, persist=True, max_limit=1)
+            ingestor.ingest_data_source(None, clean=False, persist=True, max_limit=1)
         print(f"ingesting data finished in {time.time() - start_time} s")
 
 def create_cnt_tbls(data_sources, conn_str):
     t_scales = [TEMPORAL_GRANU.MONTH]
     s_scales = [SPATIAL_GRANU.TRACT]
     idx_tbls = ["time_3_space_3_inv", "space_3_inv", "time_3_inv"]
-    DBIngestorAgg.create_cnt_tbls_for_inv_index_tbls(conn_str, idx_tbls)
+    DBIngestor.create_cnt_tbls_for_inv_index_tbls(conn_str, idx_tbls)
     for data_source in data_sources:
-        ingestor = DBIngestorAgg(conn_str, data_source, t_scales, s_scales)
+        ingestor = DBIngestor(conn_str, data_source, t_scales, s_scales)
         config = io_utils.load_config(data_source)
         print(config["attr_path"])
         tbl_attrs = io_utils.load_json(config["attr_path"])
@@ -86,7 +86,7 @@ def create_cnt_tbls(data_sources, conn_str):
 def create_cnt_tbls_for_inverted_index_tbls():
     conn_string = "postgresql://yuegong@localhost/opendata"
     idx_tbls = ["time_3_space_3_inv", "space_3_inv", "time_3_inv"]
-    DBIngestorAgg.create_cnt_tbls_for_inv_index_tbls(conn_string, idx_tbls)
+    DBIngestor.create_cnt_tbls_for_inv_index_tbls(conn_string, idx_tbls)
     
 def retry_failed_tbls(data_source):
     config = io_utils.load_config(data_source)
@@ -95,11 +95,11 @@ def retry_failed_tbls(data_source):
     conn_string = "postgresql://yuegong@localhost/opendata_large"
     t_scales = [TEMPORAL_GRANU.MONTH]
     s_scales = [SPATIAL_GRANU.TRACT]
-    ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
+    ingestor = DBIngestor(conn_string, data_source, t_scales, s_scales)
     if data_source == 'chicago_open_data':
-        ingestor.ingest_data_source(clean=False, persist=True, max_limit=2, retry_list=['uk68-3rjc'])
+        ingestor.ingest_data_source(None, clean=False, persist=True, max_limit=2, retry_list=['uk68-3rjc'])
     else:
-        ingestor.ingest_data_source(clean=False, persist=True, max_limit=1, retry_list=['k7nh-aufb'])
+        ingestor.ingest_data_source(None, clean=False, persist=True, max_limit=1, retry_list=['k7nh-aufb'])
 
 
 if __name__ == "__main__":

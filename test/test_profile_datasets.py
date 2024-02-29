@@ -1,4 +1,4 @@
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 from utils.data_model import TEMPORAL_GRANU, SPATIAL_GRANU
 
 

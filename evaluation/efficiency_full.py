@@ -6,7 +6,7 @@ from utils.io_utils import dump_json
 import utils.io_utils as io_utils
 from tqdm import tqdm
 from data_search.commons import FIND_JOIN_METHOD
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 from enum import Enum
  
 class Method(Enum):
@@ -70,7 +70,7 @@ def run(data_source, method):
                     continue
                 # print(agg_name, join_costs[agg_name].cnt)
             
-                method = corr_search.find_all_corr_for_a_tbl_schema(
+                method = corr_search.find_all_corr_for_a_spatio_temporal_key(
                     tbl,
                     schema,
                     o_t=o_t,

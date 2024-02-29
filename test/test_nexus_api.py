@@ -1,5 +1,6 @@
 from utils.coordinate import SPATIAL_GRANU
-from utils.data_model import Var
+from utils.time_point import TEMPORAL_GRANU
+from utils.data_model import Variable
 from nexus_api import API
 
 # conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
@@ -7,13 +8,17 @@ from nexus_api import API
 
 def test_find_correlations_from():
     conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
-    nexus_api = API(conn_str)
+    nexus_api = API(conn_str)   
     dataset = 'asthma'
-    t_granu, s_granu = None, SPATIAL_GRANU.ZIPCODE
-    overlap_t = 5
-    r_t = 0.5
-    df = nexus_api.find_correlations_from(dataset, t_granu, s_granu, overlap_t, r_t, correlation_type="pearson")
-    print(len(df))
+    # asthma data only has spatial attribute, thus the temporal granularity is set to ALL.
+    temporal_granularity, spatial_granularity = TEMPORAL_GRANU.ALL, SPATIAL_GRANU.ZIPCODE
+    overlap_threshold = 5
+    correlation_threshold = 0.5
+    # you can change correlation_type to 'spearman' or 'kendall'
+    df = nexus_api.find_correlations_from(dataset, temporal_granularity, spatial_granularity, 
+                                        overlap_threshold, correlation_threshold, 
+                                        correlation_type="pearson")
+    # show_df(df, name='asthma_corrs', use_qgrid=False)
 
 def test_show_catalog():
     catalog = nexus_api.show_catalog()
@@ -63,5 +68,5 @@ def test_load_corrs():
 if __name__ == '__main__':
     # test_control_for_variables()
     # test_load_corrs()
-    test_find_all_correlations()
+    test_find_correlations_from()
     # test_find_correlations_from()

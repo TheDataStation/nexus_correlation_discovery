@@ -1,9 +1,16 @@
+from enum import Enum
+
 import pandas as pd
 from sqlalchemy import create_engine
 import psycopg2
 from io import StringIO
+from utils.data_model import SpatioTemporalKey, Variable
+from typing import List
+from psycopg2 import sql
+from data_ingestion.database_connecter import DatabaseConnectorInterface, IndexType
 
-class PostgresConnector:
+
+class PostgresConnector(DatabaseConnectorInterface):
     def __init__(self, conn_str):
         db = create_engine(conn_str)
         self.conn = db.connect()
@@ -18,20 +25,179 @@ class PostgresConnector:
                     DELIMITER ',' 
                     CSV HEADER
                 """
-        
+
         buffer = StringIO()
         df.to_csv(buffer, index=False)
         buffer.seek(0)
         self.cur.copy_expert(copy_sql, buffer)
 
-    def create_tbl(self, tbl_name: str, df: pd.DataFrame, mode='replace'):
+    def create_tbl(self, tbl_id: str, df: pd.DataFrame, mode='replace'):
         # create the table if not exists
         schema = df.iloc[:0]
         schema.to_sql(
-            tbl_name,
+            tbl_id,
             con=self.conn,
             if_exists=mode,
             index=False,
         )
         # ingest data
-        self._copy_from_dataFile_StringIO(df, tbl_name)
+        self._copy_from_dataFile_StringIO(df, tbl_id)
+
+    def delete_tbl(self, tbl_id: str):
+        sql_str = """DROP TABLE IF EXISTS {tbl}"""
+        self.cur.execute(sql.SQL(sql_str).format(tbl=sql.Identifier(tbl_id)))
+
+    def create_aggregate_tbl(self, tbl_id: str, spatio_temporal_key: SpatioTemporalKey, variables: List[Variable]):
+        col_names = spatio_temporal_key.get_col_names_with_granu()
+        agg_tbl_name = "{}_{}".format(tbl_id, "_".join([col for col in col_names]))
+
+        self.delete_tbl(agg_tbl_name)
+
+        sql_str = """
+                CREATE TABLE {agg_tbl} AS
+                SELECT CONCAT_WS(',', {fields}) as val, {agg_stmts} FROM {tbl} GROUP BY {fields}
+                HAVING {not_null_stmts}
+                """
+
+        query = sql.SQL(sql_str).format(
+            agg_tbl=sql.Identifier(agg_tbl_name),
+            fields=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
+            agg_stmts=sql.SQL(",").join(
+                [
+                    sql.SQL(var.agg_func.name + "(*) as {}").format(
+                        sql.Identifier(var.var_name),
+                    )
+                    if var.attr_name == "*"
+                    else sql.SQL(var.agg_func.name + "({}) as {}").format(
+                        sql.Identifier(var.attr_name),
+                        sql.Identifier(var.var_name),
+                    )
+                    for var in variables
+                ]
+            ),
+            tbl=sql.Identifier(tbl_id),
+            not_null_stmts=sql.SQL(" AND ").join(
+                [
+                    sql.SQL("{} is not NULL").format(sql.Identifier(field))
+                    for field in col_names
+                ]
+            ),
+        )
+
+        self.cur.execute(query)
+        if len(agg_tbl_name) >= 63:
+            idx_name = agg_tbl_name[:59] + "_idx"
+        else:
+            idx_name = agg_tbl_name + "_idx"
+
+        self.create_indices_on_tbl(
+            idx_name, agg_tbl_name, ["val"], IndexType.HASH
+        )
+
+        return agg_tbl_name
+
+    def create_indices_on_tbl(self, idx_name: str, tbl_id: str, col_names: List[str], mode=IndexType.B_TREE):
+        if mode == IndexType.B_TREE:
+            sql_str = """
+                    CREATE INDEX {idx_name} ON {tbl} ({cols});
+                """
+
+            query = sql.SQL(sql_str).format(
+                idx_name=sql.Identifier(idx_name),
+                tbl=sql.Identifier(tbl_id),
+                cols=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
+            )
+        elif mode == IndexType.HASH:
+            # hash index can only be created on a single column in postgres
+            col_name = col_names[0]
+
+            sql_str = """
+                    CREATE INDEX {idx_name} ON {tbl} using hash({col});
+                """
+
+            query = sql.SQL(sql_str).format(
+                idx_name=sql.Identifier(idx_name),
+                tbl=sql.Identifier(tbl_id),
+                col=sql.Identifier(col_name),
+            )
+        # print(cur.mogrify(query))
+        self.cur.execute(query)
+
+    def create_inv_index_tbl(self, inv_index_tbl):
+        sql_str = """
+            CREATE TABLE IF NOT EXISTS {idx_tbl} (
+                val text UNIQUE,
+                spatio_temporal_keys _text
+            )
+        """
+        query = sql.SQL(sql_str).format(idx_tbl=sql.Identifier(inv_index_tbl))
+        self.cur.execute(query)
+
+    def insert_spatio_temporal_key_to_inv_idx(self, inv_idx: str, tbl_id: str, spatio_temporal_key: SpatioTemporalKey):
+        sql_str = """
+            INSERT INTO {inv_idx} (val, spatio_temporal_keys)
+            SELECT val, ARRAY[%s] as spatio_temporal_keys FROM {agg_tbl}
+            ON CONFLICT (val) 
+            DO
+                UPDATE SET spatio_temporal_keys = (SELECT array_agg(distinct x)
+                                             FROM unnest({original} || EXCLUDED.spatio_temporal_keys) as t(x));
+        """
+        query = sql.SQL(sql_str).format(
+            inv_idx=sql.Identifier(inv_idx),
+            agg_tbl=sql.Identifier(spatio_temporal_key.get_agg_tbl_name(tbl_id)),
+            original=sql.Identifier(inv_idx, "spatio_temporal_keys"),
+        )
+
+        self.cur.execute(query, (spatio_temporal_key.get_id(tbl_id),))
+
+    def create_cnt_tbl_for_inverted_indices(self, idx_names):
+        for idx_name in idx_names:
+            tbl_name = f"{idx_name}_cnt"
+            self.delete_tbl(tbl_name)
+            sql_str = """
+                 CREATE TABLE {tbl_name} AS
+                 SELECT val, array_length(spatio_temporal_keys, 1) as cnt from {idx_name}
+            """
+            query = sql.SQL(sql_str).format(
+                tbl_name=sql.Identifier(tbl_name), idx_name=sql.Identifier(idx_name)
+            )
+            self.cur.execute(query)
+
+            self.create_indices_on_tbl(tbl_name + "_i", tbl_name, ["val"], IndexType.HASH)
+
+    def create_cnt_tbl_for_agg_tbl(self, tbl_id: str, spatio_temporal_key: SpatioTemporalKey):
+        idx_cnt_name = "{}_inv_cnt".format(spatio_temporal_key.get_idx_tbl_name())
+        agg_tbl = spatio_temporal_key.get_agg_tbl_name(tbl_id)
+        if len(agg_tbl) >= 63:
+            cnt_tbl_name = agg_tbl[:59] + "_cnt"
+        else:
+            cnt_tbl_name = f"{agg_tbl}_cnt"
+        self.delete_tbl(cnt_tbl_name)
+        sql_str = """
+                CREATE TABLE {cnt_tbl_name} AS
+                SELECT "inv"."val", cnt FROM {inv_cnt} inv JOIN {tbl} agg on inv."val" = agg."val" order by cnt desc
+            """
+        query = sql.SQL(sql_str).format(
+            cnt_tbl_name=sql.Identifier(cnt_tbl_name),
+            inv_cnt=sql.Identifier(idx_cnt_name),
+            tbl=sql.Identifier(agg_tbl),
+        )
+
+        self.cur.execute(query)
+
+    def get_variable_stats(self, agg_tbl_name: str, var_name: str):
+        sql_str = """
+            select sum({var}), sum({var}^2), round(avg({var})::numeric, 4), round((count(*)-1)*var_samp({var})::numeric,4), count(*)from {agg_tbl};
+        """
+        query = sql.SQL(sql_str).format(
+            var=sql.Identifier(var_name), agg_tbl=sql.Identifier(agg_tbl_name)
+        )
+        self.cur.execute(query)
+        query_res = self.cur.fetchall()[0]
+        return {
+            "sum": float(query_res[0]) if query_res[0] is not None else None,
+            "sum_square": float(query_res[1]) if query_res[1] is not None else None,
+            "avg": float(query_res[2]) if query_res[2] is not None else None,
+            "res_sum": float(query_res[3]) if query_res[3] is not None else None,
+            "cnt": int(query_res[4]) if query_res[4] is not None else None,
+        }

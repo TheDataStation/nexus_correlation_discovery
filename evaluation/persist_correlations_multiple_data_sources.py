@@ -7,7 +7,7 @@ from utils.io_utils import dump_json
 import utils.io_utils as io_utils
 from tqdm import tqdm
 from data_search.commons import FIND_JOIN_METHOD
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 from evaluation.persist_correlations import load_lazo_join_res, load_gt_join_res
 
 root_path = "/home/cc/nexus_correlation_discovery/"

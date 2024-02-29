@@ -9,7 +9,7 @@ from utils.io_utils import dump_json, load_json
 import utils.io_utils as io_utils
 from tqdm import tqdm
 from data_search.commons import FIND_JOIN_METHOD
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 
 
 data_source = "chicago_1m"
