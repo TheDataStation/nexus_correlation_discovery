@@ -135,12 +135,11 @@ class API:
         if agg_attr1[0:4] != 'avg_':
             agg_attr1 = 'avg_' + agg_attr1
             unagg_flag = True
-
-        df = join_two_agg_tables_api(self.cur, agg_name1, agg_attr1, agg_name2, agg_attr2, outer=False)
+        # todo: migrate this to join_multi_vars
+        df, provenance = join_two_agg_tables_api(self.cur, agg_name1, agg_attr1, agg_name2, agg_attr2, outer=False)
         df[agg_attr1] = df[agg_attr1].astype(float)
         if unagg_flag:
             df = df.rename(columns={agg_attr1: agg_attr1[4:]})
-        provenance = f"{agg_name1} JOIN {agg_name2}"
         return df, provenance
 
     def save(self, df, path, name, provenance=None):

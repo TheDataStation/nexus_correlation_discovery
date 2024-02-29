@@ -30,16 +30,21 @@ def test_find_all_correlations():
     t_granu, s_granu = None, SPATIAL_GRANU.ZIPCODE
     overlap_t = 10
     r_t = 0.6
-    control_vars = [Var('chicago_income_by_zipcode_zipcode_6', 'avg_income_household_median')]
-    persist_path = f'tmp/chicago_open_data_zipcode_control_for_income/'
+    # control_vars = [Variable('chicago_income_by_zipcode_zipcode_6', 'avg_income_household_median')]
+    # persist_path = f'tmp/chicago_open_data_zipcode_control_for_income/'
+    # df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, persist_path=persist_path, correlation_type="pearson", control_variables=control_vars)
+    # print(len(df))
+
+    # control_vars = [Var('chicago_zipcode_population_zipcode_6', 'avg_population')]
+    # persist_path = f'tmp/chicago_open_data_zipcode_control_for_population/'
+    # df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, persist_path=persist_path, correlation_type="pearson", control_variables=control_vars)
+    # print(len(df))
+
+    control_vars = [Variable('chicago_income_by_zipcode_zipcode_6', 'avg_income_household_median'), 
+                    Variable('chicago_zipcode_population_zipcode_6', 'avg_population')]
+    persist_path = f'tmp/chicago_open_data_zipcode_control_for_income_population/'
     df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, persist_path=persist_path, correlation_type="pearson", control_variables=control_vars)
     print(len(df))
-
-    control_vars = [Var('chicago_zipcode_population_zipcode_6', 'avg_population')]
-    persist_path = f'tmp/chicago_open_data_zipcode_control_for_population/'
-    df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, persist_path=persist_path, correlation_type="pearson", control_variables=control_vars)
-    print(len(df))
-
     # t_granu, s_granu = None, S_GRANU.TRACT
     # overlap_t = 10
     # r_t = 0.6
@@ -68,5 +73,5 @@ def test_load_corrs():
 if __name__ == '__main__':
     # test_control_for_variables()
     # test_load_corrs()
-    test_find_correlations_from()
+    test_find_all_correlations()
     # test_find_correlations_from()

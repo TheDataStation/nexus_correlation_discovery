@@ -395,7 +395,7 @@ def join_two_agg_tables_api(
     cur.execute(query)
 
     df = pd.DataFrame(cur.fetchall(), columns=[desc[0] for desc in cur.description])
-    return df
+    return df, cur.mogrify(query)
 
 def join_multi_agg_tbls(cur, tbl_cols: Dict[str, List[Variable]]):
     tbls = list(tbl_cols.keys())
