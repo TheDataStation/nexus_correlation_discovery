@@ -7,8 +7,8 @@ from nexus_api import API
 # nexus_api = API(conn_str)
 
 def test_find_correlations_from():
-    conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
-    nexus_api = API(conn_str)   
+    conn_str = 'data/quickstart.db'
+    nexus_api = API(conn_str)  
     dataset = 'asthma'
     # asthma data only has spatial attribute, thus the temporal granularity is set to ALL.
     temporal_granularity, spatial_granularity = TEMPORAL_GRANU.ALL, SPATIAL_GRANU.ZIPCODE
@@ -18,7 +18,7 @@ def test_find_correlations_from():
     df = nexus_api.find_correlations_from(dataset, temporal_granularity, spatial_granularity, 
                                         overlap_threshold, correlation_threshold, 
                                         correlation_type="pearson")
-    # show_df(df, name='asthma_corrs', use_qgrid=False)
+    print(len(df))
 
 def test_show_catalog():
     catalog = nexus_api.show_catalog()
@@ -73,5 +73,5 @@ def test_load_corrs():
 if __name__ == '__main__':
     # test_control_for_variables()
     # test_load_corrs()
-    test_find_all_correlations()
+    test_find_correlations_from()
     # test_find_correlations_from()

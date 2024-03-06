@@ -1,3 +1,4 @@
+from data_ingestion.connection import ConnectionFactory
 from data_search.data_polygamy import DataPolygamy
 import utils.io_utils as io_utils
 import numpy as np
@@ -13,7 +14,6 @@ from data_ingestion.data_profiler import Profiler
 from tqdm import tqdm
 import time
 import pandas as pd
-from data_search.search_db import DBSearch
 import os
 from utils import corr_utils
 from collections import defaultdict
@@ -82,9 +82,7 @@ class AggColumn:
         )
 
     def get_stats(self, stat_name):
-        return agg_col_profiles[self.agg_name][
-            self.agg_attr[:-3]
-        ][stat_name]
+        return agg_col_profiles[self.agg_name][self.agg_attr[:-3]][stat_name]
 
     def get_id(self):
         return self.agg_name, self.agg_attr
@@ -152,25 +150,14 @@ class Correlation:
                 ]
         )
 
-    @staticmethod
-    def from_list(row):
-        return Correlation(tbl_id1=row['tbl_id1'],
-                           agg_name1=row['agg_tbl1'],
-                           agg_attr1=row['agg_attr1'],
-                           tbl_id2=row['tbl_id2'],
-                           agg_name2=row['agg_tbl2'],
-                           agg_attr2=row['agg_attr2'],
-                           type=row['align_type'],
-                           )
-
 
 class CorrSearch:
     def __init__(
             self,
             conn_str: str,
+            engine: str,
             data_sources: List[str],
             find_join_method,
-            join_method="AGG",
             corr_method="MATRIX",
             impute_methods=[],
             explicit_outer_join=False,
@@ -180,11 +167,11 @@ class CorrSearch:
             mode=None,
             sketch_size=None,
     ) -> None:
-        # self.data_source = data_source
+
         self.data_catalog = {}
         self.all_tbls = set()
         self.column_profiles = {}
-        self.st_schemas_dict = None
+        self.spatio_temporal_keys_by_type = None
         global agg_col_profiles
         agg_col_profiles = {}
         for data_source in data_sources:
@@ -207,19 +194,19 @@ class CorrSearch:
             # global agg_col_profiles
             # self.agg_col_profiles = io_utils.load_json(agg_col_profile_path)
 
-        self.db_search = DBSearch(conn_str)
-        self.cur = self.db_search.cur
+        # self.db_search = DBSearch(conn_str)
+        # self.cur = self.db_search.cur
+        self.db_engine = ConnectionFactory.create_connection(conn_str, engine)
 
         self.data = []
         self.count = 0
         self.visited_tbls = set()
-        self.visited_schemas = set()
+        self.visited_keys = set()
 
         self.find_join_method = find_join_method
         # self.join_costs = join_costs
 
         self.join_all_cost = 0
-        self.join_method = join_method
         self.corr_method = corr_method
         self.r_methods = impute_methods
         self.outer_join = explicit_outer_join
@@ -260,7 +247,7 @@ class CorrSearch:
         self.find_join_only = find_join_only
 
     def set_join_cost(self, t_granu, s_granu, o_t):
-        self.join_costs = Profiler.get_join_cost(self.cur, self.data_catalog, t_granu, s_granu, o_t)
+        self.join_costs = Profiler.get_join_cost(self.db_engine, self.data_catalog, t_granu, s_granu, o_t)
 
     def dump_polygamy_rel_to_csv(self, data, dir_path, schema_id):
         df = pd.DataFrame(
@@ -298,8 +285,8 @@ class CorrSearch:
         if self.mode == 'data_polygamy':
             self.dataPolygamy.set_path(t_granu, s_granu)
             print(self.shuffle_num)
-        self.st_schemas_dict = Profiler.load_all_spatio_temporal_keys(self.data_catalog, t_granu, s_granu,
-                                                                      type_aware=True)
+        self.spatio_temporal_keys_by_type = Profiler.load_all_spatio_temporal_keys(self.data_catalog, t_granu, s_granu,
+                                                                                   type_aware=True)
         st_schema_list = Profiler.load_all_spatio_temporal_keys(self.data_catalog, t_granu, s_granu)
         sorted_st_schemas = []
         for tbl, st_schema in st_schema_list:
@@ -326,23 +313,17 @@ class CorrSearch:
             time_used = time.time() - start
             self.perf_profile["time_dump_csv"]["total"] += time_used
 
-    def table_from_tbl_id(self, tbl_id: str):
-        temporal_attrs = [Attr(attr["name"], attr["granu"]) for attr in self.data_catalog[tbl_id]['t_attrs']]
-        spatial_attrs = [Attr(attr["name"], attr["granu"]) for attr in self.data_catalog[tbl_id]['s_attrs']]
-        return Table(tbl_id=tbl_id,
-                     temporal_attrs=temporal_attrs,
-                     spatial_attrs=spatial_attrs)
-
     def find_all_corr_for_a_tbl(self, tbl_id: str,
                                 temporal_granu: TEMPORAL_GRANU, spatial_granu: SPATIAL_GRANU,
                                 overlap_t, corr_t, p_t, fill_zero,
                                 corr_type='pearson', control_variables=[]):
 
-        if not self.st_schemas_dict:
-            self.st_schemas_dict = Profiler.load_all_spatio_temporal_keys(self.data_catalog, temporal_granu,
-                                                                          spatial_granu, type_aware=True)
+        if not self.spatio_temporal_keys_by_type:
+            self.spatio_temporal_keys_by_type = Profiler.load_all_spatio_temporal_keys(self.data_catalog,
+                                                                                       temporal_granu,
+                                                                                       spatial_granu, type_aware=True)
 
-        table = self.table_from_tbl_id(tbl_id)
+        table = Table.table_from_tbl_id(tbl_id, self.data_catalog)
         spatio_temporal_keys = table.get_spatio_temporal_keys([temporal_granu], [spatial_granu])
 
         for spatio_temporal_key in spatio_temporal_keys:
@@ -362,59 +343,47 @@ class CorrSearch:
             vars.append(Variable(tbl, "*", AggFunc.COUNT, "count", suffix=suffix))
         return vars
 
-    def align_two_st_schemas(self, tbl1, agg_name1, tbl2, agg_name2, o_t, outer, sketch=False, k=0):
-        vars1 = self.get_vars_for_tbl(tbl1, suffix='t1')
-        vars2 = self.get_vars_for_tbl(tbl2, suffix='t2')
+    def join_two_tables_on_spatio_temporal_keys(self, tbl_id1: str, agg_name1: str, tbl_id2: str, agg_name2: str,
+                                                overlap_threshold: int,
+                                                use_outer_join: bool = False, use_sketch: bool = False, k: int = 0):
+        variables1 = Table.table_from_tbl_id(tbl_id1, self.data_catalog).get_variables(suffix='t1')
+        variables2 = Table.table_from_tbl_id(tbl_id2, self.data_catalog).get_variables(suffix='t2')
+        names1 = [var.proj_name for var in variables1]
+        names2 = [var.proj_name for var in variables2]
 
-        names1 = [var.proj_name[:63] for var in vars1]
-        names2 = [var.proj_name[:63] for var in vars2]
-
-        merged = None
-
-        if sketch:
+        if use_sketch:
             agg_name1 = f"{agg_name1}_sketch_{k}"
             agg_name2 = f"{agg_name2}_sketch_{k}"
 
-        if self.join_method == "AGG":
-            if self.outer_join:
-                merged_outer = db_ops.join_two_agg_tables(
-                    self.cur,
-                    tbl1,
-                    agg_name1,
-                    vars1,
-                    tbl2,
-                    agg_name2,
-                    vars2,
-                    outer=True,
-                )
-
-                merged = merged_outer.dropna(subset=["key1", "key2"])
-            else:
-                merged = db_ops.join_two_agg_tables(
-                    self.cur, tbl1, agg_name1, vars1, tbl2, agg_name2, vars2, outer=False
-                )
-
-        if merged is None:
-            if not self.outer_join:
-                return None, None
-            else:
+        if use_outer_join:
+            merged_outer = self.db_engine.join_two_tables_on_spatio_temporal_keys(tbl_id1,
+                                                                                  agg_name1,
+                                                                                  variables1,
+                                                                                  tbl_id2,
+                                                                                  agg_name2,
+                                                                                  variables2,
+                                                                                  use_outer=True)
+            merged = merged_outer.dropna(subset=["key1", "key2"])
+            if merged is None or (len(merged) < overlap_threshold and not use_sketch):
                 return None, None, None, None
-
-        if len(merged) < o_t and not sketch:
-            if not self.outer_join:
-                return None, None
-            else:
+            elif use_sketch and len(merged) < 3:
                 return None, None, None, None
-
-        if sketch and len(merged) < 3:
-            if not self.outer_join:
+        else:
+            merged = self.db_engine.join_two_tables_on_spatio_temporal_keys(tbl_id1,
+                                                                            agg_name1,
+                                                                            variables1,
+                                                                            tbl_id2,
+                                                                            agg_name2,
+                                                                            variables2,
+                                                                            use_outer=False)
+            if merged is None or (len(merged) < overlap_threshold and not use_sketch):
                 return None, None
-            else:
-                return None, None, None, None
+            elif use_sketch and len(merged) < 3:
+                return None, None
 
         df1, df2 = merged[names1].astype(float).round(3), merged[names2].astype(float).round(3)
         df1, df2 = self.drop_constant_columns(df1), self.drop_constant_columns(df2)
-        if outer:
+        if use_outer_join:
             df1_outer, df2_outer = merged_outer[names1].astype(float).round(3), merged_outer[names2].astype(
                 float).round(3)
             df1_outer, df2_outer = self.drop_constant_columns(df1_outer), self.drop_constant_columns(df2_outer)
@@ -427,7 +396,7 @@ class CorrSearch:
         agg_tbl = st_schema.get_agg_tbl_name(tbl)
         print(f"current table: {agg_tbl}")
         self.visited_tbls.add(tbl)
-        self.visited_schemas.add(agg_tbl)
+        self.visited_keys.add(agg_tbl)
 
         # median = 6447
         # v_cnt = min(v_cnt, median)
@@ -437,7 +406,7 @@ class CorrSearch:
         print(f"estimated join cost is {join_cost}")
 
         aligned_schemas = []
-        aligned_join_keys = self.st_schemas_dict[st_schema.get_type()]
+        aligned_join_keys = self.spatio_temporal_keys_by_type[st_schema.get_type()]
         # aligned_tbls = self.all_tbls
 
         join_all_cost = 0
@@ -460,7 +429,7 @@ class CorrSearch:
             # for st_schema2 in st_schema_list:
             agg_name2 = st_schema2.get_agg_tbl_name(tbl2)
 
-            if agg_name2 not in self.join_costs or agg_name2 in self.visited_schemas:
+            if agg_name2 not in self.join_costs or agg_name2 in self.visited_keys:
                 continue  # meaning it does not have enough keys
             cnt2 = self.join_costs[agg_name2].cnt
             join_all_cost += min(cnt2, v_cnt)
@@ -529,7 +498,7 @@ class CorrSearch:
                 if cand not in self.join_costs:
                     continue
                 if overlap * scale_factor >= threshold:
-                    if cand not in self.visited_schemas:
+                    if cand not in self.visited_keys:
                         joinable_estimate += 1
                         avg_join_cost += min(v_cnt, self.join_costs[cand].cnt)
             if len(candidates) == 0 or joinable_estimate == 0:
@@ -548,36 +517,6 @@ class CorrSearch:
             else:
                 return "JOIN_ALL", aligned_schemas
 
-    def find_corr_in_a_tbl_schema(self, tbl, st_schema: SpatioTemporalKey, r_t, p_t):
-        corrs = []
-        flag = st_schema.get_type().value
-        tbl_agg_cols = self.data_catalog[tbl]["num_columns"]
-
-        vars = []
-
-        for agg_col in tbl_agg_cols:
-            vars.append(Variable(agg_col, AggFunc.AVG, "avg_{}_t1".format(agg_col)))
-        if len(tbl_agg_cols) == 0 or tbl == '85ca-t3if':
-            vars.append(Variable("*", AggFunc.COUNT, "count_t1"))
-
-        df = db_ops.read_agg_tbl(self.cur, tbl, st_schema, vars)
-        for i, col1 in enumerate(df.columns):
-            for j, col2 in enumerate(df.columns):
-                if i < j:
-                    r_v, p_v = pearsonr(df[col1], df[col2])
-                    if r_v >= r_t and p_v <= p_t:
-                        agg_col1 = AggColumn(tbl, self.data_catalog[tbl]["name"], st_schema, col1, df[col1])
-                        agg_col2 = AggColumn(tbl, self.data_catalog[tbl]["name"], st_schema, col2, df[col2])
-                        corr = Correlation(agg_col1, agg_col2, r_v, p_v, len(df), flag)
-                        corr.agg_col1.set_profile(
-                            self.column_profiles[corr.agg_col1.tbl_id],
-                        )
-                        corr.agg_col2.set_profile(
-                            self.column_profiles[corr.agg_col2.tbl_id],
-                        )
-                        corrs.append(corr)
-        return corrs
-
     def find_joinable_lookup(self, tbl1, st_schema: SpatioTemporalKey, o_t):
         key = st_schema.get_agg_tbl_name(tbl1)
         if key not in self.joinable_lookup:
@@ -589,61 +528,48 @@ class CorrSearch:
             res.append((cand[:9], cand))
         return res
 
-    def find_joinable_nexus(self, tbl1, st_schema: SpatioTemporalKey, o_t):
-        v_cnt = self.join_costs[st_schema.get_agg_tbl_name(tbl1)].cnt
+    def find_joinable_nexus(self, tbl_id1: str, st_key1: SpatioTemporalKey, overlap_threshold: int):
+        v_cnt = self.join_costs[st_key1.get_agg_tbl_name(tbl_id1)].cnt
 
         if self.find_join_method == FIND_JOIN_METHOD.INDEX_SEARCH:
-            aligned_schemas = self.db_search.find_augmentable_st_schemas(
-                tbl1, st_schema, o_t, mode="inv_idx"
+            aligned_keys = self.db_search.find_augmentable_st_schemas(
+                tbl_id1, st_key1, overlap_threshold, mode="inv_idx"
             )
         elif self.find_join_method == FIND_JOIN_METHOD.JOIN_ALL:
-            aligned_schemas = []
+            aligned_keys = []
             # aligned_tbls = self.all_tbls
-            aligned_join_keys = self.st_schemas_dict[st_schema.get_type()]
-            for tbl2, st_schema2 in aligned_join_keys:
-                if tbl2 == tbl1:
+            aligned_join_keys = self.spatio_temporal_keys_by_type[st_key1.get_type()]
+            for tbl_id2, st_key2 in aligned_join_keys:
+                if tbl_id2 == tbl_id1:
                     continue
-                # t_attrs, s_attrs = (
-                #     self.tbl_attrs[tbl2]["t_attrs"],
-                #     self.tbl_attrs[tbl2]["s_attrs"],
-                # )
-                # st_schema_list = get_st_schema_list_for_tbl(
-                #     t_attrs,
-                #     s_attrs,
-                #     st_schema.t_unit,
-                #     st_schema.s_unit,
-                #     [st_schema.get_type()],
-                # )
-                # for st_schema2 in st_schema_list:
-                agg_name2 = st_schema2.get_agg_tbl_name(tbl2)
-
+                agg_name2 = st_key2.get_agg_tbl_name(tbl_id2)
                 if (
                         agg_name2 not in self.join_costs
-                        or agg_name2 in self.visited_schemas
+                        or agg_name2 in self.visited_keys
                 ):
                     continue  # meaning it does not have enough keys
-                aligned_schemas.append((tbl2, st_schema2))
+                aligned_keys.append((tbl_id2, st_key2))
 
         elif self.find_join_method == FIND_JOIN_METHOD.COST_MODEL:
             s = time.time()
             method, schemas = self.determine_find_join_method(
-                tbl1, st_schema, o_t, v_cnt
+                tbl_id1, st_key1, overlap_threshold, v_cnt
             )
             self.overhead += time.time() - s
             print(f"choose {method}")
             if method == "FIND_JOIN":
                 method = FIND_JOIN_METHOD.INDEX_SEARCH
                 self.perf_profile["strategy"]["find_join"] += 1
-                aligned_schemas = self.db_search.find_augmentable_st_schemas(
-                    tbl1, st_schema, o_t, mode="inv_idx"
+                aligned_keys = self.db_search.find_augmentable_st_schemas(
+                    tbl_id1, st_key1, overlap_threshold, mode="inv_idx"
                 )
             elif method == "JOIN_ALL":
                 method = FIND_JOIN_METHOD.JOIN_ALL
                 self.perf_profile["strategy"]["join_all"] += 1
-                aligned_schemas = schemas
+                aligned_keys = schemas
         res = []
         # print(aligned_schemas)
-        for info in aligned_schemas:
+        for info in aligned_keys:
             res.append((info[0], info[1].get_agg_tbl_name(info[0])))
 
         if self.find_join_method == FIND_JOIN_METHOD.COST_MODEL:
@@ -651,7 +577,9 @@ class CorrSearch:
         return res
 
     def find_all_corr_for_a_spatio_temporal_key(
-            self, tbl1, spatio_temporal_key: SpatioTemporalKey, o_t, r_t, p_t, fill_zero, corr_type='pearson',
+            self, tbl_id1: str, spatio_temporal_key: SpatioTemporalKey,
+            overlap_threshold: float, corr_threshold: float, p_threshold: float,
+            fill_zero: bool, corr_type='pearson',
             control_vars=[]
     ):
         self.join_all_cost = 0
@@ -663,16 +591,16 @@ class CorrSearch:
         Find aligned schemas whose overlap with the input st_schema is greater then o_t
         """
         start = time.time()
-        self.visited_tbls.add(tbl1)
-        agg_name1 = spatio_temporal_key.get_agg_tbl_name(tbl1)
-        self.visited_schemas.add(agg_name1)
+        self.visited_tbls.add(tbl_id1)
+        agg_name1 = spatio_temporal_key.get_agg_tbl_name(tbl_id1)
+        self.visited_keys.add(agg_name1)
         if agg_name1 not in self.join_costs:
             print("skip because this table does not have enough keys")
             self.perf_profile["strategy"]["skip"] += 1
             return
 
         if self.mode == 'data_polygamy':
-            vars1 = self.dataPolygamy.get_vars(tbl1)
+            vars1 = self.dataPolygamy.get_vars(tbl_id1)
             feature_map = {}
             for var in vars1:
                 pos, neg = self.dataPolygamy.load_features(agg_name1, var.var_name)
@@ -686,25 +614,23 @@ class CorrSearch:
                         feature_map[f"{var.var_name}_{i}"] = self.dataPolygamy.load_features(agg_name1, var.var_name,
                                                                                              shuffle=i)
 
-        v_cnt = self.join_costs[agg_name1].cnt
-
         if self.mode == 'sketch' or self.mode == 'data_polygamy':
-            aligned_schemas = self.find_joinable_lookup(tbl1, spatio_temporal_key, o_t)
+            aligned_keys = self.find_joinable_lookup(tbl_id1, spatio_temporal_key, overlap_threshold)
         elif self.joinable_lookup and self.mode == 'lazo':
-            aligned_schemas = self.find_joinable_lookup(tbl1, spatio_temporal_key, o_t)
+            aligned_keys = self.find_joinable_lookup(tbl_id1, spatio_temporal_key, overlap_threshold)
         elif self.joinable_lookup and self.mode == 'nexus':
-            # exlude aligned schema that are not in lazo's result
+            # exclude aligned keys that are not in lazo's result
             if self.find_join_method == FIND_JOIN_METHOD.COST_MODEL:
-                method, aligned_schemas = self.find_joinable_nexus(tbl1, spatio_temporal_key, o_t)
-            aligned_schemas_lazo = self.find_joinable_lookup(tbl1, spatio_temporal_key, o_t)
+                method, aligned_keys = self.find_joinable_nexus(tbl_id1, spatio_temporal_key, overlap_threshold)
+            aligned_schemas_lazo = self.find_joinable_lookup(tbl_id1, spatio_temporal_key, overlap_threshold)
             if method == FIND_JOIN_METHOD.INDEX_SEARCH:
                 print("pruned")
-                aligned_schemas = [x for x in aligned_schemas if x in aligned_schemas_lazo]
+                aligned_keys = [x for x in aligned_keys if x in aligned_schemas_lazo]
         else:
             if self.find_join_method == FIND_JOIN_METHOD.COST_MODEL:
-                method, aligned_schemas = self.find_joinable_nexus(tbl1, spatio_temporal_key, o_t)
+                method, aligned_keys = self.find_joinable_nexus(tbl_id1, spatio_temporal_key, overlap_threshold)
             else:
-                aligned_schemas = self.find_joinable_nexus(tbl1, spatio_temporal_key, o_t)
+                aligned_keys = self.find_joinable_nexus(tbl_id1, spatio_temporal_key, overlap_threshold)
 
         time_used = time.time() - start
         self.cur_find_join_time = time_used
@@ -717,27 +643,26 @@ class CorrSearch:
         tbl_schema_corrs = []
         # print(method)
         if self.find_join_only and method == FIND_JOIN_METHOD.INDEX_SEARCH:
-            print('Find_Join', len(aligned_schemas))
-            self.perf_profile["num_joins"]["total"] += len(aligned_schemas)
-            self.perf_profile["num_joins"][flag] += len(aligned_schemas)
+            print('Find_Join', len(aligned_keys))
+            self.perf_profile["num_joins"]["total"] += len(aligned_keys)
+            self.perf_profile["num_joins"][flag] += len(aligned_keys)
             return
-        # print(len(aligned_schemas))
-        for tbl2, agg_name2 in aligned_schemas:
+
+        for tbl2, agg_name2 in aligned_keys:
             if tbl2 not in self.data_catalog:
                 continue
             if self.find_join_only:
                 start = time.time()
                 overlap = db_ops.get_intersection(self.cur, agg_name1, agg_name2)
                 time_used = time.time() - start
-                if overlap >= o_t:
+                if overlap >= overlap_threshold:
                     self.perf_profile["num_joins"]["total"] += 1
                     self.perf_profile["num_joins"][flag] += 1
                 self.perf_profile["time_find_joins"]["total"] += time_used
                 self.perf_profile["time_find_joins"][flag] += time_used
                 continue
 
-            # agg_name2 = st_schema2.get_agg_tbl_name(tbl2)
-            if tbl2 == tbl1 or agg_name2 in self.visited_schemas or agg_name2 not in agg_col_profiles:
+            if tbl2 == tbl_id1 or agg_name2 in self.visited_keys or agg_name2 not in agg_col_profiles:
                 continue
             if self.mode == 'data_polygamy':
                 vars2 = self.dataPolygamy.get_vars(tbl2)
@@ -786,17 +711,19 @@ class CorrSearch:
             df1_outer, df2_outer = None, None
 
             if not self.outer_join and len(control_vars) == 0:
-                df1, df2 = self.align_two_st_schemas(
-                    tbl1, agg_name1, tbl2, agg_name2, o_t, outer=False, sketch=self.sketch, k=self.sketch_size
+                df1, df2 = self.join_two_tables_on_spatio_temporal_keys(
+                    tbl_id1, agg_name1, tbl2, agg_name2, overlap_threshold, use_outer_join=False,
+                    use_sketch=self.sketch, k=self.sketch_size
                 )
             elif self.outer_join and len(control_vars) == 0:
-                df1, df2, df1_outer, df2_outer = self.align_two_st_schemas(
-                    tbl1, agg_name1, tbl2, agg_name2, o_t, outer=True, sketch=self.sketch, k=self.sketch_size
+                df1, df2, df1_outer, df2_outer = self.join_two_tables_on_spatio_temporal_keys(
+                    tbl_id1, agg_name1, tbl2, agg_name2, overlap_threshold, use_outer_join=True,
+                    use_sketch=self.sketch, k=self.sketch_size
                 )
             elif len(control_vars) > 0:
                 # need to join table1, table2 and the control variables together
                 tbl_cols = defaultdict(list)
-                tbl_cols[agg_name1] = self.get_vars_for_tbl(tbl1, suffix='t1')
+                tbl_cols[agg_name1] = self.get_vars_for_tbl(tbl_id1, suffix='t1')
                 names1 = [var.proj_name[:63] for var in tbl_cols[agg_name1]]
                 tbl_cols[agg_name2] = self.get_vars_for_tbl(tbl2, suffix='t2')
                 names2 = [var.proj_name[:63] for var in tbl_cols[agg_name2]]
@@ -804,7 +731,7 @@ class CorrSearch:
                     tbl_cols[var.tbl_id].append(Variable(var.tbl_id, var.attr_name, None, var.attr_name))
                 control_var_names = [var.attr_name for var in control_vars]
                 df = db_ops.join_multi_agg_tbls(self.cur, tbl_cols)
-                if len(df) < o_t:
+                if len(df) < overlap_threshold:
                     continue
             time_used = time.time() - start
             self.cur_join_time += time_used
@@ -834,12 +761,12 @@ class CorrSearch:
                     df2,
                     df1_outer,
                     df2_outer,
-                    tbl1,
+                    tbl_id1,
                     agg_name1,
                     tbl2,
                     agg_name2,
-                    r_t,
-                    p_t,
+                    corr_threshold,
+                    p_threshold,
                     fill_zero,
                     flag,
                 )
@@ -847,12 +774,12 @@ class CorrSearch:
                 res = self.get_corr_pairwise(
                     df1,
                     df2,
-                    tbl1,
+                    tbl_id1,
                     agg_name1,
                     tbl2,
                     agg_name2,
-                    r_t,
-                    p_t,
+                    corr_threshold,
+                    p_threshold,
                     corr_type,
                     fill_zero,
                     flag,
@@ -860,10 +787,10 @@ class CorrSearch:
             elif len(control_vars) > 0:
                 res = self.get_corrs_with_control_vars(
                     df,
-                    tbl1, agg_name1, names1,
+                    tbl_id1, agg_name1, names1,
                     tbl2, agg_name2, names2,
                     control_var_names,
-                    r_t, p_t,
+                    corr_threshold, p_threshold,
                     fill_zero=fill_zero, flag=flag, corr_type=corr_type
                 )
             if res is not None:
@@ -877,7 +804,7 @@ class CorrSearch:
         """
         start = time.time()
         if self.correct_method == "FDR":
-            tbl_schema_corrs = self.bh_correction(tbl_schema_corrs, r_t)
+            tbl_schema_corrs = self.bh_correction(tbl_schema_corrs, corr_threshold)
 
         self.perf_profile["corr_counts"]["after"] += len(tbl_schema_corrs)
         self.perf_profile["time_correction"]["total"] += time.time() - start
@@ -951,17 +878,18 @@ class CorrSearch:
             fill_zero,
             flag,
     ):
+        global inner_prod_val
         res = []
         if fill_zero:
             df1, o_avg_mat1, avg_dict1 = self.get_o_mean_mat(tbl1, agg_name1, df1)
             df2, o_avg_mat2, avg_dict2 = self.get_o_mean_mat(tbl2, agg_name2, df2)
+            names1, names2 = df1.columns, df2.columns
             if df1.shape[1] == 0 or df2.shape[1] == 0:
                 # meaning there is no valid column in a table
                 return None
             if self.outer_join:
                 df1_outer, df2_outer = df1_outer[df1.columns], df2_outer[df2.columns]
 
-            names1, names2 = df1.columns, df2.columns
             mat1, mat2 = df1.fillna(0).to_numpy(), df2.fillna(0).to_numpy()
             mat1_avg, mat2_avg = None, None
             if "impute_avg" in self.r_methods and not self.outer_join:
@@ -984,6 +912,7 @@ class CorrSearch:
             )
             if self.outer_join:
                 df1_outer, df2_outer = df1_outer[df1.columns], df2_outer[df2.columns]
+                names1, names2 = df1_outer.columns, df2_outer.columns
                 if "impute_avg" in self.r_methods:
                     mat_dict_outer = corr_utils.mat_corr(
                         df1_outer.fillna(df1_outer.mean()).to_numpy(),
@@ -1024,6 +953,7 @@ class CorrSearch:
         else:
             # use numpy mask array to ignore NaN values in the calculation
             df1_arr, df2_arr = df1.to_numpy(), df2.to_numpy()
+            names1, names2 = df1.columns, df2.columns
             mat1 = np.ma.array(df1_arr, mask=np.isnan(df1_arr))
             mat2 = np.ma.array(df2_arr, mask=np.isnan(df2_arr))
             corr_mat, pval_mat = corr_utils.mat_corr(

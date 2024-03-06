@@ -10,9 +10,9 @@
             }
         ],
         "num_columns": [
+            "enc_asthma",
             "encAsthmaExac",
-            "AttackPer",
-            "enc_asthma"
+            "AttackPer"
         ],
         "link": "unknown"
     }

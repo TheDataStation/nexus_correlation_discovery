@@ -33,12 +33,13 @@ class Variable:
         self.attr_name = attr_name
         self.agg_func = agg_func
         self.var_name = var_name
+        self.max_len_limit = 63
 
         self.suffix = suffix
         if self.suffix:
-            self.proj_name = "{}_{}".format(self.var_name, self.suffix)
+            self.proj_name = "{}_{}".format(self.var_name, self.suffix)[:self.max_len_limit]
         else:
-            self.proj_name = self.var_name
+            self.proj_name = self.var_name[:self.max_len_limit]
 
     def to_str(self):
         return "{}-{}".format(self.tbl_id, self.attr_name)
@@ -164,6 +165,16 @@ class Table:
         self.spatial_attrs = spatial_attrs
         self.num_columns = num_columns
         self.link = link
+    
+    @staticmethod
+    def table_from_tbl_id(tbl_id: str, data_catalog):
+        temporal_attrs = [Attr(attr["name"], attr["granu"]) for attr in data_catalog[tbl_id]['t_attrs']]
+        spatial_attrs = [Attr(attr["name"], attr["granu"]) for attr in data_catalog[tbl_id]['s_attrs']]
+        num_attrs = data_catalog[tbl_id]["num_columns"]
+        return Table(tbl_id=tbl_id,
+                     temporal_attrs=temporal_attrs,
+                     spatial_attrs=spatial_attrs,
+                     num_columns=num_attrs)
 
     def get_spatio_temporal_keys(self, temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU],
                                  mode="no_cross") -> List[SpatioTemporalKey]:
@@ -199,11 +210,11 @@ class Table:
                             )
         return spatio_temporal_keys
 
-    def get_variables(self) -> List[Variable]:
+    def get_variables(self, suffix: str = None) -> List[Variable]:
         variables = []
         for agg_col in self.num_columns:
             if len(agg_col) > 56:
                 continue
-            variables.append(Variable(self.tbl_id, agg_col, AggFunc.AVG, "avg_{}".format(agg_col)))
-        variables.append(Variable(self.tbl_id, "*", AggFunc.COUNT, "count"))
+            variables.append(Variable(self.tbl_id, agg_col, AggFunc.AVG, "avg_{}".format(agg_col), suffix=suffix))
+        variables.append(Variable(self.tbl_id, "*", AggFunc.COUNT, "count", suffix=suffix))
         return variables

@@ -48,18 +48,6 @@ chicago_factors:
     idx_tbl_path: "resource/chicago_factors/idx_tbl_names.json"
     failed_tbl_path: "resource/chicago_factors/failed_tbl_ids.json"
 
-# chicago_1m_zipcode:
-#     db_path: "postgresql://yuegong@localhost/chicago_1m_zipcode"
-#     data_path: "data/chicago_open_data_1m/"
-#     shape_path: "resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp"
-#     geo_chain: "zipcode"
-#     geo_keys: "zip"
-#     meta_path: "resource/chicago_1m_zipcode/chicago_open_data.json"
-#     attr_path: "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json"
-#     profile_path: "resource/chicago_1m_zipcode/profile_chicago_1m.json"
-#     col_stats_path: "resource/chicago_1m_zipcode/col_stats_chicago_1m.json"
-#     idx_tbl_path: "resource/chicago_1m_zipcode/idx_tbl_names.json"
-
 chicago_1m_zipcode:
     db_path: "postgresql://yuegong@localhost/chicago_1m_zipcode"
     data_path: "data/chicago_open_data_1m/"
@@ -71,6 +59,7 @@ chicago_1m_zipcode:
     profile_path: "resource/chicago_1m_zipcode/profile_chicago_1m.json"
     col_stats_path: "resource/chicago_1m_zipcode/col_stats_chicago_1m.json"
     idx_tbl_path: "resource/chicago_1m_zipcode/idx_tbl_names.json"
+    failed_tbl_path: "resource/chicago_1m_zipcode/failed_tbl_ids.json"
 
 chicago_open_data:
     db_path: "postgresql://yuegong@localhost/opendata"

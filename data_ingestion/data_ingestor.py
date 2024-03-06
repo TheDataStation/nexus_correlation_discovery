@@ -6,7 +6,6 @@ import geopandas as gpd
 import os
 import utils.io_utils as io_utils
 from utils.coordinate import resolve_spatial_hierarchy, set_spatial_granu, SPATIAL_GRANU
-import psycopg2
 import numpy as np
 from sqlalchemy.types import *
 import time
@@ -18,10 +17,8 @@ import data_ingestion.db_ops as db_ops
 from typing import List
 from utils.correlation_sketch_utils import murmur3_32, grm, FixedSizeMaxHeap
 import traceback
-from data_ingestion.postgres_connector import PostgresConnector
-from data_ingestion.duckdb_connector import DuckDBConnector
 from data_ingestion.data_profiler import Profiler
-from data_ingestion.connection import  ConnectionFactory
+from data_ingestion.connection import ConnectionFactory
 """
 DBIngestor ingests dataframes to a database (current implementation uses postgres)
 Here are the procedure to ingest a spatial-temporal table
@@ -37,12 +34,6 @@ class DBIngestor:
     def __init__(self, conn_string: str, engine='postgres', mode='no_cross') -> None:
         self.engine_type = engine
         self.db_engine = ConnectionFactory.create_connection(conn_string, engine)
-        # successfully ingested table information
-        self.ingested_tables = {}
-        # failed tables
-        self.failed_tables = []
-        # idx tables that are created successfully
-        self.idx_tables = set()
         self.mode = mode
         self.sketch = False
 
@@ -77,6 +68,13 @@ class DBIngestor:
                            temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU],
                            temporal_range=None, spatial_range=None,
                            clean=False, persist=False, max_limit=2, retry_list=None):
+        # successfully ingested table information
+        ingested_tables = {}
+        # failed tables
+        failed_tables = []
+        # idx tables that are created successfully
+        inverted_index_tables = []
+
         data_source_config = io_utils.load_config(data_source)
 
         geo_chain = data_source_config["geo_chain"]
@@ -89,6 +87,9 @@ class DBIngestor:
             previous_failed_tbls = io_utils.load_json(data_source_config['failed_tbl_path'])
         if clean:
             self.delete_all_aggregated_tbls_and_inv_indices(temporal_granu_l, spatial_granu_l)
+
+        if self.engine_type == 'postgres':
+            inverted_index_tables = self.create_inverted_index_tables(temporal_granu_l, spatial_granu_l)
 
         for _, obj in tqdm(data_catalog.items()):
             t_attrs = [Attr(attr["name"], attr["granu"]) for attr in obj["t_attrs"]]
@@ -112,39 +113,40 @@ class DBIngestor:
                 if tbl.tbl_id not in retry_list:
                     continue
                 try:
-                    self.ingest_tbl(tbl, temporal_granu_l, spatial_granu_l,
+                    tbl_info = self.ingest_tbl(tbl, temporal_granu_l, spatial_granu_l,
                                     spatial_range, temporal_range,
-                                    data_source_config)
+                                    data_source_config, inverted_index_tables)
                     self.create_cnt_tbl(tbl, temporal_granu_l, spatial_granu_l)
                     previous_failed_tbls.remove(tbl.tbl_id)
                 except Exception as e:
                     traceback.print_exc()
             else:
                 try:
-                    self.ingest_tbl(tbl, temporal_granu_l, spatial_granu_l,
+                    tbl_info = self.ingest_tbl(tbl, temporal_granu_l, spatial_granu_l,
                                     spatial_range, temporal_range,
-                                    data_source_config)
+                                    data_source_config, inverted_index_tables)
                     self.create_cnt_tbl(tbl, temporal_granu_l, spatial_granu_l)
                 except Exception as e:
-                    self.failed_tables.append(tbl.tbl_id)
+                    failed_tables.append(tbl.tbl_id)
                     traceback.print_exc()
+            ingested_tables[tbl.tbl_id] = tbl_info
 
         if persist:
             if retry_list is not None:
-                ingested_tbls = io_utils.load_json(data_source_config['attr_path'])
-                ingested_tbls.update(self.ingested_tables)
-                io_utils.dump_json(data_source_config['attr_path'], ingested_tbls)
+                previous_ingested_tables = io_utils.load_json(data_source_config['attr_path'])
+                previous_ingested_tables.update(ingested_tables)
+                io_utils.dump_json(data_source_config['attr_path'], previous_ingested_tables)
                 io_utils.dump_json(data_source_config['failed_tbl_path'], previous_failed_tbls)
             else:
                 io_utils.dump_json(
                     data_source_config["attr_path"],
-                    self.ingested_tables,
+                    ingested_tables,
                 )
                 io_utils.dump_json(
                     data_source_config["failed_tbl_path"],
-                    self.failed_tables
+                    failed_tables
                 )
-                io_utils.dump_json(data_source_config["idx_tbl_path"], list(self.idx_tables))
+                # io_utils.dump_json(data_source_config["idx_tbl_path"], list(self.idx_tables))
 
         # create dataset profiles
         profiler = Profiler(db_engine=self.db_engine, data_source=data_source, mode=self.mode)
@@ -169,10 +171,14 @@ class DBIngestor:
                    temporal_granu_l: List[TEMPORAL_GRANU],
                    spatial_granu_l: List[SPATIAL_GRANU],
                    temporal_range=None, spatial_range=None,
-                   data_source_config=None):
+                   data_source_config=None, created_inverted_index=[]):
         if len(tbl.temporal_attrs) == 0 and len(tbl.spatial_attrs) == 0:
             print("not a valid spatio-temporal table")
             return
+        if len(coordinate.supported_chain) == 0:
+            geo_chain = data_source_config["geo_chain"]
+            geo_keys = data_source_config["geo_keys"]
+            coordinate.resolve_geo_chain(geo_chain, geo_keys)
         tbl_path = os.path.join(data_source_config['data_path'], f"{tbl.tbl_id}.csv")
         print("reading csv")
         df = io_utils.read_csv(tbl_path)
@@ -181,7 +187,8 @@ class DBIngestor:
         all_columns = list(df.select_dtypes(include=[np.number]).columns.values)
         numerical_columns = self.get_numerical_columns(all_columns, tbl)
         numerical_columns = [x for x in numerical_columns if len(x) <= 56]
-        
+        tbl.num_columns = numerical_columns
+
         t_attr_names = [attr.name for attr in tbl.temporal_attrs]
         s_attr_names = [attr.name for attr in tbl.spatial_attrs]
         df = df[t_attr_names + s_attr_names + numerical_columns]
@@ -203,15 +210,6 @@ class DBIngestor:
             print("df is none")
             return
 
-        self.ingested_tables[tbl.tbl_id] = {
-            "domain": tbl.domain,
-            "name": tbl.tbl_name,
-            "t_attrs": [t_attr.__dict__ for t_attr in t_attrs_success],
-            "s_attrs": [s_attr.__dict__ for s_attr in s_attrs_success],
-            "num_columns": numerical_columns,
-            "link": tbl.link
-        }
-
         print("begin ingesting")
         start = time.time()
         self.db_engine.create_tbl(tbl.tbl_id, df, mode="replace")
@@ -219,7 +217,7 @@ class DBIngestor:
 
         print("begin creating agg_tbl")
         start = time.time()
-        self.spatio_temporal_aggregations(tbl, temporal_granu_l, spatial_granu_l)
+        self.spatio_temporal_aggregations(tbl, temporal_granu_l, spatial_granu_l, created_inverted_index)
         print("creating agg_tbl used {}".format(time.time() - start))
 
         print("begin deleting the original table")
@@ -228,8 +226,19 @@ class DBIngestor:
         self.db_engine.delete_tbl(tbl.tbl_id)
         print("deleting original table used {}".format(time.time() - start))
 
+        # return the information of this table
+        return {
+            "domain": tbl.domain,
+            "name": tbl.tbl_name,
+            "t_attrs": [t_attr.__dict__ for t_attr in t_attrs_success],
+            "s_attrs": [s_attr.__dict__ for s_attr in s_attrs_success],
+            "num_columns": numerical_columns,
+            "link": tbl.link
+        }
+
     def spatio_temporal_aggregations(self, tbl: Table,
-                                     temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU]):
+                                     temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU],
+                                     create_inverted_index_tables):
         spatio_temporal_keys = tbl.get_spatio_temporal_keys(temporal_granu_l, spatial_granu_l, mode=self.mode)
         variables = tbl.get_variables()
 
@@ -241,7 +250,7 @@ class DBIngestor:
             # ingest spatio-temporal values to an index table
             if self.engine_type == 'postgres':
                 start = time.time()
-                self.insert_spatio_temporal_key_to_inv_idx(tbl.tbl_id, spatio_temporal_key)
+                self.insert_spatio_temporal_key_to_inv_idx(tbl.tbl_id, spatio_temporal_key, create_inverted_index_tables)
                 print(f"finish ingesting to idx table in {time.time()-start} s")
             if self.sketch:
                 # create correlation sketch for an aggregation table.
@@ -261,16 +270,30 @@ class DBIngestor:
         # project these values from the original table
         db_ops.create_correlation_sketch_tbl(self.cur, agg_tbl, k, min_keys)
 
-    def insert_spatio_temporal_key_to_inv_idx(self, tbl_id: str, spatio_temporal_key: SpatioTemporalKey):
+    def create_inverted_index_tables(self, temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU]):
+        inverted_index_names = []
+        for temporal_granu in temporal_granu_l:
+            inv_idx = f"time_{temporal_granu.value}_inv"
+            self.db_engine.create_inv_index_tbl(inv_idx)
+            inverted_index_names.append(inv_idx)
+        for spatial_granu in spatial_granu_l:
+            inv_idx = f"space_{spatial_granu.value}_inv"
+            self.db_engine.create_inv_index_tbl(inv_idx)
+            inverted_index_names.append(inv_idx)
+        for temporal_granu in temporal_granu_l:
+            for spatial_granu in spatial_granu_l:
+                inv_idx = f"time_{temporal_granu.value}_space_{spatial_granu.value}_inv"
+                self.db_engine.create_inv_index_tbl(inv_idx)
+                inverted_index_names.append(inv_idx)
+        return inverted_index_names
+
+    def insert_spatio_temporal_key_to_inv_idx(self, tbl_id: str, spatio_temporal_key: SpatioTemporalKey,
+                                              created_inverted_index_tables):
         # decide which index table to ingest the agg_tbl values
         inv_idx = spatio_temporal_key.get_idx_tbl_name() + "_inv"
-        print(inv_idx)
-        # if this idx table has not been created yet, create it first
-        if inv_idx not in self.idx_tables:
+        if inv_idx not in created_inverted_index_tables:
             self.db_engine.create_inv_index_tbl(inv_idx)
-
         self.db_engine.insert_spatio_temporal_key_to_inv_idx(inv_idx, tbl_id, spatio_temporal_key)
-        self.idx_tables.add(inv_idx)
 
     def delete_all_aggregated_tbls_and_inv_indices(self, temporal_granu_l: List[TEMPORAL_GRANU],
                                                    spatial_granu_l: List[SPATIAL_GRANU]):
@@ -295,6 +318,8 @@ class DBIngestor:
         s_attrs_success = []
         df_schema = {}
         for t_attr in t_attrs:
+            if len(temporal_granu_l) == 0:
+                break
             # parse datetime column to datetime class
             df[t_attr.name] = pd.to_datetime(df[t_attr.name], utc=False, errors="coerce").replace(
                 {np.NaN: None}
@@ -321,7 +346,9 @@ class DBIngestor:
                     df_schema[new_attr] = Integer()
                 t_attrs_success.append(t_attr)
         for s_attr in s_attrs:
-            if s_attr.granu == 'Point':
+            if len(spatial_granu_l) == 0:
+                break
+            if s_attr.granu == 'POINT':
                 # parse (long, lat) pairs to point
                 df_points = df[s_attr.name].apply(coordinate.parse_coordinate)
 
@@ -340,12 +367,11 @@ class DBIngestor:
                 for s_granu in spatial_granu_l:
                     new_attr = "{}_{}".format(s_attr.name, s_granu.value)
                     df[new_attr] = df_resolved.apply(set_spatial_granu, args=(s_granu,))
-                    df_schema[new_attr] = Integer()
             else:
                 for s_granu in spatial_granu_l:
                     if s_granu.name == s_attr.granu:
                         new_attr = "{}_{}".format(s_attr.name, s_granu.value)
-                        df[new_attr] = df[s_attr.name]
+                        df[new_attr] = df[s_attr.name].astype(int).astype(str)
             s_attrs_success.append(s_attr)
         return df, df_schema, t_attrs_success, s_attrs_success
 

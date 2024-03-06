@@ -1,7 +1,7 @@
 from enum import Enum
 
 import pandas as pd
-from utils.data_model import SpatioTemporalKey, Variable
+from utils.data_model import Table, SpatioTemporalKey, Variable
 from typing import List
 
 
@@ -30,4 +30,9 @@ class DatabaseConnectorInterface:
         pass
 
     def get_variable_stats(self, agg_tbl_name: str, var_name: str):
+        pass
+
+    def join_two_tables_on_spatio_temporal_keys(self, tbl_id1: str, agg_tbl1: str, variables1: List[Variable],
+                                                tbl_id2: str, agg_tbl2: str, variables2: List[Variable],
+                                                use_outer: bool = False):
         pass

@@ -7,6 +7,8 @@ from utils.coordinate import SPATIAL_GRANU
 import utils.coordinate as coordinate
 from utils.time_point import TEMPORAL_GRANU
 from utils.data_model import Attr, Table
+from data_ingestion.connection import ConnectionFactory
+from data_ingestion.data_profiler import Profiler
 
 
 # conn_string = "postgresql://yuegong@localhost/cdc_open_data"
@@ -106,6 +108,7 @@ def test_expand_table():
         )
         print("t_attrs after: {}".format(after_cnt))
 
+
 def test_create_sketch_tbl():
     t_scales = [TEMPORAL_GRANU.DAY, TEMPORAL_GRANU.MONTH]
     s_scales = [SPATIAL_GRANU.BLOCK, SPATIAL_GRANU.TRACT]
@@ -118,28 +121,49 @@ def test_create_sketch_tbl():
     ingestor.create_correlation_sketch(agg_tbl, k)
 
 
+def test_ingest_all_tbls():
+    # data_sources = ['chicago_factors', 'asthma', 'chicago_1m_zipcode']
+    data_sources = ['asthma']
+    ingestor = DBIngestor('data/quickstart.db', engine='duckdb')
+    temporal_granu_l = []
+    spatial_granu_l = [SPATIAL_GRANU.ZIPCODE]
+    for data_source in data_sources:
+        ingestor.ingest_data_source(data_source, temporal_granu_l=temporal_granu_l, spatial_granu_l=spatial_granu_l,
+                                    persist=True)
+
+
+def test_profile_data_sources():
+    data_sources = ['chicago_factors', 'asthma', 'chicago_1m_zipcode']
+    db_engine = ConnectionFactory.create_connection('data/quickstart.db', engine='duckdb')
+    temporal_granu_l = []
+    spatial_granu_l = [SPATIAL_GRANU.ZIPCODE]
+    for data_source in data_sources:
+        profiler = Profiler(db_engine, data_source)
+        profiler.collect_agg_tbl_col_stats(temporal_granu_l, spatial_granu_l)
+
+
 def test_ingest_a_tbl(tbl_id, engine):
     # ingest asthma dataset
-    data_sources = ['chicago_1m']
+    data_sources = ['chicago_1m_zipcode']
     conn_str = "postgresql://yuegong@localhost/test"
-    t_scales = [TEMPORAL_GRANU.MONTH]
-    s_scales = [SPATIAL_GRANU.TRACT]
+    temporal_granu_l = []
+    spatial_granu_l = [SPATIAL_GRANU.ZIPCODE]
 
     # ingest tables
     for data_source in data_sources:
         print(data_source)
         start_time = time.time()
         if engine == 'postgres':
-            ingestor = DBIngestor(conn_str, data_source, t_scales, s_scales)
+            ingestor = DBIngestor(conn_str)
         else:
-            ingestor = DBIngestor('data/test.db', data_source, t_scales, s_scales, engine='duckdb')
-        meta_path = ingestor.config["meta_path"]
-        meta_data = io_utils.load_json(meta_path)
+            ingestor = DBIngestor('data/test.db', engine='duckdb')
+        data_source_config = io_utils.load_config(data_source)
+        meta_data = io_utils.load_json(data_source_config['meta_path'])
         obj = meta_data[tbl_id]
         t_attrs = [Attr(attr["name"], attr["granu"]) for attr in obj["t_attrs"]]
         s_attrs = [Attr(attr["name"], attr["granu"]) for attr in obj["s_attrs"]]
         t_attrs, s_attrs = ingestor.select_valid_attrs(t_attrs, 1), ingestor.select_valid_attrs(s_attrs, 1)
-    
+
         tbl = Table(
             domain=obj["domain"],
             tbl_id=obj["tbl_id"],
@@ -149,12 +173,13 @@ def test_ingest_a_tbl(tbl_id, engine):
             num_columns=obj["num_columns"],
             link=obj["link"] if "link" in obj else "",
         )
-           
-        ingestor.ingest_tbl(tbl)
+
+        ingestor.ingest_tbl(tbl, temporal_granu_l, spatial_granu_l, data_source_config=data_source_config)
         print(f"ingesting data finished in {time.time() - start_time} s")
 
 
 if __name__ == '__main__':
-    engine='duckdb'
-    for tbl in ["4jy7-7m68", "mq3i-nnqe"]:
-        test_ingest_a_tbl(tbl, engine)
+    # engine='duckdb'
+    # for tbl in ['22u3-xenr']:
+    #     test_ingest_a_tbl(tbl, engine)
+    test_profile_data_sources()

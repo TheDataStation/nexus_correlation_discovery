@@ -1,3 +1,4 @@
+from data_ingestion.connection import ConnectionFactory
 from data_search.search_corr import CorrSearch
 from data_search.commons import FIND_JOIN_METHOD
 import pandas as pd
@@ -18,12 +19,16 @@ from data_ingestion.data_profiler import Profiler
 
 
 class API:
-    def __init__(self, conn_str, data_sources=['chicago_1m_zipcode', 'asthma', 'chicago_factors'], impute_options=[],
-                 correction=''):
-        self.conn_str = conn_str
-        conn_copg2 = psycopg2.connect(self.conn_str)
-        self.cur = conn_copg2.cursor()
+    def __init__(self, connection_string, engine='duckdb',
+                 data_sources=['chicago_1m_zipcode', 'asthma', 'chicago_factors'], impute_options=[], correction=''):
+        self.engine_type = engine
+        self.db_engine = ConnectionFactory.create_connection(connection_string, engine)
+
+        self.conn_str = connection_string
+        # conn_copg2 = psycopg2.connect(self.conn_str)
+        # self.cur = conn_copg2.cursor()
         self.data_sources = data_sources
+
         self.correction = correction
         self.impute_options = impute_options
 
@@ -34,20 +39,6 @@ class API:
             attr_path = config["attr_path"]
             self.catalog.update(io_utils.load_json(attr_path))
             self.data_path_map[data_source] = config["data_path"]
-
-        # self.display_attrs = [
-        #     "tbl_id1",
-        #     "tbl_name1",
-        #     "agg_tbl1",
-        #     "agg_attr1",
-        #     "tbl_id2",
-        #     "tbl_name2",
-        #     "agg_tbl2",
-        #     "agg_attr2",
-        #     "missing_ratio_o2",
-        #     "r_val",
-        #     "p_val",
-        #     "samples"]
 
         self.display_attrs = [
             "table_id1",
@@ -71,6 +62,7 @@ class API:
                                control_variables=[]):
         corr_search = CorrSearch(
             self.conn_str,
+            self.engine_type,
             self.data_sources,
             FIND_JOIN_METHOD.JOIN_ALL,
             impute_methods=self.impute_options,

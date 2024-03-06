@@ -1,13 +1,11 @@
-from enum import Enum
-
 import pandas as pd
 from sqlalchemy import create_engine
 import psycopg2
 from io import StringIO
-from utils.data_model import SpatioTemporalKey, Variable
+from utils.data_model import Table, SpatioTemporalKey, Variable
 from typing import List
 from psycopg2 import sql
-from data_ingestion.database_connecter import DatabaseConnectorInterface, IndexType
+from db_connector.database_connecter import DatabaseConnectorInterface, IndexType
 
 
 class PostgresConnector(DatabaseConnectorInterface):
@@ -201,3 +199,55 @@ class PostgresConnector(DatabaseConnectorInterface):
             "res_sum": float(query_res[3]) if query_res[3] is not None else None,
             "cnt": int(query_res[4]) if query_res[4] is not None else None,
         }
+
+    def get_row_cnt(self, tbl_id: str, spatio_temporal_key: SpatioTemporalKey):
+        sql_str = """
+            SELECT count(*) from {tbl};
+           """
+        query = sql.SQL(sql_str).format(
+            tbl=sql.Identifier(spatio_temporal_key.get_agg_tbl_name(tbl_id))
+        )
+        self.cur.execute(query)
+        return self.cur.fetchall()[0][0]
+
+    def join_two_tables_on_spatio_temporal_keys(self, tbl_id1: str, agg_tbl1: str, variables1: List[Variable],
+                                                tbl_id2: str, agg_tbl2: str, variables2: List[Variable],
+                                                use_outer: bool = False):
+        agg_join_sql = """
+            SELECT a1.val, {agg_vars} FROM
+            {agg_tbl1} a1 JOIN {agg_tbl2} a2
+            ON a1.val = a2.val
+        """
+        if use_outer:
+            agg_join_sql = """
+            SELECT a1.val as key1, a2.val as key2, {agg_vars} FROM
+            {agg_tbl1} a1 FULL JOIN {agg_tbl2} a2
+            ON a1.val = a2.val
+            """
+
+        query = sql.SQL(agg_join_sql).format(
+            agg_vars=sql.SQL(",").join(
+                [
+                    sql.SQL("{} AS {}").format(
+                        sql.Identifier("a1", var.var_name),
+                        sql.Identifier(var.proj_name),
+                    )
+                    for var in variables1
+                ]
+                + [
+                    sql.SQL("{} AS {}").format(
+                        sql.Identifier("a2", var.var_name),
+                        sql.Identifier(var.proj_name),
+                    )
+                    for var in variables2
+                ]
+            ),
+            agg_tbl1=sql.Identifier(agg_tbl1),
+            agg_tbl2=sql.Identifier(agg_tbl2),
+        )
+
+        self.cur.execute(query)
+
+        df = pd.DataFrame(self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description])
+        return df
+

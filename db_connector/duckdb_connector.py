@@ -2,7 +2,7 @@ import duckdb
 import pandas as pd
 from utils.data_model import SpatioTemporalKey, Variable
 from typing import List
-from data_ingestion.database_connecter import DatabaseConnectorInterface, IndexType
+from db_connector.database_connecter import DatabaseConnectorInterface
 
 
 class DuckDBConnector(DatabaseConnectorInterface):
@@ -58,6 +58,14 @@ class DuckDBConnector(DatabaseConnectorInterface):
 
         self.cur.sql(query)
 
+        alter_type_sql = """
+            ALTER TABLE "{agg_tbl}" ALTER val TYPE VARCHAR;
+        """.format(
+            agg_tbl=agg_tbl_name,
+        )
+
+        self.cur.sql(alter_type_sql)
+
         if len(agg_tbl_name) >= 63:
             idx_name = agg_tbl_name[:59] + "_idx"
         else:
@@ -102,6 +110,88 @@ class DuckDBConnector(DatabaseConnectorInterface):
             original='"{inv_idx}".spatio_temporal_keys'.format(inv_idx=inv_idx),
         )
         self.cur.execute(query, [spatio_temporal_key.get_id(tbl_id)])
+
+    def get_variable_stats(self, agg_tbl_name: str, var_name: str):
+        query = """
+                   select round(sum({var}), 4), round(sum({var}^2), 4), round(avg({var}), 4), 
+                   round((count(*)-1)*var_samp({var}),4), count(*) from "{agg_tbl}";
+        """.format(
+            var=var_name,
+            agg_tbl=agg_tbl_name
+        )
+        self.cur.execute(query)
+        query_res = self.cur.fetchall()[0]
+        return {
+            "sum": float(query_res[0]) if query_res[0] is not None else None,
+            "sum_square": float(query_res[1]) if query_res[1] is not None else None,
+            "avg": float(query_res[2]) if query_res[2] is not None else None,
+            "res_sum": float(query_res[3]) if query_res[3] is not None else None,
+            "cnt": int(query_res[4]) if query_res[4] is not None else None,
+        }
+
+    def get_row_cnt(self, tbl_id: str, spatio_temporal_key: SpatioTemporalKey):
+        query = """
+            SELECT count(*) from "{tbl}";
+           """.format(tbl=spatio_temporal_key.get_agg_tbl_name(tbl_id))
+
+        self.cur.execute(query)
+        return self.cur.fetchall()[0][0]
+
+    def join_two_tables_on_spatio_temporal_keys(self, tbl_id1: str, agg_tbl1: str, variables1: List[Variable],
+                                                tbl_id2: str, agg_tbl2: str, variables2: List[Variable],
+                                                use_outer: bool = False):
+        if not use_outer:
+            agg_join_sql = """
+                SELECT a1.val, {agg_vars} FROM
+                "{agg_tbl1}" a1 JOIN "{agg_tbl2}" a2
+                ON a1.val = a2.val
+            """.format(
+                agg_vars=",".join(
+                    [
+                        "{original_name} AS {proj_name}".format(
+                            original_name=f"a1.{var.var_name}",
+                            proj_name=var.proj_name,
+                        )
+                        for var in variables1
+                    ]
+                    + [
+                        "{original_name} AS {proj_name}".format(
+                            original_name=f"a2.{var.var_name}",
+                            proj_name=var.proj_name,
+                        )
+                        for var in variables2
+                    ]
+                ),
+                agg_tbl1=agg_tbl1,
+                agg_tbl2=agg_tbl2,
+            )
+        else:
+            agg_join_sql = """
+            SELECT a1.val as key1, a2.val as key2, {agg_vars} FROM
+            {agg_tbl1} a1 FULL JOIN {agg_tbl2} a2
+            ON a1.val = a2.val
+            """.format(
+                agg_vars=",".join(
+                    [
+                        "{original_name} AS {proj_name}".format(
+                            original_name=f"a1.{var.var_name}",
+                            proj_name=var.proj_name,
+                        )
+                        for var in variables1
+                    ]
+                    + [
+                        "{original_name} AS {proj_name}".format(
+                            original_name=f"a2.{var.var_name}",
+                            proj_name=var.proj_name,
+                        )
+                        for var in variables2
+                    ]
+                ),
+                agg_tbl1=agg_tbl1,
+                agg_tbl2=agg_tbl2,
+            )
+
+        return self.cur.execute(agg_join_sql).df()
 
     def create_cnt_tbl_for_agg_tbl(self, tbl_id: str, spatio_temporal_key: SpatioTemporalKey):
         pass

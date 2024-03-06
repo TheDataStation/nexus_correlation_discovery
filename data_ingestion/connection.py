@@ -1,7 +1,5 @@
-from sqlalchemy.dialects.postgresql import psycopg2
-
-from data_ingestion.duckdb_connector import DuckDBConnector
-from data_ingestion.postgres_connector import PostgresConnector
+from db_connector.duckdb_connector import DuckDBConnector
+from db_connector.postgres_connector import PostgresConnector
 
 
 class ConnectionFactory:

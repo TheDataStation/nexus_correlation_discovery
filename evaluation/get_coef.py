@@ -68,9 +68,9 @@ for granu_list in granu_lists:
                 method = corr_search1.find_all_corr_for_a_spatio_temporal_key(
                     tbl,
                     schema,
-                    o_t=o_t,
-                    r_t=0.6,
-                    p_t=0.05,
+                    overlap_threshold=o_t,
+                    corr_threshold=0.6,
+                    p_threshold=0.05,
                     fill_zero=True,
                 )
 
