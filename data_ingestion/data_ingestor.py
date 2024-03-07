@@ -155,6 +155,16 @@ class DBIngestor:
         print("begin profiling original data")
         profiler.profile_original_data()
 
+    def create_inverted_indices_for_a_data_source(self, data_source: str,
+                                                  temporal_granu: TEMPORAL_GRANU, spatial_granu: SPATIAL_GRANU):
+        data_source_config = io_utils.load_config(data_source)
+        data_catalog = io_utils.load_json(data_source_config["attr_path"])
+        spatio_temporal_keys = Profiler.load_all_spatio_temporal_keys(data_catalog, temporal_granu, spatial_granu)
+        created_inverted_indices = set()
+        for tbl_id, spatio_temporal_key in spatio_temporal_keys:
+            inv_idx_name = self.insert_spatio_temporal_key_to_inv_idx(tbl_id, spatio_temporal_key, created_inverted_indices)
+            created_inverted_indices.add(inv_idx_name)
+
     def create_cnt_tbl(self, tbl: Table,
                        temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU]):
         spatio_temporal_keys = tbl.get_spatio_temporal_keys(temporal_granu_l, spatial_granu_l, mode=self.mode)
@@ -238,7 +248,7 @@ class DBIngestor:
 
     def spatio_temporal_aggregations(self, tbl: Table,
                                      temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU],
-                                     create_inverted_index_tables):
+                                     created_inverted_index_tables):
         spatio_temporal_keys = tbl.get_spatio_temporal_keys(temporal_granu_l, spatial_granu_l, mode=self.mode)
         variables = tbl.get_variables()
 
@@ -248,10 +258,8 @@ class DBIngestor:
             agg_tbl_name = self.db_engine.create_aggregate_tbl(tbl.tbl_id, spatio_temporal_key, variables)
             print(f"finish aggregating {agg_tbl_name} in {time.time()-start} s")
             # ingest spatio-temporal values to an index table
-            if self.engine_type == 'postgres':
-                start = time.time()
-                self.insert_spatio_temporal_key_to_inv_idx(tbl.tbl_id, spatio_temporal_key, create_inverted_index_tables)
-                print(f"finish ingesting to idx table in {time.time()-start} s")
+            index_name = self.insert_spatio_temporal_key_to_inv_idx(tbl.tbl_id, spatio_temporal_key, created_inverted_index_tables)
+            print(f"finish ingesting to inverted_index {index_name} in {time.time()-start} s")
             if self.sketch:
                 # create correlation sketch for an aggregation table.
                 self.create_correlation_sketch(agg_tbl_name)
@@ -294,6 +302,7 @@ class DBIngestor:
         if inv_idx not in created_inverted_index_tables:
             self.db_engine.create_inv_index_tbl(inv_idx)
         self.db_engine.insert_spatio_temporal_key_to_inv_idx(inv_idx, tbl_id, spatio_temporal_key)
+        return inv_idx
 
     def delete_all_aggregated_tbls_and_inv_indices(self, temporal_granu_l: List[TEMPORAL_GRANU],
                                                    spatial_granu_l: List[SPATIAL_GRANU]):

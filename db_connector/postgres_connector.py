@@ -316,7 +316,7 @@ class PostgresConnector(DatabaseConnectorInterface):
             SELECT * FROM {agg_tbl};
         """
         else:
-            sql_str = """
+            sql_str = """in
                 SELECT val, {agg_vars} FROM {agg_tbl};
             """
 

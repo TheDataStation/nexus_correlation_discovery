@@ -18,7 +18,7 @@ from data_ingestion.data_profiler import Profiler
 
 class API:
     def __init__(self, connection_string, engine='duckdb',
-                 data_sources=['chicago_1m_zipcode', 'asthma', 'chicago_factors'], impute_options=[], correction=''):
+                 data_sources=['chicago_zipcode', 'asthma', 'chicago_factors'], impute_options=[], correction=''):
         self.engine_type = engine
         self.db_engine = ConnectionFactory.create_connection(connection_string, engine)
 

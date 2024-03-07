@@ -48,7 +48,7 @@ chicago_factors:
     idx_tbl_path: "resource/chicago_factors/idx_tbl_names.json"
     failed_tbl_path: "resource/chicago_factors/failed_tbl_ids.json"
 
-chicago_1m_zipcode:
+chicago_zipcode:
     db_path: "postgresql://yuegong@localhost/chicago_1m_zipcode"
     data_path: "data/chicago_open_data_1m/"
     shape_path: "resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp"

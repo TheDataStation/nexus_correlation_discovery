@@ -99,18 +99,48 @@ class DuckDBConnector(DatabaseConnectorInterface):
         self.cur.sql(query)
 
     def insert_spatio_temporal_key_to_inv_idx(self, inv_idx: str, tbl_id: str, spatio_temporal_key: SpatioTemporalKey):
-        query = """
-            INSERT INTO "{inv_idx}" (val, spatio_temporal_keys)
-            SELECT val, ARRAY[?] as spatio_temporal_keys FROM "{agg_tbl}"
-            ON CONFLICT (val) 
-            DO
-                UPDATE SET spatio_temporal_keys = array_distinct(flatten([{original}, EXCLUDED.spatio_temporal_keys]));
+        def merge_lists(row):
+            if pd.notna(row['spatio_temporal_keys_y']):
+                return list(set(row['spatio_temporal_keys_x'] + row['spatio_temporal_keys_y']))
+            else:
+                return row['spatio_temporal_keys_x']
+
+        agg_tbl = spatio_temporal_key.get_agg_tbl_name(tbl_id)
+        print(agg_tbl)
+        retrieval_query = """
+            SELECT val, spatio_temporal_keys FROM "{inv_idx}" WHERE val IN (SELECT val FROM "{agg_tbl}")
         """.format(
             inv_idx=inv_idx,
-            agg_tbl=spatio_temporal_key.get_agg_tbl_name(tbl_id),
-            original='"{inv_idx}".spatio_temporal_keys'.format(inv_idx=inv_idx),
+            agg_tbl=agg_tbl
         )
-        self.cur.execute(query, [spatio_temporal_key.get_id(tbl_id)])
+        existing_lists = self.cur.sql(retrieval_query).df()
+
+        retrieval_query = """
+                  SELECT val, ARRAY[?] as spatio_temporal_keys FROM "{agg_tbl}"
+              """.format(
+            agg_tbl=agg_tbl,
+        )
+        all_lists = self.cur.execute(retrieval_query, [spatio_temporal_key.get_id(tbl_id)]).df()
+
+        merged_df = pd.merge(all_lists, existing_lists, on='val', how='left')
+        merged_df['spatio_temporal_keys'] = merged_df.apply(merge_lists, axis=1)
+        merged_df = merged_df.drop(['spatio_temporal_keys_x', 'spatio_temporal_keys_y'], axis=1)
+
+        delete_query = """
+            DELETE FROM "{inv_idx}" WHERE val IN (SELECT val FROM "{agg_tbl}")
+        """.format(
+            inv_idx=inv_idx,
+            agg_tbl=agg_tbl
+        )
+        self.cur.sql(delete_query)
+
+        insert_query = """
+            INSERT INTO "{inv_idx}" SELECT * FROM merged_df
+        """.format(
+            inv_idx=inv_idx
+        )
+
+        self.cur.sql(insert_query)
 
     def get_variable_stats(self, agg_tbl_name: str, var_name: str):
         query = """

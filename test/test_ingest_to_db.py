@@ -123,7 +123,7 @@ def test_create_sketch_tbl():
 
 def test_ingest_all_tbls():
     # data_sources = ['chicago_factors', 'asthma', 'chicago_1m_zipcode']
-    data_sources = ['asthma']
+    data_sources = ['chicago_factors']
     ingestor = DBIngestor('data/quickstart.db', engine='duckdb')
     temporal_granu_l = []
     spatial_granu_l = [SPATIAL_GRANU.ZIPCODE]
@@ -131,6 +131,13 @@ def test_ingest_all_tbls():
         ingestor.ingest_data_source(data_source, temporal_granu_l=temporal_granu_l, spatial_granu_l=spatial_granu_l,
                                     persist=True)
 
+def test_create_inverted_indices():
+    data_sources = ['chicago_factors']
+    ingestor = DBIngestor('data/test.db', engine='duckdb')
+    temporal_granu = TEMPORAL_GRANU.ALL
+    spatial_granu = SPATIAL_GRANU.ZIPCODE
+    for data_source in data_sources:
+        ingestor.create_inverted_indices_for_a_data_source(data_source, temporal_granu, spatial_granu)
 
 def test_profile_data_sources():
     data_sources = ['chicago_factors', 'asthma', 'chicago_1m_zipcode']
@@ -182,4 +189,4 @@ if __name__ == '__main__':
     # engine='duckdb'
     # for tbl in ['22u3-xenr']:
     #     test_ingest_a_tbl(tbl, engine)
-    test_profile_data_sources()
+    test_ingest_all_tbls()
