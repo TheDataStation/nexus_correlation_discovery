@@ -16,7 +16,7 @@ from utils.coordinate import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 
 ingestor = DBIngestor(conn_string='data/quickstart.db', engine='duckdb')
-data_sources = ['chicago_1m_zipcode', 'chicago_factors', 'asthma']
+data_sources = ['chicago_zipcode', 'chicago_factors', 'asthma']
 temporal_granu_l = []
 spatial_granu_l = [SPATIAL_GRANU.ZIPCODE]
 for data_source in data_sources:
