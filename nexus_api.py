@@ -5,8 +5,6 @@ import pandas as pd
 from utils.time_point import TEMPORAL_GRANU
 from utils.coordinate import SPATIAL_GRANU
 from utils.io_utils import load_corrs_to_df, load_corrs_from_dir, dump_json
-from data_search.db_ops import join_two_agg_tables_api, read_agg_tbl, join_multi_vars
-import psycopg2
 import os
 import json
 import utils.io_utils as io_utils
@@ -57,7 +55,8 @@ class API:
             "spatio-temporal key type",
         ]
 
-    def find_correlations_from(self, dataset: str, temporal_granularity: TEMPORAL_GRANU, spatial_granularity: SPATIAL_GRANU,
+    def find_correlations_from(self, dataset: str, temporal_granularity: TEMPORAL_GRANU,
+                               spatial_granularity: SPATIAL_GRANU,
                                overlap_threshold: int, correlation_threshold: float, correlation_type="pearson",
                                control_variables=[]):
         corr_search = CorrSearch(
@@ -107,28 +106,30 @@ class API:
         return correlations[self.display_attrs]
 
     def regress(self, target_variable: Variable, co_variables: List[Variable], reg):
-        df, _ = join_multi_vars(self.cur, [target_variable] + co_variables)
+        df, _ = self.db_engine.join_multi_vars([target_variable] + co_variables)
         x = df[[var.attr_name for var in co_variables]]
         y = df[target_variable.attr_name]
         model = reg.fit(x, y)
         r_sq = model.score(x, y)
         return model, r_sq, df
 
-    def join_and_project(self, variables: List[Variable], constraints=None):
-        df = join_multi_vars(self.cur, variables, constraints=constraints)
+    def join_and_project(self, variables: List[Variable], constraints={}):
+        df = self.db_engine.join_multi_vars(variables, constraints=constraints)
         return df
 
     def get_joined_data_from_row(self, row):
-        agg_name1 = row['agg_tbl1']
+        agg_name1 = row['agg_table1']
         agg_attr1 = row['agg_attr1']
-        agg_name2 = row['agg_tbl2']
+        agg_name2 = row['agg_table2']
         agg_attr2 = row['agg_attr2']
         unagg_flag = False
         if agg_attr1[0:4] != 'avg_':
             agg_attr1 = 'avg_' + agg_attr1
             unagg_flag = True
-        # todo: migrate this to join_multi_vars
-        df, provenance = join_two_agg_tables_api(self.cur, agg_name1, agg_attr1, agg_name2, agg_attr2, outer=False)
+        df, provenance = self.db_engine.join_two_tables_on_spatio_temporal_keys(
+            agg_name1, [Variable(var_name=agg_attr1)],
+            agg_name2, [Variable(var_name=agg_attr2)], use_outer=False)
+
         df[agg_attr1] = df[agg_attr1].astype(float)
         if unagg_flag:
             df = df.rename(columns={agg_attr1: agg_attr1[4:]})
@@ -157,7 +158,7 @@ class API:
         return df, link
 
     def show_agg_dataset(self, agg_tbl_name):
-        df = read_agg_tbl(self.cur, agg_tbl_name)
+        df = self.db_engine.read_agg_tbl(agg_tbl_name)
         return df
 
     def get_total_number_of_vars(self, t_granu, s_granu):
@@ -165,7 +166,7 @@ class API:
         st_schema_list = Profiler.load_all_spatio_temporal_keys(self.catalog, t_granu, s_granu)
         for tbl, st_schema in st_schema_list:
             agg_tbl = st_schema.get_agg_tbl_name(tbl)
-            df = read_agg_tbl(self.cur, agg_tbl)
+            df = self.db_engine.read_agg_tbl(agg_tbl)
             # drop columns where all values are the same
             nunique = df.nunique()
             cols_to_drop = nunique[nunique == 1].index

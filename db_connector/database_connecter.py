@@ -2,7 +2,7 @@ from enum import Enum
 
 import pandas as pd
 from utils.data_model import Table, SpatioTemporalKey, Variable
-from typing import List
+from typing import List, Dict
 
 
 class IndexType(Enum):
@@ -32,7 +32,13 @@ class DatabaseConnectorInterface:
     def get_variable_stats(self, agg_tbl_name: str, var_name: str):
         pass
 
-    def join_two_tables_on_spatio_temporal_keys(self, tbl_id1: str, agg_tbl1: str, variables1: List[Variable],
-                                                tbl_id2: str, agg_tbl2: str, variables2: List[Variable],
+    def join_two_tables_on_spatio_temporal_keys(self, agg_tbl1: str, variables1: List[Variable],
+                                                agg_tbl2: str, variables2: List[Variable],
                                                 use_outer: bool = False):
+        pass
+
+    def join_multi_agg_tbls(self, tbl_cols: Dict[str, List[Variable]]):
+        pass
+
+    def read_agg_tbl(self, agg_tbl: str, variables: List[Variable] = []):
         pass

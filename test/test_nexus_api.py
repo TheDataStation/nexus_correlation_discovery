@@ -20,6 +20,19 @@ def test_find_correlations_from():
                                         correlation_type="pearson")
     print(len(df))
 
+def test_find_correlations_with_control():
+    conn_str = 'data/quickstart.db'
+    nexus_api = API(conn_str)  
+    dataset = 'asthma'
+    temporal_granularity, spatial_granularity = TEMPORAL_GRANU.ALL, SPATIAL_GRANU.ZIPCODE
+    overlap_threshold = 5
+    correlation_threshold = 0.5
+    control_variables = [Variable('chicago_income_by_zipcode_zipcode_6', 'avg_income_household_median')]
+    df_control = nexus_api.find_correlations_from(dataset, temporal_granularity, spatial_granularity, 
+                                                overlap_threshold, correlation_threshold, 
+                                                correlation_type="pearson", control_variables=control_variables)
+    print(len(df_control))
+
 def test_show_catalog():
     catalog = nexus_api.show_catalog()
     print(catalog)
@@ -73,5 +86,5 @@ def test_load_corrs():
 if __name__ == '__main__':
     # test_control_for_variables()
     # test_load_corrs()
-    test_find_correlations_from()
+    test_find_correlations_with_control()
     # test_find_correlations_from()

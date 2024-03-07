@@ -1,9 +1,10 @@
 import pandas as pd
+import collections
 from sqlalchemy import create_engine
 import psycopg2
 from io import StringIO
 from utils.data_model import Table, SpatioTemporalKey, Variable
-from typing import List
+from typing import List, Dict
 from psycopg2 import sql
 from db_connector.database_connecter import DatabaseConnectorInterface, IndexType
 
@@ -210,8 +211,8 @@ class PostgresConnector(DatabaseConnectorInterface):
         self.cur.execute(query)
         return self.cur.fetchall()[0][0]
 
-    def join_two_tables_on_spatio_temporal_keys(self, tbl_id1: str, agg_tbl1: str, variables1: List[Variable],
-                                                tbl_id2: str, agg_tbl2: str, variables2: List[Variable],
+    def join_two_tables_on_spatio_temporal_keys(self, agg_tbl1: str, variables1: List[Variable],
+                                                agg_tbl2: str, variables2: List[Variable],
                                                 use_outer: bool = False):
         agg_join_sql = """
             SELECT a1.val, {agg_vars} FROM
@@ -249,5 +250,88 @@ class PostgresConnector(DatabaseConnectorInterface):
         self.cur.execute(query)
 
         df = pd.DataFrame(self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description])
-        return df
+        return df, self.cur.mogrify(query)
 
+    def join_multi_agg_tbls(self, tbl_cols: Dict[str, List[Variable]]):
+        tbls = list(tbl_cols.keys())
+        sql_str = "SELECT {attrs} FROM {base_tbl} {join_clauses}"
+        query = sql.SQL(sql_str).format(
+            attrs=sql.SQL(",").join([
+                sql.SQL("{} AS {}").format(sql.Identifier(tbl, col.var_name), sql.Identifier(col.proj_name))
+                for tbl, cols in tbl_cols.items() for col in cols
+            ]),
+            base_tbl=sql.Identifier(tbls[0]),
+            join_clauses=sql.SQL(" ").join(
+                [sql.SQL("INNER JOIN {next_tbl} ON {tbl}.val = {next_tbl}.val").format(tbl=sql.Identifier(tbls[0]),
+                                                                                       next_tbl=sql.Identifier(tbl)) for
+                 tbl in tbls[1:]]
+            ),
+        )
+        self.cur.execute(query)
+        df = pd.DataFrame(self.cur.fetchall(), columns=[desc[0] for desc in cur.description])
+        return df.astype(float).round(3)
+
+    def join_multi_vars(self, variables: List[Variable], constraints=None):
+        tbl_cols = collections.defaultdict(list)
+        for var in variables:
+            tbl_cols[var.tbl_id].append(var.attr_name)
+        # join tbls and project attr names
+        tbls = list(tbl_cols.keys())
+        constaint_tbls = []
+        constaint_vals = []
+        if not constraints:
+            sql_str = "SELECT {attrs} FROM {base_tbl} {join_clauses}"
+        else:
+            for tbl, threshold in constraints.items():
+                constaint_tbls.append(tbl)
+                constaint_vals.append(threshold)
+            sql_str = "SELECT {attrs} FROM {base_tbl} {join_clauses} WHERE {filter}"
+        query = sql.SQL(sql_str).format(
+            attrs=sql.SQL(",").join([
+                                        sql.SQL("{}").format(sql.Identifier(tbl, col))
+                                        for tbl, cols in tbl_cols.items() for col in cols
+                                    ] + [sql.SQL("{} AS {}").format(sql.Identifier(tbl, 'count'),
+                                                                    sql.Identifier(f'{tbl}_samples')) for tbl in
+                                         tbl_cols.keys()]),
+            base_tbl=sql.Identifier(tbls[0]),
+            join_clauses=sql.SQL(" ").join(
+                [sql.SQL("INNER JOIN {next_tbl} ON {tbl}.val = {next_tbl}.val").format(tbl=sql.Identifier(tbls[0]),
+                                                                                       next_tbl=sql.Identifier(tbl)) for
+                 tbl in tbls[1:]]
+            ),
+            filter=sql.SQL(" AND ").join(
+                [sql.SQL("{col} >= %s").format(col=sql.Identifier(tbl, 'count')) for tbl in constaint_tbls]
+            )
+        )
+        if not constraints:
+            self.cur.execute(query)
+        else:
+            self.cur.execute(query, constaint_vals)
+        df = pd.DataFrame(self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description])
+        return df, self.cur.mogrify(query, constaint_vals)
+
+    def read_agg_tbl(self, agg_tbl: str, variables: List[Variable] = []):
+        if len(variables) == 0:
+            sql_str = """
+            SELECT * FROM {agg_tbl};
+        """
+        else:
+            sql_str = """
+                SELECT val, {agg_vars} FROM {agg_tbl};
+            """
+
+        query = sql.SQL(sql_str).format(
+            agg_vars=sql.SQL(",").join(
+                [
+                    sql.SQL("{}").format(
+                        sql.Identifier(var.var_name),
+                    )
+                    for var in variables
+                ]),
+            agg_tbl=sql.Identifier(agg_tbl)
+        )
+
+        self.cur.execute(query)
+
+        df = pd.DataFrame(self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description])
+        return df.astype(float).round(3)

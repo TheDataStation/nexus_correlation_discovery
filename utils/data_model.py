@@ -27,7 +27,7 @@ class KeyType(Enum):
 
 
 class Variable:
-    def __init__(self, tbl_id: str, attr_name: str, agg_func: AggFunc = None, var_name: str = None,
+    def __init__(self, tbl_id: str = None, attr_name: str = None, agg_func: AggFunc = None, var_name: str = None,
                  suffix=None) -> None:
         self.tbl_id = tbl_id
         self.attr_name = attr_name
@@ -36,9 +36,9 @@ class Variable:
         self.max_len_limit = 63
 
         self.suffix = suffix
-        if self.suffix:
+        if self.suffix and self.var_name:
             self.proj_name = "{}_{}".format(self.var_name, self.suffix)[:self.max_len_limit]
-        else:
+        elif self.suffix is None and self.var_name:
             self.proj_name = self.var_name[:self.max_len_limit]
 
     def to_str(self):

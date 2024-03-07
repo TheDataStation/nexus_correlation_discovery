@@ -356,10 +356,8 @@ class CorrSearch:
             agg_name2 = f"{agg_name2}_sketch_{k}"
 
         if use_outer_join:
-            merged_outer = self.db_engine.join_two_tables_on_spatio_temporal_keys(tbl_id1,
-                                                                                  agg_name1,
+            merged_outer, _ = self.db_engine.join_two_tables_on_spatio_temporal_keys(agg_name1,
                                                                                   variables1,
-                                                                                  tbl_id2,
                                                                                   agg_name2,
                                                                                   variables2,
                                                                                   use_outer=True)
@@ -369,10 +367,8 @@ class CorrSearch:
             elif use_sketch and len(merged) < 3:
                 return None, None, None, None
         else:
-            merged = self.db_engine.join_two_tables_on_spatio_temporal_keys(tbl_id1,
-                                                                            agg_name1,
+            merged, _ = self.db_engine.join_two_tables_on_spatio_temporal_keys(agg_name1,
                                                                             variables1,
-                                                                            tbl_id2,
                                                                             agg_name2,
                                                                             variables2,
                                                                             use_outer=False)
@@ -578,7 +574,7 @@ class CorrSearch:
 
     def find_all_corr_for_a_spatio_temporal_key(
             self, tbl_id1: str, spatio_temporal_key: SpatioTemporalKey,
-            overlap_threshold: float, corr_threshold: float, p_threshold: float,
+            overlap_threshold: int, corr_threshold: float, p_threshold: float,
             fill_zero: bool, corr_type='pearson',
             control_vars=[]
     ):
@@ -730,7 +726,7 @@ class CorrSearch:
                 for var in control_vars:
                     tbl_cols[var.tbl_id].append(Variable(var.tbl_id, var.attr_name, None, var.attr_name))
                 control_var_names = [var.attr_name for var in control_vars]
-                df = db_ops.join_multi_agg_tbls(self.cur, tbl_cols)
+                df = self.db_engine.join_multi_agg_tbls(tbl_cols)
                 if len(df) < overlap_threshold:
                     continue
             time_used = time.time() - start

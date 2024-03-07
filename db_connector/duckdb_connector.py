@@ -1,7 +1,8 @@
 import duckdb
+import collections
 import pandas as pd
 from utils.data_model import SpatioTemporalKey, Variable
-from typing import List
+from typing import List, Dict
 from db_connector.database_connecter import DatabaseConnectorInterface
 
 
@@ -137,8 +138,8 @@ class DuckDBConnector(DatabaseConnectorInterface):
         self.cur.execute(query)
         return self.cur.fetchall()[0][0]
 
-    def join_two_tables_on_spatio_temporal_keys(self, tbl_id1: str, agg_tbl1: str, variables1: List[Variable],
-                                                tbl_id2: str, agg_tbl2: str, variables2: List[Variable],
+    def join_two_tables_on_spatio_temporal_keys(self, agg_tbl1: str, variables1: List[Variable],
+                                                agg_tbl2: str, variables2: List[Variable],
                                                 use_outer: bool = False):
         if not use_outer:
             agg_join_sql = """
@@ -191,7 +192,76 @@ class DuckDBConnector(DatabaseConnectorInterface):
                 agg_tbl2=agg_tbl2,
             )
 
-        return self.cur.execute(agg_join_sql).df()
+        return self.cur.execute(agg_join_sql).df(), agg_join_sql
+
+    def join_multi_agg_tbls(self, tbl_cols: Dict[str, List[Variable]]):
+        tbls = list(tbl_cols.keys())
+        query = """
+                    SELECT {attrs} FROM "{base_tbl}" {join_clauses}
+                """.format(
+            attrs=",".join([
+                "{original_name} AS {proj_name}".format(
+                    original_name=f'"{tbl}".{col.var_name}',
+                    proj_name=col.proj_name)
+                for tbl, cols in tbl_cols.items() for col in cols
+            ]),
+            base_tbl=tbls[0],
+            join_clauses=" ".join(
+                ['INNER JOIN "{next_tbl}" ON "{tbl}".val = "{next_tbl}".val'.format(tbl=tbls[0], next_tbl=tbl)
+                 for tbl in tbls[1:]]
+            ),
+        )
+
+        return self.cur.sql(query).df().astype(float).round(3)
+
+    def join_multi_vars(self, variables: List[Variable], constraints: Dict = {}):
+        tbl_cols = collections.defaultdict(list)
+        for var in variables:
+            tbl_cols[var.tbl_id].append(var.attr_name)
+        # join tbls and project attr names
+        tbls = list(tbl_cols.keys())
+        constaint_tbls = []
+        constaint_vals = []
+        if len(constraints.keys()) == 0:
+            sql_str = 'SELECT {attrs} FROM "{base_tbl}" {join_clauses}'
+        else:
+            for tbl, threshold in constraints.items():
+                constaint_tbls.append(tbl)
+                constaint_vals.append(threshold)
+            sql_str = 'SELECT {attrs} FROM "{base_tbl}" {join_clauses} WHERE {filter}'
+        query = sql_str.format(
+            attrs=','.join([f'"{tbl}".{col}' for tbl, cols in tbl_cols.items() for col in cols]
+                           + [f'"{tbl}".count AS "{tbl}_samples"' for tbl in tbl_cols.keys()]),
+            base_tbl=tbls[0],
+            join_clauses=' '.join(
+                ['INNER JOIN "{next_tbl}" ON "{tbl}".val = "{next_tbl}".val'.format(tbl=tbls[0], next_tbl=tbl) for
+                 tbl in tbls[1:]]
+            ),
+            filter=" AND ".join(
+                ['{col} >= {threshold}'.format(col=f'"{tbl}".count', threshold=threshold)
+                 for tbl, threshold in constraints.items()]
+            )
+        )
+
+        return self.cur.sql(query).df(), query
+
+    def read_agg_tbl(self, agg_tbl: str, variables: List[Variable] = []):
+        if len(variables) == 0:
+            sql_str = """
+               SELECT * FROM "{agg_tbl}";
+           """
+        else:
+            sql_str = """
+                   SELECT val, {agg_vars} FROM "{agg_tbl}";
+               """
+
+        query = sql_str.format(
+            agg_vars=",".join([f"{var.var_name}" for var in variables]),
+            agg_tbl=agg_tbl
+        )
+
+        return self.cur.sql(query).df().astype(float).round(3)
 
     def create_cnt_tbl_for_agg_tbl(self, tbl_id: str, spatio_temporal_key: SpatioTemporalKey):
         pass
+
