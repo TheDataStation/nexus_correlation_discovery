@@ -75,8 +75,9 @@ def convert_old_tbl_attrs_to_new_format(in_p, out_p):
     io_utils.dump_json(out_p, new_metadata)
 
 if __name__ == '__main__':
+    convert_old_metadata_to_new_format('resource/chicago_1m_zipcode/chicago_open_data.json', 'resource/chicago_1m_zipcode/chicago_open_data_new.json')
     # convert_old_tbl_attrs_to_new_format('resource/chicago_1m/tbl_attrs_chicago_1m_new.json', 'resource/chicago_1m/tbl_attrs_chicago_1m_latest.json')
-    convert_old_tbl_attrs_to_new_format('resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk3.json', 'resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json')
+    # convert_old_tbl_attrs_to_new_format('resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk3.json', 'resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json')
     # remove_datasets("resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk2.json",  "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json")
     # add_link("resource/chicago_1m_zipcode/tbl_attrs_chicago_1m_bk.json", 'resource/chicago_1m_zipcode/chicago_open_data_linked.json', "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json")
     # add_domain("resource/chicago_open_data/tbl_attrs_chicago_bk.json", 'data.cityofchicago.org', "resource/chicago_open_data/tbl_attrs_chicago_bk.json")

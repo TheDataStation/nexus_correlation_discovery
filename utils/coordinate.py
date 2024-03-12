@@ -24,6 +24,7 @@ scale_dict = {
     SPATIAL_GRANU.TRACT: "tractce10",
     SPATIAL_GRANU.COUNTY: "COUNTYFP",
     SPATIAL_GRANU.STATE: "STATEFP",
+    SPATIAL_GRANU.ZIPCODE: "zip"
 }
 
 supported_chain = []
@@ -50,15 +51,6 @@ class Coordinate:
         for granu in supported_chain:
             k = scale_dict[granu]
             self.full[granu] = row[k]
-
-    # def __init__(self, block, block_group, tract, county):
-    #     # self.point = point
-    #     self.block = block
-    #     self.block_group = block_group
-    #     self.tract = tract
-    #     self.county = county
-    #     self.state = state
-    #     # self.full_resolution = [self.block, self.block_group, self.tract, self.county]
 
     def __hash__(self):
         return hash((self.long, self.lat))
@@ -95,11 +87,9 @@ class Coordinate:
                 self.full[SPATIAL_GRANU.COUNTY],
             ]
         elif granu == SPATIAL_GRANU.STATE:
-            return self.full[SPATIAL_GRANU.STATE]
-
-    # def transform(self, granu: S_GRANU):
-    #     idx = granu - self.chain[0].value
-    #     return list(reversed(self.full_resolution[idx:]))
+            return [self.full[SPATIAL_GRANU.STATE]]
+        elif granu == SPATIAL_GRANU.ZIPCODE:
+            return [self.full[SPATIAL_GRANU.ZIPCODE]]
 
     def to_str(self, repr: List[int]):
         return "-".join([str(x) for x in repr])
@@ -108,12 +98,12 @@ class Coordinate:
         return int("".join([str(x) for x in repr]))
 
     def transform_to_key(self, granu: SPATIAL_GRANU):
-        repr = self.full_resolution[granu - 1 :]
+        repr = self.full_resolution[granu - 1:]
         return str(repr)
 
 
 def transform(crd: Coordinate, granu: SPATIAL_GRANU):
-    return crd.full_resolution[granu - 1 :]
+    return crd.full_resolution[granu - 1:]
 
 
 def parse_coordinate(str):

@@ -6,7 +6,6 @@ import psycopg2
 from utils.coordinate import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 from utils.data_model import Attr, Variable, SpatioTemporalKey
-from data_search.db_ops import get_intersection_inv_idx
 
 
 class DBSearch:
@@ -52,7 +51,7 @@ class DBSearch:
         self, tbl: str, st_schema: SpatioTemporalKey, threshold, mode
     ):
         if mode == "inv_idx":
-            return get_intersection_inv_idx(self.cur, tbl, st_schema, threshold)
+            return estimate_joinable_candidates(self.cur, tbl, st_schema, threshold)
         elif mode == "agg_idx":
             return self.find_augmentable_tables_agg_idx(tbl, units, threshold)
         elif mode == "multi_idx":

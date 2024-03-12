@@ -1,10 +1,10 @@
 import time
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 import utils.io_utils as io_utils
 import time
 from utils.coordinate import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
-from data_ingestion.index_builder_agg import DBIngestorAgg
+from data_ingestion.data_ingestor import DBIngestor
 from tqdm import tqdm
 from utils.io_utils import dump_json
 
@@ -16,14 +16,14 @@ if __name__ == "__main__":
     t_scales = [TEMPORAL_GRANU.DAY, TEMPORAL_GRANU.MONTH]
     s_scales = [SPATIAL_GRANU.BLOCK, SPATIAL_GRANU.TRACT]
 
-    ingestor = DBIngestorAgg(conn_string, data_source, t_scales, s_scales)
+    ingestor = DBIngestor(conn_string, data_source, t_scales, s_scales)
     perf_profile = {}
     granu_lists = [[TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK], [TEMPORAL_GRANU.MONTH, SPATIAL_GRANU.TRACT]]
     for granu_list in granu_lists:
         print(granu_list)
         start =   time.time()
         profiler = Profiler(data_source, t_scales, s_scales)
-        all_schemas = profiler.load_all_st_schemas(granu_list[0], granu_list[1])
+        all_schemas = profiler.load_all_spatio_temporal_keys(granu_list[0], granu_list[1])
         k = 256
         for tbl, schema in tqdm(all_schemas):
             agg_name = schema.get_agg_tbl_name(tbl)

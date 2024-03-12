@@ -5,7 +5,7 @@ from tqdm import tqdm
 from data_search.commons import FIND_JOIN_METHOD
 from utils.coordinate import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 
 """
 Find Join method: Cost Model
@@ -72,12 +72,12 @@ for granu_list in granu_lists:
                         continue
                     # print(agg_name, join_costs[agg_name].cnt)
                 
-                    method = corr_search.find_all_corr_for_a_tbl_schema(
+                    method = corr_search.find_all_corr_for_a_spatio_temporal_key(
                         tbl,
                         schema,
-                        o_t=o_t,
-                        r_t=0.6,
-                        p_t=0.05,
+                        overlap_threshold=o_t,
+                        corr_threshold=0.6,
+                        p_threshold=0.05,
                         fill_zero=True,
                     )
                 

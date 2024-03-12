@@ -49,7 +49,7 @@ def test_find_corr_for_a_tbl_schema():
     corr_search.create_tmp_agg_tbls([TEMPORAL_GRANU.DAY, SPATIAL_GRANU.BLOCK])
 
     start1 = time.time()
-    corr_search.find_all_corr_for_a_tbl_schema(tbl1, units1, r_t=0.6, p_t=0.01)
+    corr_search.find_all_corr_for_a_spatio_temporal_key(tbl1, units1, corr_threshold=0.6, p_threshold=0.01)
     data1 = corr_search.data
     print("time1:", time.time() - start1)
 

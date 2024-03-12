@@ -1,6 +1,6 @@
 # dump join key columns from postgres for ingestion into lazo
 
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 from data_search.search_db import DBSearch
 from utils.coordinate import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
@@ -37,7 +37,7 @@ def retrive(data_sources, t_granu: TEMPORAL_GRANU, s_granu: SPATIAL_GRANU):
         db_search = DBSearch(conn_str)
         # profiler = Profiler(data_source, [t_granu], [s_granu])
         tbl_attrs = io_utils.load_json(config['attr_path'])
-        st_schemas_dict = Profiler.load_all_st_schemas(tbl_attrs, t_granu, s_granu, type_aware=True)
+        st_schemas_dict = Profiler.load_all_spatio_temporal_keys(tbl_attrs, t_granu, s_granu, type_aware=True)
         for category, schemas in st_schemas_dict.items():
             cur_storage_dir = f'{storage_dir}/{category.value}'
             io_utils.create_dir(cur_storage_dir)

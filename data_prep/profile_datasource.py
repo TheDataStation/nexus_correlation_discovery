@@ -1,6 +1,6 @@
 from utils.data_model import KeyType
 from utils import io_utils
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 from utils.coordinate import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 
@@ -35,7 +35,7 @@ def profile_data_source(data_source, t_granu, s_granu):
             num_var += len(info["num_columns"])
         else:
             num_var += 1
-    all_st_schemas = Profiler.load_all_st_schemas(tbl_attrs, t_granu, s_granu, type_aware=True)
+    all_st_schemas = Profiler.load_all_spatio_temporal_keys(tbl_attrs, t_granu, s_granu, type_aware=True)
     # profile["key_cnt"] = len(all_st_schemas)
     time = len(all_st_schemas[KeyType.TIME])
     tbl_cnt_time = set([x[0] for x in all_st_schemas[KeyType.TIME]])

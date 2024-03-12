@@ -65,7 +65,7 @@ def create_dir(dir_path):
         os.makedirs(dir_path)
 
 
-def load_corrs_to_df(data: object) -> object:
+def load_corrs_to_df(data: object) -> pd.DataFrame:
     df = pd.DataFrame(
         [corr.to_list() for corr in data],
         columns=[

@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt, ticker
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 from utils import io_utils
 from utils.coordinate import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU

@@ -1,29 +1,33 @@
+from data_ingestion.connection import ConnectionFactory
+from data_ingestion.data_ingestor import DBIngestor
 from data_search.search_corr import CorrSearch
 from data_search.commons import FIND_JOIN_METHOD
 import pandas as pd
 from utils.time_point import TEMPORAL_GRANU
 from utils.coordinate import SPATIAL_GRANU
 from utils.io_utils import load_corrs_to_df, load_corrs_from_dir, dump_json
-from data_search.db_ops import join_two_agg_tables_api, read_agg_tbl, join_multi_vars
-import psycopg2
 import os
 import json
 import utils.io_utils as io_utils
+from utils.granularity_utils import get_inverted_index_names
 from utils.data_model import Variable
 from typing import List
 from sklearn import linear_model
 from corr_analysis.factor_analysis.factor_analysis import factor_analysis, build_factor_clusters
 import time
-from data_ingestion.profile_datasets import Profiler
+from data_ingestion.data_profiler import Profiler
 
 
 class API:
-    def __init__(self, conn_str, data_sources=['chicago_1m_zipcode', 'asthma', 'chicago_factors'], impute_options=[],
-                 correction=''):
-        self.conn_str = conn_str
-        conn_copg2 = psycopg2.connect(self.conn_str)
-        self.cur = conn_copg2.cursor()
+    def __init__(self, connection_string, engine='duckdb',
+                 data_sources=['chicago_zipcode', 'asthma', 'chicago_factors'], impute_options=[], correction=''):
+        self.engine_type = engine
+        self.db_engine = ConnectionFactory.create_connection(connection_string, engine)
+
+        self.conn_str = connection_string
+
         self.data_sources = data_sources
+
         self.correction = correction
         self.impute_options = impute_options
 
@@ -34,20 +38,6 @@ class API:
             attr_path = config["attr_path"]
             self.catalog.update(io_utils.load_json(attr_path))
             self.data_path_map[data_source] = config["data_path"]
-
-        # self.display_attrs = [
-        #     "tbl_id1",
-        #     "tbl_name1",
-        #     "agg_tbl1",
-        #     "agg_attr1",
-        #     "tbl_id2",
-        #     "tbl_name2",
-        #     "agg_tbl2",
-        #     "agg_attr2",
-        #     "missing_ratio_o2",
-        #     "r_val",
-        #     "p_val",
-        #     "samples"]
 
         self.display_attrs = [
             "table_id1",
@@ -66,11 +56,21 @@ class API:
             "spatio-temporal key type",
         ]
 
-    def find_correlations_from(self, dataset: str, temporal_granularity: TEMPORAL_GRANU, spatial_granularity: SPATIAL_GRANU,
+    def ingest_data(self, temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU]):
+        ingestor = DBIngestor(conn_string=self.conn_str, engine='duckdb')
+        data_sources = ['chicago_zipcode', 'chicago_factors', 'asthma']
+        for data_source in data_sources:
+            ingestor.ingest_data_source(data_source, temporal_granu_l=temporal_granu_l, spatial_granu_l=spatial_granu_l)
+        # create count tables for inverted indices
+        ingestor.create_cnt_tbls_for_inv_index_tbls(get_inverted_index_names(temporal_granu_l, spatial_granu_l))
+
+    def find_correlations_from(self, dataset: str, temporal_granularity: TEMPORAL_GRANU,
+                               spatial_granularity: SPATIAL_GRANU,
                                overlap_threshold: int, correlation_threshold: float, correlation_type="pearson",
                                control_variables=[]):
         corr_search = CorrSearch(
             self.conn_str,
+            self.engine_type,
             self.data_sources,
             FIND_JOIN_METHOD.JOIN_ALL,
             impute_methods=self.impute_options,
@@ -88,11 +88,12 @@ class API:
 
     def find_all_correlations(self, temporal_granularity, spatial_granularity, overlap_threshold,
                               correlation_threshold, persist_path=None, correlation_type="pearson",
-                              control_variables=[]):
+                              control_variables=[], find_join_method=FIND_JOIN_METHOD.COST_MODEL):
         corr_search = CorrSearch(
             self.conn_str,
+            self.engine_type,
             self.data_sources,
-            FIND_JOIN_METHOD.COST_MODEL,
+            find_join_method,
             impute_methods=self.impute_options,
             explicit_outer_join=False,
             correct_method='FDR',
@@ -107,7 +108,7 @@ class API:
         corr_search.perf_profile["total_time"] = total_time
         corr_search.perf_profile["cost_model_overhead"] = corr_search.overhead
         dump_json(
-            f"tmp/perf_profile_{'_'.join(self.data_sources)}_{overlap_threshold}_{correlation_threshold}_{temporal_granularity}_{spatial_granularity}_{'_'.join([var.to_str() for var in control_variables])}.json",
+            f"tmp/perf_profile_{'_'.join(self.data_sources)}_{overlap_threshold}_{correlation_threshold}_{temporal_granularity}_{spatial_granularity}_{'_'.join([var.to_str() for var in control_variables])}_{self.engine_type}_{find_join_method}.json",
             corr_search.perf_profile,
         )
         correlations = load_corrs_to_df(corr_search.all_corrs)
@@ -115,32 +116,33 @@ class API:
         return correlations[self.display_attrs]
 
     def regress(self, target_variable: Variable, co_variables: List[Variable], reg):
-        df, _ = join_multi_vars(self.cur, [target_variable] + co_variables)
+        df, _ = self.db_engine.join_multi_vars([target_variable] + co_variables)
         x = df[[var.attr_name for var in co_variables]]
         y = df[target_variable.attr_name]
         model = reg.fit(x, y)
         r_sq = model.score(x, y)
         return model, r_sq, df
 
-    def join_and_project(self, variables: List[Variable], constraints=None):
-        df = join_multi_vars(self.cur, variables, constraints=constraints)
+    def join_and_project(self, variables: List[Variable], constraints={}):
+        df = self.db_engine.join_multi_vars(variables, constraints=constraints)
         return df
 
     def get_joined_data_from_row(self, row):
-        agg_name1 = row['agg_tbl1']
+        agg_name1 = row['agg_table1']
         agg_attr1 = row['agg_attr1']
-        agg_name2 = row['agg_tbl2']
+        agg_name2 = row['agg_table2']
         agg_attr2 = row['agg_attr2']
         unagg_flag = False
         if agg_attr1[0:4] != 'avg_':
             agg_attr1 = 'avg_' + agg_attr1
             unagg_flag = True
+        df, provenance = self.db_engine.join_two_tables_on_spatio_temporal_keys(
+            agg_name1, [Variable(var_name=agg_attr1)],
+            agg_name2, [Variable(var_name=agg_attr2)], use_outer=False)
 
-        df = join_two_agg_tables_api(self.cur, agg_name1, agg_attr1, agg_name2, agg_attr2, outer=False)
         df[agg_attr1] = df[agg_attr1].astype(float)
         if unagg_flag:
             df = df.rename(columns={agg_attr1: agg_attr1[4:]})
-        provenance = f"{agg_name1} JOIN {agg_name2}"
         return df, provenance
 
     def save(self, df, path, name, provenance=None):
@@ -166,15 +168,15 @@ class API:
         return df, link
 
     def show_agg_dataset(self, agg_tbl_name):
-        df = read_agg_tbl(self.cur, agg_tbl_name)
+        df = self.db_engine.read_agg_tbl(agg_tbl_name)
         return df
 
     def get_total_number_of_vars(self, t_granu, s_granu):
         total_num = 0
-        st_schema_list = Profiler.load_all_st_schemas(self.catalog, t_granu, s_granu)
+        st_schema_list = Profiler.load_all_spatio_temporal_keys(self.catalog, t_granu, s_granu)
         for tbl, st_schema in st_schema_list:
             agg_tbl = st_schema.get_agg_tbl_name(tbl)
-            df = read_agg_tbl(self.cur, agg_tbl)
+            df = self.db_engine.read_agg_tbl(agg_tbl)
             # drop columns where all values are the same
             nunique = df.nunique()
             cols_to_drop = nunique[nunique == 1].index
