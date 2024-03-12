@@ -3,7 +3,7 @@ from data_search.search_corr import CorrSearch
 import time
 from tqdm import tqdm
 from data_search.commons import FIND_JOIN_METHOD
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 from data_ingestion.data_profiler import Profiler
 

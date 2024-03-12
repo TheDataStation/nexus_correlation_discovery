@@ -7,6 +7,8 @@ from shapely.geometry import Point
 import geopandas as gpd
 from typing import List
 
+from utils.spatial_hierarchy import SPATIAL_GRANU
+
 
 class SPATIAL_GRANU(Enum):
     ALL = 0

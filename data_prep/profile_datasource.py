@@ -1,7 +1,7 @@
 from utils.data_model import KeyType
 from utils import io_utils
 from data_ingestion.data_profiler import Profiler
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 
 def profile_data_sources(data_sources, t_granu, s_granu):

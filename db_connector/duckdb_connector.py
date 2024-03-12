@@ -7,8 +7,8 @@ from db_connector.database_connecter import DatabaseConnectorInterface, IndexTyp
 
 
 class DuckDBConnector(DatabaseConnectorInterface):
-    def __init__(self, conn_str):
-        self.cur = duckdb.connect(database=conn_str)
+    def __init__(self, conn_str, read_only=True):
+        self.cur = duckdb.connect(database=conn_str, read_only=read_only)
 
     def create_tbl(self, tbl_id: str, df: pd.DataFrame, mode='replace'):
         if mode == 'replace':

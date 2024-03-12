@@ -2,7 +2,7 @@
 
 from data_ingestion.data_profiler import Profiler
 from data_search.search_db import DBSearch
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 from utils import io_utils
 from psycopg2 import sql

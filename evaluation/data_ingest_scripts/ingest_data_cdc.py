@@ -1,7 +1,7 @@
 import time
 import utils.io_utils as io_utils
 import time
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 from data_ingestion.data_ingestor import DBIngestor
 from tqdm import tqdm

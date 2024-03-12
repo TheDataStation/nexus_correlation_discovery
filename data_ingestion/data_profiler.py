@@ -1,5 +1,6 @@
 from utils import io_utils
-from utils.data_model import SpatioTemporalKey, Attr, KeyType, TEMPORAL_GRANU, SPATIAL_GRANU, Table
+from utils.data_model import SpatioTemporalKey, Attr, KeyType, TEMPORAL_GRANU, Table
+from utils.spatial_hierarchy import SPATIAL_GRANU
 import pandas as pd
 from tqdm import tqdm
 from psycopg2 import sql

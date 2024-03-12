@@ -1,4 +1,4 @@
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
 from utils.time_point import TEMPORAL_GRANU
 from utils.data_model import Variable
 from nexus_api import API
@@ -6,6 +6,19 @@ from data_ingestion.connection import ConnectionFactory
 from data_search.commons import FIND_JOIN_METHOD
 # conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
 # nexus_api = API(conn_str)
+
+def test_add_data_sources():
+    spatial_hierarchy1 = SpatialHierarchy('resource/chicago_shapes/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp',
+                                          {
+                                              SPATIAL_GRANU.BLOCK: 'blockce10', 
+                                              SPATIAL_GRANU.TRACT: 'tractce10',
+                                              SPATIAL_GRANU.COUNTY: 'countyfp10',
+                                              SPATIAL_GRANU.STATE: 'statefp10'})
+    spatial_hierarchy2 = SpatialHierarchy("resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp",
+                                          {
+                                              SPATIAL_GRANU.ZIPCODE: "zip"
+                                          })
+    API.add_data_source('chicago_test', 'data/chicago_open_data_1m/', [spatial_hierarchy1, spatial_hierarchy2])
 
 def test_find_correlations_from():
     conn_str = 'data/quickstart.db'
@@ -128,4 +141,5 @@ if __name__ == '__main__':
     # test_find_correlations_from()
     find_join_method = FIND_JOIN_METHOD.JOIN_ALL
     test_find_all_correlations_duckdb_all(find_join_method)
-    test_find_all_correlations_postgres_all(find_join_method)
+    # test_find_all_correlations_postgres_all(find_join_method)
+    # test_add_data_sources()

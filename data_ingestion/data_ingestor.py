@@ -5,7 +5,8 @@ from utils.profile_utils import is_num_column_valid
 import geopandas as gpd
 import os
 import utils.io_utils as io_utils
-from utils.coordinate import resolve_spatial_hierarchy, set_spatial_granu, SPATIAL_GRANU
+from utils.coordinate import resolve_spatial_hierarchy, set_spatial_granu
+from utils.spatial_hierarchy import SPATIAL_GRANU
 import numpy as np
 from sqlalchemy.types import *
 import time

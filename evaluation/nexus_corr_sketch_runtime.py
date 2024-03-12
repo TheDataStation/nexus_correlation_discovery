@@ -2,7 +2,7 @@ from data_ingestion.data_profiler import Profiler
 from data_search.commons import FIND_JOIN_METHOD
 from evaluation.persist_correlations import load_lazo_join_res
 from utils import io_utils
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 from evaluation.plot_lib.plot_utils import Stages, load_data, grouped_bar_plot
 import numpy as np
