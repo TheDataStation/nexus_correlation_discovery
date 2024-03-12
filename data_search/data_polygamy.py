@@ -3,7 +3,7 @@ from data_search.search_db import DBSearch
 import data_search.db_ops as db_ops
 import numpy as np
 from utils import io_utils
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.profile_utils import is_num_column_valid
 import math
 from data_ingestion.data_profiler import Profiler

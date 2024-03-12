@@ -1,17 +1,19 @@
+import yaml
+
 from data_ingestion.connection import ConnectionFactory
 from data_ingestion.data_ingestor import DBIngestor
 from data_search.search_corr import CorrSearch
 from data_search.commons import FIND_JOIN_METHOD
 import pandas as pd
 from utils.time_point import TEMPORAL_GRANU
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
 from utils.io_utils import load_corrs_to_df, load_corrs_from_dir, dump_json
 import os
 import json
 import utils.io_utils as io_utils
 from utils.granularity_utils import get_inverted_index_names
 from utils.data_model import Variable
-from typing import List
+from typing import List, Dict
 from sklearn import linear_model
 from corr_analysis.factor_analysis.factor_analysis import factor_analysis, build_factor_clusters
 import time
@@ -22,7 +24,7 @@ class API:
     def __init__(self, connection_string, engine='duckdb',
                  data_sources=['chicago_zipcode', 'asthma', 'chicago_factors'], impute_options=[], correction=''):
         self.engine_type = engine
-        self.db_engine = ConnectionFactory.create_connection(connection_string, engine)
+        self.db_engine = ConnectionFactory.create_connection(connection_string, engine, read_only=True)
 
         self.conn_str = connection_string
 
@@ -33,6 +35,7 @@ class API:
 
         self.catalog = {}
         self.data_path_map = {}
+
         for data_source in data_sources:
             config = io_utils.load_config(data_source)
             attr_path = config["attr_path"]
@@ -55,6 +58,27 @@ class API:
             "number of samples",
             "spatio-temporal key type",
         ]
+
+    @staticmethod
+    def add_data_source(data_source_name: str, data_path: str, spatial_hierarchies: List[SpatialHierarchy],
+                        config_path: str='config_test.yaml'):
+        data_source_config = {}
+        data_source_config["data_path"] = data_path
+        data_source_config["meta_path"] = f"resource/{data_source_name}/{data_source_name}.json"
+        data_source_config["attr_path"] = f"resource/{data_source_name}/tbl_attrs.json"
+        data_source_config["profile_path"] = f"resource/{data_source_name}/profile.json"
+        data_source_config["col_stats_path"] = f"resource/{data_source_name}/col_stats.json"
+        data_source_config["spatial_hierarchies"] = [spatial_hierarchy.to_yaml() for spatial_hierarchy in spatial_hierarchies]
+        if os.path.exists(config_path):
+            with open(config_path, 'r') as config_file:
+                cur_config = yaml.safe_load(config_file)
+                if cur_config:
+                    cur_config.update({data_source_name: data_source_config})
+        if not cur_config:
+            cur_config = {data_source_name: data_source_config}
+
+        with open(config_path, 'w') as config_file:
+            yaml.safe_dump(cur_config, config_file)
 
     def ingest_data(self, temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU]):
         ingestor = DBIngestor(conn_string=self.conn_str, engine='duckdb')

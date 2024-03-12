@@ -1,6 +1,6 @@
 from typing import List
 
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 
 
