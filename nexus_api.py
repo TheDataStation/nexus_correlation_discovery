@@ -1,4 +1,5 @@
 from data_ingestion.connection import ConnectionFactory
+from data_ingestion.data_ingestor import DBIngestor
 from data_search.search_corr import CorrSearch
 from data_search.commons import FIND_JOIN_METHOD
 import pandas as pd
@@ -8,6 +9,7 @@ from utils.io_utils import load_corrs_to_df, load_corrs_from_dir, dump_json
 import os
 import json
 import utils.io_utils as io_utils
+from utils.granularity_utils import get_inverted_index_names
 from utils.data_model import Variable
 from typing import List
 from sklearn import linear_model
@@ -23,8 +25,7 @@ class API:
         self.db_engine = ConnectionFactory.create_connection(connection_string, engine)
 
         self.conn_str = connection_string
-        # conn_copg2 = psycopg2.connect(self.conn_str)
-        # self.cur = conn_copg2.cursor()
+
         self.data_sources = data_sources
 
         self.correction = correction
@@ -55,6 +56,14 @@ class API:
             "spatio-temporal key type",
         ]
 
+    def ingest_data(self, temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU]):
+        ingestor = DBIngestor(conn_string=self.conn_str, engine='duckdb')
+        data_sources = ['chicago_zipcode', 'chicago_factors', 'asthma']
+        for data_source in data_sources:
+            ingestor.ingest_data_source(data_source, temporal_granu_l=temporal_granu_l, spatial_granu_l=spatial_granu_l)
+        # create count tables for inverted indices
+        ingestor.create_cnt_tbls_for_inv_index_tbls(get_inverted_index_names(temporal_granu_l, spatial_granu_l))
+
     def find_correlations_from(self, dataset: str, temporal_granularity: TEMPORAL_GRANU,
                                spatial_granularity: SPATIAL_GRANU,
                                overlap_threshold: int, correlation_threshold: float, correlation_type="pearson",
@@ -79,11 +88,12 @@ class API:
 
     def find_all_correlations(self, temporal_granularity, spatial_granularity, overlap_threshold,
                               correlation_threshold, persist_path=None, correlation_type="pearson",
-                              control_variables=[]):
+                              control_variables=[], find_join_method=FIND_JOIN_METHOD.COST_MODEL):
         corr_search = CorrSearch(
             self.conn_str,
+            self.engine_type,
             self.data_sources,
-            FIND_JOIN_METHOD.COST_MODEL,
+            find_join_method,
             impute_methods=self.impute_options,
             explicit_outer_join=False,
             correct_method='FDR',
@@ -98,7 +108,7 @@ class API:
         corr_search.perf_profile["total_time"] = total_time
         corr_search.perf_profile["cost_model_overhead"] = corr_search.overhead
         dump_json(
-            f"tmp/perf_profile_{'_'.join(self.data_sources)}_{overlap_threshold}_{correlation_threshold}_{temporal_granularity}_{spatial_granularity}_{'_'.join([var.to_str() for var in control_variables])}.json",
+            f"tmp/perf_profile_{'_'.join(self.data_sources)}_{overlap_threshold}_{correlation_threshold}_{temporal_granularity}_{spatial_granularity}_{'_'.join([var.to_str() for var in control_variables])}_{self.engine_type}_{find_join_method}.json",
             corr_search.perf_profile,
         )
         correlations = load_corrs_to_df(corr_search.all_corrs)

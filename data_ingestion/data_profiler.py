@@ -57,9 +57,9 @@ class Profiler:
                     if s['granu'] != 'POINT' and s['granu'] != spatial_granu.name:
                         continue
                     spatio_temporal_keys.append((tbl, SpatioTemporalKey(spatial_attr=Attr(s['name'], spatial_granu))))
-                if type_aware:
-                    spatio_temporal_keys_by_type[KeyType.SPACE].append((tbl, SpatioTemporalKey(
-                        spatial_attr=Attr(s['name'], spatial_granu))))
+                    if type_aware:
+                        spatio_temporal_keys_by_type[KeyType.SPACE].append((tbl, SpatioTemporalKey(
+                            spatial_attr=Attr(s['name'], spatial_granu))))
 
             if temporal_granu and spatial_granu:
                 for t in t_attrs:
@@ -130,18 +130,18 @@ class Profiler:
         return res
 
     @staticmethod
-    def get_join_cost(db_engine, tbl_attrs, t_scale, s_scale, threshold):
-        all_schemas = Profiler.load_all_spatio_temporal_keys(tbl_attrs, t_scale, s_scale)
+    def get_join_cost(db_engine, tbl_attrs, temporal_granu, spatial_granu, threshold):
+        all_spatio_temporal_keys = Profiler.load_all_spatio_temporal_keys(tbl_attrs, temporal_granu, spatial_granu)
         total_cnt = 0
         # group tbls by their schema types since only tbls with the same schema types can join with each other
         # schemas in the same tbl can not join
         all_cnts = {KeyType.TIME: [], KeyType.SPACE: [], KeyType.TIME_SPACE: []}
         total_cnts = {KeyType.TIME: 0, KeyType.SPACE: 0, KeyType.TIME_SPACE: 0}
 
-        for tbl, st_schema in all_schemas:
-            agg_name = st_schema.get_agg_tbl_name(tbl)
-            st_type = st_schema.get_type()
-            row_cnt = db_engine.get_row_cnt(tbl, st_schema)
+        for tbl, spatio_temporal_key in all_spatio_temporal_keys:
+            agg_name = spatio_temporal_key.get_agg_tbl_name(tbl)
+            st_type = spatio_temporal_key.get_type()
+            row_cnt = db_engine.get_row_cnt(tbl, spatio_temporal_key)
             if row_cnt >= threshold:
                 cnts_list = all_cnts[st_type]
                 cnts_list.append((tbl, agg_name, row_cnt))

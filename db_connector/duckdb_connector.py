@@ -3,7 +3,7 @@ import collections
 import pandas as pd
 from utils.data_model import SpatioTemporalKey, Variable
 from typing import List, Dict
-from db_connector.database_connecter import DatabaseConnectorInterface
+from db_connector.database_connecter import DatabaseConnectorInterface, IndexType
 
 
 class DuckDBConnector(DatabaseConnectorInterface):
@@ -78,6 +78,23 @@ class DuckDBConnector(DatabaseConnectorInterface):
 
         return agg_tbl_name
 
+    def create_cnt_tbl_for_agg_tbl(self, tbl_id: str, spatio_temporal_key: SpatioTemporalKey):
+        idx_cnt_name = "{}_inv_cnt".format(spatio_temporal_key.get_idx_tbl_name())
+        agg_tbl = spatio_temporal_key.get_agg_tbl_name(tbl_id)
+        if len(agg_tbl) >= 63:
+            cnt_tbl_name = agg_tbl[:59] + "_cnt"
+        else:
+            cnt_tbl_name = f"{agg_tbl}_cnt"
+        self.delete_tbl(cnt_tbl_name)
+        query = """
+                CREATE TABLE "{cnt_tbl_name}" AS
+                SELECT "inv"."val", cnt FROM "{inv_cnt}" inv JOIN "{tbl}" agg on inv."val" = agg."val" order by cnt desc
+        """.format(
+            cnt_tbl_name=cnt_tbl_name,
+            inv_cnt=idx_cnt_name,
+            tbl=agg_tbl)
+        self.cur.sql(query)
+
     def create_indices_on_tbl(self, idx_name: str, tbl_id: str, col_names: List[str], mode=None):
         """
         duckdb only supports min-max index and  Adaptive Radix Tree (ART) index
@@ -98,9 +115,22 @@ class DuckDBConnector(DatabaseConnectorInterface):
         """.format(idx_tbl=inv_index_tbl)
         self.cur.sql(query)
 
+    def create_cnt_tbl_for_an_inverted_index(self, idx_name):
+        tbl_name = f"{idx_name}_cnt"
+        self.delete_tbl(tbl_name)
+        query = """
+                     CREATE TABLE "{tbl_name}" AS
+                     SELECT val, array_length(spatio_temporal_keys, 1) as cnt from "{idx_name}"
+                """.format(
+            tbl_name=tbl_name,
+            idx_name=idx_name
+        )
+        self.cur.execute(query)
+        self.create_indices_on_tbl(tbl_name + "_i", tbl_name, ["val"], IndexType.HASH)
+
     def insert_spatio_temporal_key_to_inv_idx(self, inv_idx: str, tbl_id: str, spatio_temporal_key: SpatioTemporalKey):
         def merge_lists(row):
-            if pd.notna(row['spatio_temporal_keys_y']):
+            if pd.notna(row['spatio_temporal_keys_y']).all():
                 return list(set(row['spatio_temporal_keys_x'] + row['spatio_temporal_keys_y']))
             else:
                 return row['spatio_temporal_keys_x']
@@ -292,6 +322,74 @@ class DuckDBConnector(DatabaseConnectorInterface):
 
         return self.cur.sql(query).df().astype(float).round(3)
 
-    def create_cnt_tbl_for_agg_tbl(self, tbl_id: str, spatio_temporal_key: SpatioTemporalKey):
-        pass
+    def get_total_row_to_read_and_max_joinable_tables(self, tbl_id, spatio_temporal_key: SpatioTemporalKey,
+                                                      threshold: int):
+        agg_name = spatio_temporal_key.get_agg_tbl_name(tbl_id)
+        if len(agg_name) >= 63:
+            agg_cnt_tbl = agg_name[:59] + "_cnt"
+        else:
+            agg_cnt_tbl = agg_name + "_cnt"
 
+        query = """
+               SELECT count(cnt), sum(cnt) FROM "{inv_cnt}"
+           """.format(
+            inv_cnt=agg_cnt_tbl
+        )
+
+        res = self.cur.sql(query).fetchone()
+        total_lists, total_elements = res[0], res[1]
+
+        max_joinable_tbls = (total_elements - total_lists) // threshold
+
+        return total_elements, max_joinable_tbls
+
+    def estimate_joinable_candidates(
+            self, tbl_id, spatio_temporal_key: SpatioTemporalKey, threshold: int, rows_to_sample: int = 0
+    ):
+        if rows_to_sample < 1:
+            rows_to_sample = 0
+        inv_idx_name = "{}_inv".format(spatio_temporal_key.get_idx_tbl_name())
+        sql_str = """
+            SELECT cand, count(*) as cnt
+            FROM( 
+                SELECT unnest("spatio_temporal_keys") as cand FROM "{inv_idx}" inv JOIN "{agg_tbl}" agg ON inv."val" = agg."val"
+            ) subquery
+            GROUP BY cand
+        """
+
+        if rows_to_sample > 0:
+            sql_str = """
+            WITH sampled_table AS (
+                 SELECT "val" FROM "{agg_tbl}" limit ?
+            )
+            SELECT cand, count(*) as cnt
+            FROM(
+                SELECT unnest("spatio_temporal_keys") as cand FROM "{inv_idx}" inv where inv."val" in (SELECT "val" from sampled_table)
+            ) subquery
+            GROUP BY cand
+            """
+        query = sql_str.format(
+            inv_idx=inv_idx_name,
+            agg_tbl=f"{spatio_temporal_key.get_agg_tbl_name(tbl_id)}_cnt",
+        )
+        if rows_to_sample == 0:
+            query_res = self.cur.sql(query).df()
+        else:
+            print("rows_to_sample", rows_to_sample)
+            query_res = self.cur.execute(query, [rows_to_sample]).df()
+
+        result = []
+        sampled_cnt = 0
+        for _, row in query_res.iterrows():
+            cand, overlap = tuple(row['cand'].split(",")), row['cnt']
+            tbl2_id = cand[0]
+            if tbl2_id == tbl_id:
+                continue
+            sampled_cnt += overlap
+            if rows_to_sample == 0 and overlap < threshold:
+                continue
+            candidate_spatio_temporal_key = spatio_temporal_key.from_attr_names(cand[1:])
+            result.append([tbl2_id, candidate_spatio_temporal_key, overlap])
+        if rows_to_sample >= 0:
+            return result, sampled_cnt
+        return result, 0

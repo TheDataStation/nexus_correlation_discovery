@@ -23,7 +23,6 @@ chicago_1m:
     idx_tbl_path: "resource/chicago_1m/idx_tbl_names.json"
 
 asthma:
-    db_path: "postgresql://yuegong@localhost/chicago_1m_new"
     data_path: "data/asthma/"
     shape_path: "resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp"
     geo_chain: "zipcode"
@@ -36,7 +35,6 @@ asthma:
     failed_tbl_path: "resource/asthma/failed_tbl_ids.json"
 
 chicago_factors:
-    db_path: "postgresql://yuegong@localhost/chicago_1m_zipcode"
     data_path: "data/chicago_factors/"
     shape_path: "resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp"
     geo_chain: "zipcode"
@@ -49,7 +47,6 @@ chicago_factors:
     failed_tbl_path: "resource/chicago_factors/failed_tbl_ids.json"
 
 chicago_zipcode:
-    db_path: "postgresql://yuegong@localhost/chicago_1m_zipcode"
     data_path: "data/chicago_open_data_1m/"
     shape_path: "resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp"
     geo_chain: "zipcode"

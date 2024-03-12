@@ -2,7 +2,7 @@ from utils.coordinate import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 from data_search.search_db import DBSearch
 from data_ingestion.db_ops import select_columns
-from data_search.db_ops import get_intersection_inv_idx
+from data_search.db_ops import estimate_joinable_candidates
 import psycopg2
 import numpy as np
 import pandas as pd
@@ -34,7 +34,7 @@ def search_joinable():
     # res1 = get_intersection_agg_idx(cur, tbl, st_schema, None, 4)
     # print(res1)
     # print(len(res1))
-    res2 = get_intersection_inv_idx(cur, tbl, st_schema, 4)
+    res2 = estimate_joinable_candidates(cur, tbl, st_schema, 4)
     print(res2)
     print(len(res2))
 

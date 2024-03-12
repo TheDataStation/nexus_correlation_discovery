@@ -65,35 +65,6 @@ def get_inv_idx_cnt(cur, inv_idx_names):
     return res
 
 
-def get_inv_cnt(cur, tbl, st_schema: SpatioTemporalKey, threshold: int):
-    agg_name = st_schema.get_agg_tbl_name(tbl)
-    if len(agg_name) >= 63:
-        agg_cnt_tbl = agg_name[:59] + "_cnt"
-    else:
-        agg_cnt_tbl = agg_name + "_cnt"
-
-    # agg_cnt_tbl = f"{st_schema.get_agg_tbl_name(tbl)}_cnt"
-
-    sql_str = """
-        SELECT count(cnt), sum(cnt) FROM {inv_cnt}
-    """
-
-    query = sql.SQL(sql_str).format(inv_cnt=sql.Identifier(agg_cnt_tbl))
-    cur.execute(query)
-    res = cur.fetchone()
-    total_lists, total_elements = res[0], res[1]
-    # res = [x[0] for x in cur.fetchall()]
-    # total_elements = sum(res)
-
-    max_joinable_tbls = (total_elements - total_lists) // threshold
-
-    # if threshold - 1 >= len(res):
-    #     max_joinable_tbls = res[-1]
-    # else:
-    #     max_joinable_tbls = res[threshold - 1]
-    return total_elements, max_joinable_tbls
-
-
 def get_val_cnt(cur, tbl, st_schema: SpatioTemporalKey):
     sql_str = """
         SELECT count(*) from {agg_tbl};
@@ -104,86 +75,6 @@ def get_val_cnt(cur, tbl, st_schema: SpatioTemporalKey):
     cur.execute(query)
     query_res = cur.fetchall()[0][0]
     return query_res
-
-
-def get_intersection_inv_idx(
-    cur, tbl, st_schema: SpatioTemporalKey, threshold: int, sample_ratio: int = 0
-):
-    inv_idx_name = "{}_inv".format(st_schema.get_idx_tbl_name())
-    agg_tbl = st_schema.get_agg_tbl_name(tbl)
-    # col_names = st_schema.get_col_names_with_granu()
-    sql_str = """
-        SELECT cand, count(*) as cnt
-        FROM( 
-            SELECT unnest("st_schema_list") as cand FROM {inv_idx} inv JOIN {tbl} agg ON inv."val" = agg."val"
-        ) subquery
-        GROUP BY cand
-    """
-    # WITH sampled_table AS (
-            #     SELECT "val"
-            #     FROM {tbl_cnt} limit %s
-            # )
-    #  WITH sampled_table AS (
-    #             SELECT "val"
-    #             FROM {tbl_cnt} TABLESAMPLE SYSTEM(%s)
-    #         )
-    #  SELECT "val"
-    #             FROM {tbl_cnt} order by cnt desc limit %s
-    if sample_ratio > 0:
-        sql_str = """
-        WITH sampled_table AS (
-             SELECT "val" FROM {tbl_cnt} limit %s
-        )
-        SELECT val, count(*) as cnt
-        FROM(
-            SELECT unnest("st_schema_list") as val FROM {inv_idx} inv where inv."val" in (SELECT "val" from sampled_table)
-        ) subquery
-        GROUP BY val
-        """
-    query = sql.SQL(sql_str).format(
-        inv_idx=sql.Identifier(inv_idx_name),
-        # fields=sql.SQL(",").join([sql.Identifier(col) for col in col_names]),
-        tbl_cnt = sql.Identifier(f"{st_schema.get_agg_tbl_name(tbl)}_cnt"),
-        tbl=sql.Identifier(agg_tbl),
-    )
-    if sample_ratio == 0:
-        cur.execute(query)
-    else:
-        cur.execute(query, [sample_ratio])
-    
-    query_res = cur.fetchall()
-
-    result = []
-    sampled_cnt = 0
-    # parsed_candidates = []
-    # for t in candidates:
-    for t in query_res:
-        cand, overlap = tuple(t[0].split(",")), t[1]
-        tbl2_id = cand[0]
-        if tbl2_id == tbl:
-            continue
-        sampled_cnt += overlap
-        if sample_ratio == 0 and overlap < threshold:
-            continue
-
-        if st_schema.type == KeyType.TIME_SPACE:
-            st_schema2 = SpatioTemporalKey(
-                temporal_attr=Attr(cand[1], st_schema.temporal_attr.granu),
-                spatial_attr=Attr(cand[2], st_schema.spatial_attr.granu),
-            )
-        elif st_schema.type == KeyType.TIME:
-            st_schema2 = SpatioTemporalKey(
-                temporal_attr=Attr(cand[1], st_schema.temporal_attr.granu),
-            )
-        else:
-            st_schema2 = SpatioTemporalKey(
-                spatial_attr=Attr(cand[1], st_schema.spatial_attr.granu),
-            )
-        # parsed_candidates.append([st_schema2.get_agg_tbl_name(tbl2_id), overlap])
-        result.append([tbl2_id, st_schema2, overlap])
-    if sample_ratio > 0:
-        return result, sampled_cnt
-    return result
 
 
 def get_intersection_agg_idx(cur, tbl, st_schema: SpatioTemporalKey, exclude_tbls, threshold):

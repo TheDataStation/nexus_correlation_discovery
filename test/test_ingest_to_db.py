@@ -132,12 +132,23 @@ def test_ingest_all_tbls():
                                     persist=True)
 
 def test_create_inverted_indices():
-    data_sources = ['chicago_factors']
-    ingestor = DBIngestor('data/test.db', engine='duckdb')
-    temporal_granu = TEMPORAL_GRANU.ALL
+    data_sources = ['chicago_factors', 'asthma', 'chicago_zipcode']
+    ingestor = DBIngestor('data/quickstart.db', engine='duckdb')
+    temporal_granu = None
+    spatial_granu = SPATIAL_GRANU.ZIPCODE
+    # for data_source in data_sources:
+    #     ingestor.create_inverted_indices_for_a_data_source(data_source, temporal_granu, spatial_granu)
+    ingestor.create_cnt_tbls_for_inv_index_tbls(['space_6_inv'])
+
+def test_create_cnt_tables_for_all_tables():
+    data_sources = ['chicago_factors', 'asthma', 'chicago_zipcode']
+    ingestor = DBIngestor('data/quickstart.db', engine='duckdb')
+    temporal_granu = None
     spatial_granu = SPATIAL_GRANU.ZIPCODE
     for data_source in data_sources:
-        ingestor.create_inverted_indices_for_a_data_source(data_source, temporal_granu, spatial_granu)
+        ingestor.create_count_tables_for_aggregated_tables_in_a_data_source(data_source,
+                                                                            temporal_granu,
+                                                                            spatial_granu)
 
 def test_profile_data_sources():
     data_sources = ['chicago_factors', 'asthma', 'chicago_1m_zipcode']
@@ -189,4 +200,4 @@ if __name__ == '__main__':
     # engine='duckdb'
     # for tbl in ['22u3-xenr']:
     #     test_ingest_a_tbl(tbl, engine)
-    test_ingest_all_tbls()
+    test_create_cnt_tables_for_all_tables()

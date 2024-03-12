@@ -30,8 +30,8 @@ def is_num_column_valid(col_name):
         "block",
         "_lot",
         "interval",
-        # "accumulative",
-        # "cumulative"
+        "accumulative",
+        "cumulative"
     ]
     stop_words_equal = [
         "bbl",

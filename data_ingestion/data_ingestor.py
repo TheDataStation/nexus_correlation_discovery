@@ -165,17 +165,24 @@ class DBIngestor:
             inv_idx_name = self.insert_spatio_temporal_key_to_inv_idx(tbl_id, spatio_temporal_key, created_inverted_indices)
             created_inverted_indices.add(inv_idx_name)
 
+    def create_count_tables_for_aggregated_tables_in_a_data_source(self, data_source: str,
+                                                                   temporal_granu: TEMPORAL_GRANU,
+                                                                   spatial_granu: SPATIAL_GRANU):
+        data_source_config = io_utils.load_config(data_source)
+        data_catalog = io_utils.load_json(data_source_config["attr_path"])
+        spatio_temporal_keys = Profiler.load_all_spatio_temporal_keys(data_catalog, temporal_granu, spatial_granu)
+        for tbl_id, spatio_temporal_key in spatio_temporal_keys:
+            self.db_engine.create_cnt_tbl_for_agg_tbl(tbl_id, spatio_temporal_key)
+
     def create_cnt_tbl(self, tbl: Table,
                        temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU]):
         spatio_temporal_keys = tbl.get_spatio_temporal_keys(temporal_granu_l, spatial_granu_l, mode=self.mode)
         for spatio_temporal_key in spatio_temporal_keys:
             self.db_engine.create_cnt_tbl_for_agg_tbl(tbl.tbl_id, spatio_temporal_key)
 
-    def create_cnt_tbls_for_inv_index_tbls(self, inverted_indices):
-        if self.engine_type == 'postgres':
-            self.db_engine.create_cnt_tbl_for_inverted_indices(inverted_indices)
-        else:
-            raise Exception("Not implemented")
+    def create_cnt_tbls_for_inv_index_tbls(self, inverted_indices: List[str]):
+        for inverted_index in inverted_indices:
+            self.db_engine.create_cnt_tbl_for_an_inverted_index(inverted_index)
 
     def ingest_tbl(self, tbl: Table,
                    temporal_granu_l: List[TEMPORAL_GRANU],

@@ -149,6 +149,20 @@ class PostgresConnector(DatabaseConnectorInterface):
 
         self.cur.execute(query, (spatio_temporal_key.get_id(tbl_id),))
 
+    def create_cnt_tbl_for_an_inverted_index(self, idx_name):
+        tbl_name = f"{idx_name}_cnt"
+        self.delete_tbl(tbl_name)
+        sql_str = """
+                         CREATE TABLE {tbl_name} AS
+                         SELECT val, array_length(spatio_temporal_keys, 1) as cnt from {idx_name}
+                    """
+        query = sql.SQL(sql_str).format(
+            tbl_name=sql.Identifier(tbl_name), idx_name=sql.Identifier(idx_name)
+        )
+        self.cur.execute(query)
+
+        self.create_indices_on_tbl(tbl_name + "_i", tbl_name, ["val"], IndexType.HASH)
+
     def create_cnt_tbl_for_inverted_indices(self, idx_names):
         for idx_name in idx_names:
             tbl_name = f"{idx_name}_cnt"
@@ -335,3 +349,79 @@ class PostgresConnector(DatabaseConnectorInterface):
 
         df = pd.DataFrame(self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description])
         return df.astype(float).round(3)
+
+    def get_total_row_to_read_and_max_joinable_tables(self, tbl_id, spatio_temporal_key: SpatioTemporalKey,
+                                                      threshold: int):
+        agg_name = spatio_temporal_key.get_agg_tbl_name(tbl_id)
+        if len(agg_name) >= 63:
+            agg_cnt_tbl = agg_name[:59] + "_cnt"
+        else:
+            agg_cnt_tbl = agg_name + "_cnt"
+
+        sql_str = """
+            SELECT count(cnt), sum(cnt) FROM {inv_cnt}
+        """
+
+        query = sql.SQL(sql_str).format(inv_cnt=sql.Identifier(agg_cnt_tbl))
+        self.cur.execute(query)
+        res = self.cur.fetchone()
+        total_lists, total_elements = res[0], res[1]
+
+        max_joinable_tbls = (total_elements - total_lists) // threshold
+
+        return total_elements, max_joinable_tbls
+
+    def estimate_joinable_candidates(
+            self, tbl, spatio_temporal_key: SpatioTemporalKey, threshold: int, rows_to_sample: int = 0
+    ):
+        inv_idx_name = "{}_inv".format(spatio_temporal_key.get_idx_tbl_name())
+        sql_str = """
+            SELECT cand, count(*) as cnt
+            FROM( 
+                SELECT unnest("st_schema_list") as cand FROM {inv_idx} inv JOIN {agg_tbl} agg ON inv."val" = agg."val"
+            ) subquery
+            GROUP BY cand
+        """
+        # timesample runs pretty slow, so we use limit instead
+        #  WITH sampled_table AS (
+        #             SELECT "val"
+        #             FROM {tbl_cnt} TABLESAMPLE SYSTEM(%s)
+        #         )
+
+        if rows_to_sample > 0:
+            sql_str = """
+            WITH sampled_table AS (
+                 SELECT "val" FROM {agg_tbl} limit %s
+            )
+            SELECT cand, count(*) as cnt
+            FROM(
+                SELECT unnest("st_schema_list") as cand FROM {inv_idx} inv where inv."val" in (SELECT "val" from sampled_table)
+            ) subquery
+            GROUP BY cand
+            """
+        query = sql.SQL(sql_str).format(
+            inv_idx=sql.Identifier(inv_idx_name),
+            agg_tbl=sql.Identifier(f"{spatio_temporal_key.get_agg_tbl_name(tbl)}_cnt"),
+        )
+        if rows_to_sample == 0:
+            self.cur.execute(query)
+        else:
+            self.cur.execute(query, [rows_to_sample])
+
+        query_res = self.cur.fetchall()
+
+        result = []
+        sampled_cnt = 0
+        for t in query_res:
+            cand, overlap = tuple(t[0].split(",")), t[1]
+            tbl2_id = cand[0]
+            if tbl2_id == tbl:
+                continue
+            sampled_cnt += overlap
+            if rows_to_sample == 0 and overlap < threshold:
+                continue
+            candidate_spatio_temporal_key = spatio_temporal_key.from_attr_names(cand[1:])
+            result.append([tbl2_id, candidate_spatio_temporal_key, overlap])
+        if rows_to_sample > 0:
+            return result, sampled_cnt
+        return result, 0

@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from enum import Enum
 from utils.time_point import TEMPORAL_GRANU
 from utils.coordinate import SPATIAL_GRANU
+from utils.profile_utils import is_num_column_valid
 from typing import List
 from typing import Union
 
@@ -77,6 +78,21 @@ class SpatioTemporalKey:
         self.temporal_attr = temporal_attr
         self.spatial_attr = spatial_attr
         self.type = self.get_type()
+
+    def from_attr_names(self, attr_names: List[str]):
+        if self.type == KeyType.TIME_SPACE:
+            return SpatioTemporalKey(
+                temporal_attr=Attr(attr_names[0], self.temporal_attr.granu),
+                spatial_attr=Attr(attr_names[1], self.spatial_attr.granu),
+            )
+        elif self.type == KeyType.TIME:
+            return SpatioTemporalKey(
+                temporal_attr=Attr(attr_names[0], self.temporal_attr.granu),
+            )
+        elif self.type == KeyType.SPACE:
+            return SpatioTemporalKey(
+                spatial_attr=Attr(attr_names[0], self.spatial_attr.granu),
+            )
 
     def get_type(self):
         if self.temporal_attr and self.spatial_attr:
@@ -213,7 +229,7 @@ class Table:
     def get_variables(self, suffix: str = None) -> List[Variable]:
         variables = []
         for agg_col in self.num_columns:
-            if len(agg_col) > 56:
+            if not is_num_column_valid(agg_col) or len(agg_col) > 56:
                 continue
             variables.append(Variable(self.tbl_id, agg_col, AggFunc.AVG, "avg_{}".format(agg_col), suffix=suffix))
         variables.append(Variable(self.tbl_id, "*", AggFunc.COUNT, "count", suffix=suffix))
