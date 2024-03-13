@@ -1,5 +1,26 @@
 [WIP] Nexus QuickStart Documentation
 
+## Add a data source
+
+```python
+spatial_hierarchy1 = SpatialHierarchy('resource/chicago_shapes/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp',
+        {
+            SPATIAL_GRANU.BLOCK: 'blockce10', 
+            SPATIAL_GRANU.TRACT: 'tractce10',
+            SPATIAL_GRANU.COUNTY: 'countyfp10',
+            SPATIAL_GRANU.STATE: 'statefp10'}
+)
+spatial_hierarchy2 = SpatialHierarchy("resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp",
+        {
+            SPATIAL_GRANU.ZIPCODE: "zip"
+        }
+)
+
+API.add_data_source(data_source_name='chicago_test', 
+                    data_path='data/chicago_open_data_1m',
+                    spatial_hierarchies=[spatial_hierarchy1, spatial_hierarchy2])
+```
+
 ## Data Ingestion
 
 Step 1: create a `DBIngestor` that connects to a database. Here, we use duckdb.
@@ -12,7 +33,7 @@ Step 4: use `ingest_data_source` to ingest data to the database
 
 ```python
 from data_ingestion.data_ingestor import DBIngestor
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 
 ingestor = DBIngestor(conn_string='data/quickstart.db', engine='duckdb')

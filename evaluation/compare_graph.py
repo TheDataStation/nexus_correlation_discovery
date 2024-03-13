@@ -1,5 +1,4 @@
-
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 from graph.graph_utils import load_all_corrs, build_graph_on_vars
 import networkx as nx

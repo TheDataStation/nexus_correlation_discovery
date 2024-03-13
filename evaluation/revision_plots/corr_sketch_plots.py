@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 from utils import io_utils
 from evaluation.plot_lib.plot_utils import Stages, load_data, grouped_bar_plot
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 
 mpl.rcParams['font.family'] = 'Times New Roman'

@@ -5,7 +5,7 @@ from utils.data_model import SpatioTemporalKey, Attr
 from utils import io_utils
 from data_search.search_db import DBSearch
 from collections import defaultdict
-from utils.coordinate import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU
 
 from utils.time_point import TEMPORAL_GRANU
 import time
