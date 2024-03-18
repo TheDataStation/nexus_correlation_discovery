@@ -3,8 +3,7 @@ import pandas as pd
 import dill as pickle
 import yaml
 import os
-from utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
-from utils.time_point import TEMPORAL_GRANU
+from nexus.utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
 
 stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom",
               "census_block",
@@ -53,7 +52,7 @@ def persist_to_csv(path, df):
 
 
 def load_config(source):
-    config_path = "/home/cc/nexus_correlation_discovery/config_test.yaml"
+    config_path = "config.yaml"
     with open(config_path, "r") as f:
         yaml_data = yaml.load(f, Loader=yaml.FullLoader)
         config = yaml_data[source]

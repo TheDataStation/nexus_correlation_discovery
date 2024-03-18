@@ -1,25 +1,25 @@
 import pandas as pd
-import utils.coordinate as coordinate
-from utils.time_point import set_temporal_granu, parse_datetime, TEMPORAL_GRANU
-from utils.profile_utils import is_num_column_valid
+import nexus.utils.coordinate as coordinate
+from nexus.utils.time_point import set_temporal_granu, parse_datetime, TEMPORAL_GRANU
+from nexus.utils.profile_utils import is_num_column_valid
 import geopandas as gpd
 import os
-import utils.io_utils as io_utils
-from utils.coordinate import resolve_spatial_hierarchy, set_spatial_granu
-from utils.spatial_hierarchy import SPATIAL_GRANU
+import nexus.utils.io_utils as io_utils
+from nexus.utils.coordinate import resolve_spatial_hierarchy, set_spatial_granu
+from nexus.utils.spatial_hierarchy import SPATIAL_GRANU
 import numpy as np
 from sqlalchemy.types import *
 import time
 from tqdm import tqdm
-from utils.data_model import (
+from nexus.utils.data_model import (
     SpatioTemporalKey, Attr, Table,
 )
-import data_ingestion.db_ops as db_ops
+import nexus.data_ingestion.db_ops as db_ops
 from typing import List
-from utils.correlation_sketch_utils import murmur3_32, grm, FixedSizeMaxHeap
+from nexus.utils.correlation_sketch_utils import murmur3_32, grm, FixedSizeMaxHeap
 import traceback
-from data_ingestion.data_profiler import Profiler
-from data_ingestion.connection import ConnectionFactory
+from nexus.data_ingestion.data_profiler import Profiler
+from nexus.data_ingestion.connection import ConnectionFactory
 """
 DBIngestor ingests dataframes to a database (current implementation uses postgres)
 Here are the procedure to ingest a spatial-temporal table

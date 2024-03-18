@@ -1,5 +1,5 @@
-from db_connector.duckdb_connector import DuckDBConnector
-from db_connector.postgres_connector import PostgresConnector
+from nexus.db_connector.duckdb_connector import DuckDBConnector
+from nexus.db_connector.postgres_connector import PostgresConnector
 
 
 class ConnectionFactory:

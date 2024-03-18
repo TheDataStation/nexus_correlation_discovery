@@ -1,5 +1,3 @@
-from typing import List
-from utils.data_model import Variable, SpatioTemporalKey
 from psycopg2 import sql
 import sys
 import pandas as pd

@@ -1,7 +1,6 @@
 import requests
 import time
-from data_prep.opendata_client import OpenDataClient
-import utils.io_utils as io_utils
+import nexus.utils.io_utils as io_utils
 from os import path
 
 # from log import get_logger

@@ -1,12 +1,11 @@
-from utils import io_utils
-from utils.data_model import SpatioTemporalKey, Attr, KeyType, TEMPORAL_GRANU, Table
-from utils.spatial_hierarchy import SPATIAL_GRANU
+from nexus.utils import io_utils
+from nexus.utils.data_model import SpatioTemporalKey, Attr, KeyType, TEMPORAL_GRANU, Table
+from nexus.utils.spatial_hierarchy import SPATIAL_GRANU
 import pandas as pd
 from tqdm import tqdm
-from psycopg2 import sql
 import numpy as np
 from collections import namedtuple
-from db_connector.database_connecter import DatabaseConnectorInterface
+from nexus.db_connector.database_connecter import DatabaseConnectorInterface
 from typing import List
 """
 Collect the following stats for each aggregated table

@@ -1,9 +1,8 @@
 import os
 import pandas as pd
-from utils.io_utils import load_json, load_config, dump_json
-import re
+from nexus.utils.io_utils import load_json, load_config, dump_json
 import numpy as np
-from utils.profile_utils import is_num_column_valid
+from nexus.utils.profile_utils import is_num_column_valid
 from utils.data_model import Table, Attr
 
 def label(data: pd.DataFrame):

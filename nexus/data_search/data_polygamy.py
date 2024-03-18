@@ -1,14 +1,14 @@
 from tqdm import tqdm
-from data_search.search_db import DBSearch
-import data_search.db_ops as db_ops
+from nexus.data_search.search_db import DBSearch
+import nexus.data_search.db_ops as db_ops
 import numpy as np
-from utils import io_utils
-from utils.spatial_hierarchy import SPATIAL_GRANU
-from utils.profile_utils import is_num_column_valid
+from nexus.utils import io_utils
+from nexus.utils.spatial_hierarchy import SPATIAL_GRANU
+from nexus.utils.profile_utils import is_num_column_valid
 import math
-from data_ingestion.data_profiler import Profiler
-from utils.time_point import TEMPORAL_GRANU
-from utils.data_model import Variable, AggFunc, KeyType
+from nexus.data_ingestion.data_profiler import Profiler
+from nexus.utils.time_point import TEMPORAL_GRANU
+from nexus.utils.data_model import Variable, AggFunc, KeyType
 import time
 import collections
 
@@ -307,5 +307,5 @@ if __name__ == '__main__':
     data_polygamy.set_path(t_granu, s_granu)
     data_polygamy.create_indices(data_source, t_granu, s_granu, f'evaluation/data_polygamy_indices/chicago_1m/{t_granu}_{s_granu}/', shuffle_num=4, st_shuffle_num=2)
     end = time.time()
-    io_utils.dump_json(f'evaluation/runtime12_30/{data_source}/full_tables/polygamy_index_time_{t_granu}_{s_granu}.json', {'time': end-start})
+    io_utils.dump_json(f'evaluation/runtime12_30/{data_source}/full_tables/polygamy_index_time_{t_granu}_{s_granu}.json', {'time': end - start})
     # data_polygamy.relationships_between_tbls("ijzp-q8t2", "ijzp-q8t2_date_3", "yqn4-3th2", "yqn4-3th2_violation_date_3")

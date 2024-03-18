@@ -1,8 +1,8 @@
-from data_ingestion.data_profiler import Profiler
-from data_search.commons import FIND_JOIN_METHOD
+from nexus.data_ingestion.data_profiler import Profiler
+from nexus.data_search.commons import FIND_JOIN_METHOD
 from evaluation.persist_correlations import load_lazo_join_res
-from utils import io_utils
-from utils.coordinate import SPATIAL_GRANU
+from nexus.utils import io_utils
+from nexus.utils.coordinate import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 from evaluation.plot_lib.plot_utils import Stages, load_data, grouped_bar_plot
 import numpy as np
@@ -97,7 +97,6 @@ def find_dist_false_nagetive_joins():
 
     # plot the distribution of gt_join_costs and fn_join_costs
     import matplotlib.pyplot as plt
-    import numpy as np
     fig, axs = plt.subplots(1, 1, figsize=(15, 5))
     box_plot(axs, [gt_join_costs, fn_join_costs])
     # plt.hist(gt_join_costs, bins=50, alpha=0.5, label='gt')

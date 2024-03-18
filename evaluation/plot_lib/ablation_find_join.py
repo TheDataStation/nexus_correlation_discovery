@@ -1,6 +1,6 @@
 from plot_utils import Stages, load_data, grouped_bar_plot
 import numpy as np
-from data_search.commons import FIND_JOIN_METHOD
+from nexus.data_search.commons import FIND_JOIN_METHOD
 import matplotlib.pyplot as plt
 
 data_source = "chicago_1m"

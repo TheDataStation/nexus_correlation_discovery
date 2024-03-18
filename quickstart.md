@@ -32,7 +32,7 @@ Step 3: speicify spatial and temporal granularities
 Step 4: use `ingest_data_source` to ingest data to the database
 
 ```python
-from data_ingestion.data_ingestor import DBIngestor
+from nexus.data_ingestion.data_ingestor import DBIngestor
 from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 

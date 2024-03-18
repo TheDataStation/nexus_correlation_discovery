@@ -1,8 +1,6 @@
-from sodapy import Socrata
-import utils.io_utils as io_utils
-from os import path
+import nexus.utils.io_utils as io_utils
 from typing import List
-from utils.profile_utils import is_num_column_valid
+from nexus.utils.profile_utils import is_num_column_valid
 from opendata_client import OpenDataClient
 """
 Tables that contain spatial or temporal attributes

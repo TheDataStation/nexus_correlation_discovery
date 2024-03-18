@@ -1,6 +1,6 @@
 from utils.data_model import KeyType
-from utils import io_utils
-from data_ingestion.data_profiler import Profiler
+from nexus.utils import io_utils
+from nexus.data_ingestion.data_profiler import Profiler
 from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 

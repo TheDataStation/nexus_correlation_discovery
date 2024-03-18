@@ -1,8 +1,7 @@
-from dataclasses import dataclass
 from enum import Enum
-from utils.time_point import TEMPORAL_GRANU
-from utils.spatial_hierarchy import SPATIAL_GRANU
-from utils.profile_utils import is_num_column_valid
+from nexus.utils.time_point import TEMPORAL_GRANU
+from nexus.utils.spatial_hierarchy import SPATIAL_GRANU
+from nexus.utils.profile_utils import is_num_column_valid
 from typing import List
 from typing import Union
 

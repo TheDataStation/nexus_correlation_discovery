@@ -1,4 +1,4 @@
-import utils.io_utils as io_utils
+import nexus.utils.io_utils as io_utils
 from utils.data_model import Attr, TEMPORAL_GRANU, SPATIAL_GRANU, SpatioTemporalKey
 import random
 

@@ -5,17 +5,17 @@ from nexus.data_ingestion.data_ingestor import DBIngestor
 from nexus.data_search.search_corr import CorrSearch
 from nexus.data_search.commons import FIND_JOIN_METHOD
 import pandas as pd
-from utils.time_point import TEMPORAL_GRANU
-from utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
+from nexus.utils.time_point import TEMPORAL_GRANU
+from nexus.utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
 from nexus.utils.io_utils import load_corrs_to_df, load_corrs_from_dir, dump_json
 import os
 import json
 import nexus.utils.io_utils as io_utils
-from utils.granularity_utils import get_inverted_index_names
-from utils.data_model import Variable
+from nexus.utils.granularity_utils import get_inverted_index_names
+from nexus.utils.data_model import Variable
 from typing import List
 from sklearn import linear_model
-from corr_analysis.factor_analysis.factor_analysis import factor_analysis, build_factor_clusters
+from nexus.corr_analysis.factor_analysis.factor_analysis import factor_analysis, build_factor_clusters
 import time
 from nexus.data_ingestion.data_profiler import Profiler
 
@@ -191,7 +191,7 @@ class API:
 
     def show_raw_dataset(self, id):
         # todo: map data source to data path
-        data_path = "/home/cc/nexus_correlation_discovery/data/chicago_open_data_1m/"
+        data_path = "/data/chicago_open_data_1m/"
         df = pd.read_csv(f"{data_path}/{id}.csv")
         link = self.catalog[id]['link']
         return df, link

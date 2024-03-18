@@ -1,9 +1,9 @@
 import duckdb
 import collections
 import pandas as pd
-from utils.data_model import SpatioTemporalKey, Variable
+from nexus.utils.data_model import SpatioTemporalKey, Variable
 from typing import List, Dict
-from db_connector.database_connecter import DatabaseConnectorInterface, IndexType
+from nexus.db_connector.database_connecter import DatabaseConnectorInterface, IndexType
 
 
 class DuckDBConnector(DatabaseConnectorInterface):

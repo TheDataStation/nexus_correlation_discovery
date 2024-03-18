@@ -1,6 +1,6 @@
-from corr_analysis.graph.graph_utils import build_graph_with_labels_on_vars, filter_on_signals
+from nexus.corr_analysis.graph.graph_utils import build_graph_with_labels_on_vars, filter_on_signals
 import networkx as nx
-from utils.io_utils import load_corrs_from_dir
+from nexus.utils.io_utils import load_corrs_from_dir
 from factor_analyzer import FactorAnalyzer
 import pickle
 import pandas as pd

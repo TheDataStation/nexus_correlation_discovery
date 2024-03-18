@@ -1,12 +1,11 @@
 from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
-from data_search.search_corr import CorrSearch
+from nexus.data_search.search_corr import CorrSearch
 import time
-from utils.io_utils import dump_json
-import utils.io_utils as io_utils
+import nexus.utils.io_utils as io_utils
 from tqdm import tqdm
-from data_search.commons import FIND_JOIN_METHOD
-from data_ingestion.data_profiler import Profiler
+from nexus.data_search.commons import FIND_JOIN_METHOD
+from nexus.data_ingestion.data_profiler import Profiler
 from enum import Enum
  
 class Method(Enum):

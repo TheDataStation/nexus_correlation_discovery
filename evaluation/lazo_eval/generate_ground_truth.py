@@ -2,8 +2,8 @@
 from tqdm import tqdm
 
 from utils.data_model import SpatioTemporalKey, Attr
-from utils import io_utils
-from data_search.search_db import DBSearch
+from nexus.utils import io_utils
+from nexus.data_search.search_db import DBSearch
 from collections import defaultdict
 from utils.spatial_hierarchy import SPATIAL_GRANU
 

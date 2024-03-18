@@ -1,12 +1,12 @@
 # dump join key columns from postgres for ingestion into lazo
 
-from data_ingestion.data_profiler import Profiler
-from data_search.search_db import DBSearch
+from nexus.data_ingestion.data_profiler import Profiler
+from nexus.data_search.search_db import DBSearch
 from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
-from utils import io_utils
+from nexus.utils import io_utils
 from psycopg2 import sql
-import os
+
 
 def is_tbl_exist(cur, tbl_name):
     cur.execute(f"SELECT EXISTS(SELECT * FROM information_schema.tables WHERE table_name='{tbl_name}')")

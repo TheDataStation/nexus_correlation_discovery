@@ -1,11 +1,10 @@
-from typing import List, Dict
-from utils.data_model import Attr, Variable, SpatioTemporalKey, KeyType
+from typing import List
+from nexus.utils.data_model import Attr, Variable, SpatioTemporalKey, KeyType
 from psycopg2 import sql
 import pandas as pd
-from data_ingestion.db_ops import select_columns
+from nexus.data_ingestion.db_ops import select_columns
 import shelve
 from collections import Counter
-import collections
 
 """
 Intersection Query

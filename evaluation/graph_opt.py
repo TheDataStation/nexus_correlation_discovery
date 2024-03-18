@@ -18,7 +18,7 @@ import itertools
 from tqdm import tqdm
 import time
 import networkx as nx
-from utils.io_utils import dump_json
+from nexus.utils.io_utils import dump_json
 import os
 from copy import deepcopy
 

@@ -1,8 +1,8 @@
-from utils.coordinate import SPATIAL_GRANU
+from nexus.utils.coordinate import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
-from data_search.search_db import DBSearch
-from data_ingestion.db_ops import select_columns
-from data_search.db_ops import estimate_joinable_candidates
+from nexus.data_search.search_db import DBSearch
+from nexus.data_ingestion.db_ops import select_columns
+from nexus.data_search.db_ops import estimate_joinable_candidates
 import psycopg2
 import numpy as np
 import pandas as pd

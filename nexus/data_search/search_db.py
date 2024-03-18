@@ -3,9 +3,9 @@ from typing import List
 from psycopg2 import sql
 import itertools
 import psycopg2
-from utils.coordinate import SPATIAL_GRANU
-from utils.time_point import TEMPORAL_GRANU
-from utils.data_model import Attr, Variable, SpatioTemporalKey
+from nexus.utils.coordinate import SPATIAL_GRANU
+from nexus.utils.time_point import TEMPORAL_GRANU
+from nexus.utils.data_model import Attr, Variable, SpatioTemporalKey
 
 
 class DBSearch:

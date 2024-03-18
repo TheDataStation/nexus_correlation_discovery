@@ -1,7 +1,6 @@
 from pandas import Timestamp
 from enum import Enum
 import pandas as pd
-from typing import List
 
 
 class TEMPORAL_GRANU(Enum):

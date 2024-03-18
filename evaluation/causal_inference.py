@@ -1,5 +1,5 @@
 import psycopg2
-from data_ingestion import db_ops
+from nexus.data_ingestion import db_ops
 
 conn_str = "postgresql://yuegong@localhost/st_tables"
 conn = psycopg2.connect(conn_str)

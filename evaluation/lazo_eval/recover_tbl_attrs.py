@@ -1,5 +1,5 @@
-from data_ingestion.data_ingestor import DBIngestor
-from utils import io_utils
+from nexus.data_ingestion.data_ingestor import DBIngestor
+from nexus.utils import io_utils
 import os
 from utils.data_model import Table
 import numpy as np

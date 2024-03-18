@@ -1,8 +1,8 @@
-import utils.io_utils as io_utils
+import nexus.utils.io_utils as io_utils
 import time
 from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
-from data_ingestion.data_ingestor import DBIngestor
+from nexus.data_ingestion.data_ingestor import DBIngestor
 import pandas as pd
 
 def ingest_chicago_time_sampling():

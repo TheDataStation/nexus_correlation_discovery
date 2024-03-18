@@ -1,4 +1,4 @@
-from utils import io_utils
+from nexus.utils import io_utils
 from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 import matplotlib.pyplot as plt

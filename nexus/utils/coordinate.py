@@ -5,7 +5,7 @@ import pandas as pd
 from shapely.geometry import Point
 import geopandas as gpd
 from typing import List
-from utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
+from nexus.utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
 
 
 class Coordinate:

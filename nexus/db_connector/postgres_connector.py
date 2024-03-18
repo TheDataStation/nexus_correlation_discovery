@@ -3,10 +3,10 @@ import collections
 from sqlalchemy import create_engine
 import psycopg2
 from io import StringIO
-from utils.data_model import Table, SpatioTemporalKey, Variable
+from nexus.utils.data_model import SpatioTemporalKey, Variable
 from typing import List, Dict
 from psycopg2 import sql
-from db_connector.database_connecter import DatabaseConnectorInterface, IndexType
+from nexus.db_connector.database_connecter import DatabaseConnectorInterface, IndexType
 
 
 class PostgresConnector(DatabaseConnectorInterface):

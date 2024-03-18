@@ -1,14 +1,14 @@
-import utils.io_utils as io_utils
+import nexus.utils.io_utils as io_utils
 # from data_ingestion.index_builder_raw import DBIngestor, Table
-from data_ingestion.data_ingestor import DBIngestor
+from nexus.data_ingestion.data_ingestor import DBIngestor
 from tqdm import tqdm
 import time
-from utils.coordinate import SPATIAL_GRANU
-import utils.coordinate as coordinate
+from nexus.utils.coordinate import SPATIAL_GRANU
+import nexus.utils.coordinate as coordinate
 from utils.time_point import TEMPORAL_GRANU
 from utils.data_model import Attr, Table
-from data_ingestion.connection import ConnectionFactory
-from data_ingestion.data_profiler import Profiler
+from nexus.data_ingestion.connection import ConnectionFactory
+from nexus.data_ingestion.data_profiler import Profiler
 
 
 # conn_string = "postgresql://yuegong@localhost/cdc_open_data"

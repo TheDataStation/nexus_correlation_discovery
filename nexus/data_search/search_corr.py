@@ -1,31 +1,30 @@
-from data_ingestion.connection import ConnectionFactory
-from data_search.data_polygamy import DataPolygamy
-import utils.io_utils as io_utils
+from nexus.data_ingestion.connection import ConnectionFactory
+from nexus.data_search.data_polygamy import DataPolygamy
+import nexus.utils.io_utils as io_utils
 import numpy as np
-from utils.data_model import (
-    Attr,
+from nexus.utils.data_model import (
     Table,
     Variable,
     AggFunc,
     SpatioTemporalKey,
     KeyType,
 )
-from data_ingestion.data_profiler import Profiler
+from nexus.data_ingestion.data_profiler import Profiler
 from tqdm import tqdm
 import time
 import pandas as pd
 import os
-from utils import corr_utils
+from nexus.utils import corr_utils
 from collections import defaultdict
 from dataclasses import dataclass
 from typing import List
-import data_search.db_ops as db_ops
+import nexus.data_search.db_ops as db_ops
 import math
-from data_search.commons import FIND_JOIN_METHOD
-from utils.coordinate import SPATIAL_GRANU
-from utils.time_point import TEMPORAL_GRANU
+from nexus.data_search.commons import FIND_JOIN_METHOD
+from nexus.utils.coordinate import SPATIAL_GRANU
+from nexus.utils.time_point import TEMPORAL_GRANU
 from scipy.stats import pearsonr, spearmanr, kendalltau
-from utils.profile_utils import is_num_column_valid
+from nexus.utils.profile_utils import is_num_column_valid
 import pingouin as pg
 
 # import warnings

@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import utils.io_utils as io_utils
+import nexus.utils.io_utils as io_utils
 from enum import Enum
 
 

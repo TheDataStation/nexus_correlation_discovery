@@ -1,4 +1,4 @@
-from data_prep.table_downloader import TableDownloader
+from nexus.data_prep.table_downloader import TableDownloader
 from config import ROOT_DIR, APP_TOKEN
 from os import path
 

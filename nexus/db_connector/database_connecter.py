@@ -1,7 +1,7 @@
 from enum import Enum
 
 import pandas as pd
-from utils.data_model import Table, SpatioTemporalKey, Variable
+from nexus.utils.data_model import Table, SpatioTemporalKey, Variable
 from typing import List, Dict
 
 

@@ -3,7 +3,7 @@ import pandas as pd
 from graph.graph_utils import remove_bad_cols
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-from utils import io_utils
+from nexus.utils import io_utils
 from evaluation.plot_lib.plot_utils import Stages, load_data, grouped_bar_plot
 from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU

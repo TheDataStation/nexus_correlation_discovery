@@ -1,14 +1,14 @@
 import time
-from utils.coordinate import SPATIAL_GRANU
+from nexus.utils.coordinate import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
-from data_search.search_corr import CorrSearch
-from data_search.search_db import DBSearch
-from utils.io_utils import dump_json, load_config
+from nexus.data_search.search_corr import CorrSearch
+from nexus.data_search.search_db import DBSearch
+from nexus.utils.io_utils import load_config
 from utils.data_model import Attr
 import pandas as pd
 import os
 import utils
-from data_search.commons import FIND_JOIN_METHOD
+from nexus.data_search.commons import FIND_JOIN_METHOD
 from collections import defaultdict
 
 db_search = DBSearch("postgresql://yuegong@localhost/st_tables")
@@ -133,7 +133,7 @@ def test_count_corr_between_two_tbls():
 
 def test_count_rows():
     directory = "/Users/yuegong/Documents/spatio_temporal_alignment/result/corr_T_GRANU.DAY_S_GRANU.BLOCK/"
-    tbl_attrs = utils.io_utils.load_json(ATTR_PATH)
+    tbl_attrs = nexus.utils.io_utils.load_json(ATTR_PATH)
     res = {}
     total_cnt = 0
     for filename in os.listdir(directory):

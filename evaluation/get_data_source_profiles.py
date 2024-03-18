@@ -1,4 +1,4 @@
-from utils import io_utils
+from nexus.utils import io_utils
 
 data_source_metadata = "resource/chicago_1m/tbl_attrs_chicago_1m.json"
 # data_source_metadata = "resource/cdc_1m/tbl_attrs_cdc_1m.json"

@@ -1,65 +1,69 @@
-from utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
-from utils.time_point import TEMPORAL_GRANU
-from utils.data_model import Variable
-from nexus_api import API
-from data_ingestion.connection import ConnectionFactory
-from data_search.commons import FIND_JOIN_METHOD
-from data_ingestion.data_ingestor import DBIngestor
-# conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
-# nexus_api = API(conn_str)
+from nexus.utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
+from nexus.utils.time_point import TEMPORAL_GRANU
+from nexus.utils.data_model import Variable
+from nexus.nexus_api import API
+from nexus.data_ingestion.connection import ConnectionFactory
+
 
 def test_add_data_sources():
-    spatial_hierarchy1 = SpatialHierarchy('resource/chicago_shapes/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp',
+    spatial_hierarchy1 = SpatialHierarchy('resource/chicago_shapes/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67'
+                                          '-86ff-bf4de675094e.shp',
                                           {
-                                              SPATIAL_GRANU.BLOCK: 'blockce10', 
+                                              SPATIAL_GRANU.BLOCK: 'blockce10',
                                               SPATIAL_GRANU.TRACT: 'tractce10',
                                               SPATIAL_GRANU.COUNTY: 'countyfp10',
                                               SPATIAL_GRANU.STATE: 'statefp10'})
-    spatial_hierarchy2 = SpatialHierarchy("resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp",
+    spatial_hierarchy2 = SpatialHierarchy("resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554"
+                                          "-4a8c-b482-7e49844799cf.shp",
                                           {
                                               SPATIAL_GRANU.ZIPCODE: "zip"
                                           })
     API.add_data_source('chicago_test', 'data/chicago_open_data_1m/', [spatial_hierarchy1, spatial_hierarchy2])
+
 
 def test_ingest_data_source_with_multiple_spatial_hierarchies():
     data_sources = ['chicago_test']
     conn_str = 'data/test.db'
     temporal_granu_l = []
     spatial_granu_l = [SPATIAL_GRANU.ZIPCODE]
-    API.ingest_data(conn_str=conn_str, engine='duckdb', data_sources=data_sources, 
+    API.ingest_data(conn_str=conn_str, engine='duckdb', data_sources=data_sources,
                     temporal_granu_l=temporal_granu_l, spatial_granu_l=spatial_granu_l,
                     persist=True)
-   
+
+
 def test_find_correlations_from():
     conn_str = 'data/quickstart.db'
-    nexus_api = API(conn_str)  
+    nexus_api = API(conn_str, data_sources=['chicago_zipcode', 'asthma', 'chicago_factors'])
     dataset = 'asthma'
     # asthma data only has spatial attribute, thus the temporal granularity is set to ALL.
     temporal_granularity, spatial_granularity = TEMPORAL_GRANU.ALL, SPATIAL_GRANU.ZIPCODE
     overlap_threshold = 5
     correlation_threshold = 0.5
     # you can change correlation_type to 'spearman' or 'kendall'
-    df = nexus_api.find_correlations_from(dataset, temporal_granularity, spatial_granularity, 
-                                        overlap_threshold, correlation_threshold, 
-                                        correlation_type="pearson")
+    df = nexus_api.find_correlations_from(dataset, temporal_granularity, spatial_granularity,
+                                          overlap_threshold, correlation_threshold,
+                                          correlation_type="pearson")
     print(len(df))
+
 
 def test_find_correlations_with_control():
     conn_str = 'data/quickstart.db'
-    nexus_api = API(conn_str)  
+    nexus_api = API(conn_str)
     dataset = 'asthma'
     temporal_granularity, spatial_granularity = TEMPORAL_GRANU.ALL, SPATIAL_GRANU.ZIPCODE
     overlap_threshold = 5
     correlation_threshold = 0.5
     control_variables = [Variable('chicago_income_by_zipcode_zipcode_6', 'avg_income_household_median')]
-    df_control = nexus_api.find_correlations_from(dataset, temporal_granularity, spatial_granularity, 
-                                                overlap_threshold, correlation_threshold, 
-                                                correlation_type="pearson", control_variables=control_variables)
+    df_control = nexus_api.find_correlations_from(dataset, temporal_granularity, spatial_granularity,
+                                                  overlap_threshold, correlation_threshold,
+                                                  correlation_type="pearson", control_variables=control_variables)
     print(len(df_control))
+
 
 def test_show_catalog():
     catalog = nexus_api.show_catalog()
     print(catalog)
+
 
 def test_find_all_correlations_postgres_all(find_join_method):
     conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
@@ -82,9 +86,9 @@ def test_find_all_correlations_postgres_all(find_join_method):
     control_vars = []
     # persist_path = f'tmp/chicago_open_data_zipcode_control_for_income_population/'
     persist_path = None
-    df = nexus_api.find_all_correlations(t_granu, s_granu, 
-                                         overlap_t, r_t, 
-                                         persist_path=persist_path, 
+    df = nexus_api.find_all_correlations(t_granu, s_granu,
+                                         overlap_t, r_t,
+                                         persist_path=persist_path,
                                          correlation_type="pearson", control_variables=control_vars,
                                          find_join_method=find_join_method)
     print(len(df))
@@ -99,6 +103,7 @@ def test_find_all_correlations_postgres_all(find_join_method):
     # df = nexus_api.find_all_correlations(t_granu, s_granu, overlap_t, r_t, persist_path=persist_path, corr_type="pearson", control_vars=control_vars)
     # print(len(df))
 
+
 def test_find_all_correlations_duckdb_all(find_join_method):
     conn_str = 'data/quickstart.db'
     nexus_api = API(conn_str)
@@ -107,10 +112,12 @@ def test_find_all_correlations_duckdb_all(find_join_method):
     overlap_threshold = 10
     correlation_threshold = 0.6
     persist_path = 'tmp/test/'
-    df = nexus_api.find_all_correlations(temporal_granularity, spatial_granularity, 
-                                        overlap_threshold, correlation_threshold, 
-                                        persist_path=persist_path, correlation_type="pearson", find_join_method=find_join_method)
+    df = nexus_api.find_all_correlations(temporal_granularity, spatial_granularity,
+                                         overlap_threshold, correlation_threshold,
+                                         persist_path=persist_path, correlation_type="pearson",
+                                         find_join_method=find_join_method)
     print(len(df))
+
 
 def test_control_for_variables():
     dataset = 'asthma'
@@ -119,21 +126,26 @@ def test_control_for_variables():
     r_t = 0.5
     # control_vars = [Var('chicago_zipcode_population_zipcode_6', 'avg_population')]
     control_vars = [Var('chicago_income_by_zipcode_zipcode_6', 'avg_income_household_median')]
-    df = nexus_api.find_correlations_from(dataset, t_granu, s_granu, overlap_t, r_t, corr_type="pearson", control_variables=control_vars)
+    df = nexus_api.find_correlations_from(dataset, t_granu, s_granu, overlap_t, r_t, corr_type="pearson",
+                                          control_variables=control_vars)
     print(len(df))
+
 
 def test_load_corrs():
     df = nexus_api.load_corrs_from_dir('evaluation/correlations2/chicago_1m_T_GRANU.MONTH_S_GRANU.TRACT/')
     print(len(df))
 
+
 def test_duckdb_migration_correctness():
     import duckdb
     import pandas as pd
     duckdb_conn = duckdb.connect('data/quickstart.db')
-    duckdb_inverted_index = duckdb_conn.execute("SELECT val, array_length(spatio_temporal_keys) as length FROM 'space_6_inv'").df()
+    duckdb_inverted_index = duckdb_conn.execute(
+        "SELECT val, array_length(spatio_temporal_keys) as length FROM 'space_6_inv'").df()
     postgres_conn = ConnectionFactory.create_connection("postgresql://yuegong@localhost/chicago_1m_zipcode", 'postgres')
     postgres_conn.cur.execute("SELECT val, cardinality(st_schema_list) as length FROM space_6_inv")
-    postgres_inverted_index = pd.DataFrame(postgres_conn.cur.fetchall(), columns=[desc[0] for desc in postgres_conn.cur.description])
+    postgres_inverted_index = pd.DataFrame(postgres_conn.cur.fetchall(),
+                                           columns=[desc[0] for desc in postgres_conn.cur.description])
     # iterate each row in duckdb_inverted_index
     maps1 = {}
     for _, row in duckdb_inverted_index.iterrows():
@@ -144,13 +156,14 @@ def test_duckdb_migration_correctness():
     print(maps1 == maps2)
     # print(duckdb_inverted_index.equals(postgres_inverted_index))
 
+
 if __name__ == '__main__':
     # test_control_for_variables()
     # test_load_corrs()
     # test_find_correlations_with_control()
-    # test_find_correlations_from()
+    test_find_correlations_from()
     # find_join_method = FIND_JOIN_METHOD.JOIN_ALL
     # test_find_all_correlations_duckdb_all(find_join_method)
     # test_find_all_correlations_postgres_all(find_join_method)
     # test_add_data_sources()
-    test_ingest_data_source_with_multiple_spatial_hierarchies()
+    # test_ingest_data_source_with_multiple_spatial_hierarchies()

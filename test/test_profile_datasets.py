@@ -1,4 +1,4 @@
-from data_ingestion.data_profiler import Profiler
+from nexus.data_ingestion.data_profiler import Profiler
 from utils.data_model import TEMPORAL_GRANU, SPATIAL_GRANU
 
 

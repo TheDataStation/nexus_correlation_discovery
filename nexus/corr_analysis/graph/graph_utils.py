@@ -4,7 +4,7 @@ import os
 import networkx as nx
 import pandas as pd
 import pickle
-from utils.io_utils import load_json, dump_json, remove_bad_cols
+from nexus.utils.io_utils import load_json, dump_json, remove_bad_cols
 import time
 from collections import defaultdict
 

@@ -1,4 +1,5 @@
-from utils import io_utils
+from nexus.utils import io_utils
+
 
 def add_domain(path, domain, out_path):
     # add domain attribute to all metadata

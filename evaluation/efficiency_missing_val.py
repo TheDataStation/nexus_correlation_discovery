@@ -1,11 +1,11 @@
-import utils.io_utils as io_utils
-from data_search.search_corr import CorrSearch
+import nexus.utils.io_utils as io_utils
+from nexus.data_search.search_corr import CorrSearch
 import time
 from tqdm import tqdm
-from data_search.commons import FIND_JOIN_METHOD
+from nexus.data_search.commons import FIND_JOIN_METHOD
 from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
-from data_ingestion.data_profiler import Profiler
+from nexus.data_ingestion.data_profiler import Profiler
 
 """
 Find Join method: Cost Model

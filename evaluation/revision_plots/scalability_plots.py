@@ -1,10 +1,8 @@
 import pandas as pd
-from matplotlib import pyplot as plt
-from data_search.commons import FIND_JOIN_METHOD
-from utils.coordinate import SPATIAL_GRANU
+from nexus.data_search.commons import FIND_JOIN_METHOD
+from nexus.utils.coordinate import SPATIAL_GRANU
 
 from utils.time_point import TEMPORAL_GRANU
-from utils.io_utils import load_json
 from evaluation.plot_lib.plot_utils import Stages, load_data
 import matplotlib.pyplot as plt
 import matplotlib as mpl

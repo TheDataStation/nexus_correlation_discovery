@@ -1,7 +1,7 @@
 from typing import List
 
-from utils.spatial_hierarchy import SPATIAL_GRANU
-from utils.time_point import TEMPORAL_GRANU
+from nexus.utils.spatial_hierarchy import SPATIAL_GRANU
+from nexus.utils.time_point import TEMPORAL_GRANU
 
 
 def get_inverted_index_names(temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU]):

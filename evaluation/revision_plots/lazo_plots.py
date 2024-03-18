@@ -1,11 +1,11 @@
 from matplotlib import pyplot as plt, ticker
-from data_ingestion.data_profiler import Profiler
-from utils import io_utils
+from nexus.data_ingestion.data_profiler import Profiler
+from nexus.utils import io_utils
 from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
 import matplotlib as mpl
 import pandas as pd
-from evaluation.plot_lib.plot_utils import Stages, load_data, grouped_bar_plot
+from evaluation.plot_lib.plot_utils import Stages, load_data
 from evaluation.revision_plots.lazo_plot_utils import plot_clustered_stacked
 from evaluation.persist_correlations import load_lazo_join_res
 

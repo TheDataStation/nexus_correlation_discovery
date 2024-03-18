@@ -24,39 +24,51 @@ chicago_1m:
 
 asthma:
     data_path: "data/asthma/"
-    shape_path: "resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp"
-    geo_chain: "zipcode"
-    geo_keys: "zip"
     meta_path: "resource/asthma/asthma_data.json"
     attr_path: "resource/asthma/tbl_attrs.json"
     profile_path: "resource/asthma/profile.json"
     col_stats_path: "resource/asthma/col_stats.json"
     idx_tbl_path: "resource/asthma/idx_tbl_names.json"
     failed_tbl_path: "resource/asthma/failed_tbl_ids.json"
+    spatial_hierarchies:
+    - granularity_map:
+        ZIPCODE: zip
+      shape_file_path: resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp
+
 
 chicago_factors:
     data_path: "data/chicago_factors/"
-    shape_path: "resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp"
-    geo_chain: "zipcode"
-    geo_keys: "zip"
     meta_path: "resource/chicago_factors/chicago_factors_data.json"
     attr_path: "resource/chicago_factors/tbl_attrs.json"
     profile_path: "resource/chicago_factors/profile.json"
     col_stats_path: "resource/chicago_factors/col_stats.json"
     idx_tbl_path: "resource/chicago_factors/idx_tbl_names.json"
     failed_tbl_path: "resource/chicago_factors/failed_tbl_ids.json"
+    spatial_hierarchies:
+    - granularity_map:
+        ZIPCODE: zip
+      shape_file_path: resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp
+
 
 chicago_zipcode:
     data_path: "data/chicago_open_data_1m/"
-    shape_path: "resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp"
-    geo_chain: "zipcode"
-    geo_keys: "zip"
     meta_path: "resource/chicago_1m_zipcode/chicago_open_data.json"
     attr_path: "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json"
     profile_path: "resource/chicago_1m_zipcode/profile_chicago_1m.json"
     col_stats_path: "resource/chicago_1m_zipcode/col_stats_chicago_1m.json"
     idx_tbl_path: "resource/chicago_1m_zipcode/idx_tbl_names.json"
     failed_tbl_path: "resource/chicago_1m_zipcode/failed_tbl_ids.json"
+    spatial_hierarchies:
+    - granularity_map:
+        BLOCK: blockce10
+        COUNTY: countyfp10
+        STATE: statefp10
+        TRACT: tractce10
+      shape_file_path: resource/chicago_shapes/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp
+    - granularity_map:
+        ZIPCODE: zip
+      shape_file_path: resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp
+
 
 chicago_open_data:
     db_path: "postgresql://yuegong@localhost/opendata"

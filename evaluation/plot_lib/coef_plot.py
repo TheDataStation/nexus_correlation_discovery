@@ -1,4 +1,4 @@
-from utils.io_utils import load_json
+from nexus.utils.io_utils import load_json
 import matplotlib.pyplot as plt
 
 path = '/home/cc/nexus_correlation_discovery/evaluation/run_time/chicago_1m/100_st_schemas/cnt_ratio.json'

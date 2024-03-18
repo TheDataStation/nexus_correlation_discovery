@@ -1,7 +1,7 @@
 import geopandas as gpd
 from tqdm import tqdm
-from utils.coordinate import SPATIAL_GRANU
-from utils.io_utils import dump_json, load_json
+from nexus.utils.coordinate import SPATIAL_GRANU
+from nexus.utils.io_utils import dump_json
 from utils.time_point import TEMPORAL_GRANU
 
 def build_spatial_graph(shapefile_path):

@@ -1,4 +1,4 @@
-from utils.io_utils import load_json
+from nexus.utils.io_utils import load_json
 def compare_two_labels():
     ground_truth_catalog = load_json('resource/chicago_test/chicago_test_gt.json')
     test_catalog = load_json('resource/chicago_test/chicago_test.json')

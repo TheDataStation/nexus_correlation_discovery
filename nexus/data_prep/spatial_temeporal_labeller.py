@@ -1,9 +1,9 @@
 import pandas as pd
-from utils.io_utils import load_json
+from nexus.utils.io_utils import load_json
 import re
 import numpy as np
-from utils.profile_utils import is_num_column_valid
-from utils.data_model import Table, Attr
+from nexus.utils.profile_utils import is_num_column_valid
+from utils.data_model import Attr
 
 class SpatialTemporalLabeller:
     def __init__(self):

@@ -1,8 +1,6 @@
-from plot_utils import Stages, load_data, grouped_bar_plot
-import numpy as np
-from data_search.commons import FIND_JOIN_METHOD
+from plot_utils import load_data, grouped_bar_plot
 import matplotlib.pyplot as plt
-import utils.io_utils as io_utils
+import nexus.utils.io_utils as io_utils
 
 def load_data(data_path, threshold, lowest):
     data = io_utils.load_json(f"{data_path}/result_{lowest}.json")

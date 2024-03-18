@@ -3,7 +3,7 @@ import pandas as pd
 from graph.graph_utils import remove_bad_cols
 from utils.time_point import TEMPORAL_GRANU
 from utils.spatial_hierarchy import SPATIAL_GRANU
-from utils.io_utils import dump_json
+from nexus.utils.io_utils import dump_json
 stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom", "census_block", 
               "stnoto", "stnofrom", "lon", "lat", "northing", "easting", "property_group", "insepctnumber", 'primarykey','beat_',
               "north", "south", "west", "east", "beat_of_occurrence", "lastinspectionnumber", "fax", "latest_dist_res", "majority_dist", "latest_dist",

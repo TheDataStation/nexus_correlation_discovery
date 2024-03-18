@@ -1,12 +1,11 @@
-import time
-from data_ingestion.data_profiler import Profiler
-import utils.io_utils as io_utils
+from nexus.data_ingestion.data_profiler import Profiler
+import nexus.utils.io_utils as io_utils
 import time
 from utils.spatial_hierarchy import SPATIAL_GRANU
 from utils.time_point import TEMPORAL_GRANU
-from data_ingestion.data_ingestor import DBIngestor
+from nexus.data_ingestion.data_ingestor import DBIngestor
 from tqdm import tqdm
-from utils.io_utils import dump_json
+from nexus.utils.io_utils import dump_json
 
 if __name__ == "__main__":
     data_source = "chicago_1m"
