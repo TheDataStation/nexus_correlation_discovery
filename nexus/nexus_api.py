@@ -1,23 +1,23 @@
 import yaml
 
-from data_ingestion.connection import ConnectionFactory
-from data_ingestion.data_ingestor import DBIngestor
-from data_search.search_corr import CorrSearch
-from data_search.commons import FIND_JOIN_METHOD
+from nexus.data_ingestion.connection import ConnectionFactory
+from nexus.data_ingestion.data_ingestor import DBIngestor
+from nexus.data_search.search_corr import CorrSearch
+from nexus.data_search.commons import FIND_JOIN_METHOD
 import pandas as pd
 from utils.time_point import TEMPORAL_GRANU
 from utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
-from utils.io_utils import load_corrs_to_df, load_corrs_from_dir, dump_json
+from nexus.utils.io_utils import load_corrs_to_df, load_corrs_from_dir, dump_json
 import os
 import json
-import utils.io_utils as io_utils
+import nexus.utils.io_utils as io_utils
 from utils.granularity_utils import get_inverted_index_names
 from utils.data_model import Variable
-from typing import List, Dict
+from typing import List
 from sklearn import linear_model
 from corr_analysis.factor_analysis.factor_analysis import factor_analysis, build_factor_clusters
 import time
-from data_ingestion.data_profiler import Profiler
+from nexus.data_ingestion.data_profiler import Profiler
 
 
 class API:
