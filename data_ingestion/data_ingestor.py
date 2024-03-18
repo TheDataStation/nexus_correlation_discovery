@@ -34,7 +34,7 @@ Here are the procedure to ingest a spatial-temporal table
 class DBIngestor:
     def __init__(self, conn_string: str, engine='postgres', mode='no_cross') -> None:
         self.engine_type = engine
-        self.db_engine = ConnectionFactory.create_connection(conn_string, engine)
+        self.db_engine = ConnectionFactory.create_connection(conn_string, engine, read_only=False)
         self.mode = mode
         self.sketch = False
 
@@ -77,11 +77,6 @@ class DBIngestor:
         inverted_index_tables = []
 
         data_source_config = io_utils.load_config(data_source)
-
-        geo_chain = data_source_config["geo_chain"]
-        geo_keys = data_source_config["geo_keys"]
-        coordinate.resolve_geo_chain(geo_chain, geo_keys)
-
         catalog_path = data_source_config["meta_path"]
         data_catalog = io_utils.load_json(catalog_path)
         if retry_list is not None:
@@ -117,7 +112,6 @@ class DBIngestor:
                     tbl_info = self.ingest_tbl(tbl, temporal_granu_l, spatial_granu_l,
                                     spatial_range, temporal_range,
                                     data_source_config, inverted_index_tables)
-                    self.create_cnt_tbl(tbl, temporal_granu_l, spatial_granu_l)
                     previous_failed_tbls.remove(tbl.tbl_id)
                 except Exception as e:
                     traceback.print_exc()
@@ -126,7 +120,6 @@ class DBIngestor:
                     tbl_info = self.ingest_tbl(tbl, temporal_granu_l, spatial_granu_l,
                                     spatial_range, temporal_range,
                                     data_source_config, inverted_index_tables)
-                    self.create_cnt_tbl(tbl, temporal_granu_l, spatial_granu_l)
                 except Exception as e:
                     failed_tables.append(tbl.tbl_id)
                     traceback.print_exc()
@@ -167,13 +160,15 @@ class DBIngestor:
             created_inverted_indices.add(inv_idx_name)
 
     def create_count_tables_for_aggregated_tables_in_a_data_source(self, data_source: str,
-                                                                   temporal_granu: TEMPORAL_GRANU,
-                                                                   spatial_granu: SPATIAL_GRANU):
+                                                                   temporal_granu_l: List[TEMPORAL_GRANU],
+                                                                   spatial_granu_l: List[SPATIAL_GRANU]):
         data_source_config = io_utils.load_config(data_source)
         data_catalog = io_utils.load_json(data_source_config["attr_path"])
-        spatio_temporal_keys = Profiler.load_all_spatio_temporal_keys(data_catalog, temporal_granu, spatial_granu)
-        for tbl_id, spatio_temporal_key in spatio_temporal_keys:
-            self.db_engine.create_cnt_tbl_for_agg_tbl(tbl_id, spatio_temporal_key)
+        for tbl_id, _ in data_catalog.items():
+            table = Table.table_from_tbl_id(tbl_id, data_catalog)
+            spatio_temporal_keys = table.get_spatio_temporal_keys(temporal_granu_l, spatial_granu_l, mode=self.mode)
+            for tbl_id, spatio_temporal_key in spatio_temporal_keys:
+                self.db_engine.create_cnt_tbl_for_agg_tbl(tbl_id, spatio_temporal_key)
 
     def create_cnt_tbl(self, tbl: Table,
                        temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU]):
@@ -193,10 +188,7 @@ class DBIngestor:
         if len(tbl.temporal_attrs) == 0 and len(tbl.spatial_attrs) == 0:
             print("not a valid spatio-temporal table")
             return
-        if len(coordinate.supported_chain) == 0:
-            geo_chain = data_source_config["geo_chain"]
-            geo_keys = data_source_config["geo_keys"]
-            coordinate.resolve_geo_chain(geo_chain, geo_keys)
+        
         tbl_path = os.path.join(data_source_config['data_path'], f"{tbl.tbl_id}.csv")
         print("reading csv")
         df = io_utils.read_csv(tbl_path)
@@ -334,6 +326,14 @@ class DBIngestor:
         t_attrs_success = []
         s_attrs_success = []
         df_schema = {}
+        all_spatial_hierarchies = data_source_config['spatial_hierarchies']
+        # choose the relevant spatial hierarchies
+        spatial_hierarchies = []
+        for s_granu in spatial_granu_l:
+            for spatial_hierarchy in all_spatial_hierarchies:
+                if s_granu.name in spatial_hierarchy.granularity_map:
+                    spatial_hierarchies.append(spatial_hierarchy)
+                    break
         for t_attr in t_attrs:
             if len(temporal_granu_l) == 0:
                 break
@@ -376,7 +376,7 @@ class DBIngestor:
                     .set_crs(epsg=4326, inplace=True)
                 )
 
-                df_resolved = resolve_spatial_hierarchy(data_source_config['shape_path'], gdf)
+                df_resolved = resolve_spatial_hierarchy(gdf, spatial_hierarchies)
 
                 # df_resolved can be none meaning there is no point falling into the shape file
                 if df_resolved is None:
@@ -391,7 +391,9 @@ class DBIngestor:
                         df[new_attr] = df[s_attr.name].astype(int).astype(str)
             s_attrs_success.append(s_attr)
         return df, df_schema, t_attrs_success, s_attrs_success
-
+    
+    def __del__(self):
+        self.db_engine.close()
 
 if __name__ == "__main__":
     # ingest asthma dataset

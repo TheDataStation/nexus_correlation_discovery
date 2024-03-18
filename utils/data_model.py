@@ -182,6 +182,16 @@ class Table:
         self.num_columns = num_columns
         self.link = link
     
+    def to_json(self):
+        return {
+            "domain": self.domain,
+            "name": self.tbl_name,
+            "t_attrs": [t_attr.__dict__ for t_attr in self.temporal_attrs],
+            "s_attrs": [s_attr.__dict__ for s_attr in self.spatial_attrs],
+            "num_columns": self.num_columns,
+            "link": self.link
+        }
+
     @staticmethod
     def table_from_tbl_id(tbl_id: str, data_catalog):
         temporal_attrs = [Attr(attr["name"], attr["granu"]) for attr in data_catalog[tbl_id]['t_attrs']]

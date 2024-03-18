@@ -17,6 +17,10 @@ class SpatialHierarchy:
         self.shape_file_path = shape_file_path
         self.granularity_map = granularity_map
 
+    @staticmethod
+    def from_yaml(config):
+        return SpatialHierarchy(config["shape_file_path"], config["granularity_map"])
+
     def to_yaml(self):
         return {
             "shape_file_path": self.shape_file_path,

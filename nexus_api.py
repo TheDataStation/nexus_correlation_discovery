@@ -22,7 +22,7 @@ from data_ingestion.data_profiler import Profiler
 
 class API:
     def __init__(self, connection_string, engine='duckdb',
-                 data_sources=['chicago_zipcode', 'asthma', 'chicago_factors'], impute_options=[], correction=''):
+                 data_sources: List[str]=[], impute_options=[], correction=''):
         self.engine_type = engine
         self.db_engine = ConnectionFactory.create_connection(connection_string, engine, read_only=True)
 
@@ -80,13 +80,18 @@ class API:
         with open(config_path, 'w') as config_file:
             yaml.safe_dump(cur_config, config_file)
 
-    def ingest_data(self, temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU]):
-        ingestor = DBIngestor(conn_string=self.conn_str, engine='duckdb')
-        data_sources = ['chicago_zipcode', 'chicago_factors', 'asthma']
+    @staticmethod
+    def ingest_data(conn_str, engine, data_sources: List[str], temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU], persist=True):
+        ingestor = DBIngestor(conn_string=conn_str, engine=engine)
         for data_source in data_sources:
-            ingestor.ingest_data_source(data_source, temporal_granu_l=temporal_granu_l, spatial_granu_l=spatial_granu_l)
+            print(data_source)
+            ingestor.ingest_data_source(data_source, temporal_granu_l=temporal_granu_l, spatial_granu_l=spatial_granu_l, persist=persist)
         # create count tables for inverted indices
         ingestor.create_cnt_tbls_for_inv_index_tbls(get_inverted_index_names(temporal_granu_l, spatial_granu_l))
+        for data_source in data_sources: 
+            # create count table for all aggregated tables 
+            ingestor.create_count_tables_for_aggregated_tables_in_a_data_source(data_source, temporal_granu_l, spatial_granu_l)
+        
 
     def find_correlations_from(self, dataset: str, temporal_granularity: TEMPORAL_GRANU,
                                spatial_granularity: SPATIAL_GRANU,
@@ -211,6 +216,9 @@ class API:
             else:
                 total_num += num_valid_columns - 1
         return total_num
+
+    def __del__(self):
+        self.db_engine.close()
 
     @staticmethod
     def load_corrs_from_dir(corr_path):
