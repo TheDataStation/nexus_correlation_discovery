@@ -3,7 +3,7 @@ import pandas as pd
 import dill as pickle
 import yaml
 import os
-from utils.spatial_hierarchy import SPATIAL_GRANU
+from utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
 from utils.time_point import TEMPORAL_GRANU
 
 stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom",
@@ -53,12 +53,16 @@ def persist_to_csv(path, df):
 
 
 def load_config(source):
-    config_path = "/home/cc/nexus_correlation_discovery/config.yaml"
+    config_path = "/home/cc/nexus_correlation_discovery/config_test.yaml"
     with open(config_path, "r") as f:
         yaml_data = yaml.load(f, Loader=yaml.FullLoader)
         config = yaml_data[source]
+        raw_spatial_hierarchies = config["spatial_hierarchies"]
+        spatial_hierarchies = []
+        for spatial_hierarchy in raw_spatial_hierarchies:
+            spatial_hierarchies.append(SpatialHierarchy.from_yaml(spatial_hierarchy))
+        config["spatial_hierarchies"] = spatial_hierarchies
         return config
-
 
 def create_dir(dir_path):
     if not os.path.exists(dir_path):

@@ -13,9 +13,12 @@ class PostgresConnector(DatabaseConnectorInterface):
     def __init__(self, conn_str):
         db = create_engine(conn_str)
         self.conn = db.connect()
-        conn_copg2 = psycopg2.connect(conn_str)
-        conn_copg2.autocommit = True
-        self.cur = conn_copg2.cursor()
+        self.conn_copg2 = psycopg2.connect(conn_str)
+        self.conn_copg2.autocommit = True
+        self.cur = self.conn_copg2.cursor()
+    
+    def close(self):
+        self.conn_copg2.close()
 
     def _copy_from_dataFile_StringIO(self, df, tbl_name):
         copy_sql = f"""
@@ -282,7 +285,7 @@ class PostgresConnector(DatabaseConnectorInterface):
             ),
         )
         self.cur.execute(query)
-        df = pd.DataFrame(self.cur.fetchall(), columns=[desc[0] for desc in cur.description])
+        df = pd.DataFrame(self.cur.fetchall(), columns=[desc[0] for desc in self.cur.description])
         return df.astype(float).round(3)
 
     def join_multi_vars(self, variables: List[Variable], constraints=None):

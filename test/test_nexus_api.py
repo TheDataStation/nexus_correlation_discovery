@@ -4,6 +4,7 @@ from utils.data_model import Variable
 from nexus_api import API
 from data_ingestion.connection import ConnectionFactory
 from data_search.commons import FIND_JOIN_METHOD
+from data_ingestion.data_ingestor import DBIngestor
 # conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"
 # nexus_api = API(conn_str)
 
@@ -20,6 +21,15 @@ def test_add_data_sources():
                                           })
     API.add_data_source('chicago_test', 'data/chicago_open_data_1m/', [spatial_hierarchy1, spatial_hierarchy2])
 
+def test_ingest_data_source_with_multiple_spatial_hierarchies():
+    data_sources = ['chicago_test']
+    conn_str = 'data/test.db'
+    temporal_granu_l = []
+    spatial_granu_l = [SPATIAL_GRANU.ZIPCODE]
+    API.ingest_data(conn_str=conn_str, engine='duckdb', data_sources=data_sources, 
+                    temporal_granu_l=temporal_granu_l, spatial_granu_l=spatial_granu_l,
+                    persist=True)
+   
 def test_find_correlations_from():
     conn_str = 'data/quickstart.db'
     nexus_api = API(conn_str)  
@@ -139,7 +149,8 @@ if __name__ == '__main__':
     # test_load_corrs()
     # test_find_correlations_with_control()
     # test_find_correlations_from()
-    find_join_method = FIND_JOIN_METHOD.JOIN_ALL
-    test_find_all_correlations_duckdb_all(find_join_method)
+    # find_join_method = FIND_JOIN_METHOD.JOIN_ALL
+    # test_find_all_correlations_duckdb_all(find_join_method)
     # test_find_all_correlations_postgres_all(find_join_method)
     # test_add_data_sources()
+    test_ingest_data_source_with_multiple_spatial_hierarchies()

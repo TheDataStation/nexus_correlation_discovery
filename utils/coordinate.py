@@ -2,43 +2,10 @@ import math
 import re
 import traceback
 import pandas as pd
-from enum import Enum
 from shapely.geometry import Point
 import geopandas as gpd
 from typing import List
-
-from utils.spatial_hierarchy import SPATIAL_GRANU
-
-
-class SPATIAL_GRANU(Enum):
-    ALL = 0
-    BLOCK = 1
-    BLG = 2
-    TRACT = 3
-    COUNTY = 4
-    STATE = 5
-    ZIPCODE = 6
-
-
-# a dictionary from spatial scales to its names in the shape file
-scale_dict = {
-    SPATIAL_GRANU.BLOCK: "blockce10",
-    SPATIAL_GRANU.TRACT: "tractce10",
-    SPATIAL_GRANU.COUNTY: "COUNTYFP",
-    SPATIAL_GRANU.STATE: "STATEFP",
-    SPATIAL_GRANU.ZIPCODE: "zip"
-}
-
-supported_chain = []
-
-name_to_granu = {
-    "block": SPATIAL_GRANU.BLOCK,
-    "blg": SPATIAL_GRANU.BLG,
-    "county": SPATIAL_GRANU.COUNTY,
-    "tract": SPATIAL_GRANU.TRACT,
-    "state": SPATIAL_GRANU.STATE,
-    "zipcode": SPATIAL_GRANU.ZIPCODE
-}
+from utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
 
 
 class Coordinate:
@@ -47,12 +14,14 @@ class Coordinate:
     order the coordinates as "longitude, latitude" (X coordinate, Y coordinate), as other GIS coordinate systems are encoded.
     """
 
-    def __init__(self, row):
+    def __init__(self, row, hierarchy=SpatialHierarchy):
         # self.chain = chain
-        self.full = {}
-        for granu in supported_chain:
-            k = scale_dict[granu]
-            self.full[granu] = row[k]
+        self.repr = {}
+        for granularity, key in hierarchy.granularity_map.items():
+            self.repr[granularity] = row[key]
+        # for granu in supported_chain:
+        #     k = scale_dict[granu]
+        #     self.full[granu] = row[k]
 
     def __hash__(self):
         return hash((self.long, self.lat))
@@ -65,33 +34,33 @@ class Coordinate:
     def transform(self, granu: SPATIAL_GRANU):
         if granu == SPATIAL_GRANU.BLOCK:
             return [
-                self.full[SPATIAL_GRANU.STATE],
-                self.full[SPATIAL_GRANU.COUNTY],
-                self.full[SPATIAL_GRANU.TRACT],
-                self.full[SPATIAL_GRANU.BLOCK],
+                self.repr[SPATIAL_GRANU.STATE.name],
+                self.repr[SPATIAL_GRANU.COUNTY.name],
+                self.repr[SPATIAL_GRANU.TRACT.name],
+                self.repr[SPATIAL_GRANU.BLOCK.name],
             ]
         elif granu == SPATIAL_GRANU.BLG:
             return [
-                self.full[SPATIAL_GRANU.STATE],
-                self.full[SPATIAL_GRANU.COUNTY],
-                self.full[SPATIAL_GRANU.TRACT],
-                self.full[SPATIAL_GRANU.BLG],
+                self.repr[SPATIAL_GRANU.STATE.name],
+                self.repr[SPATIAL_GRANU.COUNTY.name],
+                self.repr[SPATIAL_GRANU.TRACT.name],
+                self.repr[SPATIAL_GRANU.BLG.name],
             ]
         elif granu == SPATIAL_GRANU.TRACT:
             return [
-                self.full[SPATIAL_GRANU.STATE],
-                self.full[SPATIAL_GRANU.COUNTY],
-                self.full[SPATIAL_GRANU.TRACT],
+                self.repr[SPATIAL_GRANU.STATE.name],
+                self.repr[SPATIAL_GRANU.COUNTY.name],
+                self.repr[SPATIAL_GRANU.TRACT.name],
             ]
         elif granu == SPATIAL_GRANU.COUNTY:
             return [
-                self.full[SPATIAL_GRANU.STATE],
-                self.full[SPATIAL_GRANU.COUNTY],
+                self.repr[SPATIAL_GRANU.STATE.name],
+                self.repr[SPATIAL_GRANU.COUNTY.name],
             ]
         elif granu == SPATIAL_GRANU.STATE:
-            return [self.full[SPATIAL_GRANU.STATE]]
+            return [self.repr[SPATIAL_GRANU.STATE.name]]
         elif granu == SPATIAL_GRANU.ZIPCODE:
-            return [self.full[SPATIAL_GRANU.ZIPCODE]]
+            return [self.repr[SPATIAL_GRANU.ZIPCODE.name]]
 
     def to_str(self, repr: List[int]):
         return "-".join([str(x) for x in repr])
@@ -102,11 +71,6 @@ class Coordinate:
     def transform_to_key(self, granu: SPATIAL_GRANU):
         repr = self.full_resolution[granu - 1:]
         return str(repr)
-
-
-def transform(crd: Coordinate, granu: SPATIAL_GRANU):
-    return crd.full_resolution[granu - 1:]
-
 
 def parse_coordinate(str):
     if pd.isna(str):
@@ -130,42 +94,25 @@ def parse_coordinate(str):
         return None
 
 
-def resolve_resolution_hierarchy(points, s_attr, shape_path: str):
-    shapes = gpd.read_file(shape_path).to_crs(epsg=4326)
-    df = gpd.sjoin(points, shapes, predicate="within")
-    if len(df):
-        df[s_attr] = df.apply(
-            lambda row: Coordinate(
-                row["geometry"],
-                row["blockce10"],
-                row["blockce10"][0],
-                row["tractce10"],
-                row["countyfp10"],
-            ),
-            axis=1,
-        )
-        return df
-    else:
-        return None
-
-
-def resolve_spatial_hierarchy(shape_path, points):
+def resolve_spatial_hierarchy(points, spatial_hierarchies: List[SpatialHierarchy]):
     """
     shape file can contain duplicate shapes, i.e.
     geometry number is different but all the other attributes are identical
     """
-    shapes = gpd.read_file(shape_path).to_crs(epsg=4326)
-    df = gpd.sjoin(points, shapes, predicate="within")
+    for spatial_hierarchy in spatial_hierarchies:
+        shape_path = spatial_hierarchy.shape_file_path
+        shapes = gpd.read_file(shape_path).to_crs(epsg=4326)
+        df = gpd.sjoin(points, shapes, predicate="within")
 
-    if len(df):
-        df_resolved = df.apply(
-            lambda row: Coordinate(row),
-            axis=1,
-        )
+        if len(df):
+            df_resolved = df.apply(
+                lambda row: Coordinate(row, spatial_hierarchy),
+                axis=1,
+            )
 
-        return df_resolved[~df_resolved.index.duplicated(keep="first")].dropna()
-    else:
-        return None
+            return df_resolved[~df_resolved.index.duplicated(keep="first")].dropna()
+        else:
+            return None
 
 
 def set_spatial_granu(crd: Coordinate, s_granu: SPATIAL_GRANU):
@@ -176,25 +123,3 @@ def set_spatial_granu(crd: Coordinate, s_granu: SPATIAL_GRANU):
         print(crd.full_resolution)
     return res
 
-
-def pt_to_str(pt):
-    pt = pt[1:-1]
-    resolution = pt[::-1]
-    return str(resolution)
-
-
-def resolve_geo_chain(geo_chain: str, geo_keys):
-    units = [x.strip() for x in geo_chain.split(",")]
-    keys = [x.strip() for x in geo_keys.split(",")]
-    c = []
-    d = {}
-
-    for i in range(len(units)):
-        granu = name_to_granu[units[i]]
-        c.append(granu)
-        d[granu] = keys[i]
-
-    global scale_dict
-    scale_dict = d
-    global supported_chain
-    supported_chain = c

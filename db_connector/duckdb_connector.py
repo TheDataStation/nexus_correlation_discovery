@@ -10,6 +10,9 @@ class DuckDBConnector(DatabaseConnectorInterface):
     def __init__(self, conn_str, read_only=True):
         self.cur = duckdb.connect(database=conn_str, read_only=read_only)
 
+    def close(self):
+        self.cur.close()
+
     def create_tbl(self, tbl_id: str, df: pd.DataFrame, mode='replace'):
         if mode == 'replace':
             self.cur.sql(f'CREATE OR REPLACE TABLE "{tbl_id}" AS SELECT * FROM df')
@@ -130,7 +133,10 @@ class DuckDBConnector(DatabaseConnectorInterface):
 
     def insert_spatio_temporal_key_to_inv_idx(self, inv_idx: str, tbl_id: str, spatio_temporal_key: SpatioTemporalKey):
         def merge_lists(row):
-            if pd.notna(row['spatio_temporal_keys_y']).all():
+            flag = pd.notna(row['spatio_temporal_keys_y'])
+            if type(flag) is list and flag.all():
+                return list(set(row['spatio_temporal_keys_x'] + row['spatio_temporal_keys_y']))
+            elif type(flag) is bool and flag:
                 return list(set(row['spatio_temporal_keys_x'] + row['spatio_temporal_keys_y']))
             else:
                 return row['spatio_temporal_keys_x']
