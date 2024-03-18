@@ -1,3 +1,45 @@
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexus"
+version = "0.0.1"
+authors = [
+  { name="Yue Gong", email="yuegong@uchicago.edu" },
+]
+description = "correlation discovery over collections of spatio-temporal datasets"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "wheel",
+    "dill==0.3.8",
+    "duckdb==0.10.0",
+    "factor_analyzer==0.5.1",
+    "geopandas==0.13.2",
+    "mmh3==4.1.0",
+    "networkx==3.1",
+    "numpy==1.24.4",
+    "pandas==2.0.3",
+    "pingouin==0.5.4",
+    "psycopg2==2.9.9",
+    "pyvis==0.3.2",
+    "PyYAML==6.0.1",
+    "Requests==2.31.0",
+    "scikit_learn",
+    "scipy",
+    "Shapely==2.0.3",
+    "SQLAlchemy==2.0.25",
+    "tqdm==4.66.1"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]  # list of folders that contain the packages (["."] by default)
+include = ["nexus"]  # package names should match these glob patterns (["*"] by default)
+exclude = []  # exclude packages matching these glob patterns (empty by default)
+namespaces = false  # to disable scanning PEP 420 namespaces (true by default)

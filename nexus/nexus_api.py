@@ -1,5 +1,6 @@
 import yaml
 
+from nexus.data_prep.label_data_source import label_data_source
 from nexus.data_ingestion.connection import ConnectionFactory
 from nexus.data_ingestion.data_ingestor import DBIngestor
 from nexus.data_search.search_corr import CorrSearch
@@ -79,6 +80,9 @@ class API:
 
         with open(config_path, 'w') as config_file:
             yaml.safe_dump(cur_config, config_file)
+        
+        label_data_source(data_source_name, num_sample=1000)
+
 
     @staticmethod
     def ingest_data(conn_str, engine, data_sources: List[str], temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU], persist=True):

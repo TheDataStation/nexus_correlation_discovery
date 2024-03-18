@@ -15,14 +15,10 @@ class Coordinate:
     """
 
     def __init__(self, row, hierarchy=SpatialHierarchy):
-        # self.chain = chain
         self.repr = {}
         for granularity, key in hierarchy.granularity_map.items():
             self.repr[granularity] = row[key]
-        # for granu in supported_chain:
-        #     k = scale_dict[granu]
-        #     self.full[granu] = row[k]
-
+       
     def __hash__(self):
         return hash((self.long, self.lat))
 

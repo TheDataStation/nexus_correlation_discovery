@@ -3,7 +3,7 @@ import pandas as pd
 from nexus.utils.io_utils import load_json, load_config, dump_json
 import numpy as np
 from nexus.utils.profile_utils import is_num_column_valid
-from utils.data_model import Table, Attr
+from nexus.utils.data_model import Table, Attr
 
 def label(data: pd.DataFrame):
         spatial_patterns = load_json('data_prep/spatial_patterns.json')
@@ -30,9 +30,6 @@ def label(data: pd.DataFrame):
             for pattern in spatial_patterns["geoCoordinate"]:    
                 if spatial_flag:
                     break
-                # print(pattern)
-                # print(data[col])
-                # print(data[col].str.match(pattern).sum())
                 if data[col].str.match(pattern).sum() > len(data[col])*0.5:
                     spatial_attrs.append(Attr(col, 'POINT'))
                     spatial_flag = True
@@ -45,8 +42,6 @@ def label_data_source(data_source_name, num_sample: int):
     metadata_path = source_config['meta_path']
     table_info = {}
     for filename in os.listdir(data_path):
-        # if filename != "ijzp-q8t2.csv":
-        #     continue
         if filename.endswith(".csv"):
             file_path = os.path.join(data_path, filename)
             df = pd.read_csv(file_path, nrows=num_sample)
