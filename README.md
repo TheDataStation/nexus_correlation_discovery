@@ -4,7 +4,7 @@
 
 ```bash
 $ git clone git@github.com:TheDataStation/nexus_correlation_discovery.git
-# install Nexus locally. This step will install all dependecies automatically.
+# install Nexus locally. This step will install all dependencies automatically.
 $ pip install -e . 
 ```
 
