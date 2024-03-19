@@ -1,10 +1,34 @@
 # Nexus QuickStart
 
-## Add a data source
+## Install
+
+```bash
+$ git clone git@github.com:TheDataStation/nexus_correlation_discovery.git
+# install Nexus locally. This step will install all dependecies automatically.
+$ pip install -e . 
+```
+
+## Quick Start
+
+We have prepared some data for you to explore the capacity of Nexus easily. We included the following datasets. (the links to these data include metadata only. Will add links to the original data soon)
+
+- [chicago open data](resource/chicago_1m_zipcode/chicago_open_data.json)
+- [asthma data in chicago](resource/asthma/asthma_data.json)
+- [chicago factors including population and median income](/home/cc/nexus_correlation_discovery/resource/chicago_factors/chicago_factors_data.json)
+
+These datasets are ingested into a [duckdb database](data/quickstart.db)and converted to the zipcode granularity.
+
+We also prepare a [notebook](demo/nexus_api.ipynb) for you to explore the various functionalities offered by Nexus, including identifying correlations, controlling for variables, and extracting patterns from these correlations. You can learn how to use Nexus API from this notebook
+
+## Add your own data
+
+You can follow these steps to incorporate your own data.
+
+### Add a data source
 
 In this stage, a data source is added, and Nexus will annotate spatial/temporal and numerical attributes for datasets within this source, storing this information accordingly.
 
-To add a data source, you need to specify the name of the data source, the path to the data and a list of spatial hierarchies. 
+To add a data source, you need to specify the name of the data source, the path to the data and a list of spatial hierarchies. To define a spatial hierarchy, you need to provide a shape file, and the mapping between spatial granularities to the shape file headers.
 
 
 
@@ -28,7 +52,7 @@ API.add_data_source(data_source_name='chicago_open_data',
                     spatial_hierarchies=[spatial_hierarchy1, spatial_hierarchy2])
 ```
 
-## Data Ingestion
+### Data Ingestion
 
 Once a data source is added, the next step is to ingest data into a database. Nexus supports both DuckDB and Postgres.
 
@@ -45,7 +69,3 @@ spatial_granu_l = [SPATIAL_GRANU.ZIPCODE]
 API.ingest_data(conn_str=conn_str, engine='duckdb', data_sources=data_sources,
                 temporal_granu_l=temporal_granu_l, spatial_granu_l=spatial_granu_l)
 ```
-
-## Use Nexus
-
-Once the data has been ingested, you can explore the various functionalities offered by Nexus, including identifying correlations, controlling for variables, and extracting patterns from these correlations. For more detailed information, please refer to this [demo notebook](demo/nexus_api.ipynb).
