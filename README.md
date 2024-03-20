@@ -28,11 +28,20 @@ You can follow these steps to incorporate your own data.
 
 In this stage, a data source is added, and Nexus will annotate spatial/temporal and numerical attributes for datasets within this source, storing this information accordingly.
 
-To add a data source, you need to specify the name of the data source, the path to the data and a list of spatial hierarchies. To define a spatial hierarchy, you need to provide a shape file, and the mapping between spatial granularities to the shape file headers.
+To add a data source, you need to specify the name of the data source, the path to the data and a list of spatial hierarchies. To define a spatial hierarchy, you need to provide a shape file, and the mapping between spatial granularities to the shape file headers. You can also add a data source without specifying a spatial hierarchy if you don't need to convert attributes with geographical coordinate granularity into other granularities.
 
+The data source will be added to `config.yaml` by default. You could change the path to store data source configurations by doing
+
+```bash
+$ export CONFIG_FILE_PATH="path_to_your_configuration_file"
+```
+
+As directory containing all the metadata related to that data source will be created at `resource/{data source name}`.
 
 
 ```python
+from nexus.nexus_api import API
+
 spatial_hierarchy1 = SpatialHierarchy('resource/chicago_shapes/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67'
                                           '-86ff-bf4de675094e.shp',
                                           {
@@ -59,8 +68,8 @@ Once a data source is added, the next step is to ingest data into a database. Ne
 To use the api `ingest_data`, you need to specify the connection to a database, the data sources and the desired spatial/temporal granularities.  
 
 ```python
-from utils.spatial_hierarchy import SPATIAL_GRANU
-from utils.time_point import TEMPORAL_GRANU
+from nexus.utils.spatial_hierarchy import SPATIAL_GRANU
+from nexus.utils.time_point import TEMPORAL_GRANU
 
 data_sources = ['chicago_open_data']
 conn_str = 'data/test.db'

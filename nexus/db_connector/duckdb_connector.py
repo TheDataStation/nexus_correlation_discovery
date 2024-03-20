@@ -35,7 +35,7 @@ class DuckDBConnector(DatabaseConnectorInterface):
                    HAVING {not_null_stmts}
                    """.format(
             agg_tbl=agg_tbl_name,
-            fields=",".join([col for col in col_names]),
+            fields=",".join([f'"{col}"' for col in col_names]),
             agg_stmts=",".join(
                 [
                     "{func}(*) as {var_name}".format(
@@ -43,7 +43,7 @@ class DuckDBConnector(DatabaseConnectorInterface):
                         var_name=var.var_name,
                     )
                     if var.attr_name == "*"
-                    else "{func}({attr_name}) as {var_name}".format(
+                    else '{func}("{attr_name}") as "{var_name}"'.format(
                         func=var.agg_func.name,
                         attr_name=var.attr_name,
                         var_name=var.var_name,
@@ -59,7 +59,6 @@ class DuckDBConnector(DatabaseConnectorInterface):
                 ]
             ),
         )
-
         self.cur.sql(query)
 
         alter_type_sql = """
@@ -180,8 +179,8 @@ class DuckDBConnector(DatabaseConnectorInterface):
 
     def get_variable_stats(self, agg_tbl_name: str, var_name: str):
         query = """
-                   select round(sum({var}), 4), round(sum({var}^2), 4), round(avg({var}), 4), 
-                   round((count(*)-1)*var_samp({var}),4), count(*) from "{agg_tbl}";
+                   select round(sum("{var}"), 4), round(sum("{var}"^2), 4), round(avg("{var}"), 4), 
+                  round((count(*)-1)*var_samp("{var}"),4), count(*) from "{agg_tbl}";
         """.format(
             var=var_name,
             agg_tbl=agg_tbl_name
@@ -215,15 +214,15 @@ class DuckDBConnector(DatabaseConnectorInterface):
             """.format(
                 agg_vars=",".join(
                     [
-                        "{original_name} AS {proj_name}".format(
-                            original_name=f"a1.{var.var_name}",
+                        '{original_name} AS "{proj_name}"'.format(
+                            original_name=f'a1."{var.var_name}"',
                             proj_name=var.proj_name,
                         )
                         for var in variables1
                     ]
                     + [
-                        "{original_name} AS {proj_name}".format(
-                            original_name=f"a2.{var.var_name}",
+                        '{original_name} AS "{proj_name}"'.format(
+                            original_name=f'a2."{var.var_name}"',
                             proj_name=var.proj_name,
                         )
                         for var in variables2
@@ -240,15 +239,15 @@ class DuckDBConnector(DatabaseConnectorInterface):
             """.format(
                 agg_vars=",".join(
                     [
-                        "{original_name} AS {proj_name}".format(
-                            original_name=f"a1.{var.var_name}",
+                        '{original_name} AS "{proj_name}"'.format(
+                            original_name=f'a1."{var.var_name}"',
                             proj_name=var.proj_name,
                         )
                         for var in variables1
                     ]
                     + [
-                        "{original_name} AS {proj_name}".format(
-                            original_name=f"a2.{var.var_name}",
+                        '{original_name} AS "{proj_name}"'.format(
+                            original_name=f'a2."{var.var_name}"',
                             proj_name=var.proj_name,
                         )
                         for var in variables2

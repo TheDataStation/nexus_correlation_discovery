@@ -1,4 +1,5 @@
 import pandas as pd
+from collections import defaultdict
 import nexus.utils.coordinate as coordinate
 from nexus.utils.time_point import set_temporal_granu, parse_datetime, TEMPORAL_GRANU
 from nexus.utils.profile_utils import is_num_column_valid
@@ -103,7 +104,6 @@ class DBIngestor:
                 num_columns=obj["num_columns"],
                 link=obj["link"] if "link" in obj else "",
             )
-           
             print(tbl.tbl_id)
             if retry_list is not None:
                 if tbl.tbl_id not in retry_list:
@@ -167,7 +167,7 @@ class DBIngestor:
         for tbl_id, _ in data_catalog.items():
             table = Table.table_from_tbl_id(tbl_id, data_catalog)
             spatio_temporal_keys = table.get_spatio_temporal_keys(temporal_granu_l, spatial_granu_l, mode=self.mode)
-            for tbl_id, spatio_temporal_key in spatio_temporal_keys:
+            for spatio_temporal_key in spatio_temporal_keys:
                 self.db_engine.create_cnt_tbl_for_agg_tbl(tbl_id, spatio_temporal_key)
 
     def create_cnt_tbl(self, tbl: Table,
@@ -326,14 +326,15 @@ class DBIngestor:
         t_attrs_success = []
         s_attrs_success = []
         df_schema = {}
-        all_spatial_hierarchies = data_source_config['spatial_hierarchies']
-        # choose the relevant spatial hierarchies
-        spatial_hierarchies = []
-        for s_granu in spatial_granu_l:
-            for spatial_hierarchy in all_spatial_hierarchies:
-                if s_granu.name in spatial_hierarchy.granularity_map:
-                    spatial_hierarchies.append(spatial_hierarchy)
-                    break
+        if 'spatial_hierarchies' in data_source_config:
+            all_spatial_hierarchies = data_source_config['spatial_hierarchies']
+            # choose the relevant spatial hierarchies
+            spatial_hierarchies = []
+            for s_granu in spatial_granu_l:
+                for spatial_hierarchy in all_spatial_hierarchies:
+                    if s_granu.name in spatial_hierarchy.granularity_map:
+                        spatial_hierarchies.append(spatial_hierarchy)
+                        break
         for t_attr in t_attrs:
             if len(temporal_granu_l) == 0:
                 break
@@ -362,34 +363,44 @@ class DBIngestor:
                     df[new_attr] = df_dts.apply(set_temporal_granu, args=(t_granu,))
                     df_schema[new_attr] = Integer()
                 t_attrs_success.append(t_attr)
+        
+        # if there is a spatial attribute with the desired granularity, we ignore the conversion of other attributes.
+        spatial_granu_map = defaultdict(list)
         for s_attr in s_attrs:
-            if len(spatial_granu_l) == 0:
-                break
-            if s_attr.granu == 'POINT':
-                # parse (long, lat) pairs to point
-                df_points = df[s_attr.name].apply(coordinate.parse_coordinate)
+            spatial_granu_map[s_attr.granu].append(s_attr)
 
-                # create a geopandas dataframe using points
-                gdf = (
-                    gpd.GeoDataFrame(geometry=df_points)
-                    .dropna()
-                    .set_crs(epsg=4326, inplace=True)
-                )
+        for s_granu in spatial_granu_l:
+            if s_granu.name in spatial_granu_map:
+                s_attr = spatial_granu_map[s_granu.name][0]
+                new_attr = "{}_{}".format(s_attr.name, s_granu.value)
+                df[new_attr] = df[s_attr.name].dropna().astype(int).astype(str)
+                s_attrs_success.append(s_attr)
+            else:
+                # if there is no spatial attribute with the desired granularity, Nexus
+                # will check whether there is an attribute with the finest geo-coordinate 
+                # granularity, which can be converted to any granularity along the spatial hierarchy.
+                if "POINT" in spatial_granu_map and "spatial_hierarchies" in data_source_config:
+                    s_attr = spatial_granu_map["POINT"][0]
+                     # parse (long, lat) pairs to point
+                    df_points = df[s_attr.name].apply(coordinate.parse_coordinate)
 
-                df_resolved = resolve_spatial_hierarchy(gdf, spatial_hierarchies)
+                    # create a geopandas dataframe using points
+                    gdf = (
+                        gpd.GeoDataFrame(geometry=df_points)
+                        .dropna()
+                        .set_crs(epsg=4326, inplace=True)
+                    )
+                    # todo: potential repetitive computation
+                    df_resolved = resolve_spatial_hierarchy(gdf, spatial_hierarchies)
 
-                # df_resolved can be none meaning there is no point falling into the shape file
-                if df_resolved is None:
-                    continue
-                for s_granu in spatial_granu_l:
+                    # df_resolved can be none meaning there is no point falling into the shape file
+                    if df_resolved is None:
+                        continue
+                    
                     new_attr = "{}_{}".format(s_attr.name, s_granu.value)
                     df[new_attr] = df_resolved.apply(set_spatial_granu, args=(s_granu,))
-            else:
-                for s_granu in spatial_granu_l:
-                    if s_granu.name == s_attr.granu:
-                        new_attr = "{}_{}".format(s_attr.name, s_granu.value)
-                        df[new_attr] = df[s_attr.name].astype(int).astype(str)
-            s_attrs_success.append(s_attr)
+                    s_attrs_success.append(s_attr)
+           
         return df, df_schema, t_attrs_success, s_attrs_success
     
     def __del__(self):

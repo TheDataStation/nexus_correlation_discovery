@@ -3,6 +3,7 @@ import pandas as pd
 import dill as pickle
 import yaml
 import os
+import numpy as np
 from nexus.utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
 
 stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom",
@@ -44,6 +45,7 @@ def read_columns(path, fields):
 
 def read_csv(path):
     df = pd.read_csv(path, engine="c", on_bad_lines="skip", low_memory=False)
+    df.replace([np.inf, -np.inf], np.nan, inplace=True)
     return df
 
 
@@ -52,15 +54,16 @@ def persist_to_csv(path, df):
 
 
 def load_config(source):
-    config_path = "config.yaml"
+    config_path = os.environ.get("CONFIG_FILE_PATH", "config.yaml")
     with open(config_path, "r") as f:
         yaml_data = yaml.load(f, Loader=yaml.FullLoader)
         config = yaml_data[source]
-        raw_spatial_hierarchies = config["spatial_hierarchies"]
-        spatial_hierarchies = []
-        for spatial_hierarchy in raw_spatial_hierarchies:
-            spatial_hierarchies.append(SpatialHierarchy.from_yaml(spatial_hierarchy))
-        config["spatial_hierarchies"] = spatial_hierarchies
+        if "spatial_hierarchies" in config:
+            raw_spatial_hierarchies = config["spatial_hierarchies"]
+            spatial_hierarchies = []
+            for spatial_hierarchy in raw_spatial_hierarchies:
+                spatial_hierarchies.append(SpatialHierarchy.from_yaml(spatial_hierarchy))
+            config["spatial_hierarchies"] = spatial_hierarchies
         return config
 
 def create_dir(dir_path):

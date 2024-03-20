@@ -184,7 +184,8 @@ class Table:
     def to_json(self):
         return {
             "domain": self.domain,
-            "name": self.tbl_name,
+            "tbl_id": self.tbl_id,
+            "tbl_name": self.tbl_name,
             "t_attrs": [t_attr.__dict__ for t_attr in self.temporal_attrs],
             "s_attrs": [s_attr.__dict__ for s_attr in self.spatial_attrs],
             "num_columns": self.num_columns,
