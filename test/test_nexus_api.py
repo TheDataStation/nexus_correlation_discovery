@@ -3,6 +3,7 @@ from nexus.utils.time_point import TEMPORAL_GRANU
 from nexus.utils.data_model import Variable
 from nexus.nexus_api import API
 from nexus.data_ingestion.connection import ConnectionFactory
+import pandas as pd
 
 
 def test_add_data_sources():
@@ -64,6 +65,10 @@ def test_show_catalog():
     catalog = nexus_api.show_catalog()
     print(catalog)
 
+def test_pandas_dropna():
+    df = pd.DataFrame({'a': [1, 2, 3, 4, 5, 6, pd.NA, 8, 9, 10], 'b': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]})
+    df["c"] = df['a'].dropna()
+    print(df)
 
 def test_find_all_correlations_postgres_all(find_join_method):
     conn_str = "postgresql://yuegong@localhost/chicago_1m_zipcode"

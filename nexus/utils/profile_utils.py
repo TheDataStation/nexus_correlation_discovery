@@ -1,4 +1,5 @@
-def is_num_column_valid(col_name):
+def is_num_column_valid(col_name: str):
+    col_name = col_name.lower()
     stop_words_contain = [
         "id",
         "primary_key",
@@ -34,6 +35,8 @@ def is_num_column_valid(col_name):
         "cumulative"
     ]
     stop_words_equal = [
+        "commarea",
+        "tract",
         "bbl",
         "census",
         "permit_",
@@ -64,9 +67,9 @@ def is_num_column_valid(col_name):
         "f12", "f13", "bin"
     ]
     for stop_word in stop_words_contain:
-        if stop_word in col_name:
+        if stop_word.lower() in col_name:
             return False
     for stop_word in stop_words_equal:
-        if stop_word == col_name:
+        if stop_word.lower() == col_name:
             return False
     return True

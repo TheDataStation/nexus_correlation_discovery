@@ -61,15 +61,19 @@ class API:
         ]
 
     @staticmethod
-    def add_data_source(data_source_name: str, data_path: str, spatial_hierarchies: List[SpatialHierarchy],
-                        config_path: str='config_test.yaml'):
+    def add_data_source(data_source_name: str, data_path: str, spatial_hierarchies: List[SpatialHierarchy]=None):
+        config_path = os.environ.get("CONFIG_FILE_PATH", "config.yaml")
         data_source_config = {}
         data_source_config["data_path"] = data_path
         data_source_config["meta_path"] = f"resource/{data_source_name}/{data_source_name}.json"
         data_source_config["attr_path"] = f"resource/{data_source_name}/tbl_attrs.json"
         data_source_config["profile_path"] = f"resource/{data_source_name}/profile.json"
         data_source_config["col_stats_path"] = f"resource/{data_source_name}/col_stats.json"
-        data_source_config["spatial_hierarchies"] = [spatial_hierarchy.to_yaml() for spatial_hierarchy in spatial_hierarchies]
+        data_source_config["failed_tbl_path"] = f"resource/{data_source_name}/failed_tables.json"
+        if spatial_hierarchies:
+            data_source_config["spatial_hierarchies"] = [spatial_hierarchy.to_yaml() for spatial_hierarchy in spatial_hierarchies]
+        
+        cur_config = None
         if os.path.exists(config_path):
             with open(config_path, 'r') as config_file:
                 cur_config = yaml.safe_load(config_file)
