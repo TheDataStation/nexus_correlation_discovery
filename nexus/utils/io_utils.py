@@ -55,6 +55,7 @@ def persist_to_csv(path, df):
 
 def load_config(source):
     config_path = os.environ.get("CONFIG_FILE_PATH", "config.yaml")
+    print(config_path)
     with open(config_path, "r") as f:
         yaml_data = yaml.load(f, Loader=yaml.FullLoader)
         config = yaml_data[source]

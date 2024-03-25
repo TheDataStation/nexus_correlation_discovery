@@ -6,7 +6,7 @@ indices*
 shape_chicago_blocks
 venv
 # *.ipynb
-demo/data_commons.ipynb
+# demo/data_commons.ipynb
 .vscode
 *.csv
 notebook/
