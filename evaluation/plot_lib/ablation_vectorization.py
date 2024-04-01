@@ -2,8 +2,13 @@ from plot_utils import Stages, load_data, grouped_bar_plot
 import numpy as np
 import matplotlib.pyplot as plt
 
+plt.rcParams["font.family"] = "Times New Roman"
+plt.rcParams["font.size"] = 25
+plt.rcParams['pdf.fonttype'] = 42
+plt.rcParams['ps.fonttype'] = 42
+
 data_source = "chicago_1m"
-root_path = "/home/cc/resolution_aware_spatial_temporal_alignment"
+root_path = "/home/cc/nexus_correlation_discovery/"
 vars = [Stages.CORRELATION]
 labels = ["10", "100", "1000"]
 o_t_l = [10, 100, 1000]
@@ -34,10 +39,10 @@ params = {
     "ylabel": "Run time(s)",
     "xlabel": "Overlap Threshold",
     # "title": f"Run time comparison on {data_source} overlap threshold: {o_t}",
-    "save_path": f"{root_path}/evaluation/plots/{data_source}_run_time_vec.png",
+    "save_path": f"{root_path}/evaluation/camera_ready_plots/{data_source}_run_time_vec.pdf",
 }
 
-fig, ax = plt.subplots(nrows=1, ncols=1, squeeze=True)
+fig, ax = plt.subplots(figsize=(8, 5))
 
 grouped_bar_plot(
     ax, ["Vectorization", "Pair-Wise"], [var for var in labels], values, params

@@ -46,7 +46,7 @@ def persist_to_csv(path, df):
 
 
 def load_config(source):
-    config_path = "/home/cc/resolution_aware_spatial_temporal_alignment/config.yaml"
+    config_path = "/home/cc/nexus_correlation_discovery/config.yaml"
     with open(config_path, "r") as f:
         yaml_data = yaml.load(f, Loader=yaml.FullLoader)
         config = yaml_data[source]

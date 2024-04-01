@@ -11,8 +11,11 @@ from evaluation.persist_correlations import load_lazo_join_res
 
 mpl.rcParams['font.family'] = 'Times New Roman'
 mpl.rcParams['font.size'] = 25
+plt.rcParams['pdf.fonttype'] = 42
+plt.rcParams['ps.fonttype'] = 42
 
 ext = 'pdf'
+
 """
 Figure for join discovery run time
 """
@@ -23,7 +26,7 @@ def lazo_joinable_run_time(data_source, t_granu, s_granu):
     validate_time = []
     total_time = []
     for t in lazo_thresholds:
-        path = f"lazo_eval/lazo_join_res/{data_source}/time_{t_granu.value}_space_{s_granu.value}/jc_{t}_perf.json"
+        path = f"evaluation/lazo_eval/lazo_join_res/{data_source}/time_{t_granu.value}_space_{s_granu.value}/jc_{t}_perf.json"
         res = io_utils.load_json(path)
         filter_time.append(res["filterTime"]/1000)
         validate_time.append(res["validateTime"]/1000)
@@ -60,17 +63,18 @@ def lazo_joinable_run_time(data_source, t_granu, s_granu):
     ax.hlines(y=nexus_run_time, xmin=-10, xmax=100, color='red', linestyle='--', label='Nexus')
     ax.text(1.5, nexus_run_time + 10, f'{nexus_run_time}', fontsize=20, color='red')
     ax.set_ylim(0, 250)
-    plt.xlabel('Jaccard Containment Threshold')
-    plt.ylabel('Runtime(s)')
-  
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.22), ncol=3)
-    
     for text_obj in ax.findobj(mpl.text.Text):
         text_obj.set_fontweight('bold')
         text_obj.set_fontsize(30)
     
+    plt.xlabel('Jaccard Containment Threshold', fontsize=40)
+    plt.ylabel('Run time(s)', fontsize=40)
+  
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.22), ncol=3, prop={"weight": 'bold'})
+    
+   
     # plt.tight_layout()
-    plt.savefig(f'evaluation/final_plots/jc_runtime_{t_granu}_{s_granu}.{ext}', bbox_inches="tight")
+    plt.savefig(f'evaluation/camera_ready_plots/jc_runtime_{t_granu}_{s_granu}.{ext}', bbox_inches="tight")
 
 """
 Plot Recall
@@ -81,11 +85,11 @@ def join_discovery_recall(data_sources, o_t, jc_values, validate):
     for i, jc_value in enumerate(jc_values):
         recall_l = []
         for category in ["temporal", "spatial", "st"]:
-            gt = io_utils.load_json(f"lazo_eval/ground_truth_join/{'_'.join(data_sources)}/join_ground_truth_{t_granu}_{s_granu}_overlap_10.json")
+            gt = io_utils.load_json(f"evaluation/lazo_eval/ground_truth_join/{'_'.join(data_sources)}/join_ground_truth_{t_granu}_{s_granu}_overlap_10.json")
             if validate:
-                lazo = io_utils.load_json(f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{t_granu.value}_space_{s_granu.value}/{category}_joinable_jc_{str(jc_value)}.json")
+                lazo = io_utils.load_json(f"evaluation/lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{t_granu.value}_space_{s_granu.value}/{category}_joinable_jc_{str(jc_value)}.json")
             else:
-                lazo = io_utils.load_json(f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{t_granu.value}_space_{s_granu.value}/{category}_joinable_jc_{str(jc_value)}_validate_false.json")
+                lazo = io_utils.load_json(f"evaluation/lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{t_granu.value}_space_{s_granu.value}/{category}_joinable_jc_{str(jc_value)}_validate_false.json")
             for join_key in lazo.keys():
                 join_key, precision, recall, f_score = calculate_precision_recall(join_key, gt, lazo, o_t, validate=validate)
                 recall_l.append(recall)
@@ -93,14 +97,16 @@ def join_discovery_recall(data_sources, o_t, jc_values, validate):
     df = pd.DataFrame(data)
     ax = df.plot.box( rot=0, figsize=(8, 6), whiskerprops=dict(linewidth=2, color='blue'), boxprops=dict(linewidth=2, color='blue'), flierprops=dict(marker='o', linewidth=2),
              medianprops=dict(linestyle='-', linewidth=2, color='red'),  capprops=dict(linestyle='-', linewidth=2, color='blue'))
-    plt.xlabel('Jaccard Containment Threshold')
-    plt.ylabel('Recall')
-
+    
     for text_obj in ax.findobj(mpl.text.Text):
         text_obj.set_fontweight('bold')
         text_obj.set_fontsize(30)
+    plt.xlabel('Jaccard Containment Threshold', fontsize=32)
+    plt.ylabel('Recall', fontsize=40)
+
+ 
     # plt.tight_layout()
-    plt.savefig(f'evaluation/final_plots/jc_recall_{t_granu}_{s_granu}_o_t_{o_t}_validate_{validate}.{ext}', bbox_inches="tight")
+    plt.savefig(f'evaluation/camera_ready_plots/jc_recall_{t_granu}_{s_granu}_o_t_{o_t}_validate_{validate}.{ext}', bbox_inches="tight")
 
 """
 
@@ -196,9 +202,9 @@ def e2e_runtime_stacked(data_sources, t_granu, s_granu):
         text_obj.set_fontsize(32)
     
             
-    ax.set_ylabel('Runtime(s)', fontsize=36)
-    ax.set_xticklabels(['JC=0.0', 'JC=0.2', 'JC=0.4', 'JC=0.6'], fontsize=36)
-    plt.savefig(f'evaluation/final_plots/lazo_e2e.{ext}', bbox_inches="tight")
+    ax.set_ylabel('Run time(s)', fontsize=50)
+    ax.set_xticklabels(['JC=0.0', 'JC=0.2', 'JC=0.4', 'JC=0.6'], fontsize=50)
+    plt.savefig(f'evaluation/camera_ready_plots/lazo_e2e.{ext}', bbox_inches="tight")
 
     # print(df)
   
@@ -262,7 +268,7 @@ def find_dist_false_nagetive_joins(t_granu, s_granu):
     
     nexus_pairs = set()
     gt_join_costs = []
-    gt = io_utils.load_json(f"lazo_eval/ground_truth_join/chicago_1m/join_ground_truth_{t_granu}_{s_granu}_overlap_10.json")
+    gt = io_utils.load_json(f"evaluation/lazo_eval/ground_truth_join/chicago_1m/join_ground_truth_{t_granu}_{s_granu}_overlap_10.json")
     for k, v in gt.items():
         for c in v:
             if c[1]>=o_t and c[0][:9] != k[:9]:
@@ -279,7 +285,7 @@ def find_dist_false_nagetive_joins(t_granu, s_granu):
     fig, axs = plt.subplots(1, 1, figsize=(6, 6))
     axs.boxplot([gt_join_costs, fn_join_costs], whiskerprops=dict(linewidth=2, color='blue'), boxprops=dict(linewidth=2, color='blue'), flierprops=dict(marker='o', linewidth=2),
              medianprops=dict(linestyle='-', linewidth=2, color='red'),  capprops=dict(linestyle='-', linewidth=2, color='blue'))
-    plt.ylabel('Larger table size in a join')
+   
     axs.set_xticks([1, 2], ['All Joins', 'Joins Missed\nby Lazo'])
     # Function to format the tick labels
     def format_func(value, tick_number):
@@ -292,7 +298,8 @@ def find_dist_false_nagetive_joins(t_granu, s_granu):
         text_obj.set_fontweight('bold')
         text_obj.set_fontsize(30)
     # plt.tight_layout()
-    plt.savefig(f'evaluation/final_plots/fn_join_dist_{t_granu}_{s_granu}_o_t_{o_t}.{ext}', bbox_inches="tight")
+    plt.ylabel('Larger table size in a join', fontsize=32)
+    plt.savefig(f'evaluation/camera_ready_plots/fn_join_dist_{t_granu}_{s_granu}_o_t_{o_t}.{ext}', bbox_inches="tight")
 
     # fig, axs = plt.subplots(1, 1, figsize=(15, 5))
     # box_plot(axs, [gt_join_costs, fn_join_costs])
@@ -303,7 +310,7 @@ def find_dist_false_nagetive_joins(t_granu, s_granu):
 if __name__ == "__main__":
     t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
     # t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
-    lazo_joinable_run_time('chicago_1m', t_granu, s_granu)
-    join_discovery_recall(['chicago_1m'], 10, [0.0, 0.2, 0.4, 0.6], True)
-    e2e_runtime_stacked(['chicago_1m'], t_granu, s_granu)
+    # lazo_joinable_run_time('chicago_1m', t_granu, s_granu)
+    # join_discovery_recall(['chicago_1m'], 10, [0.0, 0.2, 0.4, 0.6], True)
+    # e2e_runtime_stacked(['chicago_1m'], t_granu, s_granu)
     find_dist_false_nagetive_joins(t_granu, s_granu)

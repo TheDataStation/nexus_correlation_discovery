@@ -11,6 +11,8 @@ import matplotlib as mpl
 
 mpl.rcParams['font.family'] = 'Times New Roman'
 mpl.rcParams['font.size'] = 25
+plt.rcParams['pdf.fonttype'] = 42
+plt.rcParams['ps.fonttype'] = 42
 
 ext = 'pdf'
 
@@ -62,7 +64,7 @@ def nexus_lazo_compare():
     for text_obj in ax.findobj(mpl.text.Text):
         text_obj.set_fontweight('bold')
         text_obj.set_fontsize(30)
-    plt.savefig(f'evaluation/final_plots/lazo_nexus_large.{ext}', bbox_inches="tight")
+    plt.savefig(f'evaluation/camera_ready_plots/lazo_nexus_large.{ext}', bbox_inches="tight")
 
 def load_array(run_time_profile, find_join, validation, materialization, correlation, other, total):
     find_join.append(run_time_profile[1])

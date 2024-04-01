@@ -17,9 +17,9 @@ def load_lazo_join_res(data_sources, jc_l, t_granu, s_granu, validate=True):
         jc_joinable_tbls[jc] = {}
         for category in ["spatial", "temporal", "st"]:
             if validate:
-                path = f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{t_granu.value}_space_{s_granu.value}/{category}_joinable_jc_{str(jc)}.json"
+                path = f"evaluation/lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{t_granu.value}_space_{s_granu.value}/{category}_joinable_jc_{str(jc)}.json"
             else:
-                path = f"lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{t_granu.value}_space_{s_granu.value}/{category}_joinable_jc_{str(jc)}_validate_false.json"
+                path = f"evaluation/lazo_eval/lazo_join_res/{'_'.join(data_sources)}/time_{t_granu.value}_space_{s_granu.value}/{category}_joinable_jc_{str(jc)}_validate_false.json"
             joinable_tbls = io_utils.load_json(path)
             for join_key, candidates in joinable_tbls.items():
                 jc_joinable_tbls[jc][join_key] = [(x["l"], x["r"]) for x in candidates]
