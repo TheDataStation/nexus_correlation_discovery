@@ -17,7 +17,7 @@ import os
 from nexus.utils import corr_utils
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import List
+from typing import List, Dict
 import nexus.data_search.db_ops as db_ops
 import math
 from nexus.data_search.commons import FIND_JOIN_METHOD
@@ -86,15 +86,22 @@ class AggColumn:
     def get_id(self):
         return self.agg_name, self.agg_attr
 
-    def to_list(self):
+    def to_list(self, metadata: Dict[str, str]=None):
+        desc = ""
+        if metadata:
+            if self.agg_attr[:3] == 'avg':
+                col_name = self.agg_attr[4:-3]
+                if col_name in metadata:
+                    desc = metadata[col_name] 
         return [
             self.domain,
             self.tbl_id,
             self.tbl_name,
             self.agg_name,
             self.agg_attr,
+            desc,
         ] + self.profile.to_list()
-
+        
 
 class Correlation:
     def __init__(
@@ -135,10 +142,10 @@ class Correlation:
                 * math.sqrt(n * square_sum2 - sum2 ** 2)
         )
 
-    def to_list(self):
+    def to_list(self, metadata: Dict[str, str]):
         return (
-                self.agg_col1.to_list()
-                + self.agg_col2.to_list()
+                self.agg_col1.to_list(metadata)
+                + self.agg_col2.to_list(metadata)
                 + [
                     round(self.r_val, 3),
                     round(self.r_val_impute_avg, 3),

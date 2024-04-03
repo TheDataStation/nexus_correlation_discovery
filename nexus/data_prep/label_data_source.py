@@ -41,7 +41,7 @@ def label_using_regex(data: pd.DataFrame):
                         temporal_flag = True
                         break
             for granu, patterns in spatial_patterns.items():    
-                if spatial_flag:
+                if temporal_flag or spatial_flag:
                     break
                 for pattern in patterns:
                     if data[col].str.match(pattern).sum() > len(data[col])*0.5:

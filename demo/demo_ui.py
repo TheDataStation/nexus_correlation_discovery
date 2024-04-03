@@ -1,7 +1,7 @@
 import ipywidgets as widgets
 from IPython.display import display, clear_output
 from demo.cluster_utils import CorrCommunity
-import qgrid
+# import qgrid
 import json
 
 def show_df(df, name, prov=None, use_qgrid=False):

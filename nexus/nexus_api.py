@@ -14,7 +14,7 @@ import json
 import nexus.utils.io_utils as io_utils
 from nexus.utils.granularity_utils import get_inverted_index_names
 from nexus.utils.data_model import Variable
-from typing import List
+from typing import List, Dict
 from sklearn import linear_model
 from nexus.corr_analysis.factor_analysis.factor_analysis import factor_analysis, build_factor_clusters
 import time
@@ -48,11 +48,13 @@ class API:
             "table_name1",
             "agg_table1",
             "agg_attr1",
+            "description1",
             "original_attr1_missing_ratio",
             "table_id2",
             "table_name2",
             "agg_table2",
             "agg_attr2",
+            "description2",
             "original_attr2_missing_ratio",
             "correlation coefficient",
             "p value",
@@ -104,7 +106,7 @@ class API:
     def find_correlations_from(self, dataset: str, temporal_granularity: TEMPORAL_GRANU,
                                spatial_granularity: SPATIAL_GRANU,
                                overlap_threshold: int, correlation_threshold: float, correlation_type="pearson",
-                               control_variables=[]):
+                               control_variables=[], metadata_lookup: Dict[str, str]=None, drop_count: bool=True):
         corr_search = CorrSearch(
             self.conn_str,
             self.engine_type,
@@ -115,17 +117,21 @@ class API:
             correct_method=self.correction,
             q_val=0.05,
         )
+        
+        if "data_commons" in self.data_sources:
+            metadata_lookup = io_utils.load_json('resource/data_commons/variable_lookup.json')
         corr_search.set_join_cost(temporal_granularity, spatial_granularity, overlap_threshold)
         corr_search.find_all_corr_for_a_tbl(dataset, temporal_granularity, spatial_granularity, overlap_threshold,
                                             correlation_threshold, p_t=0.05, fill_zero=True,
                                             corr_type=correlation_type, control_variables=control_variables)
-        correlations = load_corrs_to_df(corr_search.data)
+        correlations = load_corrs_to_df(corr_search.data, metadata_lookup, drop_count)
         print(f"total number of correlations: {len(correlations)}")
         return correlations[self.display_attrs]
 
     def find_all_correlations(self, temporal_granularity, spatial_granularity, overlap_threshold,
                               correlation_threshold, persist_path=None, correlation_type="pearson",
-                              control_variables=[], find_join_method=FIND_JOIN_METHOD.COST_MODEL):
+                              control_variables=[], find_join_method=FIND_JOIN_METHOD.COST_MODEL,
+                              metadata_lookup: Dict[str, str]=None, drop_count: bool=True):
         corr_search = CorrSearch(
             self.conn_str,
             self.engine_type,
@@ -137,6 +143,8 @@ class API:
             q_val=0.05,
         )
         corr_search.set_join_cost(temporal_granularity, spatial_granularity, overlap_threshold)
+        if "data_commons" in self.data_sources:
+            metadata_lookup = io_utils.load_json('resource/data_commons/variable_lookup.json')
         start = time.time()
         corr_search.find_all_corr_for_all_tbls([temporal_granularity, spatial_granularity], overlap_threshold,
                                                correlation_threshold, p_t=0.05, corr_type=correlation_type,
@@ -148,7 +156,7 @@ class API:
             f"tmp/perf_profile_{'_'.join(self.data_sources)}_{overlap_threshold}_{correlation_threshold}_{temporal_granularity}_{spatial_granularity}_{'_'.join([var.to_str() for var in control_variables])}_{self.engine_type}_{find_join_method}.json",
             corr_search.perf_profile,
         )
-        correlations = load_corrs_to_df(corr_search.all_corrs)
+        correlations = load_corrs_to_df(corr_search.all_corrs, metadata_lookup, drop_count=drop_count)
         print(f"total number of correlations: {len(correlations)}")
         return correlations[self.display_attrs]
 

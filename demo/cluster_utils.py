@@ -71,10 +71,10 @@ def build_graph_on_vars(corrs, threshold=0, weighted=False):
     tbl_attrs = defaultdict(set)
     for _, row in corrs.iterrows():
         tbl_id1, tbl_id2, tbl_name1, tbl_name2, agg_attr1, agg_attr2 = (
-            row["tbl_id1"],
-            row["tbl_id2"],
-            row["tbl_name1"],
-            row["tbl_name2"],
+            row["table_id1"],
+            row["table_id2"],
+            row["table_name1"],
+            row["table_name2"],
             row["agg_attr1"],
             row["agg_attr2"],
         )
@@ -124,9 +124,22 @@ Functions to retrieve correlations
 
 
 class CorrCommunity:
-    def __init__(self, corrs, name, clusters=None, comps=None):
+    def __init__(self, corrs, name=None, clusters=None, comps=None):
         self.name = name
         self.corrs = corrs
+        self.display_attrs = [
+            # "table_id1",
+            "table_name1",
+            "agg_attr1",
+            "description1",
+            # "table_id2",
+            "table_name2",
+            "agg_attr2",
+            "description2",
+            "correlation coefficient",
+            "number of samples",
+            "spatio-temporal key type",
+        ]
         if self.name == "chicago":
             self.display_attrs = [
                 "tbl_id1",
@@ -153,6 +166,18 @@ class CorrCommunity:
             self.comps = list(self.comps.values())
         self.filtered_corr = corrs
       
+
+    def get_correlation_communities(self, signal_thresholds=None):
+        if signal_thresholds:
+            self.filtered_corr = filter_on_signals(self.corrs, None, signal_thresholds)
+        else:
+            self.filtered_corr = self.corrs
+        self.G = build_graph_on_vars(self.filtered_corr, 0, False)
+        self.all_communities = self.get_communities(self.G)
+        print(
+            f"modularity score: {nx.community.modularity(self.G, self.comps)}"
+        )
+       
 
     def get_correlation_communities_chicago(self, signal_thresholds):
         self.filtered_corr = filter_on_signals(self.corrs, None, signal_thresholds)
@@ -236,4 +261,9 @@ class CorrCommunity:
             res = df[mask]
             if not show_corr_in_same_tbl:
                 res = res[~(res["tbl1"] == res["tbl2"])]
+        else:
+            mask = (df["table_id1"] + "--" + df["agg_attr1"]).isin(tbls) & (
+                df["table_id2"] + "--" + df["agg_attr2"]
+            ).isin(tbls)
+            res = df[mask]
         return res[self.display_attrs]
