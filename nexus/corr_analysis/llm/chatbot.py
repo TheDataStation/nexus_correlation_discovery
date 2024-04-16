@@ -5,21 +5,30 @@ class ChatBot:
         self.model = model
         self.message_queue = []
 
-    def generate(self, msg: str, options=None):
+    def generate(self, msg: str, system_msg: str=None, options=None):
         """
         in the mode of generation, chat without history
         """
-        stream = ollama.generate(model=self.model, 
-            prompt=msg,
-            stream=True,
-            options=options
-          )
+        if not system_msg:
+          stream = ollama.generate(model=self.model, 
+              prompt=msg,
+              stream=True,
+              options=options
+            )
+        else:
+          stream = ollama.generate(model=self.model, 
+              prompt=msg,
+              system=system_msg,
+              stream=True,
+              options=options
+            )
     
         response = ""
         for chunk in stream:
             part = chunk['response']
             print(part, end='', flush=True)
             response = response + part
+        return response
     
     def chat(self, msg: str, options=None):
       self.message_queue.append(
@@ -46,6 +55,7 @@ class ChatBot:
           'content': response,
         }
       )
+      return response
     
     def clear_message_queue(self):
         self.message_queue.clear()

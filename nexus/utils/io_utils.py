@@ -5,7 +5,6 @@ import yaml
 import os
 import numpy as np
 from nexus.utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
-from nexus.data_search.search_corr import Correlation
 from typing import Dict, List
 
 stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom",
@@ -73,7 +72,7 @@ def create_dir(dir_path):
         os.makedirs(dir_path)
 
 
-def load_corrs_to_df(data: List[Correlation], metadata: Dict[str, str]=None, drop_count: bool=True) -> pd.DataFrame:
+def load_corrs_to_df(data, metadata: Dict[str, str]=None, drop_count: bool=True) -> pd.DataFrame:
     df = pd.DataFrame(
         [corr.to_list(metadata) for corr in data],
         columns=[

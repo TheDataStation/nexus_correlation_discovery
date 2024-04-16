@@ -53,13 +53,15 @@ class AggColumnProfile:
 
 class AggColumn:
     def __init__(
-            self, domain, tbl_id, tbl_name, agg_name: str, agg_attr, col_data=None
+            self, domain, tbl_id, tbl_name, agg_name: str, agg_attr, col_data=None, description=None
     ) -> None:
         self.domain = domain
         self.tbl_id = tbl_id
         self.tbl_name = tbl_name
         self.agg_name = agg_name
         self.agg_attr = agg_attr
+        if description:
+            self.desc =description
         self.col_data = col_data
 
     def set_profile(self, tbl_profiles):
@@ -155,6 +157,28 @@ class Correlation:
                     self.align_type,
                 ]
         )
+    
+    @staticmethod
+    def from_csv(row):
+        tbl_id1 = row['table_id1']
+        tbl_name1 = row['table_name1']
+        agg_tbl1 = row['agg_table1']
+        agg_attr1 = row['agg_attr1']
+        desc1 = row['description1']
+        tbl_id2 = row['table_id2']
+        tbl_name2 = row['table_name2']
+        agg_tbl2 = row['agg_table2']
+        agg_attr2 = row['agg_attr2']
+        desc2 = row['description2']
+        r_val = row['correlation coefficient']
+        p_val = row['p value']
+        overlap = row['number of samples']
+        align_type = row['spatio-temporal key type']
+        agg_col1 = AggColumn(domain='', tbl_id=tbl_id1, tbl_name=tbl_id1, agg_name=agg_tbl1, agg_attr=agg_attr1, description=desc1)
+        agg_col2 = AggColumn(domain='', tbl_id=tbl_id2, tbl_name=tbl_id2, agg_name=agg_tbl2, agg_attr=agg_attr2, description=desc2)
+        corr = Correlation(agg_col1=agg_col1, agg_col2=agg_col2, r_val=r_val, p_val=p_val, overlap=overlap, align_type=align_type)
+        return corr
+        
 
 
 class CorrSearch:
