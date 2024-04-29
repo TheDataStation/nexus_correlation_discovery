@@ -555,6 +555,59 @@ class CorrSearch:
             return method, res
         return res
 
+    def control_variables_for_correlations(self, control_vars: List[Variable], correlations: List[Correlation]):
+        tbl_cols = defaultdict(list)
+        agg_name_to_tbl_name = {}
+        control_var_tbls = [var.tbl_id for var in control_vars]
+        control_var_names = [var.var_name for var in control_vars]
+        for correlation in correlations:
+            if correlation.agg_col1.agg_attr not in control_var_names:
+                tbl_cols[correlation.agg_col1.agg_name].append(
+                    Variable(correlation.agg_col1.agg_name, correlation.agg_col1.agg_attr, var_name=correlation.agg_col1.agg_attr))
+                agg_name_to_tbl_name[correlation.agg_col1.agg_name] = correlation.agg_col1.tbl_id
+            
+            if correlation.agg_col2.agg_attr not in control_var_names:
+                tbl_cols[correlation.agg_col2.agg_name].append(
+                    Variable(correlation.agg_col2.agg_name, correlation.agg_col2.agg_attr, var_name=correlation.agg_col2.agg_attr))
+                agg_name_to_tbl_name[correlation.agg_col2.agg_name] = correlation.agg_col2.tbl_id
+     
+        tables = list(tbl_cols.keys())
+        all_correlations = []
+        for i in range(len(tables)):
+            for j in range(i+1, len(tables)):
+                if tables[i] in control_var_tbls or tables[j] in control_var_tbls:
+                    continue
+                agg_name1, agg_name2 = tables[i], tables[j]
+                tbl_id1, tbl_id2 = agg_name_to_tbl_name[agg_name1], agg_name_to_tbl_name[agg_name2]
+               
+                cur_tbl_cols = defaultdict(list)
+                for k, col_list in tbl_cols.items():
+                    if k == agg_name1:
+                        for x in col_list:
+                            x.proj_name = f"{x.var_name}_t1"
+                            cur_tbl_cols[k].append(x)
+                    elif k == agg_name2:
+                        for x in col_list:
+                            x.proj_name = f"{x.var_name}_t2"
+                            cur_tbl_cols[k].append(x)
+                for var in control_vars:
+                    cur_tbl_cols[var.tbl_id].append(Variable(var.tbl_id, var.attr_name, None, var.attr_name))
+                names1 = [var.proj_name for var in cur_tbl_cols[agg_name1]]
+                names2 = [var.proj_name for var in cur_tbl_cols[agg_name2]]
+                df = self.db_engine.join_multi_agg_tbls(cur_tbl_cols)
+                res = self.get_corrs_with_control_vars(
+                    df,
+                    tbl_id1, agg_name1, names1,
+                    tbl_id2, agg_name2, names2,
+                    control_var_names,
+                    0, 0.05,
+                    fill_zero=True, flag=None
+                )
+                # print(len(res))
+                all_correlations.extend(res)
+        return all_correlations
+        
+    
     def find_all_corr_for_a_spatio_temporal_key(
             self, tbl_id1: str, spatio_temporal_key: SpatioTemporalKey,
             overlap_threshold: int, corr_threshold: float, p_threshold: float,
@@ -1004,7 +1057,6 @@ class CorrSearch:
         if fill_zero:
             df = df.fillna(0)
         df = self.drop_constant_columns(df)
-
         for var1 in var1_l:
             if var1 not in df.columns:
                 continue
@@ -1012,7 +1064,7 @@ class CorrSearch:
                 if var2 not in df.columns:
                     continue
                 if var1[:-3] in control_vars or var2[:-3] in control_vars:
-                    # print(var1, var2, control_vars)
+                    print("continue 0")
                     continue
                 # import warnings
                 # warnings.filterwarnings("error")
@@ -1027,12 +1079,13 @@ class CorrSearch:
                 #     print(df[[var1, var2, *control_vars]].to_csv('debug.csv', index=False))
                 #     break
                 r_val, p_val = partial_corr['r'].iloc[0], partial_corr['p-val'].iloc[0]
-
                 if not r_val or np.isnan(r_val):
+                    # print("continue 1")
                     # meaning undefined correlation coefficient such as constant array 
                     continue
                 if self.correct_method == "" or self.correct_method is None:
-                    if abs(r_val) < r_t or p_val > p_t:
+                    if abs(r_val) < r_t:
+                        print("continue 2")
                         continue
                 if abs(r_val) >= r_t:
                     self.perf_profile["corr_counts"]["before"] += 1

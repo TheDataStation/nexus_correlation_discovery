@@ -128,6 +128,23 @@ class API:
         print(f"total number of correlations: {len(correlations)}")
         return correlations[self.display_attrs]
 
+    def control_variables_for_correlaions(self, control_variables, correlations):
+        corr_search = CorrSearch(
+            self.conn_str,
+            self.engine_type,
+            self.data_sources,
+            FIND_JOIN_METHOD.JOIN_ALL,
+            impute_methods=self.impute_options,
+            explicit_outer_join=False,
+            correct_method=self.correction,
+            q_val=0.05,
+        )
+        corrs = corr_search.control_variables_for_correlations(control_variables, correlations)
+        if "data_commons" or "data_commons_no_unionable" in self.data_sources:
+            metadata_lookup = io_utils.load_json('resource/data_commons/variable_lookup.json')
+        df = io_utils.load_corrs_to_df(corrs, metadata_lookup, drop_count=True)
+        return df
+     
     def find_all_correlations(self, temporal_granularity, spatial_granularity, overlap_threshold,
                               correlation_threshold, persist_path=None, correlation_type="pearson",
                               control_variables=[], find_join_method=FIND_JOIN_METHOD.COST_MODEL,

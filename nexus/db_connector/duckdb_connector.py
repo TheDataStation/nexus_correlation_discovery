@@ -265,8 +265,8 @@ class DuckDBConnector(DatabaseConnectorInterface):
                     SELECT {attrs} FROM "{base_tbl}" {join_clauses}
                 """.format(
             attrs=",".join([
-                "{original_name} AS {proj_name}".format(
-                    original_name=f'"{tbl}".{col.var_name}',
+                '{original_name} AS "{proj_name}"'.format(
+                    original_name=f'"{tbl}"."{col.var_name}"',
                     proj_name=col.proj_name)
                 for tbl, cols in tbl_cols.items() for col in cols
             ]),
@@ -276,7 +276,6 @@ class DuckDBConnector(DatabaseConnectorInterface):
                  for tbl in tbls[1:]]
             ),
         )
-
         return self.cur.sql(query).df().astype(float).round(3)
 
     def join_multi_vars(self, variables: List[Variable], constraints: Dict = {}):

@@ -161,14 +161,91 @@ def test_duckdb_migration_correctness():
     print(maps1 == maps2)
     # print(duckdb_inverted_index.equals(postgres_inverted_index))
 
+def test_control_vars_for_correlations():
+    import pandas as pd
+    from collections import defaultdict
+    import os
+    os.environ["CONFIG_FILE_PATH"] = "config_test.yaml" 
+    os.chdir(f"/Users/yuegong/nexus_correlation_discovery")
+    # load correlations
+    datasource_name = 'data_commons_no_unionable'
+    all_correlations = pd.read_csv(f'{datasource_name}_correlations.csv')
+    # rank variables by the number of correlations they are associated with
+    count_map = defaultdict(list)
+    # iterate each row in all correlations
+    for index, row in all_correlations.iterrows():
+        # get the two variables
+        var1 = (row['table_id1'], row['agg_table1'], row['agg_attr1'])
+        var2 = (row['table_id2'], row['agg_table2'], row['agg_attr2'])
+        # increment the count for each variable
+        count_map[var1].append(index)
+        count_map[var2].append(index)
+    # sort the variables by the length of the list of correlations they are associated with
+    sorted_vars = sorted(count_map, key=lambda x: len(count_map[x]), reverse=True)
+    # control for each variables
+    from nexus.utils.data_model import Variable
+    from nexus.data_search.search_corr import Correlation
+    threshold = 10
+    variable = sorted_vars[0]
+    control_var = Variable(variable[1], variable[2], var_name=variable[2])
+    # select the corresponding list of indices from a data frame
+    cur_corrs = all_correlations.loc[count_map[variable]]
+    correlations = []
+    for index, row in cur_corrs.iterrows():
+        correlations.append(Correlation.from_csv(row))
+    from nexus.nexus_api import API
+    datasource_name = 'data_commons_no_unionable'
+    data_sources = [datasource_name]
+    conn_str = f'data/{datasource_name}.db'
+    nexus_api = API(conn_str, data_sources=[datasource_name])
+    res = nexus_api.control_variables_for_correlaions([control_var], correlations)
+    comparison = defaultdict(list)
+    all_vars = set()
+    for index, row in cur_corrs.iterrows():
+        var1 = (row['agg_table1'], row['agg_attr1'])
+        var2 = (row['agg_table2'], row['agg_attr2'])
+        if var1 != control_var:
+            all_vars.add(var1)
+        if var2 != control_var:
+            all_vars.add(var2)
+
+    for index, row in all_correlations.iterrows():
+        var1 = (row['agg_table1'], row['agg_attr1'])
+        var2 = (row['agg_table2'], row['agg_attr2'])
+        if var1 in all_vars and var2 in all_vars:
+            key = tuple(sorted([var1, var2]))
+            comparison[key].append(row['correlation coefficient'])
+    
+    for index, row in res.iterrows():
+        var1 = (row['agg_table1'], row['agg_attr1'])
+        var2 = (row['agg_table2'], row['agg_attr2'])
+        key = tuple(sorted([var1, var2]))
+        if key in comparison:
+            comparison[key].append(row['correlation coefficient'])
+            comparison[key].append(row['p value'])
+    decrease_cnt = 0
+    no_value = 0
+    not_significant = 0
+    for k, v in comparison.items():
+        if len(v) == 1:
+            no_value += 1
+        if len(v) > 1:
+            if v[2] > 0.05:
+                not_significant += 1
+                continue
+            before_control, after_control = v[0], v[1]
+            if abs(before_control) > after_control:
+                decrease_cnt += 1
+    print("+1", control_var, len(comparison), no_value, not_significant, decrease_cnt)
 
 if __name__ == '__main__':
     # test_control_for_variables()
     # test_load_corrs()
     # test_find_correlations_with_control()
-    test_find_correlations_from()
+    # test_find_correlations_from()
     # find_join_method = FIND_JOIN_METHOD.JOIN_ALL
     # test_find_all_correlations_duckdb_all(find_join_method)
     # test_find_all_correlations_postgres_all(find_join_method)
     # test_add_data_sources()
     # test_ingest_data_source_with_multiple_spatial_hierarchies()
+    test_control_vars_for_correlations()
