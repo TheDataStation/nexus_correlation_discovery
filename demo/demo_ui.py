@@ -2,6 +2,7 @@ import ipywidgets as widgets
 from IPython.display import display, clear_output
 from demo.cluster_utils import CorrCommunity
 # import qgrid
+import dtale
 import json
 
 def show_df(df, name, prov=None, use_qgrid=False):
@@ -89,23 +90,26 @@ def show_communities(corr_community: CorrCommunity, show_corr_in_same_tbl, use_q
                     grid_options={"forceFitColumns": False, "defaultColumnWidth": 150},
                 )
             else:
-                display(res)
+                dtale.show(res, notebook=True)
 
             def handle_selection_change(change):
                 selected_rows = qgrid_widget.get_changed_df()
-                with cnt_output:
-                    clear_output(wait=True)
-                    display(f"#filtered rows: {len(selected_rows)}")
+                # with cnt_output:
+                #     clear_output(wait=True)
+                #     display(f"#filtered rows: {len(selected_rows)}")
 
             # qgrid_widget.on("filter_changed", handle_selection_change)
-            qgrid_widget.observe(handle_selection_change, names=["_selected_rows"])
-            cnt_output = widgets.Output()
-            with cnt_output:
-                clear_output(wait=True)
-                display(f"#filtered rows: {len(qgrid_widget.get_changed_df())}")
+            if use_qgrid:
+                qgrid_widget.observe(handle_selection_change, names=["_selected_rows"])
+                display(qgrid_widget)
+            # cnt_output = widgets.Output()
+            # with cnt_output:
+            #     clear_output(wait=True)
+            #     display(f"#filtered rows: {len(qgrid_widget.get_changed_df())}")
 #             print("should display")
-            display(qgrid_widget)
-            display(cnt_output)
+          
+
+            # display(cnt_output)
 
     # Create the dropdown widget and set the initial value
     dropdown = widgets.Dropdown(

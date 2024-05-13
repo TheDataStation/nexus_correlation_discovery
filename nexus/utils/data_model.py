@@ -167,6 +167,11 @@ class SpatioTemporalKey:
         return "{}_{}".format(
             tbl, "_".join([col for col in self.get_col_names_with_granu()])
         )
+    
+    def get_agg_tbl_description(self, tbl):
+        return "Aggregated table for {} using attribute {} with granularity {}".format(
+            tbl, self.get_attrs(), self.get_granularity().name
+        )
 
 
 class Table:

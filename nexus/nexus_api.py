@@ -1,5 +1,4 @@
 import yaml
-
 from nexus.data_prep.label_data_source import label_data_source
 from nexus.data_ingestion.connection import ConnectionFactory
 from nexus.data_ingestion.data_ingestor import DBIngestor
@@ -13,7 +12,7 @@ import os
 import json
 import nexus.utils.io_utils as io_utils
 from nexus.utils.granularity_utils import get_inverted_index_names
-from nexus.utils.data_model import Variable
+from nexus.utils.data_model import Variable, Table
 from typing import List, Dict
 from sklearn import linear_model
 from nexus.corr_analysis.factor_analysis.factor_analysis import factor_analysis, build_factor_clusters
@@ -23,7 +22,7 @@ from nexus.data_ingestion.data_profiler import Profiler
 
 class API:
     def __init__(self, connection_string, engine='duckdb',
-                 data_sources: List[str]=[], impute_options=[], correction=''):
+                 data_sources: List[str]=['chicago_zipcode', 'asthma', 'chicago_factors'], impute_options=[], correction=''):
         self.engine_type = engine
         self.db_engine = ConnectionFactory.create_connection(connection_string, engine, read_only=True)
 
@@ -120,6 +119,9 @@ class API:
         
         if "data_commons" in self.data_sources:
             metadata_lookup = io_utils.load_json('resource/data_commons/variable_lookup.json')
+            drop_count = True
+        else:
+            drop_count = False
         corr_search.set_join_cost(temporal_granularity, spatial_granularity, overlap_threshold)
         corr_search.find_all_corr_for_a_tbl(dataset, temporal_granularity, spatial_granularity, overlap_threshold,
                                             correlation_threshold, p_t=0.05, fill_zero=True,
@@ -212,24 +214,30 @@ class API:
         if provenance:
             json.dump(provenance, open(f'{path}/{name}_prov.json', 'w'))
 
-    def show_catalog(self):
+    # todo: add derived data to the catalog
+    def get_catalog(self):
         data = []
         # create a dataframe from catalog
         for id, info in self.catalog.items():
             if "link" in info:
                 data.append([id, info['name'], info['link']])
+            else:
+                data.append([id, info['name'], ''])
+            tbl = Table.table_from_tbl_id(id, self.catalog)
+            st_keys = tbl.get_spatio_temporal_keys([], [SPATIAL_GRANU.ZIPCODE])
+            for st_key in st_keys:
+                data.append([st_key.get_agg_tbl_name(id), st_key.get_agg_tbl_description(id), ''])
         df = pd.DataFrame(data, columns=['id', 'name', 'link'])
-
         return df
 
-    def show_raw_dataset(self, id):
+    def get_raw_dataset(self, id):
         # todo: map data source to data path
         data_path = "/data/chicago_open_data_1m/"
         df = pd.read_csv(f"{data_path}/{id}.csv")
         link = self.catalog[id]['link']
         return df, link
 
-    def show_agg_dataset(self, agg_tbl_name):
+    def get_agg_dataset(self, agg_tbl_name):
         df = self.db_engine.read_agg_tbl(agg_tbl_name)
         return df
 

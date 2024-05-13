@@ -111,7 +111,7 @@ def load_corrs_to_df(data, metadata: Dict[str, str]=None, drop_count: bool=True)
     df['agg_attr2'] = df['agg_attr2'].str[:-3]
     if drop_count:
         df = df[(df['agg_attr1'] != 'count') & (df['agg_attr2'] != 'count')]
-    return df
+    return df.reset_index(drop=True)
 
 
 def remove_bad_cols(stop_words, corrs):

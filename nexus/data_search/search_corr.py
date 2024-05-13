@@ -1064,7 +1064,6 @@ class CorrSearch:
                 if var2 not in df.columns:
                     continue
                 if var1[:-3] in control_vars or var2[:-3] in control_vars:
-                    print("continue 0")
                     continue
                 # import warnings
                 # warnings.filterwarnings("error")
@@ -1085,7 +1084,6 @@ class CorrSearch:
                     continue
                 if self.correct_method == "" or self.correct_method is None:
                     if abs(r_val) < r_t:
-                        print("continue 2")
                         continue
                 if abs(r_val) >= r_t:
                     self.perf_profile["corr_counts"]["before"] += 1
