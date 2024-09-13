@@ -9,6 +9,11 @@ from utils.io_utils import load_json, dump_json
 import time
 
 
+stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom", "census_block", 
+              "stnoto", "stnofrom", "lon", "lat", "northing", "easting", "property_group", "insepctnumber", 'primarykey','beat_',
+              "north", "south", "west", "east", "beat_of_occurrence", "lastinspectionnumber", "fax", "latest_dist_res", "majority_dist", "latest_dist",
+             "f12", "f13"]
+
 class Signal:
     def __init__(self, name, d, step):
         self.name = name
@@ -34,6 +39,8 @@ def load_all_corrs(path):
     for filename in os.listdir(path):
         if filename.endswith(".csv"):
             df = pd.read_csv(path + filename)
+            # remove all bad cols
+            df = remove_bad_cols(stop_words, df)
             if all_corr is None:
                 all_corr = df
             else:

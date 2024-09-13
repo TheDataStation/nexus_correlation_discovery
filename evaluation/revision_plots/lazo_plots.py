@@ -67,7 +67,7 @@ def lazo_joinable_run_time(data_source, t_granu, s_granu):
         text_obj.set_fontweight('bold')
         text_obj.set_fontsize(30)
     
-    plt.xlabel('Jaccard Containment Threshold', fontsize=40)
+    plt.xlabel('Jaccard Containment Threshold', fontsize=37)
     plt.ylabel('Run time(s)', fontsize=40)
   
     plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.22), ncol=3, prop={"weight": 'bold'})
@@ -102,7 +102,7 @@ def join_discovery_recall(data_sources, o_t, jc_values, validate):
         text_obj.set_fontweight('bold')
         text_obj.set_fontsize(30)
     plt.xlabel('Jaccard Containment Threshold', fontsize=32)
-    plt.ylabel('Recall', fontsize=40)
+    plt.ylabel('Recall', fontsize=33)
 
  
     # plt.tight_layout()
@@ -203,7 +203,7 @@ def e2e_runtime_stacked(data_sources, t_granu, s_granu):
     
             
     ax.set_ylabel('Run time(s)', fontsize=50)
-    ax.set_xticklabels(['JC=0.0', 'JC=0.2', 'JC=0.4', 'JC=0.6'], fontsize=50)
+    ax.set_xticklabels(['JC=0.0', 'JC=0.2', 'JC=0.4', 'JC=0.6'], fontsize=45)
     plt.savefig(f'evaluation/camera_ready_plots/lazo_e2e.{ext}', bbox_inches="tight")
 
     # print(df)
@@ -311,6 +311,6 @@ if __name__ == "__main__":
     t_granu, s_granu = T_GRANU.DAY, S_GRANU.BLOCK
     # t_granu, s_granu = T_GRANU.MONTH, S_GRANU.TRACT
     # lazo_joinable_run_time('chicago_1m', t_granu, s_granu)
-    # join_discovery_recall(['chicago_1m'], 10, [0.0, 0.2, 0.4, 0.6], True)
+    join_discovery_recall(['chicago_1m'], 10, [0.0, 0.2, 0.4, 0.6], True)
     # e2e_runtime_stacked(['chicago_1m'], t_granu, s_granu)
-    find_dist_false_nagetive_joins(t_granu, s_granu)
+    # find_dist_false_nagetive_joins(t_granu, s_granu)
