@@ -32,8 +32,7 @@ def find_all_correlations(t_granu, s_granu):
                           'tbl_name1': 'table_name1', 'tbl_name2': 'table_name2'}, inplace=True)
     return corrs
 
-def get_correlation_communities(corrs):
-    signal_thresholds = [1.0, 1.0, 1.0, 0.8, 0.6, 70]
+def get_correlation_communities(corrs, signal_thresholds):
     corr_community = CorrCommunity(corrs, 'chicago')
     corr_community.get_correlation_communities_chicago(signal_thresholds)
     return corr_community
