@@ -76,11 +76,13 @@ class OpenDataClient:
 
 if __name__ == "__main__":
     domain = "data.cityofchicago.org"
-    client = OpenDataClient(domain, "https://data.cityofchicago.org/resource/", "voGyQiv0JulAwW8e2YwTCUlBS")
-    id = '22u3-xenr'
-    # metadata = client.get_all_ids(domain)
-    # print(metadata[0])
-    # metadata = client.get_metadata_by_id(id)
-    # print(metadata)
-    data = client.get_data(id, query="SELECT * WHERE violation_date between '2020-01-01T00:00:00' and '2020-01-31T23:59:59'")
-    print(data.columns)
+    client = OpenDataClient(domain, "https://data.cityofchicago.org/resource/", "Your App Token")
+    res = client.datasets(domain)
+    datasets_to_download = []
+    for obj in res:
+        id = obj['resource']['id']
+        name = obj['resource']['name']
+        datasets_to_download.append([domain, id])
+    import json
+    with open('chicago_id_to_name.json', 'w') as f:
+        json.dump(datasets_to_download, f, indent=4)

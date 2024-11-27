@@ -113,7 +113,7 @@ ct_open_data:
   profile_path: resource/ct_open_data/profile_ct.json
   shape_path: resource/ct_open_data/ct_tract_shape/tl_2020_09_tract.shp
 data_prep:
-  app_token: voGyQiv0JulAwW8e2YwTCUlBS
+  app_token: your app_token
   root_dir: os.path.dirname(os.path.abspath(__file__))
 la_open_data:
   attr_path: resource/la_open_data/tbl_attrs_la.json
