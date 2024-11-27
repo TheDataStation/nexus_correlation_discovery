@@ -35,7 +35,8 @@ dependencies = [
     "scipy",
     "Shapely==2.0.3",
     "SQLAlchemy==2.0.25",
-    "tqdm==4.66.1"
+    "tqdm==4.66.1",
+    "dtale==3.12.0"
 ]
 
 [tool.setuptools.packages.find]

@@ -1,20 +1,25 @@
-# Nexus QuickStart
+# Nexus: Correlation Discovery over Collections of Spatio-Temporal Tabular Data
 
 ## Install
 
 ```bash
 $ git clone git@github.com:TheDataStation/nexus_correlation_discovery.git
+
+# optional: setup virtual environment
+$ conda create -n nexus python=3.11.5 -y
+$ conda activate nexus
+
 # install Nexus locally. This step will install all dependencies automatically.
 $ pip install -e . 
 ```
 
-## Quick Start
+## Quickstart
 
-We have prepared some data for you to explore the capacity of Nexus easily. We included the following datasets. (the links to these data include metadata only. Will add links to the original data soon)
+We have prepared some data for you to explore Nexus easily. We include the following datasets.
 
-- [chicago open data](resource/chicago_1m_zipcode/chicago_open_data.json)
-- [asthma data in chicago](resource/asthma/asthma_data.json)
-- [chicago factors including population and median income](/home/cc/nexus_correlation_discovery/resource/chicago_factors/chicago_factors_data.json)
+- [chicago open data](https://uchicago.box.com/s/8v4fqtkvrq9uhj85g6y8048w4o6xp91g)
+- [asthma data in chicago](data/asthma)
+- [chicago factors including population and median income](data/chicago_factors)
 
 These datasets are ingested into a [duckdb database](https://uchicago.box.com/s/v650de4zatbzk1yzvtuppfns78a2xhjc) and converted to the zipcode granularity.
 

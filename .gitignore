@@ -1,6 +1,7 @@
 .DS_Store
-data
 data/quickstart.db
+data/Data Commons/
+data/*.db
 indices*
 .ipynb_checkpoints
 shape_chicago_blocks
@@ -9,6 +10,8 @@ venv
 # demo/data_commons.ipynb
 .vscode
 *.csv
+!data/asthma/*.csv
+!data/chicago_factors/*.csv
 notebook/
 result/
 __pycache__
