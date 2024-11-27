@@ -1,7 +1,6 @@
 
 from nexus.utils.time_point import TEMPORAL_GRANU
 from nexus.utils.coordinate import SPATIAL_GRANU
-from demo.demo_ui import show_df
 from nexus.nexus_api import API
 from nexus.utils.data_model import Variable
 from sklearn import linear_model
@@ -9,7 +8,6 @@ import warnings
 from nexus.corr_analysis.graph.graph_utils import filter_on_signals
 from nexus.utils.io_utils import load_corrs_from_dir
 from demo.cluster_utils import CorrCommunity
-from demo.demo_ui import show_communities
 import pickle
 import subprocess
 import pandas as pd 
@@ -39,8 +37,3 @@ def get_correlation_communities(corrs):
     corr_community = CorrCommunity(corrs, 'chicago')
     corr_community.get_correlation_communities_chicago(signal_thresholds)
     return corr_community
-
-if __name__ == "__main__":
-    home_dir=os.path.expanduser('~')
-    os.chdir(f"{home_dir}/nexus_correlation_discovery/")
-    get_correlation_communities()
