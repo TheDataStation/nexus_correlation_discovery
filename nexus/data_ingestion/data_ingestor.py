@@ -113,6 +113,7 @@ class DBIngestor:
                                     spatial_range, temporal_range,
                                     data_source_config, inverted_index_tables)
                     previous_failed_tbls.remove(tbl.tbl_id)
+                    ingested_tables[tbl.tbl_id] = tbl_info
                 except Exception as e:
                     traceback.print_exc()
             else:
@@ -120,10 +121,11 @@ class DBIngestor:
                     tbl_info = self.ingest_tbl(tbl, temporal_granu_l, spatial_granu_l,
                                     spatial_range, temporal_range,
                                     data_source_config, inverted_index_tables)
+                    ingested_tables[tbl.tbl_id] = tbl_info
                 except Exception as e:
                     failed_tables.append(tbl.tbl_id)
                     traceback.print_exc()
-            ingested_tables[tbl.tbl_id] = tbl_info
+            
 
         if persist:
             if retry_list is not None:
@@ -369,12 +371,15 @@ class DBIngestor:
         for s_attr in s_attrs:
             spatial_granu_map[s_attr.granu].append(s_attr)
 
+        s_attrs_success_names = set()
         for s_granu in spatial_granu_l:
             if s_granu.name in spatial_granu_map:
                 s_attr = spatial_granu_map[s_granu.name][0]
                 new_attr = "{}_{}".format(s_attr.name, s_granu.value)
                 df[new_attr] = df[s_attr.name].dropna().astype(int).astype(str)
-                s_attrs_success.append(s_attr)
+                if s_attr.name not in s_attrs_success_names:
+                    s_attrs_success_names.add(s_attr.name)
+                    s_attrs_success.append(s_attr)
             else:
                 # if there is no spatial attribute with the desired granularity, Nexus
                 # will check whether there is an attribute with the finest geo-coordinate 
@@ -391,7 +396,7 @@ class DBIngestor:
                         .set_crs(epsg=4326, inplace=True)
                     )
                     # todo: potential repetitive computation
-                    df_resolved = resolve_spatial_hierarchy(gdf, spatial_hierarchies)
+                    df_resolved = resolve_spatial_hierarchy(gdf, spatial_hierarchies, s_granu)
 
                     # df_resolved can be none meaning there is no point falling into the shape file
                     if df_resolved is None:
@@ -399,7 +404,9 @@ class DBIngestor:
                     
                     new_attr = "{}_{}".format(s_attr.name, s_granu.value)
                     df[new_attr] = df_resolved.apply(set_spatial_granu, args=(s_granu,))
-                    s_attrs_success.append(s_attr)
+                    if s_attr.name not in s_attrs_success_names:
+                        s_attrs_success_names.add(s_attr.name)
+                        s_attrs_success.append(s_attr)
            
         return df, df_schema, t_attrs_success, s_attrs_success
     

@@ -265,8 +265,8 @@ class DuckDBConnector(DatabaseConnectorInterface):
                     SELECT {attrs} FROM "{base_tbl}" {join_clauses}
                 """.format(
             attrs=",".join([
-                "{original_name} AS {proj_name}".format(
-                    original_name=f'"{tbl}".{col.var_name}',
+                '{original_name} AS "{proj_name}"'.format(
+                    original_name=f'"{tbl}"."{col.var_name}"',
                     proj_name=col.proj_name)
                 for tbl, cols in tbl_cols.items() for col in cols
             ]),
@@ -276,7 +276,6 @@ class DuckDBConnector(DatabaseConnectorInterface):
                  for tbl in tbls[1:]]
             ),
         )
-
         return self.cur.sql(query).df().astype(float).round(3)
 
     def join_multi_vars(self, variables: List[Variable], constraints: Dict = {}):
@@ -295,8 +294,8 @@ class DuckDBConnector(DatabaseConnectorInterface):
                 constaint_vals.append(threshold)
             sql_str = 'SELECT {attrs} FROM "{base_tbl}" {join_clauses} WHERE {filter}'
         query = sql_str.format(
-            attrs=','.join([f'"{tbl}".{col}' for tbl, cols in tbl_cols.items() for col in cols]
-                           + [f'"{tbl}".count AS "{tbl}_samples"' for tbl in tbl_cols.keys()]),
+            attrs=','.join([f'"{tbl}".{col}' for tbl, cols in tbl_cols.items() for col in cols]),
+                        #    + [f'"{tbl}".count AS "{tbl}_samples"' for tbl in tbl_cols.keys()]),
             base_tbl=tbls[0],
             join_clauses=' '.join(
                 ['INNER JOIN "{next_tbl}" ON "{tbl}".val = "{next_tbl}".val'.format(tbl=tbls[0], next_tbl=tbl) for

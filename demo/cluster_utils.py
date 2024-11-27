@@ -1,6 +1,7 @@
 import networkx as nx
 import pandas as pd
 from collections import defaultdict
+import random
 
 def get_clusters_fa(factor_clusters):
     all_communities = {}
@@ -18,6 +19,7 @@ def get_clusters(G):
     #     f"number of nodes: {G.number_of_nodes()}; number of edges: {G.number_of_edges()}"
     # )
     # print(f"clustering coefficient: {nx.average_clustering(G)}")
+    random.seed(9)
     comps = nx.community.louvain_communities(G)
     all_communities = {}
     for i, comp in enumerate(comps):
@@ -71,10 +73,10 @@ def build_graph_on_vars(corrs, threshold=0, weighted=False):
     tbl_attrs = defaultdict(set)
     for _, row in corrs.iterrows():
         tbl_id1, tbl_id2, tbl_name1, tbl_name2, agg_attr1, agg_attr2 = (
-            row["tbl_id1"],
-            row["tbl_id2"],
-            row["tbl_name1"],
-            row["tbl_name2"],
+            row["table_id1"],
+            row["table_id2"],
+            row["table_name1"],
+            row["table_name2"],
             row["agg_attr1"],
             row["agg_attr2"],
         )
@@ -124,17 +126,30 @@ Functions to retrieve correlations
 
 
 class CorrCommunity:
-    def __init__(self, corrs, name, clusters=None, comps=None):
+    def __init__(self, corrs, name=None, clusters=None, comps=None):
         self.name = name
         self.corrs = corrs
+        self.display_attrs = [
+            # "table_id1",
+            "table_name1",
+            "agg_attr1",
+            "description1",
+            # "table_id2",
+            "table_name2",
+            "agg_attr2",
+            "description2",
+            "correlation coefficient",
+            "number of samples",
+            "spatio-temporal key type",
+        ]
         if self.name == "chicago":
             self.display_attrs = [
-                "tbl_id1",
-                "tbl_name1",
+                "table_id1",
+                "table_name1",
                 "align_attrs1",
                 "agg_attr1",
-                "tbl_id2",
-                "tbl_name2",
+                "table_id2",
+                "table_name2",
                 "align_attrs2",
                 "agg_attr2",
                 "r_val",
@@ -154,22 +169,35 @@ class CorrCommunity:
         self.filtered_corr = corrs
       
 
-    def get_correlation_communities_chicago(self, signal_thresholds):
-        self.filtered_corr = filter_on_signals(self.corrs, None, signal_thresholds)
-        original_tbls = pd.concat(
-            [self.corrs["tbl_id1"], self.corrs["tbl_id2"]]
-        ).nunique()
-        covered_tbls = pd.concat(
-            [self.filtered_corr["tbl_id1"], self.filtered_corr["tbl_id2"]]
-        ).nunique()
+    def get_correlation_communities(self, signal_thresholds=None):
+        if signal_thresholds:
+            self.filtered_corr = filter_on_signals(self.corrs, None, signal_thresholds)
+        else:
+            self.filtered_corr = self.corrs
         self.G = build_graph_on_vars(self.filtered_corr, 0, False)
         self.all_communities = self.get_communities(self.G)
         print(
-            f"covered #tbls: {covered_tbls}, original #tbls: {original_tbls}, coverage ratio: {covered_tbls/original_tbls}, modularity score: {nx.community.modularity(self.G, self.comps)}"
+            f"modularity score: {nx.community.modularity(self.G, self.comps)}"
         )
-        print(
-            f"covered #correlations: {len(self.filtered_corr)}, original #correlations: {len(self.corrs)}"
-        )
+       
+
+    def get_correlation_communities_chicago(self, signal_thresholds, show_info=False):
+        self.filtered_corr = filter_on_signals(self.corrs, None, signal_thresholds)
+        original_tbls = pd.concat(
+            [self.corrs["table_id1"], self.corrs["table_id2"]]
+        ).nunique()
+        covered_tbls = pd.concat(
+            [self.filtered_corr["table_id1"], self.filtered_corr["table_id2"]]
+        ).nunique()
+        self.G = build_graph_on_vars(self.filtered_corr, 0, False)
+        self.all_communities = self.get_communities(self.G)
+        if show_info:
+            print(
+                f"covered #tbls: {covered_tbls}, original #tbls: {original_tbls}, coverage ratio: {covered_tbls/original_tbls}, modularity score: {nx.community.modularity(self.G, self.comps)}"
+            )
+            print(
+                f"covered #correlations: {len(self.filtered_corr)}, original #correlations: {len(self.corrs)}"
+            )
 
     def get_correlation_communities_un(self, signal_thresholds):
         self.filtered_corr = self.corrs[
@@ -191,6 +219,7 @@ class CorrCommunity:
         )
 
     def get_communities(self, G):
+        random.seed(10)
         # sort components by the number of variables in the cluster
         self.comps = nx.community.louvain_communities(G)
         tmp = []
@@ -220,13 +249,13 @@ class CorrCommunity:
 
     def get_corr_in_a_community(self, df, tbls, show_corr_in_same_tbl):
         if self.name == "chicago":
-            mask = (df["tbl_id1"] + "--" + df["agg_attr1"]).isin(tbls) & (
-                df["tbl_id2"] + "--" + df["agg_attr2"]
+            mask = (df["table_id1"] + "--" + df["agg_attr1"]).isin(tbls) & (
+                df["table_id2"] + "--" + df["agg_attr2"]
             ).isin(tbls)
             res = df[mask]
             if len(res) == 0:
-                mask = (df["tbl_name1"] + "--" + df["agg_attr1"]).isin(tbls) & (
-                df["tbl_name2"] + "--" + df["agg_attr2"]
+                mask = (df["table_name1"] + "--" + df["agg_attr1"]).isin(tbls) & (
+                df["table_name2"] + "--" + df["agg_attr2"]
                 ).isin(tbls)
                 res = df[mask]
         elif self.name == "un":
@@ -236,4 +265,9 @@ class CorrCommunity:
             res = df[mask]
             if not show_corr_in_same_tbl:
                 res = res[~(res["tbl1"] == res["tbl2"])]
+        else:
+            mask = (df["table_id1"] + "--" + df["agg_attr1"]).isin(tbls) & (
+                df["table_id2"] + "--" + df["agg_attr2"]
+            ).isin(tbls)
+            res = df[mask]
         return res[self.display_attrs]

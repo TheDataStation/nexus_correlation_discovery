@@ -1,12 +1,5 @@
 {
     "asthma_Zip5_6": {
-        "avg_enc_asthma": {
-            "sum": 24910.0,
-            "sum_square": 51198412.0,
-            "avg": 498.2,
-            "res_sum": 38788250.0,
-            "cnt": 50
-        },
         "avg_encAsthmaExac": {
             "sum": 9273.0,
             "sum_square": 7674029.0,
@@ -19,6 +12,13 @@
             "sum_square": 4.8264,
             "avg": 0.2908,
             "res_sum": 0.5982,
+            "cnt": 50
+        },
+        "avg_enc_asthma": {
+            "sum": 24910.0,
+            "sum_square": 51198412.0,
+            "avg": 498.2,
+            "res_sum": 38788250.0,
             "cnt": 50
         },
         "count": {

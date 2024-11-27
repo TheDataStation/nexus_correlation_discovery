@@ -1,0 +1,5450 @@
+{
+    "00061_Housing_Chicago": {
+        "avg_HCV_PUBLIC_PCT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_HCV_PUBLIC_PCT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_HCV_PUBLIC_PCT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_OwnerCost3050pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_OwnerCost3050pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_OwnerCost3050pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_TOTAL_AMT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.65
+        },
+        "avg_TOTAL_AMT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.65
+        },
+        "avg_TOTAL_AMT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.65
+        },
+        "avg_eviction_filings_rate_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_eviction_filings_rate_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_eviction_filings_rate": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_ProbOwner30pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_ProbOwner30pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_ProbOwner30pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_OwnerOccPct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_OwnerOccPct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_OwnerOccPct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_RenterOccPct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_RenterOccPct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_RenterOccPct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_median_home_value_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_median_home_value_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_median_home_value": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_Avg_PCT_LM_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_Avg_PCT_LM_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_Avg_PCT_LM": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_LowCrowdOwnerPct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.68
+        },
+        "avg_LowCrowdOwnerPct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.68
+        },
+        "avg_LowCrowdOwnerPct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.68
+        },
+        "avg_avg_Road Proximity 101 - 300 Feet_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.71
+        },
+        "avg_avg_Road Proximity 101 - 300 Feet_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.71
+        },
+        "avg_avg_Road Proximity 101 - 300 Feet": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.71
+        },
+        "avg_city_property_tot_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_city_property_tot_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_city_property_tot": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_Sum_IMPACT_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_Sum_IMPACT_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_Sum_IMPACT_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_TOTAL_DWELLING_UNITS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_TOTAL_DWELLING_UNITS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_TOTAL_DWELLING_UNITS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_LowCrowdRenterPct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.63
+        },
+        "avg_LowCrowdRenterPct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.63
+        },
+        "avg_LowCrowdRenterPct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.63
+        },
+        "avg_mode_Neighborhood Code_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_mode_Neighborhood Code_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_mode_Neighborhood Code": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_USPS_Vac_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_USPS_Vac_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_USPS_Vac_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_UATOTHOA_COUNT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.73
+        },
+        "avg_UATOTHOA_COUNT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.73
+        },
+        "avg_UATOTHOA_COUNT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.73
+        },
+        "avg_UATOTHOA_AMT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.73
+        },
+        "avg_UATOTHOA_AMT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.73
+        },
+        "avg_UATOTHOA_AMT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.73
+        },
+        "avg_RENTAL_COUNT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_RENTAL_COUNT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_RENTAL_COUNT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_RenterCostGT50pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.28
+        },
+        "avg_RenterCostGT50pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.28
+        },
+        "avg_RenterCostGT50pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.28
+        },
+        "avg_HC_RATE_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_HC_RATE_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_HC_RATE": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_avg_O'Hare Noise Indicator_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_avg_O'Hare Noise Indicator_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_avg_O'Hare Noise Indicator": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_OwnerCostGT_EQ30pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_OwnerCostGT_EQ30pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_OwnerCostGT_EQ30pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_AllPre1960pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_AllPre1960pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_AllPre1960pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_avg_FEMA Floodplain_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_avg_FEMA Floodplain_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_avg_FEMA Floodplain": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_avg_Flood Risk Factor_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_avg_Flood Risk Factor_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_avg_Flood Risk Factor": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_RentPre1960pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.28
+        },
+        "avg_RentPre1960pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.28
+        },
+        "avg_RentPre1960pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.28
+        },
+        "avg_proportionCorD_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.64
+        },
+        "avg_proportionCorD_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.64
+        },
+        "avg_proportionCorD": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.64
+        },
+        "avg_hardship_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_hardship_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_hardship": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_ProbALL50pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_ProbALL50pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_ProbALL50pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_OTHER_COUNT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_OTHER_COUNT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_OTHER_COUNT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_ProbALL30pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_ProbALL30pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_ProbALL30pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_AllCrowdPct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.42
+        },
+        "avg_AllCrowdPct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.42
+        },
+        "avg_AllCrowdPct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.42
+        },
+        "avg_mode_Township Code_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_mode_Township Code_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_mode_Township Code": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_ForeSTARTS_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_ForeSTARTS_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_ForeSTARTS_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_AllCostGT_EQ30pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_AllCostGT_EQ30pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_AllCostGT_EQ30pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_mode_Township Neighborhood Only_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_mode_Township Neighborhood Only_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_mode_Township Neighborhood Only": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_AllCrowdOwnerPct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.61
+        },
+        "avg_AllCrowdOwnerPct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.61
+        },
+        "avg_AllCrowdOwnerPct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.61
+        },
+        "avg_UAHOR_COUNT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.89
+        },
+        "avg_UAHOR_COUNT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.89
+        },
+        "avg_UAHOR_COUNT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.89
+        },
+        "avg_TOTAL_COUNT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.65
+        },
+        "avg_TOTAL_COUNT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.65
+        },
+        "avg_TOTAL_COUNT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.65
+        },
+        "avg_Avg_PCT_LMMI_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_Avg_PCT_LMMI_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_Avg_PCT_LMMI": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_HighCrowdOwnerPct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_HighCrowdOwnerPct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_HighCrowdOwnerPct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_prop_plndev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_prop_plndev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_prop_plndev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_ProbRenter30pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_ProbRenter30pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_ProbRenter30pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_proportionB_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_proportionB_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_proportionB": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_OwnerPre1960pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_OwnerPre1960pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_OwnerPre1960pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_ProbRenter50pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.27
+        },
+        "avg_ProbRenter50pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.27
+        },
+        "avg_ProbRenter50pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.27
+        },
+        "avg_pop_density_sqmi_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_pop_density_sqmi_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_pop_density_sqmi": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_urban_flood_suscep_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.54
+        },
+        "avg_urban_flood_suscep_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.54
+        },
+        "avg_urban_flood_suscep": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.54
+        },
+        "avg_HighCrowdRenterPct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.73
+        },
+        "avg_HighCrowdRenterPct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.73
+        },
+        "avg_HighCrowdRenterPct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.73
+        },
+        "avg_AllCrowdRenterPct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.52
+        },
+        "avg_AllCrowdRenterPct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.52
+        },
+        "avg_AllCrowdRenterPct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.52
+        },
+        "avg_avg_Tract Median Income_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_avg_Tract Median Income_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_avg_Tract Median Income": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_PubHousOcc_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_PubHousOcc_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_PubHousOcc_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_prop_comm_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_prop_comm_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_prop_comm": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_OwnerCostGT50pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_OwnerCostGT50pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_OwnerCostGT50pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_avg_Tax Rate_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_avg_Tax Rate_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_avg_Tax Rate": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_BldgViolRate1000_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_BldgViolRate1000_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_BldgViolRate1000": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_UAHB_COUNT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_UAHB_COUNT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_UAHB_COUNT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_prop_resdntl_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_prop_resdntl_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_prop_resdntl": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_avg_Proportion Assessed_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_avg_Proportion Assessed_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_avg_Proportion Assessed": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_HMDA_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_HMDA_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_HMDA_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_LackPlumbKitchOwnerPct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_LackPlumbKitchOwnerPct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_LackPlumbKitchOwnerPct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_avg_Flood Risk Direction_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.69
+        },
+        "avg_avg_Flood Risk Direction_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.69
+        },
+        "avg_avg_Flood Risk Direction": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.69
+        },
+        "avg_FUND_DHOR_AMT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.89
+        },
+        "avg_FUND_DHOR_AMT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.89
+        },
+        "avg_FUND_DHOR_AMT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.89
+        },
+        "avg_TOTAL_OCCUPIED_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_TOTAL_OCCUPIED_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_TOTAL_OCCUPIED": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_RenterCostGT_EQ30pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_RenterCostGT_EQ30pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_RenterCostGT_EQ30pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_RenterCost3050pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.28
+        },
+        "avg_RenterCost3050pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.28
+        },
+        "avg_RenterCost3050pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.28
+        },
+        "avg_avg_Road Proximity < 100 Feet_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.82
+        },
+        "avg_avg_Road Proximity < 100 Feet_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.82
+        },
+        "avg_avg_Road Proximity < 100 Feet": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.82
+        },
+        "avg_median_rent_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_median_rent_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_median_rent": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_ForecloseRate1000_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.56
+        },
+        "avg_ForecloseRate1000_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.56
+        },
+        "avg_ForecloseRate1000": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.56
+        },
+        "avg_proportionA_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_proportionA_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_proportionA": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_PRE1960PCT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_PRE1960PCT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_PRE1960PCT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.25
+        },
+        "avg_PubHousCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_PubHousCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_PubHousCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_ForeCOMPLETED_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_ForeCOMPLETED_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_ForeCOMPLETED_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_Avg_NSP3NEED_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_Avg_NSP3NEED_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_Avg_NSP3NEED": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_ProbOwner50pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_ProbOwner50pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_ProbOwner50pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_mode_Property Class_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_mode_Property Class_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_mode_Property Class": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_RENTAL_AMT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_RENTAL_AMT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_RENTAL_AMT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_LackPlumbKitchRenterPct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_LackPlumbKitchRenterPct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_LackPlumbKitchRenterPct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_Avg_SDQ_RATE_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_Avg_SDQ_RATE_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_Avg_SDQ_RATE": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_proportionD_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.83
+        },
+        "avg_proportionD_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.83
+        },
+        "avg_proportionD": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.83
+        },
+        "avg_FUND_DHB_AMT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_FUND_DHB_AMT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_FUND_DHB_AMT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_proportionC_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_proportionC_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_proportionC": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_OTHER_AMT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_OTHER_AMT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_OTHER_AMT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_avg_Age_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_avg_Age_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_avg_Age": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        }
+    },
+    "00082_Schools_Chicago_line_listing": {},
+    "00071_Health_Chicago": {
+        "avg_COLON_SCREEN_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_COLON_SCREEN_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_COLON_SCREEN_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_RxCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.83
+        },
+        "avg_RxCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.83
+        },
+        "avg_RxCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.83
+        },
+        "avg_BPMED_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_BPMED_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_BPMED_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_TYPE_LONG TERM CARE_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TYPE_LONG TERM CARE_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TYPE_LONG TERM CARE": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TRAUMA_LEVEL I PEDIATRIC_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TRAUMA_LEVEL I PEDIATRIC_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TRAUMA_LEVEL I PEDIATRIC": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_HIGHCHOL_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_HIGHCHOL_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_HIGHCHOL_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CHD_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CHD_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CHD_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_TotalBeds_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.97
+        },
+        "avg_TotalBeds_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.97
+        },
+        "avg_TotalBeds": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.97
+        },
+        "avg_Hosp_rate_10k_y_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_Hosp_rate_10k_y_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_Hosp_rate_10k_y": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_CANCER_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CANCER_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CANCER_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_PAPTEST_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_PAPTEST_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_PAPTEST_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_COREW_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_COREW_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_COREW_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_MAMMOUSE_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_MAMMOUSE_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_MAMMOUSE_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_ARTHRITIS_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_ARTHRITIS_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_ARTHRITIS_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CASTHMA_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CASTHMA_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CASTHMA_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_TRAUMA_LEVEL I ADULT, LEVEL I PEDIATRIC_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TRAUMA_LEVEL I ADULT, LEVEL I PEDIATRIC_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TRAUMA_LEVEL I ADULT, LEVEL I PEDIATRIC": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TYPE_CHILDREN_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TYPE_CHILDREN_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TYPE_CHILDREN": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TRAUMA_LEVEL I_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TRAUMA_LEVEL I_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TRAUMA_LEVEL I": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_DIABETES_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_DIABETES_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_DIABETES_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_OWNER_GOVERNMENT - FEDERAL_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_OWNER_GOVERNMENT - FEDERAL_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_OWNER_GOVERNMENT - FEDERAL": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_STROKE_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_STROKE_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_STROKE_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_TYPE_GENERAL ACUTE CARE_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_TYPE_GENERAL ACUTE CARE_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_TYPE_GENERAL ACUTE CARE": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_Primarycount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_Primarycount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_Primarycount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_PHLTH_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_PHLTH_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_PHLTH_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_TYPE_MILITARY_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TYPE_MILITARY_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TYPE_MILITARY": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_HELIPAD_Y_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_HELIPAD_Y_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_HELIPAD_Y": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_Hosp_rate_10k_x_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_Hosp_rate_10k_x_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_Hosp_rate_10k_x": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_HospCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.97
+        },
+        "avg_HospCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.97
+        },
+        "avg_HospCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.97
+        },
+        "avg_TYPE_REHABILITATION_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TYPE_REHABILITATION_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TYPE_REHABILITATION": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_ACCESS2_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_ACCESS2_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_ACCESS2_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_BPHIGH_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_BPHIGH_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_BPHIGH_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_Clinician_rate_1k_x_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.14
+        },
+        "avg_Clinician_rate_1k_x_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.14
+        },
+        "avg_Clinician_rate_1k_x": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.14
+        },
+        "avg_COREM_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_COREM_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_COREM_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_OWNER_PROPRIETARY_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_OWNER_PROPRIETARY_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_OWNER_PROPRIETARY": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_COPD_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_COPD_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_COPD_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_Clinician_rate_1k_y_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.14
+        },
+        "avg_Clinician_rate_1k_y_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.14
+        },
+        "avg_Clinician_rate_1k_y": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.14
+        },
+        "avg_OBESITY_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_OBESITY_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_OBESITY_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_DENTAL_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_DENTAL_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_DENTAL_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_OWNER_GOVERNMENT - LOCAL_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_OWNER_GOVERNMENT - LOCAL_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_OWNER_GOVERNMENT - LOCAL": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_OWNER_GOVERNMENT - STATE_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_OWNER_GOVERNMENT - STATE_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_OWNER_GOVERNMENT - STATE": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TEETHLOST_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_TEETHLOST_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_TEETHLOST_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_TYPE_PSYCHIATRIC_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TYPE_PSYCHIATRIC_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TYPE_PSYCHIATRIC": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_FQHCcount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_FQHCcount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_FQHCcount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_TRAUMA_LEVEL II_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TRAUMA_LEVEL II_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_TRAUMA_LEVEL II": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_CHECKUP_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CHECKUP_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CHECKUP_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CHOLSCREEN_CrudePrev_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CHOLSCREEN_CrudePrev_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_CHOLSCREEN_CrudePrev": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        }
+    },
+    "00033_Pollution_industrial_sites_Chicago_lat_long": {},
+    "00051_Business_economy_transportation_Chicago": {
+        "avg_HUDEmpowerZone_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.94
+        },
+        "avg_HUDEmpowerZone_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.94
+        },
+        "avg_HUDEmpowerZone": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.94
+        },
+        "avg_BusLicCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_BusLicCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_BusLicCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_CDBG_TOTAL_COUNT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_CDBG_TOTAL_COUNT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_CDBG_TOTAL_COUNT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_EnergyCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_EnergyCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_EnergyCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_ETOHLicCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_ETOHLicCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_ETOHLicCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_MfgLicCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_MfgLicCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_MfgLicCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.55
+        },
+        "avg_HUDRenewalComm_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.94
+        },
+        "avg_HUDRenewalComm_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.94
+        },
+        "avg_HUDRenewalComm": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.94
+        },
+        "avg_BldgPermitsN_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_BldgPermitsN_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_BldgPermitsN": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_CDBG_TOTAL_AMT_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_CDBG_TOTAL_AMT_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_CDBG_TOTAL_AMT": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_HUDQualCenTract_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.53
+        },
+        "avg_HUDQualCenTract_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.53
+        },
+        "avg_HUDQualCenTract": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.53
+        },
+        "avg_GroceryCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.74
+        },
+        "avg_GroceryCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.74
+        },
+        "avg_GroceryCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.74
+        },
+        "avg_ChildcareLicCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_ChildcareLicCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_ChildcareLicCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_AvgEnergyRating_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.6
+        },
+        "avg_AvgEnergyRating_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.6
+        },
+        "avg_AvgEnergyRating": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.6
+        }
+    },
+    "00041_Behavioral_psychological_Chicago": {
+        "avg_CSMOKING_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_CSMOKING_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_CSMOKING": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_BINGE_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_BINGE_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_BINGE": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_MHLTH_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_MHLTH_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_MHLTH": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_LPA_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_LPA_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_LPA": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_SLEEP_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_SLEEP_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_SLEEP": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_DEPRESSION_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_DEPRESSION_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_DEPRESSION": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "Industrial sites - Data_geocoded": {},
+    "00012_ACS1019_Chicago_zipcode": {
+        "avg_pct_PUB_ASST_INC_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pct_PUB_ASST_INC_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pct_PUB_ASST_INC_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pct_Age5p_Arabic_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.37
+        },
+        "avg_pct_Age5p_Arabic_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.37
+        },
+        "avg_pct_Age5p_Arabic_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.37
+        },
+        "avg_Tot_Prns_in_HHD_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Prns_in_HHD_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Prns_in_HHD_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Crowd_Occp_U_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.05
+        },
+        "avg_pct_Crowd_Occp_U_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.05
+        },
+        "avg_pct_Crowd_Occp_U_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.05
+        },
+        "avg_pct_Pov_Univ_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pov_Univ_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pov_Univ_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Housing_Units_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Housing_Units_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Housing_Units_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_Spanish_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Age5p_Spanish_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Age5p_Spanish_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_Tot_Occp_Units_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Occp_Units_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Occp_Units_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_OthAsian_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.38
+        },
+        "avg_pct_Age5p_OthAsian_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.38
+        },
+        "avg_pct_Age5p_OthAsian_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.38
+        },
+        "avg_pct_Civ_unemp_16p_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_unemp_16p_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_unemp_16p_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Males_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Males_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Males_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_NH_Asian_alone_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_NH_Asian_alone_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_NH_Asian_alone_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Hispanic_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Hispanic_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Hispanic_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Mobile_Homes_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.31
+        },
+        "avg_pct_Mobile_Homes_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.31
+        },
+        "avg_pct_Mobile_Homes_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.31
+        },
+        "avg_pct_College_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_College_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_College_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_TwoPHealthIns_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_TwoPHealthIns_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_TwoPHealthIns_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_16_24_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_16_24_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_16_24_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_5yrs_Over_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_5yrs_Over_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_5yrs_Over_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_OthEuro_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_pct_Age5p_OthEuro_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_pct_Age5p_OthEuro_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.22
+        },
+        "avg_Med_House_Value_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Med_House_Value_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Med_House_Value_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_45_64_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_45_64_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_45_64_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_NH_SOR_alone_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.32
+        },
+        "avg_pct_NH_SOR_alone_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.32
+        },
+        "avg_pct_NH_SOR_alone_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.32
+        },
+        "avg_pct_Age5p_Russian_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.21
+        },
+        "avg_pct_Age5p_Russian_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.21
+        },
+        "avg_pct_Age5p_Russian_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.21
+        },
+        "avg_pct_Pop_25_44_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_25_44_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_25_44_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_ENG_VW_SPAN_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.13
+        },
+        "avg_pct_ENG_VW_SPAN_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.13
+        },
+        "avg_pct_ENG_VW_SPAN_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.13
+        },
+        "avg_pct_Age5p_German_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.46
+        },
+        "avg_pct_Age5p_German_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.46
+        },
+        "avg_pct_Age5p_German_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.46
+        },
+        "avg_pct_Othr_Lang_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Othr_Lang_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Othr_Lang_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_unemp_16_24_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Civ_unemp_16_24_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Civ_unemp_16_24_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Prs_Blw_Pov_Lev_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Prs_Blw_Pov_Lev_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Prs_Blw_Pov_Lev_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_18_24_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_18_24_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_18_24_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_MrdCple_HHD_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_MrdCple_HHD_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_MrdCple_HHD_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_NH_Blk_alone_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_NH_Blk_alone_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_NH_Blk_alone_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_Med_HHD_Inc_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Med_HHD_Inc_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Med_HHD_Inc_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_NH_AIAN_alone_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.39
+        },
+        "avg_pct_NH_AIAN_alone_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.39
+        },
+        "avg_pct_NH_AIAN_alone_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.39
+        },
+        "avg_pct_Vacant_Units_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Vacant_Units_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Vacant_Units_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_Tot_Population_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Population_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Population_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_Only_Eng_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_Only_Eng_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_Only_Eng_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Rel_Under_6_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Rel_Under_6_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Rel_Under_6_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_Disabled_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_Disabled_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_Disabled_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Recent_Built_HU_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_pct_Recent_Built_HU_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_pct_Recent_Built_HU_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.26
+        },
+        "avg_pct_Civ_emp_25_44_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_25_44_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_25_44_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_Tagalog_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.32
+        },
+        "avg_pct_Age5p_Tagalog_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.32
+        },
+        "avg_pct_Age5p_Tagalog_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.32
+        },
+        "avg_pct_Diff_HU_1yr_Ago_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Diff_HU_1yr_Ago_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Diff_HU_1yr_Ago_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_25yrs_Over_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_25yrs_Over_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_25yrs_Over_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Born_foreign_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Born_foreign_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Born_foreign_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Renter_Occp_HU_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Renter_Occp_HU_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Renter_Occp_HU_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_65plus_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_65plus_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_65plus_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Owner_Occp_HU_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Owner_Occp_HU_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Owner_Occp_HU_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_One_Health_Ins_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_One_Health_Ins_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_One_Health_Ins_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Single_Unit_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Single_Unit_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Single_Unit_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_ENG_VW_OTHER_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.45
+        },
+        "avg_pct_ENG_VW_OTHER_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.45
+        },
+        "avg_pct_ENG_VW_OTHER_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.45
+        },
+        "avg_pct_HHD_PPL_Und_18_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_HHD_PPL_Und_18_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_HHD_PPL_Und_18_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_unemp_45_64_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Civ_unemp_45_64_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Civ_unemp_45_64_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Pop_45_64_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_45_64_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_45_64_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_US_Cit_Nat_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_US_Cit_Nat_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_US_Cit_Nat_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_MLT_U10p_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_MLT_U10p_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_MLT_U10p_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Civ_emp_16p_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_16p_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_16p_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Num_Tracts_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Num_Tracts_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Num_Tracts": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_unemp_25_44_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Civ_unemp_25_44_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Civ_unemp_25_44_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_ENG_VW_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_ENG_VW_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_ENG_VW_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Born_US_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Born_US_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Born_US_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_Korean_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_pct_Age5p_Korean_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_pct_Age5p_Korean_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.34
+        },
+        "avg_pct_NH_NHOPI_alone_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.81
+        },
+        "avg_pct_NH_NHOPI_alone_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.81
+        },
+        "avg_pct_NH_NHOPI_alone_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.81
+        },
+        "avg_pct_Pop_under_5_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_under_5_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_under_5_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Rel_Family_HHD_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Rel_Family_HHD_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Rel_Family_HHD_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_MLT_U2_9_STRC_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_MLT_U2_9_STRC_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_MLT_U2_9_STRC_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Females_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Females_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Females_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_NH_White_alone_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_NH_White_alone_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_NH_White_alone_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_Chinese_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_pct_Age5p_Chinese_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_pct_Age5p_Chinese_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.24
+        },
+        "avg_pct_ENG_VW_INDOEURO_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.09
+        },
+        "avg_pct_ENG_VW_INDOEURO_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.09
+        },
+        "avg_pct_ENG_VW_INDOEURO_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.09
+        },
+        "avg_pct_Age5p_French_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.42
+        },
+        "avg_pct_Age5p_French_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.42
+        },
+        "avg_pct_Age5p_French_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.42
+        },
+        "avg_pct_Pop_5_17_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_5_17_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_5_17_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_ENG_VW_API_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.23
+        },
+        "avg_pct_ENG_VW_API_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.23
+        },
+        "avg_pct_ENG_VW_API_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.23
+        },
+        "avg_pct_Age5p_OthUnSp_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.57
+        },
+        "avg_pct_Age5p_OthUnSp_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.57
+        },
+        "avg_pct_Age5p_OthUnSp_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.57
+        },
+        "avg_pct_Age5p_Vietnames_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.51
+        },
+        "avg_pct_Age5p_Vietnames_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.51
+        },
+        "avg_pct_Age5p_Vietnames_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.51
+        },
+        "avg_pct_Pop_1yr_Over_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_1yr_Over_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_1yr_Over_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_HHD_Moved_in_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_HHD_Moved_in_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_HHD_Moved_in_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Tot_Occp_Units_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Tot_Occp_Units_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Tot_Occp_Units_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Vacant_Units_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_Tot_Vacant_Units_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_Tot_Vacant_Units_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Sngl_Prns_HHD_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Sngl_Prns_HHD_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Sngl_Prns_HHD_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "00081_Schools_Chicago": {
+        "avg_SQRPPts_t1": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.0
+        },
+        "avg_SQRPPts_t2": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.0
+        },
+        "avg_SQRPPts": {
+            "missing_ratio": 0.04,
+            "zero_ratio": 0.0
+        },
+        "avg_AvgDailyAttendance_t1": {
+            "missing_ratio": 0.03,
+            "zero_ratio": 0.0
+        },
+        "avg_AvgDailyAttendance_t2": {
+            "missing_ratio": 0.03,
+            "zero_ratio": 0.0
+        },
+        "avg_AvgDailyAttendance": {
+            "missing_ratio": 0.03,
+            "zero_ratio": 0.0
+        },
+        "avg_MyVoiceMySchoolScore_t1": {
+            "missing_ratio": 0.09,
+            "zero_ratio": 0.0
+        },
+        "avg_MyVoiceMySchoolScore_t2": {
+            "missing_ratio": 0.09,
+            "zero_ratio": 0.0
+        },
+        "avg_MyVoiceMySchoolScore": {
+            "missing_ratio": 0.09,
+            "zero_ratio": 0.0
+        },
+        "avg_SQRPRating_t1": {
+            "missing_ratio": 0.17,
+            "zero_ratio": 0.0
+        },
+        "avg_SQRPRating_t2": {
+            "missing_ratio": 0.17,
+            "zero_ratio": 0.0
+        },
+        "avg_SQRPRating": {
+            "missing_ratio": 0.17,
+            "zero_ratio": 0.0
+        }
+    },
+    "00031_Environment_pollution_Chicago": {
+        "avg_PTRAF_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_PTRAF_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_PTRAF": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_basketball_courts_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.85
+        },
+        "avg_basketball_courts_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.85
+        },
+        "avg_basketball_courts": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.85
+        },
+        "avg_Parks_per_acre_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_Parks_per_acre_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_Parks_per_acre": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_trees_den_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_den_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_den": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_baseball_batting_cages_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_baseball_batting_cages_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_baseball_batting_cages": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_community_garden_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_community_garden_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_community_garden": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_PRMP_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_PRMP_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_PRMP": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_ns6070p_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_ns6070p_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_ns6070p": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_nois90p_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.76
+        },
+        "avg_nois90p_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.76
+        },
+        "avg_nois90p": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.76
+        },
+        "avg_WWCWPE90Cnt_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_WWCWPE90Cnt_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_WWCWPE90Cnt": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_SuperfundCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_SuperfundCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_SuperfundCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_comp_serv_stat_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.66
+        },
+        "avg_comp_serv_stat_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.66
+        },
+        "avg_comp_serv_stat": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.66
+        },
+        "avg_Avg_RSEI_CancerStd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_CancerStd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_CancerStd": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_co_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_co_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_co": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_RESP_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_RESP_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_RESP": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_trees_n_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_n_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_n": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_fitness_center_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_fitness_center_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_fitness_center": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_logtraf_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.44
+        },
+        "avg_logtraf_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.44
+        },
+        "avg_logtraf": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.44
+        },
+        "avg_ParkAcres_land_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_ParkAcres_land_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_ParkAcres_land": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_baseball_sr_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_baseball_sr_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_baseball_sr": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_WWCWPQtrsWithNC_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_WWCWPQtrsWithNC_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_WWCWPQtrsWithNC": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_ns4050p_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.23
+        },
+        "avg_ns4050p_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.23
+        },
+        "avg_ns4050p": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.23
+        },
+        "avg_pool_outdoor_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_pool_outdoor_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_pool_outdoor": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_comp_construction_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.56
+        },
+        "avg_comp_construction_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.56
+        },
+        "avg_comp_construction": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.56
+        },
+        "avg_garden_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_garden_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_garden": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_MfgCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.75
+        },
+        "avg_MfgCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.75
+        },
+        "avg_MfgCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.75
+        },
+        "avg_Avg_RSEI_HazardStd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_HazardStd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_HazardStd": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_ns5060p_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_ns5060p_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_ns5060p": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pnc_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pnc_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pnc": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_aland_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_aland_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_aland": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_comp_hazard_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.44
+        },
+        "avg_comp_hazard_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.44
+        },
+        "avg_comp_hazard": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.44
+        },
+        "avg_nn_q3_pm2_5_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_nn_q3_pm2_5_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_nn_q3_pm2_5": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_comp_abandon_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_comp_abandon_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_comp_abandon": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_comp_air_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.42
+        },
+        "avg_comp_air_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.42
+        },
+        "avg_comp_air": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.42
+        },
+        "avg_EJ_PM25_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_EJ_PM25_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_EJ_PM25": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_ns7080p_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.33
+        },
+        "avg_ns7080p_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.33
+        },
+        "avg_ns7080p": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.33
+        },
+        "avg_no2_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_no2_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_no2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_HazRCRAQtrsWithNC_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_HazRCRAQtrsWithNC_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_HazRCRAQtrsWithNC": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_Avg_RSEI_ScoreStd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_ScoreStd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_ScoreStd": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_comp_recycling_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_comp_recycling_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_comp_recycling": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_comp_dumping_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.43
+        },
+        "avg_comp_dumping_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.43
+        },
+        "avg_comp_dumping": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.43
+        },
+        "avg_comp_asbestos_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.49
+        },
+        "avg_comp_asbestos_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.49
+        },
+        "avg_comp_asbestos": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.49
+        },
+        "avg_trees_denStd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_denStd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_denStd": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_track_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_track_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_track": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_Avg_RSEI_Hazard_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_Hazard_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_Hazard": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_trees_area_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_area_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_area": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_ns70_above_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.33
+        },
+        "avg_ns70_above_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.33
+        },
+        "avg_ns70_above": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.33
+        },
+        "avg_baseball_jr_softball_t_ball_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_baseball_jr_softball_t_ball_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_baseball_jr_softball_t_ball": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_WaterTreatCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_WaterTreatCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_WaterTreatCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_PTSDF_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_PTSDF_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_PTSDF": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_trees_crown_den_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_crown_den_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_crown_den": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_crown_denStd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_crown_denStd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_trees_crown_denStd": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_LibraryN_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.94
+        },
+        "avg_LibraryN_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.94
+        },
+        "avg_LibraryN": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.94
+        },
+        "avg_HazardCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.43
+        },
+        "avg_HazardCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.43
+        },
+        "avg_HazardCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.43
+        },
+        "avg_ns8090p_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.52
+        },
+        "avg_ns8090p_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.52
+        },
+        "avg_ns8090p": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.52
+        },
+        "avg_OZONE_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_OZONE_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_OZONE": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_RSEICount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_RSEICount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_RSEICount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_so2_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_so2_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_so2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_playground_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_playground_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_playground": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_gymnasium_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.91
+        },
+        "avg_gymnasium_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.91
+        },
+        "avg_gymnasium": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.91
+        },
+        "avg_heatisl_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_heatisl_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_heatisl": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_HazOver80CountUs_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.52
+        },
+        "avg_HazOver80CountUs_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.52
+        },
+        "avg_HazOver80CountUs": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.52
+        },
+        "avg_ParkCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_ParkCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_ParkCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_WWCWPFormalEaCnt_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_WWCWPFormalEaCnt_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_WWCWPFormalEaCnt": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_WWOver80CountUs_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_WWOver80CountUs_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_WWOver80CountUs": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_logtrafScld_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.44
+        },
+        "avg_logtrafScld_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.44
+        },
+        "avg_logtrafScld": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.44
+        },
+        "avg_PWDIS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_PWDIS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_PWDIS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_PowerPlantCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_PowerPlantCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_PowerPlantCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_ndvi_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_ndvi_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_ndvi": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_comp_water_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_comp_water_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_comp_water": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.9
+        },
+        "avg_Landfills_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_Landfills_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_Landfills": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_ParksAmenitiesN_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_ParksAmenitiesN_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_ParksAmenitiesN": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_CANCER_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_CANCER_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_CANCER": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pm10_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pm10_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pm10": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_DSLPM_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_DSLPM_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_DSLPM": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_asbestosN_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_asbestosN_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_asbestosN": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.41
+        },
+        "avg_WWCWPInspectionCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_WWCWPInspectionCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_WWCWPInspectionCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.99
+        },
+        "avg_Avg_RSEI_PoundsStd_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_PoundsStd_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_PoundsStd": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_fitness_courses_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_fitness_courses_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_fitness_courses": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_PNPL_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_PNPL_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_PNPL": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_Avg_RSEI_Cancer_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_Avg_RSEI_Cancer_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_Avg_RSEI_Cancer": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.98
+        },
+        "avg_wheelchair_accessible_ball_fields_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_wheelchair_accessible_ball_fields_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_wheelchair_accessible_ball_fields": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_NotSuperfundCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_NotSuperfundCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_NotSuperfundCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_basketball_backboards_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_basketball_backboards_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_basketball_backboards": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_o3_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_o3_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_o3": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_HazRCRAInspCnt_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_HazRCRAInspCnt_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_HazRCRAInspCnt": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.95
+        },
+        "avg_awater_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_awater_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_awater": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.92
+        },
+        "avg_HazRCRAFeaCnt_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_HazRCRAFeaCnt_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_HazRCRAFeaCnt": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_caces_pm25_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_caces_pm25_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_caces_pm25": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_Avg_RSEI_Pounds_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_Pounds_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_Pounds": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Land_acres_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_Land_acres_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_Land_acres": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_HazNonCompliant_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_HazNonCompliant_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_HazNonCompliant": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_Avg_RSEI_Score_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_Score_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_Avg_RSEI_Score": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_HazLicCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.65
+        },
+        "avg_HazLicCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.65
+        },
+        "avg_HazLicCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.65
+        },
+        "avg_ParkAcres_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_ParkAcres_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_ParkAcres": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        }
+    },
+    "00072_Health_sites_Chicago_lat_long": {},
+    "00091_Indices_Chicago": {
+        "avg_CRCI_pct_t1": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.0
+        },
+        "avg_CRCI_pct_t2": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.0
+        },
+        "avg_CRCI_pct": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.0
+        },
+        "avg_CRCI_sd_t1": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.01
+        },
+        "avg_CRCI_sd_t2": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.01
+        },
+        "avg_CRCI_sd": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.01
+        },
+        "avg_SDI_score_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_SDI_score_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_SDI_score": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    },
+    "00021_Social_Chicago": {
+        "avg_SDOH_CL_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_SDOH_CL_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_SDOH_CL": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_CrimeRate1000_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_CrimeRate1000_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_CrimeRate1000": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_1_SES_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_1_SES_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_1_SES": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_GINI_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_GINI_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_GINI": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_LILATracts_Vehicle_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.77
+        },
+        "avg_LILATracts_Vehicle_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.77
+        },
+        "avg_LILATracts_Vehicle": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.77
+        },
+        "avg_quality_gold_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_quality_gold_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_quality_gold_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_Crime_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_Crime_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_Crime": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_VacantBldgs_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.58
+        },
+        "avg_VacantBldgs_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.58
+        },
+        "avg_VacantBldgs": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.58
+        },
+        "avg_Violent_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_Violent_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_Violent": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_InactiveVoters_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_InactiveVoters_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_InactiveVoters_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_GrafRate1000_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_GrafRate1000_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_GrafRate1000": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_4_MICA_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_4_MICA_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_4_MICA": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_3_URB_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_3_URB_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_3_URB": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_presch_cps_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.67
+        },
+        "avg_presch_cps_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.67
+        },
+        "avg_presch_cps_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.67
+        },
+        "avg_SocOrgs_rate_10k_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_SocOrgs_rate_10k_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_SocOrgs_rate_10k": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_GrafCount_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_GrafCount_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_GrafCount": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_quality_silver_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_quality_silver_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_quality_silver_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_Incarceration_Rate_rP_gP_p25_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_Incarceration_Rate_rP_gP_p25_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_Incarceration_Rate_rP_gP_p25": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_LILATracts_1And10_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_LILATracts_1And10_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_LILATracts_1And10": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_presch_early_head_start_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.93
+        },
+        "avg_presch_early_head_start_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.93
+        },
+        "avg_presch_early_head_start_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.93
+        },
+        "avg_VacantRate1000_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.58
+        },
+        "avg_VacantRate1000_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.58
+        },
+        "avg_VacantRate1000": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.58
+        },
+        "avg_quality_licensed_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_quality_licensed_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_quality_licensed_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_preschN_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.53
+        },
+        "avg_preschN_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.53
+        },
+        "avg_preschN": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.53
+        },
+        "avg_presch_home_visits_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.93
+        },
+        "avg_presch_home_visits_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.93
+        },
+        "avg_presch_home_visits_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.93
+        },
+        "avg_Accepts_CCAP_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_Accepts_CCAP_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_Accepts_CCAP_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_ages_3_5_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.54
+        },
+        "avg_ages_3_5_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.54
+        },
+        "avg_ages_3_5_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.54
+        },
+        "avg_LILATracts_halfAnd10_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.65
+        },
+        "avg_LILATracts_halfAnd10_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.65
+        },
+        "avg_LILATracts_halfAnd10": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.65
+        },
+        "avg_quality_bronze_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_quality_bronze_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_quality_bronze_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 1.0
+        },
+        "avg_ages_0_3_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_ages_0_3_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_ages_0_3_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_LILATracts_1And20_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_LILATracts_1And20_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_LILATracts_1And20": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.96
+        },
+        "avg_2_MOB_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_2_MOB_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_2_MOB": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_ViolentRate1000_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_ViolentRate1000_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_ViolentRate1000": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_HUNVFlag_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_HUNVFlag_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_HUNVFlag": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.7
+        },
+        "avg_presch_community_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_presch_community_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_presch_community_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_NoReligion_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_NoReligion_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_NoReligion_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_presch_head_start_pct_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.76
+        },
+        "avg_presch_head_start_pct_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.76
+        },
+        "avg_presch_head_start_pct": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.76
+        }
+    },
+    "00011_ACS1019_Chicago": {
+        "avg_pct_PUB_ASST_INC_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_pct_PUB_ASST_INC_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_pct_PUB_ASST_INC_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_pct_Age5p_Arabic_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_pct_Age5p_Arabic_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_pct_Age5p_Arabic_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.79
+        },
+        "avg_Tot_Prns_in_HHD_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Prns_in_HHD_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Prns_in_HHD_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Crowd_Occp_U_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.16
+        },
+        "avg_pct_Crowd_Occp_U_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.16
+        },
+        "avg_pct_Crowd_Occp_U_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.16
+        },
+        "avg_pct_Pov_Univ_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pov_Univ_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pov_Univ_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Housing_Units_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Housing_Units_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Housing_Units_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_Spanish_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_pct_Age5p_Spanish_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_pct_Age5p_Spanish_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.11
+        },
+        "avg_Tot_Occp_Units_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Occp_Units_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Occp_Units_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_OthAsian_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.77
+        },
+        "avg_pct_Age5p_OthAsian_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.77
+        },
+        "avg_pct_Age5p_OthAsian_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.77
+        },
+        "avg_pct_Civ_unemp_16p_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_unemp_16p_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_unemp_16p_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Males_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Males_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Males_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_NH_Asian_alone_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.21
+        },
+        "avg_pct_NH_Asian_alone_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.21
+        },
+        "avg_pct_NH_Asian_alone_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.21
+        },
+        "avg_pct_Hispanic_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_pct_Hispanic_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_pct_Hispanic_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_pct_Mobile_Homes_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_pct_Mobile_Homes_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_pct_Mobile_Homes_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.8
+        },
+        "avg_pct_College_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_College_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_College_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_TwoPHealthIns_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_TwoPHealthIns_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_TwoPHealthIns_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_16_24_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_16_24_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_16_24_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_5yrs_Over_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_5yrs_Over_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_5yrs_Over_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_OthEuro_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.64
+        },
+        "avg_pct_Age5p_OthEuro_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.64
+        },
+        "avg_pct_Age5p_OthEuro_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.64
+        },
+        "avg_Med_House_Value_ACS_t1": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        },
+        "avg_Med_House_Value_ACS_t2": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        },
+        "avg_Med_House_Value_ACS": {
+            "missing_ratio": 0.01,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_45_64_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_45_64_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_45_64_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Num_BGs_in_Tract_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Num_BGs_in_Tract_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Num_BGs_in_Tract": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_NH_SOR_alone_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_pct_NH_SOR_alone_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_pct_NH_SOR_alone_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.78
+        },
+        "avg_pct_Age5p_Russian_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.61
+        },
+        "avg_pct_Age5p_Russian_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.61
+        },
+        "avg_pct_Age5p_Russian_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.61
+        },
+        "avg_pct_Pop_25_44_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_25_44_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_25_44_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_avg_Tot_Prns_in_HHD_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_avg_Tot_Prns_in_HHD_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_avg_Tot_Prns_in_HHD_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_ENG_VW_SPAN_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.36
+        },
+        "avg_pct_ENG_VW_SPAN_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.36
+        },
+        "avg_pct_ENG_VW_SPAN_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.36
+        },
+        "avg_pct_Age5p_German_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_pct_Age5p_German_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_pct_Age5p_German_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.88
+        },
+        "avg_pct_Othr_Lang_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Othr_Lang_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Othr_Lang_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_pct_Civ_unemp_16_24_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.13
+        },
+        "avg_pct_Civ_unemp_16_24_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.13
+        },
+        "avg_pct_Civ_unemp_16_24_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.13
+        },
+        "avg_pct_Prs_Blw_Pov_Lev_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Prs_Blw_Pov_Lev_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Prs_Blw_Pov_Lev_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_18_24_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_18_24_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_18_24_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_MrdCple_HHD_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_MrdCple_HHD_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_MrdCple_HHD_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_NH_Blk_alone_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pct_NH_Blk_alone_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pct_NH_Blk_alone_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_Med_HHD_Inc_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Med_HHD_Inc_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Med_HHD_Inc_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_avg_Agg_House_Value_ACS_t1": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.0
+        },
+        "avg_avg_Agg_House_Value_ACS_t2": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.0
+        },
+        "avg_avg_Agg_House_Value_ACS": {
+            "missing_ratio": 0.02,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_NH_AIAN_alone_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_pct_NH_AIAN_alone_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_pct_NH_AIAN_alone_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.84
+        },
+        "avg_pct_Vacant_Units_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Vacant_Units_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Vacant_Units_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Age5p_Only_Eng_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_Only_Eng_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_Only_Eng_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Population_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Population_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Population_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Rel_Under_6_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Rel_Under_6_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Rel_Under_6_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_Disabled_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_Disabled_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_Disabled_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Recent_Built_HU_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_pct_Recent_Built_HU_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_pct_Recent_Built_HU_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.72
+        },
+        "avg_pct_Civ_emp_25_44_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_25_44_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_25_44_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_Tagalog_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.73
+        },
+        "avg_pct_Age5p_Tagalog_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.73
+        },
+        "avg_pct_Age5p_Tagalog_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.73
+        },
+        "avg_pct_Diff_HU_1yr_Ago_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Diff_HU_1yr_Ago_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Diff_HU_1yr_Ago_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_25yrs_Over_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_25yrs_Over_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_25yrs_Over_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Born_foreign_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Born_foreign_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Born_foreign_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Renter_Occp_HU_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Renter_Occp_HU_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Renter_Occp_HU_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_65plus_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_65plus_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_65plus_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Owner_Occp_HU_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Owner_Occp_HU_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Owner_Occp_HU_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_One_Health_Ins_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_One_Health_Ins_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_One_Health_Ins_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Single_Unit_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Single_Unit_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Single_Unit_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_ENG_VW_OTHER_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.83
+        },
+        "avg_pct_ENG_VW_OTHER_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.83
+        },
+        "avg_pct_ENG_VW_OTHER_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.83
+        },
+        "avg_pct_HHD_PPL_Und_18_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_HHD_PPL_Und_18_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_HHD_PPL_Und_18_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_unemp_45_64_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.06
+        },
+        "avg_pct_Civ_unemp_45_64_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.06
+        },
+        "avg_pct_Civ_unemp_45_64_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.06
+        },
+        "avg_pct_Pop_45_64_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_45_64_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_45_64_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_US_Cit_Nat_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pct_US_Cit_Nat_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pct_US_Cit_Nat_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pct_MLT_U10p_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.1
+        },
+        "avg_pct_MLT_U10p_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.1
+        },
+        "avg_pct_MLT_U10p_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.1
+        },
+        "avg_pct_Civ_emp_16p_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_16p_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_emp_16p_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Civ_unemp_25_44_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pct_Civ_unemp_25_44_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pct_Civ_unemp_25_44_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.04
+        },
+        "avg_pct_ENG_VW_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_pct_ENG_VW_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_pct_ENG_VW_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.15
+        },
+        "avg_pct_Born_US_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Born_US_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Born_US_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Age5p_Korean_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.76
+        },
+        "avg_pct_Age5p_Korean_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.76
+        },
+        "avg_pct_Age5p_Korean_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.76
+        },
+        "avg_pct_NH_NHOPI_alone_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.97
+        },
+        "avg_pct_NH_NHOPI_alone_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.97
+        },
+        "avg_pct_NH_NHOPI_alone_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.97
+        },
+        "avg_pct_Pop_under_5_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_under_5_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_under_5_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Rel_Family_HHD_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Rel_Family_HHD_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Rel_Family_HHD_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_MLT_U2_9_STRC_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_MLT_U2_9_STRC_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_MLT_U2_9_STRC_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Females_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Females_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Females_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_NH_White_alone_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_pct_NH_White_alone_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_pct_NH_White_alone_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.03
+        },
+        "avg_pct_Age5p_Chinese_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.69
+        },
+        "avg_pct_Age5p_Chinese_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.69
+        },
+        "avg_pct_Age5p_Chinese_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.69
+        },
+        "avg_avg_Agg_HH_INC_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_avg_Agg_HH_INC_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_avg_Agg_HH_INC_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_ENG_VW_INDOEURO_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.44
+        },
+        "avg_pct_ENG_VW_INDOEURO_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.44
+        },
+        "avg_pct_ENG_VW_INDOEURO_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.44
+        },
+        "avg_pct_Age5p_French_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_pct_Age5p_French_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_pct_Age5p_French_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.86
+        },
+        "avg_pct_Pop_5_17_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_5_17_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_5_17_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_ENG_VW_API_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.61
+        },
+        "avg_pct_ENG_VW_API_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.61
+        },
+        "avg_pct_ENG_VW_API_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.61
+        },
+        "avg_pct_Age5p_OthUnSp_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.85
+        },
+        "avg_pct_Age5p_OthUnSp_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.85
+        },
+        "avg_pct_Age5p_OthUnSp_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.85
+        },
+        "avg_pct_Age5p_Vietnames_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_pct_Age5p_Vietnames_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_pct_Age5p_Vietnames_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.87
+        },
+        "avg_pct_Pop_1yr_Over_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_1yr_Over_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Pop_1yr_Over_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_HHD_Moved_in_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_HHD_Moved_in_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_HHD_Moved_in_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Tot_Occp_Units_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Tot_Occp_Units_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Tot_Occp_Units_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_Tot_Vacant_Units_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_Tot_Vacant_Units_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_Tot_Vacant_Units_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
+        },
+        "avg_pct_Sngl_Prns_HHD_ACS_t1": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Sngl_Prns_HHD_ACS_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        },
+        "avg_pct_Sngl_Prns_HHD_ACS": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
+        }
+    }
+}

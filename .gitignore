@@ -1,14 +1,18 @@
 .DS_Store
-data
-# data/quickstart.db
+data/quickstart.db
+data/Data Commons/
+data/*.db
 indices*
 .ipynb_checkpoints
 shape_chicago_blocks
 venv
 # *.ipynb
-demo/data_commons.ipynb
+# demo/data_commons.ipynb
 .vscode
 *.csv
+!data/asthma/*.csv
+!data/chicago_factors/*.csv
+!demo/chicago_month_census_tract.csv
 notebook/
 result/
 __pycache__
@@ -31,6 +35,7 @@ join_key_data/
 lazo_joinable/
 lazo_eval/join_ground_truth_T_GRANU.DAY_S_GRANU.BLOCK_overlap_10.json
 *.png
+!demo/*.png
 *.json
 !resource/*/*.json
 resource/data_commons/

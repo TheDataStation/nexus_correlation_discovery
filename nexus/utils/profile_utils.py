@@ -36,6 +36,7 @@ def is_num_column_valid(col_name: str):
     ]
     stop_words_equal = [
         "commarea",
+        "commarea_n",
         "tract",
         "bbl",
         "census",

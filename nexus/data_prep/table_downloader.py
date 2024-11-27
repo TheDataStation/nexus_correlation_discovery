@@ -2,8 +2,6 @@ import requests
 import time
 import nexus.utils.io_utils as io_utils
 from os import path
-
-# from log import get_logger
 from multiprocessing import Pool as ProcessPool
 from tqdm import tqdm
 import os
@@ -56,11 +54,7 @@ class TableDownloader:
         s_time = time.time()
         print("begin download")
         self.download(uri, path.join(self.output_dir, file_name + ".csv"), app_token)
-        # download_time = time.time() - s_time
-        # self.logger.info("finish downloading {} in {} seconds".format(file_name, download_time))
-        # print("finish downloading {} in {} seconds".format(file_name, download_time))
         return file_name
-        # return download_time
 
     def download_all(self, line_limit: int, tbl_info_path: str=None, tbl_info=None):
         if tbl_info_path is not None:
@@ -93,33 +87,10 @@ class TableDownloader:
 
 
 if __name__ == "__main__":
-    # line_limit = 100000
-    # dataset_dir = "data/chicago_open_data_all_tbls/"
-    # config = io_utils.load_config("data_prep")
-    # root_dir, app_token = config["root_dir"], config["app_token"]
-    # if not os.path.isdir(dataset_dir):
-    #     os.makedirs(dataset_dir)
-    # data_downloader = TableDownloader(
-    #     output_dir=dataset_dir, app_token=app_token
-    # )
-    # domain = "data.cityofchicago.org"
-    # client = OpenDataClient(domain, f"https://{domain}/resource/", app_token)
-    # metadata = client.datasets(domain)
-    # tbl_info = []
-    # id_name_map = {}
-    # for obj in metadata:
-    #     resource = obj["resource"]
-    #     tbl_name = resource["name"]
-    #     tbl_id = resource["id"]
-    #     id_name_map[tbl_id] = tbl_name
-    #     tbl_info.append((domain, tbl_id))
-    # io_utils.dump_json("data/chicago_open_data_id_name_map.json", id_name_map)
-    # data_downloader.download_all(line_limit, tbl_info=tbl_info)
     line_limit = 500000
-    # meta_file = "data/cdc_open_data.json"
     domains = {
-                "ny": "data.ny.gov", 
-                # "texas": "data.texas.gov", 
+                # "ny": "data.ny.gov", 
+                "texas": "data.texas.gov", 
                 # "sf": "data.sfgov.org",
                 # "wa": 'data.wa.gov',
                 # "ct": 'data.ct.gov', 
@@ -133,23 +104,10 @@ if __name__ == "__main__":
         meta_file = f"resource/{key}_open_data/{key}_open_data.json"
         dataset_dir = f"data/{key}_open_data/"
         config = io_utils.load_config("data_prep")
-        root_dir, app_token = config["root_dir"], config["app_token"]
+        root_dir, app_token = config["root_dir"], config["app_token"] # fill config file with your app token
         if not os.path.isdir(dataset_dir):
             os.makedirs(dataset_dir)
         data_downloader = TableDownloader(
             output_dir=dataset_dir, app_token=app_token
         )
         data_downloader.download_all(line_limit, meta_file)
-   
-    # meta_file = "resource/nyc_open_data/nyc_open_data.json"
-    # dataset_dir = "data/nyc_open_data/"
-
-    # config = io_utils.load_config("data_prep")
-    # root_dir, app_token = config["root_dir"], config["app_token"]
-    # if not os.path.isdir(dataset_dir):
-    #     os.makedirs(dataset_dir)
-    # data_downloader = TableDownloader(
-    #     output_dir=dataset_dir, app_token=app_token
-    # )
-
-    # data_downloader.download_all(meta_file, line_limit)

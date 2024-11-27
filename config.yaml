@@ -1,229 +1,213 @@
-chicago_10k:
-    db_path: "postgresql://yuegong@localhost/st_tables"
-    data_path: "data/chicago_open_data_10k/"
-    shape_path: "data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp"
-    geo_chain: "block, tract, county, state"
-    geo_keys: "blockce10, tractce10, countyfp10, statefp10"
-    meta_path: "resource/chicago_10k/chicago_open_data.json"
-    attr_path: "resource/chicago_10k/tbl_attrs_chicago_10k.json"
-    profile_path: "resource/chicago_10k/profile_chicago_10k.json"
-    col_stats_path: "resource/chicago_10k/col_stats_chicago_10k.json"
-    idx_tbl_path: "resource/chicago_10k/idx_tbl_names.json"
-
-chicago_1m:
-    db_path: "postgresql://yuegong@localhost/chicago_1m_new"
-    data_path: "data/chicago_open_data_1m/"
-    shape_path: "resource/chicago_shapes/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp"
-    geo_chain: "block, tract, county, state"
-    geo_keys: "blockce10, tractce10, countyfp10, statefp10"
-    meta_path: "resource/chicago_1m/chicago_open_data.json"
-    attr_path: "resource/chicago_1m/tbl_attrs_chicago_1m_latest.json"
-    profile_path: "resource/chicago_1m/profile_chicago_1m.json"
-    col_stats_path: "resource/chicago_1m/col_stats_chicago_1m.json"
-    idx_tbl_path: "resource/chicago_1m/idx_tbl_names.json"
-
 asthma:
-    data_path: "data/asthma/"
-    meta_path: "resource/asthma/asthma_data.json"
-    attr_path: "resource/asthma/tbl_attrs.json"
-    profile_path: "resource/asthma/profile.json"
-    col_stats_path: "resource/asthma/col_stats.json"
-    idx_tbl_path: "resource/asthma/idx_tbl_names.json"
-    failed_tbl_path: "resource/asthma/failed_tbl_ids.json"
-    spatial_hierarchies:
-    - granularity_map:
-        ZIPCODE: zip
-      shape_file_path: resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp
-
-
-chicago_factors:
-    data_path: "data/chicago_factors/"
-    meta_path: "resource/chicago_factors/chicago_factors_data.json"
-    attr_path: "resource/chicago_factors/tbl_attrs.json"
-    profile_path: "resource/chicago_factors/profile.json"
-    col_stats_path: "resource/chicago_factors/col_stats.json"
-    idx_tbl_path: "resource/chicago_factors/idx_tbl_names.json"
-    failed_tbl_path: "resource/chicago_factors/failed_tbl_ids.json"
-    spatial_hierarchies:
-    - granularity_map:
-        ZIPCODE: zip
-      shape_file_path: resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp
-
-
-chicago_zipcode:
-    data_path: "data/chicago_open_data_1m/"
-    meta_path: "resource/chicago_1m_zipcode/chicago_open_data.json"
-    attr_path: "resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json"
-    profile_path: "resource/chicago_1m_zipcode/profile_chicago_1m.json"
-    col_stats_path: "resource/chicago_1m_zipcode/col_stats_chicago_1m.json"
-    idx_tbl_path: "resource/chicago_1m_zipcode/idx_tbl_names.json"
-    failed_tbl_path: "resource/chicago_1m_zipcode/failed_tbl_ids.json"
-    spatial_hierarchies:
-    - granularity_map:
-        BLOCK: blockce10
-        COUNTY: countyfp10
-        STATE: statefp10
-        TRACT: tractce10
-      shape_file_path: resource/chicago_shapes/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp
-    - granularity_map:
-        ZIPCODE: zip
-      shape_file_path: resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp
-
-
-chicago_open_data:
-    db_path: "postgresql://yuegong@localhost/opendata"
-    data_path: "data/chicago_open_data_1m/"
-    shape_path: "resource/chicago_shapes/shape_chicago_tracts/geo_export_c59e0875-addc-4363-a542-497356e993cf.shp"
-    geo_chain: "tract, county, state"
-    geo_keys: "tractce10, countyfp10, statefp10"
-    meta_path: "resource/chicago_1m/chicago_open_data.json"
-    attr_path: "resource/chicago_open_data/tbl_attrs_chicago.json"
-    failed_tbl_path: "resource/chicago_open_data/failed_tbl_ids.json"
-    profile_path: "resource/chicago_open_data/profile_chicago.json"
-    col_stats_path: "resource/chicago_open_data/col_stats_chicago.json"
-    idx_tbl_path: "resource/chicago_open_data/idx_tbl_names.json"
-
-nyc_open_data:
-    db_path: "postgresql://yuegong@localhost/opendata"
-    data_path: "data/nyc_open_data/"
-    shape_path: "resource/nyc_open_data/nyc_tract_shape/nyct2020.shp"
-    geo_chain: "tract, county"
-    geo_keys: "CT2020, BoroCode"
-    meta_path: "resource/nyc_open_data/nyc_open_data.json"
-    attr_path: "resource/nyc_open_data/tbl_attrs_nyc.json"
-    failed_tbl_path: "resource/nyc_open_data/failed_tbl_ids.json"
-    profile_path: "resource/nyc_open_data/profile_nyc.json"
-    col_stats_path: "resource/nyc_open_data/col_stats_nyc.json"
-    idx_tbl_path: "resource/nyc_open_data/idx_tbl_names.json"
-
-ny_open_data:
-    db_path: "postgresql://yuegong@localhost/opendata_large"
-    data_path: "data/ny_open_data/"
-    shape_path: "resource/ny_open_data/ny_tract_shape/tl_2020_36_tract.shp"
-    geo_chain: "tract, county, state"
-    geo_keys: "TRACTCE, COUNTYFP, STATEFP"
-    meta_path: "resource/ny_open_data/ny_open_data.json"
-    attr_path: "resource/ny_open_data/tbl_attrs_ny.json"
-    failed_tbl_path: "resource/ny_open_data/failed_tbl_ids.json"
-    profile_path: "resource/ny_open_data/profile_ny.json"
-    col_stats_path: "resource/ny_open_data/col_stats_ny.json"
-    idx_tbl_path: "resource/ny_open_data/idx_tbl_names.json"
-
-ct_open_data:
-    db_path: "postgresql://yuegong@localhost/opendata_large"
-    data_path: "data/ct_open_data/"
-    shape_path: "resource/ct_open_data/ct_tract_shape/tl_2020_09_tract.shp"
-    geo_chain: "tract, county, state"
-    geo_keys: "TRACTCE, COUNTYFP, STATEFP"
-    meta_path: "resource/ct_open_data/ct_open_data.json"
-    attr_path: "resource/ct_open_data/tbl_attrs_ct.json"
-    failed_tbl_path: "resource/ct_open_data/failed_tbl_ids.json"
-    profile_path: "resource/ct_open_data/profile_ct.json"
-    col_stats_path: "resource/ct_open_data/col_stats_ct.json"
-    idx_tbl_path: "resource/ct_open_data/idx_tbl_names.json"
-
-maryland_open_data:
-    db_path: "postgresql://yuegong@localhost/opendata_large"
-    data_path: "data/maryland_open_data/"
-    shape_path: "resource/maryland_open_data/maryland_tract_shape/tl_2020_24_tract.shp"
-    geo_chain: "tract, county, state"
-    geo_keys: "TRACTCE, COUNTYFP, STATEFP"
-    meta_path: "resource/maryland_open_data/maryland_open_data.json"
-    attr_path: "resource/maryland_open_data/tbl_attrs_maryland.json"
-    failed_tbl_path: "resource/maryland_open_data/failed_tbl_ids.json"
-    profile_path: "resource/maryland_open_data/profile.json"
-    col_stats_path: "resource/maryland_open_data/col_stats.json"
-    idx_tbl_path: "resource/maryland_open_data/idx_tbl_names.json"
-
-pa_open_data:
-    db_path: "postgresql://yuegong@localhost/opendata_large"
-    data_path: "data/pa_open_data/"
-    shape_path: "resource/pa_open_data/pa_tract_shape/tl_2020_42_tract.shp"
-    geo_chain: "tract, county, state"
-    geo_keys: "TRACTCE, COUNTYFP, STATEFP"
-    meta_path: "resource/pa_open_data/pa_open_data.json"
-    attr_path: "resource/pa_open_data/tbl_attrs_pa.json"
-    failed_tbl_path: "resource/pa_open_data/failed_tbl_ids.json"
-    profile_path: "resource/pa_open_data/profile.json"
-    col_stats_path: "resource/pa_open_data/col_stats.json"
-    idx_tbl_path: "resource/pa_open_data/idx_tbl_names.json"
-
-texas_open_data:
-    db_path: "postgresql://yuegong@localhost/opendata_large"
-    data_path: "data/texas_open_data/"
-    shape_path: "resource/texas_open_data/texas_tract_shape/tl_2020_48_tract.shp"
-    geo_chain: "tract, county, state"
-    geo_keys: "TRACTCE, COUNTYFP, STATEFP"
-    meta_path: "resource/texas_open_data/texas_open_data.json"
-    attr_path: "resource/texas_open_data/tbl_attrs_texas.json"
-    failed_tbl_path: "resource/texas_open_data/failed_tbl_ids.json"
-    profile_path: "resource/texas_open_data/profile.json"
-    col_stats_path: "resource/texas_open_data/col_stats.json"
-    idx_tbl_path: "resource/texas_open_data/idx_tbl_names.json"
-
-wa_open_data:
-    db_path: "postgresql://yuegong@localhost/opendata_large"
-    data_path: "data/wa_open_data/"
-    shape_path: "resource/wa_open_data/wa_tract_shape/tl_2020_53_tract.shp"
-    geo_chain: "tract, county, state"
-    geo_keys: "TRACTCE, COUNTYFP, STATEFP"
-    meta_path: "resource/wa_open_data/wa_open_data.json"
-    attr_path: "resource/wa_open_data/tbl_attrs_wa.json"
-    failed_tbl_path: "resource/wa_open_data/failed_tbl_ids.json"
-    profile_path: "resource/wa_open_data/profile.json"
-    col_stats_path: "resource/wa_open_data/col_stats.json"
-    idx_tbl_path: "resource/wa_open_data/idx_tbl_names.json"
-
-sf_open_data:
-    db_path: "postgresql://yuegong@localhost/opendata_large"
-    data_path: "data/sf_open_data/"
-    shape_path: "resource/sf_open_data/sf_tract_shape/geo_export_efc02cbc-ea84-4eb3-8771-243535fbd91d.shp"
-    geo_chain: "tract, county, state"
-    geo_keys: "tractce, countyfp, statefp"
-    meta_path: "resource/sf_open_data/sf_open_data.json"
-    attr_path: "resource/sf_open_data/tbl_attrs_sf.json"
-    failed_tbl_path: "resource/sf_open_data/failed_tbl_ids.json"
-    profile_path: "resource/sf_open_data/profile.json"
-    col_stats_path: "resource/sf_open_data/col_stats.json"
-    idx_tbl_path: "resource/sf_open_data/idx_tbl_names.json"
-
-la_open_data:
-    db_path: "postgresql://yuegong@localhost/opendata_large"
-    data_path: "data/la_open_data/"
-    shape_path: "resource/la_open_data/ca_tract_shape/tl_2020_06_tract.shp"
-    geo_chain: "tract, county, state"
-    geo_keys: "TRACTCE, COUNTYFP, STATEFP"
-    meta_path: "resource/la_open_data/la_open_data.json"
-    attr_path: "resource/la_open_data/tbl_attrs_la.json"
-    failed_tbl_path: "resource/la_open_data/failed_tbl_ids.json"
-    profile_path: "resource/la_open_data/profile.json"
-    col_stats_path: "resource/la_open_data/col_stats.json"
-    idx_tbl_path: "resource/la_open_data/idx_tbl_names.json"
-
-chicago_1m_time_sampling:
-    db_path: "postgresql://yuegong@localhost/chicago_1m_time_2021_2023"
-    data_path: "data/chicago_open_data_1m/"
-    shape_path: "data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp"
-    geo_chain: "block, tract, county, state"
-    geo_keys: "blockce10, tractce10, countyfp10, statefp10"
-    meta_path: "resource/chicago_1m/chicago_open_data.json"
-    attr_path: "resource/chicago_1m_2021_2023/tbl_attrs_chicago_1m.json"
-    profile_path: "resource/chicago_1m/profile_chicago_1m.json"
-    col_stats_path: "resource/chicago_1m_2021_2023/col_stats_chicago_1m.json"
-    idx_tbl_path: "resource/chicago_1m_2021_2023/idx_tbl_names.json"
-
+  attr_path: resource/asthma/tbl_attrs.json
+  col_stats_path: resource/asthma/col_stats.json
+  data_path: data/asthma/
+  failed_tbl_path: resource/asthma/failed_tbl_ids.json
+  idx_tbl_path: resource/asthma/idx_tbl_names.json
+  meta_path: resource/asthma/asthma_data.json
+  profile_path: resource/asthma/profile.json
+  spatial_hierarchies:
+  - granularity_map:
+      ZIPCODE: zip
+    shape_file_path: resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp
 cdc_1m:
-    db_path: "postgresql://yuegong@localhost/cdc_1m"
-    data_path: "data/cdc_open_data_1m/"
-    shape_path: "data/shape_usa_counties/cb_2018_us_county_20m.shp"
-    geo_chain: "state"
-    geo_keys: "STATEFP"
-    meta_path: "resource/cdc_1m/cdc_open_data.json"
-    attr_path: "resource/cdc_1m/tbl_attrs_cdc_1m.json"
-    profile_path: "resource/cdc_1m/profile_cdc_1m.json"
-    col_stats_path: "resource/cdc_1m/col_stats_cdc_1m.json"
-    idx_tbl_path: "resource/cdc_1m/idx_tbl_names.json"
-
+  attr_path: resource/cdc_1m/tbl_attrs_cdc_1m.json
+  col_stats_path: resource/cdc_1m/col_stats_cdc_1m.json
+  data_path: data/cdc_open_data_1m/
+  db_path: postgresql://yuegong@localhost/cdc_1m
+  geo_chain: state
+  geo_keys: STATEFP
+  idx_tbl_path: resource/cdc_1m/idx_tbl_names.json
+  meta_path: resource/cdc_1m/cdc_open_data.json
+  profile_path: resource/cdc_1m/profile_cdc_1m.json
+  shape_path: data/shape_usa_counties/cb_2018_us_county_20m.shp
+chicago_10k:
+  attr_path: resource/chicago_10k/tbl_attrs_chicago_10k.json
+  col_stats_path: resource/chicago_10k/col_stats_chicago_10k.json
+  data_path: data/chicago_open_data_10k/
+  db_path: postgresql://yuegong@localhost/st_tables
+  geo_chain: block, tract, county, state
+  geo_keys: blockce10, tractce10, countyfp10, statefp10
+  idx_tbl_path: resource/chicago_10k/idx_tbl_names.json
+  meta_path: resource/chicago_10k/chicago_open_data.json
+  profile_path: resource/chicago_10k/profile_chicago_10k.json
+  shape_path: data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp
+chicago_1m:
+  attr_path: resource/chicago_1m/tbl_attrs_chicago_1m_latest.json
+  col_stats_path: resource/chicago_1m/col_stats_chicago_1m.json
+  data_path: data/chicago_open_data_1m/
+  db_path: postgresql://yuegong@localhost/chicago_1m_new
+  geo_chain: block, tract, county, state
+  geo_keys: blockce10, tractce10, countyfp10, statefp10
+  idx_tbl_path: resource/chicago_1m/idx_tbl_names.json
+  meta_path: resource/chicago_1m/chicago_open_data.json
+  profile_path: resource/chicago_1m/profile_chicago_1m.json
+  shape_path: resource/chicago_shapes/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp
+chicago_1m_time_sampling:
+  attr_path: resource/chicago_1m_2021_2023/tbl_attrs_chicago_1m.json
+  col_stats_path: resource/chicago_1m_2021_2023/col_stats_chicago_1m.json
+  data_path: data/chicago_open_data_1m/
+  db_path: postgresql://yuegong@localhost/chicago_1m_time_2021_2023
+  geo_chain: block, tract, county, state
+  geo_keys: blockce10, tractce10, countyfp10, statefp10
+  idx_tbl_path: resource/chicago_1m_2021_2023/idx_tbl_names.json
+  meta_path: resource/chicago_1m/chicago_open_data.json
+  profile_path: resource/chicago_1m/profile_chicago_1m.json
+  shape_path: data/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp
+chicago_factors:
+  attr_path: resource/chicago_factors/tbl_attrs.json
+  col_stats_path: resource/chicago_factors/col_stats.json
+  data_path: data/chicago_factors/
+  failed_tbl_path: resource/chicago_factors/failed_tbl_ids.json
+  idx_tbl_path: resource/chicago_factors/idx_tbl_names.json
+  meta_path: resource/chicago_factors/chicago_factors_data.json
+  profile_path: resource/chicago_factors/profile.json
+  spatial_hierarchies:
+  - granularity_map:
+      ZIPCODE: zip
+    shape_file_path: resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp
+chicago_open_data:
+  attr_path: resource/chicago_open_data/tbl_attrs.json
+  col_stats_path: resource/chicago_open_data/col_stats.json
+  data_path: /Users/yuegong/Documents/chicago_open_data_1m/
+  failed_tbl_path: resource/chicago_open_data/failed_tables.json
+  meta_path: resource/chicago_open_data/chicago_open_data.json
+  profile_path: resource/chicago_open_data/profile.json
+  spatial_hierarchies:
+  - granularity_map:
+      COUNTY: countyfp10
+      STATE: statefp10
+      TRACT: tractce10
+    shape_file_path: resource/chicago_shapes/shape_chicago_tracts/geo_export_c59e0875-addc-4363-a542-497356e993cf.shp
+  - granularity_map:
+      ZIPCODE: zip
+    shape_file_path: resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp
+chicago_zipcode:
+  attr_path: resource/chicago_1m_zipcode/tbl_attrs_chicago_1m.json
+  col_stats_path: resource/chicago_1m_zipcode/col_stats_chicago_1m.json
+  data_path: data/chicago_open_data_1m/
+  failed_tbl_path: resource/chicago_1m_zipcode/failed_tbl_ids.json
+  idx_tbl_path: resource/chicago_1m_zipcode/idx_tbl_names.json
+  meta_path: resource/chicago_1m_zipcode/chicago_open_data.json
+  profile_path: resource/chicago_1m_zipcode/profile_chicago_1m.json
+  spatial_hierarchies:
+  - granularity_map:
+      BLOCK: blockce10
+      COUNTY: countyfp10
+      STATE: statefp10
+      TRACT: tractce10
+    shape_file_path: resource/chicago_shapes/shape_chicago_blocks/geo_export_8e927c91-3aad-4b67-86ff-bf4de675094e.shp
+  - granularity_map:
+      ZIPCODE: zip
+    shape_file_path: resource/chicago_shapes/shape_chicago_zipcodes/geo_export_a86acac7-4554-4a8c-b482-7e49844799cf.shp
+ct_open_data:
+  attr_path: resource/ct_open_data/tbl_attrs_ct.json
+  col_stats_path: resource/ct_open_data/col_stats_ct.json
+  data_path: data/ct_open_data/
+  db_path: postgresql://yuegong@localhost/opendata_large
+  failed_tbl_path: resource/ct_open_data/failed_tbl_ids.json
+  geo_chain: tract, county, state
+  geo_keys: TRACTCE, COUNTYFP, STATEFP
+  idx_tbl_path: resource/ct_open_data/idx_tbl_names.json
+  meta_path: resource/ct_open_data/ct_open_data.json
+  profile_path: resource/ct_open_data/profile_ct.json
+  shape_path: resource/ct_open_data/ct_tract_shape/tl_2020_09_tract.shp
 data_prep:
-    root_dir: os.path.dirname(os.path.abspath(__file__))
-    app_token: "voGyQiv0JulAwW8e2YwTCUlBS"
+  app_token: your app_token
+  root_dir: os.path.dirname(os.path.abspath(__file__))
+la_open_data:
+  attr_path: resource/la_open_data/tbl_attrs_la.json
+  col_stats_path: resource/la_open_data/col_stats.json
+  data_path: data/la_open_data/
+  db_path: postgresql://yuegong@localhost/opendata_large
+  failed_tbl_path: resource/la_open_data/failed_tbl_ids.json
+  geo_chain: tract, county, state
+  geo_keys: TRACTCE, COUNTYFP, STATEFP
+  idx_tbl_path: resource/la_open_data/idx_tbl_names.json
+  meta_path: resource/la_open_data/la_open_data.json
+  profile_path: resource/la_open_data/profile.json
+  shape_path: resource/la_open_data/ca_tract_shape/tl_2020_06_tract.shp
+maryland_open_data:
+  attr_path: resource/maryland_open_data/tbl_attrs_maryland.json
+  col_stats_path: resource/maryland_open_data/col_stats.json
+  data_path: data/maryland_open_data/
+  db_path: postgresql://yuegong@localhost/opendata_large
+  failed_tbl_path: resource/maryland_open_data/failed_tbl_ids.json
+  geo_chain: tract, county, state
+  geo_keys: TRACTCE, COUNTYFP, STATEFP
+  idx_tbl_path: resource/maryland_open_data/idx_tbl_names.json
+  meta_path: resource/maryland_open_data/maryland_open_data.json
+  profile_path: resource/maryland_open_data/profile.json
+  shape_path: resource/maryland_open_data/maryland_tract_shape/tl_2020_24_tract.shp
+ny_open_data:
+  attr_path: resource/ny_open_data/tbl_attrs_ny.json
+  col_stats_path: resource/ny_open_data/col_stats_ny.json
+  data_path: data/ny_open_data/
+  db_path: postgresql://yuegong@localhost/opendata_large
+  failed_tbl_path: resource/ny_open_data/failed_tbl_ids.json
+  geo_chain: tract, county, state
+  geo_keys: TRACTCE, COUNTYFP, STATEFP
+  idx_tbl_path: resource/ny_open_data/idx_tbl_names.json
+  meta_path: resource/ny_open_data/ny_open_data.json
+  profile_path: resource/ny_open_data/profile_ny.json
+  shape_path: resource/ny_open_data/ny_tract_shape/tl_2020_36_tract.shp
+nyc_open_data:
+  attr_path: resource/nyc_open_data/tbl_attrs_nyc.json
+  col_stats_path: resource/nyc_open_data/col_stats_nyc.json
+  data_path: data/nyc_open_data/
+  db_path: postgresql://yuegong@localhost/opendata
+  failed_tbl_path: resource/nyc_open_data/failed_tbl_ids.json
+  geo_chain: tract, county
+  geo_keys: CT2020, BoroCode
+  idx_tbl_path: resource/nyc_open_data/idx_tbl_names.json
+  meta_path: resource/nyc_open_data/nyc_open_data.json
+  profile_path: resource/nyc_open_data/profile_nyc.json
+  shape_path: resource/nyc_open_data/nyc_tract_shape/nyct2020.shp
+pa_open_data:
+  attr_path: resource/pa_open_data/tbl_attrs_pa.json
+  col_stats_path: resource/pa_open_data/col_stats.json
+  data_path: data/pa_open_data/
+  db_path: postgresql://yuegong@localhost/opendata_large
+  failed_tbl_path: resource/pa_open_data/failed_tbl_ids.json
+  geo_chain: tract, county, state
+  geo_keys: TRACTCE, COUNTYFP, STATEFP
+  idx_tbl_path: resource/pa_open_data/idx_tbl_names.json
+  meta_path: resource/pa_open_data/pa_open_data.json
+  profile_path: resource/pa_open_data/profile.json
+  shape_path: resource/pa_open_data/pa_tract_shape/tl_2020_42_tract.shp
+sf_open_data:
+  attr_path: resource/sf_open_data/tbl_attrs_sf.json
+  col_stats_path: resource/sf_open_data/col_stats.json
+  data_path: data/sf_open_data/
+  db_path: postgresql://yuegong@localhost/opendata_large
+  failed_tbl_path: resource/sf_open_data/failed_tbl_ids.json
+  geo_chain: tract, county, state
+  geo_keys: tractce, countyfp, statefp
+  idx_tbl_path: resource/sf_open_data/idx_tbl_names.json
+  meta_path: resource/sf_open_data/sf_open_data.json
+  profile_path: resource/sf_open_data/profile.json
+  shape_path: resource/sf_open_data/sf_tract_shape/geo_export_efc02cbc-ea84-4eb3-8771-243535fbd91d.shp
+texas_open_data:
+  attr_path: resource/texas_open_data/tbl_attrs_texas.json
+  col_stats_path: resource/texas_open_data/col_stats.json
+  data_path: data/texas_open_data/
+  db_path: postgresql://yuegong@localhost/opendata_large
+  failed_tbl_path: resource/texas_open_data/failed_tbl_ids.json
+  geo_chain: tract, county, state
+  geo_keys: TRACTCE, COUNTYFP, STATEFP
+  idx_tbl_path: resource/texas_open_data/idx_tbl_names.json
+  meta_path: resource/texas_open_data/texas_open_data.json
+  profile_path: resource/texas_open_data/profile.json
+  shape_path: resource/texas_open_data/texas_tract_shape/tl_2020_48_tract.shp
+wa_open_data:
+  attr_path: resource/wa_open_data/tbl_attrs_wa.json
+  col_stats_path: resource/wa_open_data/col_stats.json
+  data_path: data/wa_open_data/
+  db_path: postgresql://yuegong@localhost/opendata_large
+  failed_tbl_path: resource/wa_open_data/failed_tbl_ids.json
+  geo_chain: tract, county, state
+  geo_keys: TRACTCE, COUNTYFP, STATEFP
+  idx_tbl_path: resource/wa_open_data/idx_tbl_names.json
+  meta_path: resource/wa_open_data/wa_open_data.json
+  profile_path: resource/wa_open_data/profile.json
+  shape_path: resource/wa_open_data/wa_tract_shape/tl_2020_53_tract.shp

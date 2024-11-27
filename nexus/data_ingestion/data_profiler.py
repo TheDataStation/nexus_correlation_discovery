@@ -44,7 +44,7 @@ class Profiler:
                 tbl_attrs[tbl]["t_attrs"],
                 tbl_attrs[tbl]["s_attrs"],
             )
-
+            
             if temporal_granu:
                 for t in t_attrs:
                     spatio_temporal_keys.append((tbl, SpatioTemporalKey(temporal_attr=Attr(t['name'], temporal_granu))))
@@ -193,11 +193,16 @@ class Profiler:
                 zero_ratio = round((df[num_col] == 0).sum() / len(df[num_col]), 2)
                 num_col_name1 = "avg_{}_t1".format(num_col)[:63]
                 num_col_name2 = "avg_{}_t2".format(num_col)[:63]
+                num_col_name3 = "avg_{}".format(num_col)[:63]
                 profile[num_col_name1] = {
                     "missing_ratio": missing_ratio,
                     "zero_ratio": zero_ratio,
                 }
                 profile[num_col_name2] = {
+                    "missing_ratio": missing_ratio,
+                    "zero_ratio": zero_ratio,
+                }
+                profile[num_col_name3] = {
                     "missing_ratio": missing_ratio,
                     "zero_ratio": zero_ratio,
                 }

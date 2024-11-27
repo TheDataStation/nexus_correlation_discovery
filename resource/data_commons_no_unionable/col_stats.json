@@ -1,0 +1,2723 @@
+{
+    "00061_Housing_Chicago_GEOID10_3": {
+        "avg_HCV_PUBLIC_PCT": {
+            "sum": 9311.9,
+            "sum_square": 202129.1331,
+            "avg": 5.3029,
+            "res_sum": 152749.0183,
+            "cnt": 1756
+        },
+        "avg_OwnerCost3050pct": {
+            "sum": 19460.0,
+            "sum_square": 367914.0,
+            "avg": 11.082,
+            "res_sum": 152258.1913,
+            "cnt": 1756
+        },
+        "avg_TOTAL_AMT": {
+            "sum": 66102549.41,
+            "sum_square": 26612523313215.617,
+            "avg": 37643.8208,
+            "res_sum": 24124170785595.188,
+            "cnt": 1756
+        },
+        "avg_eviction_filings_rate": {
+            "sum": 3300.4037,
+            "sum_square": 19834.957,
+            "avg": 1.8795,
+            "res_sum": 13631.8449,
+            "cnt": 1756
+        },
+        "avg_ProbOwner30pct": {
+            "sum": 40175.0,
+            "sum_square": 1394455.0,
+            "avg": 22.8787,
+            "res_sum": 475303.1634,
+            "cnt": 1756
+        },
+        "avg_OwnerOccPct": {
+            "sum": 74234.0,
+            "sum_square": 4889894.0,
+            "avg": 42.2745,
+            "res_sum": 1751689.697,
+            "cnt": 1756
+        },
+        "avg_RenterOccPct": {
+            "sum": 58565.0,
+            "sum_square": 3322869.0,
+            "avg": 33.3514,
+            "res_sum": 1369646.2067,
+            "cnt": 1756
+        },
+        "avg_median_home_value": {
+            "sum": 208384300.0,
+            "sum_square": 73154981290000.0,
+            "avg": 118669.8747,
+            "res_sum": 48426042516372.39,
+            "cnt": 1756
+        },
+        "avg_Avg_PCT_LM": {
+            "sum": 9998.1801,
+            "sum_square": 529539.5225,
+            "avg": 5.6937,
+            "res_sum": 472612.6407,
+            "cnt": 1756
+        },
+        "avg_LowCrowdOwnerPct": {
+            "sum": 2127.0,
+            "sum_square": 14659.0,
+            "avg": 1.2113,
+            "res_sum": 12082.6167,
+            "cnt": 1756
+        },
+        "avg_avg_Road Proximity 101 - 300 Feet": {
+            "sum": 80.3836,
+            "sum_square": 25.2382,
+            "avg": 0.0458,
+            "res_sum": 21.5585,
+            "cnt": 1756
+        },
+        "avg_city_property_tot": {
+            "sum": 12264.0,
+            "sum_square": 959770.0,
+            "avg": 6.9841,
+            "res_sum": 874117.5535,
+            "cnt": 1756
+        },
+        "avg_Sum_IMPACT_pct": {
+            "sum": 0.92,
+            "sum_square": 0.0092,
+            "avg": 0.0005,
+            "res_sum": 0.0087,
+            "cnt": 1756
+        },
+        "avg_TOTAL_DWELLING_UNITS": {
+            "sum": 20554.0,
+            "sum_square": 7691448.0,
+            "avg": 11.705,
+            "res_sum": 7450863.1959,
+            "cnt": 1756
+        },
+        "avg_LowCrowdRenterPct": {
+            "sum": 4120.0,
+            "sum_square": 53962.0,
+            "avg": 2.3462,
+            "res_sum": 44295.4852,
+            "cnt": 1756
+        },
+        "avg_mode_Neighborhood Code": {
+            "sum": 58152917.0,
+            "sum_square": 4258721311065.0,
+            "avg": 33116.6953,
+            "res_sum": 2332888876208.0005,
+            "cnt": 1756
+        },
+        "avg_USPS_Vac_pct": {
+            "sum": 8.88,
+            "sum_square": 0.6604,
+            "avg": 0.0051,
+            "res_sum": 0.6155,
+            "cnt": 1756
+        },
+        "avg_UATOTHOA_COUNT": {
+            "sum": 1842.0,
+            "sum_square": 31684.0,
+            "avg": 1.049,
+            "res_sum": 29751.7882,
+            "cnt": 1756
+        },
+        "avg_UATOTHOA_AMT": {
+            "sum": 45894223.2,
+            "sum_square": 18472112985506.15,
+            "avg": 26135.6624,
+            "res_sum": 17272637061171.64,
+            "cnt": 1756
+        },
+        "avg_RENTAL_COUNT": {
+            "sum": 18094.0,
+            "sum_square": 2934284.0,
+            "avg": 10.3041,
+            "res_sum": 2747841.6105,
+            "cnt": 1756
+        },
+        "avg_RenterCostGT50pct": {
+            "sum": 28268.0,
+            "sum_square": 822862.0,
+            "avg": 16.0979,
+            "res_sum": 367805.1526,
+            "cnt": 1756
+        },
+        "avg_HC_RATE": {
+            "sum": 8074.9,
+            "sum_square": 373363.25,
+            "avg": 4.5985,
+            "res_sum": 336231.1258,
+            "cnt": 1756
+        },
+        "avg_avg_O'Hare Noise Indicator": {
+            "sum": 8.4887,
+            "sum_square": 7.9528,
+            "avg": 0.0048,
+            "res_sum": 7.9118,
+            "cnt": 1756
+        },
+        "avg_OwnerCostGT_EQ30pct": {
+            "sum": 36481.0,
+            "sum_square": 1158021.0,
+            "avg": 20.7751,
+            "res_sum": 400126.1475,
+            "cnt": 1756
+        },
+        "avg_AllPre1960pct": {
+            "sum": 71879.0,
+            "sum_square": 4802577.0,
+            "avg": 40.9334,
+            "res_sum": 1860327.2044,
+            "cnt": 1756
+        },
+        "avg_avg_FEMA Floodplain": {
+            "sum": 0.1791,
+            "sum_square": 0.0098,
+            "avg": 0.0001,
+            "res_sum": 0.0098,
+            "cnt": 1756
+        },
+        "avg_avg_Flood Risk Factor": {
+            "sum": 1660.3733,
+            "sum_square": 5347.0043,
+            "avg": 0.9455,
+            "res_sum": 3777.0502,
+            "cnt": 1756
+        },
+        "avg_RentPre1960pct": {
+            "sum": 66224.0,
+            "sum_square": 4270046.0,
+            "avg": 37.713,
+            "res_sum": 1772541.344,
+            "cnt": 1756
+        },
+        "avg_proportionCorD": {
+            "sum": 527.1466,
+            "sum_square": 477.6154,
+            "avg": 0.3002,
+            "res_sum": 319.3674,
+            "cnt": 1756
+        },
+        "avg_hardship": {
+            "sum": 19603.8,
+            "sum_square": 588237.26,
+            "avg": 11.1639,
+            "res_sum": 369382.491,
+            "cnt": 1756
+        },
+        "avg_ProbALL50pct": {
+            "sum": 27442.0,
+            "sum_square": 682460.0,
+            "avg": 15.6276,
+            "res_sum": 253608.426,
+            "cnt": 1756
+        },
+        "avg_OTHER_COUNT": {
+            "sum": 19297.0,
+            "sum_square": 3041475.0,
+            "avg": 10.9892,
+            "res_sum": 2829416.7944,
+            "cnt": 1756
+        },
+        "avg_ProbALL30pct": {
+            "sum": 49572.0,
+            "sum_square": 2023460.0,
+            "avg": 28.2301,
+            "res_sum": 624039.0524,
+            "cnt": 1756
+        },
+        "avg_AllCrowdPct": {
+            "sum": 4249.0,
+            "sum_square": 30147.0,
+            "avg": 2.4197,
+            "res_sum": 19865.6782,
+            "cnt": 1756
+        },
+        "avg_mode_Township Code": {
+            "sum": 58058.0,
+            "sum_square": 4244948.0,
+            "avg": 33.0626,
+            "res_sum": 2325397.1093,
+            "cnt": 1756
+        },
+        "avg_ForeSTARTS_pct": {
+            "sum": 5.65,
+            "sum_square": 0.1905,
+            "avg": 0.0032,
+            "res_sum": 0.1723,
+            "cnt": 1756
+        },
+        "avg_AllCostGT_EQ30pct": {
+            "sum": 44055.0,
+            "sum_square": 1595179.0,
+            "avg": 25.0883,
+            "res_sum": 489915.3183,
+            "cnt": 1756
+        },
+        "avg_mode_Township Neighborhood Only": {
+            "sum": 94917.0,
+            "sum_square": 20601065.0,
+            "avg": 54.053,
+            "res_sum": 15470520.0746,
+            "cnt": 1756
+        },
+        "avg_AllCrowdOwnerPct": {
+            "sum": 2930.0,
+            "sum_square": 23698.0,
+            "avg": 1.6686,
+            "res_sum": 18809.1048,
+            "cnt": 1756
+        },
+        "avg_UAHOR_COUNT": {
+            "sum": 639.0,
+            "sum_square": 6423.0,
+            "avg": 0.3639,
+            "res_sum": 6190.471,
+            "cnt": 1756
+        },
+        "avg_TOTAL_COUNT": {
+            "sum": 19936.0,
+            "sum_square": 3066064.0,
+            "avg": 11.3531,
+            "res_sum": 2839729.0934,
+            "cnt": 1756
+        },
+        "avg_Avg_PCT_LMMI": {
+            "sum": 14615.9268,
+            "sum_square": 1035439.9161,
+            "avg": 8.3234,
+            "res_sum": 913785.4084,
+            "cnt": 1756
+        },
+        "avg_HighCrowdOwnerPct": {
+            "sum": 790.0,
+            "sum_square": 4766.0,
+            "avg": 0.4499,
+            "res_sum": 4410.59,
+            "cnt": 1756
+        },
+        "avg_prop_plndev": {
+            "sum": 1034.0,
+            "sum_square": 34964.0,
+            "avg": 0.5888,
+            "res_sum": 34355.1412,
+            "cnt": 1756
+        },
+        "avg_ProbRenter30pct": {
+            "sum": 61845.0,
+            "sum_square": 3257767.0,
+            "avg": 35.2192,
+            "res_sum": 1079632.5894,
+            "cnt": 1756
+        },
+        "avg_proportionB": {
+            "sum": 50.5007,
+            "sum_square": 35.5175,
+            "avg": 0.0288,
+            "res_sum": 34.0652,
+            "cnt": 1756
+        },
+        "avg_OwnerPre1960pct": {
+            "sum": 76329.0,
+            "sum_square": 5511195.0,
+            "avg": 43.4675,
+            "res_sum": 2193361.1498,
+            "cnt": 1756
+        },
+        "avg_ProbRenter50pct": {
+            "sum": 36509.0,
+            "sum_square": 1276761.0,
+            "avg": 20.791,
+            "res_sum": 517702.2978,
+            "cnt": 1756
+        },
+        "avg_pop_density_sqmi": {
+            "sum": 15025863.5623,
+            "sum_square": 477850920982.9426,
+            "avg": 8556.8699,
+            "res_sum": 349276561192.1203,
+            "cnt": 1756
+        },
+        "avg_urban_flood_suscep": {
+            "sum": 7497.4,
+            "sum_square": 70321.86,
+            "avg": 4.2696,
+            "res_sum": 38311.0361,
+            "cnt": 1756
+        },
+        "avg_HighCrowdRenterPct": {
+            "sum": 2011.0,
+            "sum_square": 16895.0,
+            "avg": 1.1452,
+            "res_sum": 14591.9698,
+            "cnt": 1756
+        },
+        "avg_AllCrowdRenterPct": {
+            "sum": 6126.0,
+            "sum_square": 84550.0,
+            "avg": 3.4886,
+            "res_sum": 63178.7722,
+            "cnt": 1756
+        },
+        "avg_avg_Tract Median Income": {
+            "sum": 45734735.0,
+            "sum_square": 3461513702029.0,
+            "avg": 26044.8377,
+            "res_sum": 2270359951732.744,
+            "cnt": 1756
+        },
+        "avg_PubHousOcc_pct": {
+            "sum": 280.73,
+            "sum_square": 244.0739,
+            "avg": 0.1599,
+            "res_sum": 199.1939,
+            "cnt": 1756
+        },
+        "avg_prop_comm": {
+            "sum": 3508.0,
+            "sum_square": 88274.0,
+            "avg": 1.9977,
+            "res_sum": 81265.9909,
+            "cnt": 1756
+        },
+        "avg_OwnerCostGT50pct": {
+            "sum": 16988.0,
+            "sum_square": 315848.0,
+            "avg": 9.6743,
+            "res_sum": 151501.6765,
+            "cnt": 1756
+        },
+        "avg_avg_Tax Rate": {
+            "sum": 5495.319,
+            "sum_square": 37986.7941,
+            "avg": 3.1295,
+            "res_sum": 20789.4533,
+            "cnt": 1756
+        },
+        "avg_BldgViolRate1000": {
+            "sum": 70277.55,
+            "sum_square": 9125760.9513,
+            "avg": 40.0214,
+            "res_sum": 6313156.1483,
+            "cnt": 1756
+        },
+        "avg_UAHB_COUNT": {
+            "sum": 1203.0,
+            "sum_square": 24609.0,
+            "avg": 0.6851,
+            "res_sum": 23784.8491,
+            "cnt": 1756
+        },
+        "avg_prop_resdntl": {
+            "sum": 7683.0,
+            "sum_square": 513387.0,
+            "avg": 4.3753,
+            "res_sum": 479771.6874,
+            "cnt": 1756
+        },
+        "avg_avg_Proportion Assessed": {
+            "sum": 590.9497,
+            "sum_square": 512.1779,
+            "avg": 0.3365,
+            "res_sum": 313.3045,
+            "cnt": 1756
+        },
+        "avg_HMDA_pct": {
+            "sum": 86.57,
+            "sum_square": 36.2045,
+            "avg": 0.0493,
+            "res_sum": 31.9366,
+            "cnt": 1756
+        },
+        "avg_LackPlumbKitchOwnerPct": {
+            "sum": 733.0,
+            "sum_square": 4745.0,
+            "avg": 0.4174,
+            "res_sum": 4439.0268,
+            "cnt": 1756
+        },
+        "avg_avg_Flood Risk Direction": {
+            "sum": 149.647,
+            "sum_square": 83.703,
+            "avg": 0.0852,
+            "res_sum": 70.95,
+            "cnt": 1756
+        },
+        "avg_FUND_DHOR_AMT": {
+            "sum": 22402614.86,
+            "sum_square": 10247389566594.227,
+            "avg": 12757.7533,
+            "res_sum": 9961582532103.637,
+            "cnt": 1756
+        },
+        "avg_TOTAL_OCCUPIED": {
+            "sum": 13317.0,
+            "sum_square": 3515609.0,
+            "avg": 7.5837,
+            "res_sum": 3414616.6942,
+            "cnt": 1756
+        },
+        "avg_RenterCostGT_EQ30pct": {
+            "sum": 53549.0,
+            "sum_square": 2493431.0,
+            "avg": 30.4949,
+            "res_sum": 860460.9539,
+            "cnt": 1756
+        },
+        "avg_RenterCost3050pct": {
+            "sum": 25272.0,
+            "sum_square": 645540.0,
+            "avg": 14.3918,
+            "res_sum": 281830.4419,
+            "cnt": 1756
+        },
+        "avg_avg_Road Proximity < 100 Feet": {
+            "sum": 13.4205,
+            "sum_square": 1.6435,
+            "avg": 0.0076,
+            "res_sum": 1.5409,
+            "cnt": 1756
+        },
+        "avg_median_rent": {
+            "sum": 875482.0,
+            "sum_square": 1059052082.0,
+            "avg": 498.5661,
+            "res_sum": 622566471.3371,
+            "cnt": 1756
+        },
+        "avg_ForecloseRate1000": {
+            "sum": 5356.73,
+            "sum_square": 59416.6617,
+            "avg": 3.0505,
+            "res_sum": 43075.7982,
+            "cnt": 1756
+        },
+        "avg_proportionA": {
+            "sum": 3.2113,
+            "sum_square": 1.478,
+            "avg": 0.0018,
+            "res_sum": 1.4722,
+            "cnt": 1756
+        },
+        "avg_PRE1960PCT": {
+            "sum": 766.6918,
+            "sum_square": 536.9111,
+            "avg": 0.4366,
+            "res_sum": 202.1638,
+            "cnt": 1756
+        },
+        "avg_PubHousCount": {
+            "sum": 2225.0,
+            "sum_square": 68441.0,
+            "avg": 1.2671,
+            "res_sum": 65621.7375,
+            "cnt": 1756
+        },
+        "avg_ForeCOMPLETED_pct": {
+            "sum": 2.99,
+            "sum_square": 0.0525,
+            "avg": 0.0017,
+            "res_sum": 0.0474,
+            "cnt": 1756
+        },
+        "avg_Avg_NSP3NEED": {
+            "sum": 3018.1838,
+            "sum_square": 43302.3324,
+            "avg": 1.7188,
+            "res_sum": 38114.728,
+            "cnt": 1756
+        },
+        "avg_ProbOwner50pct": {
+            "sum": 20645.0,
+            "sum_square": 443601.0,
+            "avg": 11.7568,
+            "res_sum": 200881.168,
+            "cnt": 1756
+        },
+        "avg_mode_Property Class": {
+            "sum": 190717.0,
+            "sum_square": 47280543.0,
+            "avg": 108.6088,
+            "res_sum": 26567004.2249,
+            "cnt": 1756
+        },
+        "avg_RENTAL_AMT": {
+            "sum": 20208326.21,
+            "sum_square": 3904396167155.2456,
+            "avg": 11508.1584,
+            "res_sum": 3671835547445.8,
+            "cnt": 1756
+        },
+        "avg_LackPlumbKitchRenterPct": {
+            "sum": 2090.0,
+            "sum_square": 30710.0,
+            "avg": 1.1902,
+            "res_sum": 28222.4715,
+            "cnt": 1756
+        },
+        "avg_Avg_SDQ_RATE": {
+            "sum": 2501.2307,
+            "sum_square": 32693.1782,
+            "avg": 1.4244,
+            "res_sum": 29130.4476,
+            "cnt": 1756
+        },
+        "avg_proportionD": {
+            "sum": 196.8548,
+            "sum_square": 169.4558,
+            "avg": 0.1121,
+            "res_sum": 147.3876,
+            "cnt": 1756
+        },
+        "avg_FUND_DHB_AMT": {
+            "sum": 23491608.34,
+            "sum_square": 8016420876628.461,
+            "avg": 13377.9091,
+            "res_sum": 7702152276172.914,
+            "cnt": 1756
+        },
+        "avg_proportionC": {
+            "sum": 330.2918,
+            "sum_square": 287.2697,
+            "avg": 0.1881,
+            "res_sum": 225.1441,
+            "cnt": 1756
+        },
+        "avg_OTHER_AMT": {
+            "sum": 43699934.55,
+            "sum_square": 14403447784911.602,
+            "avg": 24886.0675,
+            "res_sum": 13315928263456.955,
+            "cnt": 1756
+        },
+        "avg_avg_Age": {
+            "sum": 66535.7649,
+            "sum_square": 5923923.0513,
+            "avg": 37.8905,
+            "res_sum": 3402847.8766,
+            "cnt": 1756
+        },
+        "count": {
+            "sum": 1756.0,
+            "sum_square": 1756.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 1756
+        }
+    },
+    "00082_Schools_Chicago_line_listing_GEOID10_3": {
+        "count": {
+            "sum": 10220.0,
+            "sum_square": 296742.0,
+            "avg": 21.2033,
+            "res_sum": 80044.0747,
+            "cnt": 482
+        }
+    },
+    "00071_Health_Chicago_GEOID10_3": {
+        "avg_COLON_SCREEN_CrudePrev": {
+            "sum": 50786.25,
+            "sum_square": 2950526.8225,
+            "avg": 37.5638,
+            "res_sum": 1042802.5702,
+            "cnt": 1352
+        },
+        "avg_RxCount": {
+            "sum": 281.0,
+            "sum_square": 437.0,
+            "avg": 0.2078,
+            "res_sum": 378.5969,
+            "cnt": 1352
+        },
+        "avg_BPMED_CrudePrev": {
+            "sum": 62534.65,
+            "sum_square": 4433043.4925,
+            "avg": 46.2534,
+            "res_sum": 1540600.8515,
+            "cnt": 1352
+        },
+        "avg_TYPE_LONG TERM CARE": {
+            "sum": 3.0,
+            "sum_square": 3.0,
+            "avg": 0.0022,
+            "res_sum": 2.9933,
+            "cnt": 1352
+        },
+        "avg_TRAUMA_LEVEL I PEDIATRIC": {
+            "sum": 1.0,
+            "sum_square": 1.0,
+            "avg": 0.0007,
+            "res_sum": 0.9993,
+            "cnt": 1352
+        },
+        "avg_HIGHCHOL_CrudePrev": {
+            "sum": 25684.7,
+            "sum_square": 757160.685,
+            "avg": 18.9976,
+            "res_sum": 269214.0769,
+            "cnt": 1352
+        },
+        "avg_CHD_CrudePrev": {
+            "sum": 4763.05,
+            "sum_square": 29202.4625,
+            "avg": 3.523,
+            "res_sum": 12422.3994,
+            "cnt": 1352
+        },
+        "avg_TotalBeds": {
+            "sum": 10891.0,
+            "sum_square": 7384505.0,
+            "avg": 8.0555,
+            "res_sum": 7296772.8395,
+            "cnt": 1352
+        },
+        "avg_Hosp_rate_10k_y": {
+            "sum": 134.0317,
+            "sum_square": 13.497,
+            "avg": 0.0991,
+            "res_sum": 0.2096,
+            "cnt": 1352
+        },
+        "avg_CANCER_CrudePrev": {
+            "sum": 4530.15,
+            "sum_square": 25123.8225,
+            "avg": 3.3507,
+            "res_sum": 9944.6368,
+            "cnt": 1352
+        },
+        "avg_PAPTEST_CrudePrev": {
+            "sum": 76842.15,
+            "sum_square": 6609159.5725,
+            "avg": 56.8359,
+            "res_sum": 2241766.0691,
+            "cnt": 1352
+        },
+        "avg_COREW_CrudePrev": {
+            "sum": 22122.6,
+            "sum_square": 583695.155,
+            "avg": 16.3629,
+            "res_sum": 221705.9311,
+            "cnt": 1352
+        },
+        "avg_MAMMOUSE_CrudePrev": {
+            "sum": 70108.75,
+            "sum_square": 5504364.7225,
+            "avg": 51.8556,
+            "res_sum": 1868834.5253,
+            "cnt": 1352
+        },
+        "avg_ARTHRITIS_CrudePrev": {
+            "sum": 18280.05,
+            "sum_square": 406184.3825,
+            "avg": 13.5207,
+            "res_sum": 159024.4505,
+            "cnt": 1352
+        },
+        "avg_CASTHMA_CrudePrev": {
+            "sum": 8320.4,
+            "sum_square": 80727.94,
+            "avg": 6.1541,
+            "res_sum": 29523.0168,
+            "cnt": 1352
+        },
+        "avg_TRAUMA_LEVEL I ADULT, LEVEL I PEDIATRIC": {
+            "sum": 2.0,
+            "sum_square": 2.0,
+            "avg": 0.0015,
+            "res_sum": 1.997,
+            "cnt": 1352
+        },
+        "avg_TYPE_CHILDREN": {
+            "sum": 3.0,
+            "sum_square": 3.0,
+            "avg": 0.0022,
+            "res_sum": 2.9933,
+            "cnt": 1352
+        },
+        "avg_TRAUMA_LEVEL I": {
+            "sum": 3.0,
+            "sum_square": 3.0,
+            "avg": 0.0022,
+            "res_sum": 2.9933,
+            "cnt": 1352
+        },
+        "avg_DIABETES_CrudePrev": {
+            "sum": 10056.65,
+            "sum_square": 135123.2825,
+            "avg": 7.4384,
+            "res_sum": 60318.394,
+            "cnt": 1352
+        },
+        "avg_OWNER_GOVERNMENT - FEDERAL": {
+            "sum": 1.0,
+            "sum_square": 1.0,
+            "avg": 0.0007,
+            "res_sum": 0.9993,
+            "cnt": 1352
+        },
+        "avg_STROKE_CrudePrev": {
+            "sum": 3015.65,
+            "sum_square": 13168.0225,
+            "avg": 2.2305,
+            "res_sum": 6441.5839,
+            "cnt": 1352
+        },
+        "avg_TYPE_GENERAL ACUTE CARE": {
+            "sum": 28.0,
+            "sum_square": 30.0,
+            "avg": 0.0207,
+            "res_sum": 29.4201,
+            "cnt": 1352
+        },
+        "avg_Primarycount": {
+            "sum": 119.0,
+            "sum_square": 141.0,
+            "avg": 0.088,
+            "res_sum": 130.5259,
+            "cnt": 1352
+        },
+        "avg_PHLTH_CrudePrev": {
+            "sum": 10805.1,
+            "sum_square": 145922.41,
+            "avg": 7.9919,
+            "res_sum": 59568.7221,
+            "cnt": 1352
+        },
+        "avg_TYPE_MILITARY": {
+            "sum": 1.0,
+            "sum_square": 1.0,
+            "avg": 0.0007,
+            "res_sum": 0.9993,
+            "cnt": 1352
+        },
+        "avg_HELIPAD_Y": {
+            "sum": 6.0,
+            "sum_square": 6.0,
+            "avg": 0.0044,
+            "res_sum": 5.9734,
+            "cnt": 1352
+        },
+        "avg_Hosp_rate_10k_x": {
+            "sum": 134.0317,
+            "sum_square": 13.497,
+            "avg": 0.0991,
+            "res_sum": 0.2096,
+            "cnt": 1352
+        },
+        "avg_HospCount": {
+            "sum": 41.0,
+            "sum_square": 63.0,
+            "avg": 0.0303,
+            "res_sum": 61.7567,
+            "cnt": 1352
+        },
+        "avg_TYPE_REHABILITATION": {
+            "sum": 3.0,
+            "sum_square": 5.0,
+            "avg": 0.0022,
+            "res_sum": 4.9933,
+            "cnt": 1352
+        },
+        "avg_ACCESS2_CrudePrev": {
+            "sum": 15699.4,
+            "sum_square": 337517.755,
+            "avg": 11.612,
+            "res_sum": 155216.6009,
+            "cnt": 1352
+        },
+        "avg_BPHIGH_CrudePrev": {
+            "sum": 27742.9,
+            "sum_square": 958445.13,
+            "avg": 20.5199,
+            "res_sum": 389163.6948,
+            "cnt": 1352
+        },
+        "avg_Clinician_rate_1k_x": {
+            "sum": 27777.1798,
+            "sum_square": 1117819.8181,
+            "avg": 20.5453,
+            "res_sum": 547130.6778,
+            "cnt": 1352
+        },
+        "avg_COREM_CrudePrev": {
+            "sum": 27464.55,
+            "sum_square": 898330.9625,
+            "avg": 20.314,
+            "res_sum": 340415.6469,
+            "cnt": 1352
+        },
+        "avg_OWNER_PROPRIETARY": {
+            "sum": 6.0,
+            "sum_square": 6.0,
+            "avg": 0.0044,
+            "res_sum": 5.9734,
+            "cnt": 1352
+        },
+        "avg_COPD_CrudePrev": {
+            "sum": 5720.25,
+            "sum_square": 42575.1225,
+            "avg": 4.231,
+            "res_sum": 18373.0071,
+            "cnt": 1352
+        },
+        "avg_Clinician_rate_1k_y": {
+            "sum": 27777.1798,
+            "sum_square": 1117819.8181,
+            "avg": 20.5453,
+            "res_sum": 547130.6778,
+            "cnt": 1352
+        },
+        "avg_OBESITY_CrudePrev": {
+            "sum": 29302.4,
+            "sum_square": 1029583.125,
+            "avg": 21.6734,
+            "res_sum": 394501.2864,
+            "cnt": 1352
+        },
+        "avg_DENTAL_CrudePrev": {
+            "sum": 51037.85,
+            "sum_square": 3085477.0425,
+            "avg": 37.7499,
+            "res_sum": 1158803.8675,
+            "cnt": 1352
+        },
+        "avg_OWNER_GOVERNMENT - LOCAL": {
+            "sum": 2.0,
+            "sum_square": 2.0,
+            "avg": 0.0015,
+            "res_sum": 1.997,
+            "cnt": 1352
+        },
+        "avg_OWNER_GOVERNMENT - STATE": {
+            "sum": 1.0,
+            "sum_square": 1.0,
+            "avg": 0.0007,
+            "res_sum": 0.9993,
+            "cnt": 1352
+        },
+        "avg_TEETHLOST_CrudePrev": {
+            "sum": 14820.95,
+            "sum_square": 320969.1725,
+            "avg": 10.9622,
+            "res_sum": 158498.3449,
+            "cnt": 1352
+        },
+        "avg_TYPE_PSYCHIATRIC": {
+            "sum": 3.0,
+            "sum_square": 3.0,
+            "avg": 0.0022,
+            "res_sum": 2.9933,
+            "cnt": 1352
+        },
+        "avg_FQHCcount": {
+            "sum": 190.0,
+            "sum_square": 344.0,
+            "avg": 0.1405,
+            "res_sum": 317.2988,
+            "cnt": 1352
+        },
+        "avg_TRAUMA_LEVEL II": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 1352
+        },
+        "avg_CHECKUP_CrudePrev": {
+            "sum": 60949.0,
+            "sum_square": 4189559.565,
+            "avg": 45.0806,
+            "res_sum": 1441940.7773,
+            "cnt": 1352
+        },
+        "avg_CHOLSCREEN_CrudePrev": {
+            "sum": 73309.6,
+            "sum_square": 6025619.92,
+            "avg": 54.2231,
+            "res_sum": 2050547.84,
+            "cnt": 1352
+        },
+        "count": {
+            "sum": 1354.0,
+            "sum_square": 1358.0,
+            "avg": 1.0015,
+            "res_sum": 1.997,
+            "cnt": 1352
+        }
+    },
+    "00033_Pollution_industrial_sites_Chicago_lat_long_GEOID10_3": {
+        "count": {
+            "sum": 354901.0,
+            "sum_square": 297360279.0,
+            "avg": 226.0516,
+            "res_sum": 217134342.821,
+            "cnt": 1570
+        }
+    },
+    "00051_Business_economy_transportation_Chicago_GEOID10_3": {
+        "avg_HUDEmpowerZone": {
+            "sum": 45.0,
+            "sum_square": 45.0,
+            "avg": 0.0562,
+            "res_sum": 42.4719,
+            "cnt": 801
+        },
+        "avg_BusLicCount": {
+            "sum": 1025054.0,
+            "sum_square": 5099569414.0,
+            "avg": 1279.7179,
+            "res_sum": 3787789510.2347,
+            "cnt": 801
+        },
+        "avg_CDBG_TOTAL_COUNT": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 801
+        },
+        "avg_EnergyCount": {
+            "sum": 3434.0,
+            "sum_square": 123574.0,
+            "avg": 4.2871,
+            "res_sum": 108851.9576,
+            "cnt": 801
+        },
+        "avg_ETOHLicCount": {
+            "sum": 24328.0,
+            "sum_square": 2880968.0,
+            "avg": 30.372,
+            "res_sum": 2142077.1336,
+            "cnt": 801
+        },
+        "avg_MfgLicCount": {
+            "sum": 13932.0,
+            "sum_square": 1498036.0,
+            "avg": 17.3933,
+            "res_sum": 1255713.1236,
+            "cnt": 801
+        },
+        "avg_HUDRenewalComm": {
+            "sum": 47.0,
+            "sum_square": 47.0,
+            "avg": 0.0587,
+            "res_sum": 44.2422,
+            "cnt": 801
+        },
+        "avg_BldgPermitsN": {
+            "sum": 754876.0,
+            "sum_square": 3113652558.0,
+            "avg": 942.417,
+            "res_sum": 2402244598.7291,
+            "cnt": 801
+        },
+        "avg_CDBG_TOTAL_AMT": {
+            "sum": 0.0,
+            "sum_square": 0.0,
+            "avg": 0.0,
+            "res_sum": 0.0,
+            "cnt": 801
+        },
+        "avg_HUDQualCenTract": {
+            "sum": 375.0,
+            "sum_square": 375.0,
+            "avg": 0.4682,
+            "res_sum": 199.4382,
+            "cnt": 801
+        },
+        "avg_GroceryCount": {
+            "sum": 257.0,
+            "sum_square": 377.0,
+            "avg": 0.3208,
+            "res_sum": 294.5418,
+            "cnt": 801
+        },
+        "avg_ChildcareLicCount": {
+            "sum": 12386.0,
+            "sum_square": 440928.0,
+            "avg": 15.4632,
+            "res_sum": 249401.1635,
+            "cnt": 801
+        },
+        "avg_AvgEnergyRating": {
+            "sum": 588.0455,
+            "sum_square": 1335.3659,
+            "avg": 0.7341,
+            "res_sum": 903.6586,
+            "cnt": 801
+        },
+        "count": {
+            "sum": 801.0,
+            "sum_square": 801.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 801
+        }
+    },
+    "00041_Behavioral_psychological_Chicago_GEOID10_3": {
+        "avg_CSMOKING": {
+            "sum": 19371.3,
+            "sum_square": 322190.51,
+            "avg": 14.7422,
+            "res_sum": 36614.2058,
+            "cnt": 1314
+        },
+        "avg_BINGE": {
+            "sum": 18392.9,
+            "sum_square": 268521.99,
+            "avg": 13.9976,
+            "res_sum": 11064.7827,
+            "cnt": 1314
+        },
+        "avg_MHLTH": {
+            "sum": 16549.2,
+            "sum_square": 214695.64,
+            "avg": 12.5945,
+            "res_sum": 6266.4005,
+            "cnt": 1314
+        },
+        "avg_LPA": {
+            "sum": 35502.2,
+            "sum_square": 1067359.46,
+            "avg": 27.0184,
+            "res_sum": 108146.2143,
+            "cnt": 1314
+        },
+        "avg_SLEEP": {
+            "sum": 45643.1,
+            "sum_square": 1633443.13,
+            "avg": 34.736,
+            "res_sum": 47984.5473,
+            "cnt": 1314
+        },
+        "avg_DEPRESSION": {
+            "sum": 19604.5,
+            "sum_square": 294434.51,
+            "avg": 14.9197,
+            "res_sum": 1941.0395,
+            "cnt": 1314
+        },
+        "count": {
+            "sum": 1314.0,
+            "sum_square": 1314.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 1314
+        }
+    },
+    "Industrial sites - Data_geocoded_GEOID10_3": {
+        "count": {
+            "sum": 176.0,
+            "sum_square": 624.0,
+            "avg": 1.8333,
+            "res_sum": 301.3333,
+            "cnt": 96
+        }
+    },
+    "00081_Schools_Chicago_GEOID10_3": {
+        "avg_SQRPPts": {
+            "sum": 6760.9501,
+            "sum_square": 115926.5261,
+            "avg": 14.5397,
+            "res_sum": 18270.2163,
+            "cnt": 482
+        },
+        "avg_AvgDailyAttendance": {
+            "sum": 27451.6047,
+            "sum_square": 1652268.9975,
+            "avg": 58.7829,
+            "res_sum": 39826.6239,
+            "cnt": 482
+        },
+        "avg_MyVoiceMySchoolScore": {
+            "sum": 2113.7805,
+            "sum_square": 10387.5659,
+            "avg": 4.837,
+            "res_sum": 179.9933,
+            "cnt": 482
+        },
+        "avg_SQRPRating": {
+            "sum": 11347.8874,
+            "sum_square": 376247.4527,
+            "avg": 28.299,
+            "res_sum": 66274.4822,
+            "cnt": 482
+        },
+        "count": {
+            "sum": 482.0,
+            "sum_square": 482.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 482
+        }
+    },
+    "00031_Environment_pollution_Chicago_GEOID10_3": {
+        "avg_PTRAF": {
+            "sum": 1486229.5773,
+            "sum_square": 8120312329.1988,
+            "avg": 1090.4105,
+            "res_sum": 6499711920.9059,
+            "cnt": 1363
+        },
+        "avg_basketball_courts": {
+            "sum": 330.0,
+            "sum_square": 784.0,
+            "avg": 0.2421,
+            "res_sum": 704.1027,
+            "cnt": 1363
+        },
+        "avg_Parks_per_acre": {
+            "sum": 683.2043,
+            "sum_square": 4547.8093,
+            "avg": 0.5013,
+            "res_sum": 4205.3529,
+            "cnt": 1363
+        },
+        "avg_trees_den": {
+            "sum": 2.3773,
+            "sum_square": 0.0077,
+            "avg": 0.0017,
+            "res_sum": 0.0035,
+            "cnt": 1363
+        },
+        "avg_baseball_batting_cages": {
+            "sum": 2.0,
+            "sum_square": 2.0,
+            "avg": 0.0015,
+            "res_sum": 1.9971,
+            "cnt": 1363
+        },
+        "avg_community_garden": {
+            "sum": 23.0,
+            "sum_square": 23.0,
+            "avg": 0.0169,
+            "res_sum": 22.6119,
+            "cnt": 1363
+        },
+        "avg_PRMP": {
+            "sum": 2090.3458,
+            "sum_square": 6806.682,
+            "avg": 1.5336,
+            "res_sum": 3600.8525,
+            "cnt": 1363
+        },
+        "avg_ns6070p": {
+            "sum": 112.3715,
+            "sum_square": 21.5046,
+            "avg": 0.0824,
+            "res_sum": 12.2402,
+            "cnt": 1363
+        },
+        "avg_nois90p": {
+            "sum": 0.6572,
+            "sum_square": 0.0077,
+            "avg": 0.0005,
+            "res_sum": 0.0074,
+            "cnt": 1363
+        },
+        "avg_WWCWPE90Cnt": {
+            "sum": 17.0,
+            "sum_square": 85.0,
+            "avg": 0.0125,
+            "res_sum": 84.788,
+            "cnt": 1363
+        },
+        "avg_SuperfundCount": {
+            "sum": 4.0,
+            "sum_square": 6.0,
+            "avg": 0.0029,
+            "res_sum": 5.9883,
+            "cnt": 1363
+        },
+        "avg_comp_serv_stat": {
+            "sum": 1121.0,
+            "sum_square": 4025.0,
+            "avg": 0.8225,
+            "res_sum": 3103.033,
+            "cnt": 1363
+        },
+        "avg_Avg_RSEI_CancerStd": {
+            "sum": 0.13,
+            "sum_square": 48.9337,
+            "avg": 0.0001,
+            "res_sum": 48.9337,
+            "cnt": 1363
+        },
+        "avg_co": {
+            "sum": 562.04,
+            "sum_square": 243.0406,
+            "avg": 0.4124,
+            "res_sum": 11.2805,
+            "cnt": 1363
+        },
+        "avg_RESP": {
+            "sum": 2264.7152,
+            "sum_square": 4473.2347,
+            "avg": 1.6616,
+            "res_sum": 710.2598,
+            "cnt": 1363
+        },
+        "avg_trees_n": {
+            "sum": 1710860.0,
+            "sum_square": 12076646652.0,
+            "avg": 1255.2164,
+            "res_sum": 9929147063.1519,
+            "cnt": 1363
+        },
+        "avg_fitness_center": {
+            "sum": 73.0,
+            "sum_square": 75.0,
+            "avg": 0.0536,
+            "res_sum": 71.0902,
+            "cnt": 1363
+        },
+        "avg_logtraf": {
+            "sum": 3832.3,
+            "sum_square": 19722.23,
+            "avg": 2.8117,
+            "res_sum": 8947.0845,
+            "cnt": 1363
+        },
+        "avg_ParkAcres_land": {
+            "sum": 61.316,
+            "sum_square": 433.6168,
+            "avg": 0.045,
+            "res_sum": 430.8584,
+            "cnt": 1363
+        },
+        "avg_baseball_sr": {
+            "sum": 158.0,
+            "sum_square": 308.0,
+            "avg": 0.1159,
+            "res_sum": 289.6845,
+            "cnt": 1363
+        },
+        "avg_WWCWPQtrsWithNC": {
+            "sum": 324.0,
+            "sum_square": 8246.0,
+            "avg": 0.2377,
+            "res_sum": 8168.9817,
+            "cnt": 1363
+        },
+        "avg_ns4050p": {
+            "sum": 431.6809,
+            "sum_square": 256.4016,
+            "avg": 0.3167,
+            "res_sum": 119.6823,
+            "cnt": 1363
+        },
+        "avg_pool_outdoor": {
+            "sum": 50.0,
+            "sum_square": 52.0,
+            "avg": 0.0367,
+            "res_sum": 50.1658,
+            "cnt": 1363
+        },
+        "avg_comp_construction": {
+            "sum": 2047.0,
+            "sum_square": 14631.0,
+            "avg": 1.5018,
+            "res_sum": 11556.7454,
+            "cnt": 1363
+        },
+        "avg_garden": {
+            "sum": 18.0,
+            "sum_square": 28.0,
+            "avg": 0.0132,
+            "res_sum": 27.7623,
+            "cnt": 1363
+        },
+        "avg_MfgCount": {
+            "sum": 1357.0,
+            "sum_square": 16557.0,
+            "avg": 0.9956,
+            "res_sum": 15205.9736,
+            "cnt": 1363
+        },
+        "avg_Avg_RSEI_HazardStd": {
+            "sum": 0.15,
+            "sum_square": 48.9573,
+            "avg": 0.0001,
+            "res_sum": 48.9573,
+            "cnt": 1363
+        },
+        "avg_ns5060p": {
+            "sum": 556.9986,
+            "sum_square": 352.2444,
+            "avg": 0.4087,
+            "res_sum": 124.6233,
+            "cnt": 1363
+        },
+        "avg_pnc": {
+            "sum": 14604404.8709,
+            "sum_square": 169786907625.0829,
+            "avg": 10714.8972,
+            "res_sum": 13302210902.3751,
+            "cnt": 1363
+        },
+        "avg_aland": {
+            "sum": 595577364.0,
+            "sum_square": 1484269910534706.0,
+            "avg": 436960.6486,
+            "res_sum": 1224026039288052.2,
+            "cnt": 1363
+        },
+        "avg_comp_hazard": {
+            "sum": 5866.0,
+            "sum_square": 93530.0,
+            "avg": 4.3037,
+            "res_sum": 68284.2509,
+            "cnt": 1363
+        },
+        "avg_nn_q3_pm2_5": {
+            "sum": 8409.3,
+            "sum_square": 88440.59,
+            "avg": 6.1697,
+            "res_sum": 36557.7386,
+            "cnt": 1363
+        },
+        "avg_comp_abandon": {
+            "sum": 86.0,
+            "sum_square": 120.0,
+            "avg": 0.0631,
+            "res_sum": 114.5737,
+            "cnt": 1363
+        },
+        "avg_comp_air": {
+            "sum": 21967.0,
+            "sum_square": 1925561.0,
+            "avg": 16.1167,
+            "res_sum": 1571526.4519,
+            "cnt": 1363
+        },
+        "avg_EJ_PM25": {
+            "sum": 14597.1215,
+            "sum_square": 161746.4531,
+            "avg": 10.7096,
+            "res_sum": 5417.7984,
+            "cnt": 1363
+        },
+        "avg_ns7080p": {
+            "sum": 20.3493,
+            "sum_square": 1.2676,
+            "avg": 0.0149,
+            "res_sum": 0.9638,
+            "cnt": 1363
+        },
+        "avg_no2": {
+            "sum": 24534.95,
+            "sum_square": 466242.0561,
+            "avg": 18.0007,
+            "res_sum": 24595.8554,
+            "cnt": 1363
+        },
+        "avg_HazRCRAQtrsWithNC": {
+            "sum": 260.0,
+            "sum_square": 3170.0,
+            "avg": 0.1908,
+            "res_sum": 3120.4035,
+            "cnt": 1363
+        },
+        "avg_Avg_RSEI_ScoreStd": {
+            "sum": 0.13,
+            "sum_square": 48.9337,
+            "avg": 0.0001,
+            "res_sum": 48.9337,
+            "cnt": 1363
+        },
+        "avg_comp_recycling": {
+            "sum": 213.0,
+            "sum_square": 525.0,
+            "avg": 0.1563,
+            "res_sum": 491.7139,
+            "cnt": 1363
+        },
+        "avg_comp_dumping": {
+            "sum": 8606.0,
+            "sum_square": 161848.0,
+            "avg": 6.314,
+            "res_sum": 107509.6023,
+            "cnt": 1363
+        },
+        "avg_comp_asbestos": {
+            "sum": 2984.0,
+            "sum_square": 29358.0,
+            "avg": 2.1893,
+            "res_sum": 22825.1636,
+            "cnt": 1363
+        },
+        "avg_trees_denStd": {
+            "sum": 0.0,
+            "sum_square": 801.0,
+            "avg": 0.0,
+            "res_sum": 801.0,
+            "cnt": 1363
+        },
+        "avg_track": {
+            "sum": 27.0,
+            "sum_square": 27.0,
+            "avg": 0.0198,
+            "res_sum": 26.4652,
+            "cnt": 1363
+        },
+        "avg_Avg_RSEI_Hazard": {
+            "sum": 24700000530.1,
+            "sum_square": 4.21079686435439e+20,
+            "avg": 18121790.5577,
+            "res_sum": 4.206320781990584e+20,
+            "cnt": 1363
+        },
+        "avg_trees_area": {
+            "sum": 111683443.0,
+            "sum_square": 54426045303073.0,
+            "avg": 81939.4299,
+            "res_sum": 45274767650590.055,
+            "cnt": 1363
+        },
+        "avg_ns70_above": {
+            "sum": 24.8006,
+            "sum_square": 1.8973,
+            "avg": 0.0182,
+            "res_sum": 1.4461,
+            "cnt": 1363
+        },
+        "avg_baseball_jr_softball_t_ball": {
+            "sum": 552.0,
+            "sum_square": 2772.0,
+            "avg": 0.405,
+            "res_sum": 2548.4461,
+            "cnt": 1363
+        },
+        "avg_WaterTreatCount": {
+            "sum": 2.0,
+            "sum_square": 2.0,
+            "avg": 0.0015,
+            "res_sum": 1.9971,
+            "cnt": 1363
+        },
+        "avg_PTSDF": {
+            "sum": 4190.6012,
+            "sum_square": 21438.1148,
+            "avg": 3.0745,
+            "res_sum": 8553.9339,
+            "cnt": 1363
+        },
+        "avg_trees_crown_den": {
+            "sum": 15363.7,
+            "sum_square": 345828.27,
+            "avg": 11.272,
+            "res_sum": 172649.0494,
+            "cnt": 1363
+        },
+        "avg_trees_crown_denStd": {
+            "sum": -0.0,
+            "sum_square": 801.0,
+            "avg": -0.0,
+            "res_sum": 801.0,
+            "cnt": 1363
+        },
+        "avg_LibraryN": {
+            "sum": 81.0,
+            "sum_square": 81.0,
+            "avg": 0.0594,
+            "res_sum": 76.1864,
+            "cnt": 1363
+        },
+        "avg_HazardCount": {
+            "sum": 7673.0,
+            "sum_square": 245913.0,
+            "avg": 5.6295,
+            "res_sum": 202717.8944,
+            "cnt": 1363
+        },
+        "avg_ns8090p": {
+            "sum": 3.7942,
+            "sum_square": 0.0754,
+            "avg": 0.0028,
+            "res_sum": 0.0648,
+            "cnt": 1363
+        },
+        "avg_OZONE": {
+            "sum": 58011.5685,
+            "sum_square": 2553722.6962,
+            "avg": 42.5617,
+            "res_sum": 84652.9346,
+            "cnt": 1363
+        },
+        "avg_RSEICount": {
+            "sum": 82.0,
+            "sum_square": 240.0,
+            "avg": 0.0602,
+            "res_sum": 235.0668,
+            "cnt": 1363
+        },
+        "avg_so2": {
+            "sum": 3785.26,
+            "sum_square": 11127.5352,
+            "avg": 2.7772,
+            "res_sum": 615.2878,
+            "cnt": 1363
+        },
+        "avg_playground": {
+            "sum": 381.0,
+            "sum_square": 789.0,
+            "avg": 0.2795,
+            "res_sum": 682.4989,
+            "cnt": 1363
+        },
+        "avg_gymnasium": {
+            "sum": 142.0,
+            "sum_square": 178.0,
+            "avg": 0.1042,
+            "res_sum": 163.2062,
+            "cnt": 1363
+        },
+        "avg_heatisl": {
+            "sum": 54197.3,
+            "sum_square": 3970565.05,
+            "avg": 39.7632,
+            "res_sum": 1815504.6485,
+            "cnt": 1363
+        },
+        "avg_HazOver80CountUs": {
+            "sum": 46876.0,
+            "sum_square": 9157162.0,
+            "avg": 34.3918,
+            "res_sum": 7545012.788,
+            "cnt": 1363
+        },
+        "avg_ParkCount": {
+            "sum": 577.0,
+            "sum_square": 1091.0,
+            "avg": 0.4233,
+            "res_sum": 846.7381,
+            "cnt": 1363
+        },
+        "avg_WWCWPFormalEaCnt": {
+            "sum": 12.0,
+            "sum_square": 24.0,
+            "avg": 0.0088,
+            "res_sum": 23.8944,
+            "cnt": 1363
+        },
+        "avg_WWOver80CountUs": {
+            "sum": 1564.0,
+            "sum_square": 159652.0,
+            "avg": 1.1475,
+            "res_sum": 157857.3588,
+            "cnt": 1363
+        },
+        "avg_logtrafScld": {
+            "sum": 56357.3529,
+            "sum_square": 4265188.1488,
+            "avg": 41.348,
+            "res_sum": 1934923.1227,
+            "cnt": 1363
+        },
+        "avg_PWDIS": {
+            "sum": 4190.9253,
+            "sum_square": 203517.0293,
+            "avg": 3.0748,
+            "res_sum": 190630.8553,
+            "cnt": 1363
+        },
+        "avg_PowerPlantCount": {
+            "sum": 8.0,
+            "sum_square": 8.0,
+            "avg": 0.0059,
+            "res_sum": 7.953,
+            "cnt": 1363
+        },
+        "avg_ndvi": {
+            "sum": 244.6862,
+            "sum_square": 80.2516,
+            "avg": 0.1795,
+            "res_sum": 36.3254,
+            "cnt": 1363
+        },
+        "avg_comp_water": {
+            "sum": 196.0,
+            "sum_square": 410.0,
+            "avg": 0.1438,
+            "res_sum": 381.8151,
+            "cnt": 1363
+        },
+        "avg_Landfills": {
+            "sum": 14.0,
+            "sum_square": 46.0,
+            "avg": 0.0103,
+            "res_sum": 45.8562,
+            "cnt": 1363
+        },
+        "avg_ParksAmenitiesN": {
+            "sum": 4215.0,
+            "sum_square": 118749.0,
+            "avg": 3.0924,
+            "res_sum": 105714.3522,
+            "cnt": 1363
+        },
+        "avg_CANCER": {
+            "sum": 51812.3935,
+            "sum_square": 2099561.6546,
+            "avg": 38.0135,
+            "res_sum": 129991.4981,
+            "cnt": 1363
+        },
+        "avg_pm10": {
+            "sum": 31791.64,
+            "sum_square": 772212.521,
+            "avg": 23.3248,
+            "res_sum": 30680.3318,
+            "cnt": 1363
+        },
+        "avg_DSLPM": {
+            "sum": 2010.3673,
+            "sum_square": 3521.8417,
+            "avg": 1.475,
+            "res_sum": 556.6351,
+            "cnt": 1363
+        },
+        "avg_asbestosN": {
+            "sum": 109182.0,
+            "sum_square": 37461834.0,
+            "avg": 80.1042,
+            "res_sum": 28715899.2062,
+            "cnt": 1363
+        },
+        "avg_WWCWPInspectionCount": {
+            "sum": 33.0,
+            "sum_square": 209.0,
+            "avg": 0.0242,
+            "res_sum": 208.201,
+            "cnt": 1363
+        },
+        "avg_Avg_RSEI_PoundsStd": {
+            "sum": 0.05,
+            "sum_square": 48.9457,
+            "avg": 0.0,
+            "res_sum": 48.9457,
+            "cnt": 1363
+        },
+        "avg_fitness_courses": {
+            "sum": 3.0,
+            "sum_square": 3.0,
+            "avg": 0.0022,
+            "res_sum": 2.9934,
+            "cnt": 1363
+        },
+        "avg_PNPL": {
+            "sum": 84.7045,
+            "sum_square": 11.2268,
+            "avg": 0.0621,
+            "res_sum": 5.9627,
+            "cnt": 1363
+        },
+        "avg_Avg_RSEI_Cancer": {
+            "sum": 10977618.95,
+            "sum_square": 67651373557769.75,
+            "avg": 8054.0124,
+            "res_sum": 67562959678230.99,
+            "cnt": 1363
+        },
+        "avg_wheelchair_accessible_ball_fields": {
+            "sum": 2.0,
+            "sum_square": 2.0,
+            "avg": 0.0015,
+            "res_sum": 1.9971,
+            "cnt": 1363
+        },
+        "avg_NotSuperfundCount": {
+            "sum": 297.0,
+            "sum_square": 973.0,
+            "avg": 0.2179,
+            "res_sum": 908.2832,
+            "cnt": 1363
+        },
+        "avg_basketball_backboards": {
+            "sum": 779.0,
+            "sum_square": 4393.0,
+            "avg": 0.5715,
+            "res_sum": 3947.7755,
+            "cnt": 1363
+        },
+        "avg_o3": {
+            "sum": 58387.97,
+            "sum_square": 2595372.9467,
+            "avg": 42.8378,
+            "res_sum": 94158.6835,
+            "cnt": 1363
+        },
+        "avg_HazRCRAInspCnt": {
+            "sum": 92.0,
+            "sum_square": 222.0,
+            "avg": 0.0675,
+            "res_sum": 215.7902,
+            "cnt": 1363
+        },
+        "avg_awater": {
+            "sum": 31892596.0,
+            "sum_square": 37522117899662.0,
+            "avg": 23398.8232,
+            "res_sum": 36775868684974.39,
+            "cnt": 1363
+        },
+        "avg_HazRCRAFeaCnt": {
+            "sum": 6.0,
+            "sum_square": 10.0,
+            "avg": 0.0044,
+            "res_sum": 9.9736,
+            "cnt": 1363
+        },
+        "avg_caces_pm25": {
+            "sum": 17485.1,
+            "sum_square": 233405.9556,
+            "avg": 12.8284,
+            "res_sum": 9100.2168,
+            "cnt": 1363
+        },
+        "avg_Avg_RSEI_Pounds": {
+            "sum": 282459.56,
+            "sum_square": 20402085389.1292,
+            "avg": 207.2337,
+            "res_sum": 20343550243.8355,
+            "cnt": 1363
+        },
+        "avg_Land_acres": {
+            "sum": 605011.84,
+            "sum_square": 1233227968.9216,
+            "avg": 443.8825,
+            "res_sum": 964673804.1819,
+            "cnt": 1363
+        },
+        "avg_HazNonCompliant": {
+            "sum": 5.0,
+            "sum_square": 5.0,
+            "avg": 0.0037,
+            "res_sum": 4.9817,
+            "cnt": 1363
+        },
+        "avg_Avg_RSEI_Score": {
+            "sum": 10989097.13,
+            "sum_square": 67651854246441.64,
+            "avg": 8062.4337,
+            "res_sum": 67563255379433.12,
+            "cnt": 1363
+        },
+        "avg_HazLicCount": {
+            "sum": 10719.0,
+            "sum_square": 703497.0,
+            "avg": 7.8643,
+            "res_sum": 619199.8899,
+            "cnt": 1363
+        },
+        "avg_ParkAcres": {
+            "sum": 8126.5,
+            "sum_square": 3001720.88,
+            "avg": 5.9622,
+            "res_sum": 2953268.9341,
+            "cnt": 1363
+        },
+        "count": {
+            "sum": 1363.0,
+            "sum_square": 1363.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 1363
+        }
+    },
+    "00072_Health_sites_Chicago_lat_long_GEOID10_3": {
+        "count": {
+            "sum": 631.0,
+            "sum_square": 1683.0,
+            "avg": 1.808,
+            "res_sum": 542.1375,
+            "cnt": 349
+        }
+    },
+    "00091_Indices_Chicago_GEOID10_3": {
+        "avg_CRCI_pct": {
+            "sum": 68641.14,
+            "sum_square": 4806784.6638,
+            "avg": 53.3342,
+            "res_sum": 1174375.985,
+            "cnt": 1319
+        },
+        "avg_CRCI_sd": {
+            "sum": 124.45,
+            "sum_square": 257.8941,
+            "avg": 0.0967,
+            "res_sum": 251.9779,
+            "cnt": 1319
+        },
+        "avg_SDI_score": {
+            "sum": 79235.0,
+            "sum_square": 5887733.0,
+            "avg": 60.2548,
+            "res_sum": 1116837.1484,
+            "cnt": 1319
+        },
+        "count": {
+            "sum": 1319.0,
+            "sum_square": 1319.0,
+            "avg": 1.0,
+            "res_sum": 0.0,
+            "cnt": 1319
+        }
+    },
+    "00021_Social_Chicago_GEOID10_3": {
+        "avg_SDOH_CL": {
+            "sum": 4934.0,
+            "sum_square": 22000.0,
+            "avg": 3.5573,
+            "res_sum": 4448.1932,
+            "cnt": 1387
+        },
+        "avg_CrimeRate1000": {
+            "sum": 506383.355,
+            "sum_square": 523017027.0066,
+            "avg": 365.8839,
+            "res_sum": 338472120.1367,
+            "cnt": 1387
+        },
+        "avg_1_SES": {
+            "sum": -1453.2791,
+            "sum_square": 12396.625,
+            "avg": -1.0478,
+            "res_sum": 10873.8995,
+            "cnt": 1387
+        },
+        "avg_GINI": {
+            "sum": 588.7144,
+            "sum_square": 266.9964,
+            "avg": 0.4245,
+            "res_sum": 17.1156,
+            "cnt": 1387
+        },
+        "avg_LILATracts_Vehicle": {
+            "sum": 175.3333,
+            "sum_square": 129.1111,
+            "avg": 0.1264,
+            "res_sum": 106.9469,
+            "cnt": 1387
+        },
+        "avg_quality_gold_pct": {
+            "sum": 20752.8571,
+            "sum_square": 1865320.068,
+            "avg": 14.9624,
+            "res_sum": 1554807.3935,
+            "cnt": 1387
+        },
+        "avg_Crime": {
+            "sum": 1496918.5,
+            "sum_square": 4797692903.25,
+            "avg": 1079.2491,
+            "res_sum": 3182144961.1864,
+            "cnt": 1387
+        },
+        "avg_VacantBldgs": {
+            "sum": 4925.0,
+            "sum_square": 224591.0,
+            "avg": 3.5508,
+            "res_sum": 207103.1665,
+            "cnt": 1387
+        },
+        "avg_Violent": {
+            "sum": 396999.5,
+            "sum_square": 341695155.75,
+            "avg": 286.2289,
+            "res_sum": 228062421.0707,
+            "cnt": 1387
+        },
+        "avg_InactiveVoters_pct": {
+            "sum": 4884.77,
+            "sum_square": 17927.1059,
+            "avg": 3.5218,
+            "res_sum": 723.8053,
+            "cnt": 1387
+        },
+        "avg_GrafRate1000": {
+            "sum": 723731.8455,
+            "sum_square": 1778308411.1478,
+            "avg": 522.9276,
+            "res_sum": 1402885578.354,
+            "cnt": 1387
+        },
+        "avg_4_MICA": {
+            "sum": 574.6489,
+            "sum_square": 2929.8021,
+            "avg": 0.4143,
+            "res_sum": 2691.7189,
+            "cnt": 1387
+        },
+        "avg_3_URB": {
+            "sum": 1115.2708,
+            "sum_square": 3273.2812,
+            "avg": 0.8041,
+            "res_sum": 2376.5048,
+            "cnt": 1387
+        },
+        "avg_presch_cps_pct": {
+            "sum": 24450.2381,
+            "sum_square": 2148274.6599,
+            "avg": 17.6281,
+            "res_sum": 1717262.3002,
+            "cnt": 1387
+        },
+        "avg_SocOrgs_rate_10k": {
+            "sum": 710.3547,
+            "sum_square": 379.1163,
+            "avg": 0.5122,
+            "res_sum": 15.3068,
+            "cnt": 1387
+        },
+        "avg_GrafCount": {
+            "sum": 962456.0,
+            "sum_square": 3119507742.0,
+            "avg": 693.912,
+            "res_sum": 2451647935.2689,
+            "cnt": 1387
+        },
+        "avg_quality_silver_pct": {
+            "sum": 7273.5714,
+            "sum_square": 586830.2154,
+            "avg": 5.2441,
+            "res_sum": 548686.8547,
+            "cnt": 1387
+        },
+        "avg_Incarceration_Rate_rP_gP_p25": {
+            "sum": 33.7908,
+            "sum_square": 1.6757,
+            "avg": 0.0244,
+            "res_sum": 0.8524,
+            "cnt": 1387
+        },
+        "avg_LILATracts_1And10": {
+            "sum": 46.6667,
+            "sum_square": 32.0,
+            "avg": 0.0336,
+            "res_sum": 30.4299,
+            "cnt": 1387
+        },
+        "avg_presch_early_head_start_pct": {
+            "sum": 3957.619,
+            "sum_square": 310154.0816,
+            "avg": 2.8534,
+            "res_sum": 298861.5448,
+            "cnt": 1387
+        },
+        "avg_VacantRate1000": {
+            "sum": 4828.9316,
+            "sum_square": 283914.0709,
+            "avg": 3.4816,
+            "res_sum": 267101.8286,
+            "cnt": 1387
+        },
+        "avg_quality_licensed_pct": {
+            "sum": 14906.9048,
+            "sum_square": 1276196.8821,
+            "avg": 10.7476,
+            "res_sum": 1115983.6091,
+            "cnt": 1387
+        },
+        "avg_preschN": {
+            "sum": 705.0,
+            "sum_square": 1551.0,
+            "avg": 0.5083,
+            "res_sum": 1192.6547,
+            "cnt": 1387
+        },
+        "avg_presch_home_visits_pct": {
+            "sum": 3466.6667,
+            "sum_square": 253077.7778,
+            "avg": 2.4994,
+            "res_sum": 244413.1939,
+            "cnt": 1387
+        },
+        "avg_Accepts_CCAP_pct": {
+            "sum": 13083.8095,
+            "sum_square": 1036637.5283,
+            "avg": 9.4332,
+            "res_sum": 913215.7031,
+            "cnt": 1387
+        },
+        "avg_ages_3_5_pct": {
+            "sum": 41065.7143,
+            "sum_square": 4041802.4943,
+            "avg": 29.6076,
+            "res_sum": 2825946.0489,
+            "cnt": 1387
+        },
+        "avg_LILATracts_halfAnd10": {
+            "sum": 319.6667,
+            "sum_square": 260.1111,
+            "avg": 0.2305,
+            "res_sum": 186.4364,
+            "cnt": 1387
+        },
+        "avg_quality_bronze_pct": {
+            "sum": 33.3333,
+            "sum_square": 1111.1111,
+            "avg": 0.024,
+            "res_sum": 1110.31,
+            "cnt": 1387
+        },
+        "avg_ages_0_3_pct": {
+            "sum": 13744.5238,
+            "sum_square": 1114789.5125,
+            "avg": 9.9095,
+            "res_sum": 978587.685,
+            "cnt": 1387
+        },
+        "avg_LILATracts_1And20": {
+            "sum": 46.6667,
+            "sum_square": 32.0,
+            "avg": 0.0336,
+            "res_sum": 30.4299,
+            "cnt": 1387
+        },
+        "avg_2_MOB": {
+            "sum": 165.0695,
+            "sum_square": 2847.2334,
+            "avg": 0.119,
+            "res_sum": 2827.5882,
+            "cnt": 1387
+        },
+        "avg_ViolentRate1000": {
+            "sum": 139415.09,
+            "sum_square": 44367385.0595,
+            "avg": 100.7334,
+            "res_sum": 30389400.4684,
+            "cnt": 1387
+        },
+        "avg_HUNVFlag": {
+            "sum": 258.6667,
+            "sum_square": 194.4444,
+            "avg": 0.1865,
+            "res_sum": 146.2048,
+            "cnt": 1387
+        },
+        "avg_presch_community_pct": {
+            "sum": 18366.4286,
+            "sum_square": 1537393.7075,
+            "avg": 13.2418,
+            "res_sum": 1294188.4454,
+            "cnt": 1387
+        },
+        "avg_NoReligion_pct": {
+            "sum": 60866.63,
+            "sum_square": 2783430.9899,
+            "avg": 43.8837,
+            "res_sum": 112380.7754,
+            "cnt": 1387
+        },
+        "avg_presch_head_start_pct": {
+            "sum": 16536.1905,
+            "sum_square": 1405625.6236,
+            "avg": 11.9223,
+            "res_sum": 1208476.6723,
+            "cnt": 1387
+        },
+        "count": {
+            "sum": 3897.0,
+            "sum_square": 16401.0,
+            "avg": 2.8097,
+            "res_sum": 5451.7505,
+            "cnt": 1387
+        }
+    },
+    "00011_ACS1019_Chicago_GIDTR_3": {
+        "avg_pct_PUB_ASST_INC_ACS": {
+            "sum": 4587.78,
+            "sum_square": 28635.1352,
+            "avg": 3.4888,
+            "res_sum": 12667.7057,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_Arabic_ACS": {
+            "sum": 361.67,
+            "sum_square": 990.7294,
+            "avg": 0.275,
+            "res_sum": 893.9709,
+            "cnt": 1319
+        },
+        "avg_Tot_Prns_in_HHD_ACS": {
+            "sum": 5123558.5,
+            "sum_square": 24323832470.75,
+            "avg": 3884.4265,
+            "res_sum": 4421746266.8666,
+            "cnt": 1319
+        },
+        "avg_pct_Crowd_Occp_U_ACS": {
+            "sum": 4980.54,
+            "sum_square": 36419.0638,
+            "avg": 3.7875,
+            "res_sum": 17608.7947,
+            "cnt": 1319
+        },
+        "avg_pct_Pov_Univ_ACS": {
+            "sum": 129457.815,
+            "sum_square": 12793669.6488,
+            "avg": 98.447,
+            "res_sum": 49084.1165,
+            "cnt": 1319
+        },
+        "avg_Tot_Housing_Units_ACS": {
+            "sum": 2185185.5,
+            "sum_square": 4607156739.75,
+            "avg": 1656.6986,
+            "res_sum": 986962903.9575,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_Spanish_ACS": {
+            "sum": 10766.045,
+            "sum_square": 255214.2995,
+            "avg": 8.1871,
+            "res_sum": 167580.132,
+            "cnt": 1319
+        },
+        "avg_Tot_Occp_Units_ACS": {
+            "sum": 1954584.0,
+            "sum_square": 3719844731.5,
+            "avg": 1481.8681,
+            "res_sum": 823409088.5462,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_OthAsian_ACS": {
+            "sum": 301.22,
+            "sum_square": 436.3911,
+            "avg": 0.2291,
+            "res_sum": 368.5106,
+            "cnt": 1319
+        },
+        "avg_pct_Civ_unemp_16p_ACS": {
+            "sum": 14524.085,
+            "sum_square": 241446.2876,
+            "avg": 11.0449,
+            "res_sum": 81275.4257,
+            "cnt": 1319
+        },
+        "avg_pct_Males_ACS": {
+            "sum": 63429.84,
+            "sum_square": 3078126.999,
+            "avg": 48.2356,
+            "res_sum": 18605.8215,
+            "cnt": 1319
+        },
+        "avg_pct_NH_Asian_alone_ACS": {
+            "sum": 8130.52,
+            "sum_square": 156782.5944,
+            "avg": 6.1829,
+            "res_sum": 106836.6007,
+            "cnt": 1319
+        },
+        "avg_pct_Hispanic_ACS": {
+            "sum": 30876.075,
+            "sum_square": 1628416.1397,
+            "avg": 23.4799,
+            "res_sum": 906199.0584,
+            "cnt": 1319
+        },
+        "avg_pct_Mobile_Homes_ACS": {
+            "sum": 865.28,
+            "sum_square": 24457.6514,
+            "avg": 0.658,
+            "res_sum": 23961.0099,
+            "cnt": 1319
+        },
+        "avg_pct_College_ACS": {
+            "sum": 46428.82,
+            "sum_square": 2394276.3256,
+            "avg": 35.3071,
+            "res_sum": 757308.2735,
+            "cnt": 1319
+        },
+        "avg_pct_TwoPHealthIns_ACS": {
+            "sum": 15853.16,
+            "sum_square": 224283.2725,
+            "avg": 12.0556,
+            "res_sum": 33264.3162,
+            "cnt": 1319
+        },
+        "avg_pct_Civ_emp_16_24_ACS": {
+            "sum": 103085.575,
+            "sum_square": 8414243.3172,
+            "avg": 78.3921,
+            "res_sum": 334165.6343,
+            "cnt": 1319
+        },
+        "avg_pct_Pop_5yrs_Over_ACS": {
+            "sum": 123044.595,
+            "sum_square": 11519907.3412,
+            "avg": 93.57,
+            "res_sum": 6640.5297,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_OthEuro_ACS": {
+            "sum": 719.23,
+            "sum_square": 1829.2359,
+            "avg": 0.5469,
+            "res_sum": 1440.229,
+            "cnt": 1319
+        },
+        "avg_Med_House_Value_ACS": {
+            "sum": 338372900.5,
+            "sum_square": 116743210499700.77,
+            "avg": 258299.924,
+            "res_sum": 29543252933411.902,
+            "cnt": 1319
+        },
+        "avg_pct_Civ_emp_45_64_ACS": {
+            "sum": 119617.85,
+            "sum_square": 10936180.2908,
+            "avg": 90.9641,
+            "res_sum": 55413.0734,
+            "cnt": 1319
+        },
+        "avg_Num_BGs_in_Tract": {
+            "sum": 3993.0,
+            "sum_square": 14377.0,
+            "avg": 3.0273,
+            "res_sum": 2289.0174,
+            "cnt": 1319
+        },
+        "avg_pct_NH_SOR_alone_ACS": {
+            "sum": 231.53,
+            "sum_square": 237.64,
+            "avg": 0.1761,
+            "res_sum": 197.4742,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_Russian_ACS": {
+            "sum": 1263.115,
+            "sum_square": 5298.8559,
+            "avg": 0.9605,
+            "res_sum": 4098.0158,
+            "cnt": 1319
+        },
+        "avg_pct_Pop_25_44_ACS": {
+            "sum": 39689.855,
+            "sum_square": 1326435.1352,
+            "avg": 30.1824,
+            "res_sum": 128891.2581,
+            "cnt": 1319
+        },
+        "avg_avg_Tot_Prns_in_HHD_ACS": {
+            "sum": 3561.255,
+            "sum_square": 10025.3802,
+            "avg": 2.7082,
+            "res_sum": 382.0247,
+            "cnt": 1319
+        },
+        "avg_pct_ENG_VW_SPAN_ACS": {
+            "sum": 5901.38,
+            "sum_square": 95079.8024,
+            "avg": 4.4877,
+            "res_sum": 68804.7505,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_German_ACS": {
+            "sum": 60.115,
+            "sum_square": 19.6915,
+            "avg": 0.0457,
+            "res_sum": 16.9949,
+            "cnt": 1319
+        },
+        "avg_pct_Othr_Lang_ACS": {
+            "sum": 42376.245,
+            "sum_square": 2204941.1434,
+            "avg": 32.2253,
+            "res_sum": 841909.8382,
+            "cnt": 1319
+        },
+        "avg_pct_Civ_unemp_16_24_ACS": {
+            "sum": 28414.485,
+            "sum_square": 947131.0691,
+            "avg": 21.608,
+            "res_sum": 334165.7937,
+            "cnt": 1319
+        },
+        "avg_pct_Prs_Blw_Pov_Lev_ACS": {
+            "sum": 23450.48,
+            "sum_square": 633139.5826,
+            "avg": 17.8331,
+            "res_sum": 215599.9816,
+            "cnt": 1319
+        },
+        "avg_pct_Pop_18_24_ACS": {
+            "sum": 12620.79,
+            "sum_square": 166854.0392,
+            "avg": 9.5976,
+            "res_sum": 45864.4575,
+            "cnt": 1319
+        },
+        "avg_pct_MrdCple_HHD_ACS": {
+            "sum": 51783.785,
+            "sum_square": 2418901.0393,
+            "avg": 39.3793,
+            "res_sum": 380847.4525,
+            "cnt": 1319
+        },
+        "avg_pct_NH_Blk_alone_ACS": {
+            "sum": 37730.19,
+            "sum_square": 2843955.3019,
+            "avg": 28.6922,
+            "res_sum": 1766756.5971,
+            "cnt": 1319
+        },
+        "avg_Med_HHD_Inc_ACS": {
+            "sum": 82105506.5,
+            "sum_square": 6491524181282.25,
+            "avg": 62437.6475,
+            "res_sum": 1369204908130.4968,
+            "cnt": 1319
+        },
+        "avg_avg_Agg_House_Value_ACS": {
+            "sum": 215456371.5,
+            "sum_square": 64049455886418.25,
+            "avg": 165991.0412,
+            "res_sum": 28743607008103.062,
+            "cnt": 1319
+        },
+        "avg_pct_NH_AIAN_alone_ACS": {
+            "sum": 134.3,
+            "sum_square": 97.1682,
+            "avg": 0.1021,
+            "res_sum": 83.7062,
+            "cnt": 1319
+        },
+        "avg_pct_Vacant_Units_ACS": {
+            "sum": 14852.45,
+            "sum_square": 241531.0812,
+            "avg": 11.2946,
+            "res_sum": 74002.614,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_Only_Eng_ACS": {
+            "sum": 89123.755,
+            "sum_square": 6879692.1434,
+            "avg": 67.7747,
+            "res_sum": 841909.8382,
+            "cnt": 1319
+        },
+        "avg_Tot_Population_ACS": {
+            "sum": 5213051.0,
+            "sum_square": 25085456040.0,
+            "avg": 3952.2752,
+            "res_sum": 4482043812.0993,
+            "cnt": 1319
+        },
+        "avg_pct_Rel_Under_6_ACS": {
+            "sum": 30066.98,
+            "sum_square": 761556.5921,
+            "avg": 22.8646,
+            "res_sum": 74311.9418,
+            "cnt": 1319
+        },
+        "avg_pct_Pop_Disabled_ACS": {
+            "sum": 14171.58,
+            "sum_square": 181118.2655,
+            "avg": 10.7769,
+            "res_sum": 28479.4662,
+            "cnt": 1319
+        },
+        "avg_pct_Recent_Built_HU_ACS": {
+            "sum": 816.395,
+            "sum_square": 2890.9186,
+            "avg": 0.6208,
+            "res_sum": 2391.3314,
+            "cnt": 1319
+        },
+        "avg_pct_Civ_emp_25_44_ACS": {
+            "sum": 118555.555,
+            "sum_square": 10774915.7924,
+            "avg": 90.1563,
+            "res_sum": 86646.7252,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_Tagalog_ACS": {
+            "sum": 332.505,
+            "sum_square": 455.9705,
+            "avg": 0.2529,
+            "res_sum": 373.0269,
+            "cnt": 1319
+        },
+        "avg_pct_Diff_HU_1yr_Ago_ACS": {
+            "sum": 18032.735,
+            "sum_square": 324800.8451,
+            "avg": 13.7131,
+            "res_sum": 77751.9999,
+            "cnt": 1319
+        },
+        "avg_pct_Pop_25yrs_Over_ACS": {
+            "sum": 89271.17,
+            "sum_square": 6148718.1025,
+            "avg": 67.8868,
+            "res_sum": 88651.1857,
+            "cnt": 1319
+        },
+        "avg_pct_Born_foreign_ACS": {
+            "sum": 25281.665,
+            "sum_square": 763772.9948,
+            "avg": 19.2256,
+            "res_sum": 278563.2088,
+            "cnt": 1319
+        },
+        "avg_pct_Renter_Occp_HU_ACS": {
+            "sum": 59089.61,
+            "sum_square": 3372473.0665,
+            "avg": 44.9351,
+            "res_sum": 719461.1152,
+            "cnt": 1319
+        },
+        "avg_pct_Pop_65plus_ACS": {
+            "sum": 17377.18,
+            "sum_square": 281679.6888,
+            "avg": 13.2146,
+            "res_sum": 52205.8968,
+            "cnt": 1319
+        },
+        "avg_pct_Owner_Occp_HU_ACS": {
+            "sum": 72410.4,
+            "sum_square": 4704551.9125,
+            "avg": 55.0649,
+            "res_sum": 719460.8592,
+            "cnt": 1319
+        },
+        "avg_pct_One_Health_Ins_ACS": {
+            "sum": 98388.965,
+            "sum_square": 7427094.0019,
+            "avg": 74.8205,
+            "res_sum": 65781.5254,
+            "cnt": 1319
+        },
+        "avg_pct_Single_Unit_ACS": {
+            "sum": 60225.535,
+            "sum_square": 3968122.2779,
+            "avg": 45.7989,
+            "res_sum": 1213542.8531,
+            "cnt": 1319
+        },
+        "avg_pct_ENG_VW_OTHER_ACS": {
+            "sum": 398.835,
+            "sum_square": 1133.9169,
+            "avg": 0.3033,
+            "res_sum": 1016.0352,
+            "cnt": 1319
+        },
+        "avg_pct_HHD_PPL_Und_18_ACS": {
+            "sum": 41825.005,
+            "sum_square": 1498448.0191,
+            "avg": 31.8061,
+            "res_sum": 168670.1496,
+            "cnt": 1319
+        },
+        "avg_pct_Civ_unemp_45_64_ACS": {
+            "sum": 11882.175,
+            "sum_square": 162610.9522,
+            "avg": 9.0359,
+            "res_sum": 55413.2837,
+            "cnt": 1319
+        },
+        "avg_pct_Pop_45_64_ACS": {
+            "sum": 32204.085,
+            "sum_square": 826905.3975,
+            "avg": 24.4898,
+            "res_sum": 38350.2349,
+            "cnt": 1319
+        },
+        "avg_pct_US_Cit_Nat_ACS": {
+            "sum": 12175.51,
+            "sum_square": 182819.3257,
+            "avg": 9.2589,
+            "res_sum": 70300.3276,
+            "cnt": 1319
+        },
+        "avg_pct_MLT_U10p_ACS": {
+            "sum": 24608.485,
+            "sum_square": 1156117.044,
+            "avg": 18.7137,
+            "res_sum": 697719.3183,
+            "cnt": 1319
+        },
+        "avg_pct_Civ_emp_16p_ACS": {
+            "sum": 116975.925,
+            "sum_square": 10486631.0289,
+            "avg": 88.9551,
+            "res_sum": 81275.3878,
+            "cnt": 1319
+        },
+        "avg_pct_Civ_unemp_25_44_ACS": {
+            "sum": 12944.465,
+            "sum_square": 213805.7848,
+            "avg": 9.8437,
+            "res_sum": 86647.3257,
+            "cnt": 1319
+        },
+        "avg_pct_ENG_VW_ACS": {
+            "sum": 10632.195,
+            "sum_square": 182917.7382,
+            "avg": 8.0853,
+            "res_sum": 97248.1844,
+            "cnt": 1319
+        },
+        "avg_pct_Born_US_ACS": {
+            "sum": 106218.335,
+            "sum_square": 8857439.9948,
+            "avg": 80.7744,
+            "res_sum": 278563.2088,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_Korean_ACS": {
+            "sum": 347.24,
+            "sum_square": 773.1278,
+            "avg": 0.2641,
+            "res_sum": 683.5097,
+            "cnt": 1319
+        },
+        "avg_pct_NH_NHOPI_alone_ACS": {
+            "sum": 24.43,
+            "sum_square": 16.5546,
+            "avg": 0.0186,
+            "res_sum": 16.1497,
+            "cnt": 1319
+        },
+        "avg_pct_Pop_under_5_ACS": {
+            "sum": 8455.415,
+            "sum_square": 60988.4399,
+            "avg": 6.43,
+            "res_sum": 6640.4997,
+            "cnt": 1319
+        },
+        "avg_pct_Rel_Family_HHD_ACS": {
+            "sum": 81366.42,
+            "sum_square": 5342692.4939,
+            "avg": 61.8756,
+            "res_sum": 309033.9528,
+            "cnt": 1319
+        },
+        "avg_pct_MLT_U2_9_STRC_ACS": {
+            "sum": 45762.595,
+            "sum_square": 2484409.0925,
+            "avg": 34.8005,
+            "res_sum": 894564.9968,
+            "cnt": 1319
+        },
+        "avg_pct_Females_ACS": {
+            "sum": 68070.16,
+            "sum_square": 3542158.999,
+            "avg": 51.7644,
+            "res_sum": 18605.8215,
+            "cnt": 1319
+        },
+        "avg_pct_NH_White_alone_ACS": {
+            "sum": 52251.67,
+            "sum_square": 3359634.5816,
+            "avg": 39.7351,
+            "res_sum": 1287315.5884,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_Chinese_ACS": {
+            "sum": 1000.775,
+            "sum_square": 18269.3203,
+            "avg": 0.761,
+            "res_sum": 17560.9807,
+            "cnt": 1319
+        },
+        "avg_avg_Agg_HH_INC_ACS": {
+            "sum": 108698378.0,
+            "sum_square": 11685754983797.0,
+            "avg": 82660.3635,
+            "res_sum": 2708928878616.561,
+            "cnt": 1319
+        },
+        "avg_pct_ENG_VW_INDOEURO_ACS": {
+            "sum": 2916.705,
+            "sum_square": 22290.0431,
+            "avg": 2.218,
+            "res_sum": 15868.8742,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_French_ACS": {
+            "sum": 130.87,
+            "sum_square": 126.3759,
+            "avg": 0.0995,
+            "res_sum": 113.6967,
+            "cnt": 1319
+        },
+        "avg_pct_Pop_5_17_ACS": {
+            "sum": 21152.925,
+            "sum_square": 383302.4541,
+            "avg": 16.0859,
+            "res_sum": 43170.1739,
+            "cnt": 1319
+        },
+        "avg_pct_ENG_VW_API_ACS": {
+            "sum": 1415.19,
+            "sum_square": 13059.6807,
+            "avg": 1.0762,
+            "res_sum": 11571.7864,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_OthUnSp_ACS": {
+            "sum": 219.705,
+            "sum_square": 418.8012,
+            "avg": 0.1671,
+            "res_sum": 383.2569,
+            "cnt": 1319
+        },
+        "avg_pct_Age5p_Vietnames_ACS": {
+            "sum": 169.515,
+            "sum_square": 331.1988,
+            "avg": 0.1289,
+            "res_sum": 310.2886,
+            "cnt": 1319
+        },
+        "avg_pct_Pop_1yr_Over_ACS": {
+            "sum": 129854.285,
+            "sum_square": 12823617.9174,
+            "avg": 98.7485,
+            "res_sum": 703.4494,
+            "cnt": 1319
+        },
+        "avg_pct_HHD_Moved_in_ACS": {
+            "sum": 49562.325,
+            "sum_square": 2091135.8724,
+            "avg": 37.69,
+            "res_sum": 223812.0329,
+            "cnt": 1319
+        },
+        "avg_pct_Tot_Occp_Units_ACS": {
+            "sum": 116647.56,
+            "sum_square": 10421042.9848,
+            "avg": 88.7054,
+            "res_sum": 74002.7439,
+            "cnt": 1319
+        },
+        "avg_Tot_Vacant_Units_ACS": {
+            "sum": 230601.5,
+            "sum_square": 66807786.75,
+            "avg": 174.8306,
+            "res_sum": 26491598.8787,
+            "cnt": 1319
+        },
+        "avg_pct_Sngl_Prns_HHD_ACS": {
+            "sum": 41023.41,
+            "sum_square": 1477491.7471,
+            "avg": 31.1965,
+            "res_sum": 198306.3874,
+            "cnt": 1319
+        },
+        "count": {
+            "sum": 2638.0,
+            "sum_square": 5276.0,
+            "avg": 2.0,
+            "res_sum": 0.0,
+            "cnt": 1319
+        }
+    }
+}

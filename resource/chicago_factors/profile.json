@@ -7,6 +7,10 @@
         "avg_population_t2": {
             "missing_ratio": 0.0,
             "zero_ratio": 0.02
+        },
+        "avg_population": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.02
         }
     },
     "chicago_income_by_zipcode": {
@@ -17,6 +21,10 @@
         "avg_income_household_median_t2": {
             "missing_ratio": 0.0,
             "zero_ratio": 0.0
+        },
+        "avg_income_household_median": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.0
         }
     },
     "chicago_census_tract_population": {
@@ -25,6 +33,10 @@
             "zero_ratio": 0.01
         },
         "avg_population_t2": {
+            "missing_ratio": 0.0,
+            "zero_ratio": 0.01
+        },
+        "avg_population": {
             "missing_ratio": 0.0,
             "zero_ratio": 0.01
         }

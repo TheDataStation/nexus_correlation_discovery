@@ -19,7 +19,7 @@ classifiers = [
 dependencies = [
     "wheel",
     "dill==0.3.8",
-    "duckdb==0.10.0",
+    "duckdb==1.0.0",
     "factor_analyzer==0.5.1",
     "geopandas==0.13.2",
     "mmh3==4.1.0",
@@ -35,7 +35,9 @@ dependencies = [
     "scipy",
     "Shapely==2.0.3",
     "SQLAlchemy==2.0.25",
-    "tqdm==4.66.1"
+    "tqdm==4.66.1",
+    "dtale==3.12.0",
+    "ipywidgets==7.6.5"
 ]
 
 [tool.setuptools.packages.find]

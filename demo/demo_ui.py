@@ -1,20 +1,10 @@
 import ipywidgets as widgets
 from IPython.display import display, clear_output
 from demo.cluster_utils import CorrCommunity
-import qgrid
 import json
 
-def show_df(df, name, prov=None, use_qgrid=False):
-    if use_qgrid:
-        qgrid_widget = qgrid.show_grid(
-            df,
-            precision=2,
-            grid_options={"forceFitColumns": False, "defaultColumnWidth": 150},
-            show_toolbar=True
-        )
-        display(qgrid_widget)
-    else: 
-        display(df)
+def show_df(df, name, prov=None):
+    display(df)
     if prov:
         print("provenance:")
         display(prov)
@@ -28,7 +18,7 @@ def show_df(df, name, prov=None, use_qgrid=False):
     download_button.on_click(download_data)
     display(download_button)
         
-def show_communities(corr_community: CorrCommunity, show_corr_in_same_tbl, use_qgrid=False):
+def show_communities(corr_community: CorrCommunity, show_corr_in_same_tbl):
     clusters = corr_community.all_communities
     # Function to be triggered when the dropdown value changes
     def on_dropdown_change(change):
@@ -82,31 +72,8 @@ def show_communities(corr_community: CorrCommunity, show_corr_in_same_tbl, use_q
                 cluster_id, show_corr_in_same_tbl
             )
             display(f"{cluster_name} has {len(res)} correlations")
-            if use_qgrid:
-                qgrid_widget = qgrid.show_grid(
-                    res,
-                    precision=2,
-                    grid_options={"forceFitColumns": False, "defaultColumnWidth": 150},
-                )
-            else:
-                display(res)
-
-            def handle_selection_change(change):
-                selected_rows = qgrid_widget.get_changed_df()
-                with cnt_output:
-                    clear_output(wait=True)
-                    display(f"#filtered rows: {len(selected_rows)}")
-
-            # qgrid_widget.on("filter_changed", handle_selection_change)
-            qgrid_widget.observe(handle_selection_change, names=["_selected_rows"])
-            cnt_output = widgets.Output()
-            with cnt_output:
-                clear_output(wait=True)
-                display(f"#filtered rows: {len(qgrid_widget.get_changed_df())}")
-#             print("should display")
-            display(qgrid_widget)
-            display(cnt_output)
-
+            display(res)
+          
     # Create the dropdown widget and set the initial value
     dropdown = widgets.Dropdown(
         options=list(clusters.keys()),

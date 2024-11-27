@@ -5,6 +5,7 @@ import yaml
 import os
 import numpy as np
 from nexus.utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
+from typing import Dict, List
 
 stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom",
               "census_block",
@@ -71,15 +72,16 @@ def create_dir(dir_path):
         os.makedirs(dir_path)
 
 
-def load_corrs_to_df(data: object) -> pd.DataFrame:
+def load_corrs_to_df(data, metadata: Dict[str, str]=None, drop_count: bool=True) -> pd.DataFrame:
     df = pd.DataFrame(
-        [corr.to_list() for corr in data],
+        [corr.to_list(metadata) for corr in data],
         columns=[
             "domain1",
             "table_id1",
             "table_name1",
             "agg_table1",
             "agg_attr1",
+            "description1",
             "agg_attr1_missing_ratio",
             "agg_attr1_zero_ratio",
             "original_attr1_missing_ratio",
@@ -90,6 +92,7 @@ def load_corrs_to_df(data: object) -> pd.DataFrame:
             "table_name2",
             "agg_table2",
             "agg_attr2",
+            "description2",
             "agg_attr2_missing_ratio",
             "agg_attr2_zero_ratio",
             "original_attr2_missing_ratio",
@@ -103,9 +106,12 @@ def load_corrs_to_df(data: object) -> pd.DataFrame:
             "spatio-temporal key type",
         ],
     )
+   
     df['agg_attr1'] = df['agg_attr1'].str[:-3]
     df['agg_attr2'] = df['agg_attr2'].str[:-3]
-    return df
+    if drop_count:
+        df = df[(df['agg_attr1'] != 'count') & (df['agg_attr2'] != 'count')]
+    return df.reset_index(drop=True)
 
 
 def remove_bad_cols(stop_words, corrs):
@@ -137,7 +143,7 @@ def load_corrs_from_dir(path, index='name', remove_perfect_corrs=False):
                 all_corr = df
             else:
                 all_corr = pd.concat([all_corr, df])
-    # all_corr = all_corr[~(((all_corr['agg_attr1'] == 'count_t1') & (~all_corr['tbl_id1'].isin(to_include))) | (((all_corr['agg_attr2'] == 'count_t2') & (~all_corr['tbl_id2'].isin(to_include)))))]
+    all_corr = all_corr[~(((all_corr['agg_attr1'] == 'count_t1') & (~all_corr['tbl_id1'].isin(to_include))) | (((all_corr['agg_attr2'] == 'count_t2') & (~all_corr['tbl_id2'].isin(to_include)))))]
     all_corr = remove_bad_cols(stop_words, all_corr)
     if remove_perfect_corrs:
         all_corr = all_corr[~(abs(all_corr['r_val']) == 1)]

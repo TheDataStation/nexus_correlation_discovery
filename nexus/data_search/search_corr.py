@@ -17,7 +17,7 @@ import os
 from nexus.utils import corr_utils
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import List
+from typing import List, Dict
 import nexus.data_search.db_ops as db_ops
 import math
 from nexus.data_search.commons import FIND_JOIN_METHOD
@@ -53,13 +53,15 @@ class AggColumnProfile:
 
 class AggColumn:
     def __init__(
-            self, domain, tbl_id, tbl_name, agg_name: str, agg_attr, col_data=None
+            self, domain, tbl_id, tbl_name, agg_name: str, agg_attr, col_data=None, description=None
     ) -> None:
         self.domain = domain
         self.tbl_id = tbl_id
         self.tbl_name = tbl_name
         self.agg_name = agg_name
         self.agg_attr = agg_attr
+        if description:
+            self.desc =description
         self.col_data = col_data
 
     def set_profile(self, tbl_profiles):
@@ -86,15 +88,22 @@ class AggColumn:
     def get_id(self):
         return self.agg_name, self.agg_attr
 
-    def to_list(self):
+    def to_list(self, metadata: Dict[str, str]=None):
+        desc = ""
+        if metadata:
+            if self.agg_attr[:3] == 'avg':
+                col_name = self.agg_attr[4:-3]
+                if col_name in metadata:
+                    desc = metadata[col_name] 
         return [
             self.domain,
             self.tbl_id,
             self.tbl_name,
             self.agg_name,
             self.agg_attr,
+            desc,
         ] + self.profile.to_list()
-
+        
 
 class Correlation:
     def __init__(
@@ -135,10 +144,10 @@ class Correlation:
                 * math.sqrt(n * square_sum2 - sum2 ** 2)
         )
 
-    def to_list(self):
+    def to_list(self, metadata: Dict[str, str]):
         return (
-                self.agg_col1.to_list()
-                + self.agg_col2.to_list()
+                self.agg_col1.to_list(metadata)
+                + self.agg_col2.to_list(metadata)
                 + [
                     round(self.r_val, 3),
                     round(self.r_val_impute_avg, 3),
@@ -148,6 +157,28 @@ class Correlation:
                     self.align_type,
                 ]
         )
+    
+    @staticmethod
+    def from_csv(row):
+        tbl_id1 = row['table_id1']
+        tbl_name1 = row['table_name1']
+        agg_tbl1 = row['agg_table1']
+        agg_attr1 = row['agg_attr1']
+        desc1 = row['description1']
+        tbl_id2 = row['table_id2']
+        tbl_name2 = row['table_name2']
+        agg_tbl2 = row['agg_table2']
+        agg_attr2 = row['agg_attr2']
+        desc2 = row['description2']
+        r_val = row['correlation coefficient']
+        p_val = row['p value']
+        overlap = row['number of samples']
+        align_type = row['spatio-temporal key type']
+        agg_col1 = AggColumn(domain='', tbl_id=tbl_id1, tbl_name=tbl_id1, agg_name=agg_tbl1, agg_attr=agg_attr1, description=desc1)
+        agg_col2 = AggColumn(domain='', tbl_id=tbl_id2, tbl_name=tbl_id2, agg_name=agg_tbl2, agg_attr=agg_attr2, description=desc2)
+        corr = Correlation(agg_col1=agg_col1, agg_col2=agg_col2, r_val=r_val, p_val=p_val, overlap=overlap, align_type=align_type)
+        return corr
+        
 
 
 class CorrSearch:
@@ -479,7 +510,6 @@ class CorrSearch:
 
     def find_joinable_nexus(self, tbl_id1: str, st_key1: SpatioTemporalKey, overlap_threshold: int):
         v_cnt = self.join_costs[st_key1.get_agg_tbl_name(tbl_id1)].cnt
-
         if self.find_join_method == FIND_JOIN_METHOD.INDEX_SEARCH:
             aligned_keys, _ = self.db_engine.estimate_joinable_candidates(
                 tbl_id1, st_key1, overlap_threshold
@@ -524,6 +554,59 @@ class CorrSearch:
             return method, res
         return res
 
+    def control_variables_for_correlations(self, control_vars: List[Variable], correlations: List[Correlation]):
+        tbl_cols = defaultdict(list)
+        agg_name_to_tbl_name = {}
+        control_var_tbls = [var.tbl_id for var in control_vars]
+        control_var_names = [var.var_name for var in control_vars]
+        for correlation in correlations:
+            if correlation.agg_col1.agg_attr not in control_var_names:
+                tbl_cols[correlation.agg_col1.agg_name].append(
+                    Variable(correlation.agg_col1.agg_name, correlation.agg_col1.agg_attr, var_name=correlation.agg_col1.agg_attr))
+                agg_name_to_tbl_name[correlation.agg_col1.agg_name] = correlation.agg_col1.tbl_id
+            
+            if correlation.agg_col2.agg_attr not in control_var_names:
+                tbl_cols[correlation.agg_col2.agg_name].append(
+                    Variable(correlation.agg_col2.agg_name, correlation.agg_col2.agg_attr, var_name=correlation.agg_col2.agg_attr))
+                agg_name_to_tbl_name[correlation.agg_col2.agg_name] = correlation.agg_col2.tbl_id
+     
+        tables = list(tbl_cols.keys())
+        all_correlations = []
+        for i in range(len(tables)):
+            for j in range(i+1, len(tables)):
+                if tables[i] in control_var_tbls or tables[j] in control_var_tbls:
+                    continue
+                agg_name1, agg_name2 = tables[i], tables[j]
+                tbl_id1, tbl_id2 = agg_name_to_tbl_name[agg_name1], agg_name_to_tbl_name[agg_name2]
+               
+                cur_tbl_cols = defaultdict(list)
+                for k, col_list in tbl_cols.items():
+                    if k == agg_name1:
+                        for x in col_list:
+                            x.proj_name = f"{x.var_name}_t1"
+                            cur_tbl_cols[k].append(x)
+                    elif k == agg_name2:
+                        for x in col_list:
+                            x.proj_name = f"{x.var_name}_t2"
+                            cur_tbl_cols[k].append(x)
+                for var in control_vars:
+                    cur_tbl_cols[var.tbl_id].append(Variable(var.tbl_id, var.attr_name, None, var.attr_name))
+                names1 = [var.proj_name for var in cur_tbl_cols[agg_name1]]
+                names2 = [var.proj_name for var in cur_tbl_cols[agg_name2]]
+                df = self.db_engine.join_multi_agg_tbls(cur_tbl_cols)
+                res = self.get_corrs_with_control_vars(
+                    df,
+                    tbl_id1, agg_name1, names1,
+                    tbl_id2, agg_name2, names2,
+                    control_var_names,
+                    0, 0.05,
+                    fill_zero=True, flag=None
+                )
+                # print(len(res))
+                all_correlations.extend(res)
+        return all_correlations
+        
+    
     def find_all_corr_for_a_spatio_temporal_key(
             self, tbl_id1: str, spatio_temporal_key: SpatioTemporalKey,
             overlap_threshold: int, corr_threshold: float, p_threshold: float,
@@ -973,7 +1056,6 @@ class CorrSearch:
         if fill_zero:
             df = df.fillna(0)
         df = self.drop_constant_columns(df)
-
         for var1 in var1_l:
             if var1 not in df.columns:
                 continue
@@ -981,7 +1063,6 @@ class CorrSearch:
                 if var2 not in df.columns:
                     continue
                 if var1[:-3] in control_vars or var2[:-3] in control_vars:
-                    # print(var1, var2, control_vars)
                     continue
                 # import warnings
                 # warnings.filterwarnings("error")
@@ -996,12 +1077,13 @@ class CorrSearch:
                 #     print(df[[var1, var2, *control_vars]].to_csv('debug.csv', index=False))
                 #     break
                 r_val, p_val = partial_corr['r'].iloc[0], partial_corr['p-val'].iloc[0]
-
-                if not r_val or np.isnan(r_val):
+                # TODO: it looks like -1 is also a invalid value in the partial correlation library, needs to verify this further
+                if not r_val or np.isnan(r_val) or r_val == -1:
+                    # print("continue 1")
                     # meaning undefined correlation coefficient such as constant array 
                     continue
                 if self.correct_method == "" or self.correct_method is None:
-                    if abs(r_val) < r_t or p_val > p_t:
+                    if abs(r_val) < r_t:
                         continue
                 if abs(r_val) >= r_t:
                     self.perf_profile["corr_counts"]["before"] += 1
