@@ -12,6 +12,7 @@ venv
 *.csv
 !data/asthma/*.csv
 !data/chicago_factors/*.csv
+!demo/chicago_month_census_tract.csv
 notebook/
 result/
 __pycache__
