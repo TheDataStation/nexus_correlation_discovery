@@ -33,12 +33,7 @@
         "domain": "data.cityofchicago.org",
         "name": "chicago_census_tract_population",
         "t_attrs": [],
-        "s_attrs": [
-            {
-                "name": "census_tract",
-                "granu": "TRACT"
-            }
-        ],
+        "s_attrs": [],
         "num_columns": [
             "population"
         ],

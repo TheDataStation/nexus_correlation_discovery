@@ -1,6 +1,6 @@
 .DS_Store
 data
-# data/quickstart.db
+data/quickstart.db
 indices*
 .ipynb_checkpoints
 shape_chicago_blocks

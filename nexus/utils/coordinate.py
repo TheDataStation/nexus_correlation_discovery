@@ -56,6 +56,7 @@ class Coordinate:
         elif granu == SPATIAL_GRANU.STATE:
             return [self.repr[SPATIAL_GRANU.STATE.name]]
         elif granu == SPATIAL_GRANU.ZIPCODE:
+            # print(list(self.repr.keys()))
             return [self.repr[SPATIAL_GRANU.ZIPCODE.name]]
 
     def to_str(self, repr: List[int]):
@@ -90,12 +91,14 @@ def parse_coordinate(str):
         return None
 
 
-def resolve_spatial_hierarchy(points, spatial_hierarchies: List[SpatialHierarchy]):
+def resolve_spatial_hierarchy(points, spatial_hierarchies: List[SpatialHierarchy], desired_s_granu: SPATIAL_GRANU):
     """
     shape file can contain duplicate shapes, i.e.
     geometry number is different but all the other attributes are identical
     """
     for spatial_hierarchy in spatial_hierarchies:
+        if desired_s_granu.name not in spatial_hierarchy.granularity_map:
+            continue
         shape_path = spatial_hierarchy.shape_file_path
         shapes = gpd.read_file(shape_path).to_crs(epsg=4326)
         df = gpd.sjoin(points, shapes, predicate="within")

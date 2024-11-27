@@ -44,7 +44,7 @@ class Profiler:
                 tbl_attrs[tbl]["t_attrs"],
                 tbl_attrs[tbl]["s_attrs"],
             )
-
+            
             if temporal_granu:
                 for t in t_attrs:
                     spatio_temporal_keys.append((tbl, SpatioTemporalKey(temporal_attr=Attr(t['name'], temporal_granu))))

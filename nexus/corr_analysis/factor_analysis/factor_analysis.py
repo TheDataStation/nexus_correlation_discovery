@@ -64,6 +64,7 @@ def get_clusters(factor_clusters):
     return all_communities
 
 if __name__ == "__main__":
-    corrs, corr_map = load_corrs_from_dir('evaluation/correlations2/chicago_1m_T_GRANU.MONTH_S_GRANU.TRACT/')
-    corrs = filter_on_signals(corrs, None, [1.0, 1.0, 1.0, 0.8, 0.6, 70])
-    corr_matrix_from_corrs(corrs, corr_map)
+    corrs, corr_map = load_corrs_from_dir('/Users/yuegong/chicago_1m_T_GRANU.MONTH_S_GRANU.TRACT/')
+    print(len(corrs))
+    # corrs = filter_on_signals(corrs, None, [1.0, 1.0, 1.0, 0.8, 0.6, 70])
+    # corr_matrix_from_corrs(corrs, corr_map)

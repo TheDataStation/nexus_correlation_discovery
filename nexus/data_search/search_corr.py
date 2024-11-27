@@ -510,7 +510,6 @@ class CorrSearch:
 
     def find_joinable_nexus(self, tbl_id1: str, st_key1: SpatioTemporalKey, overlap_threshold: int):
         v_cnt = self.join_costs[st_key1.get_agg_tbl_name(tbl_id1)].cnt
-
         if self.find_join_method == FIND_JOIN_METHOD.INDEX_SEARCH:
             aligned_keys, _ = self.db_engine.estimate_joinable_candidates(
                 tbl_id1, st_key1, overlap_threshold
@@ -1078,7 +1077,8 @@ class CorrSearch:
                 #     print(df[[var1, var2, *control_vars]].to_csv('debug.csv', index=False))
                 #     break
                 r_val, p_val = partial_corr['r'].iloc[0], partial_corr['p-val'].iloc[0]
-                if not r_val or np.isnan(r_val):
+                # TODO: it looks like -1 is also a invalid value in the partial correlation library, needs to verify this further
+                if not r_val or np.isnan(r_val) or r_val == -1:
                     # print("continue 1")
                     # meaning undefined correlation coefficient such as constant array 
                     continue

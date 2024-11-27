@@ -143,7 +143,7 @@ def load_corrs_from_dir(path, index='name', remove_perfect_corrs=False):
                 all_corr = df
             else:
                 all_corr = pd.concat([all_corr, df])
-    # all_corr = all_corr[~(((all_corr['agg_attr1'] == 'count_t1') & (~all_corr['tbl_id1'].isin(to_include))) | (((all_corr['agg_attr2'] == 'count_t2') & (~all_corr['tbl_id2'].isin(to_include)))))]
+    all_corr = all_corr[~(((all_corr['agg_attr1'] == 'count_t1') & (~all_corr['tbl_id1'].isin(to_include))) | (((all_corr['agg_attr2'] == 'count_t2') & (~all_corr['tbl_id2'].isin(to_include)))))]
     all_corr = remove_bad_cols(stop_words, all_corr)
     if remove_perfect_corrs:
         all_corr = all_corr[~(abs(all_corr['r_val']) == 1)]

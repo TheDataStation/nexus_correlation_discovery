@@ -22,7 +22,7 @@ from nexus.data_ingestion.data_profiler import Profiler
 
 class API:
     def __init__(self, connection_string, engine='duckdb',
-                 data_sources: List[str]=['chicago_zipcode', 'asthma', 'chicago_factors'], impute_options=[], correction=''):
+                 data_sources: List[str]=['chicago_open_data', 'asthma', 'chicago_factors'], impute_options=[], correction=''):
         self.engine_type = engine
         self.db_engine = ConnectionFactory.create_connection(connection_string, engine, read_only=True)
 
@@ -36,25 +36,32 @@ class API:
         self.catalog = {}
         self.data_path_map = {}
 
+        self.column_profiles = {}
+        self.agg_col_profiles = {}
+     
         for data_source in data_sources:
             config = io_utils.load_config(data_source)
             attr_path = config["attr_path"]
+            profile_path = config["profile_path"]
+            agg_col_profile_path = config["col_stats_path"]
             self.catalog.update(io_utils.load_json(attr_path))
             self.data_path_map[data_source] = config["data_path"]
+            self.column_profiles.update(io_utils.load_json(profile_path))
+            self.agg_col_profiles.update(io_utils.load_json(agg_col_profile_path))
 
         self.display_attrs = [
             "table_id1",
             "table_name1",
             "agg_table1",
             "agg_attr1",
-            "description1",
-            "original_attr1_missing_ratio",
+            # "description1",
+            # "original_attr1_missing_ratio",
             "table_id2",
             "table_name2",
             "agg_table2",
             "agg_attr2",
-            "description2",
-            "original_attr2_missing_ratio",
+            # "description2",
+            # "original_attr2_missing_ratio",
             "correlation coefficient",
             "p value",
             "number of samples",
@@ -86,12 +93,12 @@ class API:
         with open(config_path, 'w') as config_file:
             yaml.safe_dump(cur_config, config_file)
         
-        label_data_source(data_source_name, num_sample=1000)
+        # label_data_source(data_source_name, num_sample=1000)
 
 
     @staticmethod
-    def ingest_data(conn_str, engine, data_sources: List[str], temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU], persist=True):
-        ingestor = DBIngestor(conn_string=conn_str, engine=engine)
+    def ingest_data(conn_str, engine, data_sources: List[str], temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU], persist=True, mode='cross'):
+        ingestor = DBIngestor(conn_string=conn_str, engine=engine, mode=mode)
         for data_source in data_sources:
             print(data_source)
             ingestor.ingest_data_source(data_source, temporal_granu_l=temporal_granu_l, spatial_granu_l=spatial_granu_l, persist=persist)
@@ -129,6 +136,30 @@ class API:
         correlations = load_corrs_to_df(corr_search.data, metadata_lookup, drop_count)
         print(f"total number of correlations: {len(correlations)}")
         return correlations[self.display_attrs]
+
+    def show_correlation_profile(self, correlations, idx):
+        corr = correlations.iloc[idx]
+        tbl_id1, agg_tbl1, agg_attr1 = corr['table_id1'], corr['agg_table1'], corr['agg_attr1']
+        tbl_id2, agg_tbl2, agg_attr2 = corr['table_id2'], corr['agg_table2'], corr['agg_attr2']
+        print(f"Variable 1 - table id: {tbl_id1}, aggregated table: {agg_tbl1}, aggregated attribute: {agg_attr1}")
+        if "count" not in agg_attr1:
+            print(f"\t Missing value ratio: {self.column_profiles[tbl_id1][agg_attr1+'_t1']['missing_ratio']}")
+            print(f"\t zero value ratio: {self.column_profiles[tbl_id1][agg_attr1+'_t1']['zero_ratio']}")
+        else:
+            print("no detailed stats for count variable")
+        print(f"Variable 2 - table id: {tbl_id2}, aggregated table: {agg_tbl2}, aggregated attribute: {agg_attr2}")
+        if "count" not in agg_attr2:
+            print(f"\t Missing value ratio: {self.column_profiles[tbl_id2][agg_attr2+'_t1']['missing_ratio']}")
+            print(f"\t zero value ratio: {self.column_profiles[tbl_id2][agg_attr2+'_t1']['zero_ratio']}")
+        else:
+            print("no detailed stats for count variable")
+        print("Correlation Profile")
+        print(f"\tCorrelation coefficient: {corr['correlation coefficient']}")
+        # print(f"\tcorrelation coefficient after imputing avg: {corr['correlation coefficient after imputing avg']}")
+        # print(f"\tcorrelation coefficient after imputing zero: {corr['correlation coefficient after imputing zero']}")
+        print(f"\tp value: {corr['p value']}")
+        print(f"\tNumber of samples: {corr['number of samples']}")
+        print(f"\tSpatio-temporal key type: {corr['spatio-temporal key type']}")
 
     def control_variables_for_correlaions(self, control_variables, correlations):
         corr_search = CorrSearch(
