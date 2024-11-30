@@ -27,7 +27,7 @@ dependencies = [
     "numpy==1.24.4",
     "pandas==2.0.3",
     "pingouin==0.5.4",
-    "psycopg2==2.9.9",
+    "psycopg2-binary",
     "pyvis==0.3.2",
     "PyYAML==6.0.1",
     "Requests==2.31.0",
