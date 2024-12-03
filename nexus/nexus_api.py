@@ -199,7 +199,7 @@ class API:
 
     def show_raw_dataset(self, id):
         # todo: map data source to data path
-        data_path = "/data/chicago_open_data_1m/"
+        data_path = "data/"
         df = pd.read_csv(f"{data_path}/{id}.csv")
         link = self.catalog[id]['link']
         return df, link
