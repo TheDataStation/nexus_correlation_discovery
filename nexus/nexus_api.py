@@ -93,7 +93,7 @@ class API:
         with open(config_path, 'w') as config_file:
             yaml.safe_dump(cur_config, config_file)
         
-        # label_data_source(data_source_name, num_sample=1000)
+        label_data_source(data_source_name, num_sample=1000)
 
 
     @staticmethod

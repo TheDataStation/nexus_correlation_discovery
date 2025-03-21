@@ -46,9 +46,10 @@ class Variable:
 
 
 class Attr:
-    def __init__(self, name: str, granularity: Union[TEMPORAL_GRANU, SPATIAL_GRANU]) -> None:
+    def __init__(self, name: str, granularity: Union[TEMPORAL_GRANU, SPATIAL_GRANU], available_granularities=[]) -> None:
         self.name = name
         self.granu = granularity
+        self.available_granularities = available_granularities
 
     def to_int_name(self):
         return "{}_{}".format(self.name, self.granu.value)
@@ -169,9 +170,15 @@ class SpatioTemporalKey:
         )
     
     def get_agg_tbl_description(self, tbl):
-        return "Aggregated table for {} using attribute {} with granularity {}".format(
-            tbl, self.get_attrs(), self.get_granularity().name
-        )
+        # check if the returned result is a tuple
+        if not isinstance(self.get_granularity(), tuple):
+            return "Aggregated table for {} using attribute {} with granularity {}".format(
+                tbl, self.get_attrs(), self.get_granularity().name
+            )
+        else:
+            return "Aggregated table for {} using attributes {} with granularities {}".format(
+                tbl, self.get_attrs(), [x.name for x in self.get_granularity()]
+            )
 
 
 class Table:
@@ -199,8 +206,8 @@ class Table:
 
     @staticmethod
     def table_from_tbl_id(tbl_id: str, data_catalog):
-        temporal_attrs = [Attr(attr["name"], attr["granu"]) for attr in data_catalog[tbl_id]['t_attrs']]
-        spatial_attrs = [Attr(attr["name"], attr["granu"]) for attr in data_catalog[tbl_id]['s_attrs']]
+        temporal_attrs = [Attr(attr["name"], attr["granu"], [TEMPORAL_GRANU[x] for x in attr['available_granularities']] if 'available_granularities' in attr else []) for attr in data_catalog[tbl_id]['t_attrs']]
+        spatial_attrs = [Attr(attr["name"], attr["granu"], [SPATIAL_GRANU[x] for x in attr['available_granularities']] if 'available_granularities' in attr else []) for attr in data_catalog[tbl_id]['s_attrs']]
         num_attrs = data_catalog[tbl_id]["num_columns"]
         return Table(tbl_id=tbl_id,
                      temporal_attrs=temporal_attrs,
@@ -211,30 +218,35 @@ class Table:
                                  mode="no_cross") -> List[SpatioTemporalKey]:
         spatio_temporal_keys = []
         for temporal_attr in self.temporal_attrs:
-            for cur_granularity in temporal_granu_l:
+            # if len(temporal_attr.available_granularities) == 0 and not ingestion:
+            #     temporal_attr.available_granularities = temporal_granu_l
+            for cur_granularity in temporal_attr.available_granularities:
                 spatio_temporal_keys.append(SpatioTemporalKey(temporal_attr=Attr(temporal_attr.name, cur_granularity)))
 
         for spatial_attr in self.spatial_attrs:
-            for cur_granularity in spatial_granu_l:
-                if spatial_attr.granu != 'POINT' and spatial_attr.granu != cur_granularity.name:
-                    continue
+            # if len(spatial_attr.available_granularities) == 0 and not ingestion:
+            #     spatial_attr.available_granularities = spatial_granu_l
+            for cur_granularity in spatial_attr.available_granularities:
+                # if spatial_attr.granu != 'POINT' and spatial_attr.granu != cur_granularity.name:
+                #     continue
                 spatio_temporal_keys.append(SpatioTemporalKey(spatial_attr=Attr(spatial_attr.name, cur_granularity)))
 
         for temporal_attr in self.temporal_attrs:
             for spatial_attr in self.spatial_attrs:
                 if mode == 'no_cross':
-                    for i in range(len(temporal_granu_l)):
-                        if spatial_attr.granu != 'POINT' and spatial_attr.granu != spatial_granu_l[i].name:
-                            continue
+                    iter = min(len(temporal_attr.available_granularities), len(spatial_attr.available_granularities))
+                    for i in range(iter):
+                        # if spatial_attr.granu != 'POINT' and spatial_attr.granu != spatial_granu_l[i].name:
+                        #     continue
                         spatio_temporal_keys.append(
-                            SpatioTemporalKey(Attr(temporal_attr.name, temporal_granu_l[i]),
-                                              Attr(spatial_attr.name, spatial_granu_l[i]))
+                            SpatioTemporalKey(Attr(temporal_attr.name, temporal_attr.available_granularities[i]),
+                                              Attr(spatial_attr.name, spatial_attr.available_granularities[i]))
                         )
                 elif mode == 'cross':
-                    for cur_temporal_granu in temporal_granu_l:
-                        for cur_spatial_granu in spatial_granu_l:
-                            if spatial_attr.granu != 'POINT' and spatial_attr.granu != cur_spatial_granu.name:
-                                continue
+                    for cur_temporal_granu in temporal_attr.available_granularities:
+                        for cur_spatial_granu in spatial_attr.available_granularities:
+                            # if spatial_attr.granu != 'POINT' and spatial_attr.granu != cur_spatial_granu.name:
+                            #     continue
                             spatio_temporal_keys.append(
                                 SpatioTemporalKey(Attr(temporal_attr.name, cur_temporal_granu),
                                                   Attr(spatial_attr.name, cur_spatial_granu))

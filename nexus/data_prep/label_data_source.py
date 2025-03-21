@@ -5,6 +5,9 @@ import numpy as np
 from nexus.utils.profile_utils import is_num_column_valid
 from nexus.utils.data_model import Table, Attr
 from nexus.utils.coordinate import SPATIAL_GRANU
+import importlib.resources as pkg_resources
+import nexus.data_prep
+import json
 
 spatial_granu_map = {
     "geoCoordinate": "POINT",
@@ -12,9 +15,13 @@ spatial_granu_map = {
     "zipCode": "ZIPCODE"
 }
 
+def read_patterns(file_name):
+    with pkg_resources.open_text(nexus.data_prep, file_name) as f:
+        return json.load(f)
+
 def label_using_regex(data: pd.DataFrame):
-        spatial_patterns = load_json('nexus/data_prep/spatial_patterns.json')
-        temporal_patterns = load_json('nexus/data_prep/temporal_patterns.json')  
+        spatial_patterns = read_patterns('spatial_patterns.json')
+        temporal_patterns = read_patterns('temporal_patterns.json')  
         temporal_attrs, spatial_attrs, num_attrs = [], [], []
         # get numerical columns in a dataframe using dataframe types
         num_columns = list(data.select_dtypes(include=[np.number]).columns.values)

@@ -6,7 +6,10 @@
         "s_attrs": [
             {
                 "name": "zipcode",
-                "granu": "ZIPCODE"
+                "granu": "ZIPCODE",
+                "available_granularities": [
+                    "ZIPCODE"
+                ]
             }
         ],
         "num_columns": [
@@ -22,7 +25,10 @@
         "s_attrs": [
             {
                 "name": "zipcode",
-                "granu": "ZIPCODE"
+                "granu": "ZIPCODE",
+                "available_granularities": [
+                    "ZIPCODE"
+                ]
             }
         ],
         "num_columns": [
@@ -38,7 +44,10 @@
         "s_attrs": [
             {
                 "name": "census_tract",
-                "granu": "TRACT"
+                "granu": "TRACT",
+                "available_granularities": [
+                    "ZIPCODE"
+                ]
             }
         ],
         "num_columns": [

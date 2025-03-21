@@ -46,3 +46,9 @@ tmp/
 config_test.yaml
 *egg-info
 scripts/
+dist/
+build/
+chicago_shapes/
+chicago_open_sample/
+demo/
+*.db

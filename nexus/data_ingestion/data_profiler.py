@@ -27,8 +27,9 @@ class Profiler:
         self.mode = mode
 
     def collect_agg_tbl_col_stats(self, temporal_granu_l: List[TEMPORAL_GRANU], spatial_granu_l: List[SPATIAL_GRANU]):
-        for tbl_id in tqdm(self.data_catalog.keys()):
-            table = Table.table_from_tbl_id(tbl_id, self.data_catalog)
+        ingested_metadata = io_utils.load_json(self.config["attr_path"])
+        for tbl_id in ingested_metadata.keys():
+            table = Table.table_from_tbl_id(tbl_id, ingested_metadata)
             self.profile_tbl(table, temporal_granu_l, spatial_granu_l, self.mode)
         io_utils.dump_json(self.config["col_stats_path"], self.stats_dict)
 
@@ -47,6 +48,8 @@ class Profiler:
             
             if temporal_granu:
                 for t in t_attrs:
+                    # if temporal_granu not in t.avaiable_granularities:
+                    #     continue
                     spatio_temporal_keys.append((tbl, SpatioTemporalKey(temporal_attr=Attr(t['name'], temporal_granu))))
                     if type_aware:
                         spatio_temporal_keys_by_type[KeyType.TIME].append((tbl, SpatioTemporalKey(
@@ -54,8 +57,10 @@ class Profiler:
 
             if spatial_granu:
                 for s in s_attrs:
-                    if s['granu'] != 'POINT' and s['granu'] != spatial_granu.name:
-                        continue
+                    # if s['granu'] != 'POINT' and s['granu'] != spatial_granu.name:
+                    #     continue
+                    # if spatial_granu not in s.avaiable_granularities:
+                    #     continue
                     spatio_temporal_keys.append((tbl, SpatioTemporalKey(spatial_attr=Attr(s['name'], spatial_granu))))
                     if type_aware:
                         spatio_temporal_keys_by_type[KeyType.SPACE].append((tbl, SpatioTemporalKey(
@@ -64,8 +69,10 @@ class Profiler:
             if temporal_granu and spatial_granu:
                 for t in t_attrs:
                     for s in s_attrs:
-                        if s['granu'] != 'POINT' and s['granu'] != spatial_granu.name:
-                            continue
+                        # if s['granu'] != 'POINT' and s['granu'] != spatial_granu.name:
+                        #     continue
+                        # if temporal_granu not in t.avaiable_granularities or spatial_granu not in s.avaiable_granularities:
+                        #     continue
                         spatio_temporal_keys.append(
                             (tbl, SpatioTemporalKey(Attr(t['name'], temporal_granu), Attr(s['name'], spatial_granu)))
                         )

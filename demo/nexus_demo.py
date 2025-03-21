@@ -1,4 +1,3 @@
-
 from nexus.utils.time_point import TEMPORAL_GRANU
 from nexus.utils.coordinate import SPATIAL_GRANU
 from nexus.nexus_api import API
@@ -7,7 +6,7 @@ from sklearn import linear_model
 import warnings
 from nexus.corr_analysis.graph.graph_utils import filter_on_signals
 from nexus.utils.io_utils import load_corrs_from_dir
-from demo.cluster_utils import CorrCommunity
+from nexus.corr_cluster.cluster_utils import CorrCommunity
 import pickle
 import subprocess
 import pandas as pd 

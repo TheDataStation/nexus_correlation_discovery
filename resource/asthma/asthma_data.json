@@ -6,7 +6,10 @@
         "s_attrs": [
             {
                 "name": "Zip5",
-                "granu": "ZIPCODE"
+                "granu": "ZIPCODE",
+                "available_granularities": [
+                    "ZIPCODE"
+                ]
             }
         ],
         "num_columns": [

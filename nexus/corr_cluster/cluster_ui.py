@@ -1,6 +1,6 @@
 import ipywidgets as widgets
 from IPython.display import display, clear_output
-from demo.cluster_utils import CorrCommunity
+from nexus.corr_cluster.cluster_utils import CorrCommunity
 import json
 
 def show_df(df, name, prov=None):

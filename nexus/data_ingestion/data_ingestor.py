@@ -105,6 +105,10 @@ class DBIngestor:
                 link=obj["link"] if "link" in obj else "",
             )
             print(tbl.tbl_id)
+            for attr in tbl.temporal_attrs:
+                attr.available_granularities = []
+            for attr in tbl.spatial_attrs:
+                attr.available_granularities = []
             if retry_list is not None:
                 if tbl.tbl_id not in retry_list:
                     continue
@@ -364,19 +368,21 @@ class DBIngestor:
                     new_attr = "{}_{}".format(t_attr.name, t_granu.value)
                     df[new_attr] = df_dts.apply(set_temporal_granu, args=(t_granu,))
                     df_schema[new_attr] = Integer()
+                    t_attr.available_granularities.append(t_granu)
                 t_attrs_success.append(t_attr)
         
         # if there is a spatial attribute with the desired granularity, we ignore the conversion of other attributes.
         spatial_granu_map = defaultdict(list)
         for s_attr in s_attrs:
             spatial_granu_map[s_attr.granu].append(s_attr)
-
+        print("spatial granu map", spatial_granu_map)
         s_attrs_success_names = set()
         for s_granu in spatial_granu_l:
             if s_granu.name in spatial_granu_map:
                 s_attr = spatial_granu_map[s_granu.name][0]
                 new_attr = "{}_{}".format(s_attr.name, s_granu.value)
                 df[new_attr] = df[s_attr.name].dropna().astype(int).astype(str)
+                s_attr.available_granularities.append(s_granu)
                 if s_attr.name not in s_attrs_success_names:
                     s_attrs_success_names.add(s_attr.name)
                     s_attrs_success.append(s_attr)
@@ -401,13 +407,12 @@ class DBIngestor:
                     # df_resolved can be none meaning there is no point falling into the shape file
                     if df_resolved is None:
                         continue
-                    
                     new_attr = "{}_{}".format(s_attr.name, s_granu.value)
                     df[new_attr] = df_resolved.apply(set_spatial_granu, args=(s_granu,))
+                    s_attr.available_granularities.append(s_granu)
                     if s_attr.name not in s_attrs_success_names:
                         s_attrs_success_names.add(s_attr.name)
                         s_attrs_success.append(s_attr)
-           
         return df, df_schema, t_attrs_success, s_attrs_success
     
     def __del__(self):

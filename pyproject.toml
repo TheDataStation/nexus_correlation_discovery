@@ -3,8 +3,8 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "nexus"
-version = "0.0.1"
+name = "nexus-corr-discovery"
+version = "0.0.2dev1"
 authors = [
   { name="Yue Gong", email="yuegong@uchicago.edu" },
 ]
@@ -21,7 +21,7 @@ dependencies = [
     "dill==0.3.8",
     "duckdb==1.0.0",
     "factor_analyzer==0.5.1",
-    "geopandas==0.13.2",
+    "geopandas==0.14.4",
     "mmh3==4.1.0",
     "networkx==3.1",
     "numpy==1.24.4",
@@ -32,16 +32,13 @@ dependencies = [
     "PyYAML==6.0.1",
     "Requests==2.31.0",
     "scikit_learn",
-    "scipy",
+    "scipy==1.14.1",
     "Shapely==2.0.3",
     "SQLAlchemy==2.0.25",
     "tqdm==4.66.1",
-    "dtale==3.12.0",
     "ipywidgets==7.6.5"
 ]
 
 [tool.setuptools.packages.find]
-where = ["."]  # list of folders that contain the packages (["."] by default)
-include = ["nexus"]  # package names should match these glob patterns (["*"] by default)
-exclude = []  # exclude packages matching these glob patterns (empty by default)
-namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
+where = ["."]
+include = ["nexus", "nexus.*"]  # Includes all submodules

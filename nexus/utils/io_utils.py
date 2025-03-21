@@ -6,6 +6,7 @@ import os
 import numpy as np
 from nexus.utils.spatial_hierarchy import SPATIAL_GRANU, SpatialHierarchy
 from typing import Dict, List
+from enum import Enum
 
 stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnumberto", "streetnumberfrom",
               "census_block",
@@ -15,13 +16,18 @@ stop_words = ["wind_direction", "heading", "dig_ticket_", "uniquekey", "streetnu
               "majority_dist", "latest_dist",
               "f12", "f13", "bin"]
 
+class EnumEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Enum):
+            return obj.name  
+        return super().default(obj)
 
 def dump_json(path: str, obj):
     dir = os.path.dirname(path)
     if dir and not os.path.exists(dir):
         os.makedirs(dir)
     with open(path, "w") as f:
-        json.dump(obj, f, indent=4)
+        json.dump(obj, f, indent=4, cls=EnumEncoder)
 
 
 def load_json(path: str):
